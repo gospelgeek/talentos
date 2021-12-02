@@ -1,8 +1,5 @@
 @extends('layouts.app')
-
-<!--ponerle titulo a la paginga-->
-@section('title', 'Perfil Estudiantes')
-
+@section('title', 'Index')
 @section('content')
 
     

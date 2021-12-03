@@ -65,8 +65,10 @@ class perfilEstudianteController extends Controller
     }
 
     public function editarPerfilEstudiante($id){
-
+        
         $editarEstudiante = perfilEstudiante::findOrFail($id);
+        
+        //dd($editarEstudiante->sexo);
         return view('perfilEstudiante.editar', compact('editarEstudiante'));
     }
 

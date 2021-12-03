@@ -42,10 +42,11 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
-								{!!Form::select('tipo_documento', [
-                                    'Cedula Ciudadania' => 'Cedula Ciudadania',
-                                    'Tarjeta Identidad'   => 'Tarjeta Identidad',
-                                    'Cedula extranjera' => 'Cedula extranjera'], null,['id'=>'tipo_documento','class'=>'form-control','required','placeholder'=>'Tipo identificacion' ,'style'=>' ','value' => '$editarEstudiante->tipo_documento']
+								{!!Form::select('tipo_documento',['Cedula Ciudadania' => 'Cedula Ciudadania',
+        														  'Tarjeta Identidad'   => 'Tarjeta Identidad',
+       															  'Cedula extranjera' => 'Cedula extranjera'],
+								$editarEstudiante->tipo_documento,['class'=>'form-control select2',
+								'placeholder'=>'Seleccione el tipo de documento','style'=>'width: 100%;','required']
                                 )!!}
 						</div>
 					</div>
@@ -134,9 +135,9 @@
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
 							<br>
-							<input type="radio" name="sexo" value="F"> Femenino<br>
+							<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Femenino<br>
 
-    						<input type="radio" name="sexo" value="M"> Masculino<br>
+    						<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Masculino<br>
 						</div>
 					</div>
                 	
@@ -148,11 +149,11 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('genero', [
+								{!!Form::select('genero',[
                                     'Hombre' => 'Hombre',
                                     'Mujer'  => 'Mujer',
                                     'LGTBI' => 'LGTBI',
-                                    'Otros' => 'Otros'], null,['id'=>'genero','class'=>'form-control','required','placeholder'=>'Genero' ,'style'=>' ']
+                                    'Otros' => 'Otros'], $editarEstudiante->genero,['id'=>'genero','class'=>'form-control','required','placeholder'=>'Genero' ,'style'=>' ']
                                 )!!}
 						</div>
 					</div>
@@ -247,7 +248,7 @@
             	</div>
             </div>
 		</div>
-	
-		<input type="submit" value="ENVIAR" class="btn btn-primary">
+		<input type="button" onclick="history.back()" name="volver atrás" value="Regresar" class="btn btn-primary">							
+		<input type="submit" value="Guardar Datos" class="btn btn-primary">
 </div>
 

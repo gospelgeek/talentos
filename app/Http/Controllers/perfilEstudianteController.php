@@ -6,18 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
+use App\LogosDeleteUsers;
+use App\User;
 use App\Http\Requests\perfilEstudianteRequest;
+use App\Http\Controllers\Auth;
 
 
 class perfilEstudianteController extends Controller
 
 {
 
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
         
-    }
+    }*/
 
     public function indexPerfilEstudiante(){
         
@@ -75,16 +78,39 @@ class perfilEstudianteController extends Controller
     public function updatePerfilEstudiante(perfilEstudianteRequest $request, $id) {
         
         $data = perfilEstudiante::findOrFail($id);
+        
         $data->update($request->validated());
+
+
 
         return redirect('indexPerfilEstudiante')->with('status', 'Perfil actualizado exitosamente!');
     }
 
 
-    public function eliminarPerfilEstudiante($id){
+    public function eliminarPerfilEstudiante(Request $request, $id){
 
        $data = perfilEstudiante::findOrFail($id);
-       $data ->delete();
+       
+       dd($data);
+       //$data ->delete();
+       $id = auth()->user();
+       //$est = perfilEstudiante::all();
+       //dd($est);
+       foreach ($est as $dat) {
+            $datos = LogosDeleteUsers::create([
+            'id'                    => $id['id'],
+            'name'                  => $id['name'],
+            'email'                 => $id['emmail'],
+            'rol'                   => $dat->apellidos,
+            'ip'                    => $dat->numero_documento,
+            'id_user_delete'        => $dat->id,
+            'name_user_delete'      => $dat->nombres,
+            'email_user_delete'     => $dat->email,
+            'actividad'             => 'DELETE'
+            ]); 
+       }
+      
+
         return redirect('indexPerfilEstudiante')->with('status', 'Perfil eliminado exitosamente!');
     }
 

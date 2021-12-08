@@ -133,11 +133,11 @@
             	</div>
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<br>
-							<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Femenino<br>
-
-    						<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Masculino<br>
+						<div class="col-xs-3 col-md-12"> 
+								{!!Form::select('sexo',[
+                                    'F' => 'Femenino',
+                                    'M'  => 'Masculino'], $editarEstudiante->sexo,['id'=>'sexo','class'=>'form-control','required',
+									'placeholder'=>'Seleccionar sexo' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	

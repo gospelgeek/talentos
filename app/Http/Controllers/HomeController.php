@@ -28,6 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $request->user()->authorizeRoles(['sistemas', 'admin']);
         return view('auth/login');
     }
 }

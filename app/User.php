@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Role;
+use DB;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
     protected $primarykey = 'cedula';
 
     protected $fillable = [
-        'name_user', 'apellidos_user', 'tipo_documento_user', 'cedula', 'email_user', 'role_id', 'password',
+        'name', 'apellidos_user', 'tipo_documento_user', 'cedula', 'email', 'rol_id', 'password',
     ];
 
     /**
@@ -73,6 +74,56 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public static function roles_name(){
+        $roles_name = DB::select('
+            select
+                roles.*,
+                roles.nombre_rol as roles_name
+            from
+                roles, users
+            where
+                roles.id = users.rol_id
+        ');
+        
+        if($roles_name != null){
+            return $roles_name;
+        }else{
+            return null;
+        }
+    }
+
+
+    public static function getRealIP()
+    {
+
+        if (isset($_SERVER["HTTP_CLIENT_IP"]))
+        {
+            return $_SERVER["HTTP_CLIENT_IP"];
+        }
+        elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+        {
+        return $_SERVER["HTTP_X_FORWARDED_FOR"];
+        }
+        elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
+        {
+        return $_SERVER["HTTP_X_FORWARDED"];
+        }
+        elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
+        {
+        return $_SERVER["HTTP_FORWARDED_FOR"];
+        }
+        elseif (isset($_SERVER["HTTP_FORWARDED"]))
+        {
+        return $_SERVER["HTTP_FORWARDED"];
+        }
+        else
+        {
+        return $_SERVER["REMOTE_ADDR"];
+    }
+
+}
+
 
 
 }

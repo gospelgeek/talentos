@@ -35,7 +35,7 @@ class RoleTableSeeder extends Seeder
           'descripcion' => 'Seguimineto administrativo',            
         ]);
         Role::create([
-          'id' => '5',
+          'id' => '5 ',
           'nombre_rol'=>'reportes',
           'descripcion' => 'Auditor/reportes',            
         ]);

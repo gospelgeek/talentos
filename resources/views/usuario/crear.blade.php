@@ -4,7 +4,7 @@
 
 	@include('vistasParciales.validacionErrores')
 
-	<form action="{{ route("store_estudiante")}}" method="POST"> 
-		@include('perfilEstudiante._formulario')
+	<form action="{{ route("store_usuario")}}" method="POST"> 
+		@include('usuario._formulario')
 	</form>
 @endsection

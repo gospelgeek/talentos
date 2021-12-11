@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crearPerfilEstudiante')}}">Crear Perfil</a>
+    <a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crear_estudiante')}}">Crear Perfil</a>
     
     <table class="table table-hover">
         <caption>Perfil Estudiantes</caption>
@@ -39,13 +39,13 @@
                 <td>
                     <div class="row">
                         <div class="col-xs-12 col-md-6 form-group">
-                            <a href="{{ route('verPerfilEstudiante', $perfilEstudiante->id) }}" class="btn btn-primary">VER</a>    
+                            <a href="{{ route('ver_estudiante', $perfilEstudiante->id) }}" class="btn btn-primary">VER</a>    
                         </div>
                         <div class="col-xs-12 col-md-6 form-group">
-                            <a href="{{ route('editarPerfilEstudiante', $perfilEstudiante->id) }}" class="btn btn-primary">EDT</a>    
+                            <a href="{{ route('editar_estudiante', $perfilEstudiante->id) }}" class="btn btn-primary">EDT</a>    
                         </div>
                         <div class="col-xs-12 col-md-6 form-group">
-                            <form method="POST" action="{{ route('eliminarPerfilEstudiante', $perfilEstudiante->id) }}">
+                            <form method="POST" action="{{ route('delete_estudiante', $perfilEstudiante->id) }}">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit">ELI</button>    

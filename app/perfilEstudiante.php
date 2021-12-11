@@ -8,29 +8,35 @@ use Illuminate\Database\Eloquent\softDeletes;
 class perfilEstudiante extends Model
 {
     use softDeletes;
-
-    protected $table = 'perfil_estudiante';
+    protected $table = 'student_profile';
 
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'nombres',
-        'apellidos',
-        'tipo_documento',
-        'numero_documento',
-        'fecha_nacimiento',
-        'departamento_nacimiento',
-        'ciudad_nacimiento',
-        'sexo',
-        'genero',
-        'departamento_residencia',
-        'ciudad_residencia',
-        'barrio_residencia',
-        'direccion',
+        'name',
+        'lastname',
+        'id_document_type',
+        'document_number',
+        'document_expedition_date',
         'email',
-        'telefono1',
-        'telefono2',
+        'birth_date',
+        'id_birth_department',
+        'id_birth_city',
+        'sex',
+        'id_gender',
+        'cellphone',
+        'phone',
+        'id_commune',
+        'id_neighborhood',
+        'direction',
+        'id_tutor',
     ];
 
     protected $dates = ['delete_at'];
+
+     public function roles()
+
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
 }

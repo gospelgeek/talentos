@@ -31,10 +31,9 @@
                 	
             	</div>
             </div>
-		</div>
+		</diªv>
 
-		<div class="form-group">
-		    
+		<div class="form-group">  
     		<div class="row">
             	<div class="col-xs-3 col-md-3">
             		<p style="text-align: right"><label for="tipo_documento">Seleccionar Tipo de documento</label></p>

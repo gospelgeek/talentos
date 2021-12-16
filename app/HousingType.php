@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BirthDepartament extends Model
+class HousingType extends Model
 {
-    protected $table = 'birth_departaments';
+    protected $table = 'housing_types';
 
     protected $primarykey = 'id';
-    
+
     protected $fillable = [
         'id',
         'name',

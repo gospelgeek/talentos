@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->Integer('rol_id');
             $table->string('password');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
             //$table->primary('cedula');
         });

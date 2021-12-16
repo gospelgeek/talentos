@@ -13,6 +13,7 @@ class perfilEstudiante extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
+        'id',
         'name',
         'lastname',
         'id_document_type',
@@ -20,13 +21,11 @@ class perfilEstudiante extends Model
         'document_expedition_date',
         'email',
         'birth_date',
-        'id_birth_department',
         'id_birth_city',
         'sex',
         'id_gender',
         'cellphone',
         'phone',
-        'id_commune',
         'id_neighborhood',
         'direction',
         'id_tutor',
@@ -34,9 +33,35 @@ class perfilEstudiante extends Model
 
     protected $dates = ['delete_at'];
 
-     public function roles()
+    //relaciones uno a uno por debajo
+    public function documenttype(){
 
-    {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->hasOne(DocumentType::class, 'id', 'id_document_type');
+    }
+
+    public function birthcity(){
+        return $this->hasOne(BirthCity::class, 'id', 'id_birth_city');
+    }
+
+    public function gender(){
+        return $this->hasOne(Gender::class, 'id', 'id_gender');
+    }
+
+    public function neighborhood(){
+        return $this->hasOne(Neighborhood::class, 'id', 'id_neighborhood');
+    }
+
+    public function tutor(){
+        return $this->hasOne(Tutor::class, 'document_number', 'id_tutor');
+    }
+
+    public function socioeconomicdata (){
+
+        return $this->hasOne(SocioeconomicData::class, 'id_student', 'id');
+    }
+
+    public function academicdates (){
+
+        return $this->hasOne(AcademicDates::class, 'id_student', 'id');
     }
 }

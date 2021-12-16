@@ -15,4 +15,9 @@ class BirthCity extends Model
         'name',
         'id_departament',
     ];
+
+    public function birthdepartament(){
+        
+        return $this->hasOne(BirthDepartament::class, 'id', 'id_departament');
+    }
 }

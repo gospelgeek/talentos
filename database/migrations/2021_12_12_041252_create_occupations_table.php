@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComuneTable extends Migration
+class CreateOccupationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateComuneTable extends Migration
      */
     public function up()
     {
-        Schema::create('comune', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('occupations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('sector');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateComuneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comune');
+        Schema::dropIfExists('occupations');
     }
 }

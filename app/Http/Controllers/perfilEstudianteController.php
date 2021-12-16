@@ -19,7 +19,8 @@ class perfilEstudianteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
+        $this->middleware('socioeducativo');
+        $this->middleware('academico');
     }
 
     public function indexPerfilEstudiante(){

@@ -21,12 +21,19 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 });*/
 
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+//Perfiles
+Route::get('perfiles',      'PerfilesController@index')->name('perfiles');
+Route::post('tipoperfil',   'TipoPerfilController@redirigir')->name('redirigir');
+
+//Route::get('sistemas', 'UsuarioController@index');
+//Route::get('prueba', 'UsuarioController@prueba');
 
 //Rutas de loguin 
 Route::post('logout',  'Auth\LoginController@logout')->name('logout');
 Route::get('logout',   'Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 //Rutas de CRUD estudiantes
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
@@ -44,7 +51,7 @@ Route::post('store_usuario', 'UsuarioController@store')->name('store_usuario');
 Route::get('ver_usuario/{id}', 'UsuarioController@show')->name('ver_usuario');
 Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usuario');
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
-
+Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
 
 

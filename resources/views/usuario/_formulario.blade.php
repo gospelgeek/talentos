@@ -84,7 +84,7 @@
             	</div>
 
             	<div class="col-xs-12 col-md-3">
-                    <input id="password" type="password" class="form-control @error('password', $editarUsuario->password) is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" class="form-control @error('password', $editarUsuario->password) is-invalid @enderror" name="password" value="{{ old('password', $editarUsuario->password) }}">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -102,11 +102,8 @@
             	</div>
             	<div class="col-xs-3 col-md-3">
 					<div class="row">
-						<div class="col-xs-4 col-md-12"> 
-                			
-                			{!!Form::select('rol_id', null,(['id'=>'rol_id','class' => 'form-control ','style'=>'width: 100%;','placeholder'=>'Seleccione rol','required']))!!}
-
-           
+						<div class="col-xs-4 col-md-12">
+               			{!!Form::select('rol_id',$roles, null,(['editarUsuario'=>'roles','class' => 'form-control ','style'=>'width: 100%;','placeholder'=>'Seleccionar Rol:','required']))!!}
 						</div>
 					</div>
             	</div>

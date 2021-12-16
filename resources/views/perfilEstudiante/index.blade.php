@@ -27,15 +27,16 @@
         <tbody>
             @foreach ($perfilEstudiantes as $perfilEstudiante)
             <tr>
-                <td>{{ $perfilEstudiante->nombres}} {{ $perfilEstudiante->apellidos}}</td><td></td>
-                <td>{{ $perfilEstudiante->numero_documento}}</td>
-                <td>{{ $perfilEstudiante->fecha_nacimiento}}</td>
-                <td>{{ $perfilEstudiante->ciudad_nacimiento}}</td>
-                <td>{{ $perfilEstudiante->sexo}}</td>
-                <td>{{ $perfilEstudiante->ciudad_residencia}}</td>
-                <td>{{ $perfilEstudiante->direccion}}</td>
-                <td>{{ $perfilEstudiante->email}}</td>
-                <td>{{ $perfilEstudiante->telefono1}}</td>                
+
+                <td>{{ $perfilEstudiante->name}} {{ $perfilEstudiante->lastname}}</td><td></td>
+                <td>@if(isset($perfilEstudiante->documenttype)) {{ $perfilEstudiante->documenttype->name}} @endif</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>
+                <td>{{ $perfilEstudiante->id_document_type}}</td>                
                 <td>
                     <div class="row">
                         <div class="col-xs-12 col-md-6 form-group">

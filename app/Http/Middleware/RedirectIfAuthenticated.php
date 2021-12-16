@@ -18,15 +18,29 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        /*if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
-        }
-
-        return $next($request);*/
         if (Auth::guard($guard)->check()) {
-             return redirect('/estudiante');
+            if(Auth::user()->rol_id == '1'){
+                return redirect('usuario/');
+            }
+
+            if(Auth::user()->rol_id == '2'){
+                return redirect('estudiante');
+            }
+
+            if(Auth::user()->rol_id == '3'){
+                return redirect('estudiante/');
+            }
+
+            if(Auth::user()->rol_id == '4'){
+                return redirect('estudiante/');
+            }
+
+            if(Auth::user()->rol_id == '5'){
+                return redirect('estudiante/');
+            }
+
         }
 
-        return $next($request);
+        return $next($request);   
     }
 }

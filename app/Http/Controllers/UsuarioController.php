@@ -9,6 +9,19 @@ use App\Http\Requests\UsuarioRequest;
 
 class UsuarioController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('sistemas');
+        
+    }
+
+    public function prueba(){
+
+        dd('usuario Controller');
+    }
+    
     public function index(){
 
         $usuario = User::orderBy('created_at', 'desc')->paginate(5);
@@ -31,7 +44,7 @@ class UsuarioController extends Controller
             'cedula'               => $request['cedula'],
             'email'                => $request['email'],
             'rol_id'               => $request['rol_id'], 
-            'password'             => $request['password'],
+            'password'             => bcrypt($request['password']),
         ]);
 
         return redirect('usuario')->with('status', 'Usuario guardado exitosamente!');
@@ -43,10 +56,10 @@ class UsuarioController extends Controller
     }
 
     public function editar($id){
-        
+        $roles =  Role::pluck('nombre_rol','id');
         $editarUsuario = User::findOrFail($id);
         
-        return view('usuario.editar', compact('editarUsuario'));
+        return view('usuario.editar', compact('editarUsuario', 'roles'));
     }
 
     public function update(UsuarioRequest $request, $id) {
@@ -61,6 +74,14 @@ class UsuarioController extends Controller
 
 
         return redirect('usuario')->with('status', 'usuario actualizado exitosamente!');
+    }
+
+    public function delete (Request $request, $id){
+
+        $data = User::findOrFail($id);
+        $data -> delete();
+
+        return redirect('usuario')->with('status', 'Estudiante eliminado exitosamente!');
     }
 
 

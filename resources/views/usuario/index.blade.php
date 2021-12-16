@@ -36,6 +36,13 @@
                         <div class="col-xs-12 col-md-6 form-group">
                             <a href="{{ route('editar_usuario', $usuarios->id) }}" class="btn btn-primary">EDT</a>    
                         </div>
+                        <div class="col-xs-12 col-md-6 form-group">
+                            <form method="POST" action="{{ route('eliminar_usuario', $usuarios->id) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger" type="submit">ELI</button>    
+                            </form>    
+                        </div>
                     </div>
                         @csrf
                     </form>

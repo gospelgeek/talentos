@@ -7,9 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Role;
 use DB;
+use Illuminate\Database\Eloquent\softDeletes;
 
 class User extends Authenticatable
 {
+    use softDeletes;
     use Notifiable;
 
     /**
@@ -22,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'apellidos_user', 'tipo_documento_user', 'cedula', 'email', 'rol_id', 'password',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,6 +44,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = ['delete_at'];
+
+    //relacion uno a uno con tipo documento
+    public function documenttype(){
+
+        return $this->hasOne(DocumentType::class, 'id', 'tipo_documento_user');
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
@@ -51,7 +62,7 @@ class User extends Authenticatable
         abort_unless($this->hasAnyRole($roles), 401);
         return true;
     }
-    public function hasAnyRole($roles)
+    /*public function hasAnyRole($roles)
     {
         if (is_array($roles)) {
             foreach ($roles as $role) {
@@ -73,26 +84,7 @@ class User extends Authenticatable
             return true;
         }
         return false;
-    }
-
-    public static function roles_name(){
-        $roles_name = DB::select('
-            select
-                roles.*,
-                roles.nombre_rol as roles_name
-            from
-                roles, users
-            where
-                roles.id = users.rol_id
-        ');
-        
-        if($roles_name != null){
-            return $roles_name;
-        }else{
-            return null;
-        }
-    }
-
+    }*/
 
     public static function getRealIP()
     {

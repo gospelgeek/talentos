@@ -21,4 +21,9 @@ class Tutor extends Model
         'cellphone',
         'occupation',
     ];
+
+    public function documenttype(){
+
+        return $this->hasOne(DocumentType::class, 'id', 'id_document_type')
+    }
 }

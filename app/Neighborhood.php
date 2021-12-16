@@ -15,4 +15,9 @@ class Neighborhood extends Model
         'name',
         'id_commune',
     ];
+
+    public function comune(){
+
+        return $this->hasOne(Comune::class, 'id', 'id_commune');
+    }
 }

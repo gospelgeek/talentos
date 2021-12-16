@@ -20,13 +20,12 @@ class perfilEstudianteController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('socioeducativo');
-        $this->middleware('academico');
     }
 
     public function indexPerfilEstudiante(){
         
         $perfilEstudiantes = perfilEstudiante::orderBy('created_at', 'desc')->paginate(5);
-        //dd($perfilEstudiante);
+        //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
 

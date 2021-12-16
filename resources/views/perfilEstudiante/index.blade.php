@@ -30,13 +30,13 @@
 
                 <td>{{ $perfilEstudiante->name}} {{ $perfilEstudiante->lastname}}</td><td></td>
                 <td>@if(isset($perfilEstudiante->documenttype)) {{ $perfilEstudiante->documenttype->name}} @endif</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>
-                <td>{{ $perfilEstudiante->id_document_type}}</td>                
+                <td>{{ $perfilEstudiante->document_number}}</td>
+                <td>{{ $perfilEstudiante->document_expedition_date}}</td>
+                <td>{{ $perfilEstudiante->email}}</td>
+                <td>{{ $perfilEstudiante->birth_date}}</td>
+                <td>{{ $perfilEstudiante->id_birth_department}}</td>
+                <td>{{ $perfilEstudiante->id_birth_city}}</td>
+                <td>{{ $perfilEstudiante->sex}}</td>                
                 <td>
                     <div class="row">
                         <div class="col-xs-12 col-md-6 form-group">

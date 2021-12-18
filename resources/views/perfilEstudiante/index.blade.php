@@ -1,18 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
-@section('title', 'Index')
-
+@section('title', 'Perfil Estudiante')
+@section('titulo_secundario', 'Perfil Estudiante')
 @section('content')
 
-
-<a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crear_estudiante')}}">Crear Perfil</a>
 <div class="container">    
-    <div class="card">
-    <div class="card-body">
+    
+    <div class="card">  
         
-
-     <table id="table9" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-        <thead>
+        
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-3 col-sm-3">
+                    <a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
+            </div>
+        </div>
+    <div class="table-responsive">
+     <table id="table9" class="table table-bordered table-striped">
+        <thead style="background-color: #f44336">
             <tr>
                 <td>Nombres y apellidos</td>
                 <td>Nº documento</td>
@@ -59,7 +64,33 @@
             @endforeach    
         </tbody>
       </table>
+      </div>
     </div>
     </div>
 </div>
+{!!Html::script('/tablefilter/tablefilter.js')!!}
+{!!Html::script('/js/filterEstudiante.js')!!}
+@push('scripts')
+
+    <!-- Page specific script -->
+   <!-- <script>
+        $(function () {
+            $("#id_estudiante").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#agendamiento1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            });
+        });        
+    </script>-->
+
+ 
+@endpush
 @endsection

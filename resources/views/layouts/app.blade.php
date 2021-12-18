@@ -19,7 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}
+    
+    <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
 </head>
 <body>
 
@@ -86,19 +89,8 @@
       
         <!-- SCRIPTS -->
       <!-- JQuery -->
-      
-    
-      
-      
-
 
     
- 
-    
-
-    <link rel="stylesheet" type="text/css" href="/DataTables/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
 
     <script type="text/javascript" src="/mdbootstrap/js/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript" src="/DataTables/bootstrap/js/bootstrap.min.js" defer></script>
@@ -115,7 +107,7 @@
             autoWidth: false
         });
     } );
-     </script> 
+    </script> 
 
        
     

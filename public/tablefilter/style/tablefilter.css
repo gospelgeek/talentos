@@ -763,8 +763,8 @@ table.tbody{
 }
 
 table.TF th:last-child {
-    /*border-top: 1px solid #F40909;
-    border-bottom: 1px solid #F40909;*/
+    border-top: 1px solid #F40909;
+    border-bottom: 1px solid #F40909;
     border-left: 1px solid #F40909;
     border-right: 1px solid #F40909;
 }

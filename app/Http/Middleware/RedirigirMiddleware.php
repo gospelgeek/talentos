@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Redirect;
 
 class RedirigirMiddleware
 {
+
+    protected $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -19,13 +27,31 @@ class RedirigirMiddleware
     {
         if(\Auth::check())
          {  
-       
+            
+            if($this->auth->user()->rol_id == '1'){
+               //dd('holaa');
+               return Redirect::to('usuario');                
+            }
+
+            if($this->auth->user()->rol_id == '2'){
+                return Redirect::to('estudiante');
+                //dd('entrod');
+            }
+
+            if($this->auth->user()->rol_id == '3'){
+               return Redirect::to('estudiante');               
+            }
+
+            if($this->auth->user()->rol_id == '4'){
                 return Redirect::to('estudiante');               
-                              
+            }
+            if($this->auth->user()->rol_id == '5'){
+               return Redirect::to('estudiante');               
+            }
+                                   
         }else{
             return redirect()->to('logout');
         }
-        //return $next($request);
     }
     
 }

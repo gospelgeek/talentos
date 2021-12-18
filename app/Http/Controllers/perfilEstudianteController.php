@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
+use App\RecordsActionsUpdateDelete;
+use App\User;
 use App\Http\Requests\perfilEstudianteRequest;
+use App\Http\Controllers\Auth;
 
 
 class perfilEstudianteController extends Controller
@@ -16,13 +19,13 @@ class perfilEstudianteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
+        $this->middleware('socioeducativo');
     }
 
     public function indexPerfilEstudiante(){
         
-        $perfilEstudiantes = perfilEstudiante::orderBy('created_at', 'desc')->paginate(5);
-        //dd($perfilEstudiante);
+        $perfilEstudiantes = perfilEstudiante::all();
+        //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
 
@@ -53,7 +56,7 @@ class perfilEstudianteController extends Controller
             'telefono2'                =>  $request['telefono2'],
         ]);
         
-         return redirect('indexPerfilEstudiante')->with('status', 'Perfil guardado exitosamente!');
+         return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
          
       }
 
@@ -68,24 +71,44 @@ class perfilEstudianteController extends Controller
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
         
-        //dd($editarEstudiante->sexo);
         return view('perfilEstudiante.editar', compact('editarEstudiante'));
     }
 
     public function updatePerfilEstudiante(perfilEstudianteRequest $request, $id) {
         
         $data = perfilEstudiante::findOrFail($id);
+        
         $data->update($request->validated());
-
-        return redirect('indexPerfilEstudiante')->with('status', 'Perfil actualizado exitosamente!');
+    
+        return redirect('estudiante')->with('status', 'Perfil actualizado exitosamente!');
     }
 
 
-    public function eliminarPerfilEstudiante($id){
+    public function eliminarPerfilEstudiante(Request $request, $id){
 
+       
+       //dd('hola');
        $data = perfilEstudiante::findOrFail($id);
-       $data ->delete();
-        return redirect('indexPerfilEstudiante')->with('status', 'Perfil eliminado exitosamente!');
+
+       $ip = User::getRealIP();
+       $data -> delete();
+       $id = auth()->user();
+       //dd($id);
+            $datos = RecordsActionsUpdateDelete::create([
+            'identificacion'           => $id['cedula'],
+            'nombres'                  => $id['name'],
+            'apellidos'                => $id['apellidos_user'],
+            'email'                    => $id['email'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $data['id'],
+            'nombres_usuario_accion'   => $data['nombres'],
+            'apellidos_usuario_accion' => $data['apellidos'],
+            'email_usuario_accion'     => $data['email'],
+            'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
+            ]); 
+
+        return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
     }
 
 }

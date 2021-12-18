@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class RolesMiddleware
 {
+    protected $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
     /**
      * Handle an incoming request.
      *
@@ -17,14 +23,29 @@ class RolesMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //return $next($request);
-        if(\Auth::check())
-         {         
+        if (Auth::guard($guard)->check()) {
+            if(Auth::user()->rol_id == '1'){
+                return redirect('usuario/');
+            }
 
-                return $next($request);               
-                       
-        }else{
-            return redirect()->to('logout');
+            if(Auth::user()->rol_id == '2'){
+                return redirect('estudiante/');
+            }
+
+            if(Auth::user()->rol_id == '3'){
+                return redirect('estudiante/');
+            }
+
+            if(Auth::user()->rol_id == '4'){
+                return redirect('estudiante/');
+            }
+
+            if(Auth::user()->rol_id == '5'){
+                return redirect('estudiante/');
+            }
+
         }
+
+        return $next($request);  
     }
 }

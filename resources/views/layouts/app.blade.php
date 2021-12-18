@@ -12,14 +12,17 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -76,10 +79,45 @@
 
         <main class="py-4">
             @yield('content')
+        
         </main>
+        
     </div>
+      
+        <!-- SCRIPTS -->
+      <!-- JQuery -->
+      
+    
+      
+      
 
-    <link rel="stylesheet" type="text/css" href="{{asset("css/app.css")}}">
-    <script src="{{asset("js/app.js")}}"></script>
+
+    
+ 
+    
+
+    <link rel="stylesheet" type="text/css" href="/DataTables/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
+
+    <script type="text/javascript" src="/mdbootstrap/js/jquery-3.3.1.min.js" ></script>
+    <script type="text/javascript" src="/DataTables/bootstrap/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="/DataTables/DataTables/js/jquery.dataTables.min.js" defer></script>
+    <script type="text/javascript" src="/DataTables/DataTables/js/dataTables.bootstrap4.min.js" defer ></script>
+    <script type="text/javascript" src="/DataTables/Responsive/js/dataTables.responsive.min.js" defer></script>
+    <script type="text/javascript" src="/DataTables/Responsive/js/responsive.bootstrap4.min.js" defer></script>
+
+    <script language="javascript">        
+        $(document).ready(function() {
+    $('#table9').DataTable(
+        {
+            responsive: true,
+            autoWidth: false
+        });
+    } );
+     </script> 
+
+       
+    
 </body>
 </html>

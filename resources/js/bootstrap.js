@@ -1,4 +1,5 @@
 window._ = require('lodash');
+window.$ = require('jquery');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12,6 +13,7 @@ try {
 
     require('bootstrap');
 } catch (e) {}
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

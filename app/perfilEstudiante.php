@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
+use DB;
+
 
 class perfilEstudiante extends Model
 {
-    use softDeletes;
+    
     protected $table = 'student_profile';
 
     protected $primarykey = 'id';
@@ -39,6 +41,8 @@ class perfilEstudiante extends Model
         return $this->hasOne(DocumentType::class, 'id', 'id_document_type');
     }
 
+
+
     public function birthcity(){
         return $this->hasOne(BirthCity::class, 'id', 'id_birth_city');
     }
@@ -65,3 +69,4 @@ class perfilEstudiante extends Model
         return $this->hasOne(AcademicDates::class, 'id_student', 'id');
     }
 }
+

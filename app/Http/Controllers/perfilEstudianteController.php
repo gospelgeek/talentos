@@ -24,7 +24,7 @@ class perfilEstudianteController extends Controller
 
     public function indexPerfilEstudiante(){
         
-        $perfilEstudiantes = perfilEstudiante::orderBy('created_at', 'desc')->paginate(5);
+        $perfilEstudiantes = perfilEstudiante::all();
         //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }

@@ -63,13 +63,14 @@ class perfilEstudianteController extends Controller
     public function verPerfilEstudiante($id){
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        //dd($verDatosPerfil);
+        dd($verDatosPerfil->gender);
         return view('perfilEstudiante.verDatos', compact('verDatosPerfil'));   
     }
 
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
+        dd($editarEstudiante->gender);
         
         return view('perfilEstudiante.editar', compact('editarEstudiante'));
     }

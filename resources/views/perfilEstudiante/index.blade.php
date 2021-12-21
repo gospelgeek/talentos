@@ -11,20 +11,19 @@
         
     <div class="card-body">
         <div class="row">
-            <div class="col-xs-12 col-md-3 col-sm-3">
+            <div  class="col-xs-12 col-md-3 col-sm-3">
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
         </div>
+
     <div class="table-responsive">
-     <table id="table9" class="table table-bordered table-striped">
-        <thead style="background-color: #f44336">
-            <tr>
+     <table id="example1" class=" table table-bordered table-striped">
+        <thead >
+            <tr >
                 <td>Nombres y apellidos</td>
                 <td>Nº documento</td>
                 <td>Fecha de nacimiento</td>
                 <td>Sexo</td>
-                <td>Ciudad Residencia</td>
-                <td>Direccion</td>
                 <td>Email</td>
                 <td>Telefono</td>
                 <td>Acciones</td>
@@ -33,28 +32,26 @@
 
         <tbody>
             @foreach ($perfilEstudiantes as $estudiante)
-                <tr>
+                <tr data-id="{{$estudiante->id}}">
                     <td>{{ $estudiante->name}} {{ $estudiante->lastname}}</td>
                                         <td>{{ $estudiante->document_number}}</td>
                                         <td>{{ $estudiante->birth_date}}</td>
                                         <td>{{ $estudiante->sex}}</td>
-                                        <td>{{ $estudiante->id_birth_department}}</td>
-                                        <td>{{ $estudiante->id_birth_city}}</td>
                                         <td>{{ $estudiante->email}}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-6 form-group">
-                                                    <a href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-primary">VER</a>    
+                                        <td >
+                                            <div class="row">                                  
+                                                <div class="col-xs-4 col-sm-4">
+                                                    <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
                                                 </div>
-                                                <div class="col-xs-12 col-md-6 form-group">
-                                                    <a href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-primary">EDT</a>    
+                                                <div class="col-xs-4 col-sm-4">
+                                                    <a title="Editar Informacion "href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
                                                 </div>
-                                                <div class="col-xs-12 col-md-6 form-group">
+                                                <div class="col-xs-4 col-sm-4">
                                                     <form method="POST" action="{{ route('delete_estudiante', $estudiante->id) }}">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <button class="btn btn-danger" type="submit">ELI</button>    
+                                                        <a title="Eliminar Usuario" type="submit" style="color: red;" class="btn-sm btn-block fa  fa-trash"></a>    
                                                     </form>    
                                                 </div>
                                             </div>
@@ -63,33 +60,45 @@
                 </tr>
             @endforeach    
         </tbody>
+
       </table>
       </div>
     </div>
     </div>
 </div>
-{!!Html::script('/tablefilter/tablefilter.js')!!}
-{!!Html::script('/js/filterEstudiante.js')!!}
+
 @push('scripts')
 
     <!-- Page specific script -->
-   <!-- <script>
+    <script>
         $(function () {
-            $("#id_estudiante").DataTable({
+            $("#example1").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#agendamiento1_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
             "paging": true,
-            "lengthChange": false,
+            "lengthChange": true,
             "searching": false,
             "ordering": true,
             "info": true,
             "autoWidth": false,
             "responsive": true,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron coincidencias",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate":{
+                "next" : "Siguiente",
+                "previous": "Anterior"
+            }
+        },
             });
         });        
-    </script>-->
+    </script>
 
  
 @endpush

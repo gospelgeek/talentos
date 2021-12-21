@@ -2,7 +2,7 @@ var filtersConfig = {
         base_path: '/tablefilter/', 
         col_0:  'select',        
         col_1:  'select',
-        col_2:  'select',
+        
         col_3:  'select',
         col_4:  'select',
         col_5:  'select',

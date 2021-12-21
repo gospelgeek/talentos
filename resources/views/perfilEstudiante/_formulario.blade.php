@@ -8,7 +8,7 @@
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="nombres" id="nombres" value="{{ old('nombres', $editarEstudiante->nombres) }}">
+							<input class="form-control" type="text" name="nombres" id="nombres" value="{{ old('nombres', $editarEstudiante->name) }}">
 
 							@error('nombre')
 				    			<small class="text-danger">{{ $message }}</small>
@@ -25,7 +25,7 @@
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $editarEstudiante->apellidos) }}">
+							<input class="form-control" type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $editarEstudiante->lastname) }}">
 						</div>
 					</div>
                 	
@@ -41,10 +41,10 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
-								{!!Form::select('tipo_documento',['Cedula Ciudadania' => 'Cedula Ciudadania',
-        														  'Tarjeta Identidad'   => 'Tarjeta Identidad',
-       															  'Cedula extranjera' => 'Cedula extranjera'],
-								$editarEstudiante->tipo_documento,['class'=>'form-control select2',
+								{!!Form::select('tipo_documento',['1' => 'Cedula Ciudadania',
+        														  '2'   => 'Tarjeta Identidad',
+       															  '3' => 'Cedula extranjera'],
+								$editarEstudiante->id_document_type,['class'=>'form-control select2',
 								'placeholder'=>'Seleccione el tipo de documento','style'=>'width: 100%;','required']
                                 )!!}
 						</div>
@@ -57,7 +57,7 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="numero_documento" id="numero_documento" value="{{ old('numero_documento', $editarEstudiante->numero_documento) }}">
+							<input class="form-control" type="text" name="numero_documento" id="numero_documento" value="{{ old('numero_documento', $editarEstudiante->document_number) }}">
 						</div>
 					</div>
                 	
@@ -73,7 +73,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $editarEstudiante->fecha_nacimiento) }}">
+							<input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $editarEstudiante->birth_date) }}">
 						</div>
 					</div>
                 	
@@ -85,7 +85,8 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $editarEstudiante->departamento_nacimiento) }}">
+
+							<input class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $editarEstudiante->birthcity->birthdepartament->name) }}">
 						</div>
 					</div>
                 	
@@ -102,7 +103,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="ciudad_nacimiento" id="ciudad_nacimiento" value="{{ old('ciudad_nacimiento', $editarEstudiante->ciudad_nacimiento) }}">
+							<input class="form-control" type="text" name="ciudad_nacimiento" id="ciudad_nacimiento" value="{{ old('ciudad_nacimiento', $editarEstudiante->birthcity->name) }}">
 						</div>
 					</div>
                 	
@@ -134,8 +135,8 @@
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
 								{!!Form::select('sexo',[
-                                    'F' => 'Femenino',
-                                    'M'  => 'Masculino'], $editarEstudiante->sexo,['id'=>'sexo','class'=>'form-control','required',
+                                    'H' => 'Masculino',
+                                    'M'  => 'Femenino'], $editarEstudiante->sex,['id'=>'sexo','class'=>'form-control','required',
 									'placeholder'=>'Seleccionar sexo' ,'style'=>' '])!!}
 						</div>
 					</div>
@@ -148,12 +149,7 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('genero',[
-                                    'Hombre' => 'Hombre',
-                                    'Mujer'  => 'Mujer',
-                                    'LGTBI' => 'LGTBI',
-                                    'Otros' => 'Otros'], $editarEstudiante->genero,['id'=>'genero','class'=>'form-control','required','placeholder'=>'Genero' ,'style'=>' ']
-                                )!!}
+								{!!Form::select('genero', $editarEstudiante->gender,$editarEstudiante->gender->name,['placeholder'=>'Genero','class'=>'form-control','required'])!!}
 						</div>
 					</div>
             	</div>		

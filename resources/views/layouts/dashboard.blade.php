@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')!!}
+  {!!Html::style('/dashboard/plugins/fontawesome-free/css/all.min.css')!!}
   @stack('css')
 </head>
 <body class="hold-transition layout-top-nav">
@@ -30,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <a href="../../index3.html" class="navbar-brand">
       <!--  <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Talentos</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="dashboard/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -122,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="dashboard/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -138,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="dashboard/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -278,23 +279,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.print.min.js')!!}
 
 {!!Html::script('/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js')!!}
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 @stack('scripts')
 </body>
 </html>

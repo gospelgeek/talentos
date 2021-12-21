@@ -14,7 +14,7 @@
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input  readonly class="form-control" type="text" name="nombres" id="nombres" value="{{ old('nombres', $verDatosPerfil->nombres) }}">
+							<input  readonly class="form-control" type="text" name="nombres" id="nombres" value="{{ old('nombres', $verDatosPerfil->name) }}">
 
 							@error('nombre')
 				    			<small class="text-danger">{{ $message }}</small>
@@ -31,7 +31,7 @@
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $verDatosPerfil->apellidos) }}">
+							<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $verDatosPerfil->lastname) }}">
 						</div>
 					</div>
                 	
@@ -51,7 +51,7 @@
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
 								
-							<input readonly class="form-control" type="text" name="tipo_documento" id="tipo_documento" value="{{ old('tipo_documento', $verDatosPerfil->tipo_documento) }}">
+							<input readonly class="form-control" type="text" name="tipo_documento" id="tipo_documento" value="{{ old('tipo_documento', $verDatosPerfil->id_document_type) }}">
 						
 						</div>
 					</div>
@@ -63,7 +63,7 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input readonly class="form-control" type="text" name="numero_documento" id="numero_documento" value="{{ old('numero_documento', $verDatosPerfil->numero_documento) }}">
+							<input readonly class="form-control" type="text" name="numero_documento" id="numero_documento" value="{{ old('numero_documento', $verDatosPerfil->document_number) }}">
 						</div>
 					</div>
                 	
@@ -79,7 +79,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input  readonly class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $verDatosPerfil->fecha_nacimiento) }}">
+							<input  readonly class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $verDatosPerfil->birth_date) }}">
 						</div>
 					</div>
                 	
@@ -108,7 +108,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="ciudad_nacimiento" id="ciudad_nacimiento" value="{{ old('ciudad_nacimiento', $verDatosPerfil->ciudad_nacimiento) }}">
+							<input readonly class="form-control" type="text" name="ciudad_nacimiento" id="ciudad_nacimiento" value="{{ old('ciudad_nacimiento', $verDatosPerfil->id_birth_city) }}">
 						</div>
 					</div>
                 	
@@ -140,7 +140,7 @@
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
 							<br>
-							<input readonly class="form-control" type="text" name="sexo" id="sexo" value="{{ old('sexo', $verDatosPerfil->sexo) }}">
+							<input readonly class="form-control" type="text" name="sexo" id="sexo" value="{{ old('sexo', $verDatosPerfil->sex) }}">
 						</div>
 					</div>
                 	
@@ -153,7 +153,7 @@
 					<div class="row">
 						
 								<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="genero" id="genero" value="{{ old('genero', $verDatosPerfil->genero) }}">
+							<input readonly class="form-control" type="text" name="genero" id="genero" value="{{ old('genero', $verDatosPerfil->id_gender) }}">
 						</div>
 						
 					</div>
@@ -162,34 +162,7 @@
         </div>
 		
 
-		<div class="form-group">
-    		<div class="row">
-            	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="departamento_residencia">Departamento Residencia *</label></p>
-            	</div>
-				<div class="col-xs-12 col-md-3">
-					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="departamento_residencia" id="departamento_residencia" value="{{ old('departamento_residencia', $verDatosPerfil->departamento_residencia) }}">
-						</div>
-					</div>
-                	
-            	</div>
 
-  
-            	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="ciudad_residencia">Ciudad Residencia *</label></p>
-            	</div>
-				<div class="col-xs-12 col-md-3">
-					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="ciudad_residencia" id="ciudad_residencia" value="{{ old('ciudad_residencia', $verDatosPerfil->ciudad_residencia) }}">
-						</div>
-					</div>
-                	
-            	</div>
-            </div>
-		</div>
 
 		<div class="form-group">
     		<div class="row">
@@ -199,7 +172,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="barrio_residencia" id="barrio_residencia" value="{{ old('barrio_residencia', $verDatosPerfil->barrio_residencia) }}">
+							<input readonly class="form-control" type="text" name="barrio_residencia" id="barrio_residencia" value="{{ old('barrio_residencia', $verDatosPerfil->id_neighborhood) }}">
 						</div>
 					</div>
                 	
@@ -211,7 +184,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input readonly  class="form-control" type="text" name="direccion" id="direccion" value="{{ old('direccion', $verDatosPerfil->direccion) }}">
+							<input readonly  class="form-control" type="text" name="direccion" id="direccion" value="{{ old('direccion', $verDatosPerfil->direction) }}">
 						</div>
 					</div>
                 	
@@ -229,7 +202,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="telefono1" id="telefono1" value="{{ old('telefono1', $verDatosPerfil->telefono1) }}">
+							<input readonly class="form-control" type="text" name="telefono1" id="telefono1" value="{{ old('telefono1', $verDatosPerfil->cellphone) }}">
 						</div>
 					</div>
                 	
@@ -241,7 +214,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input readonly class="form-control" type="text" name="telefono2" id="telefono2" value="{{ old('telefono2', $verDatosPerfil->telefono2) }}">
+							<input readonly class="form-control" type="text" name="telefono2" id="telefono2" value="{{ old('telefono2', $verDatosPerfil->phone) }}">
 						</div>
 					</div>
                 	
@@ -250,6 +223,6 @@
 		</div>	
 			<input class="btn btn-primary" type="button" onclick="history.back()" name="volver atrás" value="Regresar">
 			
-			<a type="button"href="{{ route('editarPerfilEstudiante', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>
+			
 </div>
 @endsection

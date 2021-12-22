@@ -35,27 +35,35 @@ class perfilEstudianteController extends Controller
 
 
     public function crearPerfilEstudiante(){
-        
-        return view("perfilEstudiante.create", ['editarEstudiante' => new perfilEstudiante()]);
+        $genero = Gender::pluck('name','id');
+        $sexo = array('F' => 'Fenemino',
+                            'M' => 'Masculino' );
+        $tipo_documento = array('1' => 'Cedula de Ciudadania',
+                                '2' => 'Tarjeta de Identidad',
+                                '3' => 'Cedula Extranjera' );
+
+        $depNacimiento = BirthDepartament::pluck('name','id');
+        $muni_nacimiento = BirthCity::pluck('name','id');
+        return view("perfilEstudiante.create",compact('genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'), ['editarEstudiante' => new perfilEstudiante()]);
     }
 
     public function storePerfilEstudiante(perfilEstudianteRequest $request){
 
         $idPerfilEstudiantes = perfilEstudiante::create([
-            'name'                  =>  $request['nombres'],
-            'lastname'                =>  $request['apellidos'],
-            'id_document_type'           =>  $request['tipo_documento'],
-            'document_number'         =>  $request['numero_documento'],
-            'birth_date'         =>  $request['fecha_nacimiento'],
+            'name'                      =>  $request['nombres'],
+            'lastname'                  =>  $request['apellidos'],
+            'id_document_type'          =>  $request['tipo_documento'],
+            'document_number'           =>  $request['numero_documento'],
+            'birth_date'                =>  $request['fecha_nacimiento'],
             'document_expedition_date'  =>  $request['departamento_nacimiento'],
-            'id_birth_city'        =>  $request['ciudad_nacimiento'],
-            'sex'                     =>  $request['sexo'],
-            'id_gender'                   =>  $request['genero'],
-            'barrio_residencia'        =>  $request['barrio_residencia'],
-            'direction'                =>  $request['direccion'],
-            'email'                    =>  $request['email'],
-            'cellphone'                =>  $request['telefono1'],
-            'phone'                =>  $request['telefono2'],
+            'id_birth_city'             =>  $request['ciudad_nacimiento'],
+            'sex'                       =>  $request['sexo'],
+            'id_gender'                 =>  $request['genero'],
+            'barrio_residencia'         =>  $request['barrio_residencia'],
+            'direction'                 =>  $request['direccion'],
+            'email'                     =>  $request['email'],
+            'cellphone'                 =>  $request['telefono1'],
+            'phone'                     =>  $request['telefono2'],
         ]);
         
          return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
@@ -95,7 +103,7 @@ class perfilEstudianteController extends Controller
     }
 
     public function updatePerfilEstudiante(perfilEstudianteRequest $request, $id) {
-        
+
         $depNacimiento = BirthDepartament::pluck('name','id');
         $muni_nacimiento = BirthCity::pluck('name','id');
         $data = perfilEstudiante::findOrFail($id);

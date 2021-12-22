@@ -10,7 +10,7 @@
 						<div class="col-xs-4 col-md-12">
 							<input class="form-control" type="text" name="name" id="name" value="{{ old('name', $editarEstudiante->name) }}">
 
-							@error('nombre')
+							@error('name')
 				    			<small class="text-danger">{{ $message }}</small>
 				    		@enderror
 

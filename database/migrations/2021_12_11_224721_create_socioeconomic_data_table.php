@@ -29,8 +29,8 @@ class CreateSocioeconomicDataTable extends Migration
             $table->integer('dependent_people');
             $table->boolean('internet_zon');
             $table->boolean('internet_home');
-            $table->boolean('sex_document_identidad');
-            $table->boolean('lgtbiq');
+            $table->char('sex_document_identidad', 1);
+            $table->boolean('id_gender');
             $table->integer('id_social_conditions');
             $table->integer('id_disability');
             $table->integer('id_ethnicity');

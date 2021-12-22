@@ -16,15 +16,14 @@ class CreateAcademicDatesTable extends Migration
         Schema::create('academic_dates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_student');
-            $table->string('institution_name');
             $table->integer('id_institution_type');
             $table->integer('year_graduation');
             $table->string('bachelor_title');
             $table->date('icfes_date');
             $table->string('snp_register');
             $table->integer('icfes_score');
-            $table->boolean('graduate');
-            $table->boolean('graduate_schooling');
+            $table->char('graduate', 2);
+            $table->char('graduate_schooling', 2);
             $table->timestamps();
         });
     }

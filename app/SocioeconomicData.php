@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class SocioeconomicData extends Model
 {
@@ -27,11 +28,11 @@ class SocioeconomicData extends Model
         'internet_zon',
         'internet_home',
         'sex_document_identidad',
-        'lgtbiq',
         'id_social_conditions',
         'id_disability',
         'id_ethnicity',
     ];
+
 
     public function occupation (){
 

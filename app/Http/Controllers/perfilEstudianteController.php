@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
+use App\SocioeconomicData;
 use App\RecordsActionsUpdateDelete;
 use App\User;
 use App\Http\Requests\perfilEstudianteRequest;
@@ -63,14 +64,23 @@ class perfilEstudianteController extends Controller
     public function verPerfilEstudiante($id){
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        dd($verDatosPerfil->gender);
+        //dd($verDatosPerfil);
         return view('perfilEstudiante.verDatos', compact('verDatosPerfil'));   
+    }
+
+    public function verDatosSocieconomicos($id) {
+        //dd($id_student);
+        //$datos = SocioeconomicData::all()->where('id_student', $id_student); 
+        $datos = perfilEstudiante::findOrFail($id);
+        //dd($datos);
+
+        return view('perfilEstudiante.datosSocioeconomicos', compact('datos'));
     }
 
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
-        dd($editarEstudiante->gender);
+        //dd($editarEstudiante->gender);
         
         return view('perfilEstudiante.editar', compact('editarEstudiante'));
     }

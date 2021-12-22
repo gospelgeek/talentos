@@ -41,8 +41,6 @@ class perfilEstudiante extends Model
         return $this->hasOne(DocumentType::class, 'id', 'id_document_type');
     }
 
-
-
     public function birthcity(){
         return $this->hasOne(BirthCity::class, 'id', 'id_birth_city');
     }
@@ -62,6 +60,11 @@ class perfilEstudiante extends Model
     public function socioeconomicdata (){
 
         return $this->hasOne(SocioeconomicData::class, 'id_student', 'id');
+    }
+
+    public function academicdata (){
+
+        return $this->hasOne(AcademicDates::class, 'id_student', 'id');
     }
 
     public function academicdates (){

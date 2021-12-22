@@ -51,6 +51,9 @@
                                                     <a title="Datos Socioeconomicos "href="{{ route('ver_datos_socioeconomicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-coffee"></a>    
                                                 </div>
                                                 <div class="col-xs-4 col-sm-4">
+                                                    <a title="Datos Academicos "href="{{ route('ver_datos_academicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-coffee"></a>    
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4">
                                                     <form method="POST" action="{{ route('delete_estudiante', $estudiante->id) }}">
                                                         @method('DELETE')
                                                         @csrf

@@ -77,6 +77,12 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.datosSocioeconomicos', compact('datos'));
     }
 
+    public function verDatosAcademicos($id){
+        $datos = perfilEstudiante::findOrFail($id);
+
+        return view('perfilEstudiante.datosAcademicos', compact('datos'));
+    }
+
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);

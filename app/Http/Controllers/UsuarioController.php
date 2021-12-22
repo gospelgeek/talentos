@@ -69,11 +69,6 @@ class UsuarioController extends Controller
         //dd($data);
         $data->update($request->validated());
         
-        //$dataNew = perfilEstudiante::findOrFail($id);
-        //dd($dataNew);
-
-
-
         return redirect('usuario')->with('status', 'usuario actualizado exitosamente!');
     }
 

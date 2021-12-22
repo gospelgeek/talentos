@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
+use App\SocioeconomicData;
 use App\RecordsActionsUpdateDelete;
 use App\User;
 use App\Gender;
@@ -73,7 +74,7 @@ class perfilEstudianteController extends Controller
     public function verPerfilEstudiante($id){
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        //dd($verDatosPerfil);
+        //dd($verDatosPerfil);  
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Fenemino',
                             'M' => 'Masculino' );
@@ -84,9 +85,20 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento'));   
     }
 
+    public function verDatosSocieconomicos($id) {
+        //dd($id_student);
+        //$datos = SocioeconomicData::all()->where('id_student', $id_student); 
+        $datos = perfilEstudiante::findOrFail($id);
+        //dd($datos);
+
+        return view('perfilEstudiante.datosSocioeconomicos', compact('datos'));
+    }
+
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
+
+        //dd($editarEstudiante->gender);
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Fenemino',
                             'M' => 'Masculino' );
@@ -98,6 +110,7 @@ class perfilEstudianteController extends Controller
         $muni_nacimiento = BirthCity::pluck('name','id');
 
         //dd($muni_nacimiento);
+
         
         return view('perfilEstudiante.editar', compact('editarEstudiante','genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'));
     }

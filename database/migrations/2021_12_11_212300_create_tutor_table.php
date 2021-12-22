@@ -22,8 +22,8 @@ class CreateTutorTable extends Migration
             $table->integer('id_document_type');
             $table->string('document_number');
             $table->date('birth_date');
-            $table->string('celular');
-            $table->string('ocpacion');
+            $table->string('cellphone');
+            $table->string('occupation');
             $table->timestamps();
         });
     }

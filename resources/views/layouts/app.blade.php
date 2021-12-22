@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}
+    {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
+    {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
     
     <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
@@ -91,23 +93,13 @@
       <!-- JQuery -->
 
     
-
-    <script type="text/javascript" src="/mdbootstrap/js/jquery-3.3.1.min.js" ></script>
-    <script type="text/javascript" src="/DataTables/bootstrap/js/bootstrap.min.js" defer></script>
-    <script type="text/javascript" src="/DataTables/DataTables/js/jquery.dataTables.min.js" defer></script>
-    <script type="text/javascript" src="/DataTables/DataTables/js/dataTables.bootstrap4.min.js" defer ></script>
-    <script type="text/javascript" src="/DataTables/Responsive/js/dataTables.responsive.min.js" defer></script>
-    <script type="text/javascript" src="/DataTables/Responsive/js/responsive.bootstrap4.min.js" defer></script>
-
-    <script language="javascript">        
-        $(document).ready(function() {
-    $('#table9').DataTable(
-        {
-            responsive: true,
-            autoWidth: false
-        });
-    } );
-    </script> 
+     {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!} 
+    {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')!!}
+    {!!Html::script('/js/dep-mun.js')!!}
 
        
     

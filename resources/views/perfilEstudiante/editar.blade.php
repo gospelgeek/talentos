@@ -9,4 +9,5 @@
 		@method('PUT')
 		@include('perfilEstudiante._formulario')
 	</form>
+
 @endsection

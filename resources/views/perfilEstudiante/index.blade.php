@@ -12,7 +12,7 @@
     <div class="card-body">
         <div class="row">
             <div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a class="btn btn-success btn-sm mt-3 mb-3 float-right" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
+                    <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
         </div>
 

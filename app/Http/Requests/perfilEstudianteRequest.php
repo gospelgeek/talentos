@@ -24,22 +24,17 @@ class perfilEstudianteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombres'                       => 'required',
-            'apellidos'                     => 'required|min:4|max:60',
-            'tipo_documento'                => 'required',
-            'numero_documento'              => 'required|integer', 
-            'fecha_nacimiento'              => 'required',
-            'departamento_nacimiento'       => 'required',
-            'ciudad_nacimiento'             => 'required',
-            'sexo'                          => 'required',
-            'genero'                        => 'required',
-            'departamento_residencia'       => 'required',
-            'ciudad_residencia'             => 'required',
-            'barrio_residencia'             => 'required',
-            'direccion'                     => 'required',
-            'email'                         => 'required|email',
-            'telefono1'                     => 'required|integer',
-            'telefono2'                     => 'required|integer',
+            'name'                       => 'required',
+            'lastname'                   => 'required|min:4|max:60',
+            'id_document_type'           => 'required',
+            'document_number'            => 'required|integer', 
+            'birth_date'                 => 'required',
+            'id_birth_city'              => 'required',  
+            'sex'                        => 'required',
+            'direction'                  => 'required',
+            'email'                      => 'required|email',
+            'cellphone'                  => 'required|integer',
+            'phone'                      => 'required|integer',
         ];
     }
 }

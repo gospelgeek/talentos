@@ -34,8 +34,10 @@ Route::post('logout',  'Auth\LoginController@logout')->name('logout');
 Route::get('logout',   'Auth\LoginController@logout');
 
 
-
 //Rutas de CRUD estudiantes
+
+Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
+
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
 Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');

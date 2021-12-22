@@ -9,6 +9,10 @@ use App\perfilEstudiante;
 use App\SocioeconomicData;
 use App\RecordsActionsUpdateDelete;
 use App\User;
+use App\Gender;
+use App\DocumentType;
+use App\BirthDepartament;
+use App\BirthCity;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Controllers\Auth;
 
@@ -32,29 +36,35 @@ class perfilEstudianteController extends Controller
 
 
     public function crearPerfilEstudiante(){
-        
-        return view("perfilEstudiante.create", ['editarEstudiante' => new perfilEstudiante()]);
+        $genero = Gender::pluck('name','id');
+        $sexo = array('F' => 'Fenemino',
+                            'M' => 'Masculino' );
+        $tipo_documento = array('1' => 'Cedula de Ciudadania',
+                                '2' => 'Tarjeta de Identidad',
+                                '3' => 'Cedula Extranjera' );
+
+        $depNacimiento = BirthDepartament::pluck('name','id');
+        $muni_nacimiento = BirthCity::pluck('name','id');
+        return view("perfilEstudiante.create",compact('genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'), ['editarEstudiante' => new perfilEstudiante()]);
     }
 
     public function storePerfilEstudiante(perfilEstudianteRequest $request){
 
         $idPerfilEstudiantes = perfilEstudiante::create([
-            'nombres'                  =>  $request['nombres'],
-            'apellidos'                =>  $request['apellidos'],
-            'tipo_documento'           =>  $request['tipo_documento'],
-            'numero_documento'         =>  $request['numero_documento'],
-            'fecha_nacimiento'         =>  $request['fecha_nacimiento'],
-            'departamento_nacimiento'  =>  $request['departamento_nacimiento'],
-            'ciudad_nacimiento'        =>  $request['ciudad_nacimiento'],
-            'sexo'                     =>  $request['sexo'],
-            'genero'                   =>  $request['genero'],
-            'departamento_residencia'  =>  $request['departamento_residencia'],
-            'ciudad_residencia'        =>  $request['ciudad_residencia'],
-            'barrio_residencia'        =>  $request['barrio_residencia'],
-            'direccion'                =>  $request['direccion'],
-            'email'                    =>  $request['email'],
-            'telefono1'                =>  $request['telefono1'],
-            'telefono2'                =>  $request['telefono2'],
+            'name'                      =>  $request['nombres'],
+            'lastname'                  =>  $request['apellidos'],
+            'id_document_type'          =>  $request['tipo_documento'],
+            'document_number'           =>  $request['numero_documento'],
+            'birth_date'                =>  $request['fecha_nacimiento'],
+            'document_expedition_date'  =>  $request['departamento_nacimiento'],
+            'id_birth_city'             =>  $request['ciudad_nacimiento'],
+            'sex'                       =>  $request['sexo'],
+            'id_gender'                 =>  $request['genero'],
+            'barrio_residencia'         =>  $request['barrio_residencia'],
+            'direction'                 =>  $request['direccion'],
+            'email'                     =>  $request['email'],
+            'cellphone'                 =>  $request['telefono1'],
+            'phone'                     =>  $request['telefono2'],
         ]);
         
          return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
@@ -64,8 +74,15 @@ class perfilEstudianteController extends Controller
     public function verPerfilEstudiante($id){
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        //dd($verDatosPerfil);
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil'));   
+        //dd($verDatosPerfil);  
+        $genero = Gender::pluck('name','id');
+        $sexo = array('F' => 'Fenemino',
+                            'M' => 'Masculino' );
+        $tipo_documento = array('1' => 'Cedula de Ciudadania',
+                                '2' => 'Tarjeta de Identidad',
+                                '3' => 'Cedula Extranjera' );
+        //dd($verDatosPerfil->gender);
+        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento'));   
     }
 
     public function verDatosSocieconomicos($id) {
@@ -86,15 +103,30 @@ class perfilEstudianteController extends Controller
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
+
         //dd($editarEstudiante->gender);
+        $genero = Gender::pluck('name','id');
+        $sexo = array('F' => 'Fenemino',
+                            'M' => 'Masculino' );
+        $tipo_documento = array('1' => 'Cedula de Ciudadania',
+                                '2' => 'Tarjeta de Identidad',
+                                '3' => 'Cedula Extranjera' );
+
+        $depNacimiento = BirthDepartament::pluck('name','id');
+        $muni_nacimiento = BirthCity::pluck('name','id');
+
+        //dd($muni_nacimiento);
+
         
-        return view('perfilEstudiante.editar', compact('editarEstudiante'));
+        return view('perfilEstudiante.editar', compact('editarEstudiante','genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'));
     }
 
     public function updatePerfilEstudiante(perfilEstudianteRequest $request, $id) {
-        
+
+        $depNacimiento = BirthDepartament::pluck('name','id');
+        $muni_nacimiento = BirthCity::pluck('name','id');
         $data = perfilEstudiante::findOrFail($id);
-        
+        //dd($request);
         $data->update($request->validated());
     
         return redirect('estudiante')->with('status', 'Perfil actualizado exitosamente!');
@@ -128,7 +160,19 @@ class perfilEstudianteController extends Controller
         return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
     }
 
+    public function municipios(Request $request, $id)
+    {
+        $municipios = BirthCity::where('id_departament',$id)->get();
+        //dd($municipios);
+        if($request->ajax())
+        {
+         
+          return response()->json($municipios);
+        }
+    }
 }
+
+
 
 
 

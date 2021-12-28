@@ -51,14 +51,13 @@
                                                     <a title="Datos Socioeconomicos "href="{{ route('ver_datos_socioeconomicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-coffee"></a>    
                                                 </div>
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Datos Academicos "href="{{ route('ver_datos_academicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-coffee"></a>    
+                                                    <a title="Datos Academicos "href="{{ route('ver_datos_academicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-graduation-cap"></a>    
                                                 </div>
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <form method="POST" action="{{ route('delete_estudiante', $estudiante->id) }}">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <a title="Eliminar Usuario" type="submit" style="color: red;" class="btn-sm btn-block fa  fa-trash"></a>    
-                                                    </form>    
+                                                    {!!Form::open(['id'=>'myform','route'=>['delete_estudiante', $estudiante->id], 'method'=>'delete'])!!}
+                                                    {{csrf_field()}}
+                                                    <a onclick="document.getElementById('myform').submit()"title="Eliminar Usuario" type="submit" style="color: red;border: none;" class="fa fa-trash"></a>
+                                                    {!!Form::close()!!}    
                                                 </div>
                                             </div>
                                             @csrf

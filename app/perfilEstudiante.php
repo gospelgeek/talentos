@@ -9,6 +9,7 @@ use DB;
 
 class perfilEstudiante extends Model
 {
+    use softDeletes;
     
     protected $table = 'student_profile';
 

@@ -139,11 +139,11 @@ class perfilEstudianteController extends Controller
        //dd('hola');
        $data = perfilEstudiante::findOrFail($id);
 
-       $ip = User::getRealIP();
+       //$ip = User::getRealIP();
        $data -> delete();
-       $id = auth()->user();
+       //$id = auth()->user();
        //dd($id);
-            $datos = RecordsActionsUpdateDelete::create([
+            /*$datos = RecordsActionsUpdateDelete::create([
             'identificacion'           => $id['cedula'],
             'nombres'                  => $id['name'],
             'apellidos'                => $id['apellidos_user'],
@@ -155,7 +155,7 @@ class perfilEstudianteController extends Controller
             'apellidos_usuario_accion' => $data['apellidos'],
             'email_usuario_accion'     => $data['email'],
             'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
-            ]); 
+            ]); */
 
         return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
     }

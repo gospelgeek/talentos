@@ -22,7 +22,13 @@ class User extends Authenticatable
     protected $primarykey = 'cedula';
 
     protected $fillable = [
-        'name', 'apellidos_user', 'tipo_documento_user', 'cedula', 'email', 'rol_id', 'password',
+        'name', 
+        'apellidos_user', 
+        'tipo_documento_user', 
+        'cedula', 
+        'email', 
+        'rol_id', 
+        'password',
     ];
 
 

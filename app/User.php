@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->hasOne(Role::class, 'id','rol_id');
     }
 
     public function authorizeRoles($roles)

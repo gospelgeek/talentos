@@ -47,12 +47,7 @@
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Editar Informacion "href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
                                                 </div>
-                                                <div class="col-xs-4 col-sm-4">
-                                                    <a title="Datos Socioeconomicos "href="{{ route('ver_datos_socioeconomicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-coffee"></a>    
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4">
-                                                    <a title="Datos Academicos "href="{{ route('ver_datos_academicos', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-graduation-cap"></a>    
-                                                </div>
+                                                
                                                 <div class="col-xs-4 col-sm-4">
                                                     {!!Form::open(['id'=>'myform','route'=>['delete_estudiante', $estudiante->id], 'method'=>'delete'])!!}
                                                     {{csrf_field()}}

@@ -58,17 +58,12 @@ class perfilEstudiante extends Model
         return $this->hasOne(Tutor::class, 'document_number', 'id_tutor');
     }
 
-    public function socioeconomicdata (){
+    public function socioeconomicdata(){
 
         return $this->hasOne(SocioeconomicData::class, 'id_student', 'id');
     }
 
-    public function academicdata (){
-
-        return $this->hasOne(AcademicDates::class, 'id_student', 'id');
-    }
-
-    public function academicdates (){
+    public function academicdata(){
 
         return $this->hasOne(AcademicDates::class, 'id_student', 'id');
     }

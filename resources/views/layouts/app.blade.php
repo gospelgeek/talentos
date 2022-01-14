@@ -48,7 +48,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a href="" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS SOCIOECONOMICOS </a>
+                        <a href="" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS ACADEMICOS</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

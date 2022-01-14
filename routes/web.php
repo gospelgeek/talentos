@@ -47,7 +47,12 @@ Route::put('update_estudiante/{id}', 'perfilEstudianteController@updatePerfilEst
 Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerfilEstudiante')->name('delete_estudiante');
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
+Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
+Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');
+
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
+Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');
+Route::put('update_datos_academicos/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('update_datos_academicos');
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');

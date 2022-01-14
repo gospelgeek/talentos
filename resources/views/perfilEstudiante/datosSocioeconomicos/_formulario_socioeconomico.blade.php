@@ -9,7 +9,7 @@
 				<div class="col-xs-4 col-md-2">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $editarSocioeconomicos->socioeconomicdata->id_student) }}">
+							<input readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $editarSocioeconomicos->socioeconomicdata->id) }}">
 
 							@error('id_student')
 				    			<small class="text-danger">{{ $message }}</small>

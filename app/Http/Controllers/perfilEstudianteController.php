@@ -137,10 +137,10 @@ class perfilEstudianteController extends Controller
     }
 
     public function updateDatosSocioeconomicos (DatosSocioeconomicosRequest $request, $id){
-       // dd('entro');
+       //dd($id);
 
         $data = SocioeconomicData::findOrFail($id);
-        //dd($data);
+        //dd($request);
         $data->update($request->validated());
         
         return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
@@ -149,7 +149,7 @@ class perfilEstudianteController extends Controller
     public function verDatosAcademicos($id){
         $datos = perfilEstudiante::findOrFail($id);
 
-        return view('perfilEstudiante.datosAcademicos', compact('datos'));
+        return view('perfilEstudiante.verdatosAcademicos', compact('datos'));
     }
 
     public function editarDatosAcademicos($id) {
@@ -165,7 +165,7 @@ class perfilEstudianteController extends Controller
     }
 
     public function updateDatosAcademicos(DatosAcademicosRequest $request, $id) {
-        dd('gsgsdgsd');
+        //dd('gsgsdgsd');
         $data = AcademicDates::findOrFail($id);
         //dd($data);
         $data->update($request->validated());

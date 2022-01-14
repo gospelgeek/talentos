@@ -1,14 +1,5 @@
-@extends('layouts.secundario')
-@section('title', 'Editar datos Academicos')
-
-@section('content')
-
-
-
+@csrf 
 <div class="container">
-	<form action="{{ route("update_datos_academicos", $editarAcademicos->id)}}" method="POST"> 
-		@method('PUT')
-
 	<div class="form-group">
     		<div class="row">
             	<div class="col-xs-3 col-md-2">
@@ -133,8 +124,5 @@
 			<input class="btn btn-primary" type="button" onclick="history.back()" name="volver atrás" value="Regresar">
 			
             <input class="btn btn-primary"  type="submit" value="Guardar Datos"></input>
-            
-	</form>					
+            				
 </div>
-
-@endsection

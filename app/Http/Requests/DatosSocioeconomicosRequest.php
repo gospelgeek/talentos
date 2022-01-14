@@ -25,6 +25,7 @@ class DatosSocioeconomicosRequest extends FormRequest
     {
         return [
         'id_ocupation'             =>   'required',
+        'children_number'          =>   'required', 
         'id_civil_status'          =>   'required',
         'id_residence_time'        =>   'required',
         'id_housing_type'          =>   'required',

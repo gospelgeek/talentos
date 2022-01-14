@@ -8,6 +8,24 @@
 
 	<div class="form-group">
     		<div class="row">
+
+    			<div class="col-xs-3 col-md-2">
+            		<p style="text-align: right;"><label for="nombres">Id *</label></p>
+            	</div>
+				<div class="col-xs-4 col-md-2">
+					<div class="row">
+						<div class="col-xs-4 col-md-12">
+							<input  readonly class="form-control" type="text" name="id" id="id" value="{{ old('id', $verDatosPerfil->id) }}">
+
+							@error('nombre')
+				    			<small class="text-danger">{{ $message }}</small>
+				    		@enderror
+
+						</div>
+					</div>
+                	
+            	</div>
+
             	<div class="col-xs-3 col-md-2">
             		<p style="text-align: right;"><label for="nombres">Nombres *</label></p>
             	</div>
@@ -222,7 +240,10 @@
             </div>
 		</div>	
 			<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
-			<a type="button" href="{{ route('editar_estudiante', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>
+			<a type="button" href="{{ route('editar_estudiante', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a type="button" href="{{ route('ver_datos_socioeconomicos', $verDatosPerfil->id) }}" class="btn btn-primary">Datos Socioeconomicos </a>
+			<a type="button" href="{{ route('ver_datos_academicos', $verDatosPerfil->id) }}" class="btn btn-primary">Datos Academicos </a>
+			
 			
 			
 </div>

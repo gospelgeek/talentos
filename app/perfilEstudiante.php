@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
 
 
 class perfilEstudiante extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
     
     protected $table = 'student_profile';
 

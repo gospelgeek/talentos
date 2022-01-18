@@ -251,9 +251,6 @@
 		</div>	
 			<input class="btn btn-primary" type="button" onclick="history.back()" name="volver atrás" value="Regresar">
 			<a type="button" href="{{ route('editar_datos_socioeconomicos', $datos->id) }}" class="btn btn-primary">Actualizar Datos</a>
-
-		
-			
 			
 </div>
 @endsection

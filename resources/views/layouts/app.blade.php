@@ -22,7 +22,7 @@
     {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}
     {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
     {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
-    
+    <link rel="stylesheet" type="text/css" href="/css/css.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
 </head>
@@ -46,11 +46,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Navbar
                     <ul class="navbar-nav mr-auto">
-                        <a href="" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS SOCIOECONOMICOS </a>
+                        <a  class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS SOCIOECONOMICOS </a>
                         <a href="" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS ACADEMICOS</a>
-                    </ul>
+                    </ul> -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -94,13 +94,14 @@
       <!-- JQuery -->
 
     
-     {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!} 
+    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!} 
     {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')!!}
     {!!Html::script('/js/dep-mun.js')!!}
+    {!!Html::script('/js/filtroestudiantes.js')!!}
 
        
     

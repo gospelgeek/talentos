@@ -3,14 +3,14 @@
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-3 col-md-3">
-            		<p style="text-align: right;"><label for="nombres">Nombres *</label></p>
+            		<p style="text-align: right;"><label for="name">Nombres *</label></p>
             	</div>
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="nombres" id="nombres" value="{{ old('nombres', $editarEstudiante->nombres) }}">
+							<input class="form-control" type="text" name="name" id="name" value="{{ old('name', $editarEstudiante->name) }}">
 
-							@error('nombre')
+							@error('name')
 				    			<small class="text-danger">{{ $message }}</small>
 				    		@enderror
 
@@ -20,45 +20,39 @@
             	</div>
 			
             	<div class="col-xs-4 col-md-3">
-            		<p style="text-align: right"><label for="apellidos">Apellidos *</label></p>
+            		<p style="text-align: right"><label for="lastname">Apellidos *</label></p>
             	</div>
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $editarEstudiante->apellidos) }}">
+							<input class="form-control" type="text" name="lastname" id="lastname" value="{{ old('lastname', $editarEstudiante->lastname) }}">
 						</div>
 					</div>
                 	
             	</div>
             </div>
-		</div>
+		</diªv>
 
-		<div class="form-group">
-		    
+		<div class="form-group">  
     		<div class="row">
             	<div class="col-xs-3 col-md-3">
-            		<p style="text-align: right"><label for="tipo_documento">Seleccionar Tipo de documento</label></p>
+            		<p style="text-align: right"><label for="id_document_type">Seleccionar Tipo de documento</label></p>
             	</div>
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
-								{!!Form::select('tipo_documento',['Cedula Ciudadania' => 'Cedula Ciudadania',
-        														  'Tarjeta Identidad'   => 'Tarjeta Identidad',
-       															  'Cedula extranjera' => 'Cedula extranjera'],
-								$editarEstudiante->tipo_documento,['class'=>'form-control select2',
-								'placeholder'=>'Seleccione el tipo de documento','style'=>'width: 100%;','required']
-                                )!!}
+							{!!Form::select('id_document_type',$tipo_documento, $editarEstudiante->documenttype->id,['id'=>'id_document_type','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
             	</div>
    
             	<div class="col-xs-3 col-md-3">
-            		<p style="text-align: right"><label for="numero_documento">Documento de identificacion *</label></p>
+            		<p style="text-align: right"><label for="document_number">Documento de identificacion *</label></p>
             	</div>
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input class="form-control" type="text" name="numero_documento" id="numero_documento" value="{{ old('numero_documento', $editarEstudiante->numero_documento) }}">
+							<input class="form-control" type="text" name="document_number" id="document_number" value="{{ old('document_number', $editarEstudiante->document_number) }}">
 						</div>
 					</div>
                 	
@@ -69,12 +63,12 @@
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="fecha_nacimiento">Fecha de nacimiento *</label></p>
+            		<p style="text-align: right"><label for="birth_date">Fecha de nacimiento *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $editarEstudiante->fecha_nacimiento) }}">
+							<input class="form-control" type="date" name="birth_date" id="birth_date" value="{{ old('fecha_nacimiento', $editarEstudiante->birth_date) }}">
 						</div>
 					</div>
                 	
@@ -86,7 +80,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $editarEstudiante->departamento_nacimiento) }}">
+							{!!Form::select('depNacimiento',$depNacimiento, $editarEstudiante->birthcity->birthdepartament->id,['id'=>'depNacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	
@@ -98,12 +92,12 @@
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="ciudad_nacimiento">Ciudad nacimiento *</label></p>
+            		<p style="text-align: right"><label for="id_birth_city">Ciudad nacimiento *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="ciudad_nacimiento" id="ciudad_nacimiento" value="{{ old('ciudad_nacimiento', $editarEstudiante->ciudad_nacimiento) }}">
+							{!!Form::select('id_birth_city',$muni_nacimiento, $editarEstudiante->birthcity->id,['id'=>'muni_nacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	
@@ -129,89 +123,52 @@
 			
     		<div class="row">
             	<div class="col-xs-4 col-md-3">
-            		<p style="text-align: right"><label for="sexo">Sexo</label></p>
+            		<p style="text-align: right"><label for="sex">Sexo</label></p>
             	</div>
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<br>
-							<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Femenino<br>
-
-    						<input type="radio" name="sexo" value="{{ old('sexo', $editarEstudiante->sexo) }}"> Masculino<br>
+						<div class="col-xs-3 col-md-12"> 
+								{!!Form::select('sex',$sexo, $editarEstudiante->sex,['id'=>'sex','class'=>'form-control','required',
+									'placeholder'=>'Seleccionar sexo' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	
             	</div>
 
             	<div class="col-xs-3 col-md-3">
-            		<p style="text-align: right"><label for="genero">Genero</label></p>
+            		<p style="text-align: right"><label for="gender">Genero</label></p>
             	</div>
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('genero',[
-                                    'Hombre' => 'Hombre',
-                                    'Mujer'  => 'Mujer',
-                                    'LGTBI' => 'LGTBI',
-                                    'Otros' => 'Otros'], $editarEstudiante->genero,['id'=>'genero','class'=>'form-control','required','placeholder'=>'Genero' ,'style'=>' ']
-                                )!!}
+								{!!Form::select('gender', $genero,$editarEstudiante->gender->id,['placeholder'=>'Genero','class'=>'form-control','required'])!!}
 						</div>
 					</div>
             	</div>		
             </div>
         </div>
-		
 
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="departamento_residencia">Departamento Residencia *</label></p>
+            		<p style="text-align: right"><label for="id_neighborhood">Barrio Residencia *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="departamento_residencia" id="departamento_residencia" value="{{ old('departamento_residencia', $editarEstudiante->departamento_residencia) }}">
-						</div>
-					</div>
-                	
-            	</div>
-
-  
-            	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="ciudad_residencia">Ciudad Residencia *</label></p>
-            	</div>
-				<div class="col-xs-12 col-md-3">
-					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="ciudad_residencia" id="ciudad_residencia" value="{{ old('ciudad_residencia', $editarEstudiante->ciudad_residencia) }}">
-						</div>
-					</div>
-                	
-            	</div>
-            </div>
-		</div>
-
-		<div class="form-group">
-    		<div class="row">
-            	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="barrio_residencia">Barrio Residencia *</label></p>
-            	</div>
-				<div class="col-xs-12 col-md-3">
-					<div class="row">
-						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="barrio_residencia" id="barrio_residencia" value="{{ old('barrio_residencia', $editarEstudiante->barrio_residencia) }}">
+							<input class="form-control" type="text" name="id_neighborhood" id="id_neighborhood" value="{{ old('id_neighborhood', $editarEstudiante->neighborhood->name) }}">
 						</div>
 					</div>
                 	
             	</div>
 
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="direccion">Direccion *</label></p>
+            		<p style="text-align: right"><label for="direction">Direccion *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="direccion" id="direccion" value="{{ old('direccion', $editarEstudiante->direccion) }}">
+							<input class="form-control" type="text" name="direction" id="direction" value="{{ old('direction', $editarEstudiante->direction) }}">
 						</div>
 					</div>
                 	
@@ -224,31 +181,30 @@
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="telefono1">Numero telefonico *</label></p>
+            		<p style="text-align: right"><label for="cellphone">Numero telefonico *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="telefono1" id="telefono1" value="{{ old('telefono1', $editarEstudiante->telefono1) }}">
+							<input class="form-control" type="text" name="cellphone" id="cellphone" value="{{ old('cellphone', $editarEstudiante->cellphone) }}">
 						</div>
 					</div>
                 	
             	</div>
 
             	<div class="col-xs-12 col-md-3">
-            		<p style="text-align: right"><label for="telefono2">Numero telefonico alternativo *</label></p>
+            		<p style="text-align: right"><label for="phone">Numero telefonico alternativo *</label></p>
             	</div>
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="telefono2" id="telefono2" value="{{ old('telefono2', $editarEstudiante->telefono2) }}">
+							<input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone', $editarEstudiante->phone) }}">
 						</div>
 					</div>
                 	
             	</div>
             </div>
 		</div>
-		<input type="button" onclick="history.back()" name="volver atrás" value="Regresar" class="btn btn-primary">							
+		<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>						
 		<input type="submit" value="Guardar Datos" class="btn btn-primary">
 </div>
-

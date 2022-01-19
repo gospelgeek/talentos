@@ -103,7 +103,7 @@
             	<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-               			{!!Form::select('rol_id',$roles, null,(['editarUsuario'=>'roles','class' => 'form-control ','style'=>'width: 100%;','placeholder'=>'Seleccionar Rol:','required']))!!}
+               			{!!Form::select('rol_id',$roles, $editarUsuario->roles->id,(['editarUsuario'=>'roles','class' => 'form-control ','style'=>'width: 100%;','placeholder'=>'Seleccionar Rol:','required']))!!}
 						</div>
 					</div>
             	</div>

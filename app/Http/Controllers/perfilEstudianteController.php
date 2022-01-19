@@ -7,13 +7,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
+use App\AcademicDates;
 use App\RecordsActionsUpdateDelete;
 use App\User;
 use App\Gender;
 use App\DocumentType;
 use App\BirthDepartament;
 use App\BirthCity;
+use App\Occupation;
+use App\CivilStatus;
+use App\RecidenceTime;
+use App\HousingType;
+use App\HealthRegime;
+use App\Benefits;
+use App\SocialConditions;
+use App\Disability;
+use App\Ethnicity;
+use App\InstitutionType;
 use App\Http\Requests\perfilEstudianteRequest;
+use App\Http\Requests\DatosSocioeconomicosRequest;
+use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Controllers\Auth;
 
 
@@ -94,6 +107,72 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.datosSocioeconomicos', compact('datos'));
     }
 
+    public function editarDatosSocioeconomicos($id) {
+
+        $editarSocioeconomicos = perfilEstudiante::findOrFail($id);
+       // dd($editarSocioeconomicos->socioeconomicdata->id);
+        $ocupacion = Occupation::pluck('name', 'id');
+        $estado_civil = CivilStatus::pluck('name', 'id');
+        $tiempo_residencia = RecidenceTime::pluck('name', 'id');
+        $tipo_vivienda = HousingType::pluck('name', 'id');
+        $regimen_salud = HealthRegime::pluck('name', 'id');
+        $categoria_sisben = array('A' => 'A',
+                                  'B' => 'B',
+                                  'C' => 'C',
+                                  'NO' => 'NO');
+        $beneficios = Benefits::pluck('name', 'id');
+        $posicion_economica = array('dependiente' => 'Dependiente',
+                                    'independiente' => 'Independiente');
+        $internet_zona = array('1' => 'SI',
+                               '2' => 'NO');
+        $internet_hogar = array('1' => 'SI',
+                                '2' => 'NO');
+        $condicion_social = SocialConditions::pluck('name', 'id');
+        $discapacidad = Disability::pluck('name', 'id');
+        $etnia = Ethnicity::pluck('name', 'id');
+
+
+        return view('perfilEstudiante.datosSocioeconomicos.editar', compact('editarSocioeconomicos', 'ocupacion', 'estado_civil', 'tiempo_residencia', 'tipo_vivienda', 'regimen_salud', 'beneficios', 'internet_zona', 'internet_hogar', 'condicion_social', 'discapacidad', 'etnia', 'posicion_economica', 'categoria_sisben'));
+
+    }
+
+    public function updateDatosSocioeconomicos (DatosSocioeconomicosRequest $request, $id){
+       //dd($id);
+
+        $data = SocioeconomicData::findOrFail($id);
+        //dd($request);
+        $data->update($request->validated());
+        
+        return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
+    }
+
+    public function verDatosAcademicos($id){
+        $datos = perfilEstudiante::findOrFail($id);
+
+        return view('perfilEstudiante.verdatosAcademicos', compact('datos'));
+    }
+
+    public function editarDatosAcademicos($id) {
+        //dd('entro al edit');
+
+        $editarAcademicos = perfilEstudiante::findOrFail($id);
+        //dd($editarAcademicos->academicdata->id);
+        $tipo_institucion = InstitutionType::pluck('name', 'id');
+        
+        return view('perfilEstudiante.datosAcademicos.editar', compact('editarAcademicos', 'tipo_institucion'));
+
+//dd('finalizo el edit');
+    }
+
+    public function updateDatosAcademicos(DatosAcademicosRequest $request, $id) {
+        //dd('gsgsdgsd');
+        $data = AcademicDates::findOrFail($id);
+        //dd($data);
+        $data->update($request->validated());
+
+        return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
+    }
+
     public function editarPerfilEstudiante($id){
         
         $editarEstudiante = perfilEstudiante::findOrFail($id);
@@ -133,11 +212,11 @@ class perfilEstudianteController extends Controller
        //dd('hola');
        $data = perfilEstudiante::findOrFail($id);
 
-       $ip = User::getRealIP();
+       //$ip = User::getRealIP();
        $data -> delete();
-       $id = auth()->user();
+       //$id = auth()->user();
        //dd($id);
-            $datos = RecordsActionsUpdateDelete::create([
+            /*$datos = RecordsActionsUpdateDelete::create([
             'identificacion'           => $id['cedula'],
             'nombres'                  => $id['name'],
             'apellidos'                => $id['apellidos_user'],
@@ -149,7 +228,7 @@ class perfilEstudianteController extends Controller
             'apellidos_usuario_accion' => $data['apellidos'],
             'email_usuario_accion'     => $data['email'],
             'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
-            ]); 
+            ]); */
 
         return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
     }

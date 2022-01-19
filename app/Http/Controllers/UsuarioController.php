@@ -24,10 +24,8 @@ class UsuarioController extends Controller
     
     public function index(){
 
-        $usuario = User::orderBy('created_at', 'desc')->paginate(5);
-        //dd($usuario);
-        //$rol = User::roles_name();
-        //dd($roles_nombres);
+        $usuario = User::all();
+
         return view('usuario.index', compact('usuario'));
     }  
 

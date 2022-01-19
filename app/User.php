@@ -7,11 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Role;
 use DB;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use softDeletes;
+    use SoftDeletes;
     use Notifiable;
 
     /**
@@ -22,7 +22,13 @@ class User extends Authenticatable
     protected $primarykey = 'cedula';
 
     protected $fillable = [
-        'name', 'apellidos_user', 'tipo_documento_user', 'cedula', 'email', 'rol_id', 'password',
+        'name', 
+        'apellidos_user', 
+        'tipo_documento_user', 
+        'cedula', 
+        'email', 
+        'rol_id', 
+        'password',
     ];
 
 
@@ -54,7 +60,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->hasOne(Role::class, 'id','rol_id');
     }
 
     public function authorizeRoles($roles)

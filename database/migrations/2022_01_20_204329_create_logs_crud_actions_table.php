@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RecordsActionsUpdateDelete extends Migration
+class CreateLogsCrudActionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class RecordsActionsUpdateDelete extends Migration
      */
     public function up()
     {
-        Schema::create('records_actions_update_delete', function (Blueprint $table) {
+        Schema::create('logs_crud_actions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('identificacion');
             $table->string('nombres');
@@ -22,9 +22,6 @@ class RecordsActionsUpdateDelete extends Migration
             $table->string('rol');
             $table->string('ip');
             $table->string('id_usuario_accion');
-            $table->string('nombres_usuario_accion');
-            $table->string('apellidos_usuario_accion');
-            $table->string('email_usuario_accion');
             $table->string('actividad_realizada');
             $table->timestamps();
         });
@@ -37,6 +34,6 @@ class RecordsActionsUpdateDelete extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('records_actions_update_delete');
+        Schema::dropIfExists('logs_crud_actions');
     }
 }

@@ -40,12 +40,14 @@
                                         <td>{{ $estudiante->email}}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
                                         <td >
+                                        @if(auth()->user()->rol_id == 4)   
                                             <div class="row">                                  
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
                                                 </div>
+
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Editar Informacion "href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
+                                                    <a title="Editar Informacion" href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
                                                 </div>
                                                 
                                                 <div class="col-xs-4 col-sm-4">
@@ -54,10 +56,18 @@
                                                     <a onclick="document.getElementById('myform').submit()"title="Eliminar Usuario" type="submit" style="color: red;border: none;" class="fa fa-trash"></a>
                                                     {!!Form::close()!!}    
                                                 </div>
+                                                @else
+                                                <div class="col-xs-4 col-sm-4">
+                                                    <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
+                                                </div>
                                             </div>
+                                           
+
                                             @csrf
-                                        </td>
+                                      </td>
                 </tr>
+                
+                @endif
             @endforeach    
         </tbody>
 

@@ -20,7 +20,9 @@ class SocioeconomicData extends Model
         'id_residence_time',
         'id_housing_type',
         'id_health_regime',
+        'url_health_regime',
         'sisben_category',
+        'url_sisben_category',
         'id_benefits',
         'household_people',
         'economic_possition',
@@ -29,8 +31,10 @@ class SocioeconomicData extends Model
         'internet_home',
         'sex_document_identidad',
         'id_social_conditions',
+        'url_social_conditions',
         'id_disability',
         'id_ethnicity',
+        'url_ethnicity',
     ];
 
 

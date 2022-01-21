@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RecordsActionsUpdateDelete extends Model
+class LogsCrudActions extends Model
 {
-    protected $table = 'records_actions_update_delete';
+    protected $table = 'logs_crud_actions';
 
     protected $primarykey = 'id';
 
     protected $fillable = [
+        'id',
         'identificacion',
         'nombres',
         'apellidos',
@@ -18,9 +19,7 @@ class RecordsActionsUpdateDelete extends Model
         'rol',
         'ip',
         'id_usuario_accion',
-        'nombres_usuario_accion',
-        'apellidos_usuario_accion',
-        'email_usuario_accion',
         'actividad_realizada',
     ];
+
 }

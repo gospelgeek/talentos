@@ -21,6 +21,7 @@ class perfilEstudiante extends Model
         'lastname',
         'id_document_type',
         'document_number',
+        'url_document_type',
         'document_expedition_date',
         'email',
         'birth_date',
@@ -31,6 +32,8 @@ class perfilEstudiante extends Model
         'phone',
         'id_neighborhood',
         'direction',
+        'id_group',
+        'id_cohort',
         'id_tutor',
     ];
 
@@ -58,6 +61,10 @@ class perfilEstudiante extends Model
         return $this->hasOne(Tutor::class, 'document_number', 'id_tutor');
     }
 
+    public function group(){
+        return $this->hasOne(Group::class, 'id', 'id_group');
+    }
+
     public function socioeconomicdata(){
 
         return $this->hasOne(SocioeconomicData::class, 'id_student', 'id');
@@ -66,6 +73,11 @@ class perfilEstudiante extends Model
     public function academicdata(){
 
         return $this->hasOne(AcademicDates::class, 'id_student', 'id');
+    }
+
+    public function admissionScores(){
+
+        return $this->hasOne(AdmissionScores::class, 'id_student', 'id');
     }
 }
 

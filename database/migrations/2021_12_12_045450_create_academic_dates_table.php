@@ -19,7 +19,9 @@ class CreateAcademicDatesTable extends Migration
             $table->integer('id_institution_type');
             $table->integer('year_graduation');
             $table->string('bachelor_title');
+            $table->string('url_academic_support');
             $table->date('icfes_date');
+            $table->string('url_icfes');
             $table->string('snp_register');
             $table->integer('icfes_score');
             $table->char('graduate', 2);

@@ -67,6 +67,5 @@ class Kernel extends HttpKernel
         'redirigir'       => \App\Http\Middleware\RedirigirMiddleware::class,
         'sistemas' => \App\Http\Middleware\SistemasMiddleware::class,
         'socioeducativo' => \App\Http\Middleware\SocioeducativoMiddleware::class,
-        'academico' => \App\Http\Middleware\AcademicoMiddleware::class,
     ];
 }

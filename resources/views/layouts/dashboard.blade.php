@@ -265,9 +265,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js')!!}
 <!-- AdminLTE App -->
 {!!Html::script('/dashboard/dist/js/adminlte.min.js')!!}
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE for demo purposes
 {!!Html::script('/dashboard/dist/js/demo.js')!!}
-
+ -->
 
 {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
 

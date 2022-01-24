@@ -5,13 +5,56 @@
 
 @csrf
 <div id="container-main">
+	<div class="sticky-top">
+		<div class="container-fluid">
+		<div class="card card-success">
+			<div class="card-body">
+				<div class="marco_foto" >	
+					<img  src="http://www.uterra.com/archcodfuente/demos_img/imagen07.jpg" alt="FOTO ESTUDAINTE"/>		
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="form-group">             
+           					{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly'])!!}
+						</div>
+					</div>
+				</div>
+				<div class="row" >
+					<div class="col-sm-1">
+						{!!Form::select('documento',$documento,$verDatosPerfil->documenttype->id,['class'=>'form-control','required','readonly','disabled'])!!}	
+					</div>						
+					<div class="col-sm-3">
+						{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly'])!!}
+					</div>
+					<div class="col-sm-1">
+						{!!Form::text('edad',$edad,['class'=>'form-control','readonly'])!!}
+					</div>
+					<div class="col-sm-4">
+						{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly'])!!}
+					</div>
+					<div class="col-sm-3">
+						{!!Form::text('e-mail',$verDatosPerfil->cellphone,['class'=>'form-control','readonly'])!!}
+					</div>
+				</div>
+				<br>
+				<div class="row">						
+					<div class="col-sm-2">
+						{!!Form::text('e-mail','Grupo',['class'=>'form-control','readonly'])!!}
+					</div>
+					<div class="col-sm-2">
+						{!!Form::text('e-mail','Cohorte',['class'=>'form-control','readonly'])!!}
+					</div>
+				</div>	
+			</div>	
+		</div>	
+		</div>
+	</div>
+	<br>
+
 	<div class="accordion-container">
 		<a href="#" id="titulo-1" class="accordion-titulo">Datos Generales<span class="toggle-icon"></span></a>
 		<div id="contenido-1" class="accordion-content">
 			<div class="form-group">
-				<div class="marco_foto" >	
-					<img  src="http://www.uterra.com/archcodfuente/demos_img/imagen07.jpg" alt="FOTO ESTUDAINTE"/>		
-				</div>
     			<div class="row">
             		<div class="col-xs-3 col-md-2">
             			<p style="text-align: right;"><label for="nombres">Nombres *</label></p>
@@ -196,7 +239,7 @@
 	</div>
 
 	<div class="accordion-container">
-		<a href="#" id="titulo-2" class="accordion-titulo-2">Datos Academicos<span class="toggle-icon"></span></a>
+		<a href="#" id="titulo-2" class="accordion-titulo-2">Datos Academicos Previos<span class="toggle-icon"></span></a>
 		<div id="contenido-2" class="accordion-content-2">
 			<div class="form-group">
     			<div class="row">

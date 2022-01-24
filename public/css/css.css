@@ -133,7 +133,8 @@ img{
 	font-size: 38px;
 	font-weight:bold;
 }
-.accordion-content {	
+.accordion-content {
+	display: none;	
 	padding: 20px;
 	overflow: auto;
 }

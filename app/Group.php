@@ -13,8 +13,18 @@ class Group extends Model
     protected $fillable = [
         'id',
         'name',
-        'id_student',
         'id_cohort',
         'admission_date',
     ];
+
+    /**
+     * Relacion con los  datos que se tiene de grupo  
+     * con la tabla cohorte
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Cohort>
+     */
+    public function cohort(){
+        return $this->hasOne(Cohort::class, 'id', 'id_cohort');
+    }
 }

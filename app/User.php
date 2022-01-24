@@ -53,11 +53,25 @@ class User extends Authenticatable
     protected $dates = ['delete_at'];
 
     //relacion uno a uno con tipo documento
+    /**
+     * Relacion con los  datos que se tiene de User  
+     * con la tabla DocumentType
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<DocumentType>
+     */
     public function documenttype(){
 
         return $this->hasOne(DocumentType::class, 'id', 'tipo_documento_user');
     }
 
+    /**
+     * Relacion con los  datos que se tiene de User  
+     * con la tabla Role
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Role>
+     */
     public function roles()
     {
         return $this->hasOne(Role::class, 'id','rol_id');

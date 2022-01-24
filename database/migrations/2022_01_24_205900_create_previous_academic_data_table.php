@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAcademicDatesTable extends Migration
+class CreatePreviousAcademicDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAcademicDatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('academic_dates', function (Blueprint $table) {
+        Schema::create('previous_academic_data', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_student');
             $table->integer('id_institution_type');
@@ -21,11 +21,11 @@ class CreateAcademicDatesTable extends Migration
             $table->string('bachelor_title');
             $table->string('url_academic_support');
             $table->date('icfes_date');
-            $table->string('url_icfes');
+            //$table->string('url_icfes');
             $table->string('snp_register');
             $table->integer('icfes_score');
-            $table->char('graduate', 2);
-            $table->char('graduate_schooling', 2);
+            $table->char('graduate', 1);
+            $table->string('graduate_schooling');
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ class CreateAcademicDatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academic_dates');
+        Schema::dropIfExists('previous_academic_data');
     }
 }

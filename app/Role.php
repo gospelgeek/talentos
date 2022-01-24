@@ -16,6 +16,13 @@ class Role extends Model
         'descripcion', 
     ];
 
+    /**
+     * Relacion con los  datos que se tiene de Role  
+     * con la tabla User
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<User>
+     */
     public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();

@@ -20,8 +20,8 @@ class CreateStudentProfileTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->integer('id_document_type');
-            $table->string('document_number');
             $table->string('url_document_type');
+            $table->string('document_number');
             $table->date('document_expedition_date');
             $table->string('email')->unique();
             $table->date('birth_date');
@@ -34,8 +34,8 @@ class CreateStudentProfileTable extends Migration
             $table->integer('id_commune');
             $table->integer('id_neighborhood');
             $table->string('direction');
-            $table->integer('id_group');
-            $table->integer('id_cohort');
+            //$table->integer('id_group');
+            //$table->integer('id_cohort');
             $table->integer('id_tutor');
             $table->softDeletes();
             $table->timestamps();

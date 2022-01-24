@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
-use App\AcademicDates;
+use App\PreviousAcademicData;
 use App\LogsCrudActions;
 use App\User;
 use App\Gender;
@@ -89,9 +89,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -121,9 +118,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $verDatosPerfil['id'],
@@ -185,9 +179,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -217,7 +208,7 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosAcademicos(DatosAcademicosRequest $request, $id) {
         //dd('gsgsdgsd');
-        $data = AcademicDates::findOrFail($id);
+        $data = PreviousAcademicData::findOrFail($id);
         //dd($data);
         $data->update($request->validated());
 
@@ -228,9 +219,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -277,9 +265,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -329,9 +314,6 @@ class perfilEstudianteController extends Controller
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],

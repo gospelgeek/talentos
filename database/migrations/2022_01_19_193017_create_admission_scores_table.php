@@ -19,15 +19,15 @@ class CreateAdmissionScoresTable extends Migration
             $table->integer('icfes_score_p1');
             $table->integer('vulnerability');
             $table->integer('formula');
-            $table->char('rural_zone', 1);
-            $table->char('lgtbiq', 1);
-            $table->char('disability', 1);
-            $table->char('victim_conflict', 1);
-            $table->char('social_reintegration', 1);
+            $table->integer('rural_zone');
+            $table->integer('lgtbiq');
+            $table->integer('disability');
+            $table->integer('victim_conflict');
+            $table->integer('social_reintegration');
             $table->integer('strata_1_2');
             $table->integer('sisben_a_b_c');
-            $table->char('afro', 1);
-            $table->char('indigenous', 1);
+            $table->integer('afro');
+            $table->integer('indigenous');
             $table->timestamps();
         });
     }

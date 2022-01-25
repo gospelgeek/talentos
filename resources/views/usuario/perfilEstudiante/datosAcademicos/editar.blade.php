@@ -5,9 +5,9 @@
 
 	@include('vistasParciales.validacionErrores')
 	
-	<form action="{{ route("update_datos_academicos", $editarAcademicos->id)}}" method="POST"> 
+	<form action="{{ route("usuario.update_datos_academicos", $editarAcademicos->id)}}" method="POST"> 
 			@method('PUT')
-			@include('perfilEstudiante.datosAcademicos._formulario_academico')
+			@include('usuario.perfilEstudiante.datosAcademicos._formulario_academico')
 	</form>
 
 @endsection

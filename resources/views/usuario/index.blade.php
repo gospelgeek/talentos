@@ -2,7 +2,7 @@
 @section('title', 'Index')
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="card">  
         
         
@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_usuario')}}">Crear Usuario</a>            
+                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_usuario')}}">Crear Nuevo Usuario</a>            
                 </div>
             </div>
 
@@ -42,12 +42,6 @@
                                                 </div>
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Editar Informacion "href="{{ route('editar_usuario', $usuarios->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
-                                                </div>
-                                                <div class="col-xs-4 col-sm-4">
-                                                    {!!Form::open(['id'=>'myform','route'=>['eliminar_usuario', $usuarios->id], 'method'=>'delete'])!!}
-                                                    {{csrf_field()}}
-                                                    <a onclick="document.getElementById('myform').submit()"title="Eliminar Usuario" type="submit" style="color: red;border: none;" class="fa fa-trash"></a>
-                                                    {!!Form::close()!!}    
                                                 </div>
                                         </div> 
                                     @csrf                   

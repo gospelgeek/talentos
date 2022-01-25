@@ -1,5 +1,11 @@
-@csrf 
+@extends('layouts.secundario')
+@section('title', 'Ver datos Academicos')
+
+@section('content')
+
+@csrf
 <div class="container">
+
 	<div class="form-group">
     		<div class="row">
             	<div class="col-xs-3 col-md-2">
@@ -8,7 +14,7 @@
 				<div class="col-xs-4 col-md-2">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $editarAcademicos->previousacademicdata->id_student) }}">
+							<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $datos->academicdata->id_student) }}">
 
 							@error('id_student')
 				    			<small class="text-danger">{{ $message }}</small>
@@ -25,17 +31,17 @@
 				<div class="col-xs-4 col-md-2">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							{!!Form::select('id_institution_type', $tipo_institucion,$editarAcademicos->previousacademicdata->id_institution_type,['placeholder'=>'Ocupacion','class'=>'form-control','required'])!!}
+							<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $datos->academicdata->institutiontype->name) }}">
 						</div>
 					</div>	
             	</div>
             	<div class="col-xs-2 col-md-2">
-            		<p style="text-align: right"><label for="year_graduation">A&ntilde;o Graduacion</label></p>
+            		<p style="text-align: right"><label for="year_graduation">A?o Graduacion</label></p>
             	</div>
 				<div class="col-xs-2 col-md-2">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input   class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $editarAcademicos->previousacademicdata->year_graduation) }}">
+							<input  readonly class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $datos->academicdata->year_graduation) }}">
 						</div>
 					</div>  	
             	</div>
@@ -52,7 +58,7 @@
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
 								
-							<input   class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$editarAcademicos->previousacademicdata->bachelor_title) }}">
+							<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$datos->academicdata->bachelor_title) }}">
 						
 						</div>
 					</div>
@@ -64,7 +70,7 @@
 				<div class="col-xs-2 col-md-2">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-							<input  class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $editarAcademicos->previousacademicdata->icfes_date) }}">
+							<input readonly class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $datos->academicdata->icfes_date) }}">
 						</div>
 					</div>
                 	
@@ -75,7 +81,7 @@
 			<div class="col-xs-2 col-md-2">
 				<div class="row">
 					<div class="col-xs-4 col-md-12">
-						<input   class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $editarAcademicos->previousacademicdata->snp_register) }}">
+						<input  readonly class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $datos->academicdata->snp_register) }}">
 					</div>
 				</div>   	
             </div>
@@ -90,7 +96,7 @@
 				<div class="col-xs-2 col-md-2">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input  class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $editarAcademicos->previousacademicdata->icfes_score) }}">
+							<input readonly class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $datos->academicdata->icfes_score) }}">
 						</div>
 					</div>
                 	
@@ -101,7 +107,7 @@
 				<div class="col-xs-2 col-md-2">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input  class="form-control" type="text" name="graduate" id="graduate" value="{{ old('graduate', $editarAcademicos->previousacademicdata->graduate) }}">
+							<input readonly class="form-control" type="text" name="graduate" id="graduate" value="{{ old('graduate', $datos->academicdata->graduate) }}">
 						</div>
 					</div>
                 	
@@ -113,7 +119,7 @@
 				<div class="col-xs-2 col-md-2">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input  class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $editarAcademicos->previousacademicdata->graduate_schooling) }}">
+							<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $datos->academicdata->graduate_schooling) }}">
 						</div>
 					</div>
                 	
@@ -122,7 +128,7 @@
 		</div>
 
 			<input class="btn btn-primary" type="button" onclick="history.back()" name="volver atrás" value="Regresar">
-			
-            <input class="btn btn-primary"  type="submit" value="Guardar Datos"></input>
-            				
+			<a type="button" href="{{ route('usuario.editar_datos_academicos', $datos->id) }}" class="btn btn-primary">Actualizar Datos</a>
+
 </div>
+@endsection

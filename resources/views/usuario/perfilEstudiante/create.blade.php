@@ -1,5 +1,11 @@
-@csrf 
-<div class="container">
+@extends('layouts.app')
+
+@section('content')
+
+	@include('vistasParciales.validacionErrores')
+
+	<form action="{{ route("usuario.store_estudiante")}}" method="POST"> 
+		<div class="container">
 		<div class="form-group">
     		<div class="row">
             	<div class="col-xs-3 col-md-3">
@@ -41,7 +47,7 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12"> 
-							{!!Form::select('id_document_type',$tipo_documento, $editarEstudiante->documenttype->id,['id'=>'id_document_type','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
+							{!!Form::select('id_document_type',$tipo_documento, null,['id'=>'id_document_type','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
             	</div>
@@ -80,7 +86,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							{!!Form::select('depNacimiento',$depNacimiento, $editarEstudiante->birthcity->birthdepartament->id,['id'=>'depNacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
+							{!!Form::select('depNacimiento',$depNacimiento, null,['id'=>'depNacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	
@@ -97,7 +103,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							{!!Form::select('id_birth_city',$muni_nacimiento, $editarEstudiante->birthcity->id,['id'=>'muni_nacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
+							{!!Form::select('id_birth_city',$muni_nacimiento, null,['id'=>'muni_nacimiento','class'=>'form-control','required','placeholder'=>'Seleccionar tipo documento' ,'style'=>' '])!!}
 						</div>
 					</div>
                 	
@@ -128,7 +134,7 @@
 				<div class="col-xs-4 col-md-3">
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('sex',$sexo, $editarEstudiante->sex,['id'=>'sex','class'=>'form-control','required',
+								{!!Form::select('sex',$sexo, null,['id'=>'sex','class'=>'form-control','required',
 									'placeholder'=>'Seleccionar sexo' ,'style'=>' '])!!}
 						</div>
 					</div>
@@ -141,7 +147,7 @@
 				<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('gender', $genero,$editarEstudiante->gender->id,['placeholder'=>'Genero','class'=>'form-control','required'])!!}
+								{!!Form::select('gender', $genero,null,['placeholder'=>'Genero','class'=>'form-control','required'])!!}
 						</div>
 					</div>
             	</div>		
@@ -156,7 +162,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input class="form-control" type="text" name="id_neighborhood" id="id_neighborhood" value="{{ old('id_neighborhood', $editarEstudiante->neighborhood->name) }}">
+							<input class="form-control" type="text" name="id_neighborhood" id="id_neighborhood" value="{{ old('id_neighborhood') }}">
 						</div>
 					</div>
                 	
@@ -205,6 +211,9 @@
             	</div>
             </div>
 		</div>
-		<input class="btn btn-primary" type="button" onclick="history.back()" name="volver atrás" value="Regresar">						
-		<input type="submit" value="Guardar Datos" class="btn btn-primary">
+		<a class="btn btn-primary" type="button" href="{{ route('usuario.estudiante')}}" >Regresar</a>						
+		
 </div>
+
+	</form>
+@endsection

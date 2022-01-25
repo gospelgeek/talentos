@@ -192,8 +192,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </li>
         -->
         <li class="nav-item">
+          <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>
+          
+        </li>
+        <li class="nav-item">
           <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
-          </a>
         </li>
       </ul>
     </div>
@@ -262,9 +265,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js')!!}
 <!-- AdminLTE App -->
 {!!Html::script('/dashboard/dist/js/adminlte.min.js')!!}
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE for demo purposes
 {!!Html::script('/dashboard/dist/js/demo.js')!!}
-
+ -->
 
 {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
 

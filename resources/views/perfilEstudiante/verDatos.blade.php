@@ -249,7 +249,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->academicdata->id_student) }}">
+								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->previousacademicdata->id_student) }}">
 
 								@error('id_student')
 				    				<small class="text-danger">{{ $message }}</small>
@@ -263,7 +263,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->academicdata->institutiontype->name) }}">
+								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->previousacademicdata->institutiontype->name) }}">
 							</div>
 						</div>	
             		</div>
@@ -273,7 +273,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input  readonly class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $verDatosPerfil->academicdata->year_graduation) }}">
+								<input  readonly class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $verDatosPerfil->previousacademicdata->year_graduation) }}">
 							</div>
 						</div>  	
             		</div>
@@ -288,7 +288,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12"> 								
-								<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$verDatosPerfil->academicdata->bachelor_title)}}">					
+								<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$verDatosPerfil->previousacademicdata->bachelor_title)}}">					
 							</div>
 						</div>
             		</div>
@@ -298,7 +298,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $verDatosPerfil->academicdata->icfes_date) }}">
+								<input readonly class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $verDatosPerfil->previousacademicdata->icfes_date) }}">
 							</div>
 						</div>                	
             		</div>
@@ -308,7 +308,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $verDatosPerfil->academicdata->snp_register) }}">
+								<input  readonly class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $verDatosPerfil->previousacademicdata->snp_register) }}">
 							</div>
 						</div>   	
             		</div>
@@ -323,7 +323,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $verDatosPerfil->academicdata->icfes_score) }}">
+								<input readonly class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $verDatosPerfil->previousacademicdata->icfes_score) }}">
 							</div>
 						</div>               	
             		</div>
@@ -333,7 +333,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="graduate" id="graduate" value="{{ old('graduate', $verDatosPerfil->academicdata->graduate) }}">
+								<input readonly class="form-control" type="text" name="graduate" id="graduate" value="{{ old('graduate', $verDatosPerfil->previousacademicdata->graduate) }}">
 							</div>
 						</div>                	
             		</div>
@@ -343,7 +343,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $verDatosPerfil->academicdata->graduate_schooling) }}">
+								<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $verDatosPerfil->previousacademicdata->graduate_schooling) }}">
 							</div>
 						</div>                	
             		</div>
@@ -543,7 +543,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="id_social_conditions" id="id_social_conditions" value="{{ old('id_social_conditions', $verDatosPerfil->socioeconomicdata->socialconditions->name) }}">
+								<input readonly class="form-control" type="text" name="id_social_conditions" id="id_social_conditions" value="{{ $verDatosPerfil->socioeconomicdata->socialconditions ? $verDatosPerfil->socioeconomicdata->socialconditions->name : null }}">
 							</div>
 						</div>                	
             		</div>

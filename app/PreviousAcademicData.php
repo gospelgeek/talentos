@@ -23,4 +23,17 @@ class PreviousAcademicData extends Model
         'graduate',
         'graduate_schooling',
     ];
+
+    /**
+     * Relacion con los  datos que se tiene de previos_academic_date con la tabla institution_type 
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<SocioeconomicData>
+    */
+
+    public function institutiontype(){
+
+        return $this->hasOne(InstitutionType::class, 'id', 'id_institution_type');
+    }
+    
 }

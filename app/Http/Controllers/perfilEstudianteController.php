@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -31,6 +30,7 @@ use App\Http\Controllers\Auth;
 use Carbon\Carbon;
 Use Session;
 Use Redirect;
+
 
 class perfilEstudianteController extends Controller
 
@@ -109,6 +109,10 @@ class perfilEstudianteController extends Controller
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
+        $documento = DocumentType::pluck('name','id');
+
+        $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
+
         //dd($verDatosPerfil->gender);
 
         $ip = User::getRealIP();
@@ -124,7 +128,8 @@ class perfilEstudianteController extends Controller
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
             ]);
 
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento'));   
+
+        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento','documento','edad'));   
     }
 
     public function verDatosSocieconomicos($id) {

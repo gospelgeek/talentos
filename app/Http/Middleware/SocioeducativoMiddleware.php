@@ -27,25 +27,13 @@ class SocioeducativoMiddleware
     {
          if(\Auth::check())
         {  
-            if($this->auth->user()->rol_id == '2')
+            if($this->auth->user()->rol_id == '2' || $this->auth->user()->rol_id == '3' || $this->auth->user()->rol_id == '4' || $this->auth->user()->rol_id == '5')
             {
                 //dd('fdff');
                 return $next($request);              
             }
             if($this->auth->user()->rol_id == '1'){
                 return Redirect::to('/usuario');
-                Session::flash('message-error','Sin privilegios para Ingresar');                
-            }
-             if($this->auth->user()->rol_id == '3'){
-                return Redirect::to('/estudiante');
-                Session::flash('message-error','Sin privilegios para Ingresar');                
-            }
-            if($this->auth->user()->rol_id == '4'){
-                return Redirect::to('/estudiante');
-                Session::flash('message-error','Sin privilegios para Ingresar');                
-            }
-            if($this->auth->user()->rol_id == '5'){
-                return Redirect::to('/estudiante');
                 Session::flash('message-error','Sin privilegios para Ingresar');                
             }
 

@@ -33,20 +33,9 @@ class RedirigirMiddleware
                return Redirect::to('usuario');                
             }
 
-            if($this->auth->user()->rol_id == '2'){
+            if(($this->auth->user()->rol_id == '2') || ($this->auth->user()->rol_id == '3') || ($this->auth->user()->rol_id == '4') || ($this->auth->user()->rol_id == '5')){
                 return Redirect::to('estudiante');
                 //dd('entrod');
-            }
-
-            if($this->auth->user()->rol_id == '3'){
-               return Redirect::to('estudiante');               
-            }
-
-            if($this->auth->user()->rol_id == '4'){
-                return Redirect::to('estudiante');               
-            }
-            if($this->auth->user()->rol_id == '5'){
-               return Redirect::to('estudiante');               
             }
                                    
         }else{

@@ -72,13 +72,11 @@ class User extends Authenticatable
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Role>
      */
-    public function roles()
-    {
+    public function roles(){
         return $this->hasOne(Role::class, 'id','rol_id');
     }
 
-    public function authorizeRoles($roles)
-    {
+    public function authorizeRoles($roles){
         abort_unless($this->hasAnyRole($roles), 401);
         return true;
     }
@@ -106,8 +104,7 @@ class User extends Authenticatable
         return false;
     }*/
 
-    public static function getRealIP()
-    {
+    public static function getRealIP(){
 
         if (isset($_SERVER["HTTP_CLIENT_IP"]))
         {
@@ -132,10 +129,6 @@ class User extends Authenticatable
         else
         {
         return $_SERVER["REMOTE_ADDR"];
+        }
     }
-
-}
-
-
-
 }

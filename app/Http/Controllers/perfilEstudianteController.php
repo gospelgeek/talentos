@@ -30,6 +30,7 @@ use App\Http\Controllers\Auth;
 use Carbon\Carbon;
 Use Session;
 Use Redirect;
+use DB;
 
 
 class perfilEstudianteController extends Controller

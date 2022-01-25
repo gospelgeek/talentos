@@ -1,4 +1,4 @@
-@extends('layouts.secundario')
+@extends('layouts.dashboard')
 @section('title', 'Ver Datos Usuario')
 
 @section('content')

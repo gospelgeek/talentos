@@ -105,8 +105,27 @@ class perfilEstudianteController extends Controller
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         //dd($verDatosPerfil);  
         $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Fenemino',
+        $sexo = array('F' => 'Femenino',
                             'M' => 'Masculino' );
+        if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
+           $sexo1 = "Masculino";     
+        }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
+            $sexo1 = "Femenino"; 
+        }
+
+        if($verDatosPerfil->socioeconomicdata->internet_home == 0){
+            $internet_home = "SI";
+        }elseif($verDatosPerfil->socioeconomicdata->internet_home == 1){
+            $internet_home = "NO";
+
+        }
+
+        if($verDatosPerfil->socioeconomicdata->internet_zon == 0){
+            $internet_zone = "SI";
+        }elseif($verDatosPerfil->socioeconomicdata->internet_zon == 1){
+            $internet_zone = "NO";
+
+        }
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
@@ -130,7 +149,7 @@ class perfilEstudianteController extends Controller
             ]);
 
 
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento','documento','edad'));   
+        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
     }
 
     public function verDatosSocieconomicos($id) {

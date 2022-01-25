@@ -1,4 +1,4 @@
-@extends('layouts.secundario')
+@extends('layouts.dashboard')
 @section('title', 'Ver Datos Usuario')
 
 @section('content')
@@ -79,7 +79,7 @@
 				<div class="col-xs-12 col-md-3">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							<input  readonly class="form-control" type="date" name="email" id="email" value="{{ old('email', $verUsuario->email) }}">
+							<input  readonly class="form-control" type="email" name="email" id="email" value="{{ old('email', $verUsuario->email) }}">
 						</div>
 					</div>
                 	

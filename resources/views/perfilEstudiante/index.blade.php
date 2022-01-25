@@ -10,11 +10,13 @@
         
         
     <div class="card-body">
+        @if(auth()->user()->rol_id == 4)
         <div class="row">
             <div  class="col-xs-12 col-md-3 col-sm-3">
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
         </div>
+        @endif
 
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
@@ -26,6 +28,8 @@
                 <td>Sexo</td>
                 <td>Email</td>
                 <td>Telefono</td>
+                <td>Grupo</td>
+                <td>Cohorte</td>
                 <td>Acciones</td>
             </tr>
         </thead> 
@@ -39,25 +43,30 @@
                                         <td>{{ $estudiante->sex}}</td>
                                         <td>{{ $estudiante->email}}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
+                                        <td></td>
+                                        <td></td>
                                         <td >
+                                        @if(auth()->user()->rol_id == 4)   
                                             <div class="row">                                  
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
                                                 </div>
+
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Editar Informacion "href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
+                                                    <a title="Editar Informacion" href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
                                                 </div>
-                                                
+                                                @else
                                                 <div class="col-xs-4 col-sm-4">
-                                                    {!!Form::open(['id'=>'myform','route'=>['delete_estudiante', $estudiante->id], 'method'=>'delete'])!!}
-                                                    {{csrf_field()}}
-                                                    <a onclick="document.getElementById('myform').submit()"title="Eliminar Usuario" type="submit" style="color: red;border: none;" class="fa fa-trash"></a>
-                                                    {!!Form::close()!!}    
+                                                    <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
                                                 </div>
                                             </div>
+                                           
+
                                             @csrf
-                                        </td>
+                    </td>
                 </tr>
+                
+                @endif
             @endforeach    
         </tbody>
 

@@ -29,7 +29,7 @@ class UsuarioController extends Controller
         return view('usuario.index', compact('usuario'));
     }  
 
-    public function crear(){
+        public function crear(){
         $roles =  Role::pluck('nombre_rol','id');
         return view('usuario.crear', compact('roles'), ['editarUsuario' => new User()]);
     } 

@@ -103,14 +103,7 @@
             	<div class="col-xs-3 col-md-3">
 					<div class="row">
 						<div class="col-xs-4 col-md-12">
-               			{!!Form::select('rol_id',['1' => 'Sistemas',
-        														  '2'   => 'Socioeducativo',
-       															  '3' => 'Academico',
-       															  '4' => 'Seguimiento Administrativo',
-       															  '5' => 'reportes'],
-								$editarUsuario->rol_id,['class'=>'form-control select2',
-								'placeholder'=>'Seleccione Rol','style'=>'width: 100%;','required']
-                                )!!}
+               	{!!Form::select('rol_id',$roles, $editarUsuario->roles ? $editarUsuario->roles->id : null,(['editarUsuario'=>'roles','class' => 'form-control ','style'=>'width: 100%;','placeholder'=>'Seleccionar Rol:','required']))!!}
 						</div>
 					</div>
             	</div>

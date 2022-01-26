@@ -7,6 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
   <title>@yield('title')</title>
 
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
@@ -29,9 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="../../index3.html" class="navbar-brand">
-      <!--  <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-light">Talentos</span>
+      <a href="estudiante" class="navbar-brand">
+      <img src="../img/logo.png" alt="Logo" class="brand-image" style="">
+        <span class="brand-text font-weight-light">PNA</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="estudiante" class="nav-link">Home</a>
+            
           </li>
           <!--
           <li class="nav-item">
@@ -191,6 +192,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         </li>
         -->
+        @if(auth()->user()->rol_id == 1)
+        <ul class="navbar-nav mr-auto">
+                        <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
+                        <a href="{{route('usuario.estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+        </ul>
+        @endif
         <li class="nav-item">
           <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>
           

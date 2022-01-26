@@ -5,50 +5,46 @@
 
 @csrf
 <div id="container-main">
-	<div class="sticky-top">
-		<div class="container-fluid">
-		<div class="card card-success">
-			<div class="card-body">
-				<div class="marco_foto" >	
-					<img  src="http://www.uterra.com/archcodfuente/demos_img/imagen07.jpg" alt="FOTO ESTUDAINTE"/>		
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="form-group">             
-           					{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly'])!!}
-						</div>
-					</div>
-				</div>
-				<div class="row" >
-					<div class="col-sm-1">
-						{!!Form::select('documento',$documento,$verDatosPerfil->documenttype->id,['class'=>'form-control','required','readonly','disabled'])!!}	
-					</div>						
-					<div class="col-sm-3">
-						{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly'])!!}
-					</div>
-					<div class="col-sm-1">
-						{!!Form::text('edad',$edad,['class'=>'form-control','readonly'])!!}
-					</div>
-					<div class="col-sm-4">
-						{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly'])!!}
-					</div>
-					<div class="col-sm-3">
-						{!!Form::text('e-mail',$verDatosPerfil->cellphone,['class'=>'form-control','readonly'])!!}
-					</div>
-				</div>
-				<br>
-				<div class="row">						
-					<div class="col-sm-2">
-						{!!Form::text('e-mail','Grupo',['class'=>'form-control','readonly'])!!}
-					</div>
-					<div class="col-sm-2">
-						{!!Form::text('e-mail','Cohorte',['class'=>'form-control','readonly'])!!}
-					</div>
-				</div>	
-			</div>	
-		</div>	
-		</div>
+	<div class="row">		
+		<img  src="{{$verDatosPerfil->foto}}" class="avatar" alt="FOTO ESTUDIANTE">	
 	</div>
+	<br>	
+	<div class="sticky-top">	
+		<div class="row">
+			<div class="col-sm-12">		             
+           		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' => 'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
+			</div>
+		</div>
+	</div>				
+	<br>
+	<div class="row" >
+		<div class="col-sm-1">
+			{!!Form::select('documento',$documento,$verDatosPerfil->documenttype->id,['class'=>'form-control','required','readonly','disabled','style' =>'text-align: left;'])!!}	
+		</div>						
+		<div class="col-sm-3">
+			{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly','disabled'])!!}
+		</div>
+			{!!Form::label('edad','Edad:')!!}
+		<div class="col-sm-1">					
+			{!!Form::text('edad',$edad,['class'=>'form-control','readonly','disabled'])!!}
+		</div>
+		<div class="col-sm-4">
+			{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly','disabled'])!!}
+		</div>				
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-3">
+			{!!Form::text('e-phone',$verDatosPerfil->cellphone,['class'=>'form-control','readonly','disabled'])!!}
+		</div>						
+		<div class="col-sm-2">
+			{!!Form::text('grupo','Grupo',['class'=>'form-control','readonly','disabled'])!!}
+		</div>
+		<div class="col-sm-2">
+			{!!Form::text('cohorte','Cohorte',['class'=>'form-control','readonly','disabled'])!!}
+		</div>
+	</div>	
+
 	<br>
 
 	<div class="accordion-container">
@@ -249,7 +245,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->academicdata->id_student) }}">
+								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->previousacademicdata->id_student) }}">
 
 								@error('id_student')
 				    				<small class="text-danger">{{ $message }}</small>
@@ -263,17 +259,17 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->academicdata->institutiontype->name) }}">
+								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->previousacademicdata->institutiontype->name) }}">
 							</div>
 						</div>	
             		</div>
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="year_graduation">A?o Graduacion</label></p>
+            			<p style="text-align: right"><label for="year_graduation">A&ntilde;o Graduacion</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input  readonly class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $verDatosPerfil->academicdata->year_graduation) }}">
+								<input  readonly class="form-control" type="text" name="year_graduation" id="year_graduation" value="{{ old('year_graduation', $verDatosPerfil->previousacademicdata->year_graduation) }}">
 							</div>
 						</div>  	
             		</div>
@@ -288,7 +284,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12"> 								
-								<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$verDatosPerfil->academicdata->bachelor_title)}}">					
+								<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$verDatosPerfil->previousacademicdata->bachelor_title)}}">					
 							</div>
 						</div>
             		</div>
@@ -298,7 +294,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $verDatosPerfil->academicdata->icfes_date) }}">
+								<input readonly class="form-control" type="date" name="icfes_date" id="icfes_date" value="{{ old('icfes_date', $verDatosPerfil->previousacademicdata->icfes_date) }}">
 							</div>
 						</div>                	
             		</div>
@@ -308,7 +304,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $verDatosPerfil->academicdata->snp_register) }}">
+								<input  readonly class="form-control" type="text" name="snp_register" id="snp_register" value="{{ old('snp_register', $verDatosPerfil->previousacademicdata->snp_register) }}">
 							</div>
 						</div>   	
             		</div>
@@ -323,27 +319,17 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $verDatosPerfil->academicdata->icfes_score) }}">
+								<input readonly class="form-control" type="text" name="icfes_score" id="icfes_score" value="{{ old('icfes_score', $verDatosPerfil->previousacademicdata->icfes_score) }}">
 							</div>
 						</div>               	
             		</div>
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="graduate">Graduado</label></p>
-            		</div>
-					<div class="col-xs-2 col-md-2">
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="graduate" id="graduate" value="{{ old('graduate', $verDatosPerfil->academicdata->graduate) }}">
-							</div>
-						</div>                	
-            		</div>
-            		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="graduate_schooling">Graduado escolaridad</label></p>
             		</div>
-					<div class="col-xs-2 col-md-2">
+					<div class="col-xs-2 col-md-6">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $verDatosPerfil->academicdata->graduate_schooling) }}">
+								<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $verDatosPerfil->previousacademicdata->graduate_schooling) }}">
 							</div>
 						</div>                	
             		</div>
@@ -357,21 +343,7 @@
 		<a href="#" id="titulo-3" class="accordion-titulo-3" onclick="myFunction()">Datos SocioEconomicos<span class="toggle-icon"></span></a>
 		<div id="contenido-3" class="accordion-content-3">
 			<div class="form-group">
-    			<div class="row">
-            		<div class="col-xs-3 col-md-2">
-            			<p style="text-align: right;"><label for="id_student">Id estudiante </label></p>
-            		</div>
-					<div class="col-xs-4 col-md-2">
-						<div class="row">
-							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->socioeconomicdata->id_student) }}">
-
-								@error('id_student')
-				    				<small class="text-danger">{{ $message }}</small>
-				    			@enderror
-							</div>
-						</div>                	
-            		</div>			
+    			<div class="row">			
             		<div class="col-xs-4 col-md-2">
             			<p style="text-align: right"><label for="id_ocupation">Ocupacion</label></p>
             		</div>
@@ -508,7 +480,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon', $verDatosPerfil->socioeconomicdata->internet_zon) }}">
+								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon', $internet_zone) }}">
 							</div>
 						</div>               	
             		</div>
@@ -518,7 +490,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home', $verDatosPerfil->socioeconomicdata->internet_home) }}">
+								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home', $internet_home) }}">
 							</div>
 						</div>	
             		</div>
@@ -528,7 +500,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $verDatosPerfil->socioeconomicdata->sex_document_identidad) }}">
+								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $sexo1) }}">
 							</div>
 						</div>       	
             		</div>
@@ -543,7 +515,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="id_social_conditions" id="id_social_conditions" value="{{ old('id_social_conditions', $verDatosPerfil->socioeconomicdata->socialconditions->name) }}">
+								<input readonly class="form-control" type="text" name="id_social_conditions" id="id_social_conditions" value="{{ $verDatosPerfil->socioeconomicdata->socialconditions ? $verDatosPerfil->socioeconomicdata->socialconditions->name : null }}">
 							</div>
 						</div>                	
             		</div>
@@ -553,7 +525,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="id_disability" id="id_disability" value="{{ old('id_disability', $verDatosPerfil->socioeconomicdata->disability->name) }}">
+								<input readonly class="form-control" type="text" name="id_disability" id="id_disability" value="{{ old('id_disability', $verDatosPerfil->socioeconomicdata->disability ? $verDatosPerfil->socioeconomicdata->disability->name : null) }}">
 							</div>
 						</div>                	
             		</div>
@@ -563,7 +535,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="id_ethnicity" id="id_ethnicity" value="{{ old('id_ethnicity', $verDatosPerfil->socioeconomicdata->ethnicity->name) }}">
+								<input readonly class="form-control" type="text" name="id_ethnicity" id="id_ethnicity" value="{{$verDatosPerfil->socioeconomicdata->ethnicity ? $verDatosPerfil->socioeconomicdata->ethnicity->name : null }}">
 							</div>
 						</div>                	
             		</div>	

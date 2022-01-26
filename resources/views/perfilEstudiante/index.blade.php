@@ -1,20 +1,21 @@
 @extends('layouts.dashboard')
 
 @section('title', 'Perfil Estudiante')
-@section('titulo_secundario', 'Perfil Estudiante')
 @section('content')
 
-<div class="container">    
+<div class="container-fluid">    
     
     <div class="card">  
         
         
     <div class="card-body">
+        @if(auth()->user()->rol_id == 4)
         <div class="row">
             <div  class="col-xs-12 col-md-3 col-sm-3">
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
         </div>
+        @endif
 
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
@@ -61,7 +62,7 @@
                                            
 
                                             @csrf
-                                      </td>
+                    </td>
                 </tr>
                 
                 @endif

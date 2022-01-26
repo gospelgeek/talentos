@@ -28,9 +28,10 @@ use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Controllers\Auth;
 use Carbon\Carbon;
-Use Session;
-Use Redirect;
+use Session;
+use Redirect;
 use DB;
+
 
 
 class perfilEstudianteController extends Controller
@@ -44,8 +45,9 @@ class perfilEstudianteController extends Controller
     }
 
     public function indexPerfilEstudiante(){
-        
+       // dd('mango');
         $perfilEstudiantes = perfilEstudiante::all();
+        //$perfilEstudiantes = DB::table('student_profile')->get();
         //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }

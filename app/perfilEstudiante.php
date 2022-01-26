@@ -22,6 +22,7 @@ class perfilEstudiante extends Model
         'foto',
         'name',
         'lastname',
+        'student_code',
         'id_document_type',
         'document_number',
         'url_document_type',
@@ -38,12 +39,12 @@ class perfilEstudiante extends Model
         'id_group',
         'id_cohort',
         'id_tutor',
+        'id_state',
     ];
 
     protected $dates = ['delete_at'];
-    
-    //Relaciones uno a uno por debajo
-
+       
+    //RELACIONES UNO A UNO POR DEBAJO
     /**
      * Relacion con los  datos que se tiene de student_profile  
      * con la tabla DocumentType
@@ -52,7 +53,6 @@ class perfilEstudiante extends Model
      * @return Collection<DocumentType>
     */
     public function documenttype(){
-
         return $this->hasOne(DocumentType::class, 'id', 'id_document_type');
     }
 
@@ -164,5 +164,29 @@ class perfilEstudiante extends Model
 
     public function studentGroup(){
         return $this->hasOne(StudentGroup::class, 'id_student', 'id');
+    }
+  
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla Withdrawals
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Withdrawals>
+    */  
+    public function withdrawals(){
+
+        return $this->hasOne(Withdrawals::class, 'id_student', 'id');
+    }
+
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla Condition
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Condition>
+     */
+    public function condition(){
+
+        return $this->hasOne(Condition::class, 'id', 'id_state');
     }
 }

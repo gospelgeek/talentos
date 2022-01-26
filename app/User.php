@@ -53,18 +53,30 @@ class User extends Authenticatable
     protected $dates = ['delete_at'];
 
     //relacion uno a uno con tipo documento
+    /**
+     * Relacion con los  datos que se tiene de User  
+     * con la tabla DocumentType
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<DocumentType>
+     */
     public function documenttype(){
 
         return $this->hasOne(DocumentType::class, 'id', 'tipo_documento_user');
     }
 
-    public function roles()
-    {
+    /**
+     * Relacion con los  datos que se tiene de User  
+     * con la tabla Role
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Role>
+     */
+    public function roles(){
         return $this->hasOne(Role::class, 'id','rol_id');
     }
 
-    public function authorizeRoles($roles)
-    {
+    public function authorizeRoles($roles){
         abort_unless($this->hasAnyRole($roles), 401);
         return true;
     }
@@ -92,8 +104,7 @@ class User extends Authenticatable
         return false;
     }*/
 
-    public static function getRealIP()
-    {
+    public static function getRealIP(){
 
         if (isset($_SERVER["HTTP_CLIENT_IP"]))
         {
@@ -118,10 +129,6 @@ class User extends Authenticatable
         else
         {
         return $_SERVER["REMOTE_ADDR"];
+        }
     }
-
-}
-
-
-
 }

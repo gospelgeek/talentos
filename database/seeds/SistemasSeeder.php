@@ -19,7 +19,7 @@ class SistemasSeeder extends Seeder
             'name' => mb_strtoupper('SISTEMAS', 'UTF-8'),
             'apellidos_user' => mb_strtoupper('SISTEMAS', 'UTF-8'),
             'email' => 'sistemas@gmail.com',
-            'password' => bcrypt('123456'),
+            'password' => bcrypt('&H;+$iK_&IW6'),
             'rol_id' => 1,
         ]);
 

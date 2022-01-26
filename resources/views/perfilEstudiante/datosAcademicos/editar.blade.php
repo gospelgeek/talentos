@@ -1,4 +1,4 @@
-@extends('layouts.secundario')
+@extends('layouts.app')
 @section('title', 'Editar datos Academicos')
 
 @section('content')

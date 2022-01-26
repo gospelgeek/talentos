@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
-use App\AcademicDates;
-use App\RecordsActionsUpdateDelete;
+use App\PreviousAcademicData;
+use App\LogsCrudActions;
 use App\User;
 use App\Gender;
 use App\DocumentType;
@@ -28,6 +27,11 @@ use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Controllers\Auth;
+use Carbon\Carbon;
+use Session;
+use Redirect;
+use DB;
+
 
 
 class perfilEstudianteController extends Controller
@@ -41,8 +45,9 @@ class perfilEstudianteController extends Controller
     }
 
     public function indexPerfilEstudiante(){
-        
+       // dd('mango');
         $perfilEstudiantes = perfilEstudiante::all();
+        //$perfilEstudiantes = DB::table('student_profile')->get();
         //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
@@ -79,6 +84,19 @@ class perfilEstudianteController extends Controller
             'cellphone'                 =>  $request['telefono1'],
             'phone'                     =>  $request['telefono2'],
         ]);
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y h:i:s A');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
+            'identificacion'           => $id['cedula'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $data['id'],
+            'actividad_realizada'      => 'SE CREO UN REGISTRO',
+            ]); 
         
          return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
          
@@ -89,13 +107,51 @@ class perfilEstudianteController extends Controller
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         //dd($verDatosPerfil);  
         $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Fenemino',
+        $sexo = array('F' => 'Femenino',
                             'M' => 'Masculino' );
+        if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
+           $sexo1 = "Masculino";     
+        }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
+            $sexo1 = "Femenino"; 
+        }
+
+        if($verDatosPerfil->socioeconomicdata->internet_home == 0){
+            $internet_home = "SI";
+        }elseif($verDatosPerfil->socioeconomicdata->internet_home == 1){
+            $internet_home = "NO";
+
+        }
+
+        if($verDatosPerfil->socioeconomicdata->internet_zon == 0){
+            $internet_zone = "SI";
+        }elseif($verDatosPerfil->socioeconomicdata->internet_zon == 1){
+            $internet_zone = "NO";
+
+        }
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
+        $documento = DocumentType::pluck('name','id');
+
+        $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
+
         //dd($verDatosPerfil->gender);
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','genero','sexo','tipo_documento'));   
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
+            'identificacion'           => $id['cedula'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $verDatosPerfil['id'],
+            'actividad_realizada'      => 'ANALISIS DE REGISTRO',
+            ]);
+
+
+        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
     }
 
     public function verDatosSocieconomicos($id) {
@@ -142,6 +198,19 @@ class perfilEstudianteController extends Controller
         $data = SocioeconomicData::findOrFail($id);
         //dd($request);
         $data->update($request->validated());
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y h:i:s A');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
+            'identificacion'           => $id['cedula'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $data['id'],
+            'actividad_realizada'      => 'SE ACTUALIZO UN REGISTRO',
+            ]); 
         
         return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
     }
@@ -166,9 +235,22 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosAcademicos(DatosAcademicosRequest $request, $id) {
         //dd('gsgsdgsd');
-        $data = AcademicDates::findOrFail($id);
+        $data = PreviousAcademicData::findOrFail($id);
         //dd($data);
         $data->update($request->validated());
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y h:i:s A');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
+            'identificacion'           => $id['cedula'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $data['id'],
+            'actividad_realizada'      => 'SE ACTUALIZO UN REGISTRO',
+            ]); 
 
         return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
     }
@@ -199,38 +281,76 @@ class perfilEstudianteController extends Controller
         $depNacimiento = BirthDepartament::pluck('name','id');
         $muni_nacimiento = BirthCity::pluck('name','id');
         $data = perfilEstudiante::findOrFail($id);
-        //dd($request);
+        $dataViejo = perfilEstudiante::findOrFail($id);
+
         $data->update($request->validated());
     
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y h:i:s A');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
+            'identificacion'           => $id['cedula'],
+            'rol'                      => $id['rol_id'],   
+            'ip'                       => $ip,
+            'id_usuario_accion'        => $data['id'],
+            'actividad_realizada'      => 'SE ACTUALIZO UN REGISTRO',
+            ]); 
+        
+       /* if(($data['name']) != ($dataViejo['name'])){
+
+            //dd('name');
+            /*$cambio = UpdateInformation::create([
+            'id_action'           => $dataViejo['id'],
+            'changed_information' => $dataViejo['name'],
+            'new_information' => $data['name'],    
+            ]);
+        }
+        if(($data['lastname']) != ($dataViejo['lastname'])){
+            //dd('apellido');
+            $cambio = UpdateInformation::create([
+            'id_action'           => $dataViejo['id'],
+            'changed_information' => $dataViejo['lastname'],
+            'new_information' => $data['lastname'],    
+            ]);
+        }
+        /*if(($data['id_document_type']) != ($dataViejo['id_document_type'])){
+            dd('tipo');
+            /*$cambio = UpdateInformation::create([
+            'id_action'           => $dataViejo['id'],
+            'changed_information' => $dataViejo['id_document_type'],
+            'new_information' => $data['id_document_type'],    
+            ]);
+        }*/
+
+
+
         return redirect('estudiante')->with('status', 'Perfil actualizado exitosamente!');
     }
 
 
     public function eliminarPerfilEstudiante(Request $request, $id){
 
-       
-       //dd('hola');
        $data = perfilEstudiante::findOrFail($id);
 
-       //$ip = User::getRealIP();
-       $data -> delete();
-       //$id = auth()->user();
-       //dd($id);
-            /*$datos = RecordsActionsUpdateDelete::create([
+       $ip = User::getRealIP();
+       $id = auth()->user();
+       $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y h:i:s A');
+       //dd($fecha);
+            $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'nombres'                  => $id['name'],
-            'apellidos'                => $id['apellidos_user'],
-            'email'                    => $id['email'],
             'rol'                      => $id['rol_id'],   
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
-            'nombres_usuario_accion'   => $data['nombres'],
-            'apellidos_usuario_accion' => $data['apellidos'],
-            'email_usuario_accion'     => $data['email'],
             'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
-            ]); */
+            ]); 
+
+            $data -> delete();
 
         return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
+
     }
 
     public function municipios(Request $request, $id)

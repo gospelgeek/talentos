@@ -4,27 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model
+class Course extends Model
 {
-    protected $table = 'groups';
+    protected $table = 'courses';
 
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'id',
+        'id', 
         'name',
-        'id_cohort',
-        'admission_date',
+        'course_code',
+        'id_cohort', 
     ];
 
-    /**
-     * Relacion con los  datos que se tiene de Group  
-     * con la tabla cohorte
+      /**
+     * Relacion con los  datos que se tiene de Course  
+     * con la tabla Cohort
      * 
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Cohort>
      */
-    public function cohort(){
+    public function cohortcourse(){
         return $this->hasOne(Cohort::class, 'id', 'id_cohort');
     }
 }

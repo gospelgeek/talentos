@@ -19,6 +19,7 @@ class CreateStudentProfileTable extends Migration
             $table->string('photo');
             $table->string('name');
             $table->string('lastname');
+            $table->string('student_code');
             $table->integer('id_document_type');
             $table->string('url_document_type');
             $table->string('document_number');
@@ -37,6 +38,7 @@ class CreateStudentProfileTable extends Migration
             //$table->integer('id_group');
             //$table->integer('id_cohort');
             $table->integer('id_tutor');
+            $table->integer('id_state');
             $table->softDeletes();
             $table->timestamps();
         });

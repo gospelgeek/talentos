@@ -195,7 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        <a href="{{route('usuario.estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
         </ul>
         @endif
         <li class="nav-item">

@@ -363,6 +363,11 @@ class perfilEstudianteController extends Controller
           return response()->json($municipios);
         }
     }
+
+    public function indexAsignaturas()
+    {
+        
+    }
 }
 
 

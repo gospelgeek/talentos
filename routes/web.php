@@ -55,6 +55,8 @@ Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDat
 Route::put('update_datos_academicos/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('update_datos_academicos');
 
 Route::get('asignaturas', 'perfilEstudianteController@indexAsignaturas')->name('asignaturas');
+Route::get('grupos/{id}', 'perfilEstudianteController@verGrupos')->name('grupos');
+Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');

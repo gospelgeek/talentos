@@ -1,3 +1,25 @@
+$(function(){
+  $('.crear_estado').click(function(e) { 
+      e.preventDefault();
+        $('#CMotivo').hide();
+        $('#modal_crear_estado').modal('show');
+        //alert(cod);
+        $(document).on('change', '#estadoN', function(event) {
+        var valor = $('#estadoN').val();
+        if(valor == 3){
+          $('#CMotivo').show();
+        }
+        else{
+          $('#CMotivo').hide();          
+        }
+        });
+        //var url = form.attr('action');
+  });
+});
+
+
+
+
 $(document).ready(function(){
      $.noConflict();
      $('#table9')

@@ -197,6 +197,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
                         <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
         </ul>
+        @else
+        <ul class="navbar-nav mr-auto">
+                        <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+        </ul>
         @endif
         <li class="nav-item">
           <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>

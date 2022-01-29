@@ -545,6 +545,11 @@
 		</div>
 	</div>
 	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+	{!!link_to('#',$title = 'ESTADO', $attributes = ['class'=>'btn btn-primary  crear_estado'],$secure = null)!!}
 </div>
+@include('perfilEstudiante.modal.edit')
 
+@push('scripts')
+{!!Html::script('/js/filtroestudiantes.js')!!}
+@endpush
 @endsection

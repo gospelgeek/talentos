@@ -1,37 +1,4 @@
-$(function(){
-  $('.crear_estado').click(function(e) { 
-      e.preventDefault();
-        $('#CMotivo').hide();
-        $('#modal_crear_estado').modal('show');
-        //alert(cod);
-        $(document).on('change', '#estadoN', function(event) {
-        var valor = $('#estadoN').val();
-        if(valor == 3){
-          $('#CMotivo').show();
-        }
-        else{
-          $('#CMotivo').hide();          
-        }
-        });
-        //var url = form.attr('action');
-  });
-});
-
-
-
-
-$(document).ready(function(){
-     $.noConflict();
-     $('#table9')
-     .DataTable(
-        {
-            responsive: true,
-            autoWidth: false
-        });
-})
-
-$(function(){
-  $(".accordion-titulo").click(function(e){
+$(".accordion-titulo").click(function(e){
            
         e.preventDefault();
     
@@ -49,9 +16,9 @@ $(function(){
           contenido.slideUp(250);
           $(this).removeClass("open");  
         }
+});
 
-      });
-  $(".accordion-titulo-2").click(function(e){
+$(".accordion-titulo-2").click(function(e){
            
         e.preventDefault();
     
@@ -69,9 +36,9 @@ $(function(){
           contenido.slideUp(250);
           $(this).removeClass("open");  
         }
+});
 
-      });
-  $(".accordion-titulo-3").click(function(e){
+$(".accordion-titulo-3").click(function(e){
            
         e.preventDefault();
     
@@ -93,6 +60,5 @@ $(function(){
           
             
         }
-
-      });
 });
+

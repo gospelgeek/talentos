@@ -17,7 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {!!Html::style('/dashboard/plugins/fontawesome-free/css/all.min.css')!!}
   <!-- Theme style -->
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
-  
+  {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')!!}

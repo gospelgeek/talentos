@@ -158,8 +158,9 @@ class perfilEstudianteController extends Controller
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
             ]);
 
-
-        return view('perfilEstudiante.verDatos', compact('motivos','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
+        $foto = explode("/",$verDatosPerfil->photo);    
+        //dd($foto[5]);    
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
     }
 
     public function verDatosSocieconomicos($id) {

@@ -21,8 +21,13 @@ use App\HealthRegime;
 use App\Benefits;
 use App\SocialConditions;
 use App\Disability;
+use App\Condition;
+use App\Reasons;
 use App\Ethnicity;
 use App\InstitutionType;
+use App\Course;
+use App\Group;
+use App\StudentGroup;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
@@ -141,6 +146,9 @@ class perfilEstudianteController extends Controller
         $id = auth()->user();
         $fecha = Carbon::now();
         $fecha = $fecha->format('d-m-Y');
+
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
        //dd($fecha);
             $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
@@ -150,8 +158,9 @@ class perfilEstudianteController extends Controller
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
             ]);
 
-
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
+        $foto = explode("/",$verDatosPerfil->photo);    
+        //dd($foto[5]);    
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
     }
 
     public function verDatosSocieconomicos($id) {
@@ -366,7 +375,27 @@ class perfilEstudianteController extends Controller
 
     public function indexAsignaturas()
     {
-        
+        $asignaturas = Course::All();
+
+        //dd($asignaturas);
+
+        return view('perfilEstudiante.asignaturas.index',compact('asignaturas'));
+    }
+
+    public function verGrupos($id)
+    {
+        $grupos = Group::all()->where('id_cohort',$id);
+        //dd($grupos);
+
+        return view('perfilEstudiante.asignaturas.grupos',compact('grupos'));
+    }
+
+    public function vernotas($id)
+    {
+        $notas = StudentGroup::all()->where('id_group', $id);
+        //dd($notas);
+
+        return view('perfilEstudiante.asignaturas.notas',compact('notas'));
     }
 }
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
@@ -31,8 +34,6 @@ use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Controllers\Auth;
 use Carbon\Carbon;
-Use Session;
-Use Redirect;
 use DB;
 
 class UsuarioController extends Controller
@@ -80,7 +81,6 @@ class UsuarioController extends Controller
     public function editar($id){
         $roles =  Role::pluck('nombre_rol','id');
         $editarUsuario = User::findOrFail($id);
-        
         return view('usuario.editar', compact('editarUsuario', 'roles'));
     }
 

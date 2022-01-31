@@ -15,4 +15,6 @@ class Cohort extends Model
         'name',
         'description',
     ];
+
+    
 }

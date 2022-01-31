@@ -4,10 +4,8 @@
 @section('content')
 
 <div class="container-fluid">    
-    
-    <div class="card">  
-        
-        
+    <h1 style="text-align:center;">ESTUDIANTES</h1>
+    <div class="card">         
     <div class="card-body">
         @if(auth()->user()->rol_id == 4)
         <div class="row">

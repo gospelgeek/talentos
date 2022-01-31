@@ -1,15 +1,4 @@
-$(document).ready(function(){
-     $.noConflict();
-     $('#table9')
-     .DataTable(
-        {
-            responsive: true,
-            autoWidth: false
-        });
-})
-
-$(function(){
-  $(".accordion-titulo").click(function(e){
+$(".accordion-titulo").click(function(e){
            
         e.preventDefault();
     
@@ -27,9 +16,9 @@ $(function(){
           contenido.slideUp(250);
           $(this).removeClass("open");  
         }
+});
 
-      });
-  $(".accordion-titulo-2").click(function(e){
+$(".accordion-titulo-2").click(function(e){
            
         e.preventDefault();
     
@@ -47,9 +36,9 @@ $(function(){
           contenido.slideUp(250);
           $(this).removeClass("open");  
         }
+});
 
-      });
-  $(".accordion-titulo-3").click(function(e){
+$(".accordion-titulo-3").click(function(e){
            
         e.preventDefault();
     
@@ -71,6 +60,5 @@ $(function(){
           
             
         }
-
-      });
 });
+

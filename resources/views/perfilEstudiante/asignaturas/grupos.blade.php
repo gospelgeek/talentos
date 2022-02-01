@@ -44,7 +44,7 @@
     	</div>
     </div>
 </div>
-<a href="" onclick="history.back()">Regresar</a>
+<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 @push('scripts')
 
     <!-- Page specific script -->

@@ -261,7 +261,7 @@
 						</div>                	
             		</div>			
             		<div class="col-xs-4 col-md-2">
-            			<p style="text-align: right"><label for="id_institution_type">Institucion</label></p>
+            			<p style="text-align: right"><label for="institution_name">Institucion</label></p>
             		</div>
 					<div class="col-xs-4 col-md-2">
 						<div class="row">

@@ -17,6 +17,7 @@ use App\DocumentType;
 use App\BirthDepartament;
 use App\BirthCity;
 use App\Occupation;
+use App\Condition;
 use App\CivilStatus;
 use App\RecidenceTime;
 use App\HousingType;
@@ -196,6 +197,8 @@ class UsuarioController extends Controller
                                 '3' => 'Cedula Extranjera' );
         $documento = DocumentType::pluck('name','id');
 
+        $estado = Condition::pluck('name', 'id');
+
         $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
 
         //dd($verDatosPerfil->gender);
@@ -214,7 +217,7 @@ class UsuarioController extends Controller
             ]);
 
 
-        return view('usuario.perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
+        return view('usuario.perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento', 'estado', 'edad'));   
     }
 
     public function verDatosSocieconomicos($id) {

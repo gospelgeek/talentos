@@ -28,9 +28,9 @@ class CreateSocioeconomicDataTable extends Migration
             $table->integer('id_benefits');
             $table->string('household_people');
             $table->string('economic_possition');
-            $table->integer('dependent_people');
-            $table->char('internet_zon', 1);
-            $table->char('internet_home', 1);
+            $table->string('dependent_people');
+            $table->string('internet_zon');
+            $table->string('internet_home');
             $table->char('sex_document_identidad', 1);
             $table->boolean('id_gender');
             $table->integer('id_social_conditions');

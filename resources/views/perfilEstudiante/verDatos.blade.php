@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('title', 'Ver Datos')
 
 @section('content')
@@ -43,6 +43,11 @@
 		<div class="col-sm-2">
 			{!!Form::text('cohorte','Cohorte',['class'=>'form-control','readonly','disabled'])!!}
 		</div>
+
+		{!!Form::label('id_state','Estado:')!!}
+			<div class="col-sm-3"> 							
+				{!!Form::select('id_state', $estado, $verDatosPerfil->condition->id,['id'=>'estado','class'=>'form-control','required','placeholder'=>'Estado' ,'disabled'])!!}						
+			</div>
 	</div>	
 
 	<br>
@@ -230,7 +235,9 @@
             		</div>
             	</div>
 			</div>			
-			<a type="button" href="{{ route('editar_estudiante', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+			@if(auth()->user()->rol_id == 4)
+			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar'],$secure = null)!!}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+			@endif
 		</div>			
 	</div>
 
@@ -245,7 +252,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input  readonly class="form-control" type="text" name="id_student" id="id_student" value="{{ old('id_student', $verDatosPerfil->previousacademicdata->id_student) }}">
+								<input  readonly class="form-control" type="text" name="id" id="id_student" value="{{ $verDatosPerfil->previousacademicdata->id_student }}">
 
 								@error('id_student')
 				    				<small class="text-danger">{{ $message }}</small>
@@ -259,7 +266,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->previousacademicdata->institutiontype->name) }}">
+								<input readonly class="form-control" type="text" name="institution_name" id="institution_name" value="{{  $verDatosPerfil->previousacademicdata->institution_name }}">
 							</div>
 						</div>	
             		</div>
@@ -323,24 +330,17 @@
 							</div>
 						</div>               	
             		</div>
-            		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="graduate_schooling">Graduado escolaridad</label></p>
-            		</div>
-					<div class="col-xs-2 col-md-6">
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="graduate_schooling" id="graduate_schooling" value="{{ old('graduate_schooling', $verDatosPerfil->previousacademicdata->graduate_schooling) }}">
-							</div>
-						</div>                	
-            		</div>
+            		
            		</div>
 			</div>
-			<a type="button" href="{{ route('editar_datos_academicos', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>
+			@if(auth()->user()->rol_id == 4)
+				{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar_previos'],$secure = null)!!}
+			@endif
 		</div>
 	</div>
 
 	<div class="accordion-container">
-		<a href="#" id="titulo-3" class="accordion-titulo-3" onclick="myFunction()">Datos SocioEconomicos<span class="toggle-icon"></span></a>
+		<a href="#" id="titulo-3" class="accordion-titulo-3">Datos SocioEconomicos<span class="toggle-icon"></span></a>
 		<div id="contenido-3" class="accordion-content-3">
 			<div class="form-group">
     			<div class="row">			
@@ -540,11 +540,27 @@
 						</div>                	
             		</div>	
             	</div>
-			</div>	
-			<a type="button" href="{{ route('editar_datos_socioeconomicos', $verDatosPerfil->id) }}" class="btn btn-primary">Actualizar Datos</a>		
+			</div>
+			@if(auth()->user()->rol_id == 4)	
+			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_socioeconomico'],$secure = null)!!}
+			@endif		
 		</div>
 	</div>
 	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+
+	{!!link_to('#',$title = 'ESTADO', $attributes = ['class'=>'btn btn-primary crear_estado'],$secure = null)!!}		
 </div>
 
+@include('perfilEstudiante.modal.edit')
+@include('perfilEstudiante.modal.actualizarDatos.generales')
+@include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
+@include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
+
+
 @endsection
+
+@push('scripts')
+{!!Html::script('/js/filtroestudiantes.js')!!}
+{!!Html::script('/js/socio.js')!!}
+{!!Html::script('/js/actualizarDatos.js')!!}
+@endpush

@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
   <title>@yield('title')</title>
-
+  {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
   <!-- Google Font: Source Sans Pro -->
   {!!Html::style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback')!!}

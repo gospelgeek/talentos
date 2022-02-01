@@ -17,6 +17,7 @@ class CreatePreviousAcademicDataTable extends Migration
             $table->increments('id');
             $table->integer('id_student');
             $table->integer('id_institution_type');
+            $table->string('institution_name');
             $table->integer('year_graduation');
             $table->string('bachelor_title');
             $table->string('url_academic_support');

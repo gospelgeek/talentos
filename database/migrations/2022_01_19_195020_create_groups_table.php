@@ -16,6 +16,7 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            //$table->integer('id_student');
             $table->integer('id_cohort');
             //$table->date('admission_date');
             $table->timestamps();

@@ -241,12 +241,12 @@
 			<div class="form-group">
     			<div class="row">			
             		<div class="col-xs-4 col-md-2">
-            			<p style="text-align: right"><label for="id_institution_type">Institucion</label></p>
+            			<p style="text-align: right"><label for="institution_name">Institucion</label></p>
             		</div>
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_institution_type" id="id_institution_type" value="{{ old('id_institution_type', $verDatosPerfil->previousacademicdata->institutiontype ? $verDatosPerfil->previousacademicdata->institutiontype->name : null) }}">
+								<input readonly class="form-control" type="text" name="institution_name" id="institution_name" value="{{  $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->institution_name : null }}">
 							</div>
 						</div>	
             		</div>
@@ -534,9 +534,16 @@
 	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	{!!link_to('#',$title = 'ESTADO', $attributes = ['class'=>'btn btn-primary  crear_estado'],$secure = null)!!}
 </div>
+
 @include('perfilEstudiante.modal.edit')
+@include('perfilEstudiante.modal.actualizarDatos.generales')
+@include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
+@include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
 
 @push('scripts')
 {!!Html::script('/js/filtroestudiantes.js')!!}
+{!!Html::script('/js/socio.js')!!}
+{!!Html::script('/js/actualizarDatos.js')!!}
 @endpush
+
 @endsection

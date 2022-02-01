@@ -38,7 +38,7 @@ class CreateStudentProfileTable extends Migration
             //$table->integer('id_group');
             //$table->integer('id_cohort');
             $table->integer('id_tutor');
-            $table->integer('id_state');
+            //$table->integer('id_state');
             $table->softDeletes();
             $table->timestamps();
         });

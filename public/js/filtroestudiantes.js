@@ -18,7 +18,8 @@ $('.crear_estado').click(function(e) {
 });
 
 //actualizar esatdo y crear retiro 
-$(function(){
+
+
   $('.boton_update_estado').click(function(e) { 
   e.preventDefault();   
   var idEstado = $('#idE').val();
@@ -51,7 +52,7 @@ $(function(){
     },       
   });
   });
-});
+
 
 $(".accordion-titulo").click(function(e){
            
@@ -117,3 +118,60 @@ $(".accordion-titulo-3").click(function(e){
         }
 });
 
+
+//FUNCIONES DEL ESTADO DEL ESTUDIANTE 
+
+//ACCIONES ACTUALIZAR DATOS GENERALES
+//Abrir modal actualizar datos genrales
+  $('.abrir_modal_actualizar').click(function(e) { 
+      e.preventDefault();
+        $('#modal_actualizar_datos_generales').modal('show');
+        //alert(cod)
+  });
+
+
+
+
+  $('.boton_update_datos_generales').click(function(e) { 
+  e.preventDefault();   
+  var idDatos = $('#idG').val();
+  //alert($("#direccion12").val());
+  $.ajax({
+  //ruta manual
+    url:'/updatedatosgenerales/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'name': $("#nombre1").val(),
+      'lastname': $("#apellido").val(),
+      'id_document_type': $("#tipoDocumento").val(),
+      'document_number': $("#numeroDocumento").val(),
+      'document_expedition_date': $("#fechaExpedicion").val(),
+      'id_birth_city': $("#ciudadNacimiento").val(),
+      'email': $("#correo").val(),
+      'birth_date': $("#fechaNacimiento").val(),
+      'sex': $("#sexo1").val(),
+      'id_gender': $("#generoE").val(),
+      'cellphone': $("#celular").val(),
+      'phone': $("#telefono").val(),
+      'id_neighborhood': $("#barrioV").val(),
+      'direction': $("#direccion12").val(),
+    },
+    success:function(result) {
+      $('#modal_actualizar_datos_generales').modal('hide');
+      //window.location.reload(); 
+      toastr.info(result);
+      setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+  });

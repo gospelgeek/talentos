@@ -11,7 +11,6 @@ class Withdrawals extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'id',
         'id_student',
         'id_reasons',
         'observation',
@@ -24,7 +23,7 @@ class Withdrawals extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Reasons>
      */
-    public function reasons (){
+    public function reasons(){
 
         return $this->hasOne(Reasons::class, 'id', 'id_reasons');
     }

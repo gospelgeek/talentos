@@ -20,6 +20,7 @@ use App\DocumentType;
 use App\BirthDepartament;
 use App\BirthCity;
 use App\Occupation;
+use App\Condition;
 use App\CivilStatus;
 use App\RecidenceTime;
 use App\HousingType;
@@ -100,4 +101,5 @@ class UsuarioController extends Controller
 
         return redirect('usuario')->with('status', 'Estudiante eliminado exitosamente!');
     }
+
 }

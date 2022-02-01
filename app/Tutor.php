@@ -31,6 +31,6 @@ class Tutor extends Model
      */
     public function documenttype(){
 
-        return $this->hasOne(DocumentType::class, 'id', 'id_document_type')
+        return $this->hasOne(DocumentType::class, 'id', 'id_document_type');
     }
 }

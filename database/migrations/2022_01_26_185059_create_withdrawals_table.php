@@ -17,6 +17,7 @@ class CreateWithdrawalsTable extends Migration
             $table->increments('id');
             $table->integer('id_student');
             $table->integer('id_reasons');
+            $table->string('observation');
             $table->timestamps();
         });
     }

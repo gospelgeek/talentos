@@ -43,7 +43,7 @@ Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante
 Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');
 Route::get('ver_estudiante/{id}', 'perfilEstudianteController@verPerfilEstudiante')->name('ver_estudiante');
 Route::get('editar_estudiante/{id}', 'perfilEstudianteController@editarPerfilEstudiante')->name('editar_estudiante');
-Route::put('update_estudiante/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('update_estudiante');
+/*Route::put('update_estudiante/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('update_estudiante');*/
 Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerfilEstudiante')->name('delete_estudiante');
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
@@ -58,6 +58,14 @@ Route::put('update_estado/{id}', 'perfilEstudianteController@updateEstado')->nam
 Route::get('asignaturas', 'perfilEstudianteController@indexAsignaturas')->name('asignaturas');
 Route::get('grupos/{id}', 'perfilEstudianteController@verGrupos')->name('grupos');
 Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
+
+//RUTAS DE AJAX
+//ruta estado
+Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');
+Route::put('updatedatosgenerales/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('updatedatosgenerales');
+Route::put('updatedatossocioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('updatedatossocioeconomicos');
+Route::put('updatedatosacademicosprevios/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('updatedatosacademicosprevios');
+
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');

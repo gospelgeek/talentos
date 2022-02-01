@@ -25,15 +25,12 @@ use App\HealthRegime;
 use App\Benefits;
 use App\SocialConditions;
 use App\Disability;
-use App\Condition;
-use App\Reasons;
 use App\Ethnicity;
 use App\Neighborhood;
 use App\InstitutionType;
 use App\Course;
 use App\Group;
 use App\StudentGroup;
-use App\Withdrawals;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
@@ -193,7 +190,7 @@ class perfilEstudianteController extends Controller
 
         $foto = explode("/",$verDatosPerfil->photo);    
         //dd($foto[5]);    
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad'));   
+        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','estado', 'sexo','sexo1','tipo_documento', 'documento','edad', 'motivos', 'ciudad_nacimiento', 'barrio', 'tutor', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia','foto'));  
     }
   
     public function verDatosSocieconomicos($id) {

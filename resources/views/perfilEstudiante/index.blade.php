@@ -2,15 +2,17 @@
 
 @section('title', 'Perfil Estudiante')
 @section('content')
+@include('../alerts.success')
+@include('../alerts.request')
 
 <div class="container-fluid">    
     <h1 style="text-align:center;">ESTUDIANTES</h1>
     <div class="card">         
     <div class="card-body">
-        @if(auth()->user()->rol_id == 4)
+        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
         <div class="row">
             <div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
+                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
         </div>
         @endif
@@ -43,7 +45,7 @@
                                         <td></td>
                                         <td></td>
                                         <td >
-                                        @if(auth()->user()->rol_id == 4)   
+                                        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)   
                                             <div class="row">                                  
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    

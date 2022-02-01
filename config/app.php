@@ -186,9 +186,11 @@ return [
         /*'Cohensive\Embed\EmbedServiceProvider',*/
         //excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        
-Intervention\Image\ImageServiceProvider::class,
 
+        /* toastr*/
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+        
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*

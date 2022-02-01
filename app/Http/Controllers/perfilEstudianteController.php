@@ -28,6 +28,7 @@ use App\InstitutionType;
 use App\Course;
 use App\Group;
 use App\StudentGroup;
+use App\Withdrawals;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
@@ -396,6 +397,27 @@ class perfilEstudianteController extends Controller
         //dd($notas);
 
         return view('perfilEstudiante.asignaturas.notas',compact('notas'));
+    }
+
+    public function updateEstado($id, Request $request){
+       $status = "Estado actualizado correctamente!!";
+        if($request->ajax())
+        {
+            $estado = perfilEstudiante::findOrFail($id);        
+            $estado->id_state = $request['id_state'];
+            $estado->save();
+            if($request['id_state'] != 1){  
+            $estado -> delete();
+            //eliminarPerfilEstudiante($id);
+            }
+            $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'id_reasons'   =>  $request['id_reasons'],
+                'observation'  =>  $request['observation'],
+            ]);
+                        
+            return 'true';            
+        };
     }
 }
 

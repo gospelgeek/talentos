@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<a class="btn btn-primary" type="button" href="{{ route('grupos', $asignatura->id_cohort) }}" >Regresar</a>
+<a class="btn btn-primary" type="button" href="{{ route('grupos', $id) }}" >Regresar</a>
 
 @push('scripts')
 

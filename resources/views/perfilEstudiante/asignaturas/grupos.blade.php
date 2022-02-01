@@ -44,7 +44,7 @@
     	</div>
     </div>
 </div>
-<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+<a class="btn btn-primary" type="button" href="{{ route('asignaturas')}}" >Regresar</a>
 @push('scripts')
 
     <!-- Page specific script -->

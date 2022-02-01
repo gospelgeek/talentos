@@ -52,7 +52,7 @@
                                                 </div>
 
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Editar Informacion" href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
+                                                    <a title="Editar Informacion" href="" class="btn btn-sm btn-block fa fa-pen"></a>    
                                                 </div>
                                                 @else
                                                 <div class="col-xs-4 col-sm-4">

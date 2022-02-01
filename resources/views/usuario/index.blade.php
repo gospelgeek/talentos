@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 @section('title', 'Index')
 @section('content')
-
+@include('../alerts.success')
+@include('../alerts.request')
 <div class="container-fluid">
     <div class="card">  
         

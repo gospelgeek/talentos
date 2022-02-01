@@ -40,6 +40,7 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
         'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+        '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -57,6 +58,7 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         ),
         'Y' => 
         array (
+            'Yoeunes\\Toastr\\' => 15,
             'Yajra\\DataTables\\' => 17,
         ),
         'W' => 
@@ -221,6 +223,10 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
+        'Yoeunes\\Toastr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yoeunes/toastr/src',
         ),
         'Yajra\\DataTables\\' => 
         array (
@@ -617,18 +623,25 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
     );
 
     public static $classMap = array (
-        'App\\AcademicDates' => __DIR__ . '/../..' . '/app/AcademicDates.php',
+        'App\\AdmissionScores' => __DIR__ . '/../..' . '/app/AdmissionScores.php',
         'App\\Benefits' => __DIR__ . '/../..' . '/app/Benefits.php',
         'App\\BirthCity' => __DIR__ . '/../..' . '/app/BirthCity.php',
         'App\\BirthDepartament' => __DIR__ . '/../..' . '/app/BirthDepartament.php',
         'App\\CivilStatus' => __DIR__ . '/../..' . '/app/CivilStatus.php',
+        'App\\Cohort' => __DIR__ . '/../..' . '/app/Cohort.php',
         'App\\Comune' => __DIR__ . '/../..' . '/app/Comune.php',
+        'App\\Condition' => __DIR__ . '/../..' . '/app/Condition.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
+        'App\\CourseItems' => __DIR__ . '/../..' . '/app/CourseItems.php',
+        'App\\Devices' => __DIR__ . '/../..' . '/app/Devices.php',
         'App\\Disability' => __DIR__ . '/../..' . '/app/Disability.php',
         'App\\DocumentType' => __DIR__ . '/../..' . '/app/DocumentType.php',
+        'App\\Enrollment' => __DIR__ . '/../..' . '/app/Enrollment.php',
         'App\\Ethnicity' => __DIR__ . '/../..' . '/app/Ethnicity.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Gender' => __DIR__ . '/../..' . '/app/Gender.php',
+        'App\\Group' => __DIR__ . '/../..' . '/app/Group.php',
         'App\\HealthRegime' => __DIR__ . '/../..' . '/app/HealthRegime.php',
         'App\\HousingType' => __DIR__ . '/../..' . '/app/HousingType.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -650,7 +663,6 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\RedirigirMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirigirMiddleware.php',
-        'App\\Http\\Middleware\\RolesMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RolesMiddleware.php',
         'App\\Http\\Middleware\\SistemasMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/SistemasMiddleware.php',
         'App\\Http\\Middleware\\SocioeducativoMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/SocioeducativoMiddleware.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
@@ -662,21 +674,28 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'App\\Http\\Requests\\UsuarioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsuarioRequest.php',
         'App\\Http\\Requests\\perfilEstudianteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/perfilEstudianteRequest.php',
         'App\\InstitutionType' => __DIR__ . '/../..' . '/app/InstitutionType.php',
+        'App\\LogsCrudActions' => __DIR__ . '/../..' . '/app/LogsCrudActions.php',
         'App\\Neighborhood' => __DIR__ . '/../..' . '/app/Neighborhood.php',
+        'App\\NotesItems' => __DIR__ . '/../..' . '/app/NotesItems.php',
         'App\\Occupation' => __DIR__ . '/../..' . '/app/Occupation.php',
+        'App\\PreviousAcademicData' => __DIR__ . '/../..' . '/app/PreviousAcademicData.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Reasons' => __DIR__ . '/../..' . '/app/Reasons.php',
         'App\\RecidenceTime' => __DIR__ . '/../..' . '/app/RecidenceTime.php',
-        'App\\RecordsActionsUpdateDelete' => __DIR__ . '/../..' . '/app/RecordsActionsUpdateDelete.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Role_user' => __DIR__ . '/../..' . '/app/Role_user.php',
         'App\\SocialConditions' => __DIR__ . '/../..' . '/app/SocialConditions.php',
         'App\\SocioeconomicData' => __DIR__ . '/../..' . '/app/SocioeconomicData.php',
+        'App\\StudentDevices' => __DIR__ . '/../..' . '/app/StudentDevices.php',
+        'App\\StudentGroup' => __DIR__ . '/../..' . '/app/StudentGroup.php',
         'App\\Tutor' => __DIR__ . '/../..' . '/app/Tutor.php',
+        'App\\UpdateInformation' => __DIR__ . '/../..' . '/app/UpdateInformation.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Withdrawals' => __DIR__ . '/../..' . '/app/Withdrawals.php',
         'App\\perfilEstudiante' => __DIR__ . '/../..' . '/app/perfilEstudiante.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
@@ -3623,7 +3642,6 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'Mockery\\Matcher\\NoArgs' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/NoArgs.php',
         'Mockery\\Matcher\\Not' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/Not.php',
         'Mockery\\Matcher\\NotAnyOf' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/NotAnyOf.php',
-        'Mockery\\Matcher\\PHPUnitConstraint' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/PHPUnitConstraint.php',
         'Mockery\\Matcher\\Pattern' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/Pattern.php',
         'Mockery\\Matcher\\Subset' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/Subset.php',
         'Mockery\\Matcher\\Type' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Matcher/Type.php',
@@ -5052,7 +5070,6 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'Psy\\CodeCleaner\\StrictTypesPass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/StrictTypesPass.php',
         'Psy\\CodeCleaner\\UseStatementPass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/UseStatementPass.php',
         'Psy\\CodeCleaner\\ValidClassNamePass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/ValidClassNamePass.php',
-        'Psy\\CodeCleaner\\ValidConstantPass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/ValidConstantPass.php',
         'Psy\\CodeCleaner\\ValidConstructorPass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/ValidConstructorPass.php',
         'Psy\\CodeCleaner\\ValidFunctionNamePass' => __DIR__ . '/..' . '/psy/psysh/src/CodeCleaner/ValidFunctionNamePass.php',
         'Psy\\Command\\BufferCommand' => __DIR__ . '/..' . '/psy/psysh/src/Command/BufferCommand.php',
@@ -6426,6 +6443,9 @@ class ComposerStaticInit864250cd737a3de9d395c4863a253930
         'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
         'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
         'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
+        'Yoeunes\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Facades/Toastr.php',
+        'Yoeunes\\Toastr\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Toastr.php',
+        'Yoeunes\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/yoeunes/toastr/src/ToastrServiceProvider.php',
         'ZipStream\\Bigint' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Bigint.php',
         'ZipStream\\DeflateStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DeflateStream.php',
         'ZipStream\\Exception' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception.php',

@@ -14,6 +14,7 @@ class PreviousAcademicData extends Model
         'id',
         'id_student',
         'id_institution_type',
+        'institution_name',
         'year_graduation',
         'bachelor_title',
         'url_academic_support',

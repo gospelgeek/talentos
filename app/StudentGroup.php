@@ -26,4 +26,8 @@ class StudentGroup extends Model
     public function group(){
         return $this->hasOne(Group::class, 'id', 'id_group');
     }
+
+    public function student(){
+        return $this->hasOne(perfilEstudiante::class, 'id', 'id_student');
+    }
 }

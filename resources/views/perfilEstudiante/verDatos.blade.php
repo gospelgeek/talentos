@@ -43,6 +43,9 @@
 		<div class="col-sm-2">
 			{!!Form::text('cohorte','Cohorte',['class'=>'form-control','readonly','disabled'])!!}
 		</div>
+        <div class="col-sm-2">
+			{!!Form::select('id_state', $estado, $verDatosPerfil->id_state,['class'=>'form-control','readonly','disabled'])!!}
+		</div
 	</div>	
 
 	<br>

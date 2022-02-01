@@ -4,3 +4,5 @@ deployment:
     - export DEPLOYPATH=/home/todosytodasaestu/todosytodaspruebas/
     - /bin/cp -R public/* $DEPLOYPATH
 
+
+

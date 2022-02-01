@@ -21,7 +21,8 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require_once(dirname(__FILE__).'/../vendor/autoload.php');
+require __DIR__.'/../vendor/autoload.php';
+
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
@@ -34,8 +35,8 @@ require_once(dirname(__FILE__).'/../vendor/autoload.php');
 |
 */
 
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-$app = require_once(dirname(__FILE__).'/../bootstrap/app.php');
 /*
 |--------------------------------------------------------------------------
 | Run The Application

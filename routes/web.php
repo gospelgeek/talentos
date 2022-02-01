@@ -53,6 +53,7 @@ Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@upda
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
 Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');
 Route::put('update_datos_academicos/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('update_datos_academicos');
+Route::put('update_estado/{id}', 'perfilEstudianteController@updateEstado')->name('update_estado');
 
 Route::get('asignaturas', 'perfilEstudianteController@indexAsignaturas')->name('asignaturas');
 Route::get('grupos/{id}', 'perfilEstudianteController@verGrupos')->name('grupos');

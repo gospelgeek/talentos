@@ -509,7 +509,7 @@ class perfilEstudianteController extends Controller
         $notas = StudentGroup::all()->where('id_group', $id);
         //dd($notas);
 
-        return view('perfilEstudiante.asignaturas.notas',compact('notas'));
+        return view('perfilEstudiante.asignaturas.notas',compact('notas','id'));
     }
 
     public function updateEstado($id, Request $request){

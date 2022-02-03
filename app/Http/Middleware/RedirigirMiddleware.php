@@ -30,7 +30,7 @@ class RedirigirMiddleware
             
             if($this->auth->user()->rol_id == '1'){
                //dd('holaa');
-               return Redirect::to('usuario');                
+               return Redirect::to('estudiante');                
             }
 
             if(($this->auth->user()->rol_id == '2') || ($this->auth->user()->rol_id == '3') || ($this->auth->user()->rol_id == '4') || ($this->auth->user()->rol_id == '5')){

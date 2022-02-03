@@ -52,6 +52,12 @@ class User extends Authenticatable
 
     protected $dates = ['delete_at'];
 
+    public function setPasswordAttribute($password){
+        if(!empty($password)){
+            $this->attributes['password']= \Hash::make($password);/*metodo hash encryptar contraseñas  */
+        }
+    }
+
     //relacion uno a uno con tipo documento
     /**
      * Relacion con los  datos que se tiene de User  

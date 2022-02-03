@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="estudiante" class="navbar-brand">
+      <a href="{{route('estudiante')}}" class="navbar-brand">
       <img src="../img/logo.png" alt="Logo" class="brand-image" style="">
         <span class="brand-text font-weight-light">PNA</span>
       </a>

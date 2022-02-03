@@ -36,14 +36,14 @@
         <tbody>
             @foreach ($perfilEstudiantes as $estudiante)
                 <tr data-id="{{$estudiante->id}}">
-                    <td>{{ $estudiante->name}} {{ $estudiante->lastname}}</td>
-                                        <td>{{ $estudiante->document_number}}</td>
-                                        <td>{{ $estudiante->birth_date}}</td>
-                                        <td>{{ $estudiante->sex}}</td>
-                                        <td>{{ $estudiante->email}}</td>
+                    <td>{{ $estudiante->name}} {{ $estudiante->lastname }}</td>
+                                        <td>{{ $estudiante->document_number }}</td>
+                                        <td>{{ $estudiante->birth_date }}</td>
+                                        <td>{{ $estudiante->sex }}</td>
+                                        <td>{{ $estudiante->email }}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $estudiante->studentGroup->group->name}}</td>
+                                        <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >
                                         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)   
                                             <div class="row">                                  

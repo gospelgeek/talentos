@@ -49,7 +49,7 @@
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('birthcity','Ciudad nacimiento: ')!!}
-                      {!!Form::select('birthcity',$ciudad_nacimiento, $verDatosPerfil->birthcity->id,['id'=>'ciudadNacimiento','class'=>'form-control','required','placeholder'=>'Ciudad nacimiento'])!!}  
+                      {!!Form::select('birthcity',$ciudad_nacimiento, $verDatosPerfil->birthcity->id,['id'=>'ciudadNacimiento','class'=>'form-control','required','placeholder'=>'Ciudad nacimiento'])!!}   
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('email','Email: ')!!}

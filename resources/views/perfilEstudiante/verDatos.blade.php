@@ -243,6 +243,7 @@
             		</div>
             	</div>
 			</div>			
+
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar'],$secure = null)!!}
 			@endif
@@ -330,6 +331,7 @@
             		
            		</div>
 			</div>
+
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar_previos'],$secure = null)!!}
 			@endif
@@ -538,6 +540,7 @@
             		</div>
             			
             	</div>
+
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_socioeconomico'],$secure = null)!!}	

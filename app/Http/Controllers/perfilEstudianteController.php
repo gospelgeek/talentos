@@ -169,7 +169,9 @@ class perfilEstudianteController extends Controller
 
         $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
 
-        //dd($verDatosPerfil->gender);
+        $estado = Condition::pluck('name', 'id');
+
+        $beneficios = Benefits::pluck('name', 'id');
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -190,7 +192,8 @@ class perfilEstudianteController extends Controller
 
         $foto = explode("/",$verDatosPerfil->photo);    
         //dd($foto[5]);    
-        return view('perfilEstudiante.verDatos', compact('verDatosPerfil','internet_zone','internet_home','genero','estado', 'sexo','sexo1','tipo_documento', 'documento','edad', 'motivos', 'ciudad_nacimiento', 'barrio', 'tutor', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia','foto'));  
+
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios'));   
     }
   
     public function verDatosSocieconomicos($id) {
@@ -231,39 +234,17 @@ class perfilEstudianteController extends Controller
 
     }*/
 
-    /*public function updateDatosSocioeconomicos (DatosSocioeconomicosRequest $request, $id){
-       //dd($id);
-
-        $data = SocioeconomicData::findOrFail($id);
-        //dd($request);
-        $data->update($request->validated());
-
-        $ip = User::getRealIP();
-        $id = auth()->user();
-        $fecha = Carbon::now();
-        $fecha = $fecha->format('d-m-Y h:i:s A');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
-            'identificacion'           => $id['cedula'],
-            'rol'                      => $id['rol_id'],   
-            'ip'                       => $ip,
-            'id_usuario_accion'        => $data['id'],
-            'actividad_realizada'      => 'SE ACTUALIZO UN REGISTRO',
-            ]); 
-        
-        return redirect('estudiante')->with('status', 'Datos actualizados exitosamente!');
-    }*/
-
     public function updatedatossocioeconomicos($id, Request $request) {
 
         $data = SocioeconomicData::findOrFail($id);
-
+        //dd($data);
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
 
         if ($request->ajax()) {
 
             $data->id_ocupation            = $request['id_ocupation'];
-            $data->id_civil_status         = $request['id_civil_status'];   
+            $data->id_civil_status         = $request['id_civil_status'];  
+            $data->children_number         = $request['children_number'];
             $data->id_residence_time       = $request['id_residence_time'];
             $data->id_housing_type         = $request['id_housing_type'];
             $data->id_health_regime        = $request['id_health_regime'];
@@ -349,9 +330,11 @@ class perfilEstudianteController extends Controller
          return $mensaje;  
     }
 
-    /*public function editarPerfilEstudiante($id){
+    public function editarPerfilEstudiante($id){
+
+        //dd('entro a estudiante editar');
         
-        $editarEstudiante = perfilEstudiante::findOrFail($id);
+       /* $editarEstudiante = perfilEstudiante::findOrFail($id);
 
         //dd($editarEstudiante->gender);
         $genero = Gender::pluck('name','id');
@@ -365,10 +348,59 @@ class perfilEstudianteController extends Controller
         $muni_nacimiento = BirthCity::pluck('name','id');
 
         //dd($muni_nacimiento);
+        
+        
+
+        return view('perfilEstudiante.editar', compact('editarEstudiante','genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'));*/
+        $verDatosPerfil = perfilEstudiante::findOrFail($id);
+
+        $genero = Gender::pluck('name','id');
+        $sexo = array('F' => 'Femenino',
+                      'M' => 'Masculino' );
+        
 
         
-        return view('perfilEstudiante.editar', compact('editarEstudiante','genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'));
-    }*/
+        $tipo_documento = array('1' => 'Cedula de Ciudadania',
+                                '2' => 'Tarjeta de Identidad',
+                                '3' => 'Cedula Extranjera' );
+        $documento = DocumentType::pluck('name','id');
+
+        $estado = Condition::pluck('name', 'id');
+
+        $motivos = Reasons::pluck('name', 'id');
+
+        $ciudad_nacimiento = BirthCity::pluck('name', 'id');
+
+        $barrio = Neighborhood::pluck('name', 'id');
+
+        $tutor = Tutor::pluck('name', 'id');
+
+        $ocupacion = Occupation::pluck('name', 'id');
+
+        $estado_civil = CivilStatus::pluck('name', 'id');
+
+        $residencia = RecidenceTime::pluck('name', 'id');
+
+        $vivienda = HousingType::pluck('name', 'id');
+
+        $regimen = HealthRegime::pluck('name', 'id');
+
+        $condicion = SocialConditions::pluck('name', 'id');
+
+        $discapacidad = Disability::pluck('name', 'id');
+        
+        $etnia = Ethnicity::pluck('name', 'id');
+
+        $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
+
+        $estado = Condition::pluck('name', 'id');
+
+        $beneficios = Benefits::pluck('name', 'id');
+
+         $foto = explode("/",$verDatosPerfil->photo);
+
+        return view('perfilEstudiante.editar', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios'));
+    }
 
     
 
@@ -405,32 +437,6 @@ class perfilEstudianteController extends Controller
         
          return $mensaje;
     }
-
-   /* public function updatePerfilEstudiante(perfilEstudianteRequest $request, $id) {
-
-        $depNacimiento = BirthDepartament::pluck('name','id');
-        $muni_nacimiento = BirthCity::pluck('name','id');
-        $data = perfilEstudiante::findOrFail($id);
-        $dataViejo = perfilEstudiante::findOrFail($id);
-
-        $data->update($request->validated());
-    
-        $ip = User::getRealIP();
-        $id = auth()->user();
-        $fecha = Carbon::now();
-        $fecha = $fecha->format('d-m-Y h:i:s A');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
-            'identificacion'           => $id['cedula'],
-            'rol'                      => $id['rol_id'],   
-            'ip'                       => $ip,
-            'id_usuario_accion'        => $data['id'],
-            'actividad_realizada'      => 'SE ACTUALIZO UN REGISTRO',
-            ]); 
-
-        return redirect('estudiante')->with('status', 'Perfil actualizado exitosamente!');
-    }
-*/
 
     public function eliminarPerfilEstudiante(Request $request, $id){
 
@@ -531,6 +537,11 @@ class perfilEstudianteController extends Controller
                         
             return 'true';            
         };
+    }
+
+    public function store_seguimiento() {
+
+        dd('entro al store de seguimiento');
     }
 }
 

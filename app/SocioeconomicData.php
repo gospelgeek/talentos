@@ -118,7 +118,7 @@ class SocioeconomicData extends Model
      */
     public function socialconditions(){
 
-        return $this->hasOne(SocialConditions::class, 'id', 'id_disability');
+        return $this->hasOne(SocialConditions::class, 'id', 'id_social_conditions');
     }
 
      /**
@@ -130,7 +130,7 @@ class SocioeconomicData extends Model
      */
     public function disability(){
 
-        return $this->hasOne(Disability::class, 'id', 'id_social_conditions');
+        return $this->hasOne(Disability::class, 'id', 'id_disability');
     }
 
     /**

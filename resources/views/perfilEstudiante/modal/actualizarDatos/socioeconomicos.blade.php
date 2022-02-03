@@ -67,7 +67,7 @@
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('internet_zon','Internet en la zona: ')!!}
-                      {!!Form::text('internet_zon', $verDatosPerfil->socioeconomicdata->internet_zone,['id'=>'internetZona','class'=>'form-control','required','placeholder'=>'Internet zona'])!!}  
+                      {!!Form::text('internet_zon', $verDatosPerfil->socioeconomicdata->internet_zon,['id'=>'internetZona','class'=>'form-control','required','placeholder'=>'Internet zona'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('internet_home','Internet en el hogar: ')!!}
@@ -92,6 +92,10 @@
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_ethnicity','Etnia: ')!!}
                       {!!Form::select('etnia',$etnia, $verDatosPerfil->socioeconomicdata->ethnicity->id,['id'=>'etnia', 'class'=>'form-control','placeholder'=>'Etnia'])!!}   
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('id_benefits','Beneficios: ')!!}
+                      {!!Form::select('beneficiosD',$beneficios, $verDatosPerfil->socioeconomicdata->benefits->id,['id'=>'beneficiosD', 'class'=>'form-control','placeholder'=>'Beneficios'])!!}   
                       </div>
                   </div>
               </div>

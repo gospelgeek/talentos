@@ -18,13 +18,13 @@
             {!!Form::text('id',$verDatosPerfil->id,['id'=>'idE','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
           </div>  
           <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-            {!!Form::select('estadoN', $estado, $verDatosPerfil->condition->id,['id'=>'estadoN','class'=>'form-control','required','placeholder'=>'Estado'])!!}  
+            {!!Form::select('estadoN', $estado, $verDatosPerfil->condition ? $verDatosPerfil->condition->id : null,['id'=>'estadoN','class'=>'form-control','required','placeholder'=>'Estado'])!!}  
           </div>
           <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-              {!!Form::select('CMotivo', $motivos, $motivos,['id'=>'CMotivo','class'=>'form-control','required','placeholder'=>'Motivos'])!!}  
+              {!!Form::select('CMotivo', $motivos, $motivos,['id'=>'CMotivo','class'=>'form-control','required','placeholder'=>'* Motivos'])!!}  
           </div>
           <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-              {!!Form::text('observation',null,['id'=>'Cobservacion', 'class'=>'form-control','placeholder'=>'Observacion del retiro'])!!}   
+              {!!Form::textarea('observation',null,['id'=>'Cobservacion', 'class'=>'form-control','placeholder'=>'* Observacion del retiro'])!!}   
           </div>
         </div>
       </div>           

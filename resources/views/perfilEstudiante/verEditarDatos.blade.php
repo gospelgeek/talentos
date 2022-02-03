@@ -487,7 +487,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon', $internet_zone) }}">
+								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon') }}">
 							</div>
 						</div>               	
             		</div>
@@ -497,7 +497,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home', $internet_home) }}">
+								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home') }}">
 							</div>
 						</div>	
             		</div>
@@ -507,7 +507,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $sexo1) }}">
+								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad') }}">
 							</div>
 						</div>       	
             		</div>

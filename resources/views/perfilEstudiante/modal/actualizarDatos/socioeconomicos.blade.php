@@ -77,7 +77,7 @@
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('sex_document_identidad','Sexo documento: ')!!}
-                      {!!Form::text('sex_document_identidad',  $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sex_document_identidad : null,['id'=>'sexoD','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
+                      {!!Form::text('sex_document_identidad', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sex_document_identidad : null,['id'=>'sexoD','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_social_conditions','Condicion Social: ')!!}
@@ -104,7 +104,7 @@
                   <div class="container-fluid">
                       <div class="row">
                           <div class="col-xs-12 col-sm-6 ">
-                                {!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_datos_socioeconomicos'])!!}                       
+                              {!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_datos_socioeconomicos'])!!}                       
                               {!!Form::close()!!} 
                           </div>
                       </div>

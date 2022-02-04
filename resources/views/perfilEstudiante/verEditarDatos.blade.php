@@ -1,8 +1,3 @@
-@extends('layouts.dashboard')
-@section('title', 'Editar Datos')
-
-@section('content')
-
 @csrf
 <div id="container-main">
 	<div class="row">		
@@ -594,4 +589,3 @@
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 @endpush
 
-@endsection

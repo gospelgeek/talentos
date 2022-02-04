@@ -17,39 +17,39 @@
                   <div class="row">
                       <div style="display: none;">
                       {!!Form::label('id','id ')!!}
-                      {!!Form::text('id',$verDatosPerfil->socioeconomicdata->id,['id'=>'idSx','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
+                      {!!Form::text('id',$verDatosPerfil->socioeconomicdata->id ? $verDatosPerfil->socioeconomicdata->id : null,['id'=>'idSx','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
                       </div>  
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_ocupation','Ocupacion: ')!!}
-                      {!!Form::select('ocupacion',$ocupacion, $verDatosPerfil->socioeconomicdata->occupation->id,['id'=>'ocupacion','class'=>'form-control','required','placeholder'=>'Ocupacion'])!!}  
+                      {!!Form::select('ocupacion',$ocupacion, $verDatosPerfil->socioeconomicdata->occupation ? $verDatosPerfil->socioeconomicdata->occupation->id : null,['id'=>'ocupacion','class'=>'form-control','required','placeholder'=>'Ocupacion'])!!}  
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_civil_status','Estado civil: ')!!}
-                      {!!Form::select('estado_civil',$estado_civil, $verDatosPerfil->socioeconomicdata->civilstatus->id,['id'=>'estadoCivil','class'=>'form-control','required','placeholder'=>'Estado civil'])!!}  
+                      {!!Form::select('estado_civil',$estado_civil, $verDatosPerfil->socioeconomicdata->civilstatus ? $verDatosPerfil->socioeconomicdata->civilstatus->id : null,['id'=>'estadoCivil','class'=>'form-control','required','placeholder'=>'Estado civil'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('children_number','Numero hijos: ')!!}
-                      {!!Form::text('children_number',$verDatosPerfil->socioeconomicdata->children_number,['id'=>'hijosNumero', 'class'=>'form-control','placeholder'=>'Fecha nacimiento'])!!}   
+                      {!!Form::text('children_number',$verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->children_number : null,['id'=>'hijosNumero', 'class'=>'form-control','placeholder'=>'Fecha nacimiento'])!!}   
                       </div>
                   </div>
                   <div class="row">
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_residence_time','Tiempo en su residencia: ')!!}
-                      {!!Form::select('residencia',$residencia, $verDatosPerfil->socioeconomicdata->recidencetime->id,['id'=>'residencia1','class'=>'form-control','required','placeholder'=>'Tiempo residencia'])!!}  
+                      {!!Form::select('residencia',$residencia, $verDatosPerfil->socioeconomicdata->recidencetime ? $verDatosPerfil->socioeconomicdata->recidencetime->id : null,['id'=>'residencia1','class'=>'form-control','required','placeholder'=>'Tiempo residencia'])!!}  
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_housing_type','Tipo vivienda: ')!!}
-                      {!!Form::select('id_housing_type',$vivienda, $verDatosPerfil->socioeconomicdata->housingtype->id,['id'=>'vivienda','class'=>'form-control','required','placeholder'=>'Tipo vivienda'])!!}  
+                      {!!Form::select('id_housing_type',$vivienda, $verDatosPerfil->socioeconomicdata->housingtype ? $verDatosPerfil->socioeconomicdata->housingtype->id : null,['id'=>'vivienda','class'=>'form-control','required','placeholder'=>'Tipo vivienda'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_health_regime','Regimen salud: ')!!}
-                      {!!Form::select('regimen',$regimen, $verDatosPerfil->socioeconomicdata->healthregime->id,['id'=>'regimen', 'class'=>'form-control','placeholder'=>'Regimen de salud'])!!}   
+                      {!!Form::select('regimen',$regimen, $verDatosPerfil->socioeconomicdata->healthregime ? $verDatosPerfil->socioeconomicdata->healthregime->id : null,['id'=>'regimen', 'class'=>'form-control','placeholder'=>'Regimen de salud'])!!}   
                       </div> 
                   </div>
                   <div class="row">
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('sisben_category','Categoria Sisben: ')!!}
-                      {!!Form::text('sisben_category', $verDatosPerfil->socioeconomicdata->sisben_category,['id'=>'categoriaSisben','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
+                      {!!Form::text('sisben_category', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sisben_category : null,['id'=>'categoriaSisben','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('household_people','Personas en la familia: ')!!}

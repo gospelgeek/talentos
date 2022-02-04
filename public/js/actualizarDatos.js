@@ -44,6 +44,44 @@ $('.boton_update_datos_academicos_previos').click(function(e) {
   });
 });
 
+//Actualizar datos academicos previos de la otra vista
+$('.boton_update_academicos_previos').click(function(e) { 
+  e.preventDefault();   
+  var idDatos = $('#idPaD').val();
+  //alert($("#icfesscore").val());
+  $.ajax({
+  //ruta manual
+    url:'/updatedatosacademicosprevios/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'institution_name': $("#institutionname").val(),
+      'year_graduation': $("#yeargraduation").val(),
+      'bachelor_title': $("#snpregister").val(),
+      'icfes_date': $("#icfesdate").val(),
+      'snp_register': $("#bachelortitle").val(),
+      'icfes_score': $("#icfesscore").val(),
+  
+    },
+    success:function(result) {
+      $('#contenido-2').modal('hide');
+      //window.location.reload(); 
+      toastr.info(result);
+      setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+
 
 //ACTUALIZAR DATOS GENERALES
 //Abrir modal
@@ -54,7 +92,7 @@ $('.abrir_modal_actualizar').click(function(e) {
 });
 
 
-//Actualiazr datos
+//Actualiazr datos 
 $('.boton_update_datos_generales').click(function(e) { 
   e.preventDefault();   
   var idDatos = $('#idG').val();
@@ -99,6 +137,53 @@ $('.boton_update_datos_generales').click(function(e) {
   });
 });
 
+//actualizar datos generales de la otra vista
+$('.boton_update_generales').click(function(e) { 
+  e.preventDefault();   
+  var idDatos = $('#idGeN').val();
+  //alert($("#barrioresidencia").val());
+  $.ajax({
+  //ruta manual
+    url:'/actualizardatosgenerales/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'name': $("#nombres123").val(),
+      'lastname': $("#apellidosG").val(),
+      'id_document_type': $("#tipodocumento").val(),
+      'document_number': $("#numerodocumento").val(),
+      'document_expedition_date': $("#expedition").val(),
+      'id_birth_city': $("#ciudadnacimiento").val(),
+      'email': $("#correo").val(),
+      'birth_date': $("#fechanacimientoG").val(),
+      'sex': $("#sexoGeN").val(),
+      'id_gender': $("#gen").val(),
+      'cellphone': $("#telefono11").val(),
+      'phone': $("#telefono22").val(),
+      'id_neighborhood': $("#barrioresidencia").val(),
+      'direction': $("#direccionnnnn").val(),
+    },
+    success:function(result) {
+      $('#contenido-1').modal('hide');
+      //window.location.reload(); 
+      toastr.info(result);
+      setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+
+
+
 
 //ACTUALIZAR DATOS SOCIOECONOMICOS
 //Abrir modal
@@ -139,6 +224,55 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
     },
     success:function(result) {
       $('#modal_actualizar').modal('hide');
+      //window.location.reload(); 
+      toastr.info(result);
+      setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+
+
+//Actualizar datos socioeconomicos de la otra vista
+$('.boton_update_socioeconomicos').click(function(e) { 
+  e.preventDefault();   
+  var idDatos = $('#idSd').val();
+  //alert($("#idethnicity").val());
+  $.ajax({
+  //ruta manual
+    url:'/updatedatossocioeconomicos/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'id_ocupation': $("#idocupation").val(),
+      'id_civil_status': $("#idcivilstatus").val(),
+      'children_number': $("#childrennumber").val(),
+      'id_residence_time': $("#idresidencetime").val(),
+      'id_housing_type': $("#idhousingtype").val(),
+      'id_health_regime': $("#idhealthregime").val(),
+      'sisben_category': $("#sisbencategory").val(),
+      'id_benefits': $("#idbenefits").val(),
+      'household_people': $("#householdpeople").val(),
+      'economic_possition': $("#economicpossition").val(),
+      'dependent_people': $("#dependentpeople").val(),
+      'internet_zon': $("#internetzon").val(),
+      'internet_home': $("#internethome").val(),
+      'sex_document_identidad': $("#sexdocumentidentidad").val(),
+      'id_social_conditions': $("#idsocialconditions").val(),
+      'id_disability': $("#iddisability").val(),
+      'id_ethnicity': $("#idethnicity").val(),
+    },
+    success:function(result) {
+      $('#contenido-3').modal('hide');
       //window.location.reload(); 
       toastr.info(result);
       setTimeout("location.reload()", 2000);

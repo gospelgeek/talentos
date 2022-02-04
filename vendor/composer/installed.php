@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php return array (
   'root' => 
   array (
@@ -22,6 +23,8 @@
       ),
       'reference' => 'df3e5504b477059e290faecad3004ee79f4406a4',
 =======
+=======
+>>>>>>> 141b4a2b5c98c58dcb86e67fdc1e08700b687ee4
 <?php return array(
     'root' => array(
         'pretty_version' => 'dev-develop',
@@ -1447,6 +1450,7 @@
             'reference' => 'ff1af05918e2cd9e725a0a811c9a14546c8f1219',
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
 >>>>>>> 044e14e09f0e0fe88d65c4573e37de2fd6c96631
     ),
     'asm89/stack-cors' => 
@@ -2894,4 +2898,7 @@
       'reference' => 'ff1af05918e2cd9e725a0a811c9a14546c8f1219',
     ),
   ),
+=======
+    ),
+>>>>>>> 141b4a2b5c98c58dcb86e67fdc1e08700b687ee4
 );

@@ -33,10 +33,11 @@ class CreateStudentProfileTable extends Migration
             $table->string('phone');
             $table->integer('id_commune');
             $table->integer('id_neighborhood');
-            $table->string('direction');
             //$table->integer('id_group');
-            //$table->integer('id_cohort');
+            $table->string('student_code');
+            $table->string('direction');
             $table->integer('id_tutor');
+            $table->integer('id_state');
             $table->softDeletes();
             $table->timestamps();
         });

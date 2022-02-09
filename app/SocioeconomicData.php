@@ -44,7 +44,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Occupation>
      */
-    public function occupation (){
+    public function occupation(){
 
         return $this->hasOne(Occupation::class, 'id', 'id_ocupation');
     }
@@ -56,7 +56,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<CivilStatus>
      */
-    public function civilstatus (){
+    public function civilstatus(){
 
         return $this->hasOne(CivilStatus::class, 'id', 'id_civil_status');
     } 
@@ -68,7 +68,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<RecidenceTime>
      */
-    public function recidencetime (){
+    public function recidencetime(){
 
         return $this->hasOne(RecidenceTime::class, 'id', 'id_residence_time');
     }  
@@ -80,7 +80,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<HousingType>
      */
-    public function housingtype (){
+    public function housingtype(){
 
         return $this->hasOne(HousingType::class, 'id', 'id_housing_type');
     }
@@ -92,7 +92,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<HealthRegime>
      */
-    public function healthregime (){
+    public function healthregime(){
 
         return $this->hasOne(HealthRegime::class, 'id', 'id_health_regime');
     }
@@ -104,7 +104,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Benefits>
      */
-    public function benefits (){
+    public function benefits(){
 
         return $this->hasOne(Benefits::class, 'id', 'id_benefits');
     }
@@ -116,9 +116,9 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<SocialConditions>
      */
-    public function socialconditions (){
+    public function socialconditions(){
 
-        return $this->hasOne(SocialConditions::class, 'id', 'id_disability');
+        return $this->hasOne(SocialConditions::class, 'id', 'id_social_conditions');
     }
 
      /**
@@ -128,9 +128,9 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Disability>
      */
-    public function disability (){
+    public function disability(){
 
-        return $this->hasOne(Disability::class, 'id', 'id_social_conditions');
+        return $this->hasOne(Disability::class, 'id', 'id_disability');
     }
 
     /**
@@ -140,7 +140,7 @@ class SocioeconomicData extends Model
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
      * @return Collection<Ethnicity>
      */
-    public function ethnicity (){
+    public function ethnicity(){
 
         return $this->hasOne(Ethnicity::class, 'id', 'id_ethnicity');
     }

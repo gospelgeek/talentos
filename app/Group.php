@@ -18,7 +18,7 @@ class Group extends Model
     ];
 
     /**
-     * Relacion con los  datos que se tiene de grupo  
+     * Relacion con los  datos que se tiene de Group  
      * con la tabla cohorte
      * 
      * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>

@@ -9,19 +9,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
   <title>@yield('title')</title>
-
+  {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
   <!-- Google Font: Source Sans Pro -->
   {!!Html::style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback')!!}
-  <!-- Font Awesome Icons -->
-  {!!Html::style('/dashboard/plugins/fontawesome-free/css/all.min.css')!!}
+  <!-- Font Awesome Icons
+  {!!Html::style('/dashboard/plugins/fontawesome-free/css/all.min.css')!!} -->
+  {!!Html::style('font-awesome-4.7.0/css/font-awesome.min.css')!!}
   <!-- Theme style -->
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
-  
+  {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')!!}
-  {!!Html::style('/dashboard/plugins/fontawesome-free/css/all.min.css')!!}
+  {!!Html::style('/toastr/toastr.min.css')!!}
   @stack('css')
 </head>
 <body class="hold-transition layout-top-nav">
@@ -30,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="estudiante" class="navbar-brand">
+      <a href="{{route('estudiante')}}" class="navbar-brand">
       <img src="../img/logo.png" alt="Logo" class="brand-image" style="">
         <span class="brand-text font-weight-light">PNA</span>
       </a>
@@ -195,7 +196,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        <a href="{{route('usuario.estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+        </ul>
+        @else
+        <ul class="navbar-nav mr-auto">
+                        <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
         </ul>
         @endif
         <li class="nav-item">
@@ -275,6 +282,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE for demo purposes
 {!!Html::script('/dashboard/dist/js/demo.js')!!}
  -->
+{!!Html::script('/toastr/toastr.min.js')!!}
 
 {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
 

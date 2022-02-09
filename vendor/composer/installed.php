@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0f3c885414c416e8fcd3d025836429adf49da842',
+        'reference' => '0f749e1ce9a5ce600b061817ddb1e22557fa8de0',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -439,12 +439,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0f3c885414c416e8fcd3d025836429adf49da842',
+            'reference' => '0f749e1ce9a5ce600b061817ddb1e22557fa8de0',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -466,12 +466,12 @@
             'dev_requirement' => false,
         ),
         'laravelcollective/html' => array(
-            'pretty_version' => 'v6.2.1',
-            'version' => '6.2.1.0',
+            'pretty_version' => 'v6.3.0',
+            'version' => '6.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravelcollective/html',
             'aliases' => array(),
-            'reference' => 'ae15b9c4bf918ec3a78f092b8555551dd693fde3',
+            'reference' => '78c3cb516ac9e6d3d76cad9191f81d217302dea6',
             'dev_requirement' => false,
         ),
         'laraveles/spanish' => array(
@@ -640,12 +640,12 @@
             'dev_requirement' => true,
         ),
         'phar-io/version' => array(
-            'pretty_version' => '3.1.0',
-            'version' => '3.1.0.0',
+            'pretty_version' => '3.1.1',
+            'version' => '3.1.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phar-io/version',
             'aliases' => array(),
-            'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
+            'reference' => '15a90844ad40f127afd244c0cad228de2a80052a',
             'dev_requirement' => true,
         ),
         'phenx/php-font-lib' => array(
@@ -861,8 +861,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1412,15 +1412,6 @@
             'install_path' => __DIR__ . '/../yajra/laravel-datatables-oracle',
             'aliases' => array(),
             'reference' => '553482df5f68969928acc0ee1a3af032cdaaf824',
-            'dev_requirement' => false,
-        ),
-        'yoeunes/toastr' => array(
-            'pretty_version' => 'v1.2.7',
-            'version' => '1.2.7.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../yoeunes/toastr',
-            'aliases' => array(),
-            'reference' => 'ff1af05918e2cd9e725a0a811c9a14546c8f1219',
             'dev_requirement' => false,
         ),
     ),

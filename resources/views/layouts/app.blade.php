@@ -40,7 +40,7 @@
                 @endif
 
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    <img src="../img/logo.gpeg" alt="Logo" class="brand-image" style="width: 25px;">
+                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 25px;">
                         <span class="brand-text font-weight-light">PNA</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -40,7 +40,7 @@
                 @endif
                 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="">
+                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 45px;">
                         <span class="brand-text font-weight-light">PNA</span>
                 </a>
                 </nav>

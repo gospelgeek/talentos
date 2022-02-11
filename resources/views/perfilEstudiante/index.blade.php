@@ -21,7 +21,8 @@
      <table id="example1" class=" table table-bordered table-striped">
         <thead >
             <tr >
-                <td>Nombres y apellidos</td>
+                <td>Nombres</td>
+                <td>Apellidos</td>
                 <td>Nº documento</td>
                 <td>Codigo</td>
                 <td>Email</td>
@@ -35,7 +36,8 @@
         <tbody>
             @foreach ($perfilEstudiantes as $estudiante)
                 <tr data-id="{{$estudiante->id}}">
-                    <td>{{ $estudiante->name}} {{ $estudiante->lastname }}</td>
+                                        <td>{{ $estudiante->name}}</td>
+                                        <td>{{ $estudiante->lastname }}</td>
                                         <td>{{ $estudiante->document_number }}</td>
                                         <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->email }}</td>

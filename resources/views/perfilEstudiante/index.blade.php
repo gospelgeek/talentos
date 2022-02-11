@@ -23,8 +23,7 @@
             <tr >
                 <td>Nombres y apellidos</td>
                 <td>Nº documento</td>
-                <td>Fecha de nacimiento</td>
-                <td>Sexo</td>
+                <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
                 <td>Grupo</td>
@@ -38,8 +37,7 @@
                 <tr data-id="{{$estudiante->id}}">
                     <td>{{ $estudiante->name}} {{ $estudiante->lastname }}</td>
                                         <td>{{ $estudiante->document_number }}</td>
-                                        <td>{{ $estudiante->birth_date }}</td>
-                                        <td>{{ $estudiante->sex }}</td>
+                                        <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->email }}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>

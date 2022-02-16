@@ -190,7 +190,13 @@ class perfilEstudianteController extends Controller
             ]);
 
 
-        $foto = explode("/",$verDatosPerfil->photo);    
+         if($verDatosPerfil->photo == ""){
+            $foto = null;
+        }else{
+            $foto = explode("/",$verDatosPerfil->photo);
+            $foto = $foto[5];
+        }  
+            
 
         return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','internet_zone','internet_home','genero','sexo','sexo1','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios'));   
     }
@@ -316,7 +322,13 @@ class perfilEstudianteController extends Controller
 
         $beneficios = Benefits::pluck('name', 'id');
 
-        $foto = explode("/",$verDatosPerfil->photo);
+         if($verDatosPerfil->photo == ""){
+            $foto = null;
+        }else{
+            $foto = explode("/",$verDatosPerfil->photo);
+            $foto = $foto[5];
+        }  
+        
 
         $depNacimiento = BirthDepartament::pluck('name','id');
 

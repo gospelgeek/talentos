@@ -367,6 +367,7 @@ class perfilEstudianteController extends Controller
             $data->phone                    = $request['phone'];
             $data->id_neighborhood          = $request['id_neighborhood'];
             $data->direction                = $request['direction'];
+            $data->student_code             = $request['student_code'];
             
             $data->save();
             

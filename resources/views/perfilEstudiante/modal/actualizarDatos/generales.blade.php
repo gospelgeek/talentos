@@ -83,7 +83,10 @@
                       {!!Form::label('phone','Numero alternativo: ')!!}
                       {!!Form::text('phone', $verDatosPerfil->phone,['id'=>'telefono','class'=>'form-control','required','placeholder'=>'Telefono'])!!}  
                       </div>
-                      
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('student_code','Codigo estudiante: ')!!}
+                      {!!Form::text('student_code', $verDatosPerfil ? $verDatosPerfil->student_code : null,['id'=>'codEstu','class'=>'form-control','required','placeholder'=>'Codigo estudiante'])!!}  
+                      </div>
                   </div>
                   </div>
               </div>

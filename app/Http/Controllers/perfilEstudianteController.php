@@ -115,8 +115,8 @@ class perfilEstudianteController extends Controller
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         //dd($verDatosPerfil);  
         $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Femenino',
-                      'M' => 'Masculino' );
+        $sexo = array('M' => 'Femenino',
+                      'H' => 'Masculino' );
         if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
            $sexo1 = "Masculino";     
         }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
@@ -281,8 +281,8 @@ class perfilEstudianteController extends Controller
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
 
         $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Femenino',
-                      'M' => 'Masculino' );
+        $sexo = array('M' => 'Femenino',
+                      'H' => 'Masculino' );
 
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',

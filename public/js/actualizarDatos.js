@@ -117,6 +117,7 @@ $('.boton_update_datos_generales').click(function(e) {
       'phone': $("#telefono").val(),
       'id_neighborhood': $("#barrioV").val(),
       'direction': $("#direccion12").val(),
+      'student_code': $('#codEstu').val(),  
     },
     success:function(result) {
       $('#modal_actualizar_datos_generales').modal('hide');
@@ -162,6 +163,7 @@ $('.boton_update_generales').click(function(e) {
       'phone': $("#telefono22").val(),
       'id_neighborhood': $("#barrioresidencia").val(),
       'direction': $("#direccionnnnn").val(),
+      'student_code': $('#codEstudiante').val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');

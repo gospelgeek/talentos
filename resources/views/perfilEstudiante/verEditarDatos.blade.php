@@ -247,11 +247,21 @@
 							</div>
 						</div>     	
             		</div>
+                    <div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="student_code">Codigo estudinate</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input  class="form-control" type="text" name="student_code" id="codEstudiante" value="{{ old('student_code', $verDatosPerfil->student_code) }}">
+							</div>
+						</div>     	
+            		</div>
             	</div>
 			</div>			
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 			
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_generales'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_generales'])!!}                       
             {!!Form::close()!!} 	
 			
 			@endif

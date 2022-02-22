@@ -43,7 +43,7 @@ $('.crear_estado').click(function(e) {
 
     error:function(msj) {          
       var mensajeError = "";
-      $.each(result.responseJSON.errors,function(i,field){
+      $.each(msj.responseJSON.errors,function(i,field){
         mensajeError += "<li>"+field+"</li>"
         //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
         console.log(mensajeError)

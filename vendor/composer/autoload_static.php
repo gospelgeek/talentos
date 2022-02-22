@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01
+class ComposerStaticInitf4b075afb1bf991c67fa462474e07186
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -620,6 +620,8 @@ class ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01
 
     public static $classMap = array (
         'App\\AdmissionScores' => __DIR__ . '/../..' . '/app/AdmissionScores.php',
+        'App\\Asignates' => __DIR__ . '/../..' . '/app/Asignates.php',
+        'App\\AsignementStudents' => __DIR__ . '/../..' . '/app/AsignementStudents.php',
         'App\\AssignmentStudent' => __DIR__ . '/../..' . '/app/AssignmentStudent.php',
         'App\\Benefits' => __DIR__ . '/../..' . '/app/Benefits.php',
         'App\\BirthCity' => __DIR__ . '/../..' . '/app/BirthCity.php',
@@ -688,6 +690,7 @@ class ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Role_user' => __DIR__ . '/../..' . '/app/Role_user.php',
         'App\\SocialConditions' => __DIR__ . '/../..' . '/app/SocialConditions.php',
+        'App\\SocioEducationalFollowUp' => __DIR__ . '/../..' . '/app/SocioEducationalFollowUp.php',
         'App\\SocioeconomicData' => __DIR__ . '/../..' . '/app/SocioeconomicData.php',
         'App\\StudentDevices' => __DIR__ . '/../..' . '/app/StudentDevices.php',
         'App\\StudentGroup' => __DIR__ . '/../..' . '/app/StudentGroup.php',
@@ -6584,10 +6587,10 @@ class ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitb208f13eb3b200fe6dac26dda55afa01::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf4b075afb1bf991c67fa462474e07186::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf4b075afb1bf991c67fa462474e07186::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf4b075afb1bf991c67fa462474e07186::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf4b075afb1bf991c67fa462474e07186::$classMap;
 
         }, null, ClassLoader::class);
     }

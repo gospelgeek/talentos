@@ -732,12 +732,12 @@
             },
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Facade\\FlareClient\\": "src"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1308,12 +1308,12 @@
             },
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7801,12 +7801,12 @@
             },
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
                 "psr-4": {
                     "Symfony\\Polyfill\\Mbstring\\": ""
-                }
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8933,12 +8933,12 @@
             },
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "src/SweetAlert/functions.php"
-                ],
                 "psr-4": {
                     "UxWeb\\SweetAlert\\": "src/SweetAlert/"
-                }
+                },
+                "files": [
+                    "src/SweetAlert/functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [

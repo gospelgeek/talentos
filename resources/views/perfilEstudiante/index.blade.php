@@ -27,7 +27,7 @@
                 <td>Fecha de nacimiento</td>
                 <td>Sexo</td>
                 <td>Email</td>
-                <td>Telefono</td>
+                <td>Codigo</td>
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Acciones</td>

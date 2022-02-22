@@ -58,21 +58,9 @@ class perfilEstudianteController extends Controller
 
     public function indexPerfilEstudiante(){
 
-        $user = auth()->user();
-
-        if($user['rol_id'] == 6){
-            
-            $perfilEstudiantes = DB::select('SELECT * FROM student_profile WHERE id IN (SELECT id FROM assignment_students WHERE id_assignments=6)');
-
-            return view('perfilEstudiante.index',compact('perfilEstudiantes'));
-
-        }else{
-
-            $perfilEstudiantes = perfilEstudiante::all();   
-             return view('perfilEstudiante.index',compact('perfilEstudiantes')); 
-        }
-       
-       
+        $perfilEstudiantes = perfilEstudiante::all();   
+        return view('perfilEstudiante.index',compact('perfilEstudiantes')); 
+        
     }
 
 

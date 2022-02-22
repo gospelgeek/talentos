@@ -12,34 +12,34 @@
 	<div class="sticky-top">	
 		<div class="row">
 			<div class="col-sm-12">		             
-           		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' => 'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
+           		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' =>'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
 			</div>
 		</div>
 	</div>				
 	<br>
-	<div class="row" >
+	<div class="form-row align-items-center" >
 		{!!Form::label('td','TD:')!!}
 		<div class="col-sm-1">
-			{!!Form::select('documento',$documento,$verDatosPerfil->documenttype ? $verDatosPerfil->documenttype->id : null,['class'=>'form-control','required','readonly','disabled','style' =>'text-align: left;'])!!}	
+			{!!Form::select('documento',$documento,$verDatosPerfil->documenttype ? $verDatosPerfil->documenttype->id : null,['class'=>'form-control','required','readonly','disabled','style'=>'border: none ', 'text-align: left;'])!!}	
 		</div>
 		{!!Form::label('documento','Nº documento:')!!}						
 		<div class="col-sm-2">
-			{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>
 			{!!Form::label('edad','Edad:')!!}
 		<div class="col-sm-1">					
-			{!!Form::text('edad',$edad,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('edad',$edad,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>
 		{!!Form::label('correo','Email:')!!}
 		<div class="col-sm-4">
-			{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>				
 	</div>
 	<br>
-	<div class="row">
+	<div class="form-row align-items-center">
 		{!!Form::label('celular','Celular:')!!}
 		<div class="col-sm-2">
-			{!!Form::text('e-phone',$verDatosPerfil->cellphone,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('e-phone',$verDatosPerfil->cellphone,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>				
 		{!!Form::label('grupo','Grupo:')!!}		
 		<div class="col-sm-2">
@@ -357,7 +357,7 @@
            		</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_academicos_previos'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_academicos_previos'])!!}                       
             {!!Form::close()!!}
 			@endif
 		</div>
@@ -573,7 +573,7 @@
             	</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_socioeconomicos'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_socioeconomicos'])!!}                       
             {!!Form::close()!!}
 			@endif
 		</div>
@@ -590,10 +590,7 @@
 	
 </div>
 
-@include('perfilEstudiante.modal.edit')
-@include('perfilEstudiante.modal.actualizarDatos.generales')
-@include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
-@include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
+@include('perfilEstudiante.modal.editestado')
 @include('perfilEstudiante.seguimientos.modal.create')
 @include('vistasParciales.validacionErrores')
 

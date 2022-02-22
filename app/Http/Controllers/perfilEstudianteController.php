@@ -460,7 +460,7 @@ class perfilEstudianteController extends Controller
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.asignaturas.index',compact('asignaturas'));
+        return view('perfilEstudiante.Asignaturas.index',compact('asignaturas'));
     }
 
     public function verGrupos($id)
@@ -470,7 +470,7 @@ class perfilEstudianteController extends Controller
         
         //dd($name);
 
-        return view('perfilEstudiante.asignaturas.grupos',compact('grupos','name'));
+        return view('perfilEstudiante.Asignaturas.grupos',compact('grupos','name'));
     }
 
     public function vernotas($id)
@@ -481,7 +481,7 @@ class perfilEstudianteController extends Controller
         
         //dd($grupo);
 
-        return view('perfilEstudiante.asignaturas.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.Asignaturas.notas',compact('notas','id','grupo'));
     }
 
     public function updateEstado($id, Request $request){

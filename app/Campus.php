@@ -15,3 +15,4 @@ class Campus extends Model
         'code_uv',
     ];
 }
+

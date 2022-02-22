@@ -460,7 +460,7 @@ class perfilEstudianteController extends Controller
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.Asignaturas.index',compact('asignaturas'));
+        return view('perfilEstudiante.asignaturas.index',compact('asignaturas'));
     }
 
     public function verGrupos($id)
@@ -470,7 +470,7 @@ class perfilEstudianteController extends Controller
         
         //dd($name);
 
-        return view('perfilEstudiante.Asignaturas.grupos',compact('grupos','name'));
+        return view('perfilEstudiante.asignaturas.grupos',compact('grupos','name'));
     }
 
     public function vernotas($id)
@@ -481,7 +481,7 @@ class perfilEstudianteController extends Controller
         
         //dd($grupo);
 
-        return view('perfilEstudiante.Asignaturas.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.asignaturas.notas',compact('notas','id','grupo'));
     }
 
     public function updateEstado($id, Request $request){
@@ -512,7 +512,7 @@ class perfilEstudianteController extends Controller
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.asistencias.index',compact('asignaturas'));
+        return view('perfilEstudiante.Asistencias.index',compact('asignaturas'));
     }
 
     public function Grupos_Asignaturas($id)
@@ -522,7 +522,7 @@ class perfilEstudianteController extends Controller
         
         //dd($name);
 
-        return view('perfilEstudiante.asistencias.grupos',compact('grupos','name'));
+        return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
     }
 
     public function Asistencias_grupo($id)
@@ -533,14 +533,14 @@ class perfilEstudianteController extends Controller
         
         //dd($grupo);
 
-        return view('perfilEstudiante.asistencias.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.Asistencias.notas',compact('notas','id','grupo'));
     }
 
     public function sesiones($course,$id){
         $grupo=Group::where('id',$id)->first();
         $name = Course::where('id',$course)->first();
         //dd($course);
-        return view('perfilEstudiante.asistencias.sesiones',compact('grupo','name'));
+        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name'));
     }
     public function store_seguimiento(Request $request) {
 

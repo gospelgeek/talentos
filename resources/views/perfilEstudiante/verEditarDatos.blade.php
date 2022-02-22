@@ -580,19 +580,49 @@
 	</div>
 	@if(auth()->user()->rol_id == 2)
 	<div class="accordion-container">
-		<a href="#" id="titulo-3" class="accordion-titulo-3">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
-		<div id="contenido-3" class="accordion-content-3">
+		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
+		<div id="contenido-4" class="accordion-content-4">
 			{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
-		</div>
+			
+			<div id="mostrarsegui" class="table-responsive">
+     			<br><table class=" table table-bordered table-striped">
+        			<thead >
+            			<tr>
+                			<td>SEGUIMIENTO (YYYY-mm-dd)</td>
+                			<td width="35%">ACCIONES</td>
+            			</tr>
+        			</thead>
+        			<input type="hidden" id="detalle" value="{{$seguimientos}}"> 
+        				
+					<tbody id="mostrarFcA">
+						
+					
+                	</tbody>
+                	 
+      			</table>
+      			
+      			
+		
+        	</div>
+        	
+        	
 	</div>
 	@endif
-	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	
 </div>
 
 @include('perfilEstudiante.modal.editestado')
 @include('perfilEstudiante.seguimientos.modal.create')
+@include('perfilEstudiante.seguimientos.modal.editar')
+@include('perfilEstudiante.seguimientos.modal.ver')
 @include('vistasParciales.validacionErrores')
+
+{!!Form::open(['id'=>'form-edit-seguimiento','route'=>['editarseguimiento',':SEGUIMIENTO_ID'], 'method'=>'GET'])!!}
+{!!Form::close()!!}
+
+{!!Form::open(['id'=>'form-delete','route'=>['deleteseguimiento',':SEGUIMIENTO_ID'], 'method'=>'DELETE'])!!}
+{!!Form::close()!!}
 
 
 
@@ -600,6 +630,36 @@
 {!!Html::script('/js/filtroestudiantes.js')!!}
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
+
+<script>
+        $(function () {
+            $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron coincidencias",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate":{
+                "next" : "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+            });
+        });        
+    </script>
 @endpush
 
 @endsection

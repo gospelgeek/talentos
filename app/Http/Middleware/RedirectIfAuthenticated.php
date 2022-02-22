@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
                 return redirect('usuario/');
             }
 
-            if((Auth::user()->rol_id == '2') || (Auth::user()->rol_id == '3') || (Auth::user()->rol_id == '4') || (Auth::user()->rol_id == '5')){
+            if((Auth::user()->rol_id == '2') || (Auth::user()->rol_id == '3') || (Auth::user()->rol_id == '4') || (Auth::user()->rol_id == '5') || (Auth::user()->rol_id == '6')){
                 return redirect('estudiante');
             }
 

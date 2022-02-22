@@ -284,29 +284,14 @@ class perfilEstudianteController extends Controller
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
 
-        if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
-           $sexo1 = "Masculino";     
-        }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
-            $sexo1 = "Femenino"; 
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_home == 0){
-            $internet_home = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_home == 1){
-            $internet_home = "NO";
-
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_zon == 0){
-            $internet_zone = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_zon == 1){
-            $internet_zone = "NO";
-        }
+        
 
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
@@ -359,7 +344,7 @@ class perfilEstudianteController extends Controller
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos'));
     }
 
     

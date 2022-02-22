@@ -21,12 +21,13 @@
      <table id="example1" class=" table table-bordered table-striped">
         <thead >
             <tr >
-                <td>Nombres y apellidos</td>
+                <td>Nombres</td>
+                <td>Apellidos</td>
                 <td>Nº documento</td>
                 <td>Fecha de nacimiento</td>
                 <td>Sexo</td>
                 <td>Email</td>
-                <td>Telefono</td>
+                <td>Codigo</td>
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Acciones</td>
@@ -36,16 +37,17 @@
         <tbody>
             @foreach ($perfilEstudiantes as $estudiante)
                 <tr data-id="{{$estudiante->id}}">
-                    <td>{{ $estudiante->name}} {{ $estudiante->lastname }}</td>
+                                        <td>{{ $estudiante->name}}</td>
+                                        <td>{{ $estudiante->lastname }}</td>
                                         <td>{{ $estudiante->document_number }}</td>
                                         <td>{{ $estudiante->birth_date }}</td>
                                         <td>{{ $estudiante->sex }}</td>
                                         <td>{{ $estudiante->email }}</td>
-                                        <td>{{ $estudiante->cellphone }}</td>
+                                        <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>
                                         <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >
-                                        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)   
+                                        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)   
                                             <div class="row">                                  
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    

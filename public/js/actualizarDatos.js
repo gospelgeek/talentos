@@ -117,6 +117,7 @@ $('.boton_update_datos_generales').click(function(e) {
       'phone': $("#telefono").val(),
       'id_neighborhood': $("#barrioV").val(),
       'direction': $("#direccion12").val(),
+      'student_code': $('#codEstu').val(),
     },
     success:function(result) {
       $('#modal_actualizar_datos_generales').modal('hide');
@@ -141,10 +142,10 @@ $('.boton_update_datos_generales').click(function(e) {
 $('.boton_update_generales').click(function(e) { 
   e.preventDefault();   
   var idDatos = $('#idGeN').val();
-  //alert($("#barrioresidencia").val());
+  //alert(idDatos);
   $.ajax({
   //ruta manual
-    url:'/actualizardatosgenerales/'+ idDatos,
+    url:'/updatedatosgenerales/'+ idDatos,
     type:'PUT',
     data:{
       '_token': $('input[name=_token]').val(),
@@ -154,7 +155,7 @@ $('.boton_update_generales').click(function(e) {
       'document_number': $("#numerodocumento").val(),
       'document_expedition_date': $("#expedition").val(),
       'id_birth_city': $("#ciudadnacimiento").val(),
-      'email': $("#correo").val(),
+      'email': $("#elctrncO").val(),
       'birth_date': $("#fechanacimientoG").val(),
       'sex': $("#sexoGeN").val(),
       'id_gender': $("#gen").val(),
@@ -162,6 +163,7 @@ $('.boton_update_generales').click(function(e) {
       'phone': $("#telefono22").val(),
       'id_neighborhood': $("#barrioresidencia").val(),
       'direction': $("#direccionnnnn").val(),
+      'student_code': $('#codEstudiante').val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
@@ -198,7 +200,7 @@ $('.abrir_modal_socioeconomico').click(function(e) {
 $('.boton_update_datos_socioeconomicos').click(function(e) { 
   e.preventDefault();   
   var idDatos = $('#idSx').val();
-  alert(idDatos);
+  //alert(idDatos);
   $.ajax({
   //ruta manual
     url:'/updatedatossocioeconomicos/'+ idDatos,
@@ -212,6 +214,7 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
       'id_housing_type': $("#vivienda").val(),
       'id_health_regime': $("#regimen").val(),
       'sisben_category': $("#categoriaSisben").val(),
+      'id_benefits': $("#beneficiosD").val(),
       'household_people': $("#personasFamilia").val(),
       'economic_possition': $("#posicionE").val(),
       'dependent_people': $("#personasCargo").val(),
@@ -276,6 +279,96 @@ $('.boton_update_socioeconomicos').click(function(e) {
       //window.location.reload(); 
       toastr.info(result);
       setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+
+
+//ACCIONES PARA EDITAR GRUPO Y COHORTE
+//Abrir modal
+$('.boton_cambiar_cohorte_grupo').click(function(e) { 
+      e.preventDefault();
+        $('#modal_cambiar_cohorte_grupo').modal('show');
+
+        /*var form = $('#form-mostrar-grupos');
+        var url = form.attr('action').replace(':GRUPO_ID');
+        //console.log(url);
+
+        $.ajax({
+          url:url,
+          type:'GET',
+          data:{
+            '_token': $('input[name=_token]').val(),
+            'grupo': $("#grupOm").val(),
+            'cohorte': $("#cohorT").val(),
+          },  
+
+        });
+
+        $.get(url, function(result){
+            //const object = JSON.parse(result.tracking_detail);
+            //console.log(result);
+            
+
+        });
+        
+        /*$(document).on('change', '#cohorT', function(event) {
+          var valor = document.getElementById('cohorT').value;
+          alert('entro');        
+        });
+        
+
+        
+
+        
+
+        //var row = $(this).parents('tr');
+        //var id = row.data('id');
+        //alert(id);*/
+
+        
+
+        
+});
+
+
+//Actualizando campos
+$('.boton_update_cohorte_grupo').click(function(e) { 
+  e.preventDefault();   
+  
+  var idgroup = $('#idGr').val();
+
+  $.ajax({
+  //ruta manual
+    url:'/updatecohortegrupo/'+ idgroup,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'grupo': $("#grupOm").val(),
+      'cohorte': $("#cohorT").val(),
+    },
+    success:function(result) {
+      
+      //$('#contenido-3').modal('hide');
+      //window.location.reload(); 
+      if(result == 'El grupo seleccionado debe pertenecer a la cohorte correspondiente'){
+        toastr.warning(result); 
+    
+      }else if(result == 'Datos actualizados correctamente!!'){
+        toastr.success(result);
+        setTimeout("location.reload()", 2000);
+      }
+      
     },
 
     error:function(result) {          

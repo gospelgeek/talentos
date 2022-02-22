@@ -27,4 +27,8 @@ class Group extends Model
     public function cohort(){
         return $this->hasOne(Cohort::class, 'id', 'id_cohort');
     }
+
+    public function course(){
+        return $this->hasOne(Course::class, 'id_cohort', 'id_cohort');
+    }
 }

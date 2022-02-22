@@ -43,12 +43,11 @@ Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante
 Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');
 Route::get('ver_estudiante/{id}', 'perfilEstudianteController@verPerfilEstudiante')->name('ver_estudiante');
 Route::get('editar_estudiante/{id}', 'perfilEstudianteController@editarPerfilEstudiante')->name('editar_estudiante');
-Route::put('actualizardatosgenerales/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('actualizardatosgenerales');
 Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerfilEstudiante')->name('delete_estudiante');
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
-Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');
+/*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
 
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
 Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');
@@ -59,15 +58,29 @@ Route::get('asignaturas', 'perfilEstudianteController@indexAsignaturas')->name('
 Route::get('grupos/{id}', 'perfilEstudianteController@verGrupos')->name('grupos');
 Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
 
+Route::get('asistencias', 'perfilEstudianteController@indexAsistencias')->name('asistencias');
+Route::get('Asistencias/{id}', 'perfilEstudianteController@Grupos_Asignaturas')->name('asistencias.grupos');
+Route::get('/Asistencias/{course}/grupo/{id}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
+Route::get('Asistencia_asignatura/{id}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
+
 //RUTAS DE AJAX
 //ruta estado
 Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');
-//reutas para actualizar datos del estudiante
+
+//rutas para actualizar datos del estudiante
 Route::put('updatedatosgenerales/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('updatedatosgenerales');
 Route::put('updatedatossocioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('updatedatossocioeconomicos');
 Route::put('updatedatosacademicosprevios/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('updatedatosacademicosprevios');
+
 //rutas para seguimiento
 Route::post('crearseguimiento', 'perfilEstudianteController@store_seguimiento')->name('crearseguimiento');
+Route::get('editarseguimiento/{id}', 'perfilEstudianteController@edit_seguimiento')->name('editarseguimiento');
+Route::put('updateseguimientosocioeducativo/{id}', 'perfilEstudianteController@update_seguimiento')->name('updateseguimientosocioeducativo');
+Route::delete('deleteseguimiento/{id}', 'perfilEstudianteController@delete_seguimiento')->name('deleteseguimiento');
+
+//Rutas para update cohorte-grupo
+//Route::get('mostrargrupos', 'perfilEstudianteController@mostrar_grupos')->name('mostrargrupos');
+Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
 
 //Rutas CRUD usuarios

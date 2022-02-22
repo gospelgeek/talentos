@@ -19,7 +19,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $primarykey = 'cedula';
+    protected $primarykey = 'id';
 
     protected $fillable = [
         'name', 
@@ -81,6 +81,7 @@ class User extends Authenticatable
     public function roles(){
         return $this->hasOne(Role::class, 'id','rol_id');
     }
+
 
     public function authorizeRoles($roles){
         abort_unless($this->hasAnyRole($roles), 401);

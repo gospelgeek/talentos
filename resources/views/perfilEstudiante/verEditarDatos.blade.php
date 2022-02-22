@@ -1,3 +1,8 @@
+@extends('layouts.dashboard')
+@section('title', 'Editar Datos')
+@section('content')
+@include('../alerts.success')
+@include('../alerts.request')
 @csrf
 <div id="container-main">
 	<div class="row">		
@@ -600,3 +605,4 @@
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 @endpush
 
+@endsection

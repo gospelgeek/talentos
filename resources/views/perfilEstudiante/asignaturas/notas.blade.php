@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Grupos')
+@section('title', 'Calificaciones')
 @section('content')
 
 <div class="container-fluid">    
@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<a href="" onclick="history.back()">Regresar</a>
+<a class="btn btn-primary" type="button" href="{{ route('grupos', $id) }}" >Regresar</a>
 
 @push('scripts')
 

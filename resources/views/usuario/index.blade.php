@@ -42,7 +42,7 @@
                                                     <a title="Ver Informacion" href="{{ route('ver_usuario', $usuarios->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
                                                 </div>
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Editar Informacion "href="{{ route('editar_usuario', $usuarios->id) }}" class="btn btn-sm btn-block fa fa-pen"></a>    
+                                                    <a title="Editar Informacion "href="{{ route('editar_usuario', $usuarios->id) }}" class="btn btn-sm btn-block fa fa-pencil"></a>    
                                                 </div>
                                         </div> 
                                     @csrf                   

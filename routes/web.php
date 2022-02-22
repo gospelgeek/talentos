@@ -75,7 +75,7 @@ Route::put('updateseguimientosocioeducativo/{id}', 'perfilEstudianteController@u
 Route::delete('deleteseguimiento/{id}', 'perfilEstudianteController@delete_seguimiento')->name('deleteseguimiento');
 
 //Rutas para update cohorte-grupo
-//Route::get('mostrargrupos', 'perfilEstudianteController@mostrar_grupos')->name('mostrargrupos');
+Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
 Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
 

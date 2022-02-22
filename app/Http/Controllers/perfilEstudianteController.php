@@ -116,7 +116,10 @@ class perfilEstudianteController extends Controller
     public function verPerfilEstudiante($id){
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
+
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
           
@@ -163,7 +166,7 @@ class perfilEstudianteController extends Controller
 
         $cohorte = Cohort::pluck('name', 'id');
 
-        $grupo = Group::pluck('name', 'id');
+        
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -189,7 +192,7 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }    
 
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));   
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
     }
   
     public function verDatosSocieconomicos($id) {
@@ -275,24 +278,7 @@ class perfilEstudianteController extends Controller
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
 
-        if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
-           $sexo1 = "Masculino";     
-        }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
-            $sexo1 = "Femenino"; 
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_home == 0){
-            $internet_home = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_home == 1){
-            $internet_home = "NO";
-
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_zon == 0){
-            $internet_zone = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_zon == 1){
-            $internet_zone = "NO";
-        }
+        
 
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
@@ -1806,35 +1792,29 @@ class perfilEstudianteController extends Controller
         }
     }
 
-    /*public function mostrar_grupos(Request $request){
-        $cohorte = $request['cohorte'];
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
-        //return 'entro bien';
-        $cohorte = $request['cohorte'];
-        $grupo = $request['grupo'];
+    public function grupos(Request $request, $id)
+    {
+        //return $id;
+        $grpos = Group::where('id_cohort',$id)->get();
+        //return $grupos;
+        if($request->ajax())
+        {
+         
+          return response()->json($grpos);
+        }
+    }
 
-        
-        return $cohorte;
-        if($request->ajax()){
-            return Response::json($grupos); 
-        };  
-
-    }*/
-
-    /*public function updateCohorteGrupo($id, Request $request) {
+    public function updateCohorteGrupo($id, Request $request) {
         
         $group = StudentGroup::findOrFail($id);
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
         
-        //return $grupos; 
-
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
 
         $cohort = Group::where('id', $request['grupo'])->select('id_cohort')->first();
         $vlrchrte = $cohort->id_cohort;
         
-        /*if ($request->ajax()) {
+        if ($request->ajax()) {
 
             if($vlrchrte == $request['cohorte']) {
                 $group->id_group = $request['grupo'];
@@ -1847,7 +1827,7 @@ class perfilEstudianteController extends Controller
         };
         
         return $mensaje;   
-    }*/
+    }
 
     
 }

@@ -49,8 +49,8 @@
 		<div class="col-sm-2">
 			{!!Form::text('id_cohort', $verDatosPerfil->studentGroup->group->cohort->name,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
-		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-secundary fa fa-pencil-square-o boton_cambiar_cohorte_grupo',$secure = null])!!}
+		@if(auth()->user()->rol_id == 1)
+			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-primary fa fa-pencil-square-o boton_cambiar_cohorte_grupo',$secure = null])!!}
 		@endif
 		&nbsp;&nbsp;&nbsp;&nbsp;{!!Form::label('cohorte','Estado:')!!}
 		<div class="col-sm-2">

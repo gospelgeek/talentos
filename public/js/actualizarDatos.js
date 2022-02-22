@@ -298,48 +298,26 @@ $('.boton_update_socioeconomicos').click(function(e) {
 //Abrir modal
 $('.boton_cambiar_cohorte_grupo').click(function(e) { 
       e.preventDefault();
-        $('#modal_cambiar_cohorte_grupo').modal('show');
-
-        /*var form = $('#form-mostrar-grupos');
-        var url = form.attr('action').replace(':GRUPO_ID');
-        //console.log(url);
-
-        $.ajax({
-          url:url,
-          type:'GET',
-          data:{
-            '_token': $('input[name=_token]').val(),
-            'grupo': $("#grupOm").val(),
-            'cohorte': $("#cohorT").val(),
-          },  
-
-        });
-
-        $.get(url, function(result){
-            //const object = JSON.parse(result.tracking_detail);
-            //console.log(result);
-            
-
-        });
-        
-        /*$(document).on('change', '#cohorT', function(event) {
-          var valor = document.getElementById('cohorT').value;
-          alert('entro');        
-        });
-        
-
-        
-
-        
-
-        //var row = $(this).parents('tr');
-        //var id = row.data('id');
-        //alert(id);*/
-
-        
-
-        
+        $('#modal_cambiar_cohorte_grupo').modal('show');               
 });
+
+$(function () {
+     $('#cohorT').change(function(event)
+      {
+    //console.log(event.target.value);
+    
+    $.get("/grupos/"+event.target.value+"",function(response,grpos)
+    {
+    //console.log(grpos)
+      $('#grupOm').html('<option value="" selected="true"> Seleccione una opción </option>');
+      response.forEach(element => {
+          $('#grupOm').append('<option  value='+element.id+'> '+element.name+' </option>')
+        });         
+             
+    });
+    
+  });
+ });
 
 
 //Actualizando campos

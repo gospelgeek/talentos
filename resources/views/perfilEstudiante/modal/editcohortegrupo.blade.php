@@ -17,13 +17,13 @@
             {!!Form::label('id','id ')!!}
             {!!Form::text('id',$verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->id : null,['id'=>'idGr','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
           </div>  
-          <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+          <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
             {!!Form::label('cohorte','Cohorte: ')!!}
             {!!Form::select('cohorte', $cohorte, $verDatosPerfil->studentGroup->group->cohort ? $verDatosPerfil->studentGroup->group->cohort->id : null,['id'=>'cohorT','class'=>'form-control','required','placeholder'=>'Cohorte'])!!}  
           </div>
-          <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+          <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
             {!!Form::label('grupo','Grupo: ')!!}
-            {!!Form::select('grupo', $grupo, $verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->group->id : null,['id'=>'grupOm','class'=>'form-control','required','placeholder'=>'Grupo'])!!} 
+            {!!Form::select('grupo', $grupos, $verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->group->id : null,['id'=>'grupOm','class'=>'form-control','required','placeholder'=>'Grupo'])!!} 
           </div>
           
         </div>

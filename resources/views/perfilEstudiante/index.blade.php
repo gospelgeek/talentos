@@ -27,8 +27,6 @@
                 <td>Sexo</td>
                 <td>Email</td>
                 <td>Telefono</td>
-                <td>Grupo</td>
-                <td>Cohorte</td>
                 <td>Acciones</td>
             </tr>
         </thead> 
@@ -42,8 +40,6 @@
                                         <td>{{ $estudiante->sex }}</td>
                                         <td>{{ $estudiante->email }}</td>
                                         <td>{{ $estudiante->cellphone }}</td>
-                                        <td>{{ $estudiante->studentGroup->group->name}}</td>
-                                        <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >
                                         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)   
                                             <div class="row">                                  

@@ -33,7 +33,7 @@ class RedirigirMiddleware
                return Redirect::to('estudiante');                
             }
 
-            if(($this->auth->user()->rol_id == '2') || ($this->auth->user()->rol_id == '3') || ($this->auth->user()->rol_id == '4') || ($this->auth->user()->rol_id == '5')){
+            if(($this->auth->user()->rol_id == '2') || ($this->auth->user()->rol_id == '3') || ($this->auth->user()->rol_id == '4') || ($this->auth->user()->rol_id == '5') || ($this->auth->user()->rol_id == '6')){
                 return Redirect::to('estudiante');
                 //dd('entrod');
             }

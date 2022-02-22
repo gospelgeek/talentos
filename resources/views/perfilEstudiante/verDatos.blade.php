@@ -6,7 +6,7 @@
 @csrf
 <div id="container-main">
 	<div class="row">		
-		<img  src="https://drive.google.com/uc?id={{$foto[5]}}" class="avatar" alt="FOTO ESTUDIANTE">	
+		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">	
 	</div>
 	<br>	
 	<div class="sticky-top">	
@@ -49,12 +49,17 @@
 		<div class="col-sm-2">
 			{!!Form::text('id_cohort', $verDatosPerfil->studentGroup->group->cohort->name,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
-		{!!Form::label('cohorte','Estado:')!!}
+		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-secundary fa fa-pencil-square-o boton_cambiar_cohorte_grupo',$secure = null])!!}
+		@endif
+		&nbsp;&nbsp;&nbsp;&nbsp;{!!Form::label('cohorte','Estado:')!!}
 		<div class="col-sm-2">
 			{!!Form::select('id_state', $estado, $verDatosPerfil->id_state,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
-		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-red fa fa-pencil-square-o crear_estado',$secure = null])!!}
+
+		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-primary fa fa-pencil-square-o crear_estado',$secure = null])!!}
+
 		@endif
 	</div>	
 
@@ -239,6 +244,16 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="telefono2" id="telefono2" value="{{ old('telefono2', $verDatosPerfil->phone) }}">
+							</div>
+						</div>     	
+            		</div>
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="telefono2">Codigo estudiante</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="student_code" id="student_code" value="{{ old('student_code', $verDatosPerfil ? $verDatosPerfil->student_code : null) }}">
 							</div>
 						</div>     	
             		</div>
@@ -494,7 +509,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon', $internet_zone) }}">
+								<input readonly class="form-control" type="text" name="internet_zon" id="internet_zon" value="{{ old('internet_zon', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->internet_zon : null) }}">
 							</div>
 						</div>               	
             		</div>
@@ -504,7 +519,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home', $internet_home) }}">
+								<input readonly  class="form-control" type="text" name="internet_home" id="internet_home" value="{{ old('internet_home', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->internet_home : null)}}">
 							</div>
 						</div>	
             		</div>
@@ -514,7 +529,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $sexo1) }}">
+								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sex_document_identidad : null) }}">
 							</div>
 						</div>       	
             		</div>
@@ -554,26 +569,90 @@
 	</div>
 	@if(auth()->user()->rol_id == 2)
 	<div class="accordion-container">
-		<a href="#" id="titulo-3" class="accordion-titulo-3">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
-		<div id="contenido-3" class="accordion-content-3">
+		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
+		<div id="contenido-4" class="accordion-content-4">
 			{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
-		</div>
+			
+			<div id="mostrarsegui" class="table-responsive">
+     			<br><table class=" table table-bordered table-striped">
+        			<thead >
+            			<tr>
+                			<td>SEGUIMIENTO (YYYY-mm-dd)</td>
+                			<td width="35%">ACCIONES</td>
+            			</tr>
+        			</thead>
+        			<input type="hidden" id="detalle" value="{{$seguimientos}}"> 
+        				
+					<tbody id="mostrarFcA">
+						
+					
+                	</tbody>
+                	 
+      			</table>
+      			
+      			
+		
+        	</div>
+        	
+        	
 	</div>
 	@endif
-	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	
 </div>
 
-@include('perfilEstudiante.modal.edit')
+@include('perfilEstudiante.modal.editestado')
 @include('perfilEstudiante.modal.actualizarDatos.generales')
 @include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
 @include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
 @include('perfilEstudiante.seguimientos.modal.create')
+@include('perfilEstudiante.seguimientos.modal.editar')
+@include('perfilEstudiante.seguimientos.modal.ver')
+@include('perfilEstudiante.modal.editcohortegrupo')
+
+
+{!!Form::open(['id'=>'form-edit-seguimiento','route'=>['editarseguimiento',':SEGUIMIENTO_ID'], 'method'=>'GET'])!!}
+{!!Form::close()!!}
+
+{!!Form::open(['id'=>'form-delete','route'=>['deleteseguimiento',':SEGUIMIENTO_ID'], 'method'=>'DELETE'])!!}
+{!!Form::close()!!}
+
 
 @push('scripts')
 {!!Html::script('/js/filtroestudiantes.js')!!}
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
+
+<script>
+        $(function () {
+            $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron coincidencias",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate":{
+                "next" : "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+            });
+        });        
+    </script>
+
 @endpush
 
 @endsection

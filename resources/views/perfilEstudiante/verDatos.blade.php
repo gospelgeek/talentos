@@ -6,7 +6,7 @@
 @csrf
 <div id="container-main">
 	<div class="row">		
-		<img  src="https://drive.google.com/uc?id={{$foto[5]}}" class="avatar" alt="FOTO ESTUDIANTE">	
+		<img  src="https://drive.google.com/uc?id={{!!$foto!!}}" class="avatar" alt="FOTO ESTUDIANTE">
 	</div>
 	<br>	
 	<div class="sticky-top">	
@@ -514,7 +514,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $sexo1) }}">
+								<input readonly class="form-control" type="text" name="sex_document_identidad" id="sex_document_identidad" value="{{ old('sex_document_identidad', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sex_document_identidad : null) }}">
 							</div>
 						</div>       	
             		</div>

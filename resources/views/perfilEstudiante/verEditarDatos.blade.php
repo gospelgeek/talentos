@@ -6,7 +6,7 @@
 @csrf
 <div id="container-main">
 	<div class="row">		
-		<img  src="https://drive.google.com/uc?id={{$foto[5]}}" class="avatar" alt="FOTO ESTUDIANTE">	
+		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">	
 	</div>
 	<br>	
 	<div class="sticky-top">	

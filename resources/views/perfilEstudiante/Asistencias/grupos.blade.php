@@ -26,13 +26,13 @@
         			</thead> 
         			<tbody>
            	 			@foreach ($grupos as $grupo)
-                		<tr data-id="{{$grupo->id}}">
+                		<tr data-id="grupo-id">
                     		<td>{{ $grupo->name}}</td>
                     		<td>{{ $grupo->cohort->name}}</td>                                  
                     		<td>
                         		<div class="row">                                  
                             		<div class="col-xs-6 col-sm-6">
-                                		<a title="Ver Informacion" href="{{ route('notas', $grupo->id) }}" class="btn btn-block btn-sm  fa fa-eye">Lista Estudiantes</a>    
+                                		<a title="Ver Informacion" href="/Asistencias/{{$name->id}}/grupo/{{$grupo->id}}" class="btn btn-block btn-sm  fa fa-eye">Lista Sesiones</a>    
                             		</div>
                         		</div>       
                     		</td>
@@ -46,38 +46,33 @@
 </div>
 <a href="{{route('asignaturas')}}">Regresar</a>
 @push('scripts')
+<script type="text/javascript">
+$("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-    <!-- Page specific script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "No se encontraron coincidencias",
-            "info": "Página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrado de _MAX_ registros totales)",
-            "search": "Buscar",
-            "paginate":{
-                "next" : "Siguiente",
-                "previous": "Anterior"
-            }
-        },
-            });
-        });        
-    </script>
-
- 
+$('#example2').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+        "lengthMenu": "Mostrar _MENU_ registros por página",
+        "zeroRecords": "No se encontraron coincidencias",
+        "info": "Página _PAGE_ de _PAGES_",
+        "infoEmpty": "No hay registros disponibles",
+        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+        "search": "Buscar",
+        "paginate":{
+        "Next" : "Siguiente",
+        "previous": "Anterior"
+        }
+    },
+});
+</script>
 @endpush
 @endsection

@@ -293,7 +293,6 @@ $('.boton_update_socioeconomicos').click(function(e) {
   });
 });
 
-
 //ACCIONES PARA EDITAR GRUPO Y COHORTE
 //Abrir modal
 $('.boton_cambiar_cohorte_grupo').click(function(e) { 
@@ -382,3 +381,4 @@ $('.boton_update_cohorte_grupo').click(function(e) {
     },       
   });
 });
+

@@ -246,8 +246,7 @@
 								<input  class="form-control" type="text" name="telefono2" id="telefono22" value="{{ old('telefono2', $verDatosPerfil->phone) }}">
 							</div>
 						</div>     	
-            		</div>
-
+          </div>
             		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="student_code">Codigo estudinate</label></p>
             		</div>

@@ -141,6 +141,7 @@ class perfilEstudianteController extends Controller
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
+
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
@@ -198,14 +199,16 @@ class perfilEstudianteController extends Controller
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
             ]);
 
-        if($verDatosPerfil->photo == ""){
+
+
+         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
         }  
       
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));   
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));
     }
   
     public function verDatosSocieconomicos($id) {
@@ -290,8 +293,8 @@ class perfilEstudianteController extends Controller
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
         $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Femenino',
-                      'M' => 'Masculino' );
+        $sexo = array('M' => 'Femenino',
+                      'H' => 'Masculino' );
 
         
 
@@ -333,13 +336,14 @@ class perfilEstudianteController extends Controller
 
         $beneficios = Benefits::pluck('name', 'id');
 
+
         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
         } 
-
+      
         $depNacimiento = BirthDepartament::pluck('name','id');
 
         $muni_nacimiento = BirthCity::pluck('name','id');

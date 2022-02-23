@@ -24,8 +24,7 @@
                 <td>Nombres</td>
                 <td>Apellidos</td>
                 <td>Nº documento</td>
-                <td>Fecha de nacimiento</td>
-                <td>Sexo</td>
+                <td>Codigo</td>
                 <td>Email</td>
                 <td>Codigo</td>
                 <td>Grupo</td>
@@ -40,8 +39,7 @@
                                         <td>{{ $estudiante->name}}</td>
                                         <td>{{ $estudiante->lastname }}</td>
                                         <td>{{ $estudiante->document_number }}</td>
-                                        <td>{{ $estudiante->birth_date }}</td>
-                                        <td>{{ $estudiante->sex }}</td>
+                                        <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->email }}</td>
                                         <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>
@@ -54,7 +52,7 @@
                                                 </div>
 
                                                 <div class="col-xs-4 col-sm-4">
-                                                    <a title="Editar Informacion" href="{{ route('editar_estudiante', $estudiante->id) }}" class="btn btn-sm btn-block fa fa fa-pencil"></a>
+                                                    <a title="Editar Informacion" href="{{ route('editar_estudiante', $estudiante->id) }}" class=" disabled btn btn-sm btn-block fa fa fa-pencil"></a>
                                                 </div>
                                                 @else
                                                 <div class="col-xs-4 col-sm-4">

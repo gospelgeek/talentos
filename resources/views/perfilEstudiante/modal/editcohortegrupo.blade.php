@@ -19,11 +19,11 @@
           </div>  
           <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
             {!!Form::label('cohorte','Cohorte: ')!!}
-            {!!Form::select('cohorte', $cohorte, $verDatosPerfil->studentGroup->group->cohort ? $verDatosPerfil->studentGroup->group->cohort->id : null,['id'=>'cohorT','class'=>'form-control','required','placeholder'=>'Cohorte'])!!}  
+            {!!Form::select('cohorte', $cohorte, $verDatosPerfil->studentGroup->group->cohort ? $verDatosPerfil->studentGroup->group->cohort->id : null,['id'=>'cohorT','class'=>'form-control','required'])!!}  
           </div>
           <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
             {!!Form::label('grupo','Grupo: ')!!}
-            {!!Form::select('grupo', $grupos, $verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->group->id : null,['id'=>'grupOm','class'=>'form-control','required','placeholder'=>'Grupo'])!!} 
+            {!!Form::select('grupo', $grupos, $verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->group->id : null,['id'=>'grupOm','class'=>'form-control','required'])!!} 
           </div>
           
         </div>
@@ -34,7 +34,11 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12 col-sm-6 ">
-                   {!!link_to('#',$title = 'Actualizar', $attributes = ['class'=>'btn bg-primary  elevation-3 btn-block boton_update_cohorte_grupo'],$secure = null)!!}                        
+                   {!!link_to('#',$title = 'Actualizar', $attributes = ['class'=>'btn bg-primary  elevation-3 btn-block boton_mensaje_alerta'],$secure = null)!!}                        
+                   {!!Form::close()!!} 
+                </div>
+                <div class="col-xs-12 col-sm-6 ">
+                   {!!link_to('#',$title = 'Cancelar', $attributes = ['class'=>'btn bg-danger  elevation-3 btn-block boton_cancelar'],$secure = null)!!}                        
                    {!!Form::close()!!} 
                 </div>
               </div>

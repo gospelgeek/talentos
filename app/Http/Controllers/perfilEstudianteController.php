@@ -168,6 +168,8 @@ class perfilEstudianteController extends Controller
 
         
 
+        
+
         $ip = User::getRealIP();
         $id = auth()->user();
         $fecha = Carbon::now();
@@ -274,6 +276,8 @@ class perfilEstudianteController extends Controller
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
 
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
+
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
@@ -331,7 +335,7 @@ class perfilEstudianteController extends Controller
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos'));
     }
 
     
@@ -1794,7 +1798,6 @@ class perfilEstudianteController extends Controller
 
     public function grupos(Request $request, $id)
     {
-        //return $id;
         $grpos = Group::where('id_cohort',$id)->get();
         //return $grupos;
         if($request->ajax())
@@ -1802,6 +1805,28 @@ class perfilEstudianteController extends Controller
          
           return response()->json($grpos);
         }
+    }
+
+    public function datosNuevos(Request $request, $id) {
+        
+        
+        $grupo = Group::where('id', $id)->select('name')->first();
+        
+        $grpo = $grupo->name;
+        
+        $cohort = Group::where('id', $id)->select('id_cohort')->first();
+        $vercohort = $cohort->id_cohort;
+
+        $cohorte = Cohort::where('id', $vercohort)->select('name')->first(); 
+        $chrte = $cohorte->name;
+
+        $array = ['grupo' => $grpo, 'cohorte' => $chrte];
+
+        //return $array;
+            if ($request->ajax()) {
+                return response()->json($array);     
+            } 
+        
     }
 
     public function updateCohorteGrupo($id, Request $request) {
@@ -1828,7 +1853,6 @@ class perfilEstudianteController extends Controller
         
         return $mensaje;   
     }
-
     
 }
 

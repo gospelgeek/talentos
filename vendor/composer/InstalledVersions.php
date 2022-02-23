@@ -24,16 +24,15 @@ use Composer\Semver\VersionParser;
 
 class InstalledVersions
 {
-<<<<<<< HEAD
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
+    'pretty_version' => 'dev-develop',
+    'version' => 'dev-develop',
     'aliases' => 
     array (
     ),
-    'reference' => '70c1e9ec016dcc53fe8ccca1a288001e9034707d',
+    'reference' => '3f5fe2e89a1b75dd1038b9fcb5baf536f4d5f66d',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -499,12 +498,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => 'dev-develop',
+      'version' => 'dev-develop',
       'aliases' => 
       array (
       ),
-      'reference' => '70c1e9ec016dcc53fe8ccca1a288001e9034707d',
+      'reference' => '3f5fe2e89a1b75dd1038b9fcb5baf536f4d5f66d',
     ),
     'laravel/tinker' => 
     array (
@@ -927,8 +926,8 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0.0 || 2.0.0 || 3.0.0',
-        1 => '1.0|2.0',
+        0 => '1.0|2.0',
+        1 => '1.0.0 || 2.0.0 || 3.0.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -1496,13 +1495,6 @@ private static $installed = array (
 );
 private static $canGetVendors;
 private static $installedByVendor = array();
-=======
-    /**
-     * @var mixed[]|null
-     * @psalm-var array{root: array{name: string, version: string, reference: string, pretty_version: string, aliases: string[], dev: bool, install_path: string, type: string}, versions: array<string, array{dev_requirement: bool, pretty_version?: string, version?: string, aliases?: string[], reference?: string, replaced?: string[], provided?: string[], install_path?: string, type?: string}>}|array{}|null
-     */
-    private static $installed;
->>>>>>> 6a24e76b2515b877ac0145c84bdd1ff7d902ddbe
 
 
 

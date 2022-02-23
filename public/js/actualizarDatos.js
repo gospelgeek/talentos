@@ -313,17 +313,51 @@ $(function () {
       response.forEach(element => {
           $('#grupOm').append('<option  value='+element.id+'> '+element.name+' </option>')
         });         
-             
+                 
     });
+
     
   });
  });
 
+//Abrir mensaje de alerta
+$('.boton_mensaje_alerta').click(function(e) {
+
+    var grupo = document.getElementById('grupOm').value;
+    var cohorte = document.getElementById('cohorT').value;
+
+    /*if(grupo == null){
+      alert('debe llenar grupo');
+    }else if (grupo =! null) {
+      alert('siga');  
+    }*/
+    $.get("/datos/"+grupo+"",function(response,array) {
+      //console.log(response.grupo);
+      var grupo = response.grupo;
+      var cohorte = response.cohorte;
+
+      let h8 = document.createElement('h8');
+      h8.innerHTML = cohorte;
+      document.getElementById('mstrchrte').appendChild(h8); 
+
+      let h9 = document.createElement('h8');
+      h9.innerHTML = grupo;
+      document.getElementById('mstrgrpo').appendChild(h9);       
+
+
+      //console.log(grupo);   
+    });
+    //alert(cohorte);
+
+    e.preventDefault();
+    $('#modal_alerta').modal('show');               
+});
+
 
 //Actualizando campos
-$('.boton_update_cohorte_grupo').click(function(e) { 
-  e.preventDefault();   
-  
+$('.boton_actualizar').click(function(e) { 
+  e.preventDefault();
+
   var idgroup = $('#idGr').val();
 
   $.ajax({
@@ -359,4 +393,18 @@ $('.boton_update_cohorte_grupo').click(function(e) {
       $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
     },       
   });
+});
+
+//Cerrar alerta
+$('.cerrar_modal').click(function(e) { 
+      e.preventDefault();
+        $('#modal_alerta').modal('hide'); 
+        $('#mstrchrte').html(' ');
+        $('#mstrgrpo').html(' ');              
+});
+
+//Cerrar modal actualizar cohorte-grupo
+$('.boton_cancelar').click(function(e) { 
+      e.preventDefault();
+        $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });

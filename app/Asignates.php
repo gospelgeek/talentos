@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Campus extends Model
+class Asignates extends Model
 {
-    protected $table = 'campuses';
+    protected $table = 'assignments';
 
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'name',
-        'code_uv',
+        'id_user',
+        'id_period',
     ];
 }
-

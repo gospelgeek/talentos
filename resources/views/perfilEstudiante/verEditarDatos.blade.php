@@ -49,7 +49,10 @@
 		<div class="col-sm-2">
 			{!!Form::text('id_cohort', $verDatosPerfil->studentGroup->group->cohort->name,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
-		{!!Form::label('cohorte','Estado:')!!}
+		@if(auth()->user()->rol_id == 1)
+			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-primary fa fa-pencil-square-o boton_cambiar_cohorte_grupo',$secure = null])!!}
+		@endif
+		&nbsp;{!!Form::label('cohorte','Estado:')!!}
 		<div class="col-sm-2">
 			{!!Form::select('id_state', $estado, $verDatosPerfil->id_state,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
@@ -619,6 +622,8 @@
 @include('perfilEstudiante.seguimientos.modal.create')
 @include('perfilEstudiante.seguimientos.modal.editar')
 @include('perfilEstudiante.seguimientos.modal.ver')
+@include('perfilEstudiante.modal.editcohortegrupo')
+@include('perfilEstudiante.modal.alerta')
 @include('vistasParciales.validacionErrores')
 
 {!!Form::open(['id'=>'form-edit-seguimiento','route'=>['editarseguimiento',':SEGUIMIENTO_ID'], 'method'=>'GET'])!!}

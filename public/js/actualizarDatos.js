@@ -277,7 +277,7 @@ $('.boton_update_socioeconomicos').click(function(e) {
     success:function(result) {
       $('#contenido-3').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -301,6 +301,7 @@ $('.boton_cambiar_cohorte_grupo').click(function(e) {
         $('#modal_cambiar_cohorte_grupo').modal('show');               
 });
 
+//funcion para traer los grupos de cada cohorte seleccionada
 $(function () {
      $('#cohorT').change(function(event)
       {
@@ -325,32 +326,30 @@ $('.boton_mensaje_alerta').click(function(e) {
 
     var grupo = document.getElementById('grupOm').value;
     var cohorte = document.getElementById('cohorT').value;
+    
+    if(grupo === ""){     
+        toastr.warning('DEBE DILIGENCIAR UN GRUPO');
+    }else if (grupo != "") {
+        //alert('siga');
+        $.get("/datos/"+grupo+"",function(response,array) {
+        //console.log(response.grupo);
+        var grupo = response.grupo;
+        var cohorte = response.cohorte;
 
-    /*if(grupo == null){
-      alert('debe llenar grupo');
-    }else if (grupo =! null) {
-      alert('siga');  
-    }*/
-    $.get("/datos/"+grupo+"",function(response,array) {
-      //console.log(response.grupo);
-      var grupo = response.grupo;
-      var cohorte = response.cohorte;
+        let h8 = document.createElement('h8');
+        h8.innerHTML = cohorte;
+        document.getElementById('mstrchrte').appendChild(h8); 
 
-      let h8 = document.createElement('h8');
-      h8.innerHTML = cohorte;
-      document.getElementById('mstrchrte').appendChild(h8); 
+        let h9 = document.createElement('h8');
+        h9.innerHTML = grupo;
+        document.getElementById('mstrgrpo').appendChild(h9);       
 
-      let h9 = document.createElement('h8');
-      h9.innerHTML = grupo;
-      document.getElementById('mstrgrpo').appendChild(h9);       
-
-
-      //console.log(grupo);   
-    });
-    //alert(cohorte);
-
-    e.preventDefault();
-    $('#modal_alerta').modal('show');               
+        e.preventDefault();
+        $('#modal_alerta').modal('show');
+        //console.log(grupo);   
+      });  
+    }
+                   
 });
 
 

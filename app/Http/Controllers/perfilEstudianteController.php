@@ -275,19 +275,20 @@ class perfilEstudianteController extends Controller
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
+          
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
-
         
-
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
-
         $documento = DocumentType::pluck('name','id');
 
         $estado = Condition::pluck('name', 'id');
@@ -322,6 +323,8 @@ class perfilEstudianteController extends Controller
 
         $beneficios = Benefits::pluck('name', 'id');
 
+        $cohorte = Cohort::pluck('name', 'id');
+
         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
@@ -335,7 +338,7 @@ class perfilEstudianteController extends Controller
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
     }
 
     

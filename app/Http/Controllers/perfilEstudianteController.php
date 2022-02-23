@@ -293,8 +293,8 @@ class perfilEstudianteController extends Controller
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
         $genero = Gender::pluck('name','id');
-        $sexo = array('M' => 'Femenino',
-                      'H' => 'Masculino' );
+        $sexo = array('F' => 'Femenino',
+                      'M' => 'Masculino' );
 
         
 

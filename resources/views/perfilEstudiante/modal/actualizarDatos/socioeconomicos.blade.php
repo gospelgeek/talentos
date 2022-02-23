@@ -62,7 +62,7 @@
                   </div>
                   <div class="row">
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('dependent_people','Persoans a cargo: ')!!}
+                      {!!Form::label('dependent_people','Personas a cargo: ')!!}
                       {!!Form::text('dependent_people', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->dependent_people : null,['id'=>'personasCargo','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
                       </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
@@ -85,7 +85,7 @@
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_disability','Discapacidad: ')!!}
-                      {!!Form::select('discapacidad',$discapacidad, $verDatosPerfil->socioeconomicdata->disability ? $verDatosPerfil->socioeconomicdata->disability->id : null,['id'=>'discapacidadS', 'class'=>'form-control','placeholder'=>'Regimen de salud'])!!}   
+                      {!!Form::select('discapacidad',$discapacidad, $verDatosPerfil->socioeconomicdata->disability ? $verDatosPerfil->socioeconomicdata->disability->id : null,['id'=>'discapacidadS', 'class'=>'form-control','placeholder'=>'Discapacidad'])!!}   
                       </div>
                   </div>
                   <div class="row">

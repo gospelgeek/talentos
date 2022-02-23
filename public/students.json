@@ -1,0 +1,3215 @@
+[
+    {
+        "courseid": "64971",
+        "fullname": "Curso Plan Talentos UV I",
+        "shortname": "00-Arte-01-PNA-A0",
+        "idnumber": "cursoPlanTalentosI",
+        "idcategory": "151",
+        "sessions": [
+            {
+                "id": "33617",
+                "sesstimestamp": "1643605200",
+                "sessdate": "31-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643605200"
+            },
+            {
+                "id": "33618",
+                "sesstimestamp": "1644210000",
+                "sessdate": "07-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644210000"
+            },
+            {
+                "id": "33619",
+                "sesstimestamp": "1644814800",
+                "sessdate": "14-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644814800"
+            },
+            {
+                "id": "33620",
+                "sesstimestamp": "1645419600",
+                "sessdate": "21-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645419600"
+            },
+            {
+                "id": "33621",
+                "sesstimestamp": "1646024400",
+                "sessdate": "28-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646024400"
+            },
+            {
+                "id": "33622",
+                "sesstimestamp": "1646629200",
+                "sessdate": "07-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646629200"
+            },
+            {
+                "id": "33623",
+                "sesstimestamp": "1647234000",
+                "sessdate": "14-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647234000"
+            },
+            {
+                "id": "33624",
+                "sesstimestamp": "1647838800",
+                "sessdate": "21-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647838800"
+            },
+            {
+                "id": "33625",
+                "sesstimestamp": "1648443600",
+                "sessdate": "28-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648443600"
+            },
+            {
+                "id": "33626",
+                "sesstimestamp": "1649048400",
+                "sessdate": "04-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649048400"
+            },
+            {
+                "id": "33627",
+                "sesstimestamp": "1649653200",
+                "sessdate": "11-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649653200"
+            },
+            {
+                "id": "33628",
+                "sesstimestamp": "1650258000",
+                "sessdate": "18-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650258000"
+            },
+            {
+                "id": "33629",
+                "sesstimestamp": "1650862800",
+                "sessdate": "25-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650862800"
+            },
+            {
+                "id": "33630",
+                "sesstimestamp": "1651467600",
+                "sessdate": "02-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651467600"
+            },
+            {
+                "id": "33631",
+                "sesstimestamp": "1652072400",
+                "sessdate": "09-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652072400"
+            },
+            {
+                "id": "33632",
+                "sesstimestamp": "1652677200",
+                "sessdate": "16-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652677200"
+            },
+            {
+                "id": "33633",
+                "sesstimestamp": "1653282000",
+                "sessdate": "23-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653282000"
+            },
+            {
+                "id": "33634",
+                "sesstimestamp": "1653886800",
+                "sessdate": "30-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653886800"
+            }
+        ]
+    },
+    {
+        "courseid": "64973",
+        "fullname": "Curso Plan talentos UV II",
+        "shortname": "00-BIOLOGIA-39-PNA-A0",
+        "idnumber": "cursoPlanTalentosII",
+        "idcategory": "151",
+        "sessions": [
+            {
+                "id": "33580",
+                "sesstimestamp": "1643086800",
+                "sessdate": "25-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643086800"
+            },
+            {
+                "id": "33581",
+                "sesstimestamp": "1643605200",
+                "sessdate": "31-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643605200"
+            },
+            {
+                "id": "33582",
+                "sesstimestamp": "1643691600",
+                "sessdate": "01-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643691600"
+            },
+            {
+                "id": "33583",
+                "sesstimestamp": "1644210000",
+                "sessdate": "07-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644210000"
+            },
+            {
+                "id": "33584",
+                "sesstimestamp": "1644296400",
+                "sessdate": "08-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644296400"
+            },
+            {
+                "id": "33585",
+                "sesstimestamp": "1644814800",
+                "sessdate": "14-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644814800"
+            },
+            {
+                "id": "33586",
+                "sesstimestamp": "1644901200",
+                "sessdate": "15-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644901200"
+            },
+            {
+                "id": "33587",
+                "sesstimestamp": "1645419600",
+                "sessdate": "21-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645419600"
+            },
+            {
+                "id": "33588",
+                "sesstimestamp": "1645506000",
+                "sessdate": "22-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645506000"
+            },
+            {
+                "id": "33589",
+                "sesstimestamp": "1646024400",
+                "sessdate": "28-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646024400"
+            },
+            {
+                "id": "33590",
+                "sesstimestamp": "1646110800",
+                "sessdate": "01-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646110800"
+            },
+            {
+                "id": "33591",
+                "sesstimestamp": "1646629200",
+                "sessdate": "07-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646629200"
+            },
+            {
+                "id": "33592",
+                "sesstimestamp": "1646715600",
+                "sessdate": "08-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646715600"
+            },
+            {
+                "id": "33593",
+                "sesstimestamp": "1647234000",
+                "sessdate": "14-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647234000"
+            },
+            {
+                "id": "33594",
+                "sesstimestamp": "1647320400",
+                "sessdate": "15-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647320400"
+            },
+            {
+                "id": "33595",
+                "sesstimestamp": "1647838800",
+                "sessdate": "21-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647838800"
+            },
+            {
+                "id": "33596",
+                "sesstimestamp": "1647925200",
+                "sessdate": "22-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647925200"
+            },
+            {
+                "id": "33597",
+                "sesstimestamp": "1648443600",
+                "sessdate": "28-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648443600"
+            },
+            {
+                "id": "33598",
+                "sesstimestamp": "1648530000",
+                "sessdate": "29-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648530000"
+            },
+            {
+                "id": "33599",
+                "sesstimestamp": "1649048400",
+                "sessdate": "04-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649048400"
+            },
+            {
+                "id": "33600",
+                "sesstimestamp": "1649134800",
+                "sessdate": "05-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649134800"
+            },
+            {
+                "id": "33601",
+                "sesstimestamp": "1649653200",
+                "sessdate": "11-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649653200"
+            },
+            {
+                "id": "33602",
+                "sesstimestamp": "1649739600",
+                "sessdate": "12-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649739600"
+            },
+            {
+                "id": "33603",
+                "sesstimestamp": "1650258000",
+                "sessdate": "18-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650258000"
+            },
+            {
+                "id": "33604",
+                "sesstimestamp": "1650344400",
+                "sessdate": "19-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650344400"
+            },
+            {
+                "id": "33605",
+                "sesstimestamp": "1650862800",
+                "sessdate": "25-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650862800"
+            },
+            {
+                "id": "33606",
+                "sesstimestamp": "1650949200",
+                "sessdate": "26-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650949200"
+            },
+            {
+                "id": "33607",
+                "sesstimestamp": "1651467600",
+                "sessdate": "02-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651467600"
+            },
+            {
+                "id": "33608",
+                "sesstimestamp": "1651554000",
+                "sessdate": "03-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651554000"
+            },
+            {
+                "id": "33609",
+                "sesstimestamp": "1652072400",
+                "sessdate": "09-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652072400"
+            },
+            {
+                "id": "33610",
+                "sesstimestamp": "1652158800",
+                "sessdate": "10-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652158800"
+            },
+            {
+                "id": "33611",
+                "sesstimestamp": "1652677200",
+                "sessdate": "16-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652677200"
+            },
+            {
+                "id": "33612",
+                "sesstimestamp": "1652763600",
+                "sessdate": "17-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652763600"
+            },
+            {
+                "id": "33613",
+                "sesstimestamp": "1653282000",
+                "sessdate": "23-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653282000"
+            },
+            {
+                "id": "33614",
+                "sesstimestamp": "1653368400",
+                "sessdate": "24-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653368400"
+            },
+            {
+                "id": "33615",
+                "sesstimestamp": "1653886800",
+                "sessdate": "30-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653886800"
+            },
+            {
+                "id": "33616",
+                "sesstimestamp": "1653973200",
+                "sessdate": "31-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653973200"
+            }
+        ]
+    },
+    {
+        "courseid": "64974",
+        "fullname": "Curso Plan talentos UV III",
+        "shortname": "00-BIOLOGIA-15-PNA-TS",
+        "idnumber": "cursoPlanTalentosIII",
+        "idcategory": "152",
+        "sessions": [
+            {
+                "id": "33525",
+                "sesstimestamp": "1643086800",
+                "sessdate": "25-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643086800"
+            },
+            {
+                "id": "33526",
+                "sesstimestamp": "1643173200",
+                "sessdate": "26-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643173200"
+            },
+            {
+                "id": "33527",
+                "sesstimestamp": "1643605200",
+                "sessdate": "31-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643605200"
+            },
+            {
+                "id": "33528",
+                "sesstimestamp": "1643691600",
+                "sessdate": "01-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643691600"
+            },
+            {
+                "id": "33529",
+                "sesstimestamp": "1643778000",
+                "sessdate": "02-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643778000"
+            },
+            {
+                "id": "33530",
+                "sesstimestamp": "1644210000",
+                "sessdate": "07-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644210000"
+            },
+            {
+                "id": "33531",
+                "sesstimestamp": "1644296400",
+                "sessdate": "08-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644296400"
+            },
+            {
+                "id": "33532",
+                "sesstimestamp": "1644382800",
+                "sessdate": "09-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644382800"
+            },
+            {
+                "id": "33533",
+                "sesstimestamp": "1644814800",
+                "sessdate": "14-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644814800"
+            },
+            {
+                "id": "33534",
+                "sesstimestamp": "1644901200",
+                "sessdate": "15-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644901200"
+            },
+            {
+                "id": "33535",
+                "sesstimestamp": "1644987600",
+                "sessdate": "16-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644987600"
+            },
+            {
+                "id": "33536",
+                "sesstimestamp": "1645419600",
+                "sessdate": "21-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645419600"
+            },
+            {
+                "id": "33537",
+                "sesstimestamp": "1645506000",
+                "sessdate": "22-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645506000"
+            },
+            {
+                "id": "33538",
+                "sesstimestamp": "1645592400",
+                "sessdate": "23-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645592400"
+            },
+            {
+                "id": "33539",
+                "sesstimestamp": "1646024400",
+                "sessdate": "28-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646024400"
+            },
+            {
+                "id": "33540",
+                "sesstimestamp": "1646110800",
+                "sessdate": "01-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646110800"
+            },
+            {
+                "id": "33541",
+                "sesstimestamp": "1646197200",
+                "sessdate": "02-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646197200"
+            },
+            {
+                "id": "33542",
+                "sesstimestamp": "1646629200",
+                "sessdate": "07-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646629200"
+            },
+            {
+                "id": "33543",
+                "sesstimestamp": "1646715600",
+                "sessdate": "08-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646715600"
+            },
+            {
+                "id": "33544",
+                "sesstimestamp": "1646802000",
+                "sessdate": "09-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646802000"
+            },
+            {
+                "id": "33545",
+                "sesstimestamp": "1647234000",
+                "sessdate": "14-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647234000"
+            },
+            {
+                "id": "33546",
+                "sesstimestamp": "1647320400",
+                "sessdate": "15-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647320400"
+            },
+            {
+                "id": "33547",
+                "sesstimestamp": "1647406800",
+                "sessdate": "16-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647406800"
+            },
+            {
+                "id": "33548",
+                "sesstimestamp": "1647838800",
+                "sessdate": "21-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647838800"
+            },
+            {
+                "id": "33549",
+                "sesstimestamp": "1647925200",
+                "sessdate": "22-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647925200"
+            },
+            {
+                "id": "33550",
+                "sesstimestamp": "1648011600",
+                "sessdate": "23-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648011600"
+            },
+            {
+                "id": "33551",
+                "sesstimestamp": "1648443600",
+                "sessdate": "28-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648443600"
+            },
+            {
+                "id": "33552",
+                "sesstimestamp": "1648530000",
+                "sessdate": "29-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648530000"
+            },
+            {
+                "id": "33553",
+                "sesstimestamp": "1648616400",
+                "sessdate": "30-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648616400"
+            },
+            {
+                "id": "33554",
+                "sesstimestamp": "1649048400",
+                "sessdate": "04-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649048400"
+            },
+            {
+                "id": "33555",
+                "sesstimestamp": "1649134800",
+                "sessdate": "05-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649134800"
+            },
+            {
+                "id": "33556",
+                "sesstimestamp": "1649221200",
+                "sessdate": "06-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649221200"
+            },
+            {
+                "id": "33557",
+                "sesstimestamp": "1649653200",
+                "sessdate": "11-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649653200"
+            },
+            {
+                "id": "33558",
+                "sesstimestamp": "1649739600",
+                "sessdate": "12-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649739600"
+            },
+            {
+                "id": "33559",
+                "sesstimestamp": "1649826000",
+                "sessdate": "13-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649826000"
+            },
+            {
+                "id": "33560",
+                "sesstimestamp": "1650258000",
+                "sessdate": "18-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650258000"
+            },
+            {
+                "id": "33561",
+                "sesstimestamp": "1650344400",
+                "sessdate": "19-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650344400"
+            },
+            {
+                "id": "33562",
+                "sesstimestamp": "1650430800",
+                "sessdate": "20-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650430800"
+            },
+            {
+                "id": "33563",
+                "sesstimestamp": "1650862800",
+                "sessdate": "25-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650862800"
+            },
+            {
+                "id": "33564",
+                "sesstimestamp": "1650949200",
+                "sessdate": "26-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650949200"
+            },
+            {
+                "id": "33565",
+                "sesstimestamp": "1651035600",
+                "sessdate": "27-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651035600"
+            },
+            {
+                "id": "33566",
+                "sesstimestamp": "1651467600",
+                "sessdate": "02-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651467600"
+            },
+            {
+                "id": "33567",
+                "sesstimestamp": "1651554000",
+                "sessdate": "03-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651554000"
+            },
+            {
+                "id": "33568",
+                "sesstimestamp": "1651640400",
+                "sessdate": "04-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651640400"
+            },
+            {
+                "id": "33569",
+                "sesstimestamp": "1652072400",
+                "sessdate": "09-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652072400"
+            },
+            {
+                "id": "33570",
+                "sesstimestamp": "1652158800",
+                "sessdate": "10-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652158800"
+            },
+            {
+                "id": "33571",
+                "sesstimestamp": "1652245200",
+                "sessdate": "11-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652245200"
+            },
+            {
+                "id": "33572",
+                "sesstimestamp": "1652677200",
+                "sessdate": "16-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652677200"
+            },
+            {
+                "id": "33573",
+                "sesstimestamp": "1652763600",
+                "sessdate": "17-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652763600"
+            },
+            {
+                "id": "33574",
+                "sesstimestamp": "1652850000",
+                "sessdate": "18-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652850000"
+            },
+            {
+                "id": "33575",
+                "sesstimestamp": "1653282000",
+                "sessdate": "23-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653282000"
+            },
+            {
+                "id": "33576",
+                "sesstimestamp": "1653368400",
+                "sessdate": "24-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653368400"
+            },
+            {
+                "id": "33577",
+                "sesstimestamp": "1653454800",
+                "sessdate": "25-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653454800"
+            },
+            {
+                "id": "33578",
+                "sesstimestamp": "1653886800",
+                "sessdate": "30-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653886800"
+            },
+            {
+                "id": "33579",
+                "sesstimestamp": "1653973200",
+                "sessdate": "31-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653973200"
+            }
+        ]
+    },
+    {
+        "courseid": "64975",
+        "fullname": "Curso Plan talentos UV IV",
+        "shortname": "00-TIC-26-PNA-A0",
+        "idnumber": "cursoPlanTalentosIV",
+        "idcategory": "152",
+        "sessions": [
+            {
+                "id": "33257",
+                "sesstimestamp": "1643086800",
+                "sessdate": "25-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643086800"
+            },
+            {
+                "id": "33258",
+                "sesstimestamp": "1643173200",
+                "sessdate": "26-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643173200"
+            },
+            {
+                "id": "33259",
+                "sesstimestamp": "1643259600",
+                "sessdate": "27-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643259600"
+            },
+            {
+                "id": "33260",
+                "sesstimestamp": "1643605200",
+                "sessdate": "31-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643605200"
+            },
+            {
+                "id": "33261",
+                "sesstimestamp": "1643691600",
+                "sessdate": "01-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643691600"
+            },
+            {
+                "id": "33262",
+                "sesstimestamp": "1643778000",
+                "sessdate": "02-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643778000"
+            },
+            {
+                "id": "33263",
+                "sesstimestamp": "1643864400",
+                "sessdate": "03-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643864400"
+            },
+            {
+                "id": "33264",
+                "sesstimestamp": "1644210000",
+                "sessdate": "07-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644210000"
+            },
+            {
+                "id": "33265",
+                "sesstimestamp": "1644296400",
+                "sessdate": "08-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644296400"
+            },
+            {
+                "id": "33266",
+                "sesstimestamp": "1644382800",
+                "sessdate": "09-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644382800"
+            },
+            {
+                "id": "33267",
+                "sesstimestamp": "1644469200",
+                "sessdate": "10-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644469200"
+            },
+            {
+                "id": "33268",
+                "sesstimestamp": "1644814800",
+                "sessdate": "14-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644814800"
+            },
+            {
+                "id": "33269",
+                "sesstimestamp": "1644901200",
+                "sessdate": "15-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644901200"
+            },
+            {
+                "id": "33270",
+                "sesstimestamp": "1644987600",
+                "sessdate": "16-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644987600"
+            },
+            {
+                "id": "33271",
+                "sesstimestamp": "1645074000",
+                "sessdate": "17-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645074000"
+            },
+            {
+                "id": "33272",
+                "sesstimestamp": "1645419600",
+                "sessdate": "21-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645419600"
+            },
+            {
+                "id": "33273",
+                "sesstimestamp": "1645506000",
+                "sessdate": "22-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645506000"
+            },
+            {
+                "id": "33274",
+                "sesstimestamp": "1645592400",
+                "sessdate": "23-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645592400"
+            },
+            {
+                "id": "33275",
+                "sesstimestamp": "1645678800",
+                "sessdate": "24-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645678800"
+            },
+            {
+                "id": "33276",
+                "sesstimestamp": "1646024400",
+                "sessdate": "28-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646024400"
+            },
+            {
+                "id": "33277",
+                "sesstimestamp": "1646110800",
+                "sessdate": "01-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646110800"
+            },
+            {
+                "id": "33278",
+                "sesstimestamp": "1646197200",
+                "sessdate": "02-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646197200"
+            },
+            {
+                "id": "33279",
+                "sesstimestamp": "1646283600",
+                "sessdate": "03-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646283600"
+            },
+            {
+                "id": "33280",
+                "sesstimestamp": "1646629200",
+                "sessdate": "07-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646629200"
+            },
+            {
+                "id": "33281",
+                "sesstimestamp": "1646715600",
+                "sessdate": "08-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646715600"
+            },
+            {
+                "id": "33282",
+                "sesstimestamp": "1646802000",
+                "sessdate": "09-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646802000"
+            },
+            {
+                "id": "33283",
+                "sesstimestamp": "1646888400",
+                "sessdate": "10-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646888400"
+            },
+            {
+                "id": "33284",
+                "sesstimestamp": "1647234000",
+                "sessdate": "14-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647234000"
+            },
+            {
+                "id": "33285",
+                "sesstimestamp": "1647320400",
+                "sessdate": "15-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647320400"
+            },
+            {
+                "id": "33286",
+                "sesstimestamp": "1647406800",
+                "sessdate": "16-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647406800"
+            },
+            {
+                "id": "33287",
+                "sesstimestamp": "1647493200",
+                "sessdate": "17-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647493200"
+            },
+            {
+                "id": "33288",
+                "sesstimestamp": "1647838800",
+                "sessdate": "21-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647838800"
+            },
+            {
+                "id": "33289",
+                "sesstimestamp": "1647925200",
+                "sessdate": "22-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647925200"
+            },
+            {
+                "id": "33290",
+                "sesstimestamp": "1648011600",
+                "sessdate": "23-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648011600"
+            },
+            {
+                "id": "33291",
+                "sesstimestamp": "1648098000",
+                "sessdate": "24-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648098000"
+            },
+            {
+                "id": "33292",
+                "sesstimestamp": "1648443600",
+                "sessdate": "28-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648443600"
+            },
+            {
+                "id": "33293",
+                "sesstimestamp": "1648530000",
+                "sessdate": "29-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648530000"
+            },
+            {
+                "id": "33294",
+                "sesstimestamp": "1648616400",
+                "sessdate": "30-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648616400"
+            },
+            {
+                "id": "33295",
+                "sesstimestamp": "1648702800",
+                "sessdate": "31-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648702800"
+            },
+            {
+                "id": "33296",
+                "sesstimestamp": "1649048400",
+                "sessdate": "04-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649048400"
+            },
+            {
+                "id": "33297",
+                "sesstimestamp": "1649134800",
+                "sessdate": "05-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649134800"
+            },
+            {
+                "id": "33298",
+                "sesstimestamp": "1649221200",
+                "sessdate": "06-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649221200"
+            },
+            {
+                "id": "33299",
+                "sesstimestamp": "1649307600",
+                "sessdate": "07-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649307600"
+            },
+            {
+                "id": "33300",
+                "sesstimestamp": "1649653200",
+                "sessdate": "11-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649653200"
+            },
+            {
+                "id": "33301",
+                "sesstimestamp": "1649739600",
+                "sessdate": "12-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649739600"
+            },
+            {
+                "id": "33302",
+                "sesstimestamp": "1649826000",
+                "sessdate": "13-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649826000"
+            },
+            {
+                "id": "33303",
+                "sesstimestamp": "1649912400",
+                "sessdate": "14-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649912400"
+            },
+            {
+                "id": "33304",
+                "sesstimestamp": "1650258000",
+                "sessdate": "18-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650258000"
+            },
+            {
+                "id": "33305",
+                "sesstimestamp": "1650344400",
+                "sessdate": "19-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650344400"
+            },
+            {
+                "id": "33306",
+                "sesstimestamp": "1650430800",
+                "sessdate": "20-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650430800"
+            },
+            {
+                "id": "33307",
+                "sesstimestamp": "1650517200",
+                "sessdate": "21-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650517200"
+            },
+            {
+                "id": "33308",
+                "sesstimestamp": "1650862800",
+                "sessdate": "25-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650862800"
+            },
+            {
+                "id": "33309",
+                "sesstimestamp": "1650949200",
+                "sessdate": "26-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650949200"
+            },
+            {
+                "id": "33310",
+                "sesstimestamp": "1651035600",
+                "sessdate": "27-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651035600"
+            },
+            {
+                "id": "33311",
+                "sesstimestamp": "1651122000",
+                "sessdate": "28-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651122000"
+            },
+            {
+                "id": "33312",
+                "sesstimestamp": "1651467600",
+                "sessdate": "02-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651467600"
+            },
+            {
+                "id": "33313",
+                "sesstimestamp": "1651554000",
+                "sessdate": "03-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651554000"
+            },
+            {
+                "id": "33314",
+                "sesstimestamp": "1651640400",
+                "sessdate": "04-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651640400"
+            },
+            {
+                "id": "33315",
+                "sesstimestamp": "1651726800",
+                "sessdate": "05-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651726800"
+            },
+            {
+                "id": "33316",
+                "sesstimestamp": "1652072400",
+                "sessdate": "09-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652072400"
+            },
+            {
+                "id": "33317",
+                "sesstimestamp": "1652158800",
+                "sessdate": "10-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652158800"
+            },
+            {
+                "id": "33318",
+                "sesstimestamp": "1652245200",
+                "sessdate": "11-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652245200"
+            },
+            {
+                "id": "33319",
+                "sesstimestamp": "1652331600",
+                "sessdate": "12-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652331600"
+            },
+            {
+                "id": "33320",
+                "sesstimestamp": "1652677200",
+                "sessdate": "16-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652677200"
+            },
+            {
+                "id": "33321",
+                "sesstimestamp": "1652763600",
+                "sessdate": "17-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652763600"
+            },
+            {
+                "id": "33322",
+                "sesstimestamp": "1652850000",
+                "sessdate": "18-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652850000"
+            },
+            {
+                "id": "33323",
+                "sesstimestamp": "1652936400",
+                "sessdate": "19-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652936400"
+            },
+            {
+                "id": "33324",
+                "sesstimestamp": "1653282000",
+                "sessdate": "23-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653282000"
+            },
+            {
+                "id": "33325",
+                "sesstimestamp": "1653368400",
+                "sessdate": "24-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653368400"
+            },
+            {
+                "id": "33326",
+                "sesstimestamp": "1653454800",
+                "sessdate": "25-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653454800"
+            },
+            {
+                "id": "33327",
+                "sesstimestamp": "1653541200",
+                "sessdate": "26-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653541200"
+            },
+            {
+                "id": "33328",
+                "sesstimestamp": "1653886800",
+                "sessdate": "30-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653886800"
+            },
+            {
+                "id": "33329",
+                "sesstimestamp": "1653973200",
+                "sessdate": "31-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653973200"
+            },
+            {
+                "id": "33330",
+                "sesstimestamp": "1654059600",
+                "sessdate": "01-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654059600"
+            },
+            {
+                "id": "33331",
+                "sesstimestamp": "1654146000",
+                "sessdate": "02-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654146000"
+            },
+            {
+                "id": "33332",
+                "sesstimestamp": "1654491600",
+                "sessdate": "06-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654491600"
+            },
+            {
+                "id": "33333",
+                "sesstimestamp": "1654578000",
+                "sessdate": "07-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654578000"
+            },
+            {
+                "id": "33334",
+                "sesstimestamp": "1654664400",
+                "sessdate": "08-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654664400"
+            },
+            {
+                "id": "33335",
+                "sesstimestamp": "1654750800",
+                "sessdate": "09-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1654750800"
+            },
+            {
+                "id": "33336",
+                "sesstimestamp": "1655096400",
+                "sessdate": "13-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655096400"
+            },
+            {
+                "id": "33337",
+                "sesstimestamp": "1655182800",
+                "sessdate": "14-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655182800"
+            },
+            {
+                "id": "33338",
+                "sesstimestamp": "1655269200",
+                "sessdate": "15-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655269200"
+            },
+            {
+                "id": "33339",
+                "sesstimestamp": "1655355600",
+                "sessdate": "16-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655355600"
+            },
+            {
+                "id": "33340",
+                "sesstimestamp": "1655701200",
+                "sessdate": "20-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655701200"
+            },
+            {
+                "id": "33341",
+                "sesstimestamp": "1655787600",
+                "sessdate": "21-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655787600"
+            },
+            {
+                "id": "33342",
+                "sesstimestamp": "1655874000",
+                "sessdate": "22-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655874000"
+            },
+            {
+                "id": "33343",
+                "sesstimestamp": "1655960400",
+                "sessdate": "23-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1655960400"
+            },
+            {
+                "id": "33344",
+                "sesstimestamp": "1656306000",
+                "sessdate": "27-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656306000"
+            },
+            {
+                "id": "33345",
+                "sesstimestamp": "1656392400",
+                "sessdate": "28-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656392400"
+            },
+            {
+                "id": "33346",
+                "sesstimestamp": "1656478800",
+                "sessdate": "29-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656478800"
+            },
+            {
+                "id": "33347",
+                "sesstimestamp": "1656565200",
+                "sessdate": "30-06-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656565200"
+            },
+            {
+                "id": "33348",
+                "sesstimestamp": "1656910800",
+                "sessdate": "04-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656910800"
+            },
+            {
+                "id": "33349",
+                "sesstimestamp": "1656997200",
+                "sessdate": "05-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1656997200"
+            },
+            {
+                "id": "33350",
+                "sesstimestamp": "1657083600",
+                "sessdate": "06-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657083600"
+            },
+            {
+                "id": "33351",
+                "sesstimestamp": "1657170000",
+                "sessdate": "07-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657170000"
+            },
+            {
+                "id": "33352",
+                "sesstimestamp": "1657515600",
+                "sessdate": "11-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657515600"
+            },
+            {
+                "id": "33353",
+                "sesstimestamp": "1657602000",
+                "sessdate": "12-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657602000"
+            },
+            {
+                "id": "33354",
+                "sesstimestamp": "1657688400",
+                "sessdate": "13-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657688400"
+            },
+            {
+                "id": "33355",
+                "sesstimestamp": "1657774800",
+                "sessdate": "14-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1657774800"
+            },
+            {
+                "id": "33356",
+                "sesstimestamp": "1658120400",
+                "sessdate": "18-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658120400"
+            },
+            {
+                "id": "33357",
+                "sesstimestamp": "1658206800",
+                "sessdate": "19-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658206800"
+            },
+            {
+                "id": "33358",
+                "sesstimestamp": "1658293200",
+                "sessdate": "20-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658293200"
+            },
+            {
+                "id": "33359",
+                "sesstimestamp": "1658379600",
+                "sessdate": "21-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658379600"
+            },
+            {
+                "id": "33360",
+                "sesstimestamp": "1658725200",
+                "sessdate": "25-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658725200"
+            },
+            {
+                "id": "33361",
+                "sesstimestamp": "1658811600",
+                "sessdate": "26-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658811600"
+            },
+            {
+                "id": "33362",
+                "sesstimestamp": "1658898000",
+                "sessdate": "27-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658898000"
+            },
+            {
+                "id": "33363",
+                "sesstimestamp": "1658984400",
+                "sessdate": "28-07-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1658984400"
+            },
+            {
+                "id": "33364",
+                "sesstimestamp": "1659330000",
+                "sessdate": "01-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1659330000"
+            },
+            {
+                "id": "33365",
+                "sesstimestamp": "1659416400",
+                "sessdate": "02-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1659416400"
+            },
+            {
+                "id": "33366",
+                "sesstimestamp": "1659502800",
+                "sessdate": "03-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1659502800"
+            },
+            {
+                "id": "33367",
+                "sesstimestamp": "1659589200",
+                "sessdate": "04-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1659589200"
+            },
+            {
+                "id": "33368",
+                "sesstimestamp": "1659934800",
+                "sessdate": "08-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1659934800"
+            },
+            {
+                "id": "33369",
+                "sesstimestamp": "1660021200",
+                "sessdate": "09-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660021200"
+            },
+            {
+                "id": "33370",
+                "sesstimestamp": "1660107600",
+                "sessdate": "10-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660107600"
+            },
+            {
+                "id": "33371",
+                "sesstimestamp": "1660194000",
+                "sessdate": "11-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660194000"
+            },
+            {
+                "id": "33372",
+                "sesstimestamp": "1660539600",
+                "sessdate": "15-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660539600"
+            },
+            {
+                "id": "33373",
+                "sesstimestamp": "1660626000",
+                "sessdate": "16-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660626000"
+            },
+            {
+                "id": "33374",
+                "sesstimestamp": "1660712400",
+                "sessdate": "17-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660712400"
+            },
+            {
+                "id": "33375",
+                "sesstimestamp": "1660798800",
+                "sessdate": "18-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1660798800"
+            },
+            {
+                "id": "33376",
+                "sesstimestamp": "1661144400",
+                "sessdate": "22-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661144400"
+            },
+            {
+                "id": "33377",
+                "sesstimestamp": "1661230800",
+                "sessdate": "23-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661230800"
+            },
+            {
+                "id": "33378",
+                "sesstimestamp": "1661317200",
+                "sessdate": "24-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661317200"
+            },
+            {
+                "id": "33379",
+                "sesstimestamp": "1661403600",
+                "sessdate": "25-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661403600"
+            },
+            {
+                "id": "33380",
+                "sesstimestamp": "1661749200",
+                "sessdate": "29-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661749200"
+            },
+            {
+                "id": "33381",
+                "sesstimestamp": "1661835600",
+                "sessdate": "30-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661835600"
+            },
+            {
+                "id": "33382",
+                "sesstimestamp": "1661922000",
+                "sessdate": "31-08-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1661922000"
+            },
+            {
+                "id": "33383",
+                "sesstimestamp": "1662008400",
+                "sessdate": "01-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662008400"
+            },
+            {
+                "id": "33384",
+                "sesstimestamp": "1662354000",
+                "sessdate": "05-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662354000"
+            },
+            {
+                "id": "33385",
+                "sesstimestamp": "1662440400",
+                "sessdate": "06-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662440400"
+            },
+            {
+                "id": "33386",
+                "sesstimestamp": "1662526800",
+                "sessdate": "07-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662526800"
+            },
+            {
+                "id": "33387",
+                "sesstimestamp": "1662613200",
+                "sessdate": "08-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662613200"
+            },
+            {
+                "id": "33388",
+                "sesstimestamp": "1662958800",
+                "sessdate": "12-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1662958800"
+            },
+            {
+                "id": "33389",
+                "sesstimestamp": "1663045200",
+                "sessdate": "13-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663045200"
+            },
+            {
+                "id": "33390",
+                "sesstimestamp": "1663131600",
+                "sessdate": "14-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663131600"
+            },
+            {
+                "id": "33391",
+                "sesstimestamp": "1663218000",
+                "sessdate": "15-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663218000"
+            },
+            {
+                "id": "33392",
+                "sesstimestamp": "1663563600",
+                "sessdate": "19-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663563600"
+            },
+            {
+                "id": "33393",
+                "sesstimestamp": "1663650000",
+                "sessdate": "20-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663650000"
+            },
+            {
+                "id": "33394",
+                "sesstimestamp": "1663736400",
+                "sessdate": "21-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663736400"
+            },
+            {
+                "id": "33395",
+                "sesstimestamp": "1663822800",
+                "sessdate": "22-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1663822800"
+            },
+            {
+                "id": "33396",
+                "sesstimestamp": "1664168400",
+                "sessdate": "26-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664168400"
+            },
+            {
+                "id": "33397",
+                "sesstimestamp": "1664254800",
+                "sessdate": "27-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664254800"
+            },
+            {
+                "id": "33398",
+                "sesstimestamp": "1664341200",
+                "sessdate": "28-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664341200"
+            },
+            {
+                "id": "33399",
+                "sesstimestamp": "1664427600",
+                "sessdate": "29-09-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664427600"
+            },
+            {
+                "id": "33400",
+                "sesstimestamp": "1664773200",
+                "sessdate": "03-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664773200"
+            },
+            {
+                "id": "33401",
+                "sesstimestamp": "1664859600",
+                "sessdate": "04-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664859600"
+            },
+            {
+                "id": "33402",
+                "sesstimestamp": "1664946000",
+                "sessdate": "05-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1664946000"
+            },
+            {
+                "id": "33403",
+                "sesstimestamp": "1665032400",
+                "sessdate": "06-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665032400"
+            },
+            {
+                "id": "33404",
+                "sesstimestamp": "1665378000",
+                "sessdate": "10-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665378000"
+            },
+            {
+                "id": "33405",
+                "sesstimestamp": "1665464400",
+                "sessdate": "11-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665464400"
+            },
+            {
+                "id": "33406",
+                "sesstimestamp": "1665550800",
+                "sessdate": "12-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665550800"
+            },
+            {
+                "id": "33407",
+                "sesstimestamp": "1665637200",
+                "sessdate": "13-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665637200"
+            },
+            {
+                "id": "33408",
+                "sesstimestamp": "1665982800",
+                "sessdate": "17-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1665982800"
+            },
+            {
+                "id": "33409",
+                "sesstimestamp": "1666069200",
+                "sessdate": "18-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666069200"
+            },
+            {
+                "id": "33410",
+                "sesstimestamp": "1666155600",
+                "sessdate": "19-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666155600"
+            },
+            {
+                "id": "33411",
+                "sesstimestamp": "1666242000",
+                "sessdate": "20-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666242000"
+            },
+            {
+                "id": "33412",
+                "sesstimestamp": "1666587600",
+                "sessdate": "24-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666587600"
+            },
+            {
+                "id": "33413",
+                "sesstimestamp": "1666674000",
+                "sessdate": "25-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666674000"
+            },
+            {
+                "id": "33414",
+                "sesstimestamp": "1666760400",
+                "sessdate": "26-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666760400"
+            },
+            {
+                "id": "33415",
+                "sesstimestamp": "1666846800",
+                "sessdate": "27-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1666846800"
+            },
+            {
+                "id": "33416",
+                "sesstimestamp": "1667192400",
+                "sessdate": "31-10-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667192400"
+            },
+            {
+                "id": "33417",
+                "sesstimestamp": "1667278800",
+                "sessdate": "01-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667278800"
+            },
+            {
+                "id": "33418",
+                "sesstimestamp": "1667365200",
+                "sessdate": "02-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667365200"
+            },
+            {
+                "id": "33419",
+                "sesstimestamp": "1667451600",
+                "sessdate": "03-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667451600"
+            },
+            {
+                "id": "33420",
+                "sesstimestamp": "1667797200",
+                "sessdate": "07-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667797200"
+            },
+            {
+                "id": "33421",
+                "sesstimestamp": "1667883600",
+                "sessdate": "08-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667883600"
+            },
+            {
+                "id": "33422",
+                "sesstimestamp": "1667970000",
+                "sessdate": "09-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1667970000"
+            },
+            {
+                "id": "33423",
+                "sesstimestamp": "1668056400",
+                "sessdate": "10-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1668056400"
+            },
+            {
+                "id": "33424",
+                "sesstimestamp": "1668402000",
+                "sessdate": "14-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1668402000"
+            },
+            {
+                "id": "33425",
+                "sesstimestamp": "1668488400",
+                "sessdate": "15-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1668488400"
+            },
+            {
+                "id": "33426",
+                "sesstimestamp": "1668574800",
+                "sessdate": "16-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1668574800"
+            },
+            {
+                "id": "33427",
+                "sesstimestamp": "1668661200",
+                "sessdate": "17-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1668661200"
+            },
+            {
+                "id": "33428",
+                "sesstimestamp": "1669006800",
+                "sessdate": "21-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669006800"
+            },
+            {
+                "id": "33429",
+                "sesstimestamp": "1669093200",
+                "sessdate": "22-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669093200"
+            },
+            {
+                "id": "33430",
+                "sesstimestamp": "1669179600",
+                "sessdate": "23-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669179600"
+            },
+            {
+                "id": "33431",
+                "sesstimestamp": "1669266000",
+                "sessdate": "24-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669266000"
+            },
+            {
+                "id": "33432",
+                "sesstimestamp": "1669611600",
+                "sessdate": "28-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669611600"
+            },
+            {
+                "id": "33433",
+                "sesstimestamp": "1669698000",
+                "sessdate": "29-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669698000"
+            },
+            {
+                "id": "33434",
+                "sesstimestamp": "1669784400",
+                "sessdate": "30-11-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669784400"
+            },
+            {
+                "id": "33435",
+                "sesstimestamp": "1669870800",
+                "sessdate": "01-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1669870800"
+            },
+            {
+                "id": "33436",
+                "sesstimestamp": "1670216400",
+                "sessdate": "05-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670216400"
+            },
+            {
+                "id": "33437",
+                "sesstimestamp": "1670302800",
+                "sessdate": "06-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670302800"
+            },
+            {
+                "id": "33438",
+                "sesstimestamp": "1670389200",
+                "sessdate": "07-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670389200"
+            },
+            {
+                "id": "33439",
+                "sesstimestamp": "1670475600",
+                "sessdate": "08-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670475600"
+            },
+            {
+                "id": "33440",
+                "sesstimestamp": "1670821200",
+                "sessdate": "12-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670821200"
+            },
+            {
+                "id": "33441",
+                "sesstimestamp": "1670907600",
+                "sessdate": "13-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670907600"
+            },
+            {
+                "id": "33442",
+                "sesstimestamp": "1670994000",
+                "sessdate": "14-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1670994000"
+            },
+            {
+                "id": "33443",
+                "sesstimestamp": "1671080400",
+                "sessdate": "15-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1671080400"
+            },
+            {
+                "id": "33444",
+                "sesstimestamp": "1671426000",
+                "sessdate": "19-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1671426000"
+            },
+            {
+                "id": "33445",
+                "sesstimestamp": "1671512400",
+                "sessdate": "20-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1671512400"
+            },
+            {
+                "id": "33446",
+                "sesstimestamp": "1671598800",
+                "sessdate": "21-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1671598800"
+            },
+            {
+                "id": "33447",
+                "sesstimestamp": "1671685200",
+                "sessdate": "22-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1671685200"
+            },
+            {
+                "id": "33448",
+                "sesstimestamp": "1672030800",
+                "sessdate": "26-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1672030800"
+            },
+            {
+                "id": "33449",
+                "sesstimestamp": "1672117200",
+                "sessdate": "27-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1672117200"
+            },
+            {
+                "id": "33450",
+                "sesstimestamp": "1672203600",
+                "sessdate": "28-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1672203600"
+            },
+            {
+                "id": "33451",
+                "sesstimestamp": "1672290000",
+                "sessdate": "29-12-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1672290000"
+            }
+        ]
+    },
+    {
+        "courseid": "64976",
+        "fullname": "Curso Plan talentos UV V",
+        "shortname": "00-ARTESCONOCIMIENTO-01-PNA-A0",
+        "idnumber": "cursoPlanTalentosV",
+        "idcategory": "153",
+        "sessions": [
+            {
+                "id": "33452",
+                "sesstimestamp": "1643086800",
+                "sessdate": "25-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643086800"
+            },
+            {
+                "id": "33453",
+                "sesstimestamp": "1643173200",
+                "sessdate": "26-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643173200"
+            },
+            {
+                "id": "33454",
+                "sesstimestamp": "1643259600",
+                "sessdate": "27-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643259600"
+            },
+            {
+                "id": "33455",
+                "sesstimestamp": "1643346000",
+                "sessdate": "28-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643346000"
+            },
+            {
+                "id": "33239",
+                "sesstimestamp": "1643605200",
+                "sessdate": "31-01-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643605200"
+            },
+            {
+                "id": "33456",
+                "sesstimestamp": "1643691600",
+                "sessdate": "01-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643691600"
+            },
+            {
+                "id": "33457",
+                "sesstimestamp": "1643778000",
+                "sessdate": "02-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643778000"
+            },
+            {
+                "id": "33458",
+                "sesstimestamp": "1643864400",
+                "sessdate": "03-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643864400"
+            },
+            {
+                "id": "33459",
+                "sesstimestamp": "1643950800",
+                "sessdate": "04-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1643950800"
+            },
+            {
+                "id": "33240",
+                "sesstimestamp": "1644210000",
+                "sessdate": "07-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644210000"
+            },
+            {
+                "id": "33460",
+                "sesstimestamp": "1644296400",
+                "sessdate": "08-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644296400"
+            },
+            {
+                "id": "33461",
+                "sesstimestamp": "1644382800",
+                "sessdate": "09-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644382800"
+            },
+            {
+                "id": "33462",
+                "sesstimestamp": "1644469200",
+                "sessdate": "10-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644469200"
+            },
+            {
+                "id": "33463",
+                "sesstimestamp": "1644555600",
+                "sessdate": "11-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644555600"
+            },
+            {
+                "id": "33241",
+                "sesstimestamp": "1644814800",
+                "sessdate": "14-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644814800"
+            },
+            {
+                "id": "33464",
+                "sesstimestamp": "1644901200",
+                "sessdate": "15-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644901200"
+            },
+            {
+                "id": "33465",
+                "sesstimestamp": "1644987600",
+                "sessdate": "16-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1644987600"
+            },
+            {
+                "id": "33466",
+                "sesstimestamp": "1645074000",
+                "sessdate": "17-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645074000"
+            },
+            {
+                "id": "33467",
+                "sesstimestamp": "1645160400",
+                "sessdate": "18-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645160400"
+            },
+            {
+                "id": "33242",
+                "sesstimestamp": "1645419600",
+                "sessdate": "21-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645419600"
+            },
+            {
+                "id": "33468",
+                "sesstimestamp": "1645506000",
+                "sessdate": "22-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645506000"
+            },
+            {
+                "id": "33469",
+                "sesstimestamp": "1645592400",
+                "sessdate": "23-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645592400"
+            },
+            {
+                "id": "33470",
+                "sesstimestamp": "1645678800",
+                "sessdate": "24-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645678800"
+            },
+            {
+                "id": "33471",
+                "sesstimestamp": "1645765200",
+                "sessdate": "25-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1645765200"
+            },
+            {
+                "id": "33243",
+                "sesstimestamp": "1646024400",
+                "sessdate": "28-02-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646024400"
+            },
+            {
+                "id": "33472",
+                "sesstimestamp": "1646110800",
+                "sessdate": "01-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646110800"
+            },
+            {
+                "id": "33473",
+                "sesstimestamp": "1646197200",
+                "sessdate": "02-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646197200"
+            },
+            {
+                "id": "33474",
+                "sesstimestamp": "1646283600",
+                "sessdate": "03-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646283600"
+            },
+            {
+                "id": "33475",
+                "sesstimestamp": "1646370000",
+                "sessdate": "04-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646370000"
+            },
+            {
+                "id": "33244",
+                "sesstimestamp": "1646629200",
+                "sessdate": "07-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646629200"
+            },
+            {
+                "id": "33476",
+                "sesstimestamp": "1646715600",
+                "sessdate": "08-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646715600"
+            },
+            {
+                "id": "33477",
+                "sesstimestamp": "1646802000",
+                "sessdate": "09-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646802000"
+            },
+            {
+                "id": "33478",
+                "sesstimestamp": "1646888400",
+                "sessdate": "10-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646888400"
+            },
+            {
+                "id": "33479",
+                "sesstimestamp": "1646974800",
+                "sessdate": "11-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1646974800"
+            },
+            {
+                "id": "33245",
+                "sesstimestamp": "1647234000",
+                "sessdate": "14-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647234000"
+            },
+            {
+                "id": "33480",
+                "sesstimestamp": "1647320400",
+                "sessdate": "15-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647320400"
+            },
+            {
+                "id": "33481",
+                "sesstimestamp": "1647406800",
+                "sessdate": "16-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647406800"
+            },
+            {
+                "id": "33482",
+                "sesstimestamp": "1647493200",
+                "sessdate": "17-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647493200"
+            },
+            {
+                "id": "33483",
+                "sesstimestamp": "1647579600",
+                "sessdate": "18-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647579600"
+            },
+            {
+                "id": "33246",
+                "sesstimestamp": "1647838800",
+                "sessdate": "21-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647838800"
+            },
+            {
+                "id": "33484",
+                "sesstimestamp": "1647925200",
+                "sessdate": "22-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1647925200"
+            },
+            {
+                "id": "33485",
+                "sesstimestamp": "1648011600",
+                "sessdate": "23-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648011600"
+            },
+            {
+                "id": "33486",
+                "sesstimestamp": "1648098000",
+                "sessdate": "24-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648098000"
+            },
+            {
+                "id": "33487",
+                "sesstimestamp": "1648184400",
+                "sessdate": "25-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648184400"
+            },
+            {
+                "id": "33247",
+                "sesstimestamp": "1648443600",
+                "sessdate": "28-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648443600"
+            },
+            {
+                "id": "33488",
+                "sesstimestamp": "1648530000",
+                "sessdate": "29-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648530000"
+            },
+            {
+                "id": "33489",
+                "sesstimestamp": "1648616400",
+                "sessdate": "30-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648616400"
+            },
+            {
+                "id": "33490",
+                "sesstimestamp": "1648702800",
+                "sessdate": "31-03-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648702800"
+            },
+            {
+                "id": "33491",
+                "sesstimestamp": "1648789200",
+                "sessdate": "01-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1648789200"
+            },
+            {
+                "id": "33248",
+                "sesstimestamp": "1649048400",
+                "sessdate": "04-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649048400"
+            },
+            {
+                "id": "33492",
+                "sesstimestamp": "1649134800",
+                "sessdate": "05-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649134800"
+            },
+            {
+                "id": "33493",
+                "sesstimestamp": "1649221200",
+                "sessdate": "06-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649221200"
+            },
+            {
+                "id": "33494",
+                "sesstimestamp": "1649307600",
+                "sessdate": "07-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649307600"
+            },
+            {
+                "id": "33495",
+                "sesstimestamp": "1649394000",
+                "sessdate": "08-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649394000"
+            },
+            {
+                "id": "33249",
+                "sesstimestamp": "1649653200",
+                "sessdate": "11-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649653200"
+            },
+            {
+                "id": "33496",
+                "sesstimestamp": "1649739600",
+                "sessdate": "12-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649739600"
+            },
+            {
+                "id": "33497",
+                "sesstimestamp": "1649826000",
+                "sessdate": "13-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649826000"
+            },
+            {
+                "id": "33498",
+                "sesstimestamp": "1649912400",
+                "sessdate": "14-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649912400"
+            },
+            {
+                "id": "33499",
+                "sesstimestamp": "1649998800",
+                "sessdate": "15-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1649998800"
+            },
+            {
+                "id": "33250",
+                "sesstimestamp": "1650258000",
+                "sessdate": "18-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650258000"
+            },
+            {
+                "id": "33500",
+                "sesstimestamp": "1650344400",
+                "sessdate": "19-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650344400"
+            },
+            {
+                "id": "33501",
+                "sesstimestamp": "1650430800",
+                "sessdate": "20-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650430800"
+            },
+            {
+                "id": "33502",
+                "sesstimestamp": "1650517200",
+                "sessdate": "21-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650517200"
+            },
+            {
+                "id": "33503",
+                "sesstimestamp": "1650603600",
+                "sessdate": "22-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650603600"
+            },
+            {
+                "id": "33251",
+                "sesstimestamp": "1650862800",
+                "sessdate": "25-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650862800"
+            },
+            {
+                "id": "33504",
+                "sesstimestamp": "1650949200",
+                "sessdate": "26-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1650949200"
+            },
+            {
+                "id": "33505",
+                "sesstimestamp": "1651035600",
+                "sessdate": "27-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651035600"
+            },
+            {
+                "id": "33506",
+                "sesstimestamp": "1651122000",
+                "sessdate": "28-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651122000"
+            },
+            {
+                "id": "33507",
+                "sesstimestamp": "1651208400",
+                "sessdate": "29-04-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651208400"
+            },
+            {
+                "id": "33252",
+                "sesstimestamp": "1651467600",
+                "sessdate": "02-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651467600"
+            },
+            {
+                "id": "33508",
+                "sesstimestamp": "1651554000",
+                "sessdate": "03-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651554000"
+            },
+            {
+                "id": "33509",
+                "sesstimestamp": "1651640400",
+                "sessdate": "04-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651640400"
+            },
+            {
+                "id": "33510",
+                "sesstimestamp": "1651726800",
+                "sessdate": "05-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651726800"
+            },
+            {
+                "id": "33511",
+                "sesstimestamp": "1651813200",
+                "sessdate": "06-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1651813200"
+            },
+            {
+                "id": "33253",
+                "sesstimestamp": "1652072400",
+                "sessdate": "09-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652072400"
+            },
+            {
+                "id": "33512",
+                "sesstimestamp": "1652158800",
+                "sessdate": "10-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652158800"
+            },
+            {
+                "id": "33513",
+                "sesstimestamp": "1652245200",
+                "sessdate": "11-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652245200"
+            },
+            {
+                "id": "33514",
+                "sesstimestamp": "1652331600",
+                "sessdate": "12-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652331600"
+            },
+            {
+                "id": "33515",
+                "sesstimestamp": "1652418000",
+                "sessdate": "13-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652418000"
+            },
+            {
+                "id": "33254",
+                "sesstimestamp": "1652677200",
+                "sessdate": "16-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652677200"
+            },
+            {
+                "id": "33516",
+                "sesstimestamp": "1652763600",
+                "sessdate": "17-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652763600"
+            },
+            {
+                "id": "33517",
+                "sesstimestamp": "1652850000",
+                "sessdate": "18-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652850000"
+            },
+            {
+                "id": "33518",
+                "sesstimestamp": "1652936400",
+                "sessdate": "19-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1652936400"
+            },
+            {
+                "id": "33519",
+                "sesstimestamp": "1653022800",
+                "sessdate": "20-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653022800"
+            },
+            {
+                "id": "33255",
+                "sesstimestamp": "1653282000",
+                "sessdate": "23-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653282000"
+            },
+            {
+                "id": "33520",
+                "sesstimestamp": "1653368400",
+                "sessdate": "24-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653368400"
+            },
+            {
+                "id": "33521",
+                "sesstimestamp": "1653454800",
+                "sessdate": "25-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653454800"
+            },
+            {
+                "id": "33522",
+                "sesstimestamp": "1653541200",
+                "sessdate": "26-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653541200"
+            },
+            {
+                "id": "33523",
+                "sesstimestamp": "1653627600",
+                "sessdate": "27-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653627600"
+            },
+            {
+                "id": "33256",
+                "sesstimestamp": "1653886800",
+                "sessdate": "30-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653886800"
+            },
+            {
+                "id": "33524",
+                "sesstimestamp": "1653973200",
+                "sessdate": "31-05-2022 00:00:00",
+                "duration": "0",
+                "description": "Sesión de Clase Normal",
+                "sessiondate": "1653973200"
+            }
+        ]
+    }
+]

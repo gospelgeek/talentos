@@ -12,34 +12,34 @@
 	<div class="sticky-top">	
 		<div class="row">
 			<div class="col-sm-12">		             
-           		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' => 'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
+           		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' =>'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
 			</div>
 		</div>
 	</div>				
 	<br>
-	<div class="row" >
+	<div class="form-row align-items-center" >
 		{!!Form::label('td','TD:')!!}
 		<div class="col-sm-1">
-			{!!Form::select('documento',$documento,$verDatosPerfil->documenttype ? $verDatosPerfil->documenttype->id : null,['class'=>'form-control','required','readonly','disabled','style' =>'text-align: left;'])!!}	
+			{!!Form::select('documento',$documento,$verDatosPerfil->documenttype ? $verDatosPerfil->documenttype->id : null,['class'=>'form-control','required','readonly','disabled','style'=>'border: none ', 'text-align: left;'])!!}	
 		</div>
 		{!!Form::label('documento','Nº documento:')!!}						
 		<div class="col-sm-2">
-			{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>
 			{!!Form::label('edad','Edad:')!!}
 		<div class="col-sm-1">					
-			{!!Form::text('edad',$edad,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('edad',$edad,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>
 		{!!Form::label('correo','Email:')!!}
 		<div class="col-sm-4">
-			{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('e-mail',$verDatosPerfil->email,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>				
 	</div>
 	<br>
-	<div class="row">
+	<div class="form-row align-items-center">
 		{!!Form::label('celular','Celular:')!!}
 		<div class="col-sm-2">
-			{!!Form::text('e-phone',$verDatosPerfil->cellphone,['class'=>'form-control','readonly','disabled'])!!}
+			{!!Form::text('e-phone',$verDatosPerfil->cellphone,['class'=>'form-control','readonly','disabled','style' =>'border: none ', 'text-align: left;'])!!}
 		</div>				
 		{!!Form::label('grupo','Grupo:')!!}		
 		<div class="col-sm-2">
@@ -188,7 +188,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-3 col-md-12"> 
-								{!!Form::select('sexo',$sexo, $verDatosPerfil->sex,['id'=>'sexoGeN','class'=>'form-control','required','placeholder'=>'Seleccionar sexo'])!!}
+								{!!Form::select('sexo',$sexo, $verDatosPerfil ? $verDatosPerfil->sex : null,['id'=>'sexoGeN','class'=>'form-control','required','placeholder'=>'Seleccionar sexo'])!!}
 							</div>
 						</div>                	
             		</div>
@@ -246,8 +246,8 @@
 								<input  class="form-control" type="text" name="telefono2" id="telefono22" value="{{ old('telefono2', $verDatosPerfil->phone) }}">
 							</div>
 						</div>     	
-            		</div>
-                    <div class="col-xs-2 col-md-2">
+          </div>
+            		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="student_code">Codigo estudinate</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
@@ -355,8 +355,8 @@
             		
            		</div>
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_academicos_previos'])!!}                       
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_academicos_previos'])!!}                       
             {!!Form::close()!!}
 			@endif
 		</div>
@@ -571,30 +571,57 @@
             			
             	</div>
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_socioeconomicos'])!!}                       
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_socioeconomicos'])!!}                       
             {!!Form::close()!!}
 			@endif
 		</div>
 	</div>
 	@if(auth()->user()->rol_id == 2)
 	<div class="accordion-container">
-		<a href="#" id="titulo-3" class="accordion-titulo-3">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
-		<div id="contenido-3" class="accordion-content-3">
+		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
+		<div id="contenido-4" class="accordion-content-4">
 			{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
-		</div>
+			
+			<div id="mostrarsegui" class="table-responsive">
+     			<br><table class=" table table-bordered table-striped">
+        			<thead >
+            			<tr>
+                			<td>SEGUIMIENTO (YYYY-mm-dd)</td>
+                			<td width="35%">ACCIONES</td>
+            			</tr>
+        			</thead>
+        			<input type="hidden" id="detalle" value="{{$seguimientos}}"> 
+        				
+					<tbody id="mostrarFcA">
+						
+					
+                	</tbody>
+                	 
+      			</table>
+      			
+      			
+		
+        	</div>
+        	
+        	
 	</div>
 	@endif
-	<a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	
 </div>
 
-@include('perfilEstudiante.modal.edit')
-@include('perfilEstudiante.modal.actualizarDatos.generales')
-@include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
-@include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
+@include('perfilEstudiante.modal.editestado')
 @include('perfilEstudiante.seguimientos.modal.create')
+@include('perfilEstudiante.seguimientos.modal.editar')
+@include('perfilEstudiante.seguimientos.modal.ver')
 @include('vistasParciales.validacionErrores')
+
+{!!Form::open(['id'=>'form-edit-seguimiento','route'=>['editarseguimiento',':SEGUIMIENTO_ID'], 'method'=>'GET'])!!}
+{!!Form::close()!!}
+
+{!!Form::open(['id'=>'form-delete','route'=>['deleteseguimiento',':SEGUIMIENTO_ID'], 'method'=>'DELETE'])!!}
+{!!Form::close()!!}
 
 
 
@@ -602,6 +629,36 @@
 {!!Html::script('/js/filtroestudiantes.js')!!}
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
+
+<script>
+        $(function () {
+            $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron coincidencias",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate":{
+                "next" : "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+            });
+        });        
+    </script>
 @endpush
 
 @endsection

@@ -26,7 +26,7 @@
                 <td>Nº documento</td>
                 <td>Codigo</td>
                 <td>Email</td>
-                <td>telefono</td>
+                <td>Telefono</td>
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Acciones</td>

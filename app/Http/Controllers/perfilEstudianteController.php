@@ -59,14 +59,16 @@ class perfilEstudianteController extends Controller
 
     public function indexPerfilEstudiante(){
         $user = auth()->user();
-        if($user['rol_id'] == 6){
+        /*if($user['rol_id'] == 6){
             $iden = $user['id'];
             $perfilEstudiantes= perfilEstudiante::whereRaw("id IN (SELECT id_student FROM assignment_students WHERE id_user=?)", [$iden])->get();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
         }else {
             $perfilEstudiantes = perfilEstudiante::all();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
-        }
+        }*/
+        $perfilEstudiantes = perfilEstudiante::all();
+        return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
 
 
@@ -121,7 +123,7 @@ class perfilEstudianteController extends Controller
 
     public function verPerfilEstudiante($id){
         $user = auth()->user();
-        if($user['rol_id'] == 6){
+        /*if($user['rol_id'] == 6){
             $idUser = $user['id'];
             $dt = AssignmentStudent::where('id_student', $id)->where('id_user', $idUser)->exists();
             if( $dt == true){
@@ -129,7 +131,7 @@ class perfilEstudianteController extends Controller
             }else{ 
                 return Redirect::to('/estudiante');
             }           
-        }
+        }*/
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         

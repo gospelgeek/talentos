@@ -21,12 +21,12 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-<<<<<<< HEAD
-require __DIR__.'/../vendor/autoload.php';
-=======
-require __DIR__.'/../talentos/vendor/autoload.php';
 
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+require __DIR__.'/../vendor/autoload.php';
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,13 +40,10 @@ require __DIR__.'/../talentos/vendor/autoload.php';
 |
 */
 
-<<<<<<< HEAD
+
 $app = require_once __DIR__.'/../bootstrap/app.php';
-=======
 
-$app = require_once __DIR__.'/../talentos/bootstrap/app.php';
 
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
 
 /*
 |--------------------------------------------------------------------------

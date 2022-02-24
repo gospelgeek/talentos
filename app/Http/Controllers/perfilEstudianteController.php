@@ -59,14 +59,16 @@ class perfilEstudianteController extends Controller
 
     public function indexPerfilEstudiante(){
         $user = auth()->user();
-        if($user['rol_id'] == 6){
+        /*if($user['rol_id'] == 6){
             $iden = $user['id'];
             $perfilEstudiantes= perfilEstudiante::whereRaw("id IN (SELECT id_student FROM assignment_students WHERE id_user=?)", [$iden])->get();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
         }else {
             $perfilEstudiantes = perfilEstudiante::all();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
-        }
+        }*/
+        $perfilEstudiantes = perfilEstudiante::all();
+        return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
 
 
@@ -121,7 +123,7 @@ class perfilEstudianteController extends Controller
 
     public function verPerfilEstudiante($id){
         $user = auth()->user();
-        if($user['rol_id'] == 6){
+        /*if($user['rol_id'] == 6){
             $idUser = $user['id'];
             $dt = AssignmentStudent::where('id_student', $id)->where('id_user', $idUser)->exists();
             if( $dt == true){
@@ -129,16 +131,20 @@ class perfilEstudianteController extends Controller
             }else{ 
                 return Redirect::to('/estudiante');
             }           
-        }
+        }*/
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
+
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
           
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
+
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
@@ -178,7 +184,9 @@ class perfilEstudianteController extends Controller
 
         $cohorte = Cohort::pluck('name', 'id');
 
-        $grupo = Group::pluck('name', 'id');
+        
+
+        
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -196,15 +204,22 @@ class perfilEstudianteController extends Controller
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
             ]);
 
-        if($verDatosPerfil->photo == ""){
+
+
+         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
+
+        }    
+
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
+
         }  
       
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));   
-    }
+
+    
   
     public function verDatosSocieconomicos($id) {
         //dd($id_student);
@@ -285,33 +300,25 @@ class perfilEstudianteController extends Controller
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
 
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
+
+        
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
+
+
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
+
+          
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
 
-        if($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'H'){
-           $sexo1 = "Masculino";     
-        }elseif($verDatosPerfil->socioeconomicdata->sex_document_identidad == 'M'){
-            $sexo1 = "Femenino"; 
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_home == 0){
-            $internet_home = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_home == 1){
-            $internet_home = "NO";
-
-        }
-
-        if($verDatosPerfil->socioeconomicdata->internet_zon == 0){
-            $internet_zone = "SI";
-        }elseif($verDatosPerfil->socioeconomicdata->internet_zon == 1){
-            $internet_zone = "NO";
-        }
-
+        
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
-
         $documento = DocumentType::pluck('name','id');
 
         $estado = Condition::pluck('name', 'id');
@@ -346,20 +353,26 @@ class perfilEstudianteController extends Controller
 
         $beneficios = Benefits::pluck('name', 'id');
 
+
+        $cohorte = Cohort::pluck('name', 'id');
+
+
         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
         } 
-
+      
         $depNacimiento = BirthDepartament::pluck('name','id');
 
         $muni_nacimiento = BirthCity::pluck('name','id');
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad'));
+
+        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
+
     }
 
     
@@ -512,7 +525,7 @@ class perfilEstudianteController extends Controller
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.asistencias.index',compact('asignaturas'));
+        return view('perfilEstudiante.Asistencias.index',compact('asignaturas'));
     }
 
     public function Grupos_Asignaturas($id)
@@ -522,7 +535,7 @@ class perfilEstudianteController extends Controller
         
         //dd($name);
 
-        return view('perfilEstudiante.asistencias.grupos',compact('grupos','name'));
+        return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
     }
 
     public function Asistencias_grupo($id)
@@ -533,14 +546,14 @@ class perfilEstudianteController extends Controller
         
         //dd($grupo);
 
-        return view('perfilEstudiante.asistencias.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.Asistencias.notas',compact('notas','id','grupo'));
     }
 
     public function sesiones($course,$id){
         $grupo=Group::where('id',$id)->first();
         $name = Course::where('id',$course)->first();
         //dd($course);
-        return view('perfilEstudiante.asistencias.sesiones',compact('grupo','name'));
+        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name'));
     }
     public function store_seguimiento(Request $request) {
 
@@ -1862,35 +1875,50 @@ class perfilEstudianteController extends Controller
         }
     }
 
-    /*public function mostrar_grupos(Request $request){
-        $cohorte = $request['cohorte'];
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
-        //return 'entro bien';
-        $cohorte = $request['cohorte'];
-        $grupo = $request['grupo'];
+    public function grupos(Request $request, $id)
+    {
+        $grpos = Group::where('id_cohort',$id)->get();
+        //return $grupos;
+        if($request->ajax())
+        {
+         
+          return response()->json($grpos);
+        }
+    }
 
+    public function datosNuevos(Request $request, $id) {
         
-        return $cohorte;
-        if($request->ajax()){
-            return Response::json($grupos); 
-        };  
+        
+        $grupo = Group::where('id', $id)->select('name')->first();
+        
+        $grpo = $grupo->name;
+        
+        $cohort = Group::where('id', $id)->select('id_cohort')->first();
+        $vercohort = $cohort->id_cohort;
 
-    }*/
+        $cohorte = Cohort::where('id', $vercohort)->select('name')->first(); 
+        $chrte = $cohorte->name;
 
-    /*public function updateCohorteGrupo($id, Request $request) {
+        $array = ['grupo' => $grpo, 'cohorte' => $chrte];
+
+        //return $array;
+            if ($request->ajax()) {
+                return response()->json($array);     
+            } 
+        
+    }
+
+    public function updateCohorteGrupo($id, Request $request) {
         
         $group = StudentGroup::findOrFail($id);
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
         
-        //return $grupos; 
-
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
 
         $cohort = Group::where('id', $request['grupo'])->select('id_cohort')->first();
         $vlrchrte = $cohort->id_cohort;
         
-        /*if ($request->ajax()) {
+        if ($request->ajax()) {
 
             if($vlrchrte == $request['cohorte']) {
                 $group->id_group = $request['grupo'];
@@ -1903,8 +1931,7 @@ class perfilEstudianteController extends Controller
         };
         
         return $mensaje;   
-    }*/
-
+    }
     
 }
 

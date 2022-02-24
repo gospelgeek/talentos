@@ -57,7 +57,7 @@
                       </div> 
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('sex','Sexo: ')!!}
-                      {!!Form::text('sexo', $verDatosPerfil->sex,['id'=>'sexo1','class'=>'form-control','required','placeholder'=>'Sexo'])!!}  
+                      {!!Form::select('sexo',$sexo, $verDatosPerfil->sex,['id'=>'sexo1','class'=>'form-control','required','placeholder'=>'Seleccionar sexo'])!!}  
                       </div> 
                   </div>
                   <div class="row">
@@ -87,7 +87,6 @@
                       {!!Form::label('student_code','Codigo estudiante: ')!!}
                       {!!Form::text('student_code', $verDatosPerfil ? $verDatosPerfil->student_code : null,['id'=>'codEstu','class'=>'form-control','required','placeholder'=>'Codigo estudiante'])!!}  
                       </div>
-                      
                   </div>
                   </div>
               </div>

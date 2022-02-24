@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal_alerta">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-sm">
       <div class="modal-content">
       <div class="modal-header">
          <h5 class="modal-title pull-center" style="justify-content: center">

@@ -13,7 +13,7 @@
       <div class="modal-body">
       <div class="container-fluid">
         <div class="row">
-          <span id="dtos">¿Esta seguro que desea cambiar el estudiante&nbsp;&nbsp;{{ $verDatosPerfil->name }}&nbsp;&nbsp;{{ $verDatosPerfil->lastname }}&nbsp;&nbsp;de su cohorte &nbsp;&nbsp;
+          <span id="dtos">¿Esta seguro que desea cambiar el estudiante&nbsp;&nbsp;{{ $verDatosPerfil->name }}&nbsp;&nbsp;{{ $verDatosPerfil->lastname }}&nbsp;&nbsp;de su cohorte
             <b>{{ $verDatosPerfil->studentGroup->group->cohort->name }}</b>&nbsp;&nbsp;y &nbsp;&nbsp;
             <b>{{ $verDatosPerfil->studentGroup->group->name }}</b>,  a la cohorte &nbsp;&nbsp;
             <b id="mstrchrte"></b>&nbsp;&nbsp;<b id="mstrgrpo"></b>?

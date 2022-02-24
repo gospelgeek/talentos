@@ -359,12 +359,9 @@
            		</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-<<<<<<< HEAD
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_academicos_previos'])!!}                       
-=======
+
 			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_academicos_previos'])!!}                       
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
-            {!!Form::close()!!}
+
 			@endif
 		</div>
 	</div>
@@ -579,16 +576,14 @@
             	</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-<<<<<<< HEAD
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary btn-block boton_update_socioeconomicos'])!!}                       
-=======
+
 			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_socioeconomicos'])!!}                       
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
             {!!Form::close()!!}
 			@endif
 		</div>
 	</div>
-	@if(auth()->user()->rol_id == 2)
+	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1)
 	<div class="accordion-container">
 		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
 		<div id="contenido-4" class="accordion-content-4">
@@ -622,7 +617,7 @@
 	
 </div>
 
-<<<<<<< HEAD
+
 
 @include('perfilEstudiante.modal.actualizarDatos.generales')
 @include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
@@ -632,12 +627,9 @@
 @include('perfilEstudiante.seguimientos.modal.ver')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
-=======
 @include('perfilEstudiante.modal.editestado')
-@include('perfilEstudiante.seguimientos.modal.create')
-@include('perfilEstudiante.seguimientos.modal.editar')
-@include('perfilEstudiante.seguimientos.modal.ver')
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
+
 @include('vistasParciales.validacionErrores')
 
 {!!Form::open(['id'=>'form-edit-seguimiento','route'=>['editarseguimiento',':SEGUIMIENTO_ID'], 'method'=>'GET'])!!}

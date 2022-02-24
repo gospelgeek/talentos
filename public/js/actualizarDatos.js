@@ -393,7 +393,7 @@ $('.boton_actualizar').click(function(e) {
   });
 });
 
-<<<<<<< HEAD
+
 //Cerrar alerta
 $('.cerrar_modal').click(function(e) { 
       e.preventDefault();
@@ -407,5 +407,4 @@ $('.boton_cancelar').click(function(e) {
       e.preventDefault();
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
-=======
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+

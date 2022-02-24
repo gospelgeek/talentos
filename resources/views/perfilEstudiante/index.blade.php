@@ -45,11 +45,9 @@
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>
                                         <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >
-<<<<<<< HEAD
-                                         
-=======
+
                                         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)   
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
                                             <div class="row">                                  
                                                 <div class="col-xs-4 col-sm-4">
                                                     <a title="Ver Informacion" href="{{ route('ver_estudiante', $estudiante->id) }}" class="btn btn-block btn-sm  fa fa-eye"></a>    
@@ -64,7 +62,7 @@
                                             @csrf
                     </td>
                 </tr>
-                
+                @endif
             @endforeach    
         </tbody>
 

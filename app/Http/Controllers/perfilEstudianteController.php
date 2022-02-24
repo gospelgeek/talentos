@@ -211,16 +211,15 @@ class perfilEstudianteController extends Controller
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
-<<<<<<< HEAD
+
         }    
 
         return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
-=======
+
         }  
       
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
-    }
+
+    
   
     public function verDatosSocieconomicos($id) {
         //dd($id_student);
@@ -300,14 +299,14 @@ class perfilEstudianteController extends Controller
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-<<<<<<< HEAD
+
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
         //return $grupos;
-=======
+
         
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
@@ -315,13 +314,8 @@ class perfilEstudianteController extends Controller
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
-<<<<<<< HEAD
-        
-=======
 
         
-
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
@@ -359,10 +353,9 @@ class perfilEstudianteController extends Controller
 
         $beneficios = Benefits::pluck('name', 'id');
 
-<<<<<<< HEAD
+
         $cohorte = Cohort::pluck('name', 'id');
-=======
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
 
         if($verDatosPerfil->photo == ""){
             $foto = null;
@@ -377,11 +370,9 @@ class perfilEstudianteController extends Controller
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-<<<<<<< HEAD
+
         return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
-=======
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos'));
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
+
     }
 
     

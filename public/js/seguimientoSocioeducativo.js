@@ -113,7 +113,7 @@ $('.boton_limpiarAU').click(function(e) {
 
 $('.boton_limpiarF').click(function(e) { 
     e.preventDefault();
-        var famiC = document.getElementsByName("checkfami");
+        var famiC = document.getElementsByName("checkfamiL");
         for(var i=0;i<famiC.length;i++){
           famiC[i].checked = false;
         }
@@ -121,7 +121,7 @@ $('.boton_limpiarF').click(function(e) {
 
 $('.boton_limpiarFU').click(function(e) { 
     e.preventDefault();
-        var famiU = document.getElementsByName("checkfamiL");
+        var famiU = document.getElementsByName("checkfami");
         for(var i=0;i<famiU.length;i++){
           famiU[i].checked = false;
         }

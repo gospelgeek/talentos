@@ -19,15 +19,17 @@
      			<table id="example1" class=" table table-bordered table-striped">
         			<thead>
             			<tr>
-                			<td style="width: 22%;">Nombres y apellidos</td>
-               				<td>ITEMS</td>
+                			<td style="width: 22%;">Nombres</td>
+               				<td>Apellidos</td>
+                            <td>ITEMS</td>
             			</tr>
         			</thead>
 
         			<tbody>
            	 			@foreach ($notas as $nota)
                 		<tr data-id="{{$nota->id}}">
-                    		<td>{{ $nota->student->name}} {{$nota->student->lastname}}</td>                                  
+                    		<td>{{ $nota->student->name}}</td>
+                            <td>{{$nota->student->lastname}}</td>                                  
                     		<td>
                         		<div class="row">                                  
                             		<div class="col-xs-6 col-sm-6">

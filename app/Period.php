@@ -11,10 +11,12 @@ class Period extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'name', 
+
+        'name',
         'start_date',
         'end_date',
         'active',
-        'id_campuses', 
+        'id_campuses'
     ];
-}
+ }
+

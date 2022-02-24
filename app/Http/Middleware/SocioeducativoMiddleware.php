@@ -27,7 +27,8 @@ class SocioeducativoMiddleware
     {
          if(\Auth::check())
         {  
-            if($this->auth->user()->rol_id == '2' || $this->auth->user()->rol_id == '3' || $this->auth->user()->rol_id == '4' || $this->auth->user()->rol_id == '5' || $this->auth->user()->rol_id == '1' || $this->auth->user()->rol_id == '6')
+            if($this->auth->user()->rol_id == '2' || $this->auth->user()->rol_id == '3' || $this->auth->user()->rol_id == '4' || $this->auth->user()->rol_id == '5' || $this->auth->user()->rol_id == '1' || $this->auth->user()->rol_id== '6')
+
             {
                 //dd('fdff');
                 return $next($request);              

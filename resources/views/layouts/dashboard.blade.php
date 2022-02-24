@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
+  <link rel="shortcut icon" href="{{asset('img/logo.jpeg')}}">
   <title>@yield('title')</title>
   {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="{{route('estudiante')}}" class="navbar-brand">
-      <img src="../img/logo.png" alt="Logo" class="brand-image" style="">
+      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" style="">
         <span class="brand-text font-weight-light">PNA</span>
       </a>
 
@@ -198,11 +198,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
                         <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                        <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @else
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                        <a class="disabled" style="display: none" href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @endif
         <li class="nav-item">
@@ -263,10 +265,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong><a href=""></a></strong>
   </footer>
 </div>
 <!-- ./wrapper -->

@@ -741,6 +741,7 @@
         },
         {
             "name": "fruitcake/php-cors",
+<<<<<<< HEAD
             "version": "v1.1.0",
             "source": {
                 "type": "git",
@@ -760,6 +761,27 @@
             "require-dev": {
                 "phpstan/phpstan": "^1.4",
                 "phpunit/phpunit": "^7|^9",
+=======
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fruitcake/php-cors.git",
+                "reference": "58571acbaa5f9f462c9c77e911700ac66f446d4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fruitcake/php-cors/zipball/58571acbaa5f9f462c9c77e911700ac66f446d4e",
+                "reference": "58571acbaa5f9f462c9c77e911700ac66f446d4e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "symfony/http-foundation": "^4.4|^5.4|^6"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9",
+>>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
@@ -779,6 +801,13 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
+=======
+                    "name": "Fruitcake",
+                    "homepage": "https://fruitcake.nl"
+                },
+                {
+>>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
                     "name": "Barryvdh",
                     "email": "barryvdh@gmail.com"
                 }
@@ -792,7 +821,11 @@
             ],
             "support": {
                 "issues": "https://github.com/fruitcake/php-cors/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/fruitcake/php-cors/tree/v1.1.0"
+=======
+                "source": "https://github.com/fruitcake/php-cors/tree/v1.2.0"
+>>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
             },
             "funding": [
                 {
@@ -804,7 +837,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-02-20T11:19:41+00:00"
+=======
+            "time": "2022-02-20T15:07:15+00:00"
+>>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
         },
         {
             "name": "guzzlehttp/guzzle",

@@ -27,4 +27,5 @@ class Course extends Model
     public function cohortcourse(){
         return $this->hasOne(Cohort::class, 'id', 'id_cohort');
     }
+
 }

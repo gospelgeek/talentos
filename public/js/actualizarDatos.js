@@ -145,7 +145,7 @@ $('.boton_update_generales').click(function(e) {
   //alert(idDatos);
   $.ajax({
   //ruta manual
-    url:'/actualizardatosgenerales/'+ idDatos,
+    url:'/updatedatosgenerales/'+ idDatos,
     type:'PUT',
     data:{
       '_token': $('input[name=_token]').val(),
@@ -155,7 +155,7 @@ $('.boton_update_generales').click(function(e) {
       'document_number': $("#numerodocumento").val(),
       'document_expedition_date': $("#expedition").val(),
       'id_birth_city': $("#ciudadnacimiento").val(),
-      'email': $("#correo").val(),
+      'email': $("#elctrncO").val(),
       'birth_date': $("#fechanacimientoG").val(),
       'sex': $("#sexoGeN").val(),
       'id_gender': $("#gen").val(),
@@ -293,7 +293,6 @@ $('.boton_update_socioeconomicos').click(function(e) {
   });
 });
 
-
 //ACCIONES PARA EDITAR GRUPO Y COHORTE
 //Abrir modal
 $('.boton_cambiar_cohorte_grupo').click(function(e) { 
@@ -394,6 +393,7 @@ $('.boton_actualizar').click(function(e) {
   });
 });
 
+<<<<<<< HEAD
 //Cerrar alerta
 $('.cerrar_modal').click(function(e) { 
       e.preventDefault();
@@ -407,3 +407,5 @@ $('.boton_cancelar').click(function(e) {
       e.preventDefault();
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
+=======
+>>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c

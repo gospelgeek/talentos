@@ -87,7 +87,6 @@
                       {!!Form::label('student_code','Codigo estudiante: ')!!}
                       {!!Form::text('student_code', $verDatosPerfil ? $verDatosPerfil->student_code : null,['id'=>'codEstu','class'=>'form-control','required','placeholder'=>'Codigo estudiante'])!!}  
                       </div>
-                      
                   </div>
                   </div>
               </div>

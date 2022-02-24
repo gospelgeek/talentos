@@ -1,16 +1,17 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Grupos')
+@section('title', 'Asistencias')
 @section('content')
 
 <div class="container-fluid">    
-    <h1 style="text-align:center;">{{ $name->name}}</h1>
+    <h1 style="text-align:center;">ASISTENCIAS</h1>
+    <script id="json" type="text" src="/students.json"></script>
     <div class="card">        
     	<div class="card-body">
-        	@if(auth()->user()->rol_id == 4)
+        	@if(auth()->user()->rol_id == 1)
        		<div class="row">
             	<div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Grupo</a>            
+                    <a  class=" disabled btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Asignatura</a>            
             	</div>
         	</div>
         	@endif
@@ -19,20 +20,22 @@
      			<table id="example1" class=" table table-bordered table-striped">
         			<thead>
             			<tr>
-                			<td>Nombre</td>
+                			<td width="30%">Nombre</td>
+                			<td>Area Asignatura</td>
                 			<td>Cohorte</td>
                				<td>Acciones</td>
             			</tr>
         			</thead> 
         			<tbody>
-           	 			@foreach ($grupos as $grupo)
-                		<tr data-id="{{$grupo->id}}">
-                    		<td>{{ $grupo->name}}</td>
-                    		<td>{{ $grupo->cohort->name}}</td>                                  
+           	 			@foreach ($asignaturas as $asignatura)
+                		<tr  data-id="{{$asignatura->id}}">
+                    		<td>{{ $asignatura->name}}</td>
+                    		<td>{{ $asignatura->area}}</td>
+                    		<td>{{ $asignatura->cohortcourse ? $asignatura->cohortcourse->name : null}}</td>                                  
                     		<td>
                         		<div class="row">                                  
                             		<div class="col-xs-6 col-sm-6">
-                                		<a title="Ver Informacion" href="{{ route('notas', $grupo->id) }}" class="btn btn-block btn-sm  fa fa-eye">Lista Estudiantes</a>    
+                                		<a title="Ver Informacion" href="{{ route('asistencias.grupos', $asignatura->id) }}" class="btn btn-block btn-sm  fa fa-eye"> grupos</a>    
                             		</div>
                         		</div>       
                     		</td>
@@ -44,7 +47,7 @@
     	</div>
     </div>
 </div>
-<a href="{{route('asignaturas')}}">Regresar</a>
+
 @push('scripts')
 
     <!-- Page specific script -->

@@ -36,8 +36,9 @@
               {!!Form::time('',null,['id'=>'horafinn', 'class'=>'form-control','placeholder'=>'hora finalizacion'])!!}
             </div>
             <br>{!!Form::label('objetivos','Objetivos*: ')!!}
+            <br>
             <div class="col-xs-12 col-sm-12" size="100">
-              <textarea name="textareaobjetivos" id="objetivos" cols="109" rows="5" style="resize: both;">
+              <textarea name="textareaobjetivos" id="objetivos" cols="100" rows="5" style="resize: both;">
               </textarea>
             </div>
           </div> 

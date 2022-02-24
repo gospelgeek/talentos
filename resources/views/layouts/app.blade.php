@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
+    <link rel="shortcut icon" href="{{asset('img/logo.jpeg')}}">
 
     <title>PNA</title>
 
@@ -38,11 +38,12 @@
                     {{ session('status') }}
                 </div>
                 @endif
-
+                <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    <img src="../img/logo.png" alt="Logo" class="brand-image" style="width: 25px;">
+                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 120px;">
                         <span class="brand-text font-weight-light">PNA</span>
                 </a>
+                </nav>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

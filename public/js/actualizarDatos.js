@@ -277,7 +277,7 @@ $('.boton_update_socioeconomicos').click(function(e) {
     success:function(result) {
       $('#contenido-3').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -293,59 +293,69 @@ $('.boton_update_socioeconomicos').click(function(e) {
   });
 });
 
-
 //ACCIONES PARA EDITAR GRUPO Y COHORTE
 //Abrir modal
 $('.boton_cambiar_cohorte_grupo').click(function(e) { 
       e.preventDefault();
-        $('#modal_cambiar_cohorte_grupo').modal('show');
+        $('#modal_cambiar_cohorte_grupo').modal('show');               
+});
 
-        /*var form = $('#form-mostrar-grupos');
-        var url = form.attr('action').replace(':GRUPO_ID');
-        //console.log(url);
+//funcion para traer los grupos de cada cohorte seleccionada
+$(function () {
+     $('#cohorT').change(function(event)
+      {
+    //console.log(event.target.value);
+    
+    $.get("/grupos/"+event.target.value+"",function(response,grpos)
+    {
+    //console.log(grpos)
+      $('#grupOm').html('<option value="" selected="true"> Seleccione una opción </option>');
+      response.forEach(element => {
+          $('#grupOm').append('<option  value='+element.id+'> '+element.name+' </option>')
+        });         
+                 
+    });
 
-        $.ajax({
-          url:url,
-          type:'GET',
-          data:{
-            '_token': $('input[name=_token]').val(),
-            'grupo': $("#grupOm").val(),
-            'cohorte': $("#cohorT").val(),
-          },  
+    
+  });
+ });
 
-        });
+//Abrir mensaje de alerta
+$('.boton_mensaje_alerta').click(function(e) {
 
-        $.get(url, function(result){
-            //const object = JSON.parse(result.tracking_detail);
-            //console.log(result);
-            
+    var grupo = document.getElementById('grupOm').value;
+    var cohorte = document.getElementById('cohorT').value;
+    
+    if(grupo === ""){     
+        toastr.warning('DEBE DILIGENCIAR UN GRUPO');
+    }else if (grupo != "") {
+        //alert('siga');
+        $.get("/datos/"+grupo+"",function(response,array) {
+        //console.log(response.grupo);
+        var grupo = response.grupo;
+        var cohorte = response.cohorte;
 
-        });
-        
-        /*$(document).on('change', '#cohorT', function(event) {
-          var valor = document.getElementById('cohorT').value;
-          alert('entro');        
-        });
-        
+        let h8 = document.createElement('h8');
+        h8.innerHTML = cohorte;
+        document.getElementById('mstrchrte').appendChild(h8); 
 
-        
+        let h9 = document.createElement('h8');
+        h9.innerHTML = grupo;
+        document.getElementById('mstrgrpo').appendChild(h9);       
 
-        
-
-        //var row = $(this).parents('tr');
-        //var id = row.data('id');
-        //alert(id);*/
-
-        
-
-        
+        e.preventDefault();
+        $('#modal_alerta').modal('show');
+        //console.log(grupo);   
+      });  
+    }
+                   
 });
 
 
 //Actualizando campos
-$('.boton_update_cohorte_grupo').click(function(e) { 
-  e.preventDefault();   
-  
+$('.boton_actualizar').click(function(e) { 
+  e.preventDefault();
+
   var idgroup = $('#idGr').val();
 
   $.ajax({
@@ -382,3 +392,19 @@ $('.boton_update_cohorte_grupo').click(function(e) {
     },       
   });
 });
+
+
+//Cerrar alerta
+$('.cerrar_modal').click(function(e) { 
+      e.preventDefault();
+        $('#modal_alerta').modal('hide'); 
+        $('#mstrchrte').html(' ');
+        $('#mstrgrpo').html(' ');              
+});
+
+//Cerrar modal actualizar cohorte-grupo
+$('.boton_cancelar').click(function(e) { 
+      e.preventDefault();
+        $('#modal_cambiar_cohorte_grupo').modal('hide');               
+});
+

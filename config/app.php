@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'PNA'),
 
     /*
     |--------------------------------------------------------------------------
@@ -186,9 +186,11 @@ return [
         /*'Cohensive\Embed\EmbedServiceProvider',*/
         //excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        
-Intervention\Image\ImageServiceProvider::class,
 
+        /* toastr*/
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+        
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -240,6 +242,7 @@ Intervention\Image\ImageServiceProvider::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'SoftDeletes' => Illuminate\Database\Eloquent\SoftDeletes::class,
         //laravel colective
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,

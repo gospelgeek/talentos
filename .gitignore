@@ -2,7 +2,6 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
 /storage/app/*
 /storage/framework/cache/data*
 /storage/framework/sessions/*
@@ -15,4 +14,7 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
+/vendor
 yarn-error.log
+/public/index.php
+/app/Providers/AppServiceProvider.php

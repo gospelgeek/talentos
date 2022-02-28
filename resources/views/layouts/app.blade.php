@@ -1,16 +1,18 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }} ">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{asset('img/logo.jpeg')}}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>PNA</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,8 +20,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}
+    {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
+    {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
+    <link rel="stylesheet" type="text/css" href="/css/css.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -29,30 +38,33 @@
                     {{ session('status') }}
                 </div>
                 @endif
-
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+                <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 120px;">
+                        <span class="brand-text font-weight-light">PNA</span>
                 </a>
+                </nav>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Navbar
                     <ul class="navbar-nav mr-auto">
-
-                    </ul>
+                        <a  class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS SOCIOECONOMICOS </a>
+                        <a href="" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i>DATOS ACADEMICOS</a>
+                    </ul> -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <!--<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>-->
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <!--<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>-->
                                 </li>
                             @endif
                         @else
@@ -76,10 +88,25 @@
 
         <main class="py-4">
             @yield('content')
+        
         </main>
+        
     </div>
+      
+        <!-- SCRIPTS -->
+      <!-- JQuery -->
 
-    <link rel="stylesheet" type="text/css" href="{{asset("css/app.css")}}">
-    <script src="{{asset("js/app.js")}}"></script>
+    
+    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!} 
+    {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
+    {!!Html::script('/dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')!!}
+    {!!Html::script('/js/dep-mun.js')!!}
+    {!!Html::script('/js/filtroestudiantes.js')!!}
+
+       
+    
 </body>
 </html>

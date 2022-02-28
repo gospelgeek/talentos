@@ -27,13 +27,9 @@
         "nesbot/carbon": "^2.56",
         "realrashid/sweet-alert": "^3.1",
         "uxweb/sweet-alert": "^2.0",
-<<<<<<< HEAD
-        "webpatser/laravel-uuid": "^3.0"
-=======
         "webpatser/laravel-uuid": "^3.0",
         "yajra/laravel-datatables-oracle": "^9.18",
         "yoeunes/toastr": "^1.2"
->>>>>>> 2734d3a1fcf688cdfb8fa04ada599a21c7a8581a
     },
     "require-dev": {
         "facade/ignition": "^2.0",

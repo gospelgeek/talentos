@@ -27,7 +27,6 @@ require __DIR__.'/../talentos/vendor/autoload.php';
 
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights

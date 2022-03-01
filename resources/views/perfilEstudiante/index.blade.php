@@ -4,6 +4,20 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
+<!--<div class="col-xs-12 col-md-8">
+    <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="row">
+                <div class=" col-xs-12 col-md-8">
+                  {!!Form::label('archivo','Seleccione Archivo:')!!}                            
+                  {!!Form::file('file',[ 'accept'=>'.xls,.xlsx','class'=>'form-control-file form-group','required'])!!}
+                        
+                        <button type="submit" class="btn btn-danger bg-lg form-group btn-block">Enviar</button>
+                      </div>
+    </form>
+</div>-->          
+                      
+</div>
 
 <div class="container-fluid">    
     <h1 style="text-align:center;">ESTUDIANTES</h1>
@@ -41,7 +55,7 @@
                                         <td>{{ $estudiante->document_number }}</td>
                                         <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->email }}</td>
-                                        <td>{{ $estudiante->cellphone }}</td>
+                                        <td>{{ $estudiante->id_moodle }}</td>
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>
                                         <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >

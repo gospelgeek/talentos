@@ -44,6 +44,8 @@ use Session;
 use Redirect;
 use DB;
 use Response;
+use Excel;
+use App\Imports\CsvImport;
 
 
 
@@ -68,6 +70,7 @@ class perfilEstudianteController extends Controller
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
         }*/
         $perfilEstudiantes = perfilEstudiante::all();
+        //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
     }
 
@@ -516,21 +519,21 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
     }
 
-    public function Asistencias_grupo($id)
+    public function Asistencias_grupo($course,$id,$id_session)
     {   
         $grupo = Group::where('id',$id)->first();
-
+        $name = Course::where('id',$course)->first();
         $notas = StudentGroup::all()->where('id_group', $id);
         
         //dd($grupo);
 
-        return view('perfilEstudiante.Asistencias.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.Asistencias.notas',compact('notas','grupo','name','id_session'));
     }
 
     public function sesiones($course,$id){
         $grupo=Group::where('id',$id)->first();
         $name = Course::where('id',$course)->first();
-        //dd($course);
+        //dd($name);
         return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name'));
     }
     public function store_seguimiento(Request $request) {
@@ -1896,7 +1899,73 @@ class perfilEstudianteController extends Controller
         return $mensaje;   
     }*/
 
+    public function excel(Request $request){
+
+        $collection1 = Excel::toArray(new CsvImport, 'codigo.xlsx');
+        //dd($collection);
+        foreach($collection1 as $var) {
+
+            foreach($var as $key => $value) {
+                //var_dump($value);
+                //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
+                $insertar = perfilEstudiante::where('student_code',$value['codigo'])->update(['id_moodle' => $value['id_moodle']]);
+            }    
+        }
+
+        $collection2 = Excel::toArray(new CsvImport, 'document.xlsx');
+        //dd($collection);
+        foreach($collection1 as $var) {
+
+            foreach($var as $key => $value) {
+                //var_dump($value);
+                //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
+                $insertar = perfilEstudiante::where('document_number',$value['document'])->update(['id_moodle' => $value['id_moodle']]);
+            }    
+        }
+
+        //dd($request);
+        $collection = Excel::toArray(new CsvImport, request()->file('file'));
+        //dd($collection);
+        foreach($collection[1] as $var) {
+            //var_dump($var['nombres']);
+            $id_student = perfilEstudiante::where('document_number',$var['no_documento'])->get('id');
+            $consultar_grupo = Group::where('id_cohort',$var['linea'])->where('name',$var['nuevo_grupo'])->get('id');
+            //dd($consultar_grupo);
+            $id_students=0;
+            foreach($id_student as $student){
+                $id_students=$student->id;
+            }
+            //dd($id_students);
+            $id_group =0;
+            foreach($consultar_grupo as $id){
+                $id_group=$id->id;
+            }
+            //dd($id_group);
+            $cambio_grupo =StudentGroup::where('id_student',$id_students)->update(['id_group' => $id_group]);
+            //dd($cambio_grupo);
+        }
+        foreach($collection[0] as $var) {
+            //var_dump($var['nombres']);
+            $id_student = perfilEstudiante::where('document_number',$var['no_documento'])->get('id');
+            $consultar_grupo = Group::where('id_cohort',$var['linea'])->where('name',$var['nuevo_grupo'])->get('id');
+            //dd($consultar_grupo);
+            $id_students=0;
+            foreach($id_student as $student){
+                $id_students=$student->id;
+            }
+            //dd($id_students);
+            $id_group =0;
+            foreach($consultar_grupo as $id){
+                $id_group=$id->id;
+            }
+            //dd($id_group);
+            $cambio_grupo =StudentGroup::where('id_student',$id_students)->update(['id_group' => $id_group]);
+            //dd($cambio_grupo);
+        }
+     
     
+       return redirect('estudiante')->with('success', 'File imported successfully!');
+    }
 }
 
 

@@ -13,15 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-<<<<<<< HEAD
+
         //
-=======
-
-            $this->app->bind('path.public',function(){
-            return'/home/todosytodasaestu/public_html';
-
-        });
->>>>>>> b3fdd3a8926829fa2e7fbc1d8084f322512e2b5c
     }
 
     /**

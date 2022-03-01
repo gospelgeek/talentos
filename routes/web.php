@@ -61,7 +61,7 @@ Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
 
 Route::get('asistencias', 'perfilEstudianteController@indexAsistencias')->name('asistencias');
 Route::get('Asistencias/{id}', 'perfilEstudianteController@Grupos_Asignaturas')->name('asistencias.grupos');
-Route::get('/Asistencias/{course}/grupo/{id}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
+Route::get('/Asistencias/{course?}/grupo/{id?}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
 Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
 
 //RUTAS DE AJAX

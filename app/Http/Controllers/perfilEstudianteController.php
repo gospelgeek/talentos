@@ -553,10 +553,24 @@ class perfilEstudianteController extends Controller
     }
 
     public function sesiones($course,$id){
+        
         $grupo=Group::where('id',$id)->first();
         $name = Course::where('id',$course)->first();
-        //dd($name);
-        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name'));
+        $notas = StudentGroup::where('id_group', $id)->get('id_student');
+        $id_moole = array();
+        $contador = 0;
+        foreach ($notas as $student){
+   
+            $moodle = perfilEstudiante::where('id', $student['id_student'])->get('id_moodle'); 
+
+            foreach ($moodle as $id){
+                $id_moole[$contador] = $id->id_moodle;
+            }
+            $contador++;
+            
+        }
+
+        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name','id_moole'));
     }
     public function store_seguimiento(Request $request) {
 

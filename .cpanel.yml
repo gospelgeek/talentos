@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/todosytodasaestu/public_html/
+    - export DEPLOYPATH=/home/todosytodasaestu/todosytodaspruebas/
     - /bin/cp -R public/* $DEPLOYPATH
 
 

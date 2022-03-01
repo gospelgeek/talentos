@@ -11,6 +11,7 @@
             <div class="row">
                 <div  class="col-xs-12 col-md-3 col-sm-3">
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Agregar Calificacion</a>            
+
                 </div>
             </div>
             @endif

@@ -137,7 +137,10 @@ class perfilEstudianteController extends Controller
         }*/
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
+
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
           
@@ -184,7 +187,9 @@ class perfilEstudianteController extends Controller
 
         $cohorte = Cohort::pluck('name', 'id');
 
-        $grupo = Group::pluck('name', 'id');
+        
+
+        
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -209,10 +214,15 @@ class perfilEstudianteController extends Controller
         }else{
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
+
+        }    
+
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
+
         }  
       
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupo'));
-    }
+
+    
   
     public function verDatosSocieconomicos($id) {
         //dd($id_student);
@@ -292,19 +302,26 @@ class perfilEstudianteController extends Controller
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
+
+        $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
+        //return $grupos;
+
         
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
+
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
+
+          
         $genero = Gender::pluck('name','id');
         $sexo = array('F' => 'Femenino',
                       'M' => 'Masculino' );
 
         
-
         $tipo_documento = array('1' => 'Cedula de Ciudadania',
                                 '2' => 'Tarjeta de Identidad',
                                 '3' => 'Cedula Extranjera' );
-
         $documento = DocumentType::pluck('name','id');
 
         $estado = Condition::pluck('name', 'id');
@@ -340,6 +357,9 @@ class perfilEstudianteController extends Controller
         $beneficios = Benefits::pluck('name', 'id');
 
 
+        $cohorte = Cohort::pluck('name', 'id');
+
+
         if($verDatosPerfil->photo == ""){
             $foto = null;
         }else{
@@ -353,7 +373,9 @@ class perfilEstudianteController extends Controller
 
         $ciudad = BirthCity::pluck('name', 'id');
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos'));
+
+        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
+
     }
 
     
@@ -1856,35 +1878,50 @@ class perfilEstudianteController extends Controller
         }
     }
 
-    /*public function mostrar_grupos(Request $request){
-        $cohorte = $request['cohorte'];
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
-        //return 'entro bien';
-        $cohorte = $request['cohorte'];
-        $grupo = $request['grupo'];
+    public function grupos(Request $request, $id)
+    {
+        $grpos = Group::where('id_cohort',$id)->get();
+        //return $grupos;
+        if($request->ajax())
+        {
+         
+          return response()->json($grpos);
+        }
+    }
 
+    public function datosNuevos(Request $request, $id) {
         
-        return $cohorte;
-        if($request->ajax()){
-            return Response::json($grupos); 
-        };  
+        
+        $grupo = Group::where('id', $id)->select('name')->first();
+        
+        $grpo = $grupo->name;
+        
+        $cohort = Group::where('id', $id)->select('id_cohort')->first();
+        $vercohort = $cohort->id_cohort;
 
-    }*/
+        $cohorte = Cohort::where('id', $vercohort)->select('name')->first(); 
+        $chrte = $cohorte->name;
 
-    /*public function updateCohorteGrupo($id, Request $request) {
+        $array = ['grupo' => $grpo, 'cohorte' => $chrte];
+
+        //return $array;
+            if ($request->ajax()) {
+                return response()->json($array);     
+            } 
+        
+    }
+
+    public function updateCohorteGrupo($id, Request $request) {
         
         $group = StudentGroup::findOrFail($id);
-        $grupos = Group::where('id_cohort', $request['cohorte'])->select('name')->get();
         
-        //return $grupos; 
-
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
 
         $cohort = Group::where('id', $request['grupo'])->select('id_cohort')->first();
         $vlrchrte = $cohort->id_cohort;
         
-        /*if ($request->ajax()) {
+        if ($request->ajax()) {
 
             if($vlrchrte == $request['cohorte']) {
                 $group->id_group = $request['grupo'];
@@ -1897,7 +1934,8 @@ class perfilEstudianteController extends Controller
         };
         
         return $mensaje;   
-    }*/
+
+    }
 
     public function excel(Request $request){
 
@@ -1963,6 +2001,7 @@ class perfilEstudianteController extends Controller
             //dd($cambio_grupo);
         }
      
+
     
        return redirect('estudiante')->with('success', 'File imported successfully!');
     }

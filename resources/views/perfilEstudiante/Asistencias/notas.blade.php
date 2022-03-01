@@ -17,7 +17,6 @@
                 </div>
             </div>
             @endif
-
             <div id="tabla" class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -40,6 +39,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 </div>
 

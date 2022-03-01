@@ -203,8 +203,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @else
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
-                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a class="disabled" style="display: none" href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+                        <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                        <a  href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @endif
         <li class="nav-item">

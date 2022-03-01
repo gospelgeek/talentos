@@ -44,35 +44,23 @@
     	</div>
     </div>
 </div>
-<a href="{{route('asignaturas')}}">Regresar</a>
+<a href="{{route('asistencias')}}">Regresar</a>
 @push('scripts')
 <script type="text/javascript">
 $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print"]
-}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-$('#example2').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        "language": {
-        "lengthMenu": "Mostrar _MENU_ registros por página",
-        "zeroRecords": "No se encontraron coincidencias",
-        "info": "Página _PAGE_ de _PAGES_",
-        "infoEmpty": "No hay registros disponibles",
-        "infoFiltered": "(filtrado de _MAX_ registros totales)",
-        "search": "Buscar",
-        "paginate":{
-        "Next" : "Siguiente",
-        "previous": "Anterior"
-        }
-    },
-});
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        "language": {
+                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        "dom": 'Bfrtip',
+                        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                });   
 </script>
 @endpush
 @endsection

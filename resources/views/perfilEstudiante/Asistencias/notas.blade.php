@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<a href="{{url()->previous()}}">Regresar</a>
+<a href="/Asistencias/{{$name->id}}/grupo/{{$grupo->id}}" class="fa fa-arrow-left">Regresar</a>
 
 @push('scripts')
 {!!Html::script('/js/notas.js')!!}

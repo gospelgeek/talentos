@@ -38,6 +38,9 @@ Route::get('logout',   'Auth\LoginController@logout');
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
 
+Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
+Route::get('info', 'perfilEstudianteController@enviar')->name('info');
+
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
 Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');
@@ -48,6 +51,9 @@ Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerf
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
 /*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
+Route::get('estudiantes_mayoria_edad', 'perfilEstudianteController@indexMenores')->name('estudiantes_mayoria_edad');
+Route::get('menores', 'perfilEstudianteController@mostrarMenores')->name('datos.estudiantes.menores');
+
 
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
 Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');

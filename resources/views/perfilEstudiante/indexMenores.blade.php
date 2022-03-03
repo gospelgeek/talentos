@@ -1,20 +1,17 @@
 @extends('layouts.dashboard')
-
-@section('title', 'Perfil Estudiante')
+@section('title', 'Mayoria de edad')
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
 
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
-    <h1 style="text-align:center;">ESTUDIANTES</h1>
+    <h1 style="text-align:center;">MAYORIA DE EDAD</h1>
     <div class="card">         
     <div class="card-body">
         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
         <div class="row">
-            <div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
-            </div>
+            
         </div>
         @endif
 
@@ -25,29 +22,12 @@
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
-                <td>Tipo Documento</td>
-                <td>Fecha expedicion documento</td>
                 <td>Nº Documento</td>
                 <td>Codigo</td>
-                <td>Email</td>
-                <td>Telefono</td>
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Fecha nacimiento</td>
-                <td>Edad</td>
-                <td>Dpto. Nacimiento</td>
-                <td>Ciudad Nacimiento</td>
-                <td>Sexo</td>
-                <td>Genero</td>
-                <td>Direcion</td>
-                <td>Comuna</td>
-                <td>Barrio</td>
-                <td>Tel. Alternativo</td>
-                <td>Tutor</td>
-                <td>Estado</td>
-                <td>Estado Civil</td>
-                <td>Etnia</td>
-                <td id="botons" width="15%">Acciones</td>
+                <td width="15%">Acciones</td>
             </tr>
         </thead>
         
@@ -60,40 +40,45 @@
 @push('scripts')
 
     <!-- Page specific script -->
-<script>
+    <script>
 
+    let date = new Date().toDateString();
+    //alert(date);
 
-    var table = $("#example1").DataTable({
-            "ajax":{
-                "method":"GET",
-                "url": "{{route('datos.estudiantes')}}"
-            },
+    var rol = document.getElementById('roles').value;
+    var mstr;
+    if(rol == 4 || rol == 1 || rol == 2){
+        mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<tr id="1">'+'<button class="btn btn-block fa fa-eye fa ver_seguimiento" title="Ver estudiante" onclick="verStudent()"></button>'+'</tr>'+
+                          '</div>'+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-pencil-square-o fa editar_seguimiento" title="Editar seguimiento"></button>'+
+                          '</div>'+
+                          
+                "</div>"; 
+    }else{
+        mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-eye fa ver_seguimiento" title="Ver seguimiento"></button>'+
+                          "</div>"+
+                "</div>";
+    }
+
+   
+
+ $("#example1").DataTable({
+            "ajax": "{{route('datos.estudiantes.menores')}}",
+            
+
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
-                {data: 'tipodocumento', visible: false},
-                {data: 'document_expedition_date', visible: false},
                 {data: 'document_number'},
                 {data: 'student_code'},
-                {data: 'email'},
-                {data: 'cellphone'},
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
-                {data: 'birth_date', visible: false},
-                {data: 'edad', visible: false},
-                {data: 'departamentoN', visible: false},
-                {data: 'ciudadN', visible: false},
-                {data: 'sex', visible: false},
-                {data: 'genero', visible: false},
-                {data: 'direction', visible: false},
-                {data: 'comuna', visible:false},
-                {data: 'barrio', visible: false},
-                {data: 'phone', visible: false},
-                {data: 'tutor', visible: false},
-                {data: 'estado', visible: false},
-                {data: 'nombreEstadocivil', visible: false},
-                {data: 'nombreEtnia', visible: false},
-
+                {data: 'birth_date'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -118,10 +103,12 @@
                     return mstr;
                 }
             }
-                    
+                
             ],
 
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,
+            
+            
+            "responsive": true, "lengthChange": false, "autoWidth": false,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -129,11 +116,18 @@
                 "excel", 
                 "pdf",
                 "print",
-                "colvis"
+                "colvis",
             ]
-    });
-                 
-</script>
+        });
+ 
+ 
+
+    /*$('#accion button.ver_seguimiento').on('click', function() {
+        //var id = $('this').parent('tr').attr('id');
+        console.log();
+    });*/
+              
+    </script>
 
  
 @endpush

@@ -196,15 +196,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          LISTADOS ESTUDIANTES 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                          </div>
+                      </li>
+                        
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @else
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
-                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a class="disabled" style="display: none" href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+                        <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                        <a  href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @endif
         <li class="nav-item">
@@ -309,7 +319,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.print.min.js')!!}
 
 {!!Html::script('/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js')!!}
-
+<script type="text/javascript">
+const $dropdown = $(".dropdown");
+const $dropdownToggle = $(".dropdown-toggle");
+const $dropdownMenu = $(".dropdown-menu");
+const showClass = "show";
+ 
+$(window).on("load resize", function() {
+  if (this.matchMedia("(min-width: 768px)").matches) {
+    $dropdown.hover(
+      function() {
+        const $this = $(this);
+        $this.addClass(showClass);
+        $this.find($dropdownToggle).attr("aria-expanded", "true");
+        $this.find($dropdownMenu).addClass(showClass);
+      },
+      function() {
+        const $this = $(this);
+        $this.removeClass(showClass);
+        $this.find($dropdownToggle).attr("aria-expanded", "false");
+        $this.find($dropdownMenu).removeClass(showClass);
+      }
+    );
+  } else {
+    $dropdown.off("mouseenter mouseleave");
+  }
+});
+</script>
 @stack('scripts')
 </body>
 </html>

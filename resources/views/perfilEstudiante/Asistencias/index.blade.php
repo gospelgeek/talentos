@@ -2,19 +2,31 @@
 
 @section('title', 'Asistencias')
 @section('content')
+@include('../alerts.success')
+@include('../alerts.request')
+@include('../alerts.errors')
+
+<h1 style="text-align:center;">ASISTENCIAS</h1>
+<script id="json" type="text" src="/students.json"></script>
 
 <div class="container-fluid">    
-    <h1 style="text-align:center;">ASISTENCIAS</h1>
-    <script id="json" type="text" src="/students.json"></script>
     <div class="card">        
     	<div class="card-body">
-        	@if(auth()->user()->rol_id == 1)
-       		<div class="row">
-            	<div  class="col-xs-12 col-md-3 col-sm-3">
-                    <a  class=" disabled btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Asignatura</a>            
-            	</div>
-        	</div>
-        	@endif
+        	            @if((auth()->user()->rol_id == 1) || auth()->user()->cedula == 14837069) 
+            
+                <form method="POST" action="store/save/json" accept-charset="UTF-8" enctype="multipart/form-data"> 
+                   {{ csrf_field() }}
+                    <div class="row">
+                        <div class=" col-xs-4 col-md-4">
+                            {!!Form::label('archivo','Seleccione Archivo:')!!}                            
+                            {!!Form::file('sesiones',[ 'accept'=>'.json','class'=>'form-control-file form-group','required'])!!} 
+                            <button type="submit" class="btn btn-danger ">Enviar</button>
+                        </div>
+                    </div>    
+                </form>
+            
+            <br>
+            @endif
 
     		<div class="table-responsive">
      			<table id="example1" class=" table table-bordered table-striped">

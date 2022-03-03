@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
   {!!Html::style('/css/css.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')!!}
+  {!!Html::style('/dashboard/plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')!!}
   {!!Html::style('/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')!!}
   {!!Html::style('/toastr/toastr.min.css')!!}
@@ -289,6 +290,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
 
 {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
+
+{!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js')!!}
+
+{!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js')!!}
 
 {!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
 

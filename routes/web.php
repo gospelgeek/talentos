@@ -101,6 +101,29 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
+// borrar caché de la aplicación
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+ // borrar caché de ruta
+ Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+// borrar caché de configuración
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return redirect('estudiante')->with('status','limpieza');
+}); 
+
+// borrar caché de vista
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
 
 
 

@@ -1,4 +1,4 @@
-(function () {
+
 
 	var url = document.getElementById('json').src;
         var asistencias = document.getElementById('asisten').src;
@@ -11,7 +11,7 @@
         var id_moodle = document.getElementById('moodle');
         var student_moodle = JSON.parse(id_moodle.dataset.datos);
         var grupo = article.dataset.group.split(" ", 2);
-        //console.log(grupo);        
+        //console.log(student_moodle);        
         if(grupo[1] < 10 && grupo[1] > 0){
                 grupo[1]= '0' + grupo[1];
         }
@@ -26,48 +26,16 @@
                 var cohort = 'TS';
         } 
         var form = $('#form-edit');
-        
-        //alert(route);
-
-        let table = document.createElement('table');
-        let thead = document.createElement('thead');
-        let tbody = document.createElement('tbody');
-        let tfoot = document.createElement('tfoot');
-
-        table.setAttribute('id','example1');
-        table.className += "table table-bordered table-striped";
-        table.appendChild(thead);
-        table.appendChild(tbody);
-        table.appendChild(tfoot);
-
-        let row_1 = document.createElement('tr');
-        let heading_1 = document.createElement('th');
-        heading_1.innerHTML = "Fecha";
-        let heading_2 = document.createElement('th');
-        heading_2.innerHTML = "Asistieron";
-        let heading_3 = document.createElement('th');
-        heading_2.setAttribute('id',"suma");
-        heading_3.innerHTML = "Accion";
-        heading_3.setAttribute('style', "width:15%");
-        let heading_4 = document.createElement('th');
-        heading_4.innerHTML = "No asistieron"
-
-        row_1.appendChild(heading_1);
-        row_1.appendChild(heading_2);
-        row_1.appendChild(heading_4);
-        row_1.appendChild(heading_3);
-        thead.appendChild(row_1);
-
-        
-
-
-        document.getElementById('datos').appendChild(table);
-        let totalasistencias = [];
+        const totalsesiones = [];
         $.getJSON(asistencias,function(asis){
-                //console.log(asis);
+
                 $.each(asis, function(index,value){
+                        //console.log(value.userid,index);
+                        //console.log(value);
                         for (const j of student_moodle){
+
                                 if(j == value.userid){
+                                        //
                                         $.each(value.courses, function(i,course){
                                                 var dividir = course.courseshortname.split("-",5);
                                                 //console.log(dividir);
@@ -76,26 +44,27 @@
                                                                 //console.log(attendance);
                                                                 var fecha_json = new Date(attendance.timestamp * 1000);
                                                                 //console.log(fecha_json);
-                                                                var fecha_actual = new Date('feb 26 2022');
+                                                                var fecha_actual = new Date();
                                                                 if(fecha_json <= fecha_actual){
-                                                                        totalasistencias.push(attendance.sessionid);
+                                                                        
+                                                                        totalsesiones.push(attendance.sessionid);
                                                                 }
                                                                                 
-                                                         });
-                                                }
-                                                            
-                                        });  
-                                }
+                                                        });
+                                                }                        
+                                        });            
+                                }         
                         }
                 });
-                //console.log(totalasistencias);
+
 	 $.getJSON(url, function(result){
 		
                 $.each(result, function(index, value){              
         	        var divisiones = value.shortname.split("-", 5);
-                           //console.log(totalasistencias);                     
+                           //console.log(totalsesiones);                     
                         if(article.dataset.name == divisiones[1] && cohort == divisiones[4] && grupo[1] == divisiones[2]){
                                 var sesiones = 0;
+                                //console.log(value.sessions)
                                 for (const i in value.sessions) 
                                 {       
                                         var fecha_json = new Date(value.sessions[i].sesstimestamp * 1000);
@@ -105,7 +74,7 @@
                                         if(fecha_json <= fecha_actual){
                                                 sesiones++;
                                                 var contador=0;
-                                                for(const indice of totalasistencias){
+                                                for(const indice of totalsesiones){
                                                         //console.count(indice);
                                                         if(indice == value.sessions[i].id){
                                                                 contador++;
@@ -147,19 +116,23 @@
                                                 div.appendChild(div_2);
                                                 div_2.appendChild(a);
                                                 div_2.appendChild(vinculo);
-                                                tbody.appendChild(row_2);                                                
+                                                document.getElementById("ddd").appendChild(row_2);                                                
                                         }                                          
                                 }
                                 //console.log(sesiones);
-                                document.getElementById("num_sesiones").append(sesiones);     
+                                document.getElementById("num_sesiones").append(sesiones);
+                                                  
                         }       
                 });
-
+                document.getElementById("carga").remove();
                 $("#example1").DataTable({
-                        "paging": false,
+                        "processing": true,
+                        "LoadingRecords":true,
+                        "paging": true,
+                        "deferRender": true,
                         "lengthChange": false,
                         "searching": true,
-                        "ordering": true,
+                        "ordering": false,
                         "info": true,
                         "autoWidth": false,
                         "responsive": true,
@@ -168,14 +141,17 @@
                         },
                         "dom": 'Bfrtip',
                         "buttons": ["copy", "csv", "excel", "pdf", "print"]
-                });   
-         });
-        });
+                });
 
+         });
+        
+        });
+        
         //const filas=document.querySelector("#987");
-        const tr = document.querySelectorAll("#example1 thead tr th");
-        console.log(tr);	
-})();
+        //const tr = document.querySelectorAll("#example1 thead tr th");
+        //console.log(tr);	
+
+
   
 
-
+                 

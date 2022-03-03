@@ -43,7 +43,7 @@ class perfilEstudiante extends Model
     ];
 
     protected $dates = ['delete_at'];
-   
+
     //RELACIONES UNO A UNO POR DEBAJO
     /**
      * Relacion con los  datos que se tiene de student_profile  

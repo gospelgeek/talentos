@@ -1,25 +1,7 @@
-$("#example1").DataTable({
-            "paging": false,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            },
-            "dom": 'Bfrtip',
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-            });
-
-$(document).ready(function(){
-  //window.location.reload(false);
     const id_student = [];
     $('.prueba').each(function(){
           id_student.push($(this).attr("data-id"));
     }); 
-     
     //console.log(id_student);
     var fecha=new Date().toISOString();
     var partirfecha= fecha.split("-",3)
@@ -28,7 +10,7 @@ $(document).ready(function(){
 
     var asistencias = document.getElementById('asisten').src;
     var sesiones = document.getElementById('notas'); 
-    var asistio=[];
+    const asistio=[];
     var json2= "students.json";
     //console.log(asistencias);
     $.getJSON(asistencias, function(result){
@@ -43,7 +25,7 @@ $(document).ready(function(){
                 //console.log(result[index].userid);
                 $.each(values.courses,function(contador, courses){
                     $.each(courses.attendance.fullsessionslog, function(course, attendance){
-                          console.count(attendance.sessionid);
+                          //console.count(attendance.sessionid);
                           if(sesiones.dataset.session == attendance.sessionid){
                             //console.count(attendance.sessionid);
                             //console.log(sesiones.dataset.session);
@@ -66,11 +48,57 @@ $(document).ready(function(){
           {
             //console.log($(this).attr("id"),"compara",id,"  ",asistio[id]);
             if($(this).attr("data-id") == asistio[id]){
-              console.log($(this).attr("data-id"), " : ", asistio[id])
-              document.getElementById(asistio[id]).innerHTML = '<i style="color: #2ECC71" class="fa fa-check" aria-hidden="true"></i>';
+              //console.log($(this).attr("data-id"), " : ", asistio[id])
+              document.getElementById(asistio[id]).innerHTML = 'Asistio<i style="color: #2ECC71" class="fa fa-check" aria-hidden="true"></i>';
             }
           }
       }); 
-    });   
-});
+      document.getElementById("carga").remove();
+      $("#example1").DataTable({
+            "processing": true,
+            "paging": false,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "dom": 'Bfrtip',
+            buttons: [     
+                      {
+                        extend: 'excel',
+                        text: 'EXPORTAR EXCEL',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'current',
+
+                                                  }
+                                        }
+                      },
+                      {
+                        extend: 'pdf',
+                        text: 'EXPORTAR PDF',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'current'
+                                                  }
+                                        }
+                      },
+                      {
+                        extend: 'print',
+                        text: 'Imprimir',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'current'
+                                                  }
+                                        }
+                      },
+                    ]
+      });
+    });
+
+    
 

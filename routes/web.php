@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('store/save/usuarios',        'perfilEstudianteController@excel')->name('save.user');
+Route::post('store/save/json', 'perfilEstudianteController@CargarJSon')->name('save.json');
 
 /*iniciar la aplicacion*/ 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');

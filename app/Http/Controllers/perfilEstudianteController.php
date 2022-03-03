@@ -119,8 +119,9 @@ class perfilEstudianteController extends Controller
             WHERE student_profile.id = socioeconomic_data.id_student 
             AND student_groups.id_student = student_profile.id 
             AND student_groups.id_group = groups.id
+            AND student_profile.id_document_type = 2
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
             AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
-            AND MONTH(birth_date) >= 02 AND MONTH(birth_date) <= MONTH(NOW())
         ");
         
         return datatables()->of($mayoriaedad)->toJson();

@@ -102,7 +102,6 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
-//Socioeducativo
 
 
 // borrar caché de la aplicación
@@ -129,8 +128,10 @@ Route::get('/view-clear', function() {
     return redirect('estudiante')->with('status','limpieza');
 });
 
+//Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
+Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
 
 

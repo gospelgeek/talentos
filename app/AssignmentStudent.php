@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class AssignmentStudent extends Model
 {
+    use SoftDeletes;
+    use Notifiable;
+    
     protected $table = 'assignment_students';
 
     protected $primarykey = 'id';
@@ -15,6 +20,8 @@ class AssignmentStudent extends Model
         'id_student',
         'id_periods'
     ];
+
+    protected $dates = ['delete_at'];
 
     /**
      * Relacion con los  datos que se tiene de AssignmentStudent  

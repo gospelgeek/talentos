@@ -44,6 +44,9 @@ use Session;
 use Redirect;
 use DB;
 use Response;
+use Excel;
+use App\Imports\CsvImport;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -57,6 +60,34 @@ class perfilEstudianteController extends Controller
         $this->middleware('socioeducativo');
     }
 
+    public function mostrar() {
+        
+      $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio,
+            (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as genero,
+            (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as tutor,
+            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado,
+            (SELECT civil_statuses.name FROM civil_statuses WHERE socioeconomic_data.id_civil_status = civil_statuses.id) as nombreEstadocivil,
+            (SELECT ethnicities.name FROM ethnicities WHERE socioeconomic_data.id_ethnicity = ethnicities.id) as nombreEtnia,
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, socioeconomic_data, student_groups, groups
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            AND student_groups.id_student = student_profile.id 
+            AND student_groups.id_group = groups.id
+        ");
+        
+        return datatables()->of($perfilEstudiantes)->toJson();
+                 
+    }
+
+    
+
     public function indexPerfilEstudiante(){
         $user = auth()->user();
         /*if($user['rol_id'] == 6){
@@ -67,8 +98,45 @@ class perfilEstudianteController extends Controller
             $perfilEstudiantes = perfilEstudiante::all();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
         }*/
+
+
+        //return datatables()->of($perfilEstudiantes)->toJson();
+
+        
+       return view('perfilEstudiante.index');
+    }
+
+    public function mostrarMenores(){
+
+        $mayoriaedad = DB::select("SELECT student_profile.id, student_profile.*, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio
+            FROM student_profile, socioeconomic_data, student_groups, groups
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            
+            AND student_groups.id_student = student_profile.id 
+            AND student_groups.id_group = groups.id
+            AND student_profile.id_document_type = 2
+            AND YEAR(birth_date) = 2004
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
+			AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
+        ");
+        
+        return datatables()->of($mayoriaedad)->toJson();
+
+    }
+
+    public function indexMenores(){
+        return view('perfilEstudiante.indexMenores');
         $perfilEstudiantes = perfilEstudiante::all();
+        //dd($perfilEstudiantes);
         return view('perfilEstudiante.index',compact('perfilEstudiantes'));
+
     }
 
 
@@ -122,7 +190,9 @@ class perfilEstudianteController extends Controller
       }
 
     public function verPerfilEstudiante($id){
-        $user = auth()->user();
+
+        //return $id;
+       /* $user = auth()->user();
         /*if($user['rol_id'] == 6){
             $idUser = $user['id'];
             $dt = AssignmentStudent::where('id_student', $id)->where('id_user', $idUser)->exists();
@@ -214,7 +284,7 @@ class perfilEstudianteController extends Controller
 
         }    
 
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
+        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));  
 
         }  
       
@@ -538,22 +608,36 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
     }
 
-    public function Asistencias_grupo($id)
+    public function Asistencias_grupo($course,$id,$id_session)
     {   
         $grupo = Group::where('id',$id)->first();
-
+        $name = Course::where('id',$course)->first();
         $notas = StudentGroup::all()->where('id_group', $id);
         
         //dd($grupo);
 
-        return view('perfilEstudiante.Asistencias.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.Asistencias.notas',compact('notas','grupo','name','id_session'));
     }
 
     public function sesiones($course,$id){
+        
         $grupo=Group::where('id',$id)->first();
         $name = Course::where('id',$course)->first();
-        //dd($course);
-        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name'));
+        $notas = StudentGroup::where('id_group', $id)->get('id_student');
+        $id_moole = array();
+        $contador = 0;
+        foreach ($notas as $student){
+   
+            $moodle = perfilEstudiante::where('id', $student['id_student'])->get('id_moodle'); 
+
+            foreach ($moodle as $id){
+                $id_moole[$contador] = $id->id_moodle;
+            }
+            $contador++;
+            
+        }
+
+        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name','id_moole'));
     }
     public function store_seguimiento(Request $request) {
 
@@ -1931,8 +2015,102 @@ class perfilEstudianteController extends Controller
         };
         
         return $mensaje;   
+
     }
+
+    public function excel(Request $request){
+
+        $collection1 = Excel::toArray(new CsvImport, 'codigo.xlsx');
+        //dd($collection);
+        foreach($collection1 as $var) {
+
+            foreach($var as $key => $value) {
+                //var_dump($value);
+                //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
+                $insertar = perfilEstudiante::where('student_code',$value['codigo'])->update(['id_moodle' => $value['id_moodle']]);
+            }    
+        }
+
+        $collection2 = Excel::toArray(new CsvImport, 'document.xlsx');
+        //dd($collection);
+        foreach($collection1 as $var) {
+
+            foreach($var as $key => $value) {
+                //var_dump($value);
+                //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
+                $insertar = perfilEstudiante::where('document_number',$value['document'])->update(['id_moodle' => $value['id_moodle']]);
+            }    
+        }
+
+        //dd($request);
+        $collection = Excel::toArray(new CsvImport, request()->file('file'));
+        //dd($collection);
+        foreach($collection[1] as $var) {
+            //var_dump($var['nombres']);
+            $id_student = perfilEstudiante::where('document_number',$var['no_documento'])->get('id');
+            $consultar_grupo = Group::where('id_cohort',$var['linea'])->where('name',$var['nuevo_grupo'])->get('id');
+            //dd($consultar_grupo);
+            $id_students=0;
+            foreach($id_student as $student){
+                $id_students=$student->id;
+            }
+            //dd($id_students);
+            $id_group =0;
+            foreach($consultar_grupo as $id){
+                $id_group=$id->id;
+            }
+            //dd($id_group);
+            $cambio_grupo =StudentGroup::where('id_student',$id_students)->update(['id_group' => $id_group]);
+            //dd($cambio_grupo);
+        }
+        foreach($collection[0] as $var) {
+            //var_dump($var['nombres']);
+            $id_student = perfilEstudiante::where('document_number',$var['no_documento'])->get('id');
+            $consultar_grupo = Group::where('id_cohort',$var['linea'])->where('name',$var['nuevo_grupo'])->get('id');
+            //dd($consultar_grupo);
+            $id_students=0;
+            foreach($id_student as $student){
+                $id_students=$student->id;
+            }
+            //dd($id_students);
+            $id_group =0;
+            foreach($consultar_grupo as $id){
+                $id_group=$id->id;
+            }
+            //dd($id_group);
+            $cambio_grupo =StudentGroup::where('id_student',$id_students)->update(['id_group' => $id_group]);
+            //dd($cambio_grupo);
+        }
+     
+
     
+       return redirect('estudiante')->with('success', 'File imported successfully!');
+    }
+
+    public function CargarJSon(Request $request){
+        //dd($request->file('sesiones')->getClientOriginalName());
+
+        $verificar_nombre = explode("_", $request->file('sesiones')->getClientOriginalName());
+        //dd($verificar_nombre);
+        //Storage::disk('local')->put('', $request->file('sesiones')->originalName());
+
+        
+        if($verificar_nombre[0] == "sessionsbycoursereport"){
+            $nombre = "students.json";
+            Storage::delete($nombre);
+            Storage::putFileAs('/', $request->file('sesiones'), $nombre);
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
+        }
+        if($verificar_nombre[0] == "attendancereport"){
+            $nombre = "asistencias.json";
+            Storage::delete($nombre);
+            Storage::putFileAs('/', $request->file('sesiones'), $nombre);
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
+        }
+        else{
+            return back()->with('message-error', 'Por favor seleccione un archivo valido');
+        }   
+    }
 }
 
 

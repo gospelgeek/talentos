@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('store/save/usuarios',        'perfilEstudianteController@excel')->name('save.user');
+Route::post('store/save/json', 'perfilEstudianteController@CargarJSon')->name('save.json');
 
 /*iniciar la aplicacion*/ 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
@@ -38,6 +41,9 @@ Route::get('logout',   'Auth\LoginController@logout');
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
 
+Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
+Route::get('info', 'perfilEstudianteController@enviar')->name('info');
+
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
 Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');
@@ -48,6 +54,9 @@ Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerf
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
 /*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
+Route::get('estudiantes_mayoria_edad', 'perfilEstudianteController@indexMenores')->name('estudiantes_mayoria_edad');
+Route::get('menores', 'perfilEstudianteController@mostrarMenores')->name('datos.estudiantes.menores');
+
 
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
 Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');
@@ -60,8 +69,8 @@ Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
 
 Route::get('asistencias', 'perfilEstudianteController@indexAsistencias')->name('asistencias');
 Route::get('Asistencias/{id}', 'perfilEstudianteController@Grupos_Asignaturas')->name('asistencias.grupos');
-Route::get('/Asistencias/{course}/grupo/{id}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
-Route::get('Asistencia_asignatura/{id}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
+Route::get('/Asistencias/{course?}/grupo/{id?}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
+Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
 
 //RUTAS DE AJAX
 //ruta estado
@@ -94,9 +103,34 @@ Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usua
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
 //Socioeducativo
+
+
+// borrar caché de la aplicación
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+ // borrar caché de ruta
+ Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+// borrar caché de configuración
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return redirect('estudiante')->with('status','limpieza');
+}); 
+
+// borrar caché de vista
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
-
 
 
 

@@ -1,3 +1,19 @@
+#container{
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+#container2{
+	width: 920px;
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+#tabla{
+  width: 900px;
+
+}
+
 body{
 	background: #ecf0f1;
 }
@@ -213,3 +229,11 @@ img.avatar {
 		padding: 10px 0;
 	}
 }
+
+.dropdown-menu {
+  margin-top: 0;
+}
+
+ 
+
+ 

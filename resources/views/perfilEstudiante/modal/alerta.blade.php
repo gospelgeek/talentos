@@ -17,7 +17,7 @@
             <b>{{$verDatosPerfil->studentGroup->group->cohort->name}}</b>&nbsp;y&nbsp;
             <b>{{$verDatosPerfil->studentGroup->group->name}}</b>, a la cohorte &nbsp;
             <b id="mstrchrte"></b>&nbsp;<b id="mstrgrpo"></b>?
-          </span>     
+          </span>    
         </div>           
       </div>
       

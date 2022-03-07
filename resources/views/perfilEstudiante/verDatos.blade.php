@@ -152,7 +152,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->birthcity->birthdepartament ? $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
+								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->id_birth_department ?  $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
 							</div>
 						</div>                	
             		</div>
@@ -364,7 +364,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
+								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata->id_ocupation ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
 							</div>
 						</div>	
             		</div>

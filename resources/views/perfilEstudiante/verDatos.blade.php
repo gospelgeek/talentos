@@ -364,7 +364,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
+								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata->id_ocupation ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
 							</div>
 						</div>	
             		</div>

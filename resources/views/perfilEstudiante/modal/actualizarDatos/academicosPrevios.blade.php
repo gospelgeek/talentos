@@ -21,29 +21,29 @@
                       </div>  
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('institution_name','Nombre institucion: ')!!}
-                      {!!Form::text('colegio', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->institution_name : null,['id'=>'colegio','class'=>'form-control','required','placeholder'=>'Nombres'])!!}  
+                      {!!Form::text('colegio', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->institution_name : null,['id'=>'colegio','class'=>'form-control','required','placeholder'=>'Colegio'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('year_graduation','A?o de graduacion: ')!!}
-                      {!!Form::text('graduacion', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->year_graduation : null,['id'=>'graduacion','class'=>'form-control','required','placeholder'=>'Apellidos'])!!}  
+                      {!!Form::text('graduacion', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->year_graduation : null,['id'=>'graduacion','class'=>'form-control','required','placeholder'=>'Año graduacion'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('bachelor_title','Titulo bachiller: ')!!}
-                      {!!Form::text('bachiller',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->bachelor_title : null,['id'=>'bachiller', 'class'=>'form-control','placeholder'=>'Fecha nacimiento'])!!}   
+                      {!!Form::text('bachiller',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->bachelor_title : null,['id'=>'bachiller', 'class'=>'form-control','placeholder'=>'Titulo bachiller'])!!}   
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('icfes_date','Fecha icfes')!!}
-                      {!!Form::date('fechaIcfes',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_date : null,['id'=>'fechaIcfes','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
+                      {!!Form::date('fechaIcfes',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_date : null,['id'=>'fechaIcfes','class'=>'form-control','placeholder'=>'Fecha icfes'])!!}
                       </div>  
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('snp_register','Registro SNP: ')!!}
-                      {!!Form::text('snpRegistro', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->snp_register : null,['id'=>'snpRegistro','class'=>'form-control','required','placeholder'=>'Nombres'])!!}  
+                      {!!Form::text('snpRegistro', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->snp_register : null,['id'=>'snpRegistro','class'=>'form-control','required','placeholder'=>'Registro SNP'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('icfes_score','Puntaje ICFES: ')!!}
-                      {!!Form::text('icfesPuntaje', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_score : null,['id'=>'icfesPuntaje','class'=>'form-control','required','placeholder'=>'Apellidos'])!!}  
+                      {!!Form::text('icfesPuntaje', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_score : null,['id'=>'icfesPuntaje','class'=>'form-control','required','placeholder'=>'Puntaje icfes'])!!}  
                       </div>
                     </div>
                     

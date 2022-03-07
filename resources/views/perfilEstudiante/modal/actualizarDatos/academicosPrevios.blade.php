@@ -24,7 +24,7 @@
                       {!!Form::text('colegio', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->institution_name : null,['id'=>'colegio','class'=>'form-control','required','placeholder'=>'Colegio'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('year_graduation','A?o de graduacion: ')!!}
+                      {!!Form::label('year_graduation','Año de graduacion: ')!!}
                       {!!Form::text('graduacion', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->year_graduation : null,['id'=>'graduacion','class'=>'form-control','required','placeholder'=>'Año graduacion'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">

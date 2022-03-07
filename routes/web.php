@@ -93,7 +93,9 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
-
+//Socioeducativo
+Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 
 
 

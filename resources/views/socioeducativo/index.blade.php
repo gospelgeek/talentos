@@ -88,7 +88,7 @@
                                                 <div class="modal-body">
                                                     <h5>Asignar/Actualizar profesional de Acompañamiento para el estudiante</h5>
                                                     <br>
-                                                    <p>ID: <strong>${data.id} </strong> <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
+                                                    <p>ID: <strong>${data.id} </strong>Nombre: <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
                                                         de la linea <strong>${data.grupo}</strong>
                                                     </p>
                                                     <br>

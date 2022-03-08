@@ -118,10 +118,13 @@ class perfilEstudianteController extends Controller
             (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio
             FROM student_profile, socioeconomic_data, student_groups, groups
             WHERE student_profile.id = socioeconomic_data.id_student 
+            
             AND student_groups.id_student = student_profile.id 
             AND student_groups.id_group = groups.id
-            AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
-            AND MONTH(birth_date) >= 02 AND MONTH(birth_date) <= MONTH(NOW())
+            AND student_profile.id_document_type = 2
+            AND YEAR(birth_date) = 2004
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
+			AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
         ");
         
         return datatables()->of($mayoriaedad)->toJson();

@@ -127,7 +127,10 @@ Route::get('/view-clear', function() {
     $exitCode = Artisan::call('view:clear');
     return redirect('estudiante')->with('status','limpieza');
 });
-
+// Crear enlace simbolico
+Route::get('/storage', function () {
+Artisan::call('storage:link');
+});
 //Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');

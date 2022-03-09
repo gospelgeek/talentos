@@ -80,7 +80,7 @@ return [
 
     'links' => [
         
-        public_path('json') => storage_path('json'),
+        base_path('../public_html/json') => storage_path('json'),
     ],
 
 ];

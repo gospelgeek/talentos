@@ -129,7 +129,8 @@ Route::get('/view-clear', function() {
 });
 // Crear enlace simbolico
 Route::get('/storage', function () {
-Artisan::call('storage:link');
+    Artisan::call('storage:link');
+    return redirect('estudiante')->with('status','limpieza');
 });
 //Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');

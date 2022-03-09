@@ -61,6 +61,7 @@
                 <td>Estado</td>
                 <td>Estado Civil</td>
                 <td>Etnia</td>
+                <td>Institucion</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
         </thead>       
@@ -106,6 +107,7 @@
                 {data: 'estado', visible: false},
                 {data: 'nombreEstadocivil', visible: false},
                 {data: 'nombreEtnia', visible: false},
+                {data: 'colegio', visible: false},
 
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;

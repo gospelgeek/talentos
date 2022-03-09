@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +102,8 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
+
+
 // borrar caché de la aplicación
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
@@ -125,7 +128,10 @@ Route::get('/view-clear', function() {
     return redirect('estudiante')->with('status','limpieza');
 });
 
-
+//Socioeducativo
+Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
+Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
 
 

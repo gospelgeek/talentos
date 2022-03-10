@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Exports\SabanaExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
 use App\PreviousAcademicData;
@@ -2022,7 +2021,7 @@ class perfilEstudianteController extends Controller
 
     }
 
-<<<<<<< HEAD
+
     public function export(){
 
         return Excel::download(new SabanaExport, 'sabana.xlsx');
@@ -2053,7 +2052,7 @@ class perfilEstudianteController extends Controller
 
 
     
-=======
+
     public function excel(Request $request){
 
         $collection1 = Excel::toArray(new CsvImport, 'codigo.xlsx');
@@ -2119,7 +2118,7 @@ class perfilEstudianteController extends Controller
         }
      
 
->>>>>>> ac7774a3ea96f1d9db2c780857df3a4824dd88ac
+
     
        return redirect('estudiante')->with('success', 'File imported successfully!');
     }

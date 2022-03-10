@@ -145,7 +145,10 @@ Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeduc
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
+//RUTA INDEXESTADO ESTUDIANTES
 
+Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
+Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
 
 
 

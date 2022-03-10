@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+<<<<<<< HEAD
         
+=======
+>>>>>>> ac891970c26be834c0b4763326787215277e5ed1
     }
 
     /**

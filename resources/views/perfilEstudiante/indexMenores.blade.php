@@ -27,6 +27,7 @@
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Fecha nacimiento</td>
+                <td>Edad</td>
                 <td width="15%">Acciones</td>
             </tr>
         </thead>
@@ -79,6 +80,7 @@
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
                 {data: 'birth_date'},
+                {data: 'edad'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;

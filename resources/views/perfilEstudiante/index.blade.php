@@ -25,17 +25,27 @@
     <div class="card">         
     <div class="card-body">
         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
-        <div class="row">
-            <div  class="col-xs-12 col-md-3 col-sm-3">
+        <div class="btn-group">
+            <div class="col-xs-6 col-md-5 col-sm-3">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
+            <div class="col-xs-6 col-md-12 col-sm-6">
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR S&Aacute;BANA</a>
+            </div>
+            
+            
         </div>
+
+        
         @endif
+        
 
     <div class="table-responsive">
+    
      <table id="example1" class=" table table-bordered table-striped">
         
         <thead>
+
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
@@ -45,7 +55,7 @@
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
-                <td>Grupo</td>
+                <td id="group">Grupo</td>
                 <td>Cohorte</td>
                 <td>Fecha nacimiento</td>
                 <td>Edad</td>
@@ -61,6 +71,7 @@
                 <td>Estado</td>
                 <td>Estado Civil</td>
                 <td>Etnia</td>
+                <td>Institucion</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
         </thead>       
@@ -75,12 +86,19 @@
     <!-- Page specific script -->
 <script>
 
+/*$('input[type="checkbox"]').change(function (){
+    var ver = $("input[name=filtro]:checked").val();
+});*/
+     
+       
 
-    var table = $("#example1").DataTable({
+        var table = $("#example1").DataTable({
+            
             "ajax":{
                 "method":"GET",
-                "url": "{{route('datos.estudiantes')}}"
+                "url": "{{route('datos.estudiantes')}}",
             },
+
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
@@ -106,11 +124,12 @@
                 {data: 'estado', visible: false},
                 {data: 'nombreEstadocivil', visible: false},
                 {data: 'nombreEtnia', visible: false},
+                {data: 'colegio', visible: false},
 
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
-                    if(rol == 4 || rol == 1 || rol == 2){
+                    if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
                             '<tr id="1">'+'<td">'+'<a href="ver_estudiante/'+data.id+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
@@ -143,9 +162,12 @@
                 "pdf",
                 "print",
                 "colvis"
+                
             ]
-    });
-                 
+        });
+    
+
+                
 </script>
 
  

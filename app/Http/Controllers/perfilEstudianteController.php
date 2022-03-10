@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use App\Exports\SabanaExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
 use App\PreviousAcademicData;
@@ -27,6 +29,7 @@ use App\SocialConditions;
 use App\Disability;
 use App\Ethnicity;
 use App\Neighborhood;
+use App\Formalization;
 use App\InstitutionType;
 use App\Course;
 use App\Group;
@@ -47,6 +50,7 @@ use Response;
 
 
 
+
 class perfilEstudianteController extends Controller
 
 {
@@ -59,7 +63,7 @@ class perfilEstudianteController extends Controller
 
     public function mostrar() {
         
-      $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+      $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
             (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
             (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
             (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
@@ -73,18 +77,19 @@ class perfilEstudianteController extends Controller
             (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
             (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
             (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
-            FROM student_profile, socioeconomic_data, student_groups, groups
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
             WHERE student_profile.id = socioeconomic_data.id_student 
-            AND student_groups.id_student = student_profile.id 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
             AND student_groups.id_group = groups.id
         ");
+
         
         return datatables()->of($perfilEstudiantes)->toJson();
                  
     }
 
-    
-
+   
     public function indexPerfilEstudiante(){
         $user = auth()->user();
         /*if($user['rol_id'] == 6){
@@ -114,10 +119,13 @@ class perfilEstudianteController extends Controller
             (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio
             FROM student_profile, socioeconomic_data, student_groups, groups
             WHERE student_profile.id = socioeconomic_data.id_student 
+            
             AND student_groups.id_student = student_profile.id 
             AND student_groups.id_group = groups.id
+            AND student_profile.id_document_type = 2
+            AND YEAR(birth_date) = 2004
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
             AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
-            AND MONTH(birth_date) >= 02 AND MONTH(birth_date) <= MONTH(NOW())
         ");
         
         return datatables()->of($mayoriaedad)->toJson();
@@ -1991,6 +1999,37 @@ class perfilEstudianteController extends Controller
         
         return $mensaje;   
     }
+
+    public function export(){
+
+        return Excel::download(new SabanaExport, 'sabana.xlsx');
+    }
+
+    public function formalizacionupdate($id, Request $request){
+
+        $data = Formalization::findOrFail($id);
+        
+        $mensaje = "Formalizacion generada correctamente!!";
+
+
+        if ($request->ajax()) {
+
+            $data->acceptance_v1      = $request['acceptance_v1'];
+            $data->acceptance_v2      = $request['acceptance_v2'];   
+            $data->tablets_v1         = $request['tablets_v1'];
+            $data->tablets_v2         = $request['tablets_v2'];
+            
+            
+            $data->save();
+            
+        };
+        
+         return $mensaje;
+    }
+
+
+
+    
     
 }
 

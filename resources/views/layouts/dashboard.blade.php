@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="{{route('estudiante')}}" class="navbar-brand">
-      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" style="">
+      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" >
         <span class="brand-text font-weight-light">PNA</span>
       </a>
 
@@ -194,6 +194,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         </li>
         -->
+        @if(auth()->user()->rol_id == 2)
+          <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+
+          @endif
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
@@ -207,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
                           </div>
                       </li>
-                        
+                      <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>

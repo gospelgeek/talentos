@@ -26,7 +26,7 @@ class SocioEducativoController extends Controller
         $datosDeAsignacion = DB::select("SELECT assignment_students.id, 
         (SELECT student_profile.name FROM student_profile WHERE student_profile.id = assignment_students.id_student) as name, 
         (SELECT student_profile.lastname FROM student_profile WHERE student_profile.id = assignment_students.id_student) as lastname,
-        (SELECT (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) FROM student_profile WHERE student_profile.id = assignment_students.id_student) as tipoDocumento,
+        (SELECT student_profile.document_number FROM student_profile WHERE student_profile.id = assignment_students.id_student) as tipoDocumento,
          (SELECT student_profile.student_code FROM student_profile WHERE student_profile.id = assignment_students.id_student) as codigo, 
          (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) FROM groups WHERE groups.id = student_groups.id_group) FROM student_groups WHERE student_groups.id_student = assignment_students.id_student) as grupo, 
          (SELECT users.name FROM users WHERE users.id = assignment_students.id_user) as nameUser, (SELECT users.apellidos_user FROM users WHERE users.id = assignment_students.id_user) as apellidosUser FROM assignment_students WHERE assignment_students.deleted_at IS NULL");

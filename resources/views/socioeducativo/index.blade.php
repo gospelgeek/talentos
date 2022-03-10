@@ -20,8 +20,7 @@
                             <td>Documento</td>
                             <td>Codigo</td>
                             <td>Cohorte</td>
-                            <td>Nombre Acompañante</td>
-                            <td>Apellidos Acompañante</td>
+                            <td>Acompañante</td>
                             <td>Acciones</td>
                         </tr>
                     </thead>
@@ -57,11 +56,16 @@
             {
                 data: 'grupo'
             },
+            
             {
-                data: 'nameUser'
-            },
-            {
-                data: 'apellidosUser'
+                data: null,
+                render: function(data, type, row, meta){
+                    var apel;
+                    apel = `<div id="nameapel${data.id}">
+                            <td>${data.nameUser} ${data.apellidosUser}</td>
+                            </div>` 
+                    return apel
+                }
             },
 
 

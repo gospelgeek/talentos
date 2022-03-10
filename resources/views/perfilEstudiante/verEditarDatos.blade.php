@@ -667,7 +667,7 @@
 </div>
 
 
-
+@include('perfilEstudiante.modal.editestado')
 @include('perfilEstudiante.modal.actualizarDatos.generales')
 @include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
 @include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
@@ -676,7 +676,7 @@
 @include('perfilEstudiante.seguimientos.modal.ver')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
-@include('perfilEstudiante.modal.editestado')
+
 
 
 @include('vistasParciales.validacionErrores')

@@ -1,18 +1,60 @@
+
 $('.crear_estado').click(function(e) { 
       e.preventDefault();
-        $('#CMotivo').hide();
-        $('#Cobservacion').hide();
+        var valor = $('#estadoN').val();
+          //console.log(valor)
+          if(valor == ""){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          }
+          if(valor == 3 || valor == 2){
+            $('#CMotivo').show();
+            $('#Cobservacion').show();
+            $('#CUrl').show();
+            $('#CBoton').show();
+          }
+          if(valor == 4){
+            $('#Cobservacion').show();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();               
+          }
+          if(valor == 1){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          } 
         $('#modal_crear_estado').modal('show');
         //alert(cod);
         $(document).on('change', '#estadoN', function(event) {
           var valor = $('#estadoN').val();
+          //console.log(valor)
+          if(valor == ""){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          }
           if(valor == 3 || valor == 2){
             $('#CMotivo').show();
             $('#Cobservacion').show();
+            $('#CUrl').show();
+            $('#CBoton').show();
           }
-          else{
+          if(valor == 4){
+            $('#Cobservacion').show();
             $('#CMotivo').hide();
-            $('#Cobservacion').hide();          
+            $('#CUrl').hide();
+            $('#CBoton').hide();               
+          }
+          if(valor == 1){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
           }
         });  
 });
@@ -33,6 +75,7 @@ $('.crear_estado').click(function(e) {
       'id_state': $("#estadoN").val(),
       'id_reasons': $("#CMotivo").val(),
       'observation': $("#Cobservacion").val(),
+      'url':         $("#CUrl").val(),
     },
     success:function(msj) {
       $('#modal_crear_estado').modal('hide');
@@ -69,8 +112,8 @@ $(".accordion-titulo").click(function(e){
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");  
         }
         else{ //close       
           contenido.slideUp(250);
@@ -93,8 +136,8 @@ $(".accordion-titulo-2").click(function(e){
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open"); 
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open"); 
         }
         else{ //close       
           contenido.slideUp(250);
@@ -117,9 +160,9 @@ $(".accordion-titulo-3").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open"); 
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
+          $("#titulo-4").removeClass("open");
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");  
         }
         else{ //close
 
@@ -351,10 +394,9 @@ $(".accordion-titulo-4").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
-
+          $("#titulo-3").removeClass("open"); 
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");
 
         }
         else{ //close
@@ -367,11 +409,90 @@ $(".accordion-titulo-4").click(function(e){
 
 });
 
-$(".accordion-titulo-6").click(function(e){
+var id_moodle= document.getElementById("moodle");
+var url = document.getElementById('json').src;
+var asistencias = document.getElementById('asisten').src;
+
+
+$.getJSON(asistencias, function(asistencias){
+    $.each(asistencias, function(index,value){
+      //console.log(value.userid, id_moodle)
+        if(value.userid == id_moodle.dataset.id){
+        //console.log(value.courses);
+
+        $.each(value.courses, function(i, courses){
+          //console.log(courses)
+          var tr = document.createElement('tr');
+          tr.setAttribute('id',courses.courseid)
+          tr.classList.add('prueba');
+          var td_asignatura = document.createElement('td');      
+          td_asignatura.innerHTML = courses.coursefullname;
+          var td_sesiones = document.createElement('td');
+          //console.log(document.getElementById(courses.courseid))
+          if(document.getElementById(courses.courseid) == courses.courseid )
+          {
+            console.log(value.courses[i])
+          }
+          td_sesiones.setAttribute('id', courses.courseid+".")
+          var td_asistencias = document.createElement('td');
+          td_asistencias.innerHTML = courses.attendance.takensessionssumary.numtakensessions;
+          var td_faltas = document.createElement('td');
+          tr.appendChild(td_asignatura);
+          tr.appendChild(td_sesiones);
+          tr.appendChild(td_asistencias);
+          tr.appendChild(td_faltas);
+          document.getElementById('insertar').appendChild(tr);
+        });
+        }
+        
+    });
+    
+});
+
+
+
+
+$(".accordion-titulo-5").click(function(e){
            
+        const course_id = [];
+        $('.prueba').each(function(){
+          //console.log($(this).attr("data-id"));
+          course_id.push($(this).attr("id"));
+
+        }); 
+        let result = course_id.filter((item,index)=>{
+             return course_id.indexOf(item) === index;
+        })
+        //console.log(result);
+
+
+        $.getJSON(url, function(sesiones){
+            //console.log(sesiones);
+            $.each(sesiones, function(index, value){
+              console.log(value.fullname)
+              for (const j of result){
+                if(value.courseid == j){
+                  contador=0;
+                  $.each(value.sessions, function(i, sesion){
+                    var fecha_actual = new Date();
+                    var fecha_json = new Date(sesion.sesstimestamp * 1000);
+                    //console.log(fecha_actual, fecha_json);
+                    
+                    if(fecha_json <= fecha_actual){
+                      contador++;
+                    } 
+                    
+                  });
+                  //console.log(contador);
+                  document.getElementById(value.courseid+".").innerHTML = contador;  
+                }
+              }   
+            })
+            
+        });   
         e.preventDefault();
     
-        var contenido=$(this).next(".accordion-content-6");
+        var contenido=$(this).next(".accordion-content-5");
  
 
         if(contenido.css("display")=="none"){ //open        
@@ -382,7 +503,7 @@ $(".accordion-titulo-6").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open"); 
+          $("#titulo-3").removeClass("open");
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");  
         }
@@ -390,18 +511,8 @@ $(".accordion-titulo-6").click(function(e){
 
           contenido.slideUp(250);
           $(this).removeClass("open");
-          
-            
+                    
         }
 });
-
-
-
-
-
-
-
-
-
 
 

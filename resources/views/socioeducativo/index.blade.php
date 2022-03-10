@@ -58,10 +58,24 @@
                 data: 'grupo'
             },
             {
-                data: 'nameUser'
+                data: null,
+                render: function(data, type, row, meta){
+                    var apel;
+                    apel = `<div id="name${data.id}">
+                            <td>${data.nameUser}</td>
+                            </div>` 
+                    return apel
+                }
             },
             {
-                data: 'apellidosUser'
+                data: null,
+                render: function(data, type, row, meta){
+                    var apel;
+                    apel = `<div id="apel${data.id}">
+                            <td>${data.apellidosUser}</td>
+                            </div>` 
+                    return apel
+                }
             },
 
 

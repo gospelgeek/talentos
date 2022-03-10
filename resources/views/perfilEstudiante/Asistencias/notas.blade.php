@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Calificaciones')
+@section('title', 'ASISTENCIAS'." ". $name->name . "-". $grupo->name . "-". $grupo->cohort->name)
 @section('content')
-<h1 style="text-align:center;">ASISTENCIAS<br>{{$name->name}}<br>{{$grupo->name}}</h1>
+<h1 style="text-align:center;">ASISTENCIAS<br>{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}</h1>
 <div class="containerd-fluid" id="container">    
     
-    <script id="asisten" type="text" src="/asistencias.json"></script>
+    <script id="asisten" type="text" src="/json/asistencias.json"></script>
     
     <input type="hidden" id="notas" data-session="{{$id_session}}">
     <div class="card" id="container2">        
@@ -16,14 +16,18 @@
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Agregar Calificacion</a>            
                 </div>
             </div>
-            @endif
+            @endif<div id="carga" class="d-flex justify-content-center">
+                        <strong>Procesando&nbsp;</strong>
+                        <div class="spinner-border spinner-border-sm" role="status">                    
+                        </div>
+                    </div>  
             <div id="tabla" class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <td>Nombres</td>
                             <td>Apellidos</td>
-                            <td width="5%">Asistio</td>
+                            <td width="15%">Asistencias</td>
                         </tr>
                     </thead>
 
@@ -32,7 +36,7 @@
                         <tr class="prueba" data-id="{{$nota->student->id_moodle}}">
                             <td>{{$nota->student->name}}</td>
                             <td>{{$nota->student->lastname}}</td>
-                            <td id="{{$nota->student->id_moodle}}"><i style="color: red; text-align: center;" class="fa fa-times" aria-hidden="true"></i></td>                                  
+                            <td id="{{$nota->student->id_moodle}}">No Asistio<i style="color: red; text-align: center;" class="fa fa-times" aria-hidden="true"></i></td>                                  
                         </tr>
                         @endforeach    
                     </tbody>

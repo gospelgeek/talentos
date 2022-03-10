@@ -18,6 +18,7 @@ class CreateAssignmentStudentsTable extends Migration
             $table->integer('id_user');
             $table->integer('id_student');
             $table->integer('id_periods');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

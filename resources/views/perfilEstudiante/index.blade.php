@@ -129,7 +129,7 @@
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
-                    if(rol == 4 || rol == 1 || rol == 2){
+                    if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
                             '<tr id="1">'+'<td">'+'<a href="ver_estudiante/'+data.id+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+

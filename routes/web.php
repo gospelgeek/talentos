@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('store/save/usuarios',        'perfilEstudianteController@excel')->name('save.user');
+Route::post('store/save/json', 'perfilEstudianteController@CargarJSon')->name('save.json');
 
 /*iniciar la aplicacion*/ 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
@@ -110,6 +112,34 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
 
 
+// borrar caché de la aplicación
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+ // borrar caché de ruta
+ Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+// borrar caché de configuración
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return redirect('estudiante')->with('status','limpieza');
+}); 
+
+// borrar caché de vista
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+//Socioeducativo
+Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
+Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
 
 

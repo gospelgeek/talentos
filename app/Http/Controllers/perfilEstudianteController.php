@@ -64,7 +64,7 @@ class perfilEstudianteController extends Controller
 
     public function mostrar() {
         
-      $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+      $perfilEstudiantes= DB::select("select student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
             (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
             (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
             (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
@@ -111,7 +111,7 @@ class perfilEstudianteController extends Controller
 
     public function mostrarMenores(){
 
-        $mayoriaedad = DB::select("SELECT student_profile.id, student_profile.*, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+        $mayoriaedad = DB::select("select student_profile.id, student_profile.*, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
             (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
             (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
             (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,
@@ -2027,27 +2027,7 @@ class perfilEstudianteController extends Controller
         return Excel::download(new SabanaExport, 'sabana.xlsx');
     }
 
-    public function formalizacionupdate($id, Request $request){
-
-        $data = Formalization::findOrFail($id);
-        
-        $mensaje = "Formalizacion generada correctamente!!";
-
-
-        if ($request->ajax()) {
-
-            $data->acceptance_v1      = $request['acceptance_v1'];
-            $data->acceptance_v2      = $request['acceptance_v2'];   
-            $data->tablets_v1         = $request['tablets_v1'];
-            $data->tablets_v2         = $request['tablets_v2'];
-            
-            
-            $data->save();
-            
-        };
-        
-         return $mensaje;
-    }
+   
 
 
 

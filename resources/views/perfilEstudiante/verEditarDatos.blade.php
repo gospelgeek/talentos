@@ -649,7 +649,7 @@
             			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
-						<input  class="form-control" type="text" name="tabletsv2" id="tablets_v2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+						<input  class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 					</div>
 				</div>
 			</div>

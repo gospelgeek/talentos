@@ -422,7 +422,7 @@ $('.boton_update_formalizacion').click(function(e) {
       'acceptance_v1': $("#acceptancev1").val(),
       'acceptance_v2': $("#acceptancev2").val(),
       'tablets_v1': $("#tabletsv1").val(),
-      'tablets_v1': $("#tabletsv2").val(),
+      'tablets_v2': $("#tabletsv2").val(),
       
     },
     success:function(result) {

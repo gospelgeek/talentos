@@ -61,9 +61,18 @@
                 data: null,
                 render: function(data, type, row, meta){
                     var apel;
+                    
+                    if(data.nameUser === null && data.apellidosUser === null){
+                        apel = `<div id="nameapel${data.id}">
+                            <td></td>
+                            </div>`
+
+                        return apel
+                    }
                     apel = `<div id="nameapel${data.id}">
                             <td>${data.nameUser} ${data.apellidosUser}</td>
-                            </div>` 
+                            </div>`
+                     
                     return apel
                 }
             },
@@ -73,6 +82,52 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     var mstr;
+                    if(data.nameUser === null && data.apellidosUser === null){
+                        mstr = `<div class="row">
+                                    <div class="col-xs-4 col-sm-4" id="user${data.id}">
+                                        <button data-toggle="modal" data-target="#exampleModal${data.id}" title="Editar informacion" class="btn btn-sm btn-block fa fa-pencil">
+
+                                        </button>
+                                    </div>
+                                   
+                                    <div class="modal fade" id="exampleModal${data.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Editar Datos</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Asignar/Actualizar profesional de Acompañamiento para el estudiante</h5>
+                                                    <br>
+                                                    <p> <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
+                                                        de la linea <strong>${data.grupo}</strong>
+                                                    </p>
+                                                    <br>
+                                                    <p><Strong>Asignar A: </Strong></p>
+                                                    <select name="id_user" id="userId${data.id}">
+                                                        <option value="" selected></option>
+                                                        @foreach ($user as $u)
+                                                        <option value="{{$u->id}}">{{$u->name}} {{$u->apellidos_user}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <button onclick="actualizarDato('${data.id}')" data-dismiss="modal" type="button" class="btn btn-primary fa fa-floppy-o">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>`
+
+                    return mstr;
+                    }
                     mstr = `<div class="row">
                                     <div class="col-xs-4 col-sm-4" id="user${data.id}">
                                         <button data-toggle="modal" data-target="#exampleModal${data.id}" title="Editar informacion" class="btn btn-sm btn-block fa fa-pencil">
@@ -92,7 +147,7 @@
                                                 <div class="modal-body">
                                                     <h5>Asignar/Actualizar profesional de Acompañamiento para el estudiante</h5>
                                                     <br>
-                                                    <p>ID: <strong>${data.id} </strong> <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
+                                                    <p> <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
                                                         de la linea <strong>${data.grupo}</strong>
                                                     </p>
                                                     <br>

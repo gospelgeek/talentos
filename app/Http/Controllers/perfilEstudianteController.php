@@ -618,24 +618,75 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.asignaturas.notas', compact('notas', 'id', 'grupo'));
     }
 
-    public function updateEstado($id, Request $request)
-    {
-        $status = "Estado actualizado correctamente!!";
-        if ($request->ajax()) {
-            $estado = perfilEstudiante::findOrFail($id);
-            $estado->id_state = $request['id_state'];
-            $estado->save();
-            if ($request['id_state'] != 1) {
-                $estado->delete();
-                //eliminarPerfilEstudiante($id);
+    public function updateEstado($id, Request $request){
+       $status = "Estado actualizado correctamente!!";
+        if($request->ajax())
+        {   
+            $borrar = Withdrawals::where('id_student', $id)->get();
+            //return $borrar;
+            
+            if($request['id_state'] != 1){
+                if($borrar != null){
+                   $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+                }else{
+                    $estado = perfilEstudiante::findOrFail($id);        
+                    $estado->id_state = $request['id_state'];
+                    $estado->save();  
+                    $estado -> delete();
+                }
+            
+            //eliminarPerfilEstudiante($id);
             }
-            $datos = Withdrawals::create([
-                'id_student'   =>  $id,
-                'id_reasons'   =>  $request['id_reasons'],
-                'observation'  =>  $request['observation'],
-            ]);
+            
+            if($request['id_state'] == 1){
+                if($borrar != null){
+                    $borrar = Withdrawals::where('id_student', $id)->delete();
+                    $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
+                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
 
-            return 'true';
+                    return 'true';
+                }
+                else{
+                    return 'true';
+                }    
+            }
+            if($request['id_state'] == 4){
+                if($borrar == ""){
+                    $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }else{
+                $borrar = Withdrawals::where('id_student', $id)->delete();
+                $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }
+                 
+            }
+            if(($request['id_state'] == 2) || ($request['id_state'] == 3) ){
+                    if($borrar == ""){
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }else{
+                        $borrar = Withdrawals::where('id_student', $id)->delete();
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }                        
+            }                                 
         };
     }
 
@@ -2131,5 +2182,21 @@ class perfilEstudianteController extends Controller
         } else {
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
         }
+    }
+    
+    public function index_Estados(){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
+        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+    }
+
+    public function edit_Estado($id, Request $request){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $data = $verDatosPerfil[0]->condition;
+        $data2 = $verDatosPerfil[0]->withdrawals;
+        if($request->ajax()){
+            return Response::json($verDatosPerfil);
+        };
     }
 }

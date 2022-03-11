@@ -68,7 +68,9 @@ $(".accordion-titulo").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open");  
+          $("#titulo-4").removeClass("open");
+          $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open");  
         }
         else{ //close       
           contenido.slideUp(250);
@@ -90,7 +92,9 @@ $(".accordion-titulo-2").click(function(e){
           $("#contenido-3").hide();
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open"); 
+          $("#titulo-4").removeClass("open");
+          $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open"); 
         }
         else{ //close       
           contenido.slideUp(250);
@@ -113,7 +117,9 @@ $(".accordion-titulo-3").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open");  
+          $("#titulo-4").removeClass("open"); 
+          $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open");  
         }
         else{ //close
 
@@ -345,7 +351,9 @@ $(".accordion-titulo-4").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open"); 
+          $("#titulo-3").removeClass("open");
+          $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open");  
 
 
         }
@@ -357,6 +365,34 @@ $(".accordion-titulo-4").click(function(e){
         }
 
 
+});
+
+$(".accordion-titulo-6").click(function(e){
+           
+        e.preventDefault();
+    
+        var contenido=$(this).next(".accordion-content-6");
+ 
+
+        if(contenido.css("display")=="none"){ //open        
+          contenido.slideDown(250);         
+          $(this).addClass("open");
+          $("#contenido-1").hide();
+          $("#titulo-1").removeClass("open");
+          $("#contenido-2").hide();
+          $("#titulo-2").removeClass("open");
+          $("#contenido-3").hide();
+          $("#titulo-3").removeClass("open"); 
+          $("#contenido-4").hide();
+          $("#titulo-4").removeClass("open");  
+        }
+        else{ //close
+
+          contenido.slideUp(250);
+          $(this).removeClass("open");
+          
+            
+        }
 });
 
 

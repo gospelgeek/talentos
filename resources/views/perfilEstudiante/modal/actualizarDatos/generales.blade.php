@@ -25,63 +25,63 @@
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('lastname','Apellidos: ')!!}
-                      {!!Form::text('lastname', $verDatosPerfil->lastname,['id'=>'apellido','class'=>'form-control','required','placeholder'=>'Apellidos'])!!}  
+                      {!!Form::text('lastname', $verDatosPerfil ? $verDatosPerfil->lastname : null,['id'=>'apellido','class'=>'form-control','required','placeholder'=>'Apellidos'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('birth_date','Fecha nacimiento: ')!!}
-                      {!!Form::date('birth_date',$verDatosPerfil->birth_date,['id'=>'fechaNacimiento', 'class'=>'form-control','placeholder'=>'Fecha nacimiento'])!!}   
+                      {!!Form::date('birth_date',$verDatosPerfil ? $verDatosPerfil->birth_date : null,['id'=>'fechaNacimiento', 'class'=>'form-control','placeholder'=>'Fecha nacimiento'])!!}   
                       </div>
                   </div>
                   <div class="row">
                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_document_type','Tipo documento: ')!!}
-                      {!!Form::select('id_document_type', $tipo_documento, $verDatosPerfil->documenttype->id,['id'=>'tipoDocumento','class'=>'form-control','required','placeholder'=>'Tipo documento'])!!}  
+                      {!!Form::select('id_document_type', $tipo_documento, $verDatosPerfil->documenttype ? $verDatosPerfil->documenttype->id : null,['id'=>'tipoDocumento','class'=>'form-control','required','placeholder'=>'Tipo documento'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('document_number','Numero documento: ')!!}
-                      {!!Form::text('document_number', $verDatosPerfil->document_number,['id'=>'numeroDocumento','class'=>'form-control','required','placeholder'=>'Numero documento'])!!}  
+                      {!!Form::text('document_number', $verDatosPerfil ? $verDatosPerfil->document_number : null,['id'=>'numeroDocumento','class'=>'form-control','required','placeholder'=>'Numero documento'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('document_expedition_date','Fecha de expedicion: ')!!}
-                      {!!Form::date('document_expedition_date',$verDatosPerfil->document_expedition_date,['id'=>'fechaExpedicion', 'class'=>'form-control','placeholder'=>'Fecha expedicion documento'])!!}   
+                      {!!Form::date('document_expedition_date',$verDatosPerfil ? $verDatosPerfil->document_expedition_date : null,['id'=>'fechaExpedicion', 'class'=>'form-control','placeholder'=>'Fecha expedicion documento'])!!}   
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('birthcity','Ciudad nacimiento: ')!!}
-                      {!!Form::select('birthcity',$ciudad_nacimiento, $verDatosPerfil->birthcity->id,['id'=>'ciudadNacimiento','class'=>'form-control','required','placeholder'=>'Ciudad nacimiento'])!!}   
+                      {!!Form::select('birthcity',$ciudad_nacimiento, $verDatosPerfil->birthcity ? $verDatosPerfil->birthcity->id : null,['id'=>'ciudadNacimiento','class'=>'form-control','required','placeholder'=>'Ciudad nacimiento'])!!}   
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('email','Email: ')!!}
-                      {!!Form::email('email', $verDatosPerfil->email,['id'=>'correo','class'=>'form-control','required','placeholder'=>'Correo electronico'])!!}  
+                      {!!Form::email('email', $verDatosPerfil ? $verDatosPerfil->email : null,['id'=>'correo','class'=>'form-control','required','placeholder'=>'Correo electronico'])!!}  
                       </div> 
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('sex','Sexo: ')!!}
-                      {!!Form::select('sexo',$sexo, $verDatosPerfil->sex,['id'=>'sexo1','class'=>'form-control','required','placeholder'=>'Seleccionar sexo'])!!}  
+                      {!!Form::select('sexo',$sexo, $verDatosPerfil ? $verDatosPerfil->sex : null,['id'=>'sexo1','class'=>'form-control','required','placeholder'=>'Seleccionar sexo'])!!}  
                       </div> 
                   </div>
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('gender','Genero: ')!!}
-                      {!!Form::select('genero',$genero, $verDatosPerfil->gender->id,['id'=>'generoE','class'=>'form-control','required','placeholder'=>'Genero'])!!}  
+                      {!!Form::select('genero',$genero, $verDatosPerfil->gender ? $verDatosPerfil->gender->id : null,['id'=>'generoE','class'=>'form-control','required','placeholder'=>'Genero'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('cellphone','Celular: ')!!}
-                      {!!Form::text('cellphone', $verDatosPerfil->cellphone,['id'=>'celular','class'=>'form-control','required','placeholder'=>'Celular'])!!}  
+                      {!!Form::text('cellphone', $verDatosPerfil ? $verDatosPerfil->cellphone : null,['id'=>'celular','class'=>'form-control','required','placeholder'=>'Celular'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('neighborhood','Barrio recidencia: ')!!}
-                      {!!Form::select('barrio',$barrio, $verDatosPerfil->neighborhood->id,['id'=>'barrioV','class'=>'form-control','required','placeholder'=>'Genero'])!!}  
+                      {!!Form::select('barrio',$barrio, $verDatosPerfil->neighborhood ? $verDatosPerfil->neighborhood->id : null,['id'=>'barrioV','class'=>'form-control','required','placeholder'=>'Genero'])!!}  
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('direction','Direccion: ')!!}
-                      {!!Form::text('direction', $verDatosPerfil->direction,['id'=>'direccion12','class'=>'form-control','required','placeholder'=>'Direccion'])!!}  
+                      {!!Form::text('direction', $verDatosPerfil ? $verDatosPerfil->direction : null,['id'=>'direccion12','class'=>'form-control','required','placeholder'=>'Direccion'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('phone','Numero alternativo: ')!!}
-                      {!!Form::text('phone', $verDatosPerfil->phone,['id'=>'telefono','class'=>'form-control','required','placeholder'=>'Telefono'])!!}  
+                      {!!Form::text('phone', $verDatosPerfil ? $verDatosPerfil->phone : null,['id'=>'telefono','class'=>'form-control','required','placeholder'=>'Telefono'])!!}
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('student_code','Codigo estudiante: ')!!}
@@ -105,3 +105,5 @@
       </div>
     </div>
 </div>
+
+

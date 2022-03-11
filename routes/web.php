@@ -102,6 +102,14 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
+//Exportar pdf sabana
+Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_export');
+
+//Rutas filtros
+//Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
+
+//Formalizacion
+Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
 
 
 // borrar caché de la aplicación
@@ -127,7 +135,11 @@ Route::get('/view-clear', function() {
     $exitCode = Artisan::call('view:clear');
     return redirect('estudiante')->with('status','limpieza');
 });
-
+// Crear enlace simbolico
+Route::get('/storage', function () {
+    Artisan::call('storage:link');
+    return redirect('estudiante')->with('status','Enlace Creado');
+});
 //Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');

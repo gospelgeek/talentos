@@ -1,7 +1,6 @@
 <?php
 
 use Maatwebsite\Excel\Excel;
- 
 return [
     'exports' => [
 
@@ -48,6 +47,7 @@ return [
             'use_bom'                => false,
             'include_separator_line' => false,
             'excel_compatibility'    => false,
+            'output_encoding'        => '',
         ],
 
         /*
@@ -276,6 +276,9 @@ return [
     */
     'transactions' => [
         'handler' => 'db',
+        'db'      => [
+            'connection' => null,
+        ],
     ],
 
     'temporary_files' => [

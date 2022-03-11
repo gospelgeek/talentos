@@ -61,7 +61,7 @@
                 data: null,
                 render: function(data, type, row, meta){
                     var apel;
-                    
+                  
                     if(data.nameUser === null && data.apellidosUser === null){
                         apel = `<div id="nameapel${data.id}">
                             <td></td>
@@ -72,7 +72,7 @@
                     apel = `<div id="nameapel${data.id}">
                             <td>${data.nameUser} ${data.apellidosUser}</td>
                             </div>`
-                     
+                    
                     return apel
                 }
             },
@@ -147,7 +147,9 @@
                                                 <div class="modal-body">
                                                     <h5>Asignar/Actualizar profesional de Acompañamiento para el estudiante</h5>
                                                     <br>
+
                                                     <p> <strong>${data.name} ${data.lastname}</strong> C.C/TI: <strong>${data.tipoDocumento}</strong>
+
                                                         de la linea <strong>${data.grupo}</strong>
                                                     </p>
                                                     <br>

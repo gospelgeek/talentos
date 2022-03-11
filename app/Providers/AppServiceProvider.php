@@ -16,8 +16,7 @@ class AppServiceProvider extends ServiceProvider
 
             $this->app->bind('path.public',function(){
             return'/home/todosytodasaestu/pruebas.todosytodasaestudiar.org';
-
-            //});
+            });
     }
 
     /**

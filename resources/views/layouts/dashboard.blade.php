@@ -215,7 +215,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(auth()->user()->rol_id == 1)
           <ul class="navbar-nav mr-auto">
             <a href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-            <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ESTUDIANTES
@@ -225,24 +224,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
               </div>
-          </li>
-        @endif
-        @if(auth()->user()->rol_id == 1)
-        <ul class="navbar-nav mr-auto">
-                        <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          LISTADOS ESTUDIANTES 
-                        </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
-                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                          </div>
-                      </li>
+            </li>
+                      <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>   
                       <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
-                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+                      <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                      <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
         </ul>
         @else
         <ul class="navbar-nav mr-auto">

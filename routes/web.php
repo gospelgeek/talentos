@@ -109,6 +109,11 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 //Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
 
 //Formalizacion
+//index formalizacion
+Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
+//datos formalizacion por ajax
+Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+//actualizar formalizacion
 Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
 
 

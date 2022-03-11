@@ -36,7 +36,7 @@
 
                                         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)   
                                  
-                                                {!!link_to('#',$title = 'Cambiar Estado', $attributes = ['class'=>'btn  fa fa-pencil-square-o editar_estado',$secure = null])!!}
+                                                <a id="{{$data->id}}" type="button" onclick="abrirmodal(this);" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Cambiar Estado</a>
                                         </td>
                                         @csrf
                 </tr>

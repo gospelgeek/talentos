@@ -1,13 +1,13 @@
 //Editar estado desde la vista estudiantes estado
-$('.editar_estado').click(function(e) { 
-      e.preventDefault();           
-       var row = $(this).parents('tr');
+function abrirmodal(e) {
+                
+       //var row = $(this).parents('tr');
        //console.log(row);
-       var id = row.data('id');
+       var id = $(e).attr("id"); 
        //console.log(id);
        var form = $('#form-edit');
        var url = form.attr('action').replace(':ESTADO_ID', id);
-       //alert(url);
+       //console.log(url);
        var data = form.serialize();
 
        $.get(url, function(result){
@@ -63,7 +63,7 @@ $('.editar_estado').click(function(e) {
           
 
        });
-});
+};
 
 $("#estadoN").on('change',function(event) {
           var valor = $('#estadoN').val();

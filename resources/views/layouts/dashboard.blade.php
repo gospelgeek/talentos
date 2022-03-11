@@ -226,6 +226,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
 
         </ul>
+        @endif
+        <li class="nav-item">
+          <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>
+          
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
+        </li>
       </div>
     </nav>
     <!-- /.navbar -->

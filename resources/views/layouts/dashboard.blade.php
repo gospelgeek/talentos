@@ -219,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
               </div>
             </li>

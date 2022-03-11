@@ -212,7 +212,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(auth()->user()->rol_id == 1)
           <ul class="navbar-nav mr-auto">
             <a href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-
+            <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 LISTADOS ESTUDIANTES

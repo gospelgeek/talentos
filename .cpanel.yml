@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/todosytodasaestu/pnapruebas.org/
+    - export DEPLOYPATH=/home/todosytodasaestu/pruebas.todosytodasaestudiar.org/
     - /bin/cp -R public/* $DEPLOYPATH
 
 

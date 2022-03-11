@@ -79,7 +79,7 @@ return [
     */
 
     'links' => [
-        base_path('../public_html/json') => storage_path('json'),
+        base_path('../pruebas.todosytodasaestudiar.org/json') => storage_path('json'),
     ],
 
 ];

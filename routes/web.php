@@ -37,12 +37,11 @@ Route::post('logout',  'Auth\LoginController@logout')->name('logout');
 Route::get('logout',   'Auth\LoginController@logout');
 
 
+
+
 //Rutas de CRUD estudiantes
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
-
-Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
-Route::get('info', 'perfilEstudianteController@enviar')->name('info');
 
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
@@ -53,7 +52,7 @@ Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerf
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
-/*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
+
 Route::get('estudiantes_mayoria_edad', 'perfilEstudianteController@indexMenores')->name('estudiantes_mayoria_edad');
 Route::get('menores', 'perfilEstudianteController@mostrarMenores')->name('datos.estudiantes.menores');
 
@@ -92,6 +91,11 @@ Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
 Route::get('datos/{id}', 'perfilEstudianteController@datosNuevos')->name('datos');
 Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
+//Rutas para cargar datos por ajax al index
+Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
+Route::get('info', 'perfilEstudianteController@enviar')->name('info');
+
+
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');
@@ -109,12 +113,15 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 //Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
 
 //Formalizacion
+
 //index formalizacion
 Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
 //datos formalizacion por ajax
 Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+
 //actualizar formalizacion
 Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
+
 
 
 // borrar caché de la aplicación

@@ -148,7 +148,7 @@ Route::get('/view-clear', function() {
     return redirect('estudiante')->with('status','limpieza');
 });
 // Crear enlace simbolico
-Route::get('/storage', function () {
+Route::get('/enlace', function () {
     Artisan::call('storage:link');
     return redirect('estudiante')->with('status','Enlace Creado');
 });

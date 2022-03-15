@@ -47,6 +47,8 @@ use Response;
 use Excel;
 use App\Imports\CsvImport;
 use Illuminate\Support\Facades\Storage;
+use Artisan;
+use App\Exports\ReporteExport;
 
 
 
@@ -504,21 +506,72 @@ class perfilEstudianteController extends Controller
     public function updateEstado($id, Request $request){
        $status = "Estado actualizado correctamente!!";
         if($request->ajax())
-        {
-            $estado = perfilEstudiante::findOrFail($id);        
-            $estado->id_state = $request['id_state'];
-            $estado->save();
-            if($request['id_state'] != 1){  
-            $estado -> delete();
+        {   
+            $borrar = Withdrawals::where('id_student', $id)->get();
+            //return $borrar;
+            
+            if($request['id_state'] != 1){
+                if($borrar != null){
+                   $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+                }else{
+                    $estado = perfilEstudiante::findOrFail($id);        
+                    $estado->id_state = $request['id_state'];
+                    $estado->save();  
+                    $estado -> delete();
+                }
+            
             //eliminarPerfilEstudiante($id);
             }
-            $datos = Withdrawals::create([
+            
+            if($request['id_state'] == 1){
+                if($borrar != null){
+                    $borrar = Withdrawals::where('id_student', $id)->delete();
+                    $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
+                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+
+                    return 'true';
+                }
+                else{
+                    return 'true';
+                }    
+            }
+            if($request['id_state'] == 4){
+                if($borrar == ""){
+                    $datos = Withdrawals::create([
                 'id_student'   =>  $id,
-                'id_reasons'   =>  $request['id_reasons'],
                 'observation'  =>  $request['observation'],
-            ]);
-                        
-            return 'true';            
+                 ]);
+                return 'true';
+            }else{
+                $borrar = Withdrawals::where('id_student', $id)->delete();
+                $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }
+                 
+            }
+            if(($request['id_state'] == 2) || ($request['id_state'] == 3) ){
+                    if($borrar == ""){
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }else{
+                        $borrar = Withdrawals::where('id_student', $id)->delete();
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }                        
+            }                                 
         };
     }
 
@@ -536,7 +589,7 @@ class perfilEstudianteController extends Controller
     {   
         $name = Course::where('id',$id)->first();
         $grupos = Group::all()->where('id_cohort',$name->id_cohort);
-        
+        //$cohorte = 
         //dd($name);
 
         return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
@@ -2033,17 +2086,112 @@ class perfilEstudianteController extends Controller
             $nombre = "students.json";
             Storage::delete($nombre);
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
+            $exitCode = Artisan::call('optimize:clear');
             return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
         }
         if($verificar_nombre[0] == "attendancereport"){
             $nombre = "asistencias.json";
             Storage::delete($nombre);
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
+            $exitCode = Artisan::call('optimize:clear');
             return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
         }
         else{
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
         }   
+    }
+
+    public function indexEstudiantes(){
+
+        $perfilEstudiantes = perfilEstudiante::all();
+
+        return view('perfilEstudiante.Asistencias.Individuales.index',compact('perfilEstudiantes'));
+    }
+
+    public function ver_Asistencias($id)
+    {
+        //$verDatosPerfil = perfilEstudiante::
+        if($verDatosPerfil->photo == ""){
+            $foto = null;
+        }else{
+            $foto = explode("/",$verDatosPerfil->photo);
+            $foto = $foto[5];
+        }
+        return view('perfilEstudiante.Asistencias.Individuales.reporte',compact('id'));
+    }
+
+    public function index_Estados()
+    {
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
+        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+    }
+
+    public function edit_Estado($id, Request $request){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $data = $verDatosPerfil[0]->condition;
+        $data2 = $verDatosPerfil[0]->withdrawals;
+        if($request->ajax()){
+            return Response::json($verDatosPerfil);
+        };
+    }
+
+    public function excel_asistencias(){
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($sesiones);
+
+        $asistio = array();
+        foreach($asistencias as $key => $info){
+            //dd($info);
+            foreach($info->courses as $course){
+                foreach($course->attendance->fullsessionslog as $asistieron){
+                    //dump($asistieron->sessionid);
+                    $asistio[] = array('id_sesion'=>$asistieron->sessionid);
+                    
+                }
+            }
+
+        }
+
+        $collection;
+        foreach($sesiones as $key => $sesion){
+            $date = new Carbon();
+            $contador = 0;
+            $total=0;
+            foreach($sesion->sessions as $session){
+                //dd($session);
+                $horas = $session->duration/60;
+                $date = Carbon::now()->subMinutes($horas);
+                $date2 = new Carbon($session->sessdate);
+                //dd($date);
+                if($date >= $date2){
+                    $total = $total + $this->contar_valores($asistio,$session->id);
+                    $contador++;
+                }
+                
+            }
+            /*if($contador != 0){
+                 $prom = $total/$contador;
+            }*/
+           
+            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'promedio-asistencias'=>$total);
+        }
+
+        $export = new ReporteExport([$collection]);
+        
+        return Excel::download($export, 'invoices.xlsx');      
+    }
+
+    function contar_valores($a,$buscado){
+   
+        if(!is_array($a)) return NULL;
+        $i=0;
+        foreach($a as $v)
+        if($buscado==$v['id_sesion'])
+        $i++;
+        return $i;
     }
 }
 

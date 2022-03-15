@@ -74,8 +74,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                     </ul>
-                  </li>
-                  -->
+                  </li>-->
+                  
                   <!-- End Level three 
 
                   <li><a href="#" class="dropdown-item">level 2</a></li>
@@ -199,8 +199,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
                         <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
-        </ul>
+                        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
+              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
+            </ul>
         @else
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>

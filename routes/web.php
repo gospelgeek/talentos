@@ -59,12 +59,16 @@ Route::put('update_estado/{id}', 'perfilEstudianteController@updateEstado')->nam
 Route::get('asignaturas', 'perfilEstudianteController@indexAsignaturas')->name('asignaturas');
 Route::get('grupos/{id}', 'perfilEstudianteController@verGrupos')->name('grupos');
 Route::get('notas/{id}', 'perfilEstudianteController@vernotas')->name('notas');
-
+//Asistencias por grupos
 Route::get('asistencias', 'perfilEstudianteController@indexAsistencias')->name('asistencias');
 Route::get('Asistencias/{id}', 'perfilEstudianteController@Grupos_Asignaturas')->name('asistencias.grupos');
 Route::get('/Asistencias/{course?}/grupo/{id?}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
 Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
+//Asistencias Individuales
 
+Route::get('asistencias/estudiantes', 'perfilEstudianteController@indexEstudiantes')->name('asistencias.estudiantes');
+//Route::get('asistencias/estudiante/{id}', 'perfilEstudianteController@ver_Asistencias')->name('ver_asistencias');
+Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asistencias')->name('crear_excel_json');
 //RUTAS DE AJAX
 //ruta estado
 Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');
@@ -73,6 +77,7 @@ Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name
 Route::put('updatedatosgenerales/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('updatedatosgenerales');
 Route::put('updatedatossocioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('updatedatossocioeconomicos');
 Route::put('updatedatosacademicosprevios/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('updatedatosacademicosprevios');
+
 
 //rutas para seguimiento
 Route::post('crearseguimiento', 'perfilEstudianteController@store_seguimiento')->name('crearseguimiento');
@@ -96,9 +101,36 @@ Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usua
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
 
+// borrar caché de la aplicación
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+ // borrar caché de ruta
+ Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return redirect('estudiante')->with('status','limpieza');
+});
+
+// borrar caché de configuración
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return redirect('estudiante')->with('status','limpieza');
+}); 
+
+// borrar caché de vista
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return redirect('estudiante')->with('status','limpieza');
+});
 
 
 
+//RUTA INDEXESTADO ESTUDIANTES
+
+Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
+Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
 
 
 

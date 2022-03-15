@@ -43,10 +43,10 @@
                                                         $.each(course.attendance.fullsessionslog, function(k,attendance){
                                                                 //console.log(attendance);
                                                                 var fecha_json = new Date(attendance.timestamp * 1000);
-                                                                //console.log(fecha_json);
+                                                                
                                                                 var fecha_actual = new Date();
                                                                 if(fecha_json <= fecha_actual){
-                                                                        
+                                                                        //console.log(fecha_json);
                                                                         totalsesiones.push(attendance.sessionid);
                                                                 }
                                                                                 
@@ -94,6 +94,7 @@
                                                 let vinculo = document.createElement('a');
                                                 vinculo.className +="btn btn-sm fa fa-external-link";
                                                 vinculo.setAttribute('title', 'Enlace Campus virtual');
+                                                vinculo.setAttribute('style', 'display:none');
                                                 vinculo.innerHTML = "Campus";
                                                 vinculo.setAttribute("href", "https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id=1465667&sessionid="+value.sessions[i].id+"&grouptype=0");
                                                 vinculo.setAttribute("target", "_blank");
@@ -116,7 +117,7 @@
                                                 div.appendChild(div_2);
                                                 div_2.appendChild(a);
                                                 div_2.appendChild(vinculo);
-                                                document.getElementById("ddd").appendChild(row_2);                                                
+                                                document.getElementById("tabla").appendChild(row_2);                                                
                                         }                                          
                                 }
                                 //console.log(sesiones);

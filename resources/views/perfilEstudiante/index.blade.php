@@ -55,7 +55,7 @@
                                         <td>{{ $estudiante->document_number }}</td>
                                         <td>{{ $estudiante->student_code }}</td>
                                         <td>{{ $estudiante->email }}</td>
-                                        <td>{{ $estudiante->id_moodle }}</td>
+                                        <td>{{ $estudiante->cellphone }}</td>
                                         <td>{{ $estudiante->studentGroup->group->name}}</td>
                                         <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
                                         <td >

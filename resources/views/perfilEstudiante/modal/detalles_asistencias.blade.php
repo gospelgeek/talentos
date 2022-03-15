@@ -1,0 +1,29 @@
+<div class="modal" tabindex="-1" id="modal_asistencias">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="table-responsive">
+        <div id="carga2" class="d-flex justify-content-center">
+                        <strong>Procesando&nbsp;</strong>
+                        <div class="spinner-border spinner-border-sm" role="status">                    
+                        </div>
+              </div> 
+        <table id="example2" class="table table-bordered table-striped">
+          <caption id="mensaje" style="caption-side: top;text-align:center;"></caption>
+          <thead>
+            <td>Sesion</td>
+            <td>Asistio</td>
+          </thead>
+          <tbody id="sesiones">
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 function redireccionar(id){
     console.log($(id).attr("id"));
-    location.href=`../ver_estudiante/${$(id).attr("id")}?titulo-5`;
+    location.href=`../ver_estudiante/${$(id).attr("id")}?css=titulo-5#ti5`;
 }
 $("#example1").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,

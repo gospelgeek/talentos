@@ -636,4 +636,26 @@ $(".accordion-titulo-5").click(function(e){
         }
 });
 
+$(function() {
+    // Crear un objeto URL con la ubicación de la página
+    let url = new URL(window.location.href);
+    // Busca si existe el parámetro
+    let cancha = url.searchParams.get('css');
+    //console.log(url);
+    if(cancha) {
+        // Si se encontró, entonces ejecuta la función
+        tipoCancha(cancha);
+    }
+});
 
+function tipoCancha(deporteSel){
+    switch(deporteSel){
+        case 'titulo-5':
+            //var contenido=$(this).next(".accordion-content-5");
+            $('.accordion-content-5').slideDown(250);         
+            $('.accordion-titulo-5').addClass("open");
+            document.getElementById('carga').remove();
+            //console.log("s");
+            break;
+    }
+}

@@ -593,8 +593,8 @@
     </div>
 	@endif
 
-	<div class="accordion-container">
-		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
+	<div class="accordion-container" id="ti5">
+		<a  href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
 		<div id="contenido-5" class="accordion-content-5">
 			<script id="json" type="text" src="/json/students.json"></script>
 			<script id="asisten" type="text" src="/json/asistencias.json"></script>

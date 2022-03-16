@@ -32,9 +32,13 @@ class perfilEstudiante extends Model
         'id_birth_city',
         'sex',
         'id_gender',
+        'landline',
         'cellphone',
         'phone',
         'id_neighborhood',
+        'student_code',
+        'college',
+        'registration_date',
         'direction',
         'id_group',
         'id_cohort',
@@ -101,7 +105,7 @@ class perfilEstudiante extends Model
     */
 
     public function tutor(){
-        return $this->hasOne(Tutor::class, 'document_number', 'id_tutor');
+        return $this->hasOne(Tutor::class, 'id', 'id_tutor');
     }
 
     /**
@@ -213,5 +217,17 @@ class perfilEstudiante extends Model
     public function formalization(){
 
         return $this->hasOne(Formalization::class, 'id_student', 'id');
+    }
+    
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla StudentDevices
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<StudentDevices>
+     */
+    public function studentdevices(){
+
+        return $this->hasMany(StudentDevices::class, 'id_student', 'id');
     }
 }

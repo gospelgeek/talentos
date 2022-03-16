@@ -231,6 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
                             <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                            <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
                           </div>
                       </li>
                       <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>

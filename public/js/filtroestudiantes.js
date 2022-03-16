@@ -417,6 +417,7 @@ var url = document.getElementById('json').src;
 var asistencias = document.getElementById('asisten').src;
 
 $.getJSON(asistencias, function(asistencias){
+    var totalasistencias=0;
     $.each(asistencias, function(index,value){
       //console.log(value.userid, id_moodle)
         if(value.userid == id_moodle.dataset.id){
@@ -445,84 +446,14 @@ $.getJSON(asistencias, function(asistencias){
           tr.appendChild(td_faltas);
           tr.appendChild(td_acciones);
           document.getElementById('insertar').appendChild(tr);
+          totalasistencias = totalasistencias + parseInt(courses.attendance.takensessionssumary.numtakensessions);
         });
         }
         
     });
-    
+    document.getElementById('totalasistencias').innerHTML = totalasistencias;
 });
 
-
-function abrirmodal(id){
-  $('#sesiones').empty();
-  $.getJSON(asistencias, function(asistencias){
-    $.each(asistencias, function(index,value){
-      if(value.userid == id_moodle.dataset.id){
-        $.each(value.courses , function(i, courses){
-          if(courses.courseid == $(id).attr("id")){
-            //console.log(courses.attendance.fullsessionslog);
-            const session_id = [];
-            $.each(courses.attendance.fullsessionslog, function(key,idsession){
-              session_id.push(idsession.sessionid);
-            });
-            console.log(session_id);
-            $.getJSON(url, function(result){
-                $.each(result, function(j,cursos){
-                  if(cursos.courseid == $(id).attr("id")){
-                    $.each(cursos.sessions, function(k,session){
-                      //console.log(session);
-                      var fecha_actual = new Date();
-                      var fecha_json = new Date(session.sesstimestamp * 1000);
-                      if(fecha_json <= fecha_actual){
-                        var tr = document.createElement('tr');
-                        tr.setAttribute('class', 'asistencias');
-                        tr.setAttribute('id',session.id);
-                        var td_sesiones = document.createElement('td');
-                        td_sesiones.innerHTML = session.sessdate;
-                        var td_asistio = document.createElement('td');
-                        td_asistio.innerHTML = 'No Asistio<i style="color: red; text-align: center;" class="fa fa-times" aria-hidden="true"></i>';
-                        for(const i in session_id){
-                          if(session.id == session_id[i]){
-                            td_asistio.innerHTML = 'Asistio<i style="color: #2ECC71" text-align: center;" class="fa fa-check" aria-hidden="true"></i>';
-                          }
-                        }              
-                        tr.appendChild(td_sesiones);
-                        tr.appendChild(td_asistio);
-                        document.getElementById("sesiones").appendChild(tr);
-                      }
-                      
-                    });
-                    document.getElementById("carga2").remove();
-                $("#example2").DataTable({
-                        "processing": true,
-                        "LoadingRecords":true,
-                        "paging": true,
-                        "deferRender": true,
-                        "lengthChange": false,
-                        "searching": true,
-                        "ordering": false,
-                        "info": true,
-                        "autoWidth": false,
-                        "responsive": true,
-                        "language": {
-                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                        },
-                        "dom": 'Bfrtip',
-                        "buttons": ["copy","excel", "pdf", "print"]
-                });
-                  }
-                })
-            });
-            document.getElementById("mensaje").innerHTML = 'ASISTENCIAS POR SESION'+' '+'<br>'+courses.coursefullname;
-
-          }
-          
-        });
-      }
-    });
-  });
-  $('#modal_asistencias').modal('show');
-}
 
 $(".accordion-titulo-5").click(function(e){
         const course_id = [];
@@ -536,9 +467,11 @@ $(".accordion-titulo-5").click(function(e){
         })
         //console.log(result);
 
-
+        
         $.getJSON(url, function(sesiones){
             //console.log(sesiones);
+            var totalfaltas =0;
+            var totalsesiones=0;
             $.each(sesiones, function(index, value){
               //console.log(value.fullname)
               for (const j of result){
@@ -558,11 +491,16 @@ $(".accordion-titulo-5").click(function(e){
                   //document.getElementById(value.courseid+"sesiones").remove();
                   document.getElementById(value.courseid+"sesiones").innerHTML = contador;
                   var faltas= document.getElementById(value.courseid+"asistencias");
-                  //console.log(faltas);
+                  totalfaltas = totalfaltas + (contador -  faltas.dataset.id);
+                  totalsesiones = totalsesiones+contador;
+                  console.log(totalsesiones,value);
                   document.getElementById(value.courseid+"faltas").innerHTML = contador -  faltas.dataset.id; 
                 }
+
               }   
             });
+            document.getElementById('totalsesiones').innerHTML = totalsesiones;
+            document.getElementById('totalfaltas').innerHTML = totalfaltas;
             document.getElementById("carga").remove();
             $("#example1").DataTable({
             "orderCellsTop": true,
@@ -635,7 +573,76 @@ $(".accordion-titulo-5").click(function(e){
                     
         }
 });
+function abrirmodal(id){
+  $('#sesiones').empty();
+  $.getJSON(asistencias, function(asistencias){
+    $.each(asistencias, function(index,value){
+      if(value.userid == id_moodle.dataset.id){
+        $.each(value.courses , function(i, courses){
+          if(courses.courseid == $(id).attr("id")){
+            //console.log(courses.attendance.fullsessionslog);
+            const session_id = [];
+            $.each(courses.attendance.fullsessionslog, function(key,idsession){
+              session_id.push(idsession.sessionid);
+            });
+            console.log(session_id);
+            $.getJSON(url, function(result){
+                $.each(result, function(j,cursos){
+                  if(cursos.courseid == $(id).attr("id")){
+                    $.each(cursos.sessions, function(k,session){
+                      //console.log(session);
+                      var fecha_actual = new Date();
+                      var fecha_json = new Date(session.sesstimestamp * 1000);
+                      if(fecha_json <= fecha_actual){
+                        var tr = document.createElement('tr');
+                        tr.setAttribute('class', 'asistencias');
+                        tr.setAttribute('id',session.id);
+                        var td_sesiones = document.createElement('td');
+                        td_sesiones.innerHTML = session.sessdate;
+                        var td_asistio = document.createElement('td');
+                        td_asistio.innerHTML = 'No Asistio<i style="color: red; text-align: center;" class="fa fa-times" aria-hidden="true"></i>';
+                        for(const i in session_id){
+                          if(session.id == session_id[i]){
+                            td_asistio.innerHTML = 'Asistio<i style="color: #2ECC71" text-align: center;" class="fa fa-check" aria-hidden="true"></i>';
+                          }
+                        }              
+                        tr.appendChild(td_sesiones);
+                        tr.appendChild(td_asistio);
+                        document.getElementById("sesiones").appendChild(tr);
+                      }
+                      
+                    });
+                    document.getElementById("carga2").remove();
+                $("#example2").DataTable({
+                        "processing": true,
+                        "LoadingRecords":true,
+                        "paging": true,
+                        "deferRender": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": false,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        "language": {
+                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        "dom": 'Bfrtip',
+                        "buttons": ["copy","excel", "pdf", "print"]
+                });
+                  }
+                })
+            });
+            document.getElementById("mensaje").innerHTML = 'ASISTENCIAS POR SESION'+' '+'<br>'+courses.coursefullname;
 
+          }
+          
+        });
+      }
+    });
+  });
+  $('#modal_asistencias').modal('show');
+}
 $(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);

@@ -3,7 +3,7 @@ function redireccionar(id){
     location.href=`../ver_estudiante/${$(id).attr("id")}?css=titulo-5#ti5`;
 }
 $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "responsive": true, "lengthChange": false, "autoWidth": false,"order": [[5,'asc']],
             "language": {
                         "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },

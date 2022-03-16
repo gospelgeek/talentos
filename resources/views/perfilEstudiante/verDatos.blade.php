@@ -626,7 +626,8 @@
 					</tfoot>
 				</table>
 			</div>
-		</div>		
+		</div>
+	</div>			
 	 <div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">

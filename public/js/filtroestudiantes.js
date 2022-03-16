@@ -422,6 +422,36 @@ $(".accordion-titulo-4").click(function(e){
 
 });
 
+
+
+$(".accordion-titulo-6").click(function(e){
+           
+        e.preventDefault();
+    
+        var contenido=$(this).next(".accordion-content-6");
+ 
+
+        if(contenido.css("display")=="none"){ //open        
+          contenido.slideDown(250);         
+          $(this).addClass("open");
+          $("#contenido-1").hide();
+          $("#titulo-1").removeClass("open");
+          $("#contenido-2").hide();
+          $("#titulo-2").removeClass("open");
+          $("#contenido-3").hide();
+          $("#titulo-3").removeClass("open"); 
+          $("#contenido-4").hide();
+          $("#titulo-4").removeClass("open");  
+        }
+        else{ //close
+
+          contenido.slideUp(250);
+          $(this).removeClass("open");
+          
+            
+        }
+});
+
 var id_moodle= document.getElementById("moodle");
 var url = document.getElementById('json').src;
 var asistencias = document.getElementById('asisten').src;
@@ -464,34 +494,6 @@ $.getJSON(asistencias, function(asistencias){
     document.getElementById('totalasistencias').innerHTML = totalasistencias;
 });
 
-$(".accordion-titulo-6").click(function(e){
-           
-        e.preventDefault();
-    
-        var contenido=$(this).next(".accordion-content-6");
- 
-
-        if(contenido.css("display")=="none"){ //open        
-          contenido.slideDown(250);         
-          $(this).addClass("open");
-          $("#contenido-1").hide();
-          $("#titulo-1").removeClass("open");
-          $("#contenido-2").hide();
-          $("#titulo-2").removeClass("open");
-          $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open"); 
-          $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open");  
-        }
-        else{ //close
-
-          contenido.slideUp(250);
-          $(this).removeClass("open");
-          
-            
-        }
-});
-
 $(".accordion-titulo-5").click(function(e){
         const course_id = [];
         $('.prueba').each(function(){
@@ -530,7 +532,7 @@ $(".accordion-titulo-5").click(function(e){
                   var faltas= document.getElementById(value.courseid+"asistencias");
                   totalfaltas = totalfaltas + (contador -  faltas.dataset.id);
                   totalsesiones = totalsesiones+contador;
-                  console.log(totalsesiones,value);
+                  //console.log(totalsesiones,value);
                   document.getElementById(value.courseid+"faltas").innerHTML = contador -  faltas.dataset.id; 
                 }
 
@@ -557,6 +559,7 @@ $(".accordion-titulo-5").click(function(e){
                       {
                         extend: 'excel',
                         text: 'EXPORTAR EXCEL',
+                        footer: 'true',
                         exportOptions: {
                                         modifier: {
                                                     page: 'current',
@@ -567,6 +570,7 @@ $(".accordion-titulo-5").click(function(e){
                       {
                         extend: 'pdf',
                         text: 'EXPORTAR PDF',
+                        footer: 'true',
                         exportOptions: {
                                         modifier: {
                                                     page: 'current'
@@ -576,6 +580,7 @@ $(".accordion-titulo-5").click(function(e){
                       {
                         extend: 'print',
                         text: 'Imprimir',
+                        footer: 'true',
                         exportOptions: {
                                         modifier: {
                                                     page: 'current'
@@ -611,6 +616,7 @@ $(".accordion-titulo-5").click(function(e){
         }
 });
 function abrirmodal(id){
+
   $('#sesiones').empty();
   $.getJSON(asistencias, function(asistencias){
     $.each(asistencias, function(index,value){
@@ -622,7 +628,7 @@ function abrirmodal(id){
             $.each(courses.attendance.fullsessionslog, function(key,idsession){
               session_id.push(idsession.sessionid);
             });
-            console.log(session_id);
+            //console.log(session_id);
             $.getJSON(url, function(result){
                 $.each(result, function(j,cursos){
                   if(cursos.courseid == $(id).attr("id")){
@@ -649,24 +655,7 @@ function abrirmodal(id){
                       }
                       
                     });
-                    document.getElementById("carga2").remove();
-                $("#example2").DataTable({
-                        "processing": true,
-                        "LoadingRecords":true,
-                        "paging": true,
-                        "deferRender": true,
-                        "lengthChange": false,
-                        "searching": true,
-                        "ordering": false,
-                        "info": true,
-                        "autoWidth": false,
-                        "responsive": true,
-                        "language": {
-                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                        },
-                        "dom": 'Bfrtip',
-                        "buttons": ["copy","excel", "pdf", "print"]
-                });
+                    /*document.getElementById("carga2").remove();*/
                   }
                 })
             });
@@ -677,10 +666,11 @@ function abrirmodal(id){
         });
       }
     });
+
   });
   $('#modal_asistencias').modal('show');
 }
-$(function() {
+/*$(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);
     // Busca si existe el parámetro
@@ -702,4 +692,4 @@ function tipoCancha(deporteSel){
             //console.log("s");
             break;
     }
-}
+}*/

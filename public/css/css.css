@@ -102,6 +102,17 @@ img.avatar {
 	text-decoration: none;
 }
 
+.accordion-titulo-6 {
+	position: relative;
+	display: block;
+	padding: 20px;
+	font-size: 24px;
+	font-weight: 300;
+	background: #2c3e50;
+	color: #fff;
+	text-decoration: none;
+}
+
 .accordion-titulo.open {
 	background: #16a085;
 	color: #fff;
@@ -164,6 +175,11 @@ img.avatar {
 	background: #16a085;
 	color: #fff;
 }
+  
+.accordion-titulo-6.open {
+	background: #16a085;
+	color: #fff;
+}
 
 .accordion-titulo-3:hover {
 	background: #1abc9c;
@@ -176,6 +192,9 @@ img.avatar {
 .accordion-titulo-5:hover {
 	background: #1abc9c;
 }
+.accordion-titulo-6:hover {
+	background: #1abc9c;
+}
 
 .accordion-titulo-3 span.toggle-icon:before {
 	content:"+";
@@ -185,7 +204,11 @@ img.avatar {
 	content:"+";
 }
 
+
 .accordion-titulo-5 span.toggle-icon:before {
+	content:"+";
+}
+.accordion-titulo-6 span.toggle-icon:before {
 	content:"+";
 }
 
@@ -197,7 +220,11 @@ img.avatar {
 	content:"-";
 }
 
+
 .accordion-titulo-5.open span.toggle-icon:before {
+	content:"-";
+}
+.accordion-titulo-6.open span.toggle-icon:before {
 	content:"-";
 }
 
@@ -217,7 +244,15 @@ img.avatar {
 	font-weight:bold;
 }
 
+
 .accordion-titulo-5 span.toggle-icon {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 38px;
+	font-weight:bold;
+}
+.accordion-titulo-6 span.toggle-icon {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -242,6 +277,11 @@ img.avatar {
 }
 
 .accordion-content-4 {
+	display: none;
+	padding: 20px;
+	overflow: auto;
+}
+.accordion-content-6 {
 	display: none;
 	padding: 20px;
 	overflow: auto;
@@ -271,3 +311,11 @@ img.avatar {
 		padding: 10px 0;
 	}
 }
+
+.dropdown-menu {
+  margin-top: 0;
+}
+
+ 
+
+ 

@@ -43,8 +43,9 @@ class perfilEstudiante extends Model
     ];
 
     protected $dates = ['delete_at'];
-   
+
     //RELACIONES UNO A UNO POR DEBAJO
+
     /**
      * Relacion con los  datos que se tiene de student_profile  
      * con la tabla DocumentType
@@ -200,5 +201,17 @@ class perfilEstudiante extends Model
     public function socioeducationalfollowup(){
 
         return $this->hasOne(SocioEducationalFollowUp::class, 'id_student', 'id');
+    }
+
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla Formalization
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<Formalization>
+     */
+    public function formalization(){
+
+        return $this->hasOne(Formalization::class, 'id_student', 'id');
     }
 }

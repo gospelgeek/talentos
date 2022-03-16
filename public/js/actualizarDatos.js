@@ -408,3 +408,39 @@ $('.boton_cancelar').click(function(e) {
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
 
+//Guardar formalizacion
+$('.boton_update_formalizacion').click(function(e) { 
+  e.preventDefault();   
+  var idDatos = $('#idfLz').val();
+  
+  $.ajax({
+  //ruta manual
+    url:'/updateformalizacion/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'acceptance_v1': $("#acceptancev1").val(),
+      'acceptance_v2': $("#acceptancev2").val(),
+      'tablets_v1': $("#tabletsv1").val(),
+      'tablets_v2': $("#tabletsv2").val(),
+      
+    },
+    success:function(result) {
+      $('#contenido-1').modal('hide');
+      //window.location.reload(); 
+      toastr.info(result);
+      setTimeout("location.reload()", 2000);
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+

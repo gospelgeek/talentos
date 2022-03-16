@@ -152,7 +152,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->birthcity->birthdepartament ? $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
+								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->id_birth_department ?  $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
 							</div>
 						</div>                	
             		</div>
@@ -364,7 +364,7 @@
 					<div class="col-xs-4 col-md-2">
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
-								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
+								<input readonly class="form-control" type="text" name="id_ocupation" id="id_ocupation" value="{{ old('id_ocupation', $verDatosPerfil->socioeconomicdata->id_ocupation ? $verDatosPerfil->socioeconomicdata->occupation->name : null) }}">
 							</div>
 						</div>	
             		</div>
@@ -627,9 +627,46 @@
 				</table>
 			</div>
 		</div>		
+	 <div class="accordion-container">
+		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
+		<div id="contenido-6" class="accordion-content-6">
+			<div class="form-group">
+    			<div class="row">			
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
+            		</div>
+					<div class="col-xs-6 col-md-3">
+						<input readonly class="form-control" type="text" name="acceptance_v1" id="acceptance_v1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v1 : null }}">
+						<a href="{{$verDatosPerfil->formalization->acceptance_v1}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+					</div>
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="acceptance_v2">URL aceptacion V2</label></p>
+            		</div>
+					<div class="col-xs-3 col-md-3">
+						<input  readonly class="form-control" type="text" name="acceptance_v2" id="acceptance_v2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
+						<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+					</div>
+				</div>
+				<div class="row">			
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
+            		</div>
+					<div class="col-xs-6 col-md-3">
+						<input readonly class="form-control" type="text" name="tablets_v1" id="tablets_v1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v1 : null }}">
+						<a href="{{$verDatosPerfil->formalization->tablets_v1}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+					</div>
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
+            		</div>
+					<div class="col-xs-3 col-md-3">
+						<input  readonly class="form-control" type="text" name="tablets_v2" id="tablets_v2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+						<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
-	
 </div>
 
 @include('perfilEstudiante.modal.editestado')

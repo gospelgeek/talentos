@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,8 @@ Route::post('logout',  'Auth\LoginController@logout')->name('logout');
 Route::get('logout',   'Auth\LoginController@logout');
 
 
+
+
 //Rutas de CRUD estudiantes
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
@@ -49,7 +52,10 @@ Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerf
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
-/*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
+
+Route::get('estudiantes_mayoria_edad', 'perfilEstudianteController@indexMenores')->name('estudiantes_mayoria_edad');
+Route::get('menores', 'perfilEstudianteController@mostrarMenores')->name('datos.estudiantes.menores');
+
 
 Route::get('ver_datos_academicos/{id}', 'perfilEstudianteController@verDatosAcademicos')->name('ver_datos_academicos');
 Route::get('editar_datos_academicos/{id}', 'perfilEstudianteController@editarDatosAcademicos')->name('editar_datos_academicos');
@@ -90,6 +96,11 @@ Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
 Route::get('datos/{id}', 'perfilEstudianteController@datosNuevos')->name('datos');
 Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
+//Rutas para cargar datos por ajax al index
+Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
+Route::get('info', 'perfilEstudianteController@enviar')->name('info');
+
+
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');
@@ -100,6 +111,21 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
+//Exportar pdf sabana
+Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_export');
+
+//Rutas filtros
+//Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
+
+//Formalizacion
+
+//index formalizacion
+Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
+//datos formalizacion por ajax
+Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+
+//Actualiar formalizacion
+Route::put('updateformalizacion/{id}', 'FormalizacionController@formalizacionupdate')->name('updateformalizacion');
 
 // borrar caché de la aplicación
 Route::get('/clear-cache', function() {
@@ -125,6 +151,15 @@ Route::get('/view-clear', function() {
     return redirect('estudiante')->with('status','limpieza');
 });
 
+// Crear enlace simbolico
+Route::get('/storage', function () {
+    Artisan::call('storage:link');
+    return redirect('estudiante')->with('status','Enlace Creado');
+});
+//Socioeducativo
+Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
+Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
 
 //RUTA INDEXESTADO ESTUDIANTES

@@ -4,6 +4,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,14 +27,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {!!Html::style('/toastr/toastr.min.css')!!}
   @stack('css')
 </head>
+
 <body class="hold-transition layout-top-nav">
+
 <div class="wrapper">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="{{route('estudiante')}}" class="navbar-brand">
-      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" style="">
+      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" >
         <span class="brand-text font-weight-light">PNA</span>
       </a>
 
@@ -48,6 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
           </li>
           <!--
+
           <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
@@ -59,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               <li class="dropdown-divider"></li>-->
 
-              <!-- Level two dropdown
+            <!-- Level two dropdown
               <li class="dropdown-submenu dropdown-hover">
                 <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
                 <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
@@ -67,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
                   </li>
                   -->
-                  <!-- Level three dropdown
+            <!-- Level three dropdown
                   <li class="dropdown-submenu">
                     <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
                     <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
@@ -75,9 +79,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                     </ul>
                   </li>-->
-                  
+     
                   <!-- End Level three 
-
+                  
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                 </ul>
@@ -87,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
         </ul>
         -->
-        <!-- SEARCH FORM 
+            <!-- SEARCH FORM 
         <form class="form-inline ml-0 ml-md-3">
           <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -98,11 +102,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </div>
         </form>-->
-      </div>
+        </div>
 
-      <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <!-- Messages Dropdown Menu 
+        <!-- Right navbar links -->
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+          <!-- Messages Dropdown Menu 
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fas fa-comments"></i>
@@ -110,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">-->
-              <!-- Message Start 
+          <!-- Message Start 
               <div class="media">
                 <img src="dashboard/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
@@ -122,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                 </div>
               </div>-->
-              <!-- Message End 
+          <!-- Message End 
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
@@ -145,7 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
             -->
-              <!-- Message Start
+          <!-- Message Start
               <div class="media">
                 <img src="dashboard/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
@@ -158,13 +162,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
               </div>
                -->
-              <!-- Message End 
+          <!-- Message End 
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>-->
-        <!-- Notifications Dropdown Menu
+          <!-- Notifications Dropdown Menu
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
@@ -194,10 +198,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         </li>
         -->
+
+         @if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 4)
+
+          <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ESTUDIANTES
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+              </div>
+          </li>
+        @endif
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Estudiantes 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                          </div>
+                      </li>
+                      <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
@@ -219,21 +249,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item">
           <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
         </li>
-      </ul>
-    </div>
-  </nav>
-  <!-- /.navbar -->
+      </div>
+    </nav>
+    <!-- /.navbar -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>@yield('titulo_secundario')</h1>
-          </div><!-- /.col -->
-          <!--
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>@yield('titulo_secundario')</h1>
+            </div><!-- /.col -->
+            <!--
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -241,84 +270,111 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="breadcrumb-item active">Top Navigation</li>
             </ol>
           </div>-->
-          <!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+            <!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        @yield('content')
-        
-        
-      </div><!-- /.container-fluid -->
-    </section>
-    
-    <!-- /.content -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          @yield('content')
+
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+      <!-- To the right -->
+      <div class="float-right d-none d-sm-inline">
+
+      </div>
+      <!-- Default to the left -->
+      <strong><a href=""></a></strong>
+    </footer>
   </div>
-  <!-- /.content-wrapper -->
+  <!-- ./wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+  <!-- REQUIRED SCRIPTS -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      
-    </div>
-    <!-- Default to the left -->
-    <strong><a href=""></a></strong>
-  </footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-{!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!}
-<!-- Bootstrap 4 -->
-{!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js')!!}
-<!-- AdminLTE App -->
-{!!Html::script('/dashboard/dist/js/adminlte.min.js')!!}
-<!-- AdminLTE for demo purposes
+  <!-- jQuery -->
+  {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!}
+  <!-- Bootstrap 4 -->
+  {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js')!!}
+  <!-- AdminLTE App -->
+  {!!Html::script('/dashboard/dist/js/adminlte.min.js')!!}
+  <!-- AdminLTE for demo purposes
 {!!Html::script('/dashboard/dist/js/demo.js')!!}
  -->
-{!!Html::script('/toastr/toastr.min.js')!!}
+  {!!Html::script('/toastr/toastr.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')!!}
 
-{!!Html::script('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')!!}
+  {!!Html::script('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')!!}
 
-{!!Html::script('dashboard/plugins/datatables-buttons/js/dataTables.buttons.min.js')!!}
+  {!!Html::script('dashboard/plugins/datatables-buttons/js/dataTables.buttons.min.js')!!}
 
-{!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')!!}
+  {!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')!!}
 
-{!!Html::script('dashboard/plugins/jszip/jszip.min.js')!!}
+  {!!Html::script('dashboard/plugins/jszip/jszip.min.js')!!}
 
-{!!Html::script('dashboard/plugins/pdfmake/pdfmake.min.js')!!}
+  {!!Html::script('dashboard/plugins/pdfmake/pdfmake.min.js')!!}
 
-{!!Html::script('dashboard/plugins/pdfmake/vfs_fonts.js')!!}
+  {!!Html::script('dashboard/plugins/pdfmake/vfs_fonts.js')!!}
 
-{!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.html5.min.js')!!}
+  {!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.html5.min.js')!!}
 
-{!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.print.min.js')!!}
+  {!!Html::script('dashboard/plugins/datatables-buttons/js/buttons.print.min.js')!!}
 
-{!!Html::script('/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js')!!}
+  {!!Html::script('/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js')!!}
+  <script type="text/javascript">
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
 
-@stack('scripts')
+    $(window).on("load resize", function() {
+      if (this.matchMedia("(min-width: 768px)").matches) {
+        $dropdown.hover(
+          function() {
+            const $this = $(this);
+            $this.addClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "true");
+            $this.find($dropdownMenu).addClass(showClass);
+          },
+          function() {
+            const $this = $(this);
+            $this.removeClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "false");
+            $this.find($dropdownMenu).removeClass(showClass);
+          }
+        );
+      } else {
+        $dropdown.off("mouseenter mouseleave");
+      }
+    });
+  </script>
+  @stack('scripts')
 </body>
+
 </html>

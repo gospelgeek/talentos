@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use App\Exports\SabanaExport;
 use App\perfilEstudiante;
 use App\SocioeconomicData;
 use App\PreviousAcademicData;
@@ -27,6 +29,7 @@ use App\SocialConditions;
 use App\Disability;
 use App\Ethnicity;
 use App\Neighborhood;
+use App\Formalization;
 use App\InstitutionType;
 use App\Course;
 use App\Group;
@@ -52,6 +55,7 @@ use App\Exports\ReporteExport;
 
 
 
+
 class perfilEstudianteController extends Controller
 
 {
@@ -62,7 +66,69 @@ class perfilEstudianteController extends Controller
         $this->middleware('socioeducativo');
     }
 
-    public function indexPerfilEstudiante(){
+
+    
+    public function mostrar()
+    {
+
+        $user = auth()->user();
+        if ($user['rol_id'] == 6) {
+            $iden = $user['id'];
+
+            $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio,
+            (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as genero,
+            (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as tutor,
+            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado,
+            (SELECT civil_statuses.name FROM civil_statuses WHERE socioeconomic_data.id_civil_status = civil_statuses.id) as nombreEstadocivil,
+            (SELECT ethnicities.name FROM ethnicities WHERE socioeconomic_data.id_ethnicity = ethnicities.id) as nombreEtnia,
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
+            AND student_groups.id_group = groups.id AND student_profile.id IN (SELECT assignment_students.id_student FROM assignment_students WHERE assignment_students.id_user = ?)
+        ", [$iden]);
+
+            return datatables()->of($perfilEstudiantes)->toJson();
+        }
+
+
+
+
+        $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+
+            (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio,
+            (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as genero,
+            (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as tutor,
+            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado,
+            (SELECT civil_statuses.name FROM civil_statuses WHERE socioeconomic_data.id_civil_status = civil_statuses.id) as nombreEstadocivil,
+            (SELECT ethnicities.name FROM ethnicities WHERE socioeconomic_data.id_ethnicity = ethnicities.id) as nombreEtnia,
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
+            AND student_groups.id_group = groups.id
+        ");
+        return datatables()->of($perfilEstudiantes)->toJson();
+    }
+
+
+    public function indexPerfilEstudiante()
+    {
         $user = auth()->user();
         /*if($user['rol_id'] == 6){
             $iden = $user['id'];
@@ -72,26 +138,68 @@ class perfilEstudianteController extends Controller
             $perfilEstudiantes = perfilEstudiante::all();
             return view('perfilEstudiante.index',compact('perfilEstudiantes'));
         }*/
+
+
+        //return datatables()->of($perfilEstudiantes)->toJson();
+
+
+        return view('perfilEstudiante.index');
+    }
+
+    public function mostrarMenores()
+    {
+
+        $mayoriaedad = DB::select("select student_profile.id, student_profile.*, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio
+            FROM student_profile, socioeconomic_data, student_groups, groups
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            
+            AND student_groups.id_student = student_profile.id 
+            AND student_groups.id_group = groups.id
+            AND student_profile.id_document_type = 2
+            AND YEAR(birth_date) = 2004
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
+            AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
+        ");
+
+        return datatables()->of($mayoriaedad)->toJson();
+    }
+
+    public function indexMenores()
+    {
+        return view('perfilEstudiante.indexMenores');
         $perfilEstudiantes = perfilEstudiante::all();
         //dd($perfilEstudiantes);
-        return view('perfilEstudiante.index',compact('perfilEstudiantes'));
+        return view('perfilEstudiante.index', compact('perfilEstudiantes'));
     }
 
 
-    public function crearPerfilEstudiante(){
-        $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Fenemino',
-                            'M' => 'Masculino' );
-        $tipo_documento = array('1' => 'Cedula de Ciudadania',
-                                '2' => 'Tarjeta de Identidad',
-                                '3' => 'Cedula Extranjera' );
+    public function crearPerfilEstudiante()
+    {
+        $genero = Gender::pluck('name', 'id');
+        $sexo = array(
+            'F' => 'Fenemino',
+            'M' => 'Masculino'
+        );
+        $tipo_documento = array(
+            '1' => 'Cedula de Ciudadania',
+            '2' => 'Tarjeta de Identidad',
+            '3' => 'Cedula Extranjera'
+        );
 
-        $depNacimiento = BirthDepartament::pluck('name','id');
-        $muni_nacimiento = BirthCity::pluck('name','id');
-        return view("perfilEstudiante.create",compact('genero','sexo','tipo_documento','depNacimiento','muni_nacimiento'), ['editarEstudiante' => new perfilEstudiante()]);
+        $depNacimiento = BirthDepartament::pluck('name', 'id');
+        $muni_nacimiento = BirthCity::pluck('name', 'id');
+        return view("perfilEstudiante.create", compact('genero', 'sexo', 'tipo_documento', 'depNacimiento', 'muni_nacimiento'), ['editarEstudiante' => new perfilEstudiante()]);
     }
 
-    public function storePerfilEstudiante(perfilEstudianteRequest $request){
+    public function storePerfilEstudiante(perfilEstudianteRequest $request)
+    {
 
         $idPerfilEstudiantes = perfilEstudiante::create([
             'name'                      =>  $request['nombres'],
@@ -114,21 +222,23 @@ class perfilEstudianteController extends Controller
         $id = auth()->user();
         $fecha = Carbon::now();
         $fecha = $fecha->format('d-m-Y h:i:s A');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
+        //dd($fecha);
+        $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'rol'                      => $id['rol_id'],   
+            'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
             'actividad_realizada'      => 'SE CREO UN REGISTRO',
-            ]); 
-        
-         return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
-         
-      }
+        ]);
 
-    public function verPerfilEstudiante($id){
-        $user = auth()->user();
+        return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
+    }
+
+    public function verPerfilEstudiante($id)
+    {
+
+        //return $id;
+        /* $user = auth()->user();
         /*if($user['rol_id'] == 6){
             $idUser = $user['id'];
             $dt = AssignmentStudent::where('id_student', $id)->where('id_user', $idUser)->exists();
@@ -146,15 +256,19 @@ class perfilEstudianteController extends Controller
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
-          
-        $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Femenino',
-                      'M' => 'Masculino' );
 
-        $tipo_documento = array('1' => 'Cedula de Ciudadania',
-                                '2' => 'Tarjeta de Identidad',
-                                '3' => 'Cedula Extranjera' );
-        $documento = DocumentType::pluck('name','id');
+        $genero = Gender::pluck('name', 'id');
+        $sexo = array(
+            'F' => 'Femenino',
+            'M' => 'Masculino'
+        );
+
+        $tipo_documento = array(
+            '1' => 'Cedula de Ciudadania',
+            '2' => 'Tarjeta de Identidad',
+            '3' => 'Cedula Extranjera'
+        );
+        $documento = DocumentType::pluck('name', 'id');
 
         $estado = Condition::pluck('name', 'id');
 
@@ -179,7 +293,7 @@ class perfilEstudianteController extends Controller
         $condicion = SocialConditions::pluck('name', 'id');
 
         $discapacidad = Disability::pluck('name', 'id');
-        
+
         $etnia = Ethnicity::pluck('name', 'id');
 
         $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
@@ -190,9 +304,9 @@ class perfilEstudianteController extends Controller
 
         $cohorte = Cohort::pluck('name', 'id');
 
-        
 
-        
+
+
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -201,33 +315,32 @@ class perfilEstudianteController extends Controller
 
         $estado = Condition::pluck('name', 'id');
         $motivos = Reasons::pluck('name', 'id');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
+        //dd($fecha);
+        $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'rol'                      => $id['rol_id'],   
+            'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $verDatosPerfil['id'],
             'actividad_realizada'      => 'ANALISIS DE REGISTRO',
-            ]);
+        ]);
 
 
 
-         if($verDatosPerfil->photo == ""){
+        if ($verDatosPerfil->photo == "") {
             $foto = null;
-        }else{
-            $foto = explode("/",$verDatosPerfil->photo);
+        } else {
+            $foto = explode("/", $verDatosPerfil->photo);
             $foto = $foto[5];
+        }
 
-        }    
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));
+    }
 
-        return view('perfilEstudiante.verDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos'));   
 
-        }  
-      
 
-    
-  
-    public function verDatosSocieconomicos($id) {
+
+    public function verDatosSocieconomicos($id)
+    {
         //dd($id_student);
         //$datos = SocioeconomicData::all()->where('id_student', $id_student); 
         $datos = perfilEstudiante::findOrFail($id);
@@ -236,10 +349,11 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.datosSocioeconomicos', compact('datos'));
     }
 
- 
 
-    public function updateDatosSocioeconomicos($id, Request $request) {
-       // dd($id);
+
+    public function updateDatosSocioeconomicos($id, Request $request)
+    {
+        // dd($id);
         $data = SocioeconomicData::findOrFail($id);
         //dd($data);
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
@@ -247,7 +361,7 @@ class perfilEstudianteController extends Controller
         if ($request->ajax()) {
 
             $data->id_ocupation            = $request['id_ocupation'];
-            $data->id_civil_status         = $request['id_civil_status'];  
+            $data->id_civil_status         = $request['id_civil_status'];
             $data->children_number         = $request['children_number'];
             $data->id_residence_time       = $request['id_residence_time'];
             $data->id_housing_type         = $request['id_housing_type'];
@@ -263,23 +377,23 @@ class perfilEstudianteController extends Controller
             $data->id_social_conditions    = $request['id_social_conditions'];
             $data->id_disability           = $request['id_disability'];
             $data->id_ethnicity            = $request['id_ethnicity'];
-            
-            $data->save();
-            
-        };
-        
-         return $mensaje;
 
+            $data->save();
+        };
+
+        return $mensaje;
     }
 
-    public function verDatosAcademicos($id){
+    public function verDatosAcademicos($id)
+    {
         $datos = perfilEstudiante::findOrFail($id);
 
         return view('perfilEstudiante.verdatosAcademicos', compact('datos'));
     }
 
 
-    public function updateDatosAcademicos($id, Request $request) {
+    public function updateDatosAcademicos($id, Request $request)
+    {
         $acade = PreviousAcademicData::findOrFail($id);
         //dd($acade);
 
@@ -287,21 +401,21 @@ class perfilEstudianteController extends Controller
 
         if ($request->ajax()) {
 
-            $acade->institution_name    = $request['institution_name'];   
+            $acade->institution_name    = $request['institution_name'];
             $acade->year_graduation     = $request['year_graduation'];
             $acade->bachelor_title      = $request['bachelor_title'];
             $acade->icfes_date          = $request['icfes_date'];
             $acade->snp_register        = $request['snp_register'];
             $acade->icfes_score         = $request['icfes_score'];
-            
+
             $acade->save();
-            
         };
-        
-         return $mensaje;  
+
+        return $mensaje;
     }
 
-    public function editarPerfilEstudiante($id){
+    public function editarPerfilEstudiante($id)
+    {
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
@@ -310,22 +424,26 @@ class perfilEstudianteController extends Controller
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
         //return $grupos;
 
-        
-        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
-
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
 
-          
-        $genero = Gender::pluck('name','id');
-        $sexo = array('F' => 'Femenino',
-                      'M' => 'Masculino' );
 
-        
-        $tipo_documento = array('1' => 'Cedula de Ciudadania',
-                                '2' => 'Tarjeta de Identidad',
-                                '3' => 'Cedula Extranjera' );
-        $documento = DocumentType::pluck('name','id');
+        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
+
+
+        $genero = Gender::pluck('name', 'id');
+        $sexo = array(
+            'F' => 'Femenino',
+            'M' => 'Masculino'
+        );
+
+
+        $tipo_documento = array(
+            '1' => 'Cedula de Ciudadania',
+            '2' => 'Tarjeta de Identidad',
+            '3' => 'Cedula Extranjera'
+        );
+        $documento = DocumentType::pluck('name', 'id');
 
         $estado = Condition::pluck('name', 'id');
 
@@ -350,7 +468,7 @@ class perfilEstudianteController extends Controller
         $condicion = SocialConditions::pluck('name', 'id');
 
         $discapacidad = Disability::pluck('name', 'id');
-        
+
         $etnia = Ethnicity::pluck('name', 'id');
 
         $edad = Carbon::parse($verDatosPerfil->birth_date)->age;
@@ -363,40 +481,40 @@ class perfilEstudianteController extends Controller
         $cohorte = Cohort::pluck('name', 'id');
 
 
-        if($verDatosPerfil->photo == ""){
+        if ($verDatosPerfil->photo == "") {
             $foto = null;
-        }else{
-            $foto = explode("/",$verDatosPerfil->photo);
+        } else {
+            $foto = explode("/", $verDatosPerfil->photo);
             $foto = $foto[5];
-        } 
-      
-        $depNacimiento = BirthDepartament::pluck('name','id');
+        }
 
-        $muni_nacimiento = BirthCity::pluck('name','id');
+        $depNacimiento = BirthDepartament::pluck('name', 'id');
+
+        $muni_nacimiento = BirthCity::pluck('name', 'id');
 
         $ciudad = BirthCity::pluck('name', 'id');
 
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos','foto','estado','verDatosPerfil','genero','sexo','tipo_documento','documento','edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
-
+        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos'));
     }
 
-    
 
-    public function updatePerfilEstudiante($id, Request $request) {
+
+    public function updatePerfilEstudiante($id, Request $request)
+    {
 
         $data = perfilEstudiante::findOrFail($id);
-        
+
         $mensaje = "Datos generales actualizados correctamente!!";
 
-        $depNacimiento = BirthDepartament::pluck('name','id');
-        $muni_nacimiento = BirthCity::pluck('name','id');
-        
+        $depNacimiento = BirthDepartament::pluck('name', 'id');
+        $muni_nacimiento = BirthCity::pluck('name', 'id');
+
 
         if ($request->ajax()) {
 
             $data->name                     = $request['name'];
-            $data->lastname                 = $request['lastname'];   
+            $data->lastname                 = $request['lastname'];
             $data->id_document_type         = $request['id_document_type'];
             $data->document_number          = $request['document_number'];
             $data->document_expedition_date = $request['document_expedition_date'];
@@ -410,66 +528,65 @@ class perfilEstudianteController extends Controller
             $data->id_neighborhood          = $request['id_neighborhood'];
             $data->direction                = $request['direction'];
             $data->student_code             = $request['student_code'];
-            
+
             $data->save();
-            
         };
-        
-         return $mensaje;
+
+        return $mensaje;
     }
 
-    public function eliminarPerfilEstudiante(Request $request, $id){
+    public function eliminarPerfilEstudiante(Request $request, $id)
+    {
 
-       $data = perfilEstudiante::findOrFail($id);
+        $data = perfilEstudiante::findOrFail($id);
 
-       $ip = User::getRealIP();
-       $id = auth()->user();
-       $fecha = Carbon::now();
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
         $fecha = $fecha->format('d-m-Y h:i:s A');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
+        //dd($fecha);
+        $datos = LogsCrudActions::create([
             'identificacion'           => $id['cedula'],
-            'rol'                      => $id['rol_id'],   
+            'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
             'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
-            ]); 
+        ]);
 
-            $data -> delete();
+        $data->delete();
 
         return redirect('estudiante')->with('status', 'Perfil eliminado exitosamente!');
-
     }
 
-     public function eliminarPerfilEstudianteSystem(Request $request, $id){
+    public function eliminarPerfilEstudianteSystem(Request $request, $id)
+    {
 
-       $data = perfilEstudiante::findOrFail($id);
+        $data = perfilEstudiante::findOrFail($id);
 
-       $ip = User::getRealIP();
-       $id = auth()->user();
-       $fecha = Carbon::now();
+        $ip = User::getRealIP();
+        $id = auth()->user();
+        $fecha = Carbon::now();
         $fecha = $fecha->format('d-m-Y h:i:s A');
-       //dd($fecha);
-            $datos = LogsCrudActions::create([
+        //dd($fecha);
+        $datos = LogsCrudActions::create([
             'identificacion'           => Auth::user()->identificacion,
-            'rol'                      => Auth::user()->rol_id,   
+            'rol'                      => Auth::user()->rol_id,
             'ip'                       => $ip,
             'id_usuario_accion'        => $id,
             'actividad_realizada'      => 'SE ELIMINO UN REGISTRO',
-            ]); 
+        ]);
 
-            $data -> delete();
+        $data->delete();
     }
 
 
     public function municipios(Request $request, $id)
     {
-        $municipios = BirthCity::where('id_departament',$id)->get();
+        $municipios = BirthCity::where('id_departament', $id)->get();
         //dd($municipios);
-        if($request->ajax())
-        {
-         
-          return response()->json($municipios);
+        if ($request->ajax()) {
+
+            return response()->json($municipios);
         }
     }
 
@@ -479,31 +596,31 @@ class perfilEstudianteController extends Controller
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.asignaturas.index',compact('asignaturas'));
+        return view('perfilEstudiante.asignaturas.index', compact('asignaturas'));
     }
 
     public function verGrupos($id)
-    {   
-        $name = Course::where('id',$id)->first();
-        $grupos = Group::all()->where('id_cohort',$name->id_cohort);
-        
+    {
+        $name = Course::where('id', $id)->first();
+        $grupos = Group::all()->where('id_cohort', $name->id_cohort);
+
         //dd($name);
 
-        return view('perfilEstudiante.asignaturas.grupos',compact('grupos','name'));
+        return view('perfilEstudiante.asignaturas.grupos', compact('grupos', 'name'));
     }
 
     public function vernotas($id)
-    {   
-        $grupo = Group::where('id',$id)->first();
+    {
+        $grupo = Group::where('id', $id)->first();
 
         $notas = StudentGroup::all()->where('id_group', $id);
-        
+
         //dd($grupo);
 
-        return view('perfilEstudiante.asignaturas.notas',compact('notas','id','grupo'));
+        return view('perfilEstudiante.asignaturas.notas', compact('notas', 'id', 'grupo'));
     }
 
-    public function updateEstado($id, Request $request){
+public function updateEstado($id, Request $request){
        $status = "Estado actualizado correctamente!!";
         if($request->ajax())
         {   
@@ -576,13 +693,14 @@ class perfilEstudianteController extends Controller
     }
 
 
-    public function indexAsistencias() {
+    public function indexAsistencias()
+    {
 
         $asignaturas = Course::All();
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.Asistencias.index',compact('asignaturas'));
+        return view('perfilEstudiante.Asistencias.index', compact('asignaturas'));
     }
 
     public function Grupos_Asignaturas($id)
@@ -595,130 +713,183 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.Asistencias.grupos',compact('grupos','name'));
     }
 
-    public function Asistencias_grupo($course,$id,$id_session)
-    {   
-        $grupo = Group::where('id',$id)->first();
-        $name = Course::where('id',$course)->first();
+    public function Asistencias_grupo($course, $id, $id_session)
+    {
+        $grupo = Group::where('id', $id)->first();
+        $name = Course::where('id', $course)->first();
         $notas = StudentGroup::all()->where('id_group', $id);
-        
+
         //dd($grupo);
 
-        return view('perfilEstudiante.Asistencias.notas',compact('notas','grupo','name','id_session'));
+        return view('perfilEstudiante.Asistencias.notas', compact('notas', 'grupo', 'name', 'id_session'));
     }
 
-    public function sesiones($course,$id){
-        
-        $grupo=Group::where('id',$id)->first();
-        $name = Course::where('id',$course)->first();
+    public function sesiones($course, $id)
+    {
+
+        $grupo = Group::where('id', $id)->first();
+        $name = Course::where('id', $course)->first();
         $notas = StudentGroup::where('id_group', $id)->get('id_student');
         $id_moole = array();
         $contador = 0;
-        foreach ($notas as $student){
-   
-            $moodle = perfilEstudiante::where('id', $student['id_student'])->get('id_moodle'); 
+        foreach ($notas as $student) {
 
-            foreach ($moodle as $id){
+            $moodle = perfilEstudiante::where('id', $student['id_student'])->get('id_moodle');
+
+            foreach ($moodle as $id) {
                 $id_moole[$contador] = $id->id_moodle;
             }
             $contador++;
-            
         }
 
-        return view('perfilEstudiante.Asistencias.sesiones',compact('grupo','name','id_moole'));
+        return view('perfilEstudiante.Asistencias.sesiones', compact('grupo', 'name', 'id_moole'));
     }
-    public function store_seguimiento(Request $request) {
+    public function store_seguimiento(Request $request)
+    {
 
         $mensaje = 'Seguimiento creado correctamente';
         $error = 'no puede crear';
-        $id = auth()->user();    
+        $id = auth()->user();
 
-        if($request->ajax()){
+        if ($request->ajax()) {
 
-            $arreglo = ['fecha' => ($request['date']), 'Lugar' => ($request['lugarsegui']), 'HoraInicio' => ($request['iniciohora']), 'HoraFin' => ($request['finhora']),'Objetivos' => ($request['textareaobjetivos']), 'Individual' => ($request['texareaindividual']), 'RiesgoIndividual' => ($request['checkindiV']), 'Academico' => ($request['textareaacademico']), 'RiesgoAcademico' => ($request['checkacadE']), 'Familiar' => ($request['textareafamil']), 'RiesgoFamiliar' => $request['checkfamiL'], 'Economico' => ($request['textareaecono']), 'RiesgoEconomico' => ($request['checkeconoM']), 'VidaUniversitariaYciudad' => ($request['textareavidauni']), 'RiesgoUc' => ($request['checkuniC']), 'Observaciones' => ($request['textareobservaciones'])];
+            $arreglo = ['fecha' => ($request['date']), 'Lugar' => ($request['lugarsegui']), 'HoraInicio' => ($request['iniciohora']), 'HoraFin' => ($request['finhora']), 'Objetivos' => ($request['textareaobjetivos']), 'Individual' => ($request['texareaindividual']), 'RiesgoIndividual' => ($request['checkindiV']), 'Academico' => ($request['textareaacademico']), 'RiesgoAcademico' => ($request['checkacadE']), 'Familiar' => ($request['textareafamil']), 'RiesgoFamiliar' => $request['checkfamiL'], 'Economico' => ($request['textareaecono']), 'RiesgoEconomico' => ($request['checkeconoM']), 'VidaUniversitariaYciudad' => ($request['textareavidauni']), 'RiesgoUc' => ($request['checkuniC']), 'Observaciones' => ($request['textareobservaciones'])];
 
-            $horainicio = $arreglo['HoraInicio']; 
+            $horainicio = $arreglo['HoraInicio'];
             $horafin = $arreglo['HoraFin'];
 
             if ($horafin > $horainicio) {
                 $validacionHora = 'true';
-            }else{
+            } else {
                 $validacionHora = 'false';
             }
 
-            if($arreglo['Individual'] != null && $arreglo['RiesgoIndividual'] != null) {
-                
+            if ($arreglo['Individual'] != null && $arreglo['RiesgoIndividual'] != null) {
+
                 $vlrndvdal = 'true';
-            }else{
+            } else {
                 $vlrndvdal = 'false';
             }
-            
-            if($arreglo['Academico'] != null && $arreglo['RiesgoAcademico'] != null) {
-                
+
+            if ($arreglo['Academico'] != null && $arreglo['RiesgoAcademico'] != null) {
+
                 $vlracdmco = 'true';
-            }else{
+            } else {
                 $vlracdmco = 'false';
             }
 
-            if($arreglo['Familiar'] != null && $arreglo['RiesgoFamiliar'] != null) {
-                
+            if ($arreglo['Familiar'] != null && $arreglo['RiesgoFamiliar'] != null) {
+
                 $vlrfmlar = 'true';
-            }else{
+            } else {
                 $vlrfmlar = 'false';
             }
 
-            if($arreglo['Economico'] != null && $arreglo['RiesgoEconomico'] != null) {
-                
+            if ($arreglo['Economico'] != null && $arreglo['RiesgoEconomico'] != null) {
+
                 $vlrecnmco = 'true';
-            }else{
+            } else {
                 $vlrecnmco = 'false';
             }
 
-            if($arreglo['VidaUniversitariaYciudad'] != null && $arreglo['RiesgoUc'] != null) {
-                
+            if ($arreglo['VidaUniversitariaYciudad'] != null && $arreglo['RiesgoUc'] != null) {
+
                 $vlruyc = 'true';
-            }else{
+            } else {
                 $vlruyc = 'false';
             }
 
-            
 
-                if($arreglo['fecha'] == null && $arreglo['Lugar'] == null && $arreglo['HoraInicio'] == null && $arreglo['HoraFin'] == null && $arreglo['Objetivos'] == null && $arreglo['Individual'] == null && $arreglo['RiesgoIndividual'] == null && $arreglo['Academico'] == null && $arreglo['RiesgoAcademico'] == null && $arreglo['Familiar'] == null && $arreglo['RiesgoFamiliar'] == null && $arreglo['Economico'] == null && $arreglo['RiesgoEconomico'] == null && $arreglo['VidaUniversitariaYciudad'] == null && $arreglo['RiesgoUc'] == null && $arreglo['Observaciones'] == null){  
-                    
-                    echo 'No es posible crear un seguimiento vacio';
 
-                }else{
-                    
-                    if($arreglo['fecha'] != null && $arreglo['Lugar'] != null && $arreglo['HoraInicio'] != null && $arreglo['HoraFin'] != null && $arreglo['Objetivos'] != null){
+            if ($arreglo['fecha'] == null && $arreglo['Lugar'] == null && $arreglo['HoraInicio'] == null && $arreglo['HoraFin'] == null && $arreglo['Objetivos'] == null && $arreglo['Individual'] == null && $arreglo['RiesgoIndividual'] == null && $arreglo['Academico'] == null && $arreglo['RiesgoAcademico'] == null && $arreglo['Familiar'] == null && $arreglo['RiesgoFamiliar'] == null && $arreglo['Economico'] == null && $arreglo['RiesgoEconomico'] == null && $arreglo['VidaUniversitariaYciudad'] == null && $arreglo['RiesgoUc'] == null && $arreglo['Observaciones'] == null) {
 
-                        if($arreglo['Individual'] != null || $arreglo['Academico'] != null || $arreglo['Familiar'] != null || $arreglo['Economico'] != null || $arreglo['VidaUniversitariaYciudad'] != null){
+                echo 'No es posible crear un seguimiento vacio';
+            } else {
 
-                            if($vlrndvdal == 'true' && $vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                
-                                if($validacionHora == 'true'){    
-                                    $guardar = json_encode($arreglo);
-                                    $datossegui = SocioEducationalFollowUp::create([
-                                        'id_student'       => $request['id_student'],
-                                        'id_user'          => $id['id'],
-                                        'tracking_detail'  => $guardar,
-                                    ]);
-                                    return $mensaje;
-                                }else{
-                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                }
-                                    
+                if ($arreglo['fecha'] != null && $arreglo['Lugar'] != null && $arreglo['HoraInicio'] != null && $arreglo['HoraFin'] != null && $arreglo['Objetivos'] != null) {
 
-                            }else{
-                                if($vlrndvdal == 'true'){
-                                    $indi = $arreglo['Individual'];
-                                    $riesgoindi = $arreglo['RiesgoIndividual'];
+                    if ($arreglo['Individual'] != null || $arreglo['Academico'] != null || $arreglo['Familiar'] != null || $arreglo['Economico'] != null || $arreglo['VidaUniversitariaYciudad'] != null) {
 
-                                    if($vlracdmco == 'true' || $vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
-                                            if($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlruyc == 'true') {
-                                                if($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                        if ($vlrndvdal == 'true' && $vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+
+                            if ($validacionHora == 'true') {
+                                $guardar = json_encode($arreglo);
+                                $datossegui = SocioEducationalFollowUp::create([
+                                    'id_student'       => $request['id_student'],
+                                    'id_user'          => $id['id'],
+                                    'tracking_detail'  => $guardar,
+                                ]);
+                                return $mensaje;
+                            } else {
+                                echo 'La hora final debe ser mayor a la hora inicial';
+                            }
+                        } else {
+                            if ($vlrndvdal == 'true') {
+                                $indi = $arreglo['Individual'];
+                                $riesgoindi = $arreglo['RiesgoIndividual'];
+
+                                if ($vlracdmco == 'true' || $vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
+                                    if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlruyc == 'true') {
+                                        if ($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                        } else {
+                                            //echo 'guarde 1 2 3 y 5';
+                                            if ($validacionHora == 'true') {
+                                                $guardar = json_encode($arreglo);
+                                                $datossegui = SocioEducationalFollowUp::create([
+                                                    'id_student'       => $request['id_student'],
+                                                    'id_user'          => $id['id'],
+                                                    'tracking_detail'  => $guardar,
+                                                ]);
+                                                return $mensaje;
+                                            } else {
+                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                            }
+                                        }
+                                    } else {
+                                        if ($vlracdmco == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                            if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //echo 'guarde 1 2 4 y 5';
+                                                if ($validacionHora == 'true') {
+                                                    $guardar = json_encode($arreglo);
+                                                    $datossegui = SocioEducationalFollowUp::create([
+                                                        'id_student'       => $request['id_student'],
+                                                        'id_user'          => $id['id'],
+                                                        'tracking_detail'  => $guardar,
+                                                    ]);
+                                                    return $mensaje;
+                                                } else {
+                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                }
+                                            }
+                                        } else {
+                                            if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                        //echo 'guarde 1 2 3 y 5';
-                                                        if($validacionHora == 'true'){    
+                                                } else {
+                                                    // echo 'guarde 1 3 4 y 5';
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $datossegui = SocioEducationalFollowUp::create([
+                                                            'id_student'       => $request['id_student'],
+                                                            'id_user'          => $id['id'],
+                                                            'tracking_detail'  => $guardar,
+                                                        ]);
+                                                        return $mensaje;
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                    }
+                                                }
+                                            } else {
+
+                                                if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                    if ($arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                    } else {
+                                                        //   echo 'guarde 1 2 3 y 4';
+                                                        if ($validacionHora == 'true') {
                                                             $guardar = json_encode($arreglo);
                                                             $datossegui = SocioEducationalFollowUp::create([
                                                                 'id_student'       => $request['id_student'],
@@ -726,38 +897,18 @@ class perfilEstudianteController extends Controller
                                                                 'tracking_detail'  => $guardar,
                                                             ]);
                                                             return $mensaje;
-                                                        }else{
+                                                        } else {
                                                             echo 'La hora final debe ser mayor a la hora inicial';
                                                         }
                                                     }
-                                                
-                                            }else{
-                                                if($vlracdmco == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                    if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
-                                                        echo 'Las categorias deben ser diligenciadas completamente';  
-                                                    }else{
-                                                        //echo 'guarde 1 2 4 y 5';
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $datossegui = SocioEducationalFollowUp::create([
-                                                                'id_student'       => $request['id_student'],
-                                                                'id_user'          => $id['id'],
-                                                                'tracking_detail'  => $guardar,
-                                                            ]);
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
-                                                            
-                                                    }
-                                                    
-                                                }else{
-                                                    if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
-                                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
+                                                } else {
+                                                    if ($vlracdmco == 'true' && $vlrecnmco == 'true') {
+
+                                                        if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
                                                             echo 'Las categorias deben ser diligenciadas completamente';
-                                                        }else{
-                                                            // echo 'guarde 1 3 4 y 5';
-                                                            if($validacionHora == 'true'){    
+                                                        } else {
+                                                            //     echo 'guarde 1 2 y 4';
+                                                            if ($validacionHora == 'true') {
                                                                 $guardar = json_encode($arreglo);
                                                                 $datossegui = SocioEducationalFollowUp::create([
                                                                     'id_student'       => $request['id_student'],
@@ -765,96 +916,94 @@ class perfilEstudianteController extends Controller
                                                                     'tracking_detail'  => $guardar,
                                                                 ]);
                                                                 return $mensaje;
-                                                            }else{
+                                                            } else {
                                                                 echo 'La hora final debe ser mayor a la hora inicial';
-                                                            }                                                   
-                                                        }
-                                                    }else{
-
-                                                        if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true') {
-                                                            if ($arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                                echo 'Las categorias deben ser diligenciadas completamente';
-                                                            }else{
-                                                             //   echo 'guarde 1 2 3 y 4';
-                                                                if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                                        'id_student'       => $request['id_student'],
-                                                                        'id_user'          => $id['id'],
-                                                                        'tracking_detail'  => $guardar,
-                                                                    ]);
-                                                                    return $mensaje;
-                                                                }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                }
                                                             }
-                                                        }else{
-                                                            if($vlracdmco == 'true' && $vlrecnmco == 'true'){
-
-                                                                if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-                                                                    echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                }else{
-                                                               //     echo 'guarde 1 2 y 4';
-                                                                    if($validacionHora == 'true'){    
-                                                                        $guardar = json_encode($arreglo);
-                                                                        $datossegui = SocioEducationalFollowUp::create([
+                                                        }
+                                                    } else {
+                                                        if ($vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                            if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                            } else {
+                                                                //       echo 'guarde 1 3 y 4';
+                                                                if ($validacionHora == 'true') {
+                                                                    $guardar = json_encode($arreglo);
+                                                                    $datossegui =
+                                                                        SocioEducationalFollowUp::create([
                                                                             'id_student'       => $request['id_student'],
                                                                             'id_user'          => $id['id'],
                                                                             'tracking_detail'  => $guardar,
                                                                         ]);
+                                                                    return $mensaje;
+                                                                } else {
+                                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if ($vlrfmlar == 'true' && $vlruyc == 'true') {
+                                                                if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                                } else {
+                                                                    //         echo 'guarde 1 3 y 5';
+                                                                    if ($validacionHora == 'true') {
+                                                                        $guardar = json_encode($arreglo);
+                                                                        $datossegui =
+                                                                            SocioEducationalFollowUp::create(
+                                                                                [
+                                                                                    'id_student'       => $request['id_student'],
+                                                                                    'id_user'          => $id['id'],
+                                                                                    'tracking_detail'  => $guardar,
+                                                                                ]
+                                                                            );
                                                                         return $mensaje;
-                                                                    }else{
+                                                                    } else {
                                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                                     }
                                                                 }
-                                                            }else{
-                                                                if($vlrfmlar == 'true' && $vlrecnmco == 'true'){
-                                                                    if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-                                                                        echo 'Las categorias deben ser diligenciadas completamente'; 
-
-                                                                    }else{
-                                                                 //       echo 'guarde 1 3 y 4';
-                                                                        if($validacionHora == 'true'){    
+                                                            } else {
+                                                                if ($vlracdmco == 'true' && $vlruyc == 'true') {
+                                                                    if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                                    } else {
+                                                                        //           echo ' guarde 1 2 y 5';
+                                                                        if ($validacionHora == 'true') {
                                                                             $guardar = json_encode($arreglo);
-                                                                            $datossegui =
-                                                                            SocioEducationalFollowUp::create([
+                                                                            $datossegui = SocioEducationalFollowUp::create([
                                                                                 'id_student'       => $request['id_student'],
                                                                                 'id_user'          => $id['id'],
                                                                                 'tracking_detail'  => $guardar,
                                                                             ]);
                                                                             return $mensaje;
-                                                                        }else{
+                                                                        } else {
                                                                             echo 'La hora final debe ser mayor a la hora inicial';
                                                                         }
                                                                     }
-                                                                }else{
-                                                                    if ($vlrfmlar == 'true' && $vlruyc == 'true') {
-                                                                        if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                } else {
+
+                                                                    if ($vlracdmco == 'true' && $vlrfmlar == 'true') {
+                                                                        if ($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
                                                                             echo 'Las categorias deben ser diligenciadas completamente';
-                                                                        }else{
-                                                                   //         echo 'guarde 1 3 y 5';
-                                                                            if($validacionHora == 'true'){    
+                                                                        } else {
+                                                                            //guarde 1 2 y 3
+                                                                            if ($validacionHora == 'true') {
                                                                                 $guardar = json_encode($arreglo);
-                                                                                $datossegui = 
-                                                                                SocioEducationalFollowUp::create(
-                                                                                    [
+                                                                                $datossegui = SocioEducationalFollowUp::create([
                                                                                     'id_student'       => $request['id_student'],
                                                                                     'id_user'          => $id['id'],
                                                                                     'tracking_detail'  => $guardar,
-                                                                                    ]);
+                                                                                ]);
                                                                                 return $mensaje;
-                                                                            }else{
+                                                                            } else {
                                                                                 echo 'La hora final debe ser mayor a la hora inicial';
                                                                             }
                                                                         }
-                                                                    }else{
-                                                                        if($vlracdmco == 'true' && $vlruyc == 'true'){
-                                                                            if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
+                                                                    } else {
+                                                                        if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                                            if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
                                                                                 echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                                            }else{
-                                                                     //           echo ' guarde 1 2 y 5';
-                                                                                if($validacionHora == 'true'){    
+                                                                            } else {
+                                                                                //             echo 'guarde 1 4 y 5';
+                                                                                if ($validacionHora == 'true') {
                                                                                     $guardar = json_encode($arreglo);
                                                                                     $datossegui = SocioEducationalFollowUp::create([
                                                                                         'id_student'       => $request['id_student'],
@@ -862,18 +1011,20 @@ class perfilEstudianteController extends Controller
                                                                                         'tracking_detail'  => $guardar,
                                                                                     ]);
                                                                                     return $mensaje;
-                                                                                }else{
+                                                                                } else {
                                                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                                                 }
                                                                             }
-                                                                        }else{
+                                                                        } else {
 
-                                                                            if($vlracdmco == 'true' && $vlrfmlar == 'true'){
-                                                                                if($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                                            if ($vlracdmco == 'true') {
+
+                                                                                if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+
                                                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                }else{
-                                                                                    //guarde 1 2 y 3
-                                                                                    if($validacionHora == 'true'){    
+                                                                                } else {
+                                                                                    //               echo 'guarde 1 y 2';
+                                                                                    if ($validacionHora == 'true') {
                                                                                         $guardar = json_encode($arreglo);
                                                                                         $datossegui = SocioEducationalFollowUp::create([
                                                                                             'id_student'       => $request['id_student'],
@@ -881,38 +1032,17 @@ class perfilEstudianteController extends Controller
                                                                                             'tracking_detail'  => $guardar,
                                                                                         ]);
                                                                                         return $mensaje;
-                                                                                    }else{
+                                                                                    } else {
                                                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                                                     }
                                                                                 }
-                                                                            }else{
-                                                                                if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                                                        if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null){
-                                                                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                }else{
-                                                                       //             echo 'guarde 1 4 y 5';
-                                                                                    if($validacionHora == 'true'){    
-                                                                                        $guardar = json_encode($arreglo);
-                                                                                        $datossegui = SocioEducationalFollowUp::create([
-                                                                                            'id_student'       => $request['id_student'],
-                                                                                            'id_user'          => $id['id'],
-                                                                                            'tracking_detail'  => $guardar,
-                                                                                        ]);
-                                                                                        return $mensaje;
-                                                                                    }else{
-                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                    }
-                                                                                }
-                                                                                }else{
-
-                                                                                if($vlracdmco == 'true'){
-
-                                                                                    if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                                                         echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                                    }else{
-                                                                         //               echo 'guarde 1 y 2';
-                                                                                        if($validacionHora == 'true'){    
+                                                                            } else {
+                                                                                if ($vlrfmlar == 'true') {
+                                                                                    if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                    } else {
+                                                                                        //                 echo 'guarde 1 y 3';
+                                                                                        if ($validacionHora == 'true') {
                                                                                             $guardar = json_encode($arreglo);
                                                                                             $datossegui = SocioEducationalFollowUp::create([
                                                                                                 'id_student'       => $request['id_student'],
@@ -920,18 +1050,18 @@ class perfilEstudianteController extends Controller
                                                                                                 'tracking_detail'  => $guardar,
                                                                                             ]);
                                                                                             return $mensaje;
-                                                                                        }else{
+                                                                                        } else {
                                                                                             echo 'La hora final debe ser mayor a la hora inicial';
                                                                                         }
                                                                                     }
-                                                
-                                                                                }else{
-                                                                                    if($vlrfmlar == 'true') {
-                                                                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-                                                                                            echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                                        }else{
-                                                                           //                 echo 'guarde 1 y 3';
-                                                                                            if($validacionHora == 'true'){    
+                                                                                } else {
+                                                                                    if ($vlrecnmco == 'true') {
+                                                                                        if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+
+                                                                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                        } else {
+                                                                                            //     echo 'guarde 1 y 4';    
+                                                                                            if ($validacionHora == 'true') {
                                                                                                 $guardar = json_encode($arreglo);
                                                                                                 $datossegui = SocioEducationalFollowUp::create([
                                                                                                     'id_student'       => $request['id_student'],
@@ -939,18 +1069,17 @@ class perfilEstudianteController extends Controller
                                                                                                     'tracking_detail'  => $guardar,
                                                                                                 ]);
                                                                                                 return $mensaje;
-                                                                                            }else{
+                                                                                            } else {
                                                                                                 echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                            }   
-                                                                                        }   
-                                                                                    }else{
-                                                                                        if($vlrecnmco == 'true'){
-                                                                                            if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
-                                                              
+                                                                                            }
+                                                                                        }
+                                                                                    } else {
+                                                                                        if ($vlruyc == 'true') {
+                                                                                            if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
                                                                                                 echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                            }else{
-                                                                                           //     echo 'guarde 1 y 4';    
-                                                                                                if($validacionHora == 'true'){    
+                                                                                            } else {
+                                                                                                //       echo 'guarde 1 y 5';
+                                                                                                if ($validacionHora == 'true') {
                                                                                                     $guardar = json_encode($arreglo);
                                                                                                     $datossegui = SocioEducationalFollowUp::create([
                                                                                                         'id_student'       => $request['id_student'],
@@ -958,33 +1087,13 @@ class perfilEstudianteController extends Controller
                                                                                                         'tracking_detail'  => $guardar,
                                                                                                     ]);
                                                                                                     return $mensaje;
-                                                                                                }else{
+                                                                                                } else {
                                                                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                                                                 }
                                                                                             }
-                                                                                        }else{
-                                                                                            if($vlruyc == 'true') {
-                                                                                                if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
-                                                                                                echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                                                                }else{
-                                                                                             //       echo 'guarde 1 y 5';
-                                                                                                    if($validacionHora == 'true'){    
-                                                                                                        $guardar = json_encode($arreglo);
-                                                                                                        $datossegui = SocioEducationalFollowUp::create([
-                                                                                                            'id_student'       => $request['id_student'],
-                                                                                                            'id_user'          => $id['id'],
-                                                                                                            'tracking_detail'  => $guardar,
-                                                                                                        ]);
-                                                                                                        return $mensaje;
-                                                                                                    }else{
-                                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                                    }
-                                                                                                }   
-                                                                                            }
                                                                                         }
                                                                                     }
-                                                                                } 
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
@@ -995,16 +1104,42 @@ class perfilEstudianteController extends Controller
                                                 }
                                             }
                                         }
+                                    }
+                                } else {
+                                    if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
 
-                                    }else{
-                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
+                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                    } else {
 
-                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                        }else{
 
-                                            
-                                                //echo "guarde con lo del primero";    
-                                                if($validacionHora == 'true'){    
+                                        //echo "guarde con lo del primero";    
+                                        if ($validacionHora == 'true') {
+                                            $guardar = json_encode($arreglo);
+                                            $datossegui = SocioEducationalFollowUp::create([
+                                                'id_student'       => $request['id_student'],
+                                                'id_user'          => $id['id'],
+                                                'tracking_detail'  => $guardar,
+                                            ]);
+                                            return $mensaje;
+                                        } else {
+                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                        }
+                                    }
+                                }
+                            } else {
+                                if ($vlracdmco == 'true') {
+                                    $acade = $arreglo['Academico'];
+                                    $riesgoacade = $arreglo['RiesgoAcademico'];
+
+                                    if ($vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
+
+
+                                        if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //echo 'guarde 2, 3 4 y 5';    
+                                                if ($validacionHora == 'true') {
                                                     $guardar = json_encode($arreglo);
                                                     $datossegui = SocioEducationalFollowUp::create([
                                                         'id_student'       => $request['id_student'],
@@ -1012,228 +1147,18 @@ class perfilEstudianteController extends Controller
                                                         'tracking_detail'  => $guardar,
                                                     ]);
                                                     return $mensaje;
-                                                }else{
-                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                }
-
-                                        }
-                                        
-                                    } 
-                                }else{
-                                    if($vlracdmco == 'true') {
-                                        $acade = $arreglo['Academico'];
-                                        $riesgoacade = $arreglo['RiesgoAcademico'];
-                                        
-                                        if($vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true'){
-                                            
-                                            
-                                            if($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null) {
-                                                    echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                    //echo 'guarde 2, 3 4 y 5';    
-                                                    if($validacionHora == 'true'){    
-                                                        $guardar = json_encode($arreglo);
-                                                        $datossegui = SocioEducationalFollowUp::create([
-                                                            'id_student'       => $request['id_student'],
-                                                            'id_user'          => $id['id'],
-                                                            'tracking_detail'  => $guardar,
-                                                        ]);
-                                                        return $mensaje;
-                                                    }else{
-                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                    }
-                                                }
-                                                
-                                            }else{
-                                                if($vlrfmlar == 'true' && $vlrecnmco == 'true'){
-                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                        
-                                                        echo 'Las categorias deben ser diligenciadas completamente';                                                            
-                                                    }else{
-                                                        //guarda 2 3 y 4
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $datossegui = SocioEducationalFollowUp::create([
-                                                               'id_student'       => $request['id_student'],
-                                                                'id_user'          => $id['id'],
-                                                                'tracking_detail'  => $guardar,
-                                                            ]);
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }      
-                                                    }
-                                                }else{
-
-                                                    if($vlrfmlar == 'true' && $vlruyc == 'true'){
-                                                        if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-                                                            echo 'Las categorias deben ser diligenciada completamente'; 
-                                                        }else{
-                                                            //guarda 2 3 y 5
-                                                            if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                                        'id_student'       => $request['id_student'],
-                                                                        'id_user'          => $id['id'],
-                                                                        'tracking_detail'  => $guardar,
-                                                                    ]);
-                                                                    return $mensaje;
-                                                            }else{
-                                                                echo 'La hora final debe ser mayor a la hora inicial';
-                                                            }
-                                                        }
-                                                    }else{
-                                                        if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                            if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                                echo 'Las categorias deben ser diligenciadas completamente'; 
-                                                            }else{
-                                                                //guarda 2 4 5
-                                                                if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                                        'id_student'       => $request['id_student'],
-                                                                        'id_user'          => $id['id'],
-                                                                        'tracking_detail'  => $guardar,
-                                                                    ]);
-                                                                    return $mensaje;
-                                                                }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                }
-                                                            }
-                                                        }else{
-                                                            if($vlrecnmco == 'true'){
-                                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                                    echo 'Las categorias deben ser diligenciadas completamente';
-                                                                }else{
-                                                                    //guarda 2 y 4
-                                                                    if($validacionHora == 'true'){    
-                                                                        $guardar = json_encode($arreglo);
-                                                                        $datossegui = SocioEducationalFollowUp::create([
-                                                                            'id_student'       => $request['id_student'],
-                                                                            'id_user'          => $id['id'],
-                                                                            'tracking_detail'  => $guardar,
-                                                                        ]);
-                                                                        return $mensaje;
-                                                                    }else{
-                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                    }
-                                                                }
-                                                            }else{
-                                                                if($vlruyc == 'true'){
-                                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                                        echo 'Las categorias deben ser diligenciadas completamente';
-                                                                    }else{
-                                                                        //guarda 2 y 5
-                                                                        if($validacionHora == 'true'){    
-                                                                            $guardar = json_encode($arreglo);
-                                                                            $datossegui = 
-                                                                            SocioEducationalFollowUp::create([
-                                                                                'id_student'       => $request['id_student'],
-                                                                                'id_user'          => $id['id'],
-                                                                                'tracking_detail'  => $guardar,
-                                                                            ]);
-                                                                            return $mensaje;
-                                                                        }else{
-                                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-
-                                        }else{
-
-                                            if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                echo 'Las categorias deben ser diligenciadas completamente';    
-                                            }else{
-                                                //guarda 2 solo
-                                                if($validacionHora == 'true'){    
-                                                    $guardar = json_encode($arreglo);
-                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                        'id_student'       => $request['id_student'],
-                                                        'id_user'          => $id['id'],
-                                                        'tracking_detail'  => $guardar,
-                                                    ]);
-                                                    return $mensaje;
-                                                }else{
+                                                } else {
                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                 }
                                             }
-                                        
-                                        }
-                                        
-                                    }else{
-                                        if($vlrfmlar == 'true'){
-                                            
+                                        } else {
+                                            if ($vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
 
-                                            if($vlrecnmco == 'true' || $vlruyc == 'true'){
-                                                
-
-                                                if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                    //guarda 3 4 y 5
-                                                    if($validacionHora == 'true'){    
-                                                        $guardar = json_encode($arreglo);
-                                                        $datossegui = SocioEducationalFollowUp::create([
-                                                            'id_student'       => $request['id_student'],
-                                                            'id_user'          => $id['id'],
-                                                            'tracking_detail'  => $guardar,
-                                                        ]);
-                                                        return $mensaje;
-                                                    }else{
-                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                    }    
-                                                }else{
-
-                                                    if($vlrecnmco == 'true'){
-                                                        if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-                                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                                        }else{
-                                                            //guarda 3 y 4
-                                                            if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                                        'id_student'       => $request['id_student'],
-                                                                        'id_user'          => $id['id'],
-                                                                        'tracking_detail'  => $guardar,
-                                                                    ]);
-                                                                    return $mensaje;
-                                                            }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                            }
-                                                        }
-                                                    }else{
-                                                        if($vlruyc == 'true'){
-                                                            if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                            }else{
-                                                                //guarda 3 y 5
-                                                                if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $datossegui = SocioEducationalFollowUp::create([
-                                                                        'id_student'       => $request['id_student'],
-                                                                        'id_user'          => $id['id'],
-                                                                        'tracking_detail'  => $guardar,
-                                                                    ]);
-                                                                    return $mensaje;
-                                                                }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-
-                                            }else{
-                                                if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null ||  $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                    //guarda 3
-                                                    if($validacionHora == 'true'){    
+                                                } else {
+                                                    //guarda 2 3 y 4
+                                                    if ($validacionHora == 'true') {
                                                         $guardar = json_encode($arreglo);
                                                         $datossegui = SocioEducationalFollowUp::create([
                                                             'id_student'       => $request['id_student'],
@@ -1241,61 +1166,18 @@ class perfilEstudianteController extends Controller
                                                             'tracking_detail'  => $guardar,
                                                         ]);
                                                         return $mensaje;
-                                                    }else{
+                                                    } else {
                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                     }
                                                 }
-                                            }
-                                        }else{
-                                            if ($vlrecnmco == 'true') {
+                                            } else {
 
-                                                if($vlruyc == 'true'){
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-                                                    }else{
-                                                        //guarda 4 y 5                   
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $datossegui = SocioEducationalFollowUp::
-                                                            create([
-                                                                'id_student'       => $request['
-                                                                 id_student'],
-                                                                'id_user'          => $id['id'],
-                                                                'tracking_detail'  => $guardar,
-                                                            ]);
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
-                                                    }
-                                                }else{
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-                                                    }else{
-                                                    
-                                                        //guarda 4
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $datossegui = SocioEducationalFollowUp::create([
-                                                               'id_student'       => $request['id_student'],
-                                                               'id_user'          => $id['id'],
-                                                               'tracking_detail'  => $guardar,
-                                                            ]);
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }    
-                                                    }
-                                                }                                                               
-                                            }else{
-                                                if($vlruyc == 'true'){
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                    }else{
-                                                        //guarda 5                                                         
-                                                        if($validacionHora == 'true'){    
+                                                if ($vlrfmlar == 'true' && $vlruyc == 'true') {
+                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                        echo 'Las categorias deben ser diligenciada completamente';
+                                                    } else {
+                                                        //guarda 2 3 y 5
+                                                        if ($validacionHora == 'true') {
                                                             $guardar = json_encode($arreglo);
                                                             $datossegui = SocioEducationalFollowUp::create([
                                                                 'id_student'       => $request['id_student'],
@@ -1303,476 +1185,556 @@ class perfilEstudianteController extends Controller
                                                                 'tracking_detail'  => $guardar,
                                                             ]);
                                                             return $mensaje;
-                                                        }else{
+                                                        } else {
                                                             echo 'La hora final debe ser mayor a la hora inicial';
                                                         }
                                                     }
-                                                }else{
-                                                    echo 'No es posible crear un seguimiento con esa estructura';
+                                                } else {
+                                                    if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                        if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                                        } else {
+                                                            //guarda 2 4 5
+                                                            if ($validacionHora == 'true') {
+                                                                $guardar = json_encode($arreglo);
+                                                                $datossegui = SocioEducationalFollowUp::create([
+                                                                    'id_student'       => $request['id_student'],
+                                                                    'id_user'          => $id['id'],
+                                                                    'tracking_detail'  => $guardar,
+                                                                ]);
+                                                                return $mensaje;
+                                                            } else {
+                                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                                            }
+                                                        }
+                                                    } else {
+                                                        if ($vlrecnmco == 'true') {
+                                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                            } else {
+                                                                //guarda 2 y 4
+                                                                if ($validacionHora == 'true') {
+                                                                    $guardar = json_encode($arreglo);
+                                                                    $datossegui = SocioEducationalFollowUp::create([
+                                                                        'id_student'       => $request['id_student'],
+                                                                        'id_user'          => $id['id'],
+                                                                        'tracking_detail'  => $guardar,
+                                                                    ]);
+                                                                    return $mensaje;
+                                                                } else {
+                                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if ($vlruyc == 'true') {
+                                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                                } else {
+                                                                    //guarda 2 y 5
+                                                                    if ($validacionHora == 'true') {
+                                                                        $guardar = json_encode($arreglo);
+                                                                        $datossegui =
+                                                                            SocioEducationalFollowUp::create([
+                                                                                'id_student'       => $request['id_student'],
+                                                                                'id_user'          => $id['id'],
+                                                                                'tracking_detail'  => $guardar,
+                                                                            ]);
+                                                                        return $mensaje;
+                                                                    } else {
+                                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
+                                            }
+                                        }
+                                    } else {
+
+                                        if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+
+                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                        } else {
+                                            //guarda 2 solo
+                                            if ($validacionHora == 'true') {
+                                                $guardar = json_encode($arreglo);
+                                                $datossegui = SocioEducationalFollowUp::create([
+                                                    'id_student'       => $request['id_student'],
+                                                    'id_user'          => $id['id'],
+                                                    'tracking_detail'  => $guardar,
+                                                ]);
+                                                return $mensaje;
+                                            } else {
+                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if ($vlrfmlar == 'true') {
+
+
+                                        if ($vlrecnmco == 'true' || $vlruyc == 'true') {
+
+
+                                            if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                //guarda 3 4 y 5
+                                                if ($validacionHora == 'true') {
+                                                    $guardar = json_encode($arreglo);
+                                                    $datossegui = SocioEducationalFollowUp::create([
+                                                        'id_student'       => $request['id_student'],
+                                                        'id_user'          => $id['id'],
+                                                        'tracking_detail'  => $guardar,
+                                                    ]);
+                                                    return $mensaje;
+                                                } else {
+                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                }
+                                            } else {
+
+                                                if ($vlrecnmco == 'true') {
+                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                    } else {
+                                                        //guarda 3 y 4
+                                                        if ($validacionHora == 'true') {
+                                                            $guardar = json_encode($arreglo);
+                                                            $datossegui = SocioEducationalFollowUp::create([
+                                                                'id_student'       => $request['id_student'],
+                                                                'id_user'          => $id['id'],
+                                                                'tracking_detail'  => $guardar,
+                                                            ]);
+                                                            return $mensaje;
+                                                        } else {
+                                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                                        }
+                                                    }
+                                                } else {
+                                                    if ($vlruyc == 'true') {
+                                                        if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                        } else {
+                                                            //guarda 3 y 5
+                                                            if ($validacionHora == 'true') {
+                                                                $guardar = json_encode($arreglo);
+                                                                $datossegui = SocioEducationalFollowUp::create([
+                                                                    'id_student'       => $request['id_student'],
+                                                                    'id_user'          => $id['id'],
+                                                                    'tracking_detail'  => $guardar,
+                                                                ]);
+                                                                return $mensaje;
+                                                            } else {
+                                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null ||  $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //guarda 3
+                                                if ($validacionHora == 'true') {
+                                                    $guardar = json_encode($arreglo);
+                                                    $datossegui = SocioEducationalFollowUp::create([
+                                                        'id_student'       => $request['id_student'],
+                                                        'id_user'          => $id['id'],
+                                                        'tracking_detail'  => $guardar,
+                                                    ]);
+                                                    return $mensaje;
+                                                } else {
+                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if ($vlrecnmco == 'true') {
+
+                                            if ($vlruyc == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+                                                    //guarda 4 y 5                   
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $datossegui = SocioEducationalFollowUp::create([
+                                                                'id_student'       => $request['
+                                                                 id_student'],
+                                                                'id_user'          => $id['id'],
+                                                                'tracking_detail'  => $guardar,
+                                                            ]);
+                                                        return $mensaje;
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                    }
+                                                }
+                                            } else {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+
+                                                    //guarda 4
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $datossegui = SocioEducationalFollowUp::create([
+                                                            'id_student'       => $request['id_student'],
+                                                            'id_user'          => $id['id'],
+                                                            'tracking_detail'  => $guardar,
+                                                        ]);
+                                                        return $mensaje;
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if ($vlruyc == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+                                                    //guarda 5                                                         
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $datossegui = SocioEducationalFollowUp::create([
+                                                            'id_student'       => $request['id_student'],
+                                                            'id_user'          => $id['id'],
+                                                            'tracking_detail'  => $guardar,
+                                                        ]);
+                                                        return $mensaje;
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                    }
+                                                }
+                                            } else {
+                                                echo 'No es posible crear un seguimiento con esa estructura';
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }else{
-                        echo 'No es posible crear un seguimiento con esa estructura';
                     }
+                } else {
+                    echo 'No es posible crear un seguimiento con esa estructura';
                 }
-            }else{
-                echo 'No es posible crear un seguimiento con esa estructura';
             }
-    }
-            
-
-    public function edit_seguimiento($id, Request $request){
-
-        $seguimiento = SocioEducationalFollowUp::findOrFail($id);   
-            
-        if($request->ajax()){
-            return Response::json($seguimiento); 
-        };        
+        } else {
+            echo 'No es posible crear un seguimiento con esa estructura';
+        }
     }
 
-    public function update_seguimiento($id, Request $request) {
+
+    public function edit_seguimiento($id, Request $request)
+    {
+
+        $seguimiento = SocioEducationalFollowUp::findOrFail($id);
+
+        if ($request->ajax()) {
+            return Response::json($seguimiento);
+        };
+    }
+
+    public function update_seguimiento($id, Request $request)
+    {
         //dd($request);
         $data = SocioEducationalFollowUp::findOrFail($id);
-        
+
         $mensaje = "Seguimiento socioeducativo actualizado correctamente!!";
 
-        if ($request->ajax()) { 
+        if ($request->ajax()) {
 
-            $arreglo = ['fecha' => ($request['date']), 'Lugar' => ($request['lugarsegui']), 'HoraInicio' => ($request['iniciohora']), 'HoraFin' => ($request['finhora']),'Objetivos' => ($request['textareaobjetivos']), 'Individual' => ($request['texareaindividual']), 'RiesgoIndividual' => ($request['checkindi']), 'Academico' => ($request['textareaacademico']), 'RiesgoAcademico' => ($request['checkacad']), 'Familiar' => ($request['textareafamil']), 'RiesgoFamiliar' => $request['checkfami'], 'Economico' => ($request['textareaecono']), 'RiesgoEconomico' => ($request['checkecono']), 'VidaUniversitariaYciudad' => ($request['textareavidauni']), 'RiesgoUc' => ($request['checkuni']), 'Observaciones' => ($request['textareobservaciones'])];
+            $arreglo = ['fecha' => ($request['date']), 'Lugar' => ($request['lugarsegui']), 'HoraInicio' => ($request['iniciohora']), 'HoraFin' => ($request['finhora']), 'Objetivos' => ($request['textareaobjetivos']), 'Individual' => ($request['texareaindividual']), 'RiesgoIndividual' => ($request['checkindi']), 'Academico' => ($request['textareaacademico']), 'RiesgoAcademico' => ($request['checkacad']), 'Familiar' => ($request['textareafamil']), 'RiesgoFamiliar' => $request['checkfami'], 'Economico' => ($request['textareaecono']), 'RiesgoEconomico' => ($request['checkecono']), 'VidaUniversitariaYciudad' => ($request['textareavidauni']), 'RiesgoUc' => ($request['checkuni']), 'Observaciones' => ($request['textareobservaciones'])];
 
-            $horainicio = $arreglo['HoraInicio']; 
+            $horainicio = $arreglo['HoraInicio'];
             $horafin = $arreglo['HoraFin'];
 
             if ($horafin > $horainicio) {
                 $validacionHora = 'true';
-            }else{
+            } else {
                 $validacionHora = 'false';
             }
 
-            if($arreglo['Individual'] != null && $arreglo['RiesgoIndividual'] != null) {
-                
+            if ($arreglo['Individual'] != null && $arreglo['RiesgoIndividual'] != null) {
+
                 $vlrndvdal = 'true';
-            }else{
+            } else {
                 $vlrndvdal = 'false';
             }
-            
-            if($arreglo['Academico'] != null && $arreglo['RiesgoAcademico'] != null) {
-                
+
+            if ($arreglo['Academico'] != null && $arreglo['RiesgoAcademico'] != null) {
+
                 $vlracdmco = 'true';
-            }else{
+            } else {
                 $vlracdmco = 'false';
             }
 
-            if($arreglo['Familiar'] != null && $arreglo['RiesgoFamiliar'] != null) {
-                
+            if ($arreglo['Familiar'] != null && $arreglo['RiesgoFamiliar'] != null) {
+
                 $vlrfmlar = 'true';
-            }else{
+            } else {
                 $vlrfmlar = 'false';
             }
 
-            if($arreglo['Economico'] != null && $arreglo['RiesgoEconomico'] != null) {
-                
+            if ($arreglo['Economico'] != null && $arreglo['RiesgoEconomico'] != null) {
+
                 $vlrecnmco = 'true';
-            }else{
+            } else {
                 $vlrecnmco = 'false';
             }
 
-            if($arreglo['VidaUniversitariaYciudad'] != null && $arreglo['RiesgoUc'] != null) {
-                
+            if ($arreglo['VidaUniversitariaYciudad'] != null && $arreglo['RiesgoUc'] != null) {
+
                 $vlruyc = 'true';
-            }else{
+            } else {
                 $vlruyc = 'false';
             }
 
-            if($arreglo['fecha'] == null && $arreglo['Lugar'] == null && $arreglo['HoraInicio'] == null && $arreglo['HoraFin'] == null && $arreglo['Objetivos'] == null && $arreglo['Individual'] == null && $arreglo['RiesgoIndividual'] == null && $arreglo['Academico'] == null && $arreglo['RiesgoAcademico'] == null && $arreglo['Familiar'] == null && $arreglo['RiesgoFamiliar'] == null && $arreglo['Economico'] == null && $arreglo['RiesgoEconomico'] == null && $arreglo['VidaUniversitariaYciudad'] == null && $arreglo['RiesgoUc'] == null && $arreglo['Observaciones'] == null){  
-                    
-                    echo 'No es posible crear un seguimiento vacio';
+            if ($arreglo['fecha'] == null && $arreglo['Lugar'] == null && $arreglo['HoraInicio'] == null && $arreglo['HoraFin'] == null && $arreglo['Objetivos'] == null && $arreglo['Individual'] == null && $arreglo['RiesgoIndividual'] == null && $arreglo['Academico'] == null && $arreglo['RiesgoAcademico'] == null && $arreglo['Familiar'] == null && $arreglo['RiesgoFamiliar'] == null && $arreglo['Economico'] == null && $arreglo['RiesgoEconomico'] == null && $arreglo['VidaUniversitariaYciudad'] == null && $arreglo['RiesgoUc'] == null && $arreglo['Observaciones'] == null) {
 
-                }else{
-                    
-                    if($arreglo['fecha'] != null && $arreglo['Lugar'] != null && $arreglo['HoraInicio'] != null && $arreglo['HoraFin'] != null && $arreglo['Objetivos'] != null){
+                echo 'No es posible crear un seguimiento vacio';
+            } else {
 
-                        if($arreglo['Individual'] != null || $arreglo['Academico'] != null || $arreglo['Familiar'] != null || $arreglo['Economico'] != null || $arreglo['VidaUniversitariaYciudad'] != null){
+                if ($arreglo['fecha'] != null && $arreglo['Lugar'] != null && $arreglo['HoraInicio'] != null && $arreglo['HoraFin'] != null && $arreglo['Objetivos'] != null) {
 
-                            if($vlrndvdal == 'true' && $vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                
-                                if($validacionHora == 'true'){    
-                                    $guardar = json_encode($arreglo);
-                                    $data->tracking_detail = $guardar;
-                                    $data->save();
-                                    return $mensaje;
-                                }else{
-                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                }
-                                    
+                    if ($arreglo['Individual'] != null || $arreglo['Academico'] != null || $arreglo['Familiar'] != null || $arreglo['Economico'] != null || $arreglo['VidaUniversitariaYciudad'] != null) {
 
-                            }else{
-                                if($vlrndvdal == 'true'){
-                                    $indi = $arreglo['Individual'];
-                                    $riesgoindi = $arreglo['RiesgoIndividual'];
+                        if ($vlrndvdal == 'true' && $vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
 
-                                    if($vlracdmco == 'true' || $vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
-                                            if($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlruyc == 'true') {
-                                                if($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
-                                                    echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                        //echo 'guarde 1 2 3 y 5';
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
-                                                    }
-                                                
-                                            }else{
-                                                if($vlracdmco == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                    if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
-                                                        echo 'Las categorias deben ser diligenciadas completamente';  
-                                                    }else{
-                                                        //echo 'guarde 1 2 4 y 5';
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
-                                                            
-                                                    }
-                                                    
-                                                }else{
-                                                    if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
-                                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
-                                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                                        }else{
-                                                            // echo 'guarde 1 3 4 y 5';
-                                                            if($validacionHora == 'true'){    
-                                                                $guardar = json_encode($arreglo);
-                                                                $data->tracking_detail = $guardar;
-                                                                $data->save();
-                                                                return $mensaje;
-                                                                }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                }                                                   
-                                                        }
-                                                    }else{
+                            if ($validacionHora == 'true') {
+                                $guardar = json_encode($arreglo);
+                                $data->tracking_detail = $guardar;
+                                $data->save();
+                                return $mensaje;
+                            } else {
+                                echo 'La hora final debe ser mayor a la hora inicial';
+                            }
+                        } else {
+                            if ($vlrndvdal == 'true') {
+                                $indi = $arreglo['Individual'];
+                                $riesgoindi = $arreglo['RiesgoIndividual'];
 
-                                                        if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true') {
-                                                            if ($arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                                echo 'Las categorias deben ser diligenciadas completamente';
-                                                            }else{
-                                                             //   echo 'guarde 1 2 3 y 4';
-                                                                if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $data->tracking_detail = $guardar;
-                                                                    $data->save();
-                                                                    return $mensaje;
-                                                                }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                }
-                                                            }
-                                                        }else{
-                                                            if($vlracdmco == 'true' && $vlrecnmco == 'true'){
-
-                                                                if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-                                                                    echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                }else{
-                                                               //     echo 'guarde 1 2 y 4';
-                                                                    if($validacionHora == 'true'){    
-                                                                        $guardar = json_encode($arreglo);
-                                                                        $data->tracking_detail = $guardar;
-                                                                        $data->save();
-                                                                         return $mensaje;
-                                                                    }else{
-                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                    }
-                                                                }
-                                                            }else{
-                                                                if($vlrfmlar == 'true' && $vlrecnmco == 'true'){
-                                                                    if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-                                                                        echo 'Las categorias deben ser diligenciadas completamente'; 
-
-                                                                    }else{
-                                                                 //       echo 'guarde 1 3 y 4';
-                                                                        if($validacionHora == 'true'){    
-                                                                            $guardar = json_encode($arreglo);
-                                                                            $data->tracking_detail = $guardar;
-                                                                            $data->save();
-                                                                            return $mensaje;
-                                                                        }else{
-                                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                                        }
-                                                                    }
-                                                                }else{
-                                                                    if ($vlrfmlar == 'true' && $vlruyc == 'true') {
-                                                                        if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
-                                                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                                                        }else{
-                                                                   //         echo 'guarde 1 3 y 5';
-                                                                            if($validacionHora == 'true'){    
-                                                                                $guardar = json_encode($arreglo);
-                                                                                $data->tracking_detail = $guardar;
-                                                                                $data->save();
-                                                                                return $mensaje;
-                                                                            }else{
-                                                                                echo 'La hora final debe ser mayor a la hora inicial';
-                                                                            }
-                                                                        }
-                                                                    }else{
-                                                                        if($vlracdmco == 'true' && $vlruyc == 'true'){
-                                                                            if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-                                                                                echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                                            }else{
-                                                                     //           echo ' guarde 1 2 y 5';
-                                                                                if($validacionHora == 'true'){    
-                                                                                    $guardar = json_encode($arreglo);
-                                                                                    $data->tracking_detail = $guardar;
-                                                                                    $data->save();
-                                                                                    return $mensaje;
-                                                                                }else{
-                                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                }
-                                                                            }
-                                                                        }else{
-
-                                                                            if($vlracdmco == 'true' && $vlrfmlar == 'true'){
-                                                                                if($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                                                    echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                }else{
-                                                                                    //guarde 1 2 y 3
-                                                                                    if($validacionHora == 'true'){    
-                                                                                        $guardar = json_encode($arreglo);
-                                                                                        $data->tracking_detail = $guardar;
-                                                                                        $data->save();
-                                                                                        return $mensaje;
-                                                                                    }else{
-                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                    }
-                                                                                }
-                                                                            }else{
-                                                                                if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                                                        if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null){
-                                                                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                }else{
-                                                                       //             echo 'guarde 1 4 y 5';
-                                                                                    if($validacionHora == 'true'){    
-                                                                                        $guardar = json_encode($arreglo);
-                                                                                        $data->tracking_detail = $guardar;
-                                                                                        $data->save();
-                                                                                        return $mensaje;
-                                                                                    }else{
-                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                    }
-                                                                                }
-                                                                                }else{
-
-                                                                                if($vlracdmco == 'true'){
-
-                                                                                    if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                                                         echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                                    }else{
-                                                                         //               echo 'guarde 1 y 2';
-                                                                                        if($validacionHora == 'true'){    
-                                                                                            $guardar = json_encode($arreglo);
-                                                                                            $data->tracking_detail = $guardar;
-                                                                                            $data->save();
-                                                                                            return $mensaje;
-                                                                                        }else{
-                                                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                        }
-                                                                                    }
-                                                
-                                                                                }else{
-                                                                                    if($vlrfmlar == 'true') {
-                                                                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-                                                                                            echo 'Las categorias deben ser diligenciadas completamente';  
-                                                                                        }else{
-                                                                           //                 echo 'guarde 1 y 3';
-                                                                                            if($validacionHora == 'true'){    
-                                                                                                $guardar = json_encode($arreglo);
-                                                                                                $data->tracking_detail = $guardar;
-                                                                                                $data->save();
-                                                                                                return $mensaje;
-                                                                                            }else{
-                                                                                                echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                            }   
-                                                                                        }   
-                                                                                    }else{
-                                                                                        if($vlrecnmco == 'true'){
-                                                                                            if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
-                                                              
-                                                                                                echo 'Las categorias deben ser diligenciadas completamente';
-                                                                                            }else{
-                                                                                           //     echo 'guarde 1 y 4';    
-                                                                                                if($validacionHora == 'true'){    
-                                                                                                    $guardar = json_encode($arreglo);
-                                                                                                    $data->tracking_detail = $guardar;
-                                                                                                    $data->save();
-                                                                                                    return $mensaje;
-                                                                                                }else{
-                                                                                                    echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                                }
-                                                                                            }
-                                                                                        }else{
-                                                                                            if($vlruyc == 'true') {
-                                                                                                if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
-                                                                                                echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                                                                }else{
-                                                                                             //       echo 'guarde 1 y 5';
-                                                                                                    if($validacionHora == 'true'){    
-                                                                                                        $guardar = json_encode($arreglo);
-                                                                                                            $data->tracking_detail = $guardar;
-                                                                                                            $data->save();
-                                                                                                            return $mensaje;
-                                                                                                    }else{
-                                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
-                                                                                                    }
-                                                                                                }   
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                } 
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
+                                if ($vlracdmco == 'true' || $vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
+                                    if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlruyc == 'true') {
+                                        if ($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                        } else {
+                                            //echo 'guarde 1 2 3 y 5';
+                                            if ($validacionHora == 'true') {
+                                                $guardar = json_encode($arreglo);
+                                                $data->tracking_detail = $guardar;
+                                                $data->save();
+                                                return $mensaje;
+                                            } else {
+                                                echo 'La hora final debe ser mayor a la hora inicial';
                                             }
                                         }
-
-                                    }else{
-                                        if($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
-
-                                            echo 'Las categorias deben ser diligenciadas completamente';
-                                        }else{
-
-                                            
-                                                //echo "guarde con lo del primero";    
-                                                if($validacionHora == 'true'){    
+                                    } else {
+                                        if ($vlracdmco == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                            if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //echo 'guarde 1 2 4 y 5';
+                                                if ($validacionHora == 'true') {
                                                     $guardar = json_encode($arreglo);
                                                     $data->tracking_detail = $guardar;
                                                     $data->save();
                                                     return $mensaje;
-                                                }else{
+                                                } else {
                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                 }
-
-                                        }
-                                        
-                                    } 
-                                }else{
-                                    if($vlracdmco == 'true') {
-                                        $acade = $arreglo['Academico'];
-                                        $riesgoacade = $arreglo['RiesgoAcademico'];
-                                        
-                                        if($vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true'){
-                                            
-                                            
-                                            if($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null) {
+                                            }
+                                        } else {
+                                            if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                    //echo 'guarde 2, 3 4 y 5';    
-                                                    if($validacionHora == 'true'){    
+                                                } else {
+                                                    // echo 'guarde 1 3 4 y 5';
+                                                    if ($validacionHora == 'true') {
                                                         $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                    }else{
+                                                        $data->tracking_detail = $guardar;
+                                                        $data->save();
+                                                        return $mensaje;
+                                                    } else {
                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                     }
                                                 }
-                                                
-                                            }else{
-                                                if($vlrfmlar == 'true' && $vlrecnmco == 'true'){
-                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                        
-                                                        echo 'Las categorias deben ser diligenciadas completamente';                                                            
-                                                    }else{
-                                                        //guarda 2 3 y 4
-                                                        if($validacionHora == 'true'){    
+                                            } else {
+
+                                                if ($vlracdmco == 'true' && $vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                    if ($arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                    } else {
+                                                        //   echo 'guarde 1 2 3 y 4';
+                                                        if ($validacionHora == 'true') {
                                                             $guardar = json_encode($arreglo);
                                                             $data->tracking_detail = $guardar;
                                                             $data->save();
                                                             return $mensaje;
-                                                        }else{
+                                                        } else {
                                                             echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }      
+                                                        }
                                                     }
-                                                }else{
+                                                } else {
+                                                    if ($vlracdmco == 'true' && $vlrecnmco == 'true') {
 
-                                                    if($vlrfmlar == 'true' && $vlruyc == 'true'){
-                                                        if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-                                                            echo 'Las categorias deben ser diligenciada completamente'; 
-                                                        }else{
-                                                            //guarda 2 3 y 5
-                                                            if($validacionHora == 'true'){    
-                                                                    $guardar = json_encode($arreglo);
-                                                                    $data->tracking_detail = $guardar;
-                                                                    $data->save();
-                                                                    return $mensaje;
-                                                            }else{
+                                                        if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                                        } else {
+                                                            //     echo 'guarde 1 2 y 4';
+                                                            if ($validacionHora == 'true') {
+                                                                $guardar = json_encode($arreglo);
+                                                                $data->tracking_detail = $guardar;
+                                                                $data->save();
+                                                                return $mensaje;
+                                                            } else {
                                                                 echo 'La hora final debe ser mayor a la hora inicial';
                                                             }
                                                         }
-                                                    }else{
-                                                        if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                            if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                                echo 'Las categorias deben ser diligenciadas completamente'; 
-                                                            }else{
-                                                                //guarda 2 4 5
-                                                                if($validacionHora == 'true'){    
+                                                    } else {
+                                                        if ($vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                            if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                            } else {
+                                                                //       echo 'guarde 1 3 y 4';
+                                                                if ($validacionHora == 'true') {
                                                                     $guardar = json_encode($arreglo);
                                                                     $data->tracking_detail = $guardar;
                                                                     $data->save();
                                                                     return $mensaje;
-                                                                }else{
+                                                                } else {
                                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                                 }
                                                             }
-                                                        }else{
-                                                            if($vlrecnmco == 'true'){
-                                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
+                                                        } else {
+                                                            if ($vlrfmlar == 'true' && $vlruyc == 'true') {
+                                                                if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
                                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                                }else{
-                                                                    //guarda 2 y 4
-                                                                    if($validacionHora == 'true'){    
+                                                                } else {
+                                                                    //         echo 'guarde 1 3 y 5';
+                                                                    if ($validacionHora == 'true') {
                                                                         $guardar = json_encode($arreglo);
                                                                         $data->tracking_detail = $guardar;
                                                                         $data->save();
                                                                         return $mensaje;
-                                                                    }else{
+                                                                    } else {
                                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                                     }
                                                                 }
-                                                            }else{
-                                                                if($vlruyc == 'true'){
-                                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
+                                                            } else {
+                                                                if ($vlracdmco == 'true' && $vlruyc == 'true') {
+                                                                    if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
                                                                         echo 'Las categorias deben ser diligenciadas completamente';
-                                                                    }else{
-                                                                        //guarda 2 y 5
-                                                                        if($validacionHora == 'true'){    
+                                                                    } else {
+                                                                        //           echo ' guarde 1 2 y 5';
+                                                                        if ($validacionHora == 'true') {
                                                                             $guardar = json_encode($arreglo);
                                                                             $data->tracking_detail = $guardar;
                                                                             $data->save();
                                                                             return $mensaje;
-                                                                        }else{
+                                                                        } else {
                                                                             echo 'La hora final debe ser mayor a la hora inicial';
+                                                                        }
+                                                                    }
+                                                                } else {
+
+                                                                    if ($vlracdmco == 'true' && $vlrfmlar == 'true') {
+                                                                        if ($arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                                                        } else {
+                                                                            //guarde 1 2 y 3
+                                                                            if ($validacionHora == 'true') {
+                                                                                $guardar = json_encode($arreglo);
+                                                                                $data->tracking_detail = $guardar;
+                                                                                $data->save();
+                                                                                return $mensaje;
+                                                                            } else {
+                                                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                                                            }
+                                                                        }
+                                                                    } else {
+                                                                        if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                                            if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null) {
+                                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                                            } else {
+                                                                                //             echo 'guarde 1 4 y 5';
+                                                                                if ($validacionHora == 'true') {
+                                                                                    $guardar = json_encode($arreglo);
+                                                                                    $data->tracking_detail = $guardar;
+                                                                                    $data->save();
+                                                                                    return $mensaje;
+                                                                                } else {
+                                                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                                                }
+                                                                            }
+                                                                        } else {
+
+                                                                            if ($vlracdmco == 'true') {
+
+                                                                                if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+
+                                                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                } else {
+                                                                                    //               echo 'guarde 1 y 2';
+                                                                                    if ($validacionHora == 'true') {
+                                                                                        $guardar = json_encode($arreglo);
+                                                                                        $data->tracking_detail = $guardar;
+                                                                                        $data->save();
+                                                                                        return $mensaje;
+                                                                                    } else {
+                                                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                                                    }
+                                                                                }
+                                                                            } else {
+                                                                                if ($vlrfmlar == 'true') {
+                                                                                    if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                    } else {
+                                                                                        //                 echo 'guarde 1 y 3';
+                                                                                        if ($validacionHora == 'true') {
+                                                                                            $guardar = json_encode($arreglo);
+                                                                                            $data->tracking_detail = $guardar;
+                                                                                            $data->save();
+                                                                                            return $mensaje;
+                                                                                        } else {
+                                                                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                                                                        }
+                                                                                    }
+                                                                                } else {
+                                                                                    if ($vlrecnmco == 'true') {
+                                                                                        if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+
+                                                                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                        } else {
+                                                                                            //     echo 'guarde 1 y 4';    
+                                                                                            if ($validacionHora == 'true') {
+                                                                                                $guardar = json_encode($arreglo);
+                                                                                                $data->tracking_detail = $guardar;
+                                                                                                $data->save();
+                                                                                                return $mensaje;
+                                                                                            } else {
+                                                                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                                                                            }
+                                                                                        }
+                                                                                    } else {
+                                                                                        if ($vlruyc == 'true') {
+                                                                                            if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                                                            } else {
+                                                                                                //       echo 'guarde 1 y 5';
+                                                                                                if ($validacionHora == 'true') {
+                                                                                                    $guardar = json_encode($arreglo);
+                                                                                                    $data->tracking_detail = $guardar;
+                                                                                                    $data->save();
+                                                                                                    return $mensaje;
+                                                                                                } else {
+                                                                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -1781,229 +1743,354 @@ class perfilEstudianteController extends Controller
                                                     }
                                                 }
                                             }
+                                        }
+                                    }
+                                } else {
+                                    if ($arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
 
-                                        }else{
+                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                    } else {
 
-                                            if($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
 
-                                                echo 'Las categorias deben ser diligenciadas completamente';    
-                                            }else{
-                                                //guarda 2 solo
-                                                if($validacionHora == 'true'){    
+                                        //echo "guarde con lo del primero";    
+                                        if ($validacionHora == 'true') {
+                                            $guardar = json_encode($arreglo);
+                                            $data->tracking_detail = $guardar;
+                                            $data->save();
+                                            return $mensaje;
+                                        } else {
+                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                        }
+                                    }
+                                }
+                            } else {
+                                if ($vlracdmco == 'true') {
+                                    $acade = $arreglo['Academico'];
+                                    $riesgoacade = $arreglo['RiesgoAcademico'];
+
+                                    if ($vlrfmlar == 'true' || $vlrecnmco == 'true' || $vlruyc == 'true') {
+
+
+                                        if ($vlrfmlar == 'true' && $vlrecnmco == 'true' && $vlruyc == 'true') {
+                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //echo 'guarde 2, 3 4 y 5';    
+                                                if ($validacionHora == 'true') {
                                                     $guardar = json_encode($arreglo);
                                                     $data->tracking_detail = $guardar;
                                                     $data->save();
                                                     return $mensaje;
-                                                }else{
+                                                } else {
                                                     echo 'La hora final debe ser mayor a la hora inicial';
                                                 }
                                             }
-                                        
-                                        }
-                                        
-                                    }else{
-                                        if($vlrfmlar == 'true'){
-                                            
+                                        } else {
+                                            if ($vlrfmlar == 'true' && $vlrecnmco == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
 
-                                            if($vlrecnmco == 'true' || $vlruyc == 'true'){
-                                                
-
-                                                if($vlrecnmco == 'true' && $vlruyc == 'true'){
-                                                    //guarda 3 4 y 5
-                                                    if($validacionHora == 'true'){    
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+                                                    //guarda 2 3 y 4
+                                                    if ($validacionHora == 'true') {
                                                         $guardar = json_encode($arreglo);
                                                         $data->tracking_detail = $guardar;
                                                         $data->save();
                                                         return $mensaje;
-                                                    }else{
+                                                    } else {
                                                         echo 'La hora final debe ser mayor a la hora inicial';
-                                                    }    
-                                                }else{
+                                                    }
+                                                }
+                                            } else {
 
-                                                    if($vlrecnmco == 'true'){
-                                                        if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null){
+                                                if ($vlrfmlar == 'true' && $vlruyc == 'true') {
+                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                        echo 'Las categorias deben ser diligenciada completamente';
+                                                    } else {
+                                                        //guarda 2 3 y 5
+                                                        if ($validacionHora == 'true') {
+                                                            $guardar = json_encode($arreglo);
+                                                            $data->tracking_detail = $guardar;
+                                                            $data->save();
+                                                            return $mensaje;
+                                                        } else {
+                                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                                        }
+                                                    }
+                                                } else {
+                                                    if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                        if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
                                                             echo 'Las categorias deben ser diligenciadas completamente';
-                                                        }else{
-                                                            //guarda 3 y 4
-                                                            if($validacionHora == 'true'){    
+                                                        } else {
+                                                            //guarda 2 4 5
+                                                            if ($validacionHora == 'true') {
                                                                 $guardar = json_encode($arreglo);
                                                                 $data->tracking_detail = $guardar;
                                                                 $data->save();
                                                                 return $mensaje;
-                                                            }else{
-                                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                            } else {
+                                                                echo 'La hora final debe ser mayor a la hora inicial';
                                                             }
                                                         }
-                                                    }else{
-                                                        if($vlruyc == 'true'){
-                                                            if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                            }else{
-                                                                //guarda 3 y 5
-                                                                if($validacionHora == 'true'){    
+                                                    } else {
+                                                        if ($vlrecnmco == 'true') {
+                                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                                            } else {
+                                                                //guarda 2 y 4
+                                                                if ($validacionHora == 'true') {
                                                                     $guardar = json_encode($arreglo);
                                                                     $data->tracking_detail = $guardar;
                                                                     $data->save();
                                                                     return $mensaje;
-                                                                }else{
+                                                                } else {
                                                                     echo 'La hora final debe ser mayor a la hora inicial';
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if ($vlruyc == 'true') {
+                                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
+                                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                                } else {
+                                                                    //guarda 2 y 5
+                                                                    if ($validacionHora == 'true') {
+                                                                        $guardar = json_encode($arreglo);
+                                                                        $data->tracking_detail = $guardar;
+                                                                        $data->save();
+                                                                        return $mensaje;
+                                                                    } else {
+                                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                                    }
                                                                 }
                                                             }
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
+                                    } else {
 
-                                            }else{
-                                                if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null ||  $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                        if ($arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+
+                                            echo 'Las categorias deben ser diligenciadas completamente';
+                                        } else {
+                                            //guarda 2 solo
+                                            if ($validacionHora == 'true') {
+                                                $guardar = json_encode($arreglo);
+                                                $data->tracking_detail = $guardar;
+                                                $data->save();
+                                                return $mensaje;
+                                            } else {
+                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if ($vlrfmlar == 'true') {
+
+
+                                        if ($vlrecnmco == 'true' || $vlruyc == 'true') {
+
+
+                                            if ($vlrecnmco == 'true' && $vlruyc == 'true') {
+                                                //guarda 3 4 y 5
+                                                if ($validacionHora == 'true') {
+                                                    $guardar = json_encode($arreglo);
+                                                    $data->tracking_detail = $guardar;
+                                                    $data->save();
+                                                    return $mensaje;
+                                                } else {
+                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                }
+                                            } else {
+
+                                                if ($vlrecnmco == 'true') {
+                                                    if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                        echo 'Las categorias deben ser diligenciadas completamente';
+                                                    } else {
+                                                        //guarda 3 y 4
+                                                        if ($validacionHora == 'true') {
+                                                            $guardar = json_encode($arreglo);
+                                                            $data->tracking_detail = $guardar;
+                                                            $data->save();
+                                                            return $mensaje;
+                                                        } else {
+                                                            echo 'La hora final debe ser mayor a la hora inicial';
+                                                        }
+                                                    }
+                                                } else {
+                                                    if ($vlruyc == 'true') {
+                                                        if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
+                                                        } else {
+                                                            //guarda 3 y 5
+                                                            if ($validacionHora == 'true') {
+                                                                $guardar = json_encode($arreglo);
+                                                                $data->tracking_detail = $guardar;
+                                                                $data->save();
+                                                                return $mensaje;
+                                                            } else {
+                                                                echo 'La hora final debe ser mayor a la hora inicial';
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null ||  $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                echo 'Las categorias deben ser diligenciadas completamente';
+                                            } else {
+                                                //guarda 3
+                                                if ($validacionHora == 'true') {
+                                                    $guardar = json_encode($arreglo);
+                                                    $data->tracking_detail = $guardar;
+                                                    $data->save();
+                                                    return $mensaje;
+                                                } else {
+                                                    echo 'La hora final debe ser mayor a la hora inicial';
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if ($vlrecnmco == 'true') {
+
+                                            if ($vlruyc == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null) {
                                                     echo 'Las categorias deben ser diligenciadas completamente';
-                                                }else{
-                                                    //guarda 3
-                                                    if($validacionHora == 'true'){    
+                                                } else {
+                                                    //guarda 4 y 5                   
+                                                    if ($validacionHora == 'true') {
                                                         $guardar = json_encode($arreglo);
                                                         $data->tracking_detail = $guardar;
                                                         $data->save();
                                                         return $mensaje;
-                                                    }else{
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
+                                                    }
+                                                }
+                                            } else {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+
+                                                    //guarda 4
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $data->tracking_detail = $guardar;
+                                                        $data->save();
+                                                        return $mensaje;
+                                                    } else {
                                                         echo 'La hora final debe ser mayor a la hora inicial';
                                                     }
                                                 }
                                             }
-                                        }else{
-                                            if ($vlrecnmco == 'true') {
+                                        } else {
+                                            if ($vlruyc == 'true') {
+                                                if ($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null) {
 
-                                                if($vlruyc == 'true'){
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null){
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-                                                    }else{
-                                                        //guarda 4 y 5                   
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
+                                                    echo 'Las categorias deben ser diligenciadas completamente';
+                                                } else {
+                                                    //guarda 5                                                         
+                                                    if ($validacionHora == 'true') {
+                                                        $guardar = json_encode($arreglo);
+                                                        $data->tracking_detail = $guardar;
+                                                        $data->save();
+                                                        return $mensaje;
+                                                    } else {
+                                                        echo 'La hora final debe ser mayor a la hora inicial';
                                                     }
-                                                }else{
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['VidaUniversitariaYciudad'] != null || $arreglo['RiesgoUc'] != null) {
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-                                                    }else{
-                                                    
-                                                        //guarda 4
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }    
-                                                    }
-                                                }                                                               
-                                            }else{
-                                                if($vlruyc == 'true'){
-                                                    if($arreglo['Individual'] != null || $arreglo['RiesgoIndividual'] != null || $arreglo['Academico'] != null || $arreglo['RiesgoAcademico'] != null || $arreglo['Familiar'] != null || $arreglo['RiesgoFamiliar'] != null || $arreglo['Economico'] != null || $arreglo['RiesgoEconomico'] != null){
-
-                                                        echo 'Las categorias deben ser diligenciadas completamente';
-
-                                                    }else{
-                                                        //guarda 5                                                         
-                                                        if($validacionHora == 'true'){    
-                                                            $guardar = json_encode($arreglo);
-                                                            $data->tracking_detail = $guardar;
-                                                            $data->save();
-                                                            return $mensaje;
-                                                        }else{
-                                                            echo 'La hora final debe ser mayor a la hora inicial';
-                                                        }
-                                                    }
-                                                }else{
-                                                    echo 'No es posible crear un seguimiento con esa estructura';
                                                 }
+                                            } else {
+                                                echo 'No es posible crear un seguimiento con esa estructura';
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }else{
-                        echo 'No es posible crear un seguimiento con esa estructura';
                     }
+                } else {
+                    echo 'No es posible crear un seguimiento con esa estructura';
                 }
-            }else{
-                echo 'No es posible crear un seguimiento con esa estructura';
-            };
-        }
+            }
+        } else {
+            echo 'No es posible crear un seguimiento con esa estructura';
+        };
+    }
 
-    public function delete_seguimiento($id, Request $request){
+    public function delete_seguimiento($id, Request $request)
+    {
         //dd('entro a eliminar');
-        if($request->ajax())
-        {
-            $data = SocioEducationalFollowUp::findOrFail($id); 
-            $data -> delete();
+        if ($request->ajax()) {
+            $data = SocioEducationalFollowUp::findOrFail($id);
+            $data->delete();
             return;
         }
     }
 
     public function grupos(Request $request, $id)
     {
-        $grpos = Group::where('id_cohort',$id)->get();
+        $grpos = Group::where('id_cohort', $id)->get();
         //return $grupos;
-        if($request->ajax())
-        {
-         
-          return response()->json($grpos);
+        if ($request->ajax()) {
+
+            return response()->json($grpos);
         }
     }
 
-    public function datosNuevos(Request $request, $id) {
-        
-        
+    public function datosNuevos(Request $request, $id)
+    {
+
+
         $grupo = Group::where('id', $id)->select('name')->first();
-        
+
         $grpo = $grupo->name;
-        
+
         $cohort = Group::where('id', $id)->select('id_cohort')->first();
         $vercohort = $cohort->id_cohort;
 
-        $cohorte = Cohort::where('id', $vercohort)->select('name')->first(); 
+        $cohorte = Cohort::where('id', $vercohort)->select('name')->first();
         $chrte = $cohorte->name;
 
         $array = ['grupo' => $grpo, 'cohorte' => $chrte];
 
         //return $array;
-            if ($request->ajax()) {
-                return response()->json($array);     
-            } 
-        
+        if ($request->ajax()) {
+            return response()->json($array);
+        }
     }
 
-    public function updateCohorteGrupo($id, Request $request) {
-        
+    public function updateCohorteGrupo($id, Request $request)
+    {
+
         $group = StudentGroup::findOrFail($id);
-        
+
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
 
         $cohort = Group::where('id', $request['grupo'])->select('id_cohort')->first();
         $vlrchrte = $cohort->id_cohort;
-        
+
         if ($request->ajax()) {
 
-            if($vlrchrte == $request['cohorte']) {
+            if ($vlrchrte == $request['cohorte']) {
                 $group->id_group = $request['grupo'];
-                
-                $group->save();    
-            }else{
-                return $error; 
+
+                $group->save();
+            } else {
+                return $error;
             }
-
         };
-        
-        return $mensaje;   
 
+        return $mensaje;
     }
+
+
+    public function export(){
+
+        return Excel::download(new SabanaExport, 'sabana.xlsx');
+    }
+
+   
 
     public function excel(Request $request){
 
@@ -2194,21 +2281,3 @@ class perfilEstudianteController extends Controller
         return $i;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

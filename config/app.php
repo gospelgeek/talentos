@@ -187,6 +187,9 @@ return [
         //excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        //Macros personalizadas
+        App\Providers\PhpSpreadsheetMacroServiceProvider::class,
+
         /* toastr*/
         Yoeunes\Toastr\ToastrServiceProvider::class,
         

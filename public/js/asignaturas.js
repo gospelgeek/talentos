@@ -43,10 +43,10 @@
                                                         $.each(course.attendance.fullsessionslog, function(k,attendance){
                                                                 //console.log(attendance);
                                                                 var fecha_json = new Date(attendance.timestamp * 1000);
-                                                                //console.log(fecha_json);
+                                                                
                                                                 var fecha_actual = new Date();
                                                                 if(fecha_json <= fecha_actual){
-                                                                        
+                                                                        //console.log(fecha_json);
                                                                         totalsesiones.push(attendance.sessionid);
                                                                 }
                                                                                 

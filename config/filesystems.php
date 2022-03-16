@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path('json'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -79,7 +79,7 @@ return [
     */
 
     'links' => [
-        base_path('../pruebas.todosytodasaestudiar.org/json') => storage_path('json'),
+        public_path('json') => storage_path('json'),
     ],
 
 ];

@@ -206,9 +206,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 ESTUDIANTES
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
               </div>
           </li>
           <li class="nav-item dropdown">
@@ -228,7 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           Estudiantes 
                         </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                             <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
                             <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>

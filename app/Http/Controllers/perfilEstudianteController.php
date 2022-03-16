@@ -2140,7 +2140,7 @@ class perfilEstudianteController extends Controller
             );
         
         }
-        
+     
         $sabana = new SabanaExport([$excel]);
                
         return Excel::download($sabana, 'sàbana.xlsx');

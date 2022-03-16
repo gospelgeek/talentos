@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /storage/app/*
+/storage/json/*
+/public/json/*
 /storage/framework/cache/data*
 /storage/framework/sessions/*
 /storage/framework/testing/*

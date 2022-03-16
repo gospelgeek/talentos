@@ -32,6 +32,8 @@ class SocioeconomicData extends Model
         'sex_document_identidad',
         'id_social_conditions',
         'url_social_conditions',
+        'srtatum',
+        'rural_zone',
         'id_disability',
         'id_ethnicity',
         'url_ethnicity',

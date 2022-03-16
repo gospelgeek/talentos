@@ -23,7 +23,10 @@ define('LARAVEL_START', microtime(true));
 
 
 
+
+
 require __DIR__.'/../PNA/vendor/autoload.php';
+
 
 
 
@@ -43,8 +46,8 @@ require __DIR__.'/../PNA/vendor/autoload.php';
 
 
 
-$app = require_once __DIR__.'/../PNA/bootstrap/app.php';
 
+$app = require_once __DIR__.'/../PNA/bootstrap/app.php';
 
 
 

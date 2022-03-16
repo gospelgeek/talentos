@@ -33,6 +33,7 @@ $('.crear_estado').click(function(e) {
         $('#modal_crear_estado').modal('show'); 
 });
 
+
  $('#estadoN').on('change',function(event) {
           var valor = $('#estadoN').val();
           //console.log(valor)
@@ -119,7 +120,6 @@ $(".accordion-titulo").click(function(e){
           $("#titulo-5").removeClass("open");  
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
-
         }
         else{ //close       
           contenido.slideUp(250);
@@ -146,7 +146,6 @@ $(".accordion-titulo-2").click(function(e){
           $("#titulo-5").removeClass("open"); 
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open"); 
-
         }
         else{ //close       
           contenido.slideUp(250);
@@ -441,7 +440,9 @@ $(".accordion-titulo-6").click(function(e){
           $("#contenido-3").hide();
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open");  
+          $("#titulo-4").removeClass("open");
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");
         }
         else{ //close
 
@@ -693,3 +694,4 @@ function tipoCancha(deporteSel){
             break;
     }
 }*/
+

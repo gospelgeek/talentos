@@ -4,7 +4,7 @@ function abrirmodal(e) {
        //var row = $(this).parents('tr');
        //console.log(row);
        var id = $(e).attr("id"); 
-       console.log(id);
+       //console.log(id);
        var form = $('#form-edit');
        var url = form.attr('action').replace(':ESTADO_ID', id);
        //console.log(url);

@@ -117,7 +117,7 @@
                                                 div.appendChild(div_2);
                                                 div_2.appendChild(a);
                                                 div_2.appendChild(vinculo);
-                                                document.getElementById("ddd").appendChild(row_2);                                                
+                                                document.getElementById("tabla").appendChild(row_2);                                                
                                         }                                          
                                 }
                                 //console.log(sesiones);

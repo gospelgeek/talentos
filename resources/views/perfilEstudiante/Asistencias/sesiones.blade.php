@@ -24,7 +24,7 @@
                             <td width="15%">Accion</td>
                         </tr>
                     </thead>
-                    <tbody id="ddd">
+                    <tbody id="tabla">
                     	
                     </tbody>
     </table>                

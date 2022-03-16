@@ -18,6 +18,7 @@ class AdmissionScores extends Model
         'formula',
         'rural_zone',
         'lgtbiq',
+        'woman',
         'disability',
         'victim_conflict',
         'social_reintegration',

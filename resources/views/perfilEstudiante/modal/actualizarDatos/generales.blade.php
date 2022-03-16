@@ -81,7 +81,7 @@
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('phone','Numero alternativo: ')!!}
-                      {!!Form::text('phone', $verDatosPerfil ? $verDatosPerfil->phone : null,['id'=>'telefono','class'=>'form-control','required','placeholder'=>'Telefono'])!!}  
+                      {!!Form::text('phone', $verDatosPerfil ? $verDatosPerfil->phone : null,['id'=>'telefono','class'=>'form-control','required','placeholder'=>'Telefono'])!!}
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('student_code','Codigo estudiante: ')!!}
@@ -105,3 +105,5 @@
       </div>
     </div>
 </div>
+
+

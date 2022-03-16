@@ -27,7 +27,13 @@
             
             <br>
             @endif
-
+            @if(auth()->user()->rol_id == 1) 
+            <div class="row">
+                <div  class="col-xs-12 col-md-3 col-sm-3">
+                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_excel_json')}}">Reporte General</a>            
+                </div>
+            </div>
+            @endif
     		<div class="table-responsive">
      			<table id="example1" class=" table table-bordered table-striped">
         			<thead>

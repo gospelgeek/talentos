@@ -22,7 +22,7 @@ class AdmissionScores extends Model
         'disability',
         'victim_conflict',
         'social_reintegration',
-        'strata_1_2 ',
+        'strata_1_2',
         'sisben_a_b_c',
         'afro',
         'indigenous',

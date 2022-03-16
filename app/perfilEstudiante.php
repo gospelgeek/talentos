@@ -218,7 +218,7 @@ class perfilEstudiante extends Model
 
         return $this->hasOne(Formalization::class, 'id_student', 'id');
     }
-    
+
     /**
      * Relacion con los  datos que se tiene de student_profile  
      * con la tabla StudentDevices

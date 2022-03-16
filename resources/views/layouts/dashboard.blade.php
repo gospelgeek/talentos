@@ -78,10 +78,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                     </ul>
-                  </li>
-                  -->
-            <!-- End Level three 
-
+                  </li>-->
+     
+                  <!-- End Level three 
+                  
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                 </ul>
@@ -206,35 +206,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 ESTUDIANTES
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
               </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
+              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
+            </ul>
           </li>
           @endif
           @if(auth()->user()->rol_id == 1)
-          <ul class="navbar-nav mr-auto">
-            <a href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ESTUDIANTES
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-              </div>
-            </li>
-                      <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>   
+        <ul class="navbar-nav mr-auto">
+                        <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
+                        
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Estudiantes 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
+                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                            <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                          </div>
+                      </li>
                       <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
-                      <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                      <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
-        </ul>
+                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+                        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
+              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
+            </ul>
+            </li>
         @else
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
                         <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a  href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+                        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
+              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
+            </ul>
+            </li>
+
         </ul>
         @endif
         <li class="nav-item">

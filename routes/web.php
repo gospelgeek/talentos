@@ -149,6 +149,7 @@ Route::get('/view-clear', function() {
 
 //Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 

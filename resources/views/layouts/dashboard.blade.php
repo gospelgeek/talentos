@@ -196,32 +196,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         </li>
         -->
-<<<<<<< HEAD
-        @if(auth()->user()->rol_id == 1)
-        <ul class="navbar-nav mr-auto">
-                        <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-
-                        <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>
-                        
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          LISTADOS ESTUDIANTES 
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
-                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                          </div>
-                        </li>
-                        
-                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
-        </ul>
-        @else
-        <ul class="navbar-nav mr-auto">
-                        <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
-                        <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <a  href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
-=======
           @if(auth()->user()->rol_id == 2)
           <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
 
@@ -229,6 +203,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(auth()->user()->rol_id == 1)
           <ul class="navbar-nav mr-auto">
             <a href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
+
+            <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -257,7 +233,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
           </li>
->>>>>>> bf24a4698766c0ca903665003506abf815cf884a
         </ul>
       </div>
     </nav>

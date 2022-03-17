@@ -200,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         -->
 
           @if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 4)
-          <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+          
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ESTUDIANTES
@@ -235,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
                           </div>
                       </li>
-                      <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+                      
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>

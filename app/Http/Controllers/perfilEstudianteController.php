@@ -357,7 +357,7 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosSocioeconomicos($id, Request $request)
     {
-        // dd($id);
+        
         $data = SocioeconomicData::findOrFail($id);
         //dd($data);
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
@@ -389,8 +389,6 @@ class perfilEstudianteController extends Controller
             $fecha = Carbon::now();
             $fecha = $fecha->format('d-m-Y');
 
-        
-        //dd($fecha);
             $datos = LogsCrudActions::create([
                 'identificacion'           => $id['id'],
                 'rol'                      => $id['rol_id'],

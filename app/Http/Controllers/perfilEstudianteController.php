@@ -228,7 +228,7 @@ class perfilEstudianteController extends Controller
         $fecha = $fecha->format('d-m-Y h:i:s A');
         //dd($fecha);
         $datos = LogsCrudActions::create([
-            'identificacion'           => $id['cedula'],
+            'identificacion'           => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -321,7 +321,7 @@ class perfilEstudianteController extends Controller
         $motivos = Reasons::pluck('name', 'id');
         //dd($fecha);
         $datos = LogsCrudActions::create([
-            'identificacion'           => $id['cedula'],
+            'identificacion'           => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $verDatosPerfil['id'],
@@ -383,6 +383,21 @@ class perfilEstudianteController extends Controller
             $data->id_ethnicity            = $request['id_ethnicity'];
 
             $data->save();
+            
+            $ip = User::getRealIP();
+            $id = auth()->user();
+            $fecha = Carbon::now();
+            $fecha = $fecha->format('d-m-Y');
+
+        
+        //dd($fecha);
+            $datos = LogsCrudActions::create([
+                'identificacion'           => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $data['id_student'],
+                'actividad_realizada'      => 'ACTUALIZACION DATOS SOCIOECONOMICOS',
+            ]);
         };
 
         return $mensaje;
@@ -413,6 +428,21 @@ class perfilEstudianteController extends Controller
             $acade->icfes_score         = $request['icfes_score'];
 
             $acade->save();
+            
+            $ip = User::getRealIP();
+            $id = auth()->user();
+            $fecha = Carbon::now();
+            $fecha = $fecha->format('d-m-Y');
+
+        
+        //dd($fecha);
+            $datos = LogsCrudActions::create([
+                'identificacion'           => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $acade['id_student'],
+                'actividad_realizada'      => 'ACTUALIZACION DATOS ACADEMICOS',
+            ]);
         };
 
         return $mensaje;
@@ -534,6 +564,21 @@ class perfilEstudianteController extends Controller
             $data->student_code             = $request['student_code'];
 
             $data->save();
+            
+            $ip = User::getRealIP();
+            $id = auth()->user();
+            $fecha = Carbon::now();
+            $fecha = $fecha->format('d-m-Y');
+
+        
+        //dd($fecha);
+            $datos = LogsCrudActions::create([
+                'identificacion'           => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $data['id'],
+                'actividad_realizada'      => 'ACTUALIZACION DATOS GENERALES',
+            ]);
         };
 
         return $mensaje;

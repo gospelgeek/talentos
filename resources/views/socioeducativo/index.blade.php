@@ -70,7 +70,7 @@
                         return apel
                     }
                     apel = `<div id="nameapel${data.id}">
-                            <td>${data.nameUser} ${data.apellidosUser}</td>
+                            <td><strong>${data.nameUser} ${data.apellidosUser}</strong></td>
                             </div>`
                     
                     return apel

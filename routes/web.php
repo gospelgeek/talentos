@@ -144,9 +144,11 @@ Route::get('/storage', function () {
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
+Route::post('verDatosExcel', 'SocioEducativoController@verificarInfo')->name('ejm');
 
-
-
+//graphics
+Route::get('graphics', 'GraphicsController@index')->name('graficas');
+Route::get('sex/{tipo}/linea/{cohorte}', 'GraphicsController@sexoPorCohorte')->name('sexoCohorte');
 
 
 

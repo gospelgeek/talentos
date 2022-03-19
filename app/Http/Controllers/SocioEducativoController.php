@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\AssignmentStudent;
+use App\Imports\CsvImport;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SocioEducativoController extends Controller
 {
@@ -49,4 +51,15 @@ class SocioEducativoController extends Controller
         $datosUser = User::findOrfail($request['id_user']);
         return $datosUser;
     }
+
+    public function verificarInfo(Request $request){
+        $coleccion = Excel::toArray(new CsvImport, $request->file('file'));
+        foreach($coleccion[0] as $data){
+            
+            var_dump($data['id_student']);
+        }
+
+        return var_dump($coleccion);
+    }
+
 }

@@ -624,7 +624,10 @@
                       {!!Form::label('id','id ')!!}
                       {!!Form::text('id',$verDatosPerfil->formalization->id,['id'=>'idfLz','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
                 </div>
-    			<div class="row">			
+    			<div class="row">
+    				<div class="col-xs-12 col-md-12">
+            				<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">&nbsp;&nbsp;<label>ACEPTÓ</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
             		</div>
@@ -638,7 +641,10 @@
 						<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 					</div>
 				</div>
-				<div class="row">			
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<input type="checkbox" name="aceptando" value="si" id="aceptandoTablet">&nbsp;&nbsp;<label>ACEPTÓ</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
             		</div>
@@ -649,13 +655,13 @@
             			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
-						<input  class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+						<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 					</div>
 				</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
 
             {!!Form::close()!!}
 		@endif

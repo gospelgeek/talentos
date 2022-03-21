@@ -358,6 +358,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $dropdown.off("mouseenter mouseleave");
       }
     });
+
+    $( document ).ready(function() {
+      $(".prueba li").on("click", function(){
+        $(".prueba").find(".activa").removeClass("activa");
+        $(this).addClass("activa");
+      });
+    });
+    
   </script>
   @stack('scripts')
 </body>

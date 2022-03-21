@@ -19,9 +19,6 @@ Route::post('store/save/json', 'perfilEstudianteController@CargarJSon')->name('s
 /*iniciar la aplicacion*/ 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

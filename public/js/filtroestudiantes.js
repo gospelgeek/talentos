@@ -372,9 +372,54 @@ $(".accordion-titulo-6").click(function(e){
         e.preventDefault();
     
         var contenido=$(this).next(".accordion-content-6");
- 
 
-        if(contenido.css("display")=="none"){ //open        
+        const aceptacion = document.querySelector('#aceptandoAceptacion');
+        aceptacion.checked = false;
+        const tablets = document.querySelector('#aceptandoTablet');
+        tablets.checked = false;
+        document.getElementById('acceptancev1').disabled = true;
+        document.getElementById('acceptancev2').disabled = true;
+        document.getElementById('tabletsv1').disabled = true;
+        document.getElementById('tabletsv2').disabled = true;
+        
+      
+        $(function () {
+          $('#aceptandoAceptacion').change(function(event)
+          {
+            var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
+            if(checkAcptacon) {
+              document.getElementById('acceptancev1').disabled = false;
+              document.getElementById('acceptancev2').disabled = false;
+
+            }else{
+              document.getElementById('acceptancev1').disabled = true;
+              document.getElementById('acceptancev2').disabled = true;
+
+            }
+                    
+      
+          });
+        });
+
+      $(function () {
+          $('#aceptandoTablet').change(function(event)
+          {
+            var checkTablets = $('#aceptandoTablet').is(":checked");
+            if(checkTablets) {
+              document.getElementById('tabletsv1').disabled = false;
+              document.getElementById('tabletsv2').disabled = false;
+
+            }else{
+              document.getElementById('tabletsv1').disabled = true;
+              document.getElementById('tabletsv2').disabled = true;
+
+            }
+                    
+      
+          });
+      });
+        
+         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         
           $(this).addClass("open");
           $("#contenido-1").hide();

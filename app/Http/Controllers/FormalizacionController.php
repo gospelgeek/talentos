@@ -40,23 +40,63 @@ class FormalizacionController extends Controller
     
     public function formalizacionupdate($id, Request $request){
 
-        $data = Formalization::findOrFail($id);
+    $data = Formalization::findOrFail($id);
         
-        $mensaje = "Formalizacion generada correctamente!!";
-
-
         if ($request->ajax()) {
 
-            $data->acceptance_v1      = $request['acceptance_v1'];
-            $data->acceptance_v2      = $request['acceptance_v2'];   
-            $data->tablets_v1         = $request['tablets_v1'];
-            $data->tablets_v2         = $request['tablets_v2'];
-            
-            
+            if($request->checkAceptacion == 'false' && $request->checkTablet == 'false'){
+
+                return 1;
+
+            }else{
+                if($request->checkAceptacion == 'true') {
+                    if($request->acceptance_v1 != null){
+                        $data->acceptance_v1 = $request['acceptance_v1'];
+                        if($request->acceptance_v2 != null){
+                            $data->acceptance_v2 = $request['acceptance_v2'];
+                        }else{
+                            $data->acceptance_v2 = 'SI';
+                        }      
+                    }else{
+                        $data->acceptance_v1 = 'SI';
+                        if($request->acceptance_v2 != null){
+                            $data->acceptance_v2 = $request['acceptance_v2'];
+                        }else{
+                            $data->acceptance_v2 = 'SI';
+                        }
+                    }
+                }
+
+                if($request->checkTablet == 'true') {
+                    if($request->tablets_v1 != null){
+                        $data->tablets_v1 = $request['tablets_v1'];
+                        if($request->tablets_v2 != null){
+                            $data->tablets_v2 = $request['tablets_v2'];
+                        }else{
+                            $data->tablets_v2 = 'SI';
+                        }      
+                    }else{
+                        $data->tablets_v1 = 'SI';
+                        if($request->tablets_v2 != null){
+                            $data->tablets_v2 = $request['tablets_v2'];
+                        }else{
+                            $data->tablets_v2 = 'SI';
+                        }
+                    }
+                }
+
+                
+            }
+
             $data->save();
+
+            return 2;
+            
+
+              
             
         };
         
-         return $mensaje;
+         
     }
 }

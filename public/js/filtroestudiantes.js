@@ -1,18 +1,60 @@
+
 $('.crear_estado').click(function(e) { 
       e.preventDefault();
-        $('#CMotivo').hide();
-        $('#Cobservacion').hide();
+        var valor = $('#estadoN').val();
+          //console.log(valor)
+          if(valor == ""){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          }
+          if(valor == 3 || valor == 2){
+            $('#CMotivo').show();
+            $('#Cobservacion').show();
+            $('#CUrl').show();
+            $('#CBoton').show();
+          }
+          if(valor == 4){
+            $('#Cobservacion').show();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();               
+          }
+          if(valor == 1){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          } 
         $('#modal_crear_estado').modal('show');
         //alert(cod);
         $(document).on('change', '#estadoN', function(event) {
           var valor = $('#estadoN').val();
+          //console.log(valor)
+          if(valor == ""){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
+          }
           if(valor == 3 || valor == 2){
             $('#CMotivo').show();
             $('#Cobservacion').show();
+            $('#CUrl').show();
+            $('#CBoton').show();
           }
-          else{
+          if(valor == 4){
+            $('#Cobservacion').show();
             $('#CMotivo').hide();
-            $('#Cobservacion').hide();          
+            $('#CUrl').hide();
+            $('#CBoton').hide();               
+          }
+          if(valor == 1){
+            $('#Cobservacion').hide();
+            $('#CMotivo').hide();
+            $('#CUrl').hide();
+            $('#CBoton').hide();
           }
         });  
 });
@@ -33,6 +75,7 @@ $('.crear_estado').click(function(e) {
       'id_state': $("#estadoN").val(),
       'id_reasons': $("#CMotivo").val(),
       'observation': $("#Cobservacion").val(),
+      'url':         $("#CUrl").val(),
     },
     success:function(msj) {
       $('#modal_crear_estado').modal('hide');
@@ -69,8 +112,8 @@ $(".accordion-titulo").click(function(e){
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");  
         }
         else{ //close       
           contenido.slideUp(250);
@@ -93,8 +136,8 @@ $(".accordion-titulo-2").click(function(e){
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open"); 
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open"); 
         }
         else{ //close       
           contenido.slideUp(250);
@@ -117,9 +160,9 @@ $(".accordion-titulo-3").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open"); 
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
+          $("#titulo-4").removeClass("open");
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");  
         }
         else{ //close
 
@@ -351,10 +394,9 @@ $(".accordion-titulo-4").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open");
-          $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");  
-
+          $("#titulo-3").removeClass("open"); 
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");
 
         }
         else{ //close
@@ -439,14 +481,4 @@ $(".accordion-titulo-6").click(function(e){
             
         }
 });
-
-
-
-
-
-
-
-
-
-
 

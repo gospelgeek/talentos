@@ -116,8 +116,9 @@ Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacio
 //datos formalizacion por ajax
 Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
 
-//Actualiar formalizacion
-Route::put('updateformalizacion/{id}', 'FormalizacionController@formalizacionupdate')->name('updateformalizacion');
+//actualizar formalizacion
+Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
+
 
 
 // borrar caché de la aplicación
@@ -154,7 +155,10 @@ Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeduc
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
+//RUTA INDEXESTADO ESTUDIANTES
 
+Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
+Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
 
 
 

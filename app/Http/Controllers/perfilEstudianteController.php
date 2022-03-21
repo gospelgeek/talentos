@@ -70,9 +70,42 @@ class perfilEstudianteController extends Controller
 
     public function mostrar()
     {
-       
-        $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio,
-            YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad,
+
+
+        $user = auth()->user();
+        if ($user['rol_id'] == 6) {
+            $iden = $user['id'];
+
+            $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio,
+            (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as genero,
+            (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as tutor,
+            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado,
+            (SELECT civil_statuses.name FROM civil_statuses WHERE socioeconomic_data.id_civil_status = civil_statuses.id) as nombreEstadocivil,
+            (SELECT ethnicities.name FROM ethnicities WHERE socioeconomic_data.id_ethnicity = ethnicities.id) as nombreEtnia,
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
+            AND student_groups.id_group = groups.id AND student_profile.id IN (SELECT assignment_students.id_student FROM assignment_students WHERE assignment_students.id_user = ?)
+        ", [$iden]);
+
+            return datatables()->of($perfilEstudiantes)->toJson();
+        }
+
+
+
+
+        $perfilEstudiantes= DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+
+
             (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
             (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
             (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
@@ -594,36 +627,77 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.asignaturas.notas', compact('notas', 'id', 'grupo'));
     }
 
-    public function updateEstado($id, Request $request)
-    {
-        $status = "Estado actualizado correctamente!!";
-        if ($request->ajax()) {
-            $estado = perfilEstudiante::findOrFail($id);
-            $estado->id_state = $request['id_state'];
-            $estado->save();
-            if ($request['id_state'] != 1) {
-                $estado->delete();
-                
-                $ip = User::getRealIP();
-                $id = auth()->user();
-                $fecha = Carbon::now();
-                $fecha = $fecha->format('d-m-Y');
 
-                $datos = LogsCrudActions::create([
-                    'identificacion'           => $id['id'],
-                    'rol'                      => $id['rol_id'],
-                    'ip'                       => $ip,
-                    'id_usuario_accion'        => $estado['id'],
-                    'actividad_realizada'      => 'CAMBIO DE ESTADO DE USUARIO(DELETE)',
-                ]);
+    public function updateEstado($id, Request $request){
+       $status = "Estado actualizado correctamente!!";
+        if($request->ajax())
+        {   
+            $borrar = Withdrawals::where('id_student', $id)->get();
+            //return $borrar;
+            
+            if($request['id_state'] != 1){
+                if($borrar != null){
+                   $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+                }else{
+                    $estado = perfilEstudiante::findOrFail($id);        
+                    $estado->id_state = $request['id_state'];
+                    $estado->save();  
+                    $estado -> delete();
+                }
+            
+            //eliminarPerfilEstudiante($id);
+
             }
-            $datos = Withdrawals::create([
-                'id_student'   =>  $id,
-                'id_reasons'   =>  $request['id_reasons'],
-                'observation'  =>  $request['observation'],
-            ]);
+            
+            if($request['id_state'] == 1){
+                if($borrar != null){
+                    $borrar = Withdrawals::where('id_student', $id)->delete();
+                    $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
+                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
 
-            return 'true';
+                    return 'true';
+                }
+                else{
+                    return 'true';
+                }    
+            }
+            if($request['id_state'] == 4){
+                if($borrar == ""){
+                    $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }else{
+                $borrar = Withdrawals::where('id_student', $id)->delete();
+                $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }
+                 
+            }
+            if(($request['id_state'] == 2) || ($request['id_state'] == 3) ){
+                    if($borrar == ""){
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }else{
+                        $borrar = Withdrawals::where('id_student', $id)->delete();
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }                        
+            }                                 
         };
     }
 
@@ -2020,7 +2094,7 @@ class perfilEstudianteController extends Controller
     }
 
 
-    public function export(){
+   public function export(){
 
         
         $estudiantes = perfilEstudiante::select('id', 'college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date')->get();
@@ -2177,5 +2251,21 @@ class perfilEstudianteController extends Controller
         } else {
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
         }
+    }
+    
+    public function index_Estados(){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
+        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+    }
+
+    public function edit_Estado($id, Request $request){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $data = $verDatosPerfil[0]->condition;
+        $data2 = $verDatosPerfil[0]->withdrawals;
+        if($request->ajax()){
+            return Response::json($verDatosPerfil);
+        };
     }
 }

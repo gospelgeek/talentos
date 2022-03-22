@@ -73,6 +73,7 @@ Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEs
 //Asistencias Individuales
 
 Route::get('asistencias/estudiantes', 'perfilEstudianteController@indexEstudiantes')->name('asistencias.estudiantes');
+Route::get('inasistencias', 'perfilEstudianteController@json_inasistencias')->name('inasistencias');
 //Route::get('asistencias/estudiante/{id}', 'perfilEstudianteController@ver_Asistencias')->name('ver_asistencias');
 Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asistencias')->name('crear_excel_json');
 //RUTAS DE AJAX

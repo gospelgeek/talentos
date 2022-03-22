@@ -2228,6 +2228,9 @@ class perfilEstudianteController extends Controller
         if($verificar_nombre[0] == "sessionsbycoursereport"){
             $nombre = "students.json";
             Storage::delete($nombre);
+            if(Storage::disk('local')->exists('inasistencias.json')) {
+                Storage::delete('inasistencias.json');
+            }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
             $exitCode = Artisan::call('optimize:clear');
             return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
@@ -2235,6 +2238,9 @@ class perfilEstudianteController extends Controller
         if($verificar_nombre[0] == "attendancereport"){
             $nombre = "asistencias.json";
             Storage::delete($nombre);
+            if(Storage::disk('local')->exists('inasistencias.json')) {
+                Storage::delete('inasistencias.json');
+            }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
             $exitCode = Artisan::call('optimize:clear');
             return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
@@ -2244,11 +2250,93 @@ class perfilEstudianteController extends Controller
         }   
     }
 
+    public function json_inasistencias(Request $request){
+        if(Storage::disk('local')->exists('inasistencias.json')) {
+            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
+            $prueba = collect($inasistencias);
+               
+            return datatables()->of($prueba)->toJson();     
+        }
+        else{
+            $perfilEstudiantes = perfilEstudiante::select('id','name','lastname','document_number','id_moodle')->get();
+
+            $perfilEstudiantes->map(function($estudiante){
+                if($estudiante->id_moodle != null){
+                    $estudiante->studentGroup->group->cohort;
+                    $estudiante->inasistencia = $this->estudiantes_asistencias($estudiante->id_moodle);
+                }else{
+                    $estudiante->studentGroup->group->cohort;
+                    $estudiante->inasistencia = "-";
+                }
+            });
+
+            $perfilEstudiantes = json_encode($perfilEstudiantes);
+
+            Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
+
+            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
+
+            $prueba = collect($inasistencias);
+               
+            return datatables()->of($prueba)->toJson();  
+        }
+    }
+        
     public function indexEstudiantes(){
+        
+        return view('perfilEstudiante.Asistencias.Individuales.index');   
+    }
 
-        $perfilEstudiantes = perfilEstudiante::all();
+    public function sesiones_asistencias($id_curso){
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($id_curso);
+        $contador = 0;
+        foreach($sesiones as $sesion){
+            if($sesion->courseid == $id_curso){
+                //dd($sesion,$id_curso);
+                $date = new Carbon();
+                
+                foreach($sesion->sessions as $session){
+                    //dump($session);
+                    $horas = $session->duration/60;
+                    //$date = Carbon::now()->subMinutes($horas);
+                    $date2 = new Carbon($session->sessdate);
+                    //dd($date);
+                    if($date >= $date2){
+                        //dump($session);
+                        $contador++;
+                    }             
+                }     
+            }
+            //dd($contador);
+            //return $contador;
+        }
 
-        return view('perfilEstudiante.Asistencias.Individuales.index',compact('perfilEstudiantes'));
+        return $contador;   
+    }
+
+    public function estudiantes_asistencias($id_moodle){
+
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $contador_asistencias = 0;
+        $contador_sesiones = 0;
+        $inasistencias;
+        foreach($asistencias as $info){
+            //dd($info->userid);
+            if($info->userid == $id_moodle){
+                //dd($info,intval($id_moodle));
+                foreach($info->courses as $course){
+                    //dump($course);
+                    $contador_asistencias += $course->attendance->takensessionssumary->numtakensessions;
+                    $contador_sesiones += $this->sesiones_asistencias($course->courseid);
+
+                }
+                $inasistencias = $contador_sesiones - $contador_asistencias;
+                   
+            }   
+        }
+        //dd($inasistencias);
+        return $inasistencias;
     }
 
     public function ver_Asistencias($id)

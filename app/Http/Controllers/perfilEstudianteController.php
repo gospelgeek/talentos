@@ -2583,7 +2583,12 @@ class perfilEstudianteController extends Controller
 
         $export = new ReporteExport([$collection]);
         
-        return Excel::download($export, 'invoices.xlsx');      
+        $fechaexcel = Carbon::now();
+
+        $fechaexcel = $fechaexcel->format('d-m-Y');
+        
+        
+        return Excel::download($export, "REPORTE GENERAL ASISTENCIAS"." ".$fechaexcel.".xlsx");      
     }
 
     function contar_valores($a,$buscado){

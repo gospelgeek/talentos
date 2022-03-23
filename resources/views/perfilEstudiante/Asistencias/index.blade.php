@@ -24,7 +24,8 @@
                         </div>
                     </div>    
                 </form>
-            
+                <br>
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_excel_json')}}">EXPORTAR REPORTE GENERAL</a>
             <br>
             @endif
 

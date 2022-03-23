@@ -811,7 +811,6 @@ class perfilEstudianteController extends Controller
                 }
             
             //eliminarPerfilEstudiante($id);
-
             }
             
             if($request['id_state'] == 1){
@@ -820,25 +819,51 @@ class perfilEstudianteController extends Controller
                     $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
                     $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
 
-
-                $datos = LogsCrudActions::create([
-                    'identificacion'           => $id['id'],
-                    'rol'                      => $id['rol_id'],
-                    'ip'                       => $ip,
-                    'id_usuario_accion'        => $estado['id'],
-                    'actividad_realizada'      => 'CAMBIO DE ESTADO DE USUARIO(DELETE)',
-                ]);
+                    return 'true';
+                }
+                else{
+                    return 'true';
+                }    
             }
-            $datos = Withdrawals::create([
+            if($request['id_state'] == 4){
+                if($borrar == ""){
+                    $datos = Withdrawals::create([
                 'id_student'   =>  $id,
-                'id_reasons'   =>  $request['id_reasons'],
                 'observation'  =>  $request['observation'],
-            ]);
-
-            return 'true';
+                 ]);
+                return 'true';
+            }else{
+                $borrar = Withdrawals::where('id_student', $id)->delete();
+                $datos = Withdrawals::create([
+                'id_student'   =>  $id,
+                'observation'  =>  $request['observation'],
+                 ]);
+                return 'true';
+            }
+                 
+            }
+            if(($request['id_state'] == 2) || ($request['id_state'] == 3) ){
+                    if($borrar == ""){
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }else{
+                        $borrar = Withdrawals::where('id_student', $id)->delete();
+                        $datos = Withdrawals::create([
+                        'id_student'   =>  $id,
+                        'id_reasons'   =>  $request['id_reasons'],
+                        'observation'  =>  $request['observation'],
+                        'url'          =>  $request['url'],
+                        ]);
+                        return 'true'; 
+                    }                        
+            }                                 
         };
     }
-}
 
 
     public function indexAsistencias()

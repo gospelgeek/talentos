@@ -324,10 +324,14 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosSocioeconomicos($id, Request $request)
     {
+
     
         $socio = SocioeconomicData::findOrFail($id);
         $socioOld = SocioeconomicData::findOrFail($id);
     
+
+        
+        
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
 
         if ($request->ajax()) {
@@ -446,8 +450,6 @@ class perfilEstudianteController extends Controller
                 'new_information'     => $guardarNew,
             ]);
 
-            
-
         };
 
         return $mensaje;
@@ -483,7 +485,7 @@ class perfilEstudianteController extends Controller
             $id = auth()->user();
             $fecha = Carbon::now();
             $fecha = $fecha->format('d-m-Y');
-
+          
             $datos = LogsCrudActions::create([
                 'identificacion'           => $id['id'],
                 'rol'                      => $id['rol_id'],
@@ -491,6 +493,7 @@ class perfilEstudianteController extends Controller
                 'id_usuario_accion'        => $acade['id_student'],
                 'actividad_realizada'      => 'ACTUALIZACION DATOS ACADEMICOS',
             ]);
+
 
             $old = array();
             $new = array();
@@ -620,7 +623,7 @@ class perfilEstudianteController extends Controller
 
 
 
-    public function updatePerfilEstudiante($id, Request $request)
+   public function updatePerfilEstudiante($id, Request $request)
     {
 
         $data = perfilEstudiante::findOrFail($id);
@@ -2283,13 +2286,6 @@ class perfilEstudianteController extends Controller
             
         }
 
-
-
-        $sabana = new SabanaExport([$excel]);
-               
-        return Excel::download($sabana, 'sàbana.xlsx');
-    }
-
    
 
     public function excel(Request $request)
@@ -2375,7 +2371,10 @@ class perfilEstudianteController extends Controller
             Storage::delete($nombre);
             if(Storage::disk('local')->exists('inasistencias.json')) {
                 Storage::delete('inasistencias.json');
+
             }
+
+                     
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
             return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
         }
@@ -2402,7 +2401,7 @@ class perfilEstudianteController extends Controller
         }
         else{
             $perfilEstudiantes = perfilEstudiante::select('id','name','lastname','document_number','id_moodle')->get();
-
+            
             $perfilEstudiantes->map(function($estudiante){
                 if($estudiante->id_moodle != null){
                     $estudiante->studentGroup->group->cohort;
@@ -2414,6 +2413,72 @@ class perfilEstudianteController extends Controller
             });
 
             $perfilEstudiantes = json_encode($perfilEstudiantes);
+
+            Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
+
+            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
+
+            $prueba = collect($inasistencias);
+               
+            return datatables()->of($prueba)->toJson();  
+        }
+    }
+        
+    public function indexEstudiantes(){
+            
+        return view('perfilEstudiante.Asistencias.Individuales.index');   
+    }
+
+    public function sesiones_asistencias($id_curso){
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($id_curso);
+        $contador = 0;
+        foreach($sesiones as $key => $sesion){
+            if($sesion->courseid == $id_curso){
+                //dd($sesion,$id_curso);
+                $date = new Carbon();
+                
+                foreach($sesion->sessions as $session){
+                    //dump($session);
+                    $horas = $session->duration/60;
+                    $date = Carbon::now()->subMinutes($horas);
+                    $date2 = new Carbon($session->sessdate);
+                    //dd($date);
+                    if($date >= $date2){
+                        //dump($session);
+                        $contador++;
+                    }             
+                }
+                return $contador;
+            }
+        }
+
+        return $contador;   
+    }
+
+    public function estudiantes_asistencias($id_moodle){
+
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $contador_asistencias = 0;
+        $contador_sesiones = 0;
+        $inasistencias;
+        foreach($asistencias as $key => $info){
+            //dd($info->userid);
+            if($info->userid == $id_moodle){
+                //dd($info,intval($id_moodle));
+                foreach($info->courses as $course){
+                    //dump($course);
+                    $contador_asistencias += $course->attendance->takensessionssumary->numtakensessions;
+                    $contador_sesiones += $this->sesiones_asistencias($course->courseid);
+
+                }
+                $inasistencias = $contador_sesiones - $contador_asistencias;
+                return $inasistencias;   
+            }   
+        }
+        return $inasistencias;
+    }
+
 
             Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
 

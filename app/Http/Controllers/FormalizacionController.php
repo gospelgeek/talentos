@@ -31,7 +31,7 @@ class FormalizacionController extends Controller
         AND student_groups.id_group = groups.id
         AND student_profile.id = formalizations.id_student");
         
-        dd($datosFormalizacion);
+        
 
         return datatables()->of($datosFormalizacion)->toJson();
     }

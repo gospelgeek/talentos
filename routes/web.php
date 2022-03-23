@@ -120,7 +120,7 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 //index formalizacion
 Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
 //datos formalizacion por ajax
-Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+Route::get('datos.formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
 
 //Actualiar formalizacion
 Route::put('updateformalizacion/{id}', 'FormalizacionController@formalizacionupdate')->name('updateformalizacion');

@@ -2579,7 +2579,7 @@ class perfilEstudianteController extends Controller
                  $prom = $total/$contador;
             }
            
-            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'total-asistencias'=>$total,'Promedio-asistencias'=>$prom);
+            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'total-asistencias'=>$total,'Promedio-asistencias'=>intval($prom));
         }
 
         $export = new ReporteExport([$collection]);

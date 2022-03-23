@@ -614,6 +614,34 @@
 	</div>
 	@endif
 </div>
+<div class="accordion-container">
+		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
+		<div id="contenido-5" class="accordion-content-5">
+			<script id="json" type="text" src="/json/students.json"></script>
+			<script id="asisten" type="text" src="/json/asistencias.json"></script>
+			<input type="hidden" name="id_moodle" id="moodle" data-id="{{$verDatosPerfil->id_moodle}}">
+			<div class="table-responsive">
+				<div id="carga" class="d-flex justify-content-center">
+                        <strong>Procesando&nbsp;</strong>
+                        <div class="spinner-border spinner-border-sm" role="status">                    
+                        </div>
+            	</div> 
+				<table id="example1" class="table table-bordered table-striped">
+					<caption style="caption-side: top;text-align:center;">Asistencias {{$verDatosPerfil->name}}</caption>
+					<thead>
+						<td>Asignatura</td>
+						<td>Sesiones</td>
+						<td>Asistencias</td>
+						<td>Faltas</td>
+						<td>Acciones</td>
+					</thead>
+					<tbody id="insertar">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>		
+	</div>
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">
@@ -681,6 +709,8 @@
 
 
 
+@include('perfilEstudiante.modal.editestado')
+@include('perfilEstudiante.modal.detalles_asistencias')
 @include('perfilEstudiante.modal.actualizarDatos.generales')
 @include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
 @include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
@@ -689,7 +719,7 @@
 @include('perfilEstudiante.seguimientos.modal.ver')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
-@include('perfilEstudiante.modal.editestado')
+
 
 
 @include('vistasParciales.validacionErrores')
@@ -707,35 +737,6 @@
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 
-<script>
-        $(function () {
-            $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "No se encontraron coincidencias",
-            "info": "Página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(filtrado de _MAX_ registros totales)",
-            "search": "Buscar",
-            "paginate":{
-                "next" : "Siguiente",
-                "previous": "Anterior"
-            }
-        },
-            });
-        });        
-    </script>
 @endpush
 
 @endsection

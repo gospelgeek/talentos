@@ -84,7 +84,7 @@
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
 
-                        if(data !== " "){
+                        if(data !== null){
 
                             if(data !== null){
                                 if(data != 'SI'){
@@ -105,7 +105,7 @@
                 },
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
 
-                        if(data !== ""){
+                        if(data !== null){
 
                             if(data !== null){
 
@@ -130,7 +130,7 @@
                 },
                 {data: 'tablets_v1', render:function(data, type, row, meta){
 
-                        if(data !== ""){
+                        if(data !== null){
 
                             if(data !== null){
 
@@ -150,7 +150,7 @@
                     }
                 },
                 {data: 'tablets_v2', render:function(data, type, row, meta){
-                        if(data !== ""){
+                        if(data !== null){
 
                             if(data !== null){
 

@@ -2562,6 +2562,7 @@ class perfilEstudianteController extends Controller
             $date = new Carbon();
             $contador = 0;
             $total=0;
+            $prom=0;
             foreach($sesion->sessions as $session){
                 //dd($session);
                 $horas = $session->duration/60;
@@ -2574,11 +2575,11 @@ class perfilEstudianteController extends Controller
                 }
                 
             }
-            /*if($contador != 0){
+            if($contador != 0){
                  $prom = $total/$contador;
-            }*/
+            }
            
-            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'promedio-asistencias'=>$total);
+            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'total-asistencias'=>$total,'Promedio-asistencias'=>$prom);
         }
 
         $export = new ReporteExport([$collection]);

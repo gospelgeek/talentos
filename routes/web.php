@@ -109,7 +109,7 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
-//Exportar pdf sabana
+//Exportar excel sabana
 Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_export');
 
 //Rutas filtros
@@ -159,6 +159,10 @@ Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeduc
 
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
+
+//RUTA INDEXESTADO ESTUDIANTES
+Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
+Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
 
 
 

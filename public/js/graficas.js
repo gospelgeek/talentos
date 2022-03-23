@@ -1,8 +1,13 @@
-const ctx = document.getElementById('myChart').getContext('2d');
+//const ctx = document.getElementById('myChart').getContext('2d');
+
+const l1Sex = document.getElementById('l1Sexo').getContext('2d');
+const l2Sex = document.getElementById('l2Sexo').getContext('2d');
+const l3Sex = document.getElementById('l3Sexo').getContext('2d');
+/*
 const modo = document.getElementById('valores');
 const cohorte = document.getElementById('linea');
 const view = document.getElementById('tipoGrafica')
-
+*/
 let sexolinea1 = []
 let sexolinea2 = []
 let sexolinea3 = []
@@ -53,6 +58,44 @@ async function datosSexoPorLineas() {
 
 datosSexoPorLineas()
 
+function renderSexLineas(titulo,line, dataSex) {
+    new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['Hombres', 'Mujeres'],
+            datasets: [{
+                label: `LINEA ${titulo}` || '',
+                data: dataSex,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+renderSexLineas(1, l1Sex, sexolinea1)
+renderSexLineas(2, l2Sex, sexolinea2)
+renderSexLineas(3, l3Sex, sexolinea3)
+/*
 modo.addEventListener('change', (e) => {
     console.log(e.target.value)
 
@@ -144,6 +187,7 @@ function renderGraficas(titulo, tipo, data, labels) {
             }
         }
     });
-    //render.canvas.parentNode.style.height = '400px';
+    //render.canvas.parentNode.style.height = '200px';
     //render.canvas.parentNode.style.width = '800px';
 }
+*/

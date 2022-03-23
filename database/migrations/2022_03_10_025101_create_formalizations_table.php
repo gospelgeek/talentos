@@ -20,6 +20,7 @@ class CreateFormalizationsTable extends Migration
             $table->string('acceptance_v2');
             $table->string('tablets_v1');
             $table->string('tablets_v2');
+            $table->string('serial_tablet');
             $table->timestamps();
         });
     }

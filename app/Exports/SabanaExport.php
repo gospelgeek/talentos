@@ -19,7 +19,10 @@ use Carbon\Carbon;
 
 class SabanaExport implements FromArray, WithHeadings, ShouldAutoSize, WithEvents
 {
-    protected $excel;
+    use Exportable;
+    protected $exportar;
+
+
     
     public function headings(): array
     {
@@ -33,15 +36,15 @@ class SabanaExport implements FromArray, WithHeadings, ShouldAutoSize, WithEvent
         ];
     }
 
-    public function __construct(array $excel)
+    public function __construct(array $exportar)
     {
-        $this->excel = $excel;
+        $this->exportar = $exportar;
             
     }
 
     public function array(): array
     {
-        return $this->excel;
+        return $this->exportar;
     }
 
     public function registerEvents(): array
@@ -119,12 +122,9 @@ class SabanaExport implements FromArray, WithHeadings, ShouldAutoSize, WithEvent
             },
         ];
     }
+<<<<<<< HEAD
 }
-            
-           
+=======
+}
 
-            
-           
-
-            
-           
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848

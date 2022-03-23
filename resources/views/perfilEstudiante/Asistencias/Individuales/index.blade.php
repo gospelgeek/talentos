@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Asitencias Estudiantes')
+@section('title', 'Asistencias Estudiantes')
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
@@ -23,34 +23,6 @@
                 <td>Acciones</td>
             </tr>
         </thead> 
-
-        <tbody>
-            @foreach ($perfilEstudiantes as $estudiante)
-                <tr data-id="{{$estudiante->id_moodle}}">
-                                        <td>{{ $estudiante->name}}</td>
-                                        <td>{{ $estudiante->lastname }}</td>
-                                        <td>{{ $estudiante->document_number }}</td>
-                                        <td>{{ $estudiante->studentGroup->group->name}}</td>
-                                        <td>{{ $estudiante->studentGroup->group->cohort->name}}</td>
-                                        <td></td>
-                                        <td >
-
-                                        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)   
-
-                                            <div class="row">                                  
-                                                <div class="col-xs-4 col-sm-4">
-                                                    <a id="{{$estudiante->id}}" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>    
-                                                </div>                                                
-                                            </div>
-                                           
-
-                                            @csrf
-                    </td>
-                </tr>
-                @endif
-            @endforeach    
-        </tbody>
-
       </table>
       </div>
     </div>
@@ -58,6 +30,51 @@
 </div>
 
 @push('scripts')
+<script type="text/javascript">
+
+   var table = $("#example1").DataTable({
+            
+            "ajax":{
+
+                "method":"GET",
+                "url": "{{route('inasistencias')}}",
+                "dataSrc": 'data'            
+            },
+            "columns": [
+                {data: 'name'},
+                {data: 'lastname'},
+                {data: 'document_number'},
+                {data: 'student_group.group.name'},
+                {data: 'student_group.group.cohort.name'},
+                {data: 'inasistencia'},
+                {data: null, render:function(data, type, row, meta){
+                    
+                    var mstr;
+                   
+                        mstr = '<div class="row">'+                                  
+                                                '<div class="col-xs-4 col-sm-4">'+
+                                                    '<a id="'+data.id+'" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                                '</div>'+                                                
+                                            '</div>'; 
+
+                    return mstr;
+                }
+            }       
+            ],
+
+            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,"order": [[5,'dsc']],
+            "dom":'Bfrtip',
+            "buttons": [
+                "copy",
+                "csv",
+                "excel", 
+                "pdf",
+                "print",
+                "colvis"
+                
+            ]
+        });
+</script>
 {!!Html::script('/js/asistencias_individuales.js')!!}
 @endpush
 @endsection

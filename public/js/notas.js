@@ -3,10 +3,11 @@
           id_student.push($(this).attr("data-id"));
     }); 
     //console.log(id_student);
-    var fecha=new Date(1644930000 * 1000);
-    //document.getElementById('fecha').innerHTML = fecha.toJSON().split('-')[2].split('T')[0] +"-"+fecha.toJSON().split('-')[1]+"-"+fecha.toJSON().split('-')[0]+" "+fecha.toTimeString().split('G')[0];
-    document.getElementById('fecha_sesion').innerHTML = '<h3>'+"Fecha de la sesion: "+'<br>'+fecha.toJSON().split('-')[2].split('T')[0] +"-"+fecha.toJSON().split('-')[1]+"-"+fecha.toJSON().split('-')[0]+" "+fecha.toTimeString().split('G')[0]+'</h3>';
-    console.log(fecha.toJSON());
+    var fecha=new Date().toISOString();
+    var partirfecha= fecha.split("-",3)
+    var dia = partirfecha[2].split("T",2);
+    const namejson = "attendancereport_ptuv_"+dia[0]+"_"+partirfecha[1]+"_"+partirfecha[0]+".json";
+
     var asistencias = document.getElementById('asisten').src;
     var sesiones = document.getElementById('notas'); 
     const asistio=[];
@@ -24,9 +25,9 @@
                 //console.log(result[index].userid);
                 $.each(values.courses,function(contador, courses){
                     $.each(courses.attendance.fullsessionslog, function(course, attendance){
-                          //console.log(attendance);
+                          //console.count(attendance.sessionid);
                           if(sesiones.dataset.session == attendance.sessionid){
-                            //console.log(attendance);
+                            //console.count(attendance.sessionid);
                             //console.log(sesiones.dataset.session);
                             asistio.push(result[index].userid);
                           }
@@ -40,9 +41,7 @@
       });
 
       //console.log(asistio);
-      //var fecha_json = new Date(1644930000 * 1000).toString();
-      //console.log(fecha_json);
-
+      
       $('.prueba').each(function(){
 
           for(const id in asistio)
@@ -56,7 +55,6 @@
       }); 
       document.getElementById("carga").remove();
       $("#example1").DataTable({
-            "orderCellsTop": true,
             "processing": true,
             "paging": false,
             "lengthChange": true,

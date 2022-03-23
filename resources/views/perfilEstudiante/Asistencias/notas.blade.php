@@ -6,6 +6,7 @@
 <div class="containerd-fluid" id="container">    
     
     <script id="asisten" type="text" src="/json/asistencias.json"></script>
+    
     <input type="hidden" id="notas" data-session="{{$id_session}}">
     <div class="card" id="container2">        
         <div class="card-body">
@@ -15,18 +16,16 @@
                     <a class="btn btn-success btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Agregar Calificacion</a>            
                 </div>
             </div>
-            @endif
-            <div id="carga" class="d-flex justify-content-center">
+            @endif<div id="carga" class="d-flex justify-content-center">
                         <strong>Procesando&nbsp;</strong>
                         <div class="spinner-border spinner-border-sm" role="status">                    
                         </div>
-            </div>  
+                    </div>  
             <div id="tabla" class="table-responsive">
-                <table id="example1" class="table table-bordered table-striped ">
-                    <caption id="fecha_sesion" style="caption-side: top;text-align:center;"></caption>
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <td >Nombres</td>
+                            <td>Nombres</td>
                             <td>Apellidos</td>
                             <td width="15%">Asistencias</td>
                         </tr>

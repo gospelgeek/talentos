@@ -43,10 +43,10 @@
                                                         $.each(course.attendance.fullsessionslog, function(k,attendance){
                                                                 //console.log(attendance);
                                                                 var fecha_json = new Date(attendance.timestamp * 1000);
-                                                                
+                                                                //console.log(fecha_json);
                                                                 var fecha_actual = new Date();
                                                                 if(fecha_json <= fecha_actual){
-                                                                        //console.log(fecha_json);
+                                                                        
                                                                         totalsesiones.push(attendance.sessionid);
                                                                 }
                                                                                 
@@ -117,7 +117,7 @@
                                                 div.appendChild(div_2);
                                                 div_2.appendChild(a);
                                                 div_2.appendChild(vinculo);
-                                                document.getElementById("tabla").appendChild(row_2);                                                
+                                                document.getElementById("ddd").appendChild(row_2);                                                
                                         }                                          
                                 }
                                 //console.log(sesiones);

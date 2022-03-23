@@ -15,9 +15,10 @@ class CreateUpdateInformationTable extends Migration
     {
         Schema::create('update_information', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_action');
-            $table->string('changed_information');
-            $table->string('new_information');
+            $table->integer('id_log');
+            $table->integer('id_student');
+            $table->longtext('changed_information');
+            $table->longtext('new_information');
             $table->timestamps();
         });
     }

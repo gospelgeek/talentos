@@ -16,5 +16,6 @@ class Formalization extends Model
         'acceptance_v2',
         'tablets_v1',
         'tablets_v2',
+        'serial_tablet',
     ];
 }

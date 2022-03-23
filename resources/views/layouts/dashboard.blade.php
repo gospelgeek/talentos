@@ -51,7 +51,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
           </li>
           <!--
-
           <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
@@ -60,7 +59,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="#" class="dropdown-item">Some action </a></li>
               <li><a href="#" class="dropdown-item">Some other action</a></li>
-
               <li class="dropdown-divider"></li>-->
 
             <!-- Level two dropdown
@@ -208,9 +206,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
-              </div>
+                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a> 
+               </div>
               <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
           </li>
           <li class="nav-item dropdown">
@@ -369,7 +368,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
     const showClass = "show";
-
     $(window).on("load resize", function() {
       if (this.matchMedia("(min-width: 768px)").matches) {
         $dropdown.hover(

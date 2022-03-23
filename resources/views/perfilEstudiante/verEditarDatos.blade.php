@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', $verDatosPerfil->name ." ".$verDatosPerfil->lastname)
+@section('title', 'Editar Datos')
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
@@ -609,11 +609,12 @@
       			
 		
         	</div>
-        </div>	
+        	
         	
 	</div>
 	@endif
-	<div class="accordion-container">
+</div>
+<div class="accordion-container">
 		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
 		<div id="contenido-5" class="accordion-content-5">
 			<script id="json" type="text" src="/json/students.json"></script>
@@ -637,10 +638,17 @@
 					<tbody id="insertar">
 						
 					</tbody>
+                    <tfoot id="insertar2">
+						<td>TOTAL</td>
+						<td id="totalsesiones"></td>
+						<td id="totalasistencias"></td>
+						<td id="totalfaltas"></td>
+						<td></td>
+					</tfoot>
 				</table>
 			</div>
 		</div>		
-</div>
+	</div>
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">
@@ -651,7 +659,10 @@
                       {!!Form::label('id','id ')!!}
                       {!!Form::text('id',$verDatosPerfil->formalization->id,['id'=>'idfLz','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
                 </div>
-    			<div class="row">			
+    			<div class="row">
+    				<div class="col-xs-12 col-md-12">
+            				<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">&nbsp;&nbsp;<label>ACEPTACIÓN</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
             		</div>
@@ -664,8 +675,11 @@
 					<div class="col-xs-3 col-md-3">
 						<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 					</div>
-				</div>
-				<div class="row">			
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<input type="checkbox" name="aceptando" value="si" id="aceptandoTablet">&nbsp;&nbsp;<label>TABLETS</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
             		</div>
@@ -676,21 +690,30 @@
             			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
-						<input  class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+						<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
+            		</div>
+					<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
+
 					</div>
 				</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
 
             {!!Form::close()!!}
 		@endif
 		</div>
+		
 	</div>
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	
 </div>
+
 
 
 @include('perfilEstudiante.modal.editestado')

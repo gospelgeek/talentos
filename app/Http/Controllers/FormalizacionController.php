@@ -20,6 +20,8 @@ class FormalizacionController extends Controller
     }
 
     public function formalizacionDatos(){
+        
+        dd('entro');
         $datosFormalizacion = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,
         (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
         (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) as cohorte,

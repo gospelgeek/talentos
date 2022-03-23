@@ -84,7 +84,11 @@
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
+<<<<<<< HEAD
                         if(data !== " "){
+=======
+                        if(data !== null){
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
                             if(data != 'SI'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    
@@ -101,7 +105,11 @@
                     }
                 },
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
+<<<<<<< HEAD
                         if(data !== ""){
+=======
+                        if(data !== null){
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
                             if(data != 'SI'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    
@@ -114,12 +122,19 @@
                             var url = '';
                             return url;
                         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
                     
                     }
                 },
                 {data: 'tablets_v1', render:function(data, type, row, meta){
+<<<<<<< HEAD
                         if(data !== ""){
+=======
+                        if(data !== null){
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
                             if(data != 'SI'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    
@@ -135,7 +150,11 @@
                     }
                 },
                 {data: 'tablets_v2', render:function(data, type, row, meta){
+<<<<<<< HEAD
                         if(data !== ""){
+=======
+                        if(data !== null){
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
                             if(data != 'SI'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    

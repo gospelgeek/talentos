@@ -594,6 +594,7 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.asignaturas.notas', compact('notas', 'id', 'grupo'));
     }
 
+<<<<<<< HEAD
     public function updateEstado($id, Request $request)
     {
         $status = "Estado actualizado correctamente!!";
@@ -608,6 +609,35 @@ class perfilEstudianteController extends Controller
                 $id = auth()->user();
                 $fecha = Carbon::now();
                 $fecha = $fecha->format('d-m-Y');
+=======
+
+    public function updateEstado($id, Request $request){
+       $status = "Estado actualizado correctamente!!";
+        if($request->ajax())
+        {   
+            $borrar = Withdrawals::where('id_student', $id)->get();
+            //return $borrar;
+            
+            if($request['id_state'] != 1){
+                if($borrar != null){
+                   $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+                }else{
+                    $estado = perfilEstudiante::findOrFail($id);        
+                    $estado->id_state = $request['id_state'];
+                    $estado->save();  
+                    $estado -> delete();
+                }
+            
+            //eliminarPerfilEstudiante($id);
+
+            }
+            
+            if($request['id_state'] == 1){
+                if($borrar != null){
+                    $borrar = Withdrawals::where('id_student', $id)->delete();
+                    $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
+                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+>>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
 
                 $datos = LogsCrudActions::create([
                     'identificacion'           => $id['id'],

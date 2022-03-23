@@ -613,7 +613,41 @@
         	
 	</div>
 	@endif
-</div>
+	<div class="accordion-container">
+		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
+		<div id="contenido-5" class="accordion-content-5">
+			<script id="json" type="text" src="/json/students.json"></script>
+			<script id="asisten" type="text" src="/json/asistencias.json"></script>
+			<input type="hidden" name="id_moodle" id="moodle" data-id="{{$verDatosPerfil->id_moodle}}">
+			<div class="table-responsive">
+				<div id="carga" class="d-flex justify-content-center">
+                        <strong>Procesando&nbsp;</strong>
+                        <div class="spinner-border spinner-border-sm" role="status">                    
+                        </div>
+            	</div> 
+				<table id="example1" class="table table-bordered table-striped">
+					<caption style="caption-side: top;text-align:center;">Asistencias {{$verDatosPerfil->name}}</caption>
+					<thead>
+						<td>Asignatura</td>
+						<td>Sesiones</td>
+						<td>Asistencias</td>
+						<td>Faltas</td>
+						<td>Acciones</td>
+					</thead>
+					<tbody id="insertar">
+						
+					</tbody>
+					<tfoot id="insertar2">
+						<td>TOTAL</td>
+						<td id="totalsesiones"></td>
+						<td id="totalasistencias"></td>
+						<td id="totalfaltas"></td>
+						<td></td>
+					</tfoot>
+				</table>
+			</div>
+		</div>		
+  </div>
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">

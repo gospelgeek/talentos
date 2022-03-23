@@ -2357,41 +2357,39 @@ class perfilEstudianteController extends Controller
         return redirect('estudiante')->with('success', 'File imported successfully!');
     }
 
-    public function CargarJSon(Request $request)
-    {
+    public function CargarJSon(Request $request){
         //dd($request->file('sesiones')->getClientOriginalName());
 
         $verificar_nombre = explode("_", $request->file('sesiones')->getClientOriginalName());
         //dd($verificar_nombre);
         //Storage::disk('local')->put('', $request->file('sesiones')->originalName());
 
-
-        if ($verificar_nombre[0] == "sessionsbycoursereport") {
+        
+        if($verificar_nombre[0] == "sessionsbycoursereport"){
             $nombre = "students.json";
             Storage::delete($nombre);
             if(Storage::disk('local')->exists('inasistencias.json')) {
                 Storage::delete('inasistencias.json');
-
-            }
-
-                     
+            }           
+            
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
-            return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
+            $exitCode = Artisan::call('optimize:clear');
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
         }
-        if ($verificar_nombre[0] == "attendancereport") {
+        if($verificar_nombre[0] == "attendancereport"){
             $nombre = "asistencias.json";
             Storage::delete($nombre);
             if(Storage::disk('local')->exists('inasistencias.json')) {
                 Storage::delete('inasistencias.json');
             }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
-            return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
-        } else {
+            $exitCode = Artisan::call('optimize:clear');
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
+        }
+        else{
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
-
         }   
     }
-
     public function json_inasistencias(Request $request){
         if(Storage::disk('local')->exists('inasistencias.json')) {
             $inasistencias    = json_decode(Storage::get('inasistencias.json'));
@@ -2401,7 +2399,7 @@ class perfilEstudianteController extends Controller
         }
         else{
             $perfilEstudiantes = perfilEstudiante::select('id','name','lastname','document_number','id_moodle')->get();
-            
+
             $perfilEstudiantes->map(function($estudiante){
                 if($estudiante->id_moodle != null){
                     $estudiante->studentGroup->group->cohort;
@@ -2413,72 +2411,6 @@ class perfilEstudianteController extends Controller
             });
 
             $perfilEstudiantes = json_encode($perfilEstudiantes);
-
-            Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
-
-            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
-
-            $prueba = collect($inasistencias);
-               
-            return datatables()->of($prueba)->toJson();  
-        }
-    }
-        
-    public function indexEstudiantes(){
-            
-        return view('perfilEstudiante.Asistencias.Individuales.index');   
-    }
-
-    public function sesiones_asistencias($id_curso){
-        $sesiones    = json_decode(Storage::get('students.json'));
-        //dd($id_curso);
-        $contador = 0;
-        foreach($sesiones as $key => $sesion){
-            if($sesion->courseid == $id_curso){
-                //dd($sesion,$id_curso);
-                $date = new Carbon();
-                
-                foreach($sesion->sessions as $session){
-                    //dump($session);
-                    $horas = $session->duration/60;
-                    $date = Carbon::now()->subMinutes($horas);
-                    $date2 = new Carbon($session->sessdate);
-                    //dd($date);
-                    if($date >= $date2){
-                        //dump($session);
-                        $contador++;
-                    }             
-                }
-                return $contador;
-            }
-        }
-
-        return $contador;   
-    }
-
-    public function estudiantes_asistencias($id_moodle){
-
-        $asistencias = json_decode(Storage::get('asistencias.json'));
-        $contador_asistencias = 0;
-        $contador_sesiones = 0;
-        $inasistencias;
-        foreach($asistencias as $key => $info){
-            //dd($info->userid);
-            if($info->userid == $id_moodle){
-                //dd($info,intval($id_moodle));
-                foreach($info->courses as $course){
-                    //dump($course);
-                    $contador_asistencias += $course->attendance->takensessionssumary->numtakensessions;
-                    $contador_sesiones += $this->sesiones_asistencias($course->courseid);
-
-                }
-                $inasistencias = $contador_sesiones - $contador_asistencias;
-                return $inasistencias;   
-            }   
-        }
-        return $inasistencias;
-    }
-
 
             Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
 
@@ -2556,5 +2488,80 @@ class perfilEstudianteController extends Controller
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
         }
+        return view('perfilEstudiante.Asistencias.Individuales.reporte',compact('id'));
+    }
+
+    public function index_Estados()
+    {
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
+        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+    }
+
+    public function edit_Estado($id, Request $request){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $data = $verDatosPerfil[0]->condition;
+        $data2 = $verDatosPerfil[0]->withdrawals;
+        if($request->ajax()){
+            return Response::json($verDatosPerfil);
+        };
+    }
+
+    public function excel_asistencias(){
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($sesiones);
+
+        $asistio = array();
+        foreach($asistencias as $key => $info){
+            //dd($info);
+            foreach($info->courses as $course){
+                foreach($course->attendance->fullsessionslog as $asistieron){
+                    //dump($asistieron->sessionid);
+                    $asistio[] = array('id_sesion'=>$asistieron->sessionid);
+                    
+                }
+            }
+
+        }
+
+        $collection;
+        foreach($sesiones as $key => $sesion){
+            $date = new Carbon();
+            $contador = 0;
+            $total=0;
+            foreach($sesion->sessions as $session){
+                //dd($session);
+                $horas = $session->duration/60;
+                $date = Carbon::now()->subMinutes($horas);
+                $date2 = new Carbon($session->sessdate);
+                //dd($date);
+                if($date >= $date2){
+                    $total = $total + $this->contar_valores($asistio,$session->id);
+                    $contador++;
+                }
+                
+            }
+            /*if($contador != 0){
+                 $prom = $total/$contador;
+            }*/
+           
+            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'promedio-asistencias'=>$total);
+        }
+
+        $export = new ReporteExport([$collection]);
+        
+        return Excel::download($export, 'invoices.xlsx');      
+    }
+
+    function contar_valores($a,$buscado){
+   
+        if(!is_array($a)) return NULL;
+        $i=0;
+        foreach($a as $v)
+        if($buscado==$v['id_sesion'])
+        $i++;
+        return $i;
     }
 }

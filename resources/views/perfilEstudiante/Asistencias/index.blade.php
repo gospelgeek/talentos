@@ -28,7 +28,9 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_excel_json')}}">EXPORTAR REPORTE GENERAL</a>
             <br>
             @endif
-
+            @if(auth()->user()->rol_id == 4)
+            <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_excel_json')}}">EXPORTAR REPORTE GENERAL</a>
+            @endif
     		<div class="table-responsive">
      			<table id="example1" class=" table table-bordered table-striped">
         			<thead>

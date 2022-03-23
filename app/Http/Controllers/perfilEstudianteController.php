@@ -2495,4 +2495,78 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }
     }
+    
+    public function index_Estados()
+    {
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
+        $estado = Condition::pluck('name', 'id');
+        $motivos = Reasons::pluck('name', 'id');
+        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+    }
+
+    public function edit_Estado($id, Request $request){
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $data = $verDatosPerfil[0]->condition;
+        $data2 = $verDatosPerfil[0]->withdrawals;
+        if($request->ajax()){
+            return Response::json($verDatosPerfil);
+        };
+    }
+
+    public function excel_asistencias(){
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($sesiones);
+
+        $asistio = array();
+        foreach($asistencias as $key => $info){
+            //dd($info);
+            foreach($info->courses as $course){
+                foreach($course->attendance->fullsessionslog as $asistieron){
+                    //dump($asistieron->sessionid);
+                    $asistio[] = array('id_sesion'=>$asistieron->sessionid);
+                    
+                }
+            }
+
+        }
+
+        $collection;
+        foreach($sesiones as $key => $sesion){
+            $date = new Carbon();
+            $contador = 0;
+            $total=0;
+            foreach($sesion->sessions as $session){
+                //dd($session);
+                $horas = $session->duration/60;
+                $date = Carbon::now()->subMinutes($horas);
+                $date2 = new Carbon($session->sessdate);
+                //dd($date);
+                if($date >= $date2){
+                    $total = $total + $this->contar_valores($asistio,$session->id);
+                    $contador++;
+                }
+                
+            }
+            /*if($contador != 0){
+                 $prom = $total/$contador;
+            }*/
+           
+            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'promedio-asistencias'=>$total);
+        }
+
+        $export = new ReporteExport([$collection]);
+        
+        return Excel::download($export, 'invoices.xlsx');      
+    }
+
+    function contar_valores($a,$buscado){
+   
+        if(!is_array($a)) return NULL;
+        $i=0;
+        foreach($a as $v)
+        if($buscado==$v['id_sesion'])
+        $i++;
+        return $i;
+    }
 }

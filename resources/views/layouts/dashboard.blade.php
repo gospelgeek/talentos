@@ -29,29 +29,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition layout-top-nav">
+  <div class="wrapper">
 
-<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+      <div class="container">
+        <a href="{{route('estudiante')}}" class="navbar-brand">
+          <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" style="">
+          <span class="brand-text font-weight-light">PNA</span>
+        </a>
 
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-    <div class="container">
-      <a href="{{route('estudiante')}}" class="navbar-brand">
-      <img src="{{asset('img/logo.jpeg')}}" alt="Logo" class="brand-image" >
-        <span class="brand-text font-weight-light">PNA</span>
-      </a>
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
 
-      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            
-          </li>
-          <!--
-
+            </li>
+            <!--
           <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
@@ -78,10 +76,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                       <li><a href="#" class="dropdown-item">3rd level</a></li>
                     </ul>
-                  </li>-->
-     
-                  <!-- End Level three 
-                  
+                  </li>
+                  -->
+            <!-- End Level three 
+
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                 </ul>
@@ -198,73 +196,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
         
         </li>
         -->
+          @if(auth()->user()->rol_id == 2)
+          <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
 
-          @if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 4)
-          
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ESTUDIANTES
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
-                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
-              </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
-              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
-            </ul>
-          </li>
           @endif
           @if(auth()->user()->rol_id == 1)
-        <ul class="navbar-nav mr-auto">
-                        <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Estudiantes 
-                        </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
-                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                            <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
-                          </div>
-                      </li>
-                      
-                        <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
-              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
-            </ul>
-            </li>
-        @else
-        <ul class="navbar-nav mr-auto">
-                        <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
-                        <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
-                        <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
-              <li><a href="{{route('asistencias.estudiantes')}}" class="dropdown-item">Asitencias Individuales</a></li>
-            </ul>
-            </li>
+          <ul class="navbar-nav mr-auto">
+            <a href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
 
+            <a  href="{{route('formalizacion')}}" class="dropdown-item dropdown-footer"><i></i>Formalizacion</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                LISTADOS ESTUDIANTES
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a class="dropdown-item" href="{{route('estudiante')}}">Estudiantes</a>
+                <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+              </div>
+            </li>
+            <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+            <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+            <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+          </ul>
+          @else
+          <ul class="navbar-nav mr-auto">
+            <a href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+            <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
+            <a href="{{route('asistencias')}}" class="dropdown-item dropdown-footer"><i></i>Asistencias</a>
+          </ul>
+          @endif
+          <li class="nav-item">
+            <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>
+
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
+          </li>
         </ul>
-        @endif
-        <li class="nav-item">
-          <a class="dropdown-item dropdown-footer"><i class="fa fa-user"></i>&nbsp;{{ auth()->user()->name }}</a>
-          
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
-        </li>
       </div>
     </nav>
     <!-- /.navbar -->
@@ -389,6 +358,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $dropdown.off("mouseenter mouseleave");
       }
     });
+
+    $( document ).ready(function() {
+      $(".prueba li").on("click", function(){
+        $(".prueba").find(".activa").removeClass("activa");
+        $(this).addClass("activa");
+      });
+    });
+    
   </script>
   @stack('scripts')
 </body>

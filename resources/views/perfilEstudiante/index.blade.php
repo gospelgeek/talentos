@@ -74,7 +74,6 @@
                 <td>Institucion</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
-
         </thead>       
     </table>
       </div>

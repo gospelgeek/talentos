@@ -413,7 +413,12 @@ $('.boton_update_formalizacion').click(function(e) {
   e.preventDefault();   
   var idDatos = $('#idfLz').val();
   
-  $.ajax({
+  
+  var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
+  var checkTablet = $('#aceptandoTablet').is(":checked");
+
+
+$.ajax({
   //ruta manual
     url:'/updateformalizacion/'+ idDatos,
     type:'PUT',
@@ -423,13 +428,20 @@ $('.boton_update_formalizacion').click(function(e) {
       'acceptance_v2': $("#acceptancev2").val(),
       'tablets_v1': $("#tabletsv1").val(),
       'tablets_v2': $("#tabletsv2").val(),
+      'checkAceptacion': checkAcptacon,
+      'checkTablet': checkTablet, 
       
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
-      //window.location.reload(); 
-      toastr.info(result);
-      setTimeout("location.reload()", 2000);
+      if(result == 1){
+        toastr.info('FORMALIZACIÓN NO DILIGENCIADA');  
+      }else if(result == 2){
+        toastr.success('FORMALIZACIÓN GENERADA CORRECTAMENTE');
+        setTimeout("location.reload()", 2000);  
+      } 
+      
+      
     },
 
     error:function(result) {          

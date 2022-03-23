@@ -84,29 +84,50 @@
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
-                        if(data !== null){
-                            var url = '<a href="'+data+'" target="blank">'+data+'</a>';
-                            return url;    
+                        if(data !== " "){
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
+                            }else{
+                                var url = '<a target="blank">'+data+'</a>';
+                                return url;
+                            }
+                                
                         }else{
                             var url = '';
                             return url;
                         }
+                            
                     }
                 },
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
-                        if(data !== null){
-                            var url = '<a href="'+data+'" target="blank">'+data+'</a>';
-                            return url;    
+                        if(data !== ""){
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
+                            }else{
+                                var url = '<a target="blank">'+data+'</a>';
+                                return url;
+                            }
+                                
                         }else{
                             var url = '';
                             return url;
                         }
+
+                    
                     }
                 },
                 {data: 'tablets_v1', render:function(data, type, row, meta){
-                        if(data !== null){
-                            var url = '<a href="'+data+'" target="blank">'+data+'</a>';
-                            return url;    
+                        if(data !== ""){
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
+                            }else{
+                                var url = '<a target="blank">'+data+'</a>';
+                                return url;
+                            }
+                                
                         }else{
                             var url = '';
                             return url;
@@ -114,11 +135,17 @@
                     }
                 },
                 {data: 'tablets_v2', render:function(data, type, row, meta){
-                        if(data !== null){
-                            var url = '<a href="'+data+'" target="blank">'+data+'</a>';
-                            return url;    
+                        if(data !== ""){
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
+                            }else{
+                                var url = '<a target="blank">'+data+'</a>';
+                                return url;
+                            }
+                                
                         }else{
-                            var url = '';
+                            var url = ' ';
                             return url;
                         }
                     }

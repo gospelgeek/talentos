@@ -739,7 +739,7 @@ class perfilEstudianteController extends Controller
 
             $update = UpdateInformation::create([
                 'id_log'              => $datos['id'],
-                'id_student'          => $data['id_student'],
+                'id_student'          => $data['id'],
                 'changed_information' => $guardarOld,
                 'new_information'     => $guardarNew,
             ]);

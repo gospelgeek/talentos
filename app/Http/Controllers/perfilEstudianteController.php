@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Exports\SabanaExport;
+use App\Exports\ReporteExport;
 use App\perfilEstudiante;
 use App\AdmissionScores;
 use App\SocioeconomicData;

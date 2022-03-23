@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', $verDatosPerfil->name ." ".$verDatosPerfil->lastname)
+@section('title', 'Editar Datos')
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
@@ -609,37 +609,10 @@
       			
 		
         	</div>
-        </div>	
+        	
         	
 	</div>
 	@endif
-	<div class="accordion-container">
-		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
-		<div id="contenido-5" class="accordion-content-5">
-			<script id="json" type="text" src="/json/students.json"></script>
-			<script id="asisten" type="text" src="/json/asistencias.json"></script>
-			<input type="hidden" name="id_moodle" id="moodle" data-id="{{$verDatosPerfil->id_moodle}}">
-			<div class="table-responsive">
-				<div id="carga" class="d-flex justify-content-center">
-                        <strong>Procesando&nbsp;</strong>
-                        <div class="spinner-border spinner-border-sm" role="status">                    
-                        </div>
-            	</div> 
-				<table id="example1" class="table table-bordered table-striped">
-					<caption style="caption-side: top;text-align:center;">Asistencias {{$verDatosPerfil->name}}</caption>
-					<thead>
-						<td>Asignatura</td>
-						<td>Sesiones</td>
-						<td>Asistencias</td>
-						<td>Faltas</td>
-						<td>Acciones</td>
-					</thead>
-					<tbody id="insertar">
-						
-					</tbody>
-				</table>
-			</div>
-		</div>		
 </div>
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
@@ -651,7 +624,10 @@
                       {!!Form::label('id','id ')!!}
                       {!!Form::text('id',$verDatosPerfil->formalization->id,['id'=>'idfLz','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
                 </div>
-    			<div class="row">			
+    			<div class="row">
+    				<div class="col-xs-12 col-md-12">
+            				<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">&nbsp;&nbsp;<label>ACEPTACIÓN</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
             		</div>
@@ -664,8 +640,11 @@
 					<div class="col-xs-3 col-md-3">
 						<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 					</div>
-				</div>
-				<div class="row">			
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<input type="checkbox" name="aceptando" value="si" id="aceptandoTablet">&nbsp;&nbsp;<label>TABLETS</label>	
+            		</div>			
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
             		</div>
@@ -676,25 +655,32 @@
             			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
-						<input  class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+						<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
+            		</div>
+					<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
+
 					</div>
 				</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 
-			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion'])!!}                       
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
 
             {!!Form::close()!!}
 		@endif
 		</div>
+		
 	</div>
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
 	
 </div>
 
 
-@include('perfilEstudiante.modal.editestado')
-@include('perfilEstudiante.modal.detalles_asistencias')
+
 @include('perfilEstudiante.modal.actualizarDatos.generales')
 @include('perfilEstudiante.modal.actualizarDatos.socioeconomicos')
 @include('perfilEstudiante.modal.actualizarDatos.academicosPrevios')
@@ -703,7 +689,7 @@
 @include('perfilEstudiante.seguimientos.modal.ver')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
-
+@include('perfilEstudiante.modal.editestado')
 
 
 @include('vistasParciales.validacionErrores')
@@ -721,6 +707,35 @@
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 
+<script>
+        $(function () {
+            $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron coincidencias",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar",
+            "paginate":{
+                "next" : "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+            });
+        });        
+    </script>
 @endpush
 
 @endsection

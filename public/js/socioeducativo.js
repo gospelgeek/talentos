@@ -1,10 +1,8 @@
 function actualizarDato(id) {
     let cel = document.getElementById(`user${id}`)
     let valor = document.getElementById(`userId${id}`)
-
-    
-    let name = document.getElementById(`nameapel${id}`)
-
+    //cel.style.backgroundColor="#FFD54F";
+    console.log(cel)
     $.ajax({
         url: '/updateDato/' + id,
         type: 'PUT',
@@ -13,10 +11,7 @@ function actualizarDato(id) {
             'id_user': valor.value,
         },
         success: function (result) {
-            //cel.style.backgroundColor="#FFD54F";
-            name.style.backgroundColor="#FFD54F"
-            name.innerHTML=`<td>${result.name} ${result.apellidos_user}</td>`
-
+            cel.style.backgroundColor="#FFD54F";
             toastr.info(`Asignacion guardada exitosamente al usuario ${result.name} ${result.apellidos_user}`);
         },
         error:function(result) {          

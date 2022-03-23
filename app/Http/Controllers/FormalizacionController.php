@@ -21,7 +21,7 @@ class FormalizacionController extends Controller
 
     public function formalizacionDatos(){
         
-        dd('entro');
+        
         $datosFormalizacion = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,
         (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
         (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) as cohorte,
@@ -30,6 +30,8 @@ class FormalizacionController extends Controller
         WHERE student_profile.id = student_groups.id_student
         AND student_groups.id_group = groups.id
         AND student_profile.id = formalizations.id_student");
+        
+        dd($datosFormalizacion);
 
         return datatables()->of($datosFormalizacion)->toJson();
     }

@@ -1,4 +1,3 @@
-
 $('.crear_estado').click(function(e) { 
       e.preventDefault();
         var valor = $('#estadoN').val();
@@ -33,7 +32,6 @@ $('.crear_estado').click(function(e) {
         $('#modal_crear_estado').modal('show'); 
 });
 
-
  $('#estadoN').on('change',function(event) {
           var valor = $('#estadoN').val();
           //console.log(valor)
@@ -64,7 +62,6 @@ $('.crear_estado').click(function(e) {
  });
 
 //actualizar esatdo y crear retiro 
-
 
   $('.boton_update_estado').click(function(e) { 
   e.preventDefault();   
@@ -117,7 +114,7 @@ $(".accordion-titulo").click(function(e){
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
           $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");  
+          $("#titulo-5").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
         }
@@ -143,7 +140,7 @@ $(".accordion-titulo-2").click(function(e){
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
           $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open"); 
+          $("#titulo-5").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open"); 
         }
@@ -170,8 +167,7 @@ $(".accordion-titulo-3").click(function(e){
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
           $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");  
-          $("#titulo-4").removeClass("open"); 
+          $("#titulo-5").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
         }
@@ -405,11 +401,13 @@ $(".accordion-titulo-4").click(function(e){
           $("#contenido-2").hide();
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
-          $("#titulo-3").removeClass("open"); 
+          $("#titulo-3").removeClass("open");
           $("#contenido-5").hide();
           $("#titulo-5").removeClass("open");
           $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");
+          $("#titulo-6").removeClass("open");  
+
+
         }
         else{ //close
 
@@ -421,16 +419,62 @@ $(".accordion-titulo-4").click(function(e){
 
 });
 
-
-
 $(".accordion-titulo-6").click(function(e){
            
         e.preventDefault();
     
         var contenido=$(this).next(".accordion-content-6");
- 
 
-        if(contenido.css("display")=="none"){ //open        
+        const aceptacion = document.querySelector('#aceptandoAceptacion');
+        aceptacion.checked = false;
+        const tablets = document.querySelector('#aceptandoTablet');
+        tablets.checked = false;
+        document.getElementById('acceptancev1').disabled = true;
+        document.getElementById('acceptancev2').disabled = true;
+        document.getElementById('tabletsv1').disabled = true;
+        document.getElementById('tabletsv2').disabled = true;
+        document.getElementById('serialtablet').disabled = true;
+        
+        
+      
+        $(function () {
+          $('#aceptandoAceptacion').change(function(event)
+          {
+            var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
+            if(checkAcptacon) {
+              document.getElementById('acceptancev1').disabled = false;
+              document.getElementById('acceptancev2').disabled = false;
+
+            }else{
+              document.getElementById('acceptancev1').disabled = true;
+              document.getElementById('acceptancev2').disabled = true;
+
+            }
+                    
+      
+          });
+        });
+
+      $(function () {
+          $('#aceptandoTablet').change(function(event)
+          {
+            var checkTablets = $('#aceptandoTablet').is(":checked");
+            if(checkTablets) {
+              document.getElementById('tabletsv1').disabled = false;
+              document.getElementById('tabletsv2').disabled = false;
+              document.getElementById('serialtablet').disabled = false;
+
+            }else{
+              document.getElementById('tabletsv1').disabled = true;
+              document.getElementById('tabletsv2').disabled = true;
+              document.getElementById('serialtablet').disabled = true;
+            }
+                    
+      
+          });
+      });
+        
+         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         
           $(this).addClass("open");
           $("#contenido-1").hide();
@@ -441,8 +485,8 @@ $(".accordion-titulo-6").click(function(e){
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
+           $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open");
         }
         else{ //close
 
@@ -607,7 +651,9 @@ $(".accordion-titulo-5").click(function(e){
           $("#contenido-3").hide();
           $("#titulo-3").removeClass("open");
           $("#contenido-4").hide();
-          $("#titulo-4").removeClass("open");  
+          $("#titulo-4").removeClass("open");
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");
         }
         else{ //close
 
@@ -694,4 +740,14 @@ function tipoCancha(deporteSel){
             break;
     }
 }*/
+
+
+
+
+
+
+
+
+
+
 

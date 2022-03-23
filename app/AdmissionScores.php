@@ -11,7 +11,7 @@ class AdmissionScores extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'id',
+        
         'id_student',
         'icfes_score_p1',
         'vulnerability',

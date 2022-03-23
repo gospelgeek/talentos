@@ -30,7 +30,10 @@
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
             </div>
             <div class="col-xs-6 col-md-12 col-sm-6">
+
+
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR S&Aacute;BANA</a>
+
             </div>
             
             
@@ -74,7 +77,6 @@
                 <td>Institucion</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
-
         </thead>       
     </table>
       </div>

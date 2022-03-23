@@ -1,9 +1,9 @@
 <div class="modal" data-refresh="true"  tabindex="-1" id="modal_asistencias">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 style="text-align:center;font-size : 30px;font-weight: bolder;">{{$verDatosPerfil->name.' '.$verDatosPerfil->lastname}}</h4>
         <div class="table-responsive">
         {{--<div id="carga2" class="d-flex justify-content-center">
                         <strong>Procesando&nbsp;</strong>

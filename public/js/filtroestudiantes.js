@@ -381,6 +381,8 @@ $(".accordion-titulo-6").click(function(e){
         document.getElementById('acceptancev2').disabled = true;
         document.getElementById('tabletsv1').disabled = true;
         document.getElementById('tabletsv2').disabled = true;
+        document.getElementById('serialtablet').disabled = true;
+        
         
       
         $(function () {
@@ -408,11 +410,12 @@ $(".accordion-titulo-6").click(function(e){
             if(checkTablets) {
               document.getElementById('tabletsv1').disabled = false;
               document.getElementById('tabletsv2').disabled = false;
+              document.getElementById('serialtablet').disabled = false;
 
             }else{
               document.getElementById('tabletsv1').disabled = true;
               document.getElementById('tabletsv2').disabled = true;
-
+              document.getElementById('serialtablet').disabled = true;
             }
                     
       

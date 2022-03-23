@@ -28,7 +28,7 @@ $('.boton_update_datos_academicos_previos').click(function(e) {
     success:function(result) {
       $('#modal_actualizar_datos_academicos_previos').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -66,7 +66,7 @@ $('.boton_update_academicos_previos').click(function(e) {
     success:function(result) {
       $('#contenido-2').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -122,7 +122,7 @@ $('.boton_update_datos_generales').click(function(e) {
     success:function(result) {
       $('#modal_actualizar_datos_generales').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -168,7 +168,7 @@ $('.boton_update_generales').click(function(e) {
     success:function(result) {
       $('#contenido-1').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -228,7 +228,7 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
     success:function(result) {
       $('#modal_actualizar').modal('hide');
       //window.location.reload(); 
-      toastr.info(result);
+      toastr.success(result);
       setTimeout("location.reload()", 2000);
     },
 
@@ -428,6 +428,7 @@ $.ajax({
       'acceptance_v2': $("#acceptancev2").val(),
       'tablets_v1': $("#tabletsv1").val(),
       'tablets_v2': $("#tabletsv2").val(),
+      'serial_tablet': $("#serialtablet").val(),
       'checkAceptacion': checkAcptacon,
       'checkTablet': checkTablet, 
       

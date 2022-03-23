@@ -17,6 +17,7 @@ use App\DocumentType;
 use App\BirthDepartament;
 use App\Tutor;
 use App\Withdrawals;
+use App\UpdateInformation;
 use App\BirthCity;
 use App\Condition;
 use App\Reasons;
@@ -323,47 +324,130 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosSocioeconomicos($id, Request $request)
     {
-        // dd($id);
-        $data = SocioeconomicData::findOrFail($id);
-        //dd($data);
+    
+        $socio = SocioeconomicData::findOrFail($id);
+        $socioOld = SocioeconomicData::findOrFail($id);
+    
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
 
         if ($request->ajax()) {
 
-            $data->id_ocupation            = $request['id_ocupation'];
-            $data->id_civil_status         = $request['id_civil_status'];
-            $data->children_number         = $request['children_number'];
-            $data->id_residence_time       = $request['id_residence_time'];
-            $data->id_housing_type         = $request['id_housing_type'];
-            $data->id_health_regime        = $request['id_health_regime'];
-            $data->sisben_category         = $request['sisben_category'];
-            $data->id_benefits             = $request['id_benefits'];
-            $data->household_people        = $request['household_people'];
-            $data->economic_possition      = $request['economic_possition'];
-            $data->dependent_people        = $request['dependent_people'];
-            $data->internet_zon            = $request['internet_zon'];
-            $data->internet_home           = $request['internet_home'];
-            $data->sex_document_identidad  = $request['sex_document_identidad'];
-            $data->id_social_conditions    = $request['id_social_conditions'];
-            $data->id_disability           = $request['id_disability'];
-            $data->id_ethnicity            = $request['id_ethnicity'];
+            $socio->id_ocupation            = $request['id_ocupation'];
+            $socio->id_civil_status         = $request['id_civil_status'];
+            $socio->children_number         = $request['children_number'];
+            $socio->id_residence_time       = $request['id_residence_time'];
+            $socio->id_housing_type         = $request['id_housing_type'];
+            $socio->id_health_regime        = $request['id_health_regime'];
+            $socio->sisben_category         = $request['sisben_category'];
+            $socio->id_benefits             = $request['id_benefits'];
+            $socio->household_people        = $request['household_people'];
+            $socio->economic_possition      = $request['economic_possition'];
+            $socio->dependent_people        = $request['dependent_people'];
+            $socio->internet_zon            = $request['internet_zon'];
+            $socio->internet_home           = $request['internet_home'];
+            $socio->sex_document_identidad  = $request['sex_document_identidad'];
+            $socio->id_social_conditions    = $request['id_social_conditions'];
+            $socio->id_disability           = $request['id_disability'];
+            $socio->id_ethnicity            = $request['id_ethnicity'];
 
-            $data->save();
+            $socio->save();
 
             $ip = User::getRealIP();
             $id = auth()->user();
             $fecha = Carbon::now();
             $fecha = $fecha->format('d-m-Y');
 
-        
-        //dd($fecha);
             $datos = LogsCrudActions::create([
                 'identificacion'           => $id['id'],
                 'rol'                      => $id['rol_id'],
                 'ip'                       => $ip,
-                'id_usuario_accion'        => $data['id_student'],
+                'id_usuario_accion'        => $socio['id_student'],
                 'actividad_realizada'      => 'ACTUALIZACION DATOS SOCIOECONOMICOS',
             ]);
+
+            $old = array();
+            $new = array();
+
+            if($socioOld->id_ocupation != $socio->id_ocupation){
+                $old[] = array('ocupacion' => $socioOld->id_ocupation);
+                $new[] = array('ocupacion' => $socio->id_ocupation);
+            }
+            if($socioOld->id_civil_status != $socio->id_civil_status){
+                $old[] = array('estado civil' => $socioOld->id_civil_status);
+                $new[] = array('estado civil' => $socio->id_civil_status);
+            }
+            if($socioOld->children_number != $socio->children_number){
+                $old[] = array('numero hijos' => $socioOld->children_number);
+                $new[] = array('numero hijos' => $socio->children_number);
+            }
+            if($socioOld->id_residence_time != $socio->id_residence_time){
+                $old[] = array('tiempo residencia' => $socioOld->id_residence_time);
+                $new[] = array('tiempo residencia' => $socio->id_residence_time);
+            }
+            if($socioOld->id_housing_type != $socio->id_housing_type){
+                $old[] = array('tipo vivienda' => $socioOld->id_housing_type);
+                $new[] = array('tipo vivienda' => $socio->id_housing_type);
+            }
+            if($socioOld->id_health_regime != $socio->id_health_regime){
+                $old[] = array('regimen salud' => $socioOld->id_health_regime);
+                $new[] = array('regimen salud' => $socio->id_health_regime);
+            }
+            if($socioOld->sisben_category != $socio->sisben_category){
+                $old[] = array('categoria sisben' => $socioOld->sisben_category);
+                $new[] = array('categoria sisben' => $socio->sisben_category);
+            }
+            if($socioOld->id_benefits != $socio->id_benefits){
+                $old[] = array('beneficios' => $socioOld->id_benefits);
+                $new[] = array('beneficios' => $socio->id_benefits);
+            }
+            if($socioOld->household_people != $socio->household_people){
+                $old[] = array('personas en la familia' => $socioOld->household_people);
+                $new[] = array('personas en la familia' => $socio->household_people);
+            }
+            if($socioOld->economic_possition != $socio->economic_possition){
+                $old[] = array('posicion economica' => $socioOld->economic_possition);
+                $new[] = array('ocupacion' => $socio->economic_possition);
+            }
+            if($socioOld->dependent_people != $socio->dependent_people){
+                $old[] = array('personas a cargo' => $socioOld->dependent_people);
+                $new[] = array('personas a cargo' => $socio->dependent_people);
+            }
+            if($socioOld->internet_zon != $socio->internet_zon){
+                $old[] = array('internet zona' => $socioOld->internet_zon);
+                $new[] = array('internet zona' => $socio->internet_zon);
+            }
+            if($socioOld->internet_home != $socio->internet_home){
+                $old[] = array('internet casa' => $socioOld->internet_home);
+                $new[] = array('internet casa' => $socio->internet_home);
+            }
+            if($socioOld->sex_document_identidad != $socio->sex_document_identidad){
+                $old[] = array('sexo documento' => $socioOld->sex_document_identidad);
+                $new[] = array('sexo documento' => $socio->sex_document_identidad);
+            }
+            if($socioOld->id_social_conditions != $socio->id_social_conditions){
+                $old[] = array('condicion social' => $socioOld->id_social_conditions);
+                $new[] = array('condicion social' => $socio->id_social_conditions);
+            }
+            if($socioOld->id_disability != $socio->id_disability){
+                $old[] = array('discapacidad' => $socioOld->id_disability);
+                $new[] = array('discapacidad' => $socio->id_disability);
+            }
+            if($socioOld->id_ethnicity != $socio->id_ethnicity){
+                $old[] = array('etnia' => $socioOld->id_ethnicity);
+                $new[] = array('etnia' => $socio->id_ethnicity);
+            }
+
+            $guardarOld = json_encode($old);
+            $guardarNew = json_encode($new);
+
+            $update = UpdateInformation::create([
+                'id_log'              => $datos['id'],
+                'changed_information' => $guardarOld,
+                'new_information'     => $guardarNew,
+            ]);
+
+            
+
         };
 
         return $mensaje;
@@ -380,7 +464,7 @@ class perfilEstudianteController extends Controller
     public function updateDatosAcademicos($id, Request $request)
     {
         $acade = PreviousAcademicData::findOrFail($id);
-        //dd($acade);
+        $acadeOld = PreviousAcademicData::findOrFail($id);
 
         $mensaje = "Datos academicos previos actualizados correctamente!!";
 
@@ -400,8 +484,6 @@ class perfilEstudianteController extends Controller
             $fecha = Carbon::now();
             $fecha = $fecha->format('d-m-Y');
 
-        
-        //dd($fecha);
             $datos = LogsCrudActions::create([
                 'identificacion'           => $id['id'],
                 'rol'                      => $id['rol_id'],
@@ -409,6 +491,44 @@ class perfilEstudianteController extends Controller
                 'id_usuario_accion'        => $acade['id_student'],
                 'actividad_realizada'      => 'ACTUALIZACION DATOS ACADEMICOS',
             ]);
+
+            $old = array();
+            $new = array();
+
+             if($acadeOld->institution_name != $acade->institution_name){
+                $old[] = array('nombre institucion' => $acadeOld->institution_name);
+                $new[] = array('nombre institucion' => $acade->institution_name);
+            }
+            if($acadeOld->year_graduation != $acade->year_graduation){
+                $old[] = array('año graduacion' => $acadeOld->year_graduation);
+                $new[] = array('año graduacion' => $acade->year_graduation);
+            }
+            if($acadeOld->bachelor_title != $acade->bachelor_title){
+                $old[] = array('titulo bachiller' => $acadeOld->bachelor_title);
+                $new[] = array('titulo bachiller' => $acade->bachelor_title);
+            }
+            if($acadeOld->icfes_date != $acade->icfes_date){
+                $old[] = array('fecha icfes' => $acadeOld->icfes_date);
+                $new[] = array('fecha icfes' => $acade->icfes_date);
+            }
+            if($acadeOld->snp_register != $acade->snp_register){
+                $old[] = array('registro SNP' => $acadeOld->snp_register);
+                $new[] = array('registro SNP' => $acade->snp_register);
+            }
+            if($acadeOld->icfes_score != $acade->icfes_score){
+                $old[] = array('puntaje icfes' => $acadeOld->icfes_score);
+                $new[] = array('puntaje icfes' => $acade->icfes_score);
+            }
+
+            $guardarOld = json_encode($old);
+            $guardarNew = json_encode($new);
+
+            $update = UpdateInformation::create([
+                'id_log'              => $datos['id'],
+                'changed_information' => $guardarOld,
+                'new_information'     => $guardarNew,
+            ]);
+
         };
 
         return $mensaje;
@@ -504,6 +624,7 @@ class perfilEstudianteController extends Controller
     {
 
         $data = perfilEstudiante::findOrFail($id);
+        $dataOld = perfilEstudiante::findOrFail($id);
 
         $mensaje = "Datos generales actualizados correctamente!!";
 
@@ -536,14 +657,85 @@ class perfilEstudianteController extends Controller
             $fecha = Carbon::now();
             $fecha = $fecha->format('d-m-Y');
 
-        
-        //dd($fecha);
             $datos = LogsCrudActions::create([
                 'identificacion'           => $id['id'],
                 'rol'                      => $id['rol_id'],
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $data['id'],
                 'actividad_realizada'      => 'ACTUALIZACION DATOS GENERALES',
+            ]);
+
+            $old = array();
+            $new = array();
+
+            if($dataOld->name != $data->name){
+                $old[] = array('nombres' => $dataOld->name);
+                $new[] = array('nombres' => $data->name);
+            }
+            if($dataOld->lastname != $data->lastname){
+                $old[] = array('apellidos' => $dataOld->lastname);
+                $new[] = array('apellidos' => $data->lastname);
+            }
+            if($dataOld->id_document_type != $data->id_document_type){
+                $old[] = array('tipo documento' => $dataOld->id_document_type);
+                $new[] = array('tipo documento' => $data->id_document_type);
+            }
+            if($dataOld->document_number != $data->document_number){
+                $old[] = array('numero documento' => $dataOld->document_number);
+                $new[] = array('numero documento' => $data->document_number);
+            }
+            if($dataOld->document_expedition_date != $data->document_expedition_date){
+                $old[] = array('fecha expedicion' => $dataOld->document_expedition_date);
+                $new[] = array('fecha expedicion' => $data->document_expedition_date);
+            }
+            if($dataOld->email != $data->email){
+                $old[] = array('email' => $dataOld->email);
+                $new[] = array('email' => $data->email);
+            }
+            if($dataOld->birth_date != $data->birth_date){
+                $old[] = array('fecha nacimiento' => $dataOld->birth_date);
+                $new[] = array('fecha nacimiento' => $data->birth_date);
+            }
+            if($dataOld->id_birth_city != $data->id_birth_city){
+                $old[] = array('ciudad nacimiento' => $dataOld->id_birth_city);
+                $new[] = array('ciudad nacimiento' => $data->id_birth_city);
+            }
+            if($dataOld->sex != $data->sex){
+                $old[] = array('sexo' => $dataOld->sex);
+                $new[] = array('sexo' => $data->sex);
+            }
+            if($dataOld->id_gender != $data->id_gender){
+                $old[] = array('genero' => $dataOld->id_gender);
+                $new[] = array('genero' => $data->id_gender);
+            }
+            if($dataOld->cellphone != $data->cellphone){
+                $old[] = array('celular 1' => $dataOld->cellphone);
+                $new[] = array('celular 1' => $data->cellphone);
+            }
+            if($dataOld->phone != $data->phone){
+                $old[] = array('celular 2' => $dataOld->phone);
+                $new[] = array('celular 2' => $data->phone);
+            }
+            if($dataOld->id_neighborhood != $data->id_neighborhood){
+                $old[] = array('barrio' => $dataOld->id_neighborhood);
+                $new[] = array('barrio' => $data->id_neighborhood);
+            }
+            if($dataOld->direction != $data->direction){
+                $old[] = array('direccion' => $dataOld->direction);
+                $new[] = array('direccion' => $data->direction);
+            }
+            if($dataOld->student_code != $data->student_code){
+                $old[] = array('codigo estudiante' => $dataOld->student_code);
+                $new[] = array('codigo estudiante' => $data->student_code);
+            }
+
+            $guardarOld = json_encode($old);
+            $guardarNew = json_encode($new);
+
+            $update = UpdateInformation::create([
+                'id_log'              => $datos['id'],
+                'changed_information' => $guardarOld,
+                'new_information'     => $guardarNew,
             ]);
         };
 
@@ -594,22 +786,6 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.asignaturas.notas', compact('notas', 'id', 'grupo'));
     }
 
-<<<<<<< HEAD
-    public function updateEstado($id, Request $request)
-    {
-        $status = "Estado actualizado correctamente!!";
-        if ($request->ajax()) {
-            $estado = perfilEstudiante::findOrFail($id);
-            $estado->id_state = $request['id_state'];
-            $estado->save();
-            if ($request['id_state'] != 1) {
-                $estado->delete();
-                
-                $ip = User::getRealIP();
-                $id = auth()->user();
-                $fecha = Carbon::now();
-                $fecha = $fecha->format('d-m-Y');
-=======
 
     public function updateEstado($id, Request $request){
        $status = "Estado actualizado correctamente!!";
@@ -637,7 +813,7 @@ class perfilEstudianteController extends Controller
                     $borrar = Withdrawals::where('id_student', $id)->delete();
                     $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
                     $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
+
 
                 $datos = LogsCrudActions::create([
                     'identificacion'           => $id['id'],
@@ -656,6 +832,7 @@ class perfilEstudianteController extends Controller
             return 'true';
         };
     }
+}
 
 
     public function indexAsistencias()
@@ -2196,16 +2373,123 @@ class perfilEstudianteController extends Controller
         if ($verificar_nombre[0] == "sessionsbycoursereport") {
             $nombre = "students.json";
             Storage::delete($nombre);
+            if(Storage::disk('local')->exists('inasistencias.json')) {
+                Storage::delete('inasistencias.json');
+            }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
             return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
         }
         if ($verificar_nombre[0] == "attendancereport") {
             $nombre = "asistencias.json";
             Storage::delete($nombre);
+            if(Storage::disk('local')->exists('inasistencias.json')) {
+                Storage::delete('inasistencias.json');
+            }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
             return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
         } else {
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
+
+        }   
+    }
+
+    public function json_inasistencias(Request $request){
+        if(Storage::disk('local')->exists('inasistencias.json')) {
+            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
+            $prueba = collect($inasistencias);
+               
+            return datatables()->of($prueba)->toJson();     
+        }
+        else{
+            $perfilEstudiantes = perfilEstudiante::select('id','name','lastname','document_number','id_moodle')->get();
+
+            $perfilEstudiantes->map(function($estudiante){
+                if($estudiante->id_moodle != null){
+                    $estudiante->studentGroup->group->cohort;
+                    $estudiante->inasistencia = $this->estudiantes_asistencias($estudiante->id_moodle);
+                }else{
+                    $estudiante->studentGroup->group->cohort;
+                    $estudiante->inasistencia = "-";
+                }
+            });
+
+            $perfilEstudiantes = json_encode($perfilEstudiantes);
+
+            Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
+
+            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
+
+            $prueba = collect($inasistencias);
+               
+            return datatables()->of($prueba)->toJson();  
+        }
+    }
+        
+    public function indexEstudiantes(){
+        
+        return view('perfilEstudiante.Asistencias.Individuales.index');   
+    }
+
+    public function sesiones_asistencias($id_curso){
+        $sesiones    = json_decode(Storage::get('students.json'));
+        //dd($id_curso);
+        $contador = 0;
+        foreach($sesiones as $sesion){
+            if($sesion->courseid == $id_curso){
+                //dd($sesion,$id_curso);
+                $date = new Carbon();
+                
+                foreach($sesion->sessions as $session){
+                    //dump($session);
+                    $horas = $session->duration/60;
+                    //$date = Carbon::now()->subMinutes($horas);
+                    $date2 = new Carbon($session->sessdate);
+                    //dd($date);
+                    if($date >= $date2){
+                        //dump($session);
+                        $contador++;
+                    }             
+                }     
+            }
+            //dd($contador);
+            //return $contador;
+        }
+
+        return $contador;   
+    }
+
+    public function estudiantes_asistencias($id_moodle){
+
+        $asistencias = json_decode(Storage::get('asistencias.json'));
+        $contador_asistencias = 0;
+        $contador_sesiones = 0;
+        $inasistencias;
+        foreach($asistencias as $info){
+            //dd($info->userid);
+            if($info->userid == $id_moodle){
+                //dd($info,intval($id_moodle));
+                foreach($info->courses as $course){
+                    //dump($course);
+                    $contador_asistencias += $course->attendance->takensessionssumary->numtakensessions;
+                    $contador_sesiones += $this->sesiones_asistencias($course->courseid);
+
+                }
+                $inasistencias = $contador_sesiones - $contador_asistencias;
+                   
+            }   
+        }
+        //dd($inasistencias);
+        return $inasistencias;
+    }
+
+    public function ver_Asistencias($id)
+    {
+        //$verDatosPerfil = perfilEstudiante::
+        if($verDatosPerfil->photo == ""){
+            $foto = null;
+        }else{
+            $foto = explode("/",$verDatosPerfil->photo);
+            $foto = $foto[5];
         }
     }
 }

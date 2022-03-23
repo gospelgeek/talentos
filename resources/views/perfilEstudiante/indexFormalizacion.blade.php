@@ -50,6 +50,7 @@
                             <td>URL Acepación V2</td>
                             <td>URL Tablets V1</td>
                             <td>URL Tablets V2</td>
+                            <td>SERIAL TABLET</td>
                             <td id="botons" width="15%">Acciones</td>
                         </tr>
                     </thead>       
@@ -68,9 +69,7 @@
     var ver = $("input[name=filtro]:checked").val();
 });*/
      
-       
-
-        var table = $("#example1").DataTable({
+       var table = $("#example1").DataTable({
             
             "ajax":{
                 "method":"GET",
@@ -84,97 +83,97 @@
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
-<<<<<<< HEAD
-                        if(data !== " "){
-=======
-                        if(data !== null){
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
-                            if(data != 'SI'){
-                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                return url;    
+
+                        if(data !== ""){
+
+                            if(data !== null){
+                                if(data != 'SI'){
+                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                    return url;    
+                                }else{
+                                    var url = '<a target="blank">'+data+'</a>';
+                                    return url;
+                                }
+                                
                             }else{
-                                var url = '<a target="blank">'+data+'</a>';
+                                var url = '';
                                 return url;
                             }
-                                
-                        }else{
-                            var url = '';
-                            return url;
-                        }
                             
+                        }
                     }
                 },
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
-<<<<<<< HEAD
+
                         if(data !== ""){
-=======
-                        if(data !== null){
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
-                            if(data != 'SI'){
-                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                return url;    
+
+                            if(data !== null){
+
+                                if(data != 'SI'){
+                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                    return url;    
+                                }else{
+                                    var url = '<a target="blank">'+data+'</a>';
+                                    return url;
+                                }
+                                
                             }else{
-                                var url = '<a target="blank">'+data+'</a>';
+                                var url = '';
                                 return url;
                             }
-                                
-                        }else{
-                            var url = '';
-                            return url;
-                        }
-<<<<<<< HEAD
 
-=======
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
+
+                        }
+
                     
                     }
                 },
                 {data: 'tablets_v1', render:function(data, type, row, meta){
-<<<<<<< HEAD
+
                         if(data !== ""){
-=======
-                        if(data !== null){
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
-                            if(data != 'SI'){
-                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                return url;    
+
+                            if(data !== null){
+
+                                if(data != 'SI'){
+                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                    return url;    
+                                }else{
+                                    var url = '<a target="blank">'+data+'</a>';
+                                    return url;
+                                }
+                                
                             }else{
-                                var url = '<a target="blank">'+data+'</a>';
+                                var url = '';
                                 return url;
                             }
-                                
-                        }else{
-                            var url = '';
-                            return url;
                         }
                     }
                 },
                 {data: 'tablets_v2', render:function(data, type, row, meta){
-<<<<<<< HEAD
                         if(data !== ""){
-=======
-                        if(data !== null){
->>>>>>> fba9a249c7d475523204e79a0e8dd5402d446848
-                            if(data != 'SI'){
-                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                return url;    
+
+                            if(data !== null){
+
+                                if(data != 'SI'){
+                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                    return url;    
+                                }else{
+                                    var url = '<a target="blank">'+data+'</a>';
+                                    return url;
+                                }
+                                
                             }else{
-                                var url = '<a target="blank">'+data+'</a>';
+                                var url = ' ';
                                 return url;
                             }
-                                
-                        }else{
-                            var url = ' ';
-                            return url;
                         }
                     }
                 },
-                
-
+                {data: 'serial_tablet'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
-                    if(rol == 4 || rol == 1 || rol == 2){
+                    if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
                             '<tr id="1">'+'<td">'+'<a href="ver_estudiante/'+data.id+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
@@ -210,6 +209,9 @@
                 
             ]
         });
+    
+
+        
     
 
                 

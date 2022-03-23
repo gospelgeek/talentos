@@ -605,6 +605,9 @@
     			<div class="row">	
     				<div class="col-xs-12 col-md-12">
             				<input type="hidden" type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">	
+            		</div>
+            		<div class="col-xs-12 col-md-12">
+            		<label>ACEPTACIÓN</label>	
             		</div>		
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
@@ -636,10 +639,13 @@
 						<input  readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 					</div>
 					@endif
-				</div>
+				</div><hr>
 				<div class="row">		
 					<div class="col-xs-12 col-md-12">
             			<input type="hidden" type="checkbox" name="aceptando" value="si" id="aceptandoTablet">
+            		</div>
+            		<div class="col-xs-12 col-md-12">
+            		<label>TABLETS</label>	
             		</div>
             		@if($verDatosPerfil->formalization->tablets_v1 != 'SI')	
             		<div class="col-xs-3 col-md-3">
@@ -673,6 +679,13 @@
 						<input  readonly class="form-control" type="text" name="tablets_v2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 					</div>
 					@endif
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
+            		</div>
+					<div class="col-xs-3 col-md-3">
+						<input readonly class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
+
+					</div>
 				</div>
 			</div>
 		</div>

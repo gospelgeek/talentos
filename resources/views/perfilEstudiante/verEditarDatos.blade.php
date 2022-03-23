@@ -637,6 +637,13 @@
 					<tbody id="insertar">
 						
 					</tbody>
+					<tfoot id="insertar2">
+						<td>TOTAL</td>
+						<td id="totalsesiones"></td>
+						<td id="totalasistencias"></td>
+						<td id="totalfaltas"></td>
+						<td></td>
+					</tfoot>
 				</table>
 			</div>
 		</div>		

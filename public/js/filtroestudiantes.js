@@ -464,7 +464,7 @@ $.getJSON(asistencias, function(asistencias){
         if(value.userid == id_moodle.dataset.id){
         //console.log(value);
         $.each(value.courses , function(i, courses){
-          
+          //console.log(courses.coursefullname);
           var tr = document.createElement('tr');
           tr.setAttribute('id',courses.courseid)
           tr.classList.add('prueba');

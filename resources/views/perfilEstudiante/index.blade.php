@@ -173,7 +173,49 @@
                 
             ]
         });
-    
+        
+        document.getElementById('todas').checked = true;
+
+        $('#linea_1').on('change', function() {
+            if( $(this).is(':checked') ) {
+                document.getElementById('linea_2').checked = false;
+                document.getElementById('linea_3').checked = false;
+                document.getElementById('todas').checked = false;
+                table.columns(9).search('LINEA 1');
+            }   
+            table.draw();
+        });
+
+        $('#linea_2').on('change', function() {
+            if( $(this).is(':checked') ) {
+                document.getElementById('linea_1').checked = false;
+                document.getElementById('linea_3').checked = false;
+                document.getElementById('todas').checked = false;
+                table.columns(9).search('LINEA 2');
+            }   
+            table.draw();
+        });
+
+        $('#linea_3').on('change', function() {
+            if( $(this).is(':checked') ) {
+                document.getElementById('linea_1').checked = false;
+                document.getElementById('linea_2').checked = false;
+                document.getElementById('todas').checked = false;
+                table.columns(9).search('LINEA 3');
+            }   
+            table.draw();
+        });
+
+        $('#todas').on('change', function() {
+            if( $(this).is(':checked') ) {
+                document.getElementById('linea_1').checked = false;
+                document.getElementById('linea_2').checked = false;
+                document.getElementById('linea_3').checked = false;
+                document.getElementById('todas').checked = true;
+                setTimeout("location.reload()", 2000);
+            }   
+            table.draw();
+        });
 
                 
 </script>

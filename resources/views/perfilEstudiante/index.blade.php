@@ -35,7 +35,12 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR S&Aacute;BANA</a>
 
             </div>
-            
+            <div class="col-xs-6 col-md-12 col-sm-6">
+                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 2</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>TODAS</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="todas">
+            </div> 
             
         </div>
 

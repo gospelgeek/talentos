@@ -4,6 +4,11 @@ const ledad = document.getElementById('edadlineas').getContext('2d');
 const lanioGraduacion = document.getElementById('anioGraduacion').getContext('2d');
 const licfesPuntaje =  document.getElementById('icfesPuntajeLinea').getContext('2d');
 const lestadoCivil =  document.getElementById('estadoCivilLinea').getContext('2d');
+const letnia =  document.getElementById('etniaLinea').getContext('2d');
+const locupacion =  document.getElementById('ocupacionLinea').getContext('2d');
+const lhijos = document.getElementById('hijosLinea').getContext('2d');
+const lregimen = document.getElementById('regimenLinea').getContext('2d');
+
 // botones
 
 const line1 = document.getElementById('linea1')
@@ -35,12 +40,36 @@ let estadoCivilLinea1 = []
 let estadoCivilLinea2 = []
 let estadoCivilLinea3 = []
 
+// etnia 
+let etniaLinea1 = []
+let etniaLinea2 = []
+let etniaLinea3 = []
+
+// ocupacion
+let ocupacionLinea1 = []
+let ocupacionLinea2 = []
+let ocupacionLinea3 = []
+
+//hijos
+let hijosLinea1 = []
+let hijosLinea2 = []
+let hijosLinea3 = []
+
+// regimen salud
+let regimenLinea1 = []
+let regimenLinea2 = []
+let regimenLinea3 = []
+
 // variables 
 let renderSex
 let renderEdad
 let renderAnioG
 let renderIcfesPuntajes
 let renderEstadoC
+let renderEtniasLinea
+let renderOcupacionL
+let renderHijosN
+let renderRegimenS
 
 async function datosSexoPorLineas() {
     //linea 1
@@ -252,11 +281,113 @@ async function datosEstadoCivil(arreglo, linea) {
 
 }
 
+async function datosEtnia(arreglo, linea){
+
+    const res1 = await fetch(`/etnia/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    
+    const res2 = await fetch(`/etnia/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    
+    const res3 = await fetch(`/etnia/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    
+    const res4 = await fetch(`/etnia/4/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+
+    
+    const res5 = await fetch(`/etnia/5/linea/${linea}`)
+    const json5 = await res5.json()
+    arreglo.push(json5[0].cantidad)
+}
+
+async function datosOcupacion(arreglo, linea) {
+    
+    const res1 = await fetch(`/ocupacion/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/ocupacion/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/ocupacion/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/ocupacion/4/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+
+    const res5 = await fetch(`/ocupacion/5/linea/${linea}`)
+    const json5 = await res5.json()
+    arreglo.push(json5[0].cantidad)
+
+    const res6 = await fetch(`/ocupacion/6/linea/${linea}`)
+    const json6 = await res6.json()
+    arreglo.push(json6[0].cantidad)
+
+    const res7 = await fetch(`/ocupacion/7/linea/${linea}`)
+    const json7 = await res7.json()
+    arreglo.push(json7[0].cantidad)
+
+}
+
+async function datosHijos(arreglo, linea) {
+    
+    const res1 = await fetch(`/hijos/0/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/hijos/1/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/hijos/2/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/hijos/3/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+
+    const res5 = await fetch(`/hijos/5/linea/${linea}`)
+    const json5 = await res5.json()
+    arreglo.push(json5[0].cantidad)
+
+}
+
+async function datosRegimen(arreglo, linea) {
+    
+    const res1 = await fetch(`/regimen/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/regimen/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/regimen/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/regimen/4/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+}
+
 toastr.info('cargando informacion....')
 datosSexoPorLineas().then(() => toastr.info('se cargo toda la informacion de Sexos '))
-datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edades en la linea 1 '))
-datosEdadLineas(edadlinea2, 2).then(() => toastr.info('se cargo toda la informacion de edades en la linea 2 '))
-datosEdadLineas(edadlinea3, 3).then(() => toastr.info('se cargo toda la informacion de edades en la linea 3 '))
+datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edad en la linea 1 '))
+datosEdadLineas(edadlinea2, 2).then(() => toastr.info('se cargo toda la informacion de edad en la linea 2 '))
+datosEdadLineas(edadlinea3, 3).then(() => toastr.info('se cargo toda la informacion de edad en la linea 3 '))
 datosAnioGraduacion(anioGlinea1, 1).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 1 '))
 datosAnioGraduacion(anioGlinea2, 2).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 2 '))
 datosAnioGraduacion(anioGlinea3, 3).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 3 '))
@@ -266,6 +397,18 @@ datosIcfesPuntaje(icfesPuntajeLinea3, 3).then(() => toastr.info('se cargo toda l
 datosEstadoCivil(estadoCivilLinea1, 1).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 1 '))
 datosEstadoCivil(estadoCivilLinea2, 2).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 2 '))
 datosEstadoCivil(estadoCivilLinea3, 3).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 3 '))
+datosEtnia(etniaLinea1, 1).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 1 '))
+datosEtnia(etniaLinea2, 2).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 2 '))
+datosEtnia(etniaLinea3, 3).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 3 '))
+datosOcupacion(ocupacionLinea1, 1).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 1 '))
+datosOcupacion(ocupacionLinea2, 2).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 2 '))
+datosOcupacion(ocupacionLinea3, 3).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 3 '))
+datosHijos(hijosLinea1, 1).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 1'))
+datosHijos(hijosLinea2, 2).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 2 '))
+datosHijos(hijosLinea3, 3).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 3 '))
+datosRegimen(regimenLinea1, 1).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 1'))
+datosRegimen(regimenLinea2, 2).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 2'))
+datosRegimen(regimenLinea3, 3).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 3'))
 
 line1.addEventListener('click', () => {
     renderSexLineas(1, lsex, sexolinea1)
@@ -273,6 +416,10 @@ line1.addEventListener('click', () => {
     renderAnioGraduacion(1, lanioGraduacion, anioGlinea1)
     renderIcfesPuntaje(1, licfesPuntaje, icfesPuntajeLinea1)
     renderEstadoCivil(1, lestadoCivil, estadoCivilLinea1)
+    renderEtnias(1, letnia, etniaLinea1)
+    renderOcupacion(1, locupacion, ocupacionLinea1)
+    renderNumeroDeHijos(1, lhijos, hijosLinea1)
+    renderRegimenSalud(1, lregimen, regimenLinea1)
 })
 
 line2.addEventListener('click', () => {
@@ -281,6 +428,10 @@ line2.addEventListener('click', () => {
     renderAnioGraduacion(2, lanioGraduacion, anioGlinea2)
     renderIcfesPuntaje(2, licfesPuntaje, icfesPuntajeLinea2)
     renderEstadoCivil(2, lestadoCivil, estadoCivilLinea2)
+    renderEtnias(2, letnia, etniaLinea2)
+    renderOcupacion(2, locupacion, ocupacionLinea2)
+    renderNumeroDeHijos(2, lhijos, hijosLinea2)
+    renderRegimenSalud(2, lregimen, regimenLinea2)
 })
 
 line3.addEventListener('click', () => {
@@ -289,6 +440,10 @@ line3.addEventListener('click', () => {
     renderAnioGraduacion(3, lanioGraduacion, anioGlinea3)
     renderIcfesPuntaje(3, licfesPuntaje, icfesPuntajeLinea3)
     renderEstadoCivil(3, lestadoCivil, estadoCivilLinea3)
+    renderEtnias(3, letnia, etniaLinea3)
+    renderOcupacion(3, locupacion, ocupacionLinea3)
+    renderNumeroDeHijos(3, lhijos, hijosLinea3)
+    renderRegimenSalud(3, lregimen, regimenLinea3)
 })
 
 function renderSexLineas(titulo,line, dataSex) {
@@ -328,6 +483,7 @@ function renderSexLineas(titulo,line, dataSex) {
 
 function renderEdadPorLineas(titulo, line, dataEdad) {
     if(renderEdad) renderEdad.destroy()
+    line.height = 500
     renderEdad = new Chart(line, {
         type: 'bar',
         data: {
@@ -348,6 +504,7 @@ function renderEdadPorLineas(titulo, line, dataEdad) {
             }]
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 y: {
@@ -365,6 +522,7 @@ function renderEdadPorLineas(titulo, line, dataEdad) {
 
 function renderAnioGraduacion(titulo, line, dataAnioG) {
     if(renderAnioG) renderAnioG.destroy()
+    line.height = 500
     renderAnioG = new Chart(line, {
         type: 'line',
         data: {
@@ -385,6 +543,7 @@ function renderAnioGraduacion(titulo, line, dataAnioG) {
             }]
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 y: {
@@ -434,9 +593,11 @@ function renderIcfesPuntaje(titulo, line, dataIcfes) {
 }
 
 function renderEstadoCivil(titulo, line, dataEstadoCivil) {
+    
     if(renderEstadoC) renderEstadoC.destroy()
+    line.height = 500
     renderEstadoC = new Chart(line, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             labels: ['Casado', 'Separado', 'Soltero', 'Union Libre'],
             datasets: [{
@@ -456,12 +617,176 @@ function renderEstadoCivil(titulo, line, dataEstadoCivil) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
+}
+
+function renderEtnias(titulo, line, dataEtnias) {
+    if(renderEtniasLinea) renderEtniasLinea.destroy()
+    renderEtniasLinea = new Chart(line, {
+        type: 'pie',
+        data: {
+            labels: ['Afro', 'Indigena', 'Ninguno', 'No', 'No encontrado'],
+            datasets: [{
+                label: `LINEA ${titulo} ETNIAS` || '',
+                data: dataEtnias,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
             scales: {
                 y: {
                     beginAtZero: true
                 },
                 x: {
                     beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function renderOcupacion(titulo, line, dataOcup) {
+    if(renderOcupacionL) renderOcupacionL.destroy()
+    //line.height = 500
+    renderOcupacionL = new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['Estudiar', 'Estudiar y Trabajar', 'Hogar', 'Trabajo Completo', 'Trabajo Ocasional', 'Trabajo Medio', 'Ninguna'],
+            datasets: [{
+                label: `LINEA ${titulo} OCUPACION` || '',
+                data: dataOcup,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)',
+                    'rgba(128, 0, 0,1)',
+                    'rgb(210, 105, 30,1)'
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)',
+                    'rgba(128, 0, 0,1)',
+                    'rgb(210, 105, 30,1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
+}
+
+function renderNumeroDeHijos(titulo, line, dataHijos) {
+    if(renderHijosN) renderHijosN.destroy()
+    line.height = 500
+    renderHijosN = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['0', '1', '2', '3', '5 o mas'],
+            datasets: [{
+                label: `LINEA ${titulo} NUMERO DE HIJOS` || '',
+                data: dataHijos,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function renderRegimenSalud(titulo, line, dataRegimen) {
+    if(renderRegimenS) renderRegimenS.destroy()
+    line.height = 500
+    renderRegimenS = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['Contributivo', 'Especial', 'Subsidiado', 'En Proceso'],
+            datasets: [{
+                label: `LINEA ${titulo} REGIMEN DE SALUD` || '',
+                data: dataRegimen,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
                 }
             }
         }

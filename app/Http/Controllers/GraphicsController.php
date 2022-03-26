@@ -62,4 +62,37 @@ class GraphicsController extends Controller
         return $datos;
     }
 
+    public function etniaPorLinea($etnia, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE socioeconomic_data.id_ethnicity = ? 
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups 
+        WHERE student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$etnia, $cohorte]);
+
+        return $datos;
+    }
+
+    public function ocupacionLinea($ocup, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE socioeconomic_data.id_ocupation = ? 
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+        student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))",[$ocup, $cohorte]);
+
+        return $datos;
+
+    }
+
+    public function numeroDeHijos($hijos, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE socioeconomic_data.children_number = ? 
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+        student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$hijos, $cohorte]);
+
+        return $datos;
+    }
+
+    public function regimenSalud($regimen, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE socioeconomic_data.id_health_regime = ?
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+        student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$regimen, $cohorte]);
+
+        return $datos;
+    }
+
 }

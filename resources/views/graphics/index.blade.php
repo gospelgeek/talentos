@@ -55,86 +55,27 @@
                 <div class="col-sm-4">
                     <canvas id="icfesPuntajeLinea"></canvas>
                 </div>
-               
+                <div class="col-sm-4">
+                    <canvas id="etniaLinea"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <canvas id="ocupacionLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="hijosLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="regimenLinea"></canvas>
+                </div>
             </div>
         </div>
     </div>
-    <!--
-    <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        LINEA 1
-                    </button>
-                </h5>
-            </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    <div class="row justify-content-md-center">
-                        <div class="col-sm">
-                            <canvas id="l1Sexo"></canvas>
-                        </div>
-                        <div class="col">
-                            <canvas id="l1Edad"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        LINEA 2
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                    <div class="row justify-content-md-center">
-                        <div class="col-sm">
-                            <canvas id="l2Sexo"></canvas>
-                        </div>
-                        <div class="col">
-                            <canvas id="l2Edad"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        LINEA 3
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                    <div class="row justify-content-md-center">
-                        <div class="col-sm">
-                            <canvas id="l3Sexo"></canvas>
-                        </div>
-                        <div class="col">
-                            <canvas id="l3Edad"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>--->
 </div>
 
-
-
-
-
 @push('scripts')
-
-
 
 {!!Html::script('/js/graficas.js')!!}">
 @endpush

@@ -12,43 +12,54 @@
     <button type="submit">Enviar</button>
 </form>
 
+-->
+
 <div class="container-fluid">
+
     <div class="card">
+
+
         <div class="card-body">
-            <div class="card-title">
-                <select name="" id="valores">
-                    <option value="sexo" selected>SEXO</option>
-                    <option value="estrato">ESTRATO</option>
-                </select>
-                <select name="" id="linea">
-                    <option value="" selected>COHORTE</option>
-                    <option value="1">LINEA 1</option>
-                    <option value="2">LINEA 2</option>
-                    <option value="3">LINEA 3</option>
-                </select>
-                <select name="" id="tipoGrafica">
-                    <option value="line" selected>LINEAR</option>
-                    <option value="bar">BARRAS</option>
-                    <option value="doughnut">CIRCULAR</option>
-                    <option value="polarArea">AREA POLAR</option>
-                    <option value="radar">RADAR</option>
-                </select>
-            </div>
-            <br>
-            <br>
             <div class="row justify-content-md-center">
-                <div class="col">
-                    <canvas id="myChart"></canvas>
+                <col-sm>
+                    <h3 class="mr-3">VER GRAFICAS DE:</h3>
+                </col-sm>
+                <div class="col-sm">
+                    <button class="btn btn-primary" id="linea1">
+                        Linea 1
+                    </button>
+                    <button class="btn btn-primary" id="linea2">
+                        Linea 2
+                    </button>
+                    <button class="btn btn-primary" id="linea3">
+                        Linea 3
+                    </button>
                 </div>
-                <div class="col">
 
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <canvas id="sexolineas"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="edadlineas"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="anioGraduacion"></canvas>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="col-sm-4">
+                    <canvas id="estadoCivilLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="icfesPuntajeLinea"></canvas>
+                </div>
+               
+            </div>
         </div>
-    </div>-->
-<div class="container-fluid">
+    </div>
+    <!--
     <div id="accordion">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -62,11 +73,11 @@
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                     <div class="row justify-content-md-center">
-                        <div class="col">
+                        <div class="col-sm">
                             <canvas id="l1Sexo"></canvas>
                         </div>
                         <div class="col">
-
+                            <canvas id="l1Edad"></canvas>
                         </div>
                     </div>
                 </div>
@@ -83,11 +94,11 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
                     <div class="row justify-content-md-center">
-                        <div class="col">
+                        <div class="col-sm">
                             <canvas id="l2Sexo"></canvas>
                         </div>
                         <div class="col">
-
+                            <canvas id="l2Edad"></canvas>
                         </div>
                     </div>
                 </div>
@@ -104,17 +115,17 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body">
                     <div class="row justify-content-md-center">
-                        <div class="col">
+                        <div class="col-sm">
                             <canvas id="l3Sexo"></canvas>
                         </div>
                         <div class="col">
-
+                            <canvas id="l3Edad"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>--->
 </div>
 
 

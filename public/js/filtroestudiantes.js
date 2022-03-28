@@ -8,7 +8,7 @@ $('.crear_estado').click(function(e) {
             $('#CUrl').hide();
             $('#CBoton').hide();
           }
-          if(valor == 3 || valor == 2){
+          if(valor == 3 || valor == 2 || valor == 5){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
@@ -41,7 +41,7 @@ $('.crear_estado').click(function(e) {
             $('#CUrl').hide();
             $('#CBoton').hide();
           }
-          if(valor == 3 || valor == 2){
+          if(valor == 3 || valor == 2 || valor == 5){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();

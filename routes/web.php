@@ -147,7 +147,7 @@ Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.a
 Route::post('verDatosExcel', 'SocioEducativoController@verificarInfo')->name('ejm');
 
 //graphics
-Route::get('graphics', 'GraphicsController@index')->name('graficas');
+Route::get('graficas', 'GraphicsController@index')->name('graficas');
 Route::get('sex/{tipo}/linea/{cohorte}', 'GraphicsController@sexoPorCohorte')->name('sexoCohorte');
 Route::get('edad/{edad}/linea/{cohorte}', 'GraphicsController@edadPorCohorte')->name('edadCohorte');
 Route::get('anio/{anio}/linea/{cohorte}', 'GraphicsController@anioGraduacion')->name('icfesPuntajeCohorte');

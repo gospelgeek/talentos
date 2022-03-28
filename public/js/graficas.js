@@ -476,6 +476,12 @@ function renderSexLineas(titulo,line, dataSex) {
                 x: {
                     beginAtZero: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE SEXOS'
+                }
             }
         }
     });
@@ -489,7 +495,7 @@ function renderEdadPorLineas(titulo, line, dataEdad) {
         data: {
             labels: ['14', '15', '16', '17', '18', '19', '20', '21', '22','23', '24', '25', '26', '27', '28', '29', '30'],
             datasets: [{
-                label: `LINEA ${titulo} EDADES` || '',
+                label: '',
                 data: dataEdad,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -506,6 +512,7 @@ function renderEdadPorLineas(titulo, line, dataEdad) {
         options: {
             maintainAspectRatio: false,
             responsive: true,
+            //showTooltips: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -513,7 +520,21 @@ function renderEdadPorLineas(titulo, line, dataEdad) {
                 x: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE EDAD'
+                },
+                legend: {
+                    display: false
+                },
+                datalabels:{
+                    display: true,
+                
+                }
+            },
+            
         }
     });
     //renderEdad.canvas.parentNode.style.height = '700px';
@@ -528,7 +549,7 @@ function renderAnioGraduacion(titulo, line, dataAnioG) {
         data: {
             labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020','2021', '2022'],
             datasets: [{
-                label: `LINEA ${titulo} AÑO DE GRADUACION` || '',
+                //label: `LINEA ${titulo} AÑO DE GRADUACION` || '',
                 data: dataAnioG,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -552,6 +573,15 @@ function renderAnioGraduacion(titulo, line, dataAnioG) {
                 x: {
                     beginAtZero: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE AÑO DE GRADUACION'
+                },
+                legend: {
+                    display: false
+                },
             }
         }
     });
@@ -559,12 +589,13 @@ function renderAnioGraduacion(titulo, line, dataAnioG) {
 
 function renderIcfesPuntaje(titulo, line, dataIcfes) {
     if(renderIcfesPuntajes) renderIcfesPuntajes.destroy()
+    line.height = 500
     renderIcfesPuntajes = new Chart(line, {
-        type: 'polarArea',
+        type: 'line',
         data: {
             labels: ['150-200', '201-250', '251-300', '301-350', '351-400', '401-450', '451-500'],
             datasets: [{
-                label: `LINEA ${titulo} PUNTAJE ICFES` || '',
+                //label: `LINEA ${titulo} PUNTAJE ICFES` || '',
                 data: dataIcfes,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -579,6 +610,7 @@ function renderIcfesPuntaje(titulo, line, dataIcfes) {
             }]
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 y: {
@@ -587,6 +619,15 @@ function renderIcfesPuntaje(titulo, line, dataIcfes) {
                 x: {
                     beginAtZero: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE PUNTAJE DE ICFES'
+                },
+                legend: {
+                    display: false
+                },
             }
         }
     });
@@ -601,7 +642,7 @@ function renderEstadoCivil(titulo, line, dataEstadoCivil) {
         data: {
             labels: ['Casado', 'Separado', 'Soltero', 'Union Libre'],
             datasets: [{
-                label: `LINEA ${titulo} ESTADO CIVIL` || '',
+                //label: '',
                 data: dataEstadoCivil,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -618,7 +659,7 @@ function renderEstadoCivil(titulo, line, dataEstadoCivil) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            indexAxis: 'y',
+            //indexAxis: 'y',
             scales: {
                 x: {
                     stacked: true
@@ -626,6 +667,15 @@ function renderEstadoCivil(titulo, line, dataEstadoCivil) {
                 y: {
                     stacked: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE ESTADO CIVIL'
+                },
+                legend: {
+                    display: false
+                },
             }
         }
     });
@@ -665,6 +715,12 @@ function renderEtnias(titulo, line, dataEtnias) {
                 },
                 x: {
                     beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE ETNIAS'
                 }
             }
         }
@@ -713,6 +769,12 @@ function renderOcupacion(titulo, line, dataOcup) {
                 y: {
                     stacked: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE OCUPACION'
+                }
             }
         }
     });
@@ -726,7 +788,7 @@ function renderNumeroDeHijos(titulo, line, dataHijos) {
         data: {
             labels: ['0', '1', '2', '3', '5 o mas'],
             datasets: [{
-                label: `LINEA ${titulo} NUMERO DE HIJOS` || '',
+                //label: `LINEA ${titulo} NUMERO DE HIJOS` || '',
                 data: dataHijos,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -750,6 +812,15 @@ function renderNumeroDeHijos(titulo, line, dataHijos) {
                 x: {
                     beginAtZero: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE NUMERO DE HIJOS'
+                },
+                legend: {
+                    display: false
+                },
             }
         }
     });
@@ -763,7 +834,7 @@ function renderRegimenSalud(titulo, line, dataRegimen) {
         data: {
             labels: ['Contributivo', 'Especial', 'Subsidiado', 'En Proceso'],
             datasets: [{
-                label: `LINEA ${titulo} REGIMEN DE SALUD` || '',
+                //label: `LINEA ${titulo} REGIMEN DE SALUD` || '',
                 data: dataRegimen,
                 backgroundColor: [
                     'rgba(226, 13, 13, 1)',
@@ -788,6 +859,15 @@ function renderRegimenSalud(titulo, line, dataRegimen) {
                 y: {
                     stacked: true
                 }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE REGIMEN EN SALUD'
+                },
+                legend: {
+                    display: false
+                },
             }
         }
     });

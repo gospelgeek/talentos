@@ -77,8 +77,8 @@ class perfilEstudianteController extends Controller
         if ($user['rol_id'] == 6) {
             $iden = $user['id'];
 
-            $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia,previous_academic_data.institution_name as colegio, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
-
+            $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio,
+            YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad,
             (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
             (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
             (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
@@ -92,9 +92,10 @@ class perfilEstudianteController extends Controller
             (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
             (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
             (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
-            FROM student_profile, socioeconomic_data, student_groups, groups
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
             WHERE student_profile.id = socioeconomic_data.id_student 
-            AND student_groups.id_student = student_profile.id 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
             AND student_groups.id_group = groups.id AND student_profile.id IN (SELECT assignment_students.id_student FROM assignment_students WHERE assignment_students.id_user = ?)
         ", [$iden]);
 

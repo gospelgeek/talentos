@@ -35,12 +35,12 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR S&Aacute;BANA</a>
 
             </div>
-            <div class="col-xs-6 col-md-12 col-sm-6">
-                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>LINEA 2</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>TODAS</label>&nbsp;<input type="checkbox" name="linea1" value="si" id="todas">
-            </div> 
+            <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
+                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="linea1" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 2</label>&nbsp;<input type="checkbox" name="linea2" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="linea3" value="LINEA 3" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;
+                
+            </div>
             
         </div>
 
@@ -174,47 +174,64 @@
             ]
         });
         
-        document.getElementById('todas').checked = true;
+        $('.filtroCohortes').on('change', function() {
+           
+            var checkLinea1 = $('#linea_1').is(":checked");
+            var checkLinea2 = $('#linea_2').is(":checked");
+            var checkLinea3 = $('#linea_3').is(":checked");
 
-        $('#linea_1').on('change', function() {
-            if( $(this).is(':checked') ) {
-                document.getElementById('linea_2').checked = false;
-                document.getElementById('linea_3').checked = false;
-                document.getElementById('todas').checked = false;
-                table.columns(9).search('LINEA 1');
-            }   
-            table.draw();
-        });
 
-        $('#linea_2').on('change', function() {
-            if( $(this).is(':checked') ) {
-                document.getElementById('linea_1').checked = false;
-                document.getElementById('linea_3').checked = false;
-                document.getElementById('todas').checked = false;
-                table.columns(9).search('LINEA 2');
-            }   
-            table.draw();
-        });
+            if (!checkLinea1) {
+                    if(checkLinea2 && checkLinea3){
+                        var filtro = $('input:checkbox[name="linea1"]').map(function() {
+                            return this.value;
+                        }).get().join('|');
+                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                    }else if (checkLinea2) {
+                        table.columns(9).search('LINEA 2');        
+                    }else if (checkLinea3) {
+                        table.columns(9).search('LINEA 3');
+                    }
+                    table.draw();
+                        
+                }
 
-        $('#linea_3').on('change', function() {
-            if( $(this).is(':checked') ) {
-                document.getElementById('linea_1').checked = false;
-                document.getElementById('linea_2').checked = false;
-                document.getElementById('todas').checked = false;
-                table.columns(9).search('LINEA 3');
-            }   
-            table.draw();
-        });
+                if(!checkLinea2){
+                    if(checkLinea1 && checkLinea3){
+                        var filtro = $('input:checkbox[name="linea2"]').map(function() {
+                            return this.value;
+                        }).get().join('|');
+                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                    }else if(checkLinea1){
+                        table.columns(9).search('LINEA 1');
+                    }else if(checkLinea3){
+                        table.columns(9).search('LINEA 3');
+                    }
+                    table.draw();
+                }
 
-        $('#todas').on('change', function() {
-            if( $(this).is(':checked') ) {
-                document.getElementById('linea_1').checked = false;
-                document.getElementById('linea_2').checked = false;
-                document.getElementById('linea_3').checked = false;
-                document.getElementById('todas').checked = true;
-                setTimeout("location.reload()", 2000);
-            }   
-            table.draw();
+
+                if(!checkLinea3){
+                    if(checkLinea1 && checkLinea2){
+                        var filtro = $('input:checkbox[name="linea3"]').map(function() {
+                            return this.value;
+                        }).get().join('|');
+                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                    }else if(checkLinea1){
+                        table.columns(9).search('LINEA 1');
+                    }else if(checkLinea2){
+                        table.columns(9).search('LINEA 2');
+                    }
+                    table.draw();
+                }
+
+                if (checkLinea1 && checkLinea2 && checkLinea3) {
+                    setTimeout("location.reload()", 2000);
+                }
+                    
+                
+                            
+
         });
 
                 

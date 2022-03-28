@@ -1,6 +1,9 @@
-//Editar estado desde la vista estudiantes estado
+//Editar estado desde la vista estudiantes estado 23
 function abrirmodal(e) {
-                
+       var url_retiro = document.createElement('a');
+       url_retiro.setAttribute('id', 'CBoton');
+       url_retiro.setAttribute('href'," ");
+       url_retiro.setAttribute('target', '_blank')         
        //var row = $(this).parents('tr');
        //console.log(row);
        var id = $(e).attr("id"); 
@@ -14,6 +17,7 @@ function abrirmodal(e) {
 
         //alert(result);
         //console.log(result[0]);
+          //document.getElementById('modal_crear_estado').reset();
           if(result[0].id_state == 1){
             $('#Cobservacion').hide();
             $('#CMotivo').hide();
@@ -25,40 +29,49 @@ function abrirmodal(e) {
             $("#estadoN").val(result[0].id_state); 
             $('#modal_crear_estado').modal('show');
           }else{
-             $('#idE').val(result[0].id);
-             $("#estadoN").val(result[0].id_state);
-             $("#CMotivo").val(result[0].withdrawals.id_reasons);
-             $("#CUrl").val(result[0].withdrawals.url);
-             document.getElementById('CBoton').setAttribute('href', result[0].withdrawals.url);
-          $("#Cobservacion").val(result[0].withdrawals.observation);         
-        
-        var valor = $('#estadoN').val();
-          //console.log(valor)
-          if(valor == ""){
-            $('#Cobservacion').hide();
-            $('#CMotivo').hide();
-            $('#CUrl').hide();
-            $('#CBoton').hide();
-          }
-          if(valor == 3 || valor == 2){
-            $('#CMotivo').show();
-            $('#Cobservacion').show();
-            $('#CUrl').show();
-            $('#CBoton').show();
-          }
-          if(valor == 4){
-            $('#Cobservacion').show();
-            $('#CMotivo').hide();
-            $('#CUrl').hide();
-            $('#CBoton').hide();               
-          }
-          if(valor == 1){
-            $('#Cobservacion').hide();
-            $('#CMotivo').hide();
-            $('#CUrl').hide();
-            $('#CBoton').hide();
-          } 
-        $('#modal_crear_estado').modal('show');   
+                $("#estadoN").val(result[0].id_state);     
+                var valor = $('#estadoN').val();
+                //console.log(valor)
+                if(valor == ""){
+                  $('#Cobservacion').hide();
+                  $('#CMotivo').hide();
+                  $('#CUrl').hide();
+                  $('#CBoton').hide();
+                }
+                if(valor == 3 || valor == 2 || valor == 5){
+                  $('#CMotivo').show();
+                  $('#Cobservacion').show();
+                  $('#CUrl').show();
+                  $('#CBoton').show();
+                  $('#idE').val(result[0].id); 
+                  $("#CMotivo").val(result[0].withdrawals.id_reasons);
+                  $("#CUrl").val(result[0].withdrawals.url);
+
+                  if(result[0].withdrawals.url != null){
+                    document.getElementById('CBoton').setAttribute('href', result[0].withdrawals.url);
+                  }else{
+                      //console.log("entro");
+                      $('#CBoton').hide();
+                  }
+                  $("#Cobservacion").val(result[0].withdrawals.observation);
+                }
+                if(valor == 4){
+                  $('#idE').val(result[0].id);
+                  $("#Cobservacion").val(result[0].withdrawals.observation);
+                  $('#Cobservacion').show();
+                  $('#CMotivo').hide();
+                  $('#CUrl').hide();
+                  $('#CBoton').hide();               
+                }
+                if(valor == 1){
+                  $('#Cobservacion').hide();
+                  $('#CMotivo').hide();
+                  $('#CUrl').hide();
+                  $('#CBoton').hide();
+                }
+
+                 
+                $('#modal_crear_estado').modal('show');   
           }
           
 
@@ -74,7 +87,7 @@ $("#estadoN").on('change',function(event) {
             $('#CUrl').hide();
             $('#CBoton').hide();
           }
-          if(valor == 3 || valor == 2){
+          if(valor == 3 || valor == 2 || valor == 5){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
@@ -127,7 +140,7 @@ $('.boton_update_estado').click(function(e) {
     },       
   });
   });
-$("#example1").DataTable({
+/*$("#example1").DataTable({
             "orderCellsTop": true,
             "processing": true,
             "paging": true,
@@ -148,7 +161,7 @@ $("#example1").DataTable({
                         text: 'EXPORTAR EXCEL',
                         exportOptions: {
                                         modifier: {
-                                                    page: 'current',
+                                                    page: 'all',
 
                                                   }
                                         }
@@ -158,7 +171,7 @@ $("#example1").DataTable({
                         text: 'EXPORTAR PDF',
                         exportOptions: {
                                         modifier: {
-                                                    page: 'current'
+                                                    page: 'all'
                                                   }
                                         }
                       },
@@ -167,9 +180,12 @@ $("#example1").DataTable({
                         text: 'Imprimir',
                         exportOptions: {
                                         modifier: {
-                                                    page: 'current'
+                                                    page: 'all'
                                                   }
                                         }
                       },
                     ]
-      });
+      });*/
+
+      
+

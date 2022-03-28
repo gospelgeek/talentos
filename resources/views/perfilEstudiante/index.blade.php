@@ -173,6 +173,9 @@
                 
             ]
         });
+        document.getElementById('linea_1').checked = true;
+        document.getElementById('linea_2').checked = true;
+        document.getElementById('linea_3').checked = true;
         
         $('.filtroCohortes').on('change', function() {
            

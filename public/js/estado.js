@@ -150,7 +150,7 @@ $("#example1").DataTable({
             "info": true,
             "autoWidth": false,
             "responsive": true,
-            "order": [[5,'dsc']],
+            "order": [[5,'desc']],
             "language": {
                         "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },

@@ -36,9 +36,9 @@
 
             </div>
             <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
-                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="linea1" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>LINEA 2</label>&nbsp;<input type="checkbox" name="linea2" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="linea3" value="LINEA 3" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 2</label>&nbsp;<input type="checkbox" name="check" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;
                 
             </div>
             
@@ -186,7 +186,7 @@
 
             if (!checkLinea1) {
                     if(checkLinea2 && checkLinea3){
-                        var filtro = $('input:checkbox[name="linea1"]').map(function() {
+                        var filtro = $('input:checkbox[id="linea_1"]').map(function() {
                             return this.value;
                         }).get().join('|');
                         table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
@@ -201,7 +201,7 @@
 
                 if(!checkLinea2){
                     if(checkLinea1 && checkLinea3){
-                        var filtro = $('input:checkbox[name="linea2"]').map(function() {
+                        var filtro = $('input:checkbox[id="linea_2"]').map(function() {
                             return this.value;
                         }).get().join('|');
                         table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
@@ -216,7 +216,7 @@
 
                 if(!checkLinea3){
                     if(checkLinea1 && checkLinea2){
-                        var filtro = $('input:checkbox[name="linea3"]').map(function() {
+                        var filtro = $('input:checkbox[id="linea_3"]').map(function() {
                             return this.value;
                         }).get().join('|');
                         table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);

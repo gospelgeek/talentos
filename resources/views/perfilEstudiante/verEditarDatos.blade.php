@@ -613,8 +613,10 @@
         	
 	</div>
 	@endif
+
 </div>
 <div class="accordion-container">
+
 		<a href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
 		<div id="contenido-5" class="accordion-content-5">
 			<script id="json" type="text" src="/json/students.json"></script>
@@ -638,7 +640,9 @@
 					<tbody id="insertar">
 						
 					</tbody>
+
                     <tfoot id="insertar2">
+
 						<td>TOTAL</td>
 						<td id="totalsesiones"></td>
 						<td id="totalasistencias"></td>
@@ -648,7 +652,9 @@
 				</table>
 			</div>
 		</div>		
+
 	</div>
+
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">

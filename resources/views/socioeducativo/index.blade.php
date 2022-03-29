@@ -58,10 +58,24 @@
                 data: 'grupo'
             },
             {
-                data: 'nameUser'
-            },
-            {
-                data: 'apellidosUser'
+                data: null,
+                render: function(data, type, row, meta){
+                    var apel;
+                  
+                    if(data.nameUser === null && data.apellidosUser === null){
+                        apel = `<div id="nameapel${data.id}">
+                            <td></td>
+                            </div>`
+
+                        return apel
+                    }
+                    apel = `<div id="nameapel${data.id}">
+                            <td><strong>${data.nameUser} ${data.apellidosUser}</strong></td>
+                            </div>`
+                    
+                    return apel
+                }
+
             },
 
 

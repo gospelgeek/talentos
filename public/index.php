@@ -25,10 +25,8 @@ define('LARAVEL_START', microtime(true));
 
 
 
+
 require __DIR__.'/../PNApruebas/vendor/autoload.php';
-
-
-
 
 
 
@@ -44,7 +42,6 @@ require __DIR__.'/../PNApruebas/vendor/autoload.php';
 | the responses back to the browser and delight our users.
 |
 */
-
 
 
 

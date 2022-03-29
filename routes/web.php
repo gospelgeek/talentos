@@ -160,10 +160,24 @@ Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeduc
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 
+Route::post('verDatosExcel', 'SocioEducativoController@verificarInfo')->name('ejm');
+
+//graphics
+Route::get('graficas', 'GraphicsController@index')->name('graficas');
+Route::get('sex/{tipo}/linea/{cohorte}', 'GraphicsController@sexoPorCohorte')->name('sexoCohorte');
+Route::get('edad/{edad}/linea/{cohorte}', 'GraphicsController@edadPorCohorte')->name('edadCohorte');
+Route::get('anio/{anio}/linea/{cohorte}', 'GraphicsController@anioGraduacion')->name('icfesPuntajeCohorte');
+Route::get('puntaje/{icfesI}/{icfesF}/linea/{cohorte}', 'GraphicsController@puntajeIcfes')->name('icfesPuntajeCohorte');
+Route::get('estado/{estado}/linea/{cohorte}', 'GraphicsController@civilEstado')->name('civilEstadoCohorte');
+Route::get('etnia/{etnia}/linea/{cohorte}', 'GraphicsController@etniaPorLinea')->name('etniaCohorte');
+Route::get('ocupacion/{ocup}/linea/{cohorte}', 'GraphicsController@ocupacionLinea')->name('ocupacionCohorte');
+Route::get('hijos/{hijos}/linea/{cohorte}', 'GraphicsController@numeroDeHijos')->name('numeroDeHijosCohorte');
+Route::get('regimen/{regimen}/linea/{cohorte}', 'GraphicsController@regimenSalud')->name('regimenSaludCohorte');
+
+
 //RUTA INDEXESTADO ESTUDIANTES
 Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
 Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
-
 
 
 

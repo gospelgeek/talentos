@@ -73,12 +73,12 @@ let renderRegimenS
 
 async function datosSexoPorLineas() {
     //linea 1
-    const resHlinea1 = await fetch('/sex/H/linea/1')
+    const resHlinea1 = await fetch('/sex/M/linea/1')
     const jsonHLinea1 = await resHlinea1.json()
 
     sexolinea1.push(jsonHLinea1[0].sexo)
 
-    const resMLinea1 = await fetch('/sex/M/linea/1')
+    const resMLinea1 = await fetch('/sex/F/linea/1')
     const jsonMLinea1 = await resMLinea1.json()
 
     sexolinea1.push(jsonMLinea1[0].sexo)
@@ -86,12 +86,12 @@ async function datosSexoPorLineas() {
     // fin de linea 1
 
     // linea 2
-    const resHLinea2 = await fetch('/sex/H/linea/2')
+    const resHLinea2 = await fetch('/sex/M/linea/2')
     const jsonHLinea2 = await resHLinea2.json()
 
     sexolinea2.push(jsonHLinea2[0].sexo)
 
-    const resMLinea2 = await fetch('/sex/M/linea/2')
+    const resMLinea2 = await fetch('/sex/F/linea/2')
     const jsonMLinea2 = await resMLinea2.json()
 
     sexolinea2.push(jsonMLinea2[0].sexo)
@@ -99,12 +99,12 @@ async function datosSexoPorLineas() {
 
     // linea 3
 
-    const resHLinea3 = await fetch('/sex/H/linea/3')
+    const resHLinea3 = await fetch('/sex/M/linea/3')
     const jsonHLinea3 = await resHLinea3.json()
 
     sexolinea3.push(jsonHLinea3[0].sexo)
 
-    const resMLinea3 = await fetch('/sex/M/linea/3')
+    const resMLinea3 = await fetch('/sex/F/linea/3')
     const jsonMLinea3 = await resMLinea3.json()
 
     sexolinea3.push(jsonMLinea3[0].sexo)

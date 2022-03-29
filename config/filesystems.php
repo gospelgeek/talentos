@@ -79,7 +79,7 @@ return [
     */
 
     'links' => [
-        base_path('../public_html/json') => storage_path('json'),
+        public_path('json') => storage_path('json'),
     ],
 
 ];

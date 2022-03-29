@@ -2416,41 +2416,39 @@ class perfilEstudianteController extends Controller
         return redirect('estudiante')->with('success', 'File imported successfully!');
     }
 
-    public function CargarJSon(Request $request)
-    {
+    public function CargarJSon(Request $request){
         //dd($request->file('sesiones')->getClientOriginalName());
 
         $verificar_nombre = explode("_", $request->file('sesiones')->getClientOriginalName());
         //dd($verificar_nombre);
         //Storage::disk('local')->put('', $request->file('sesiones')->originalName());
 
-
-        if ($verificar_nombre[0] == "sessionsbycoursereport") {
+        
+        if($verificar_nombre[0] == "sessionsbycoursereport"){
             $nombre = "students.json";
             Storage::delete($nombre);
             if(Storage::disk('local')->exists('inasistencias.json')) {
                 Storage::delete('inasistencias.json');
-
-            }
-
-                     
+            }           
+            
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
-            return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
+            $exitCode = Artisan::call('optimize:clear');
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
         }
-        if ($verificar_nombre[0] == "attendancereport") {
+        if($verificar_nombre[0] == "attendancereport"){
             $nombre = "asistencias.json";
             Storage::delete($nombre);
             if(Storage::disk('local')->exists('inasistencias.json')) {
                 Storage::delete('inasistencias.json');
             }
             Storage::putFileAs('/', $request->file('sesiones'), $nombre);
-            return back()->with('status', "el archivo" . " " . $request->file('sesiones')->getClientOriginalName() . " " . "fue importado correctamente");
-        } else {
+            $exitCode = Artisan::call('optimize:clear');
+            return back()->with('status', "el archivo"." ".$request->file('sesiones')->getClientOriginalName()." "."fue importado correctamente");
+        }
+        else{
             return back()->with('message-error', 'Por favor seleccione un archivo valido');
-
         }   
     }
-
     public function json_inasistencias(Request $request){
         if(Storage::disk('local')->exists('inasistencias.json')) {
             $inasistencias    = json_decode(Storage::get('inasistencias.json'));
@@ -2549,8 +2547,9 @@ class perfilEstudianteController extends Controller
             $foto = explode("/",$verDatosPerfil->photo);
             $foto = $foto[5];
         }
+        return view('perfilEstudiante.Asistencias.Individuales.reporte',compact('id'));
     }
-    
+
     public function index_Estados()
     {
         $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
@@ -2630,4 +2629,6 @@ class perfilEstudianteController extends Controller
         $i++;
         return $i;
     }
+    
+    
 }

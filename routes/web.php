@@ -176,3 +176,4 @@ Route::get('sisben/{sisben}/linea/{cohorte}', 'GraphicsController@categoriaDeSis
 Route::get('beneficios/{beneficios}/linea/{cohorte}', 'GraphicsController@beneficios')->name('beneficiosCohorte');
 Route::get('internetZona/{zona}/linea/{cohorte}', 'GraphicsController@internetZona')->name('internetZonaCohorte');
 Route::get('internetHome/{home}/linea/{cohorte}', 'GraphicsController@internetHome')->name('internetHomeCohorte');
+Route::get('condicion/{condicion}/linea/{cohorte}', 'GraphicsController@socialCondicion')->name('condicionSocialCohorte');

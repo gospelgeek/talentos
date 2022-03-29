@@ -2286,10 +2286,9 @@ class perfilEstudianteController extends Controller
             
         }
 
-   
+    }
 
-    public function excel(Request $request)
-    {
+    public function excel(Request $request){
 
 
         $collection1 = Excel::toArray(new CsvImport, 'codigo.xlsx');

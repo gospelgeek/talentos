@@ -12,7 +12,7 @@ const lsisben =  document.getElementById('sisbenLinea').getContext('2d');
 const lbeneficios = document.getElementById('beneficiosLinea').getContext('2d');
 const linternetzona =  document.getElementById('internetZonaLinea').getContext('2d');
 const linternethome = document.getElementById('internetHogarLinea').getContext('2d');
-
+const lsocialcondicion = document.getElementById('condicionSocialLinea').getContext('2d');
 // botones
 
 const line1 = document.getElementById('linea1')
@@ -84,6 +84,11 @@ let internetHomeLinea1 = []
 let internetHomeLinea2 = []
 let internetHomeLinea3 = []
 
+// condicion social
+let socialCondicionLinea1 = []
+let socialCondicionLinea2 = []
+let socialCondicionLinea3 = []
+
 // variables 
 let renderSex
 let renderEdad
@@ -98,6 +103,7 @@ let renderCategoriaS
 let renderBeneficiosL
 let renderInternetZ
 let renderInternetH
+let renderCondicionS
 
 async function datosSexoPorLineas() {
     //linea 1
@@ -487,6 +493,22 @@ async function datosInternetHogar(arreglo, linea) {
 
 }
 
+async function datosSocialCondicion(arreglo, linea) {
+    
+    const res1 = await fetch(`/condicion/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/condicion/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/condicion/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+}
+
 toastr.info('cargando informacion....')
 datosSexoPorLineas().then(() => toastr.info('se cargo toda la informacion de Sexos '))
 datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edad en la linea 1 '))
@@ -525,6 +547,9 @@ datosIntenerZona(internetZLinea3, 3).then(() => toastr.info('se cargo toda la in
 datosInternetHogar(internetHomeLinea1, 1).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 1'))
 datosInternetHogar(internetHomeLinea2, 2).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 2'))
 datosInternetHogar(internetHomeLinea3, 3).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 3'))
+datosSocialCondicion(socialCondicionLinea1, 1).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 1'))
+datosSocialCondicion(socialCondicionLinea2, 2).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 2'))
+datosSocialCondicion(socialCondicionLinea3, 3).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 3'))
 
 line1.addEventListener('click', () => {
     renderSexLineas(1, lsex, sexolinea1)
@@ -540,6 +565,7 @@ line1.addEventListener('click', () => {
     renderBeneficios(1, lbeneficios, beneficiosLinea1)
     renderInternetZona(1, linternetzona, internetZLinea1)
     renderInternetHome(1, linternethome, internetHomeLinea1)
+    renderSocialCondicion(1, lsocialcondicion, socialCondicionLinea1)
 })
 
 line2.addEventListener('click', () => {
@@ -556,6 +582,7 @@ line2.addEventListener('click', () => {
     renderBeneficios(2, lbeneficios, beneficiosLinea2)
     renderInternetZona(2, linternetzona, internetZLinea2)
     renderInternetHome(2, linternethome, internetHomeLinea2)
+    renderSocialCondicion(2, lsocialcondicion, socialCondicionLinea2)
 })
 
 line3.addEventListener('click', () => {
@@ -572,6 +599,7 @@ line3.addEventListener('click', () => {
     renderBeneficios(3, lbeneficios, beneficiosLinea3)
     renderInternetZona(3, linternetzona, internetZLinea3)
     renderInternetHome(3, linternethome, internetHomeLinea3)
+    renderSocialCondicion(3, lsocialcondicion, socialCondicionLinea3)
 })
 
 function renderSexLineas(titulo,line, dataSex) {
@@ -1180,4 +1208,49 @@ function renderInternetHome(titulo, line, dataInternetH) {
             }
         }
     });
+}
+
+function renderSocialCondicion(titulo, line, dataCondicio) {
+    if(renderCondicionS)renderCondicionS.destroy()
+    renderCondicionS = new Chart(line, {
+        type: 'pie',
+        data: {
+            labels: ['Persona victima del conflicto armado', 'Persona con habilidades diferenciales Discapacidad', 'Ninguna'],
+            datasets: [{
+                label: `LINEA ${titulo} CONDICION SOCIAL` || '',
+                data: dataCondicio,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE CONDICION SOCIAL'
+                }
+            }
+        }
+    });    
 }

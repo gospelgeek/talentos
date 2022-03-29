@@ -209,6 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                 <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
                 <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a> 
+                <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
                </div>
               
           </li>
@@ -234,6 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
                             <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                            <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
                           </div>
                       </li>
                       
@@ -249,6 +251,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @if(auth()->user()->rol_id == 3 || auth()->user()->rol_id == 5 || auth()->user()->rol_id == 6)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('graficas')}}" class="dropdown-item dropdown-footer"><i></i>Estadisticas Graficas</a>
                         <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>

@@ -140,7 +140,7 @@ $('.boton_update_estado').click(function(e) {
     },       
   });
   });
-/*$("#example1").DataTable({
+$("#example1").DataTable({
             "orderCellsTop": true,
             "processing": true,
             "paging": true,
@@ -150,7 +150,7 @@ $('.boton_update_estado').click(function(e) {
             "info": true,
             "autoWidth": false,
             "responsive": true,
-            "order": [[5,'dsc']],
+            "order": [[5,'desc']],
             "language": {
                         "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
@@ -185,7 +185,7 @@ $('.boton_update_estado').click(function(e) {
                                         }
                       },
                     ]
-      });*/
+      });
 
       
 

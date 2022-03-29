@@ -229,7 +229,11 @@
                 }
 
                 if (checkLinea1 && checkLinea2 && checkLinea3) {
-                    setTimeout("location.reload()", 2000);
+                    
+                    var offices = $('input:checkbox[name="check"]:checked').map(function() {
+                        return this.value;
+                    }).get().join('|');
+                    table.column(9).search(offices, true, false, false).draw(false);
                 }
                     
                 

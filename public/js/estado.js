@@ -140,7 +140,7 @@ $('.boton_update_estado').click(function(e) {
     },       
   });
   });
-/*$("#example1").DataTable({
+$("#example1").DataTable({
             "orderCellsTop": true,
             "processing": true,
             "paging": true,
@@ -185,7 +185,7 @@ $('.boton_update_estado').click(function(e) {
                                         }
                       },
                     ]
-      });*/
+      });
 
       
 

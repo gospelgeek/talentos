@@ -13,6 +13,7 @@ class UpdateInformation extends Model
     protected $fillable = [
         'id',
         'id_log',
+        'id_student',
         'changed_information',
         'new_information',
     ];

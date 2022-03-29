@@ -84,7 +84,7 @@
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
 
-                        if(data !== ""){
+                        if(data !== " "){
 
                             if(data !== null){
                                 if(data != 'SI'){

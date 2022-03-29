@@ -109,7 +109,7 @@ Route::get('editar_usuario/{id}', 'UsuarioController@editar')->name('editar_usua
 Route::put('update_usuario/{id}', 'UsuarioController@update')->name('update_usuario');
 Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('eliminar_usuario');
 
-//Exportar pdf sabana
+//Exportar excel sabana
 Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_export');
 
 //Rutas filtros
@@ -120,7 +120,7 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 //index formalizacion
 Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
 //datos formalizacion por ajax
-Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+Route::get('datos.formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
 
 //Actualiar formalizacion
 Route::put('updateformalizacion/{id}', 'FormalizacionController@formalizacionupdate')->name('updateformalizacion');
@@ -159,6 +159,7 @@ Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeduc
 
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
+
 Route::post('verDatosExcel', 'SocioEducativoController@verificarInfo')->name('ejm');
 
 //graphics
@@ -172,4 +173,14 @@ Route::get('etnia/{etnia}/linea/{cohorte}', 'GraphicsController@etniaPorLinea')-
 Route::get('ocupacion/{ocup}/linea/{cohorte}', 'GraphicsController@ocupacionLinea')->name('ocupacionCohorte');
 Route::get('hijos/{hijos}/linea/{cohorte}', 'GraphicsController@numeroDeHijos')->name('numeroDeHijosCohorte');
 Route::get('regimen/{regimen}/linea/{cohorte}', 'GraphicsController@regimenSalud')->name('regimenSaludCohorte');
+
+
+//RUTA INDEXESTADO ESTUDIANTES
+Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
+Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
+
+
+
+
+
 

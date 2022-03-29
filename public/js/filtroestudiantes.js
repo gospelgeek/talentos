@@ -651,9 +651,13 @@ $(".accordion-titulo-5").click(function(e){
           $("#contenido-3").hide();
           $("#titulo-3").removeClass("open");
           $("#contenido-4").hide();
+
           $("#titulo-4").removeClass("open");
           $("#contenido-5").hide();
           $("#titulo-5").removeClass("open");
+
+          $("#titulo-4").removeClass("open");  
+
         }
         else{ //close
 
@@ -702,7 +706,9 @@ function abrirmodal(id){
                       }
                       
                     });
+
                     /*document.getElementById("carga2").remove();*/
+
                   }
                 })
             });

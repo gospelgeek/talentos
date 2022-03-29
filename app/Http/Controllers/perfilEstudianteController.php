@@ -251,7 +251,7 @@ class perfilEstudianteController extends Controller
         }*/
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        $asignacion = AssignmentStudent::findOrfail($id);
+        $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
         //return $grupos;
@@ -575,7 +575,7 @@ class perfilEstudianteController extends Controller
 
         //dd('entro a estudiante editar');
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
-        $asignacion = AssignmentStudent::findOrfail($id);
+        $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
         //return $grupos;

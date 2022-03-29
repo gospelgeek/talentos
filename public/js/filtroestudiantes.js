@@ -8,7 +8,9 @@ $('.crear_estado').click(function(e) {
             $('#CUrl').hide();
             $('#CBoton').hide();
           }
-          if(valor == 3 || valor == 2){
+
+          if(valor == 3 || valor == 2 || valor == 5){
+
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
@@ -28,7 +30,7 @@ $('.crear_estado').click(function(e) {
           } 
 
         
-        console.log("ss");
+
         $('#modal_crear_estado').modal('show'); 
 });
 
@@ -41,7 +43,8 @@ $('.crear_estado').click(function(e) {
             $('#CUrl').hide();
             $('#CBoton').hide();
           }
-          if(valor == 3 || valor == 2){
+
+          if(valor == 3 || valor == 2 || valor == 5){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
@@ -167,7 +170,9 @@ $(".accordion-titulo-3").click(function(e){
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
           $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
+
+          $("#titulo-5").removeClass("open"); 
+
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
         }
@@ -485,8 +490,10 @@ $(".accordion-titulo-6").click(function(e){
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-           $("#contenido-6").hide();
-          $("#titulo-6").removeClass("open");
+
+          $("#contenido-5").hide();
+          $("#titulo-5").removeClass("open");  
+
         }
         else{ //close
 
@@ -506,7 +513,7 @@ $.getJSON(asistencias, function(asistencias){
     $.each(asistencias, function(index,value){
       //console.log(value.userid, id_moodle)
         if(value.userid == id_moodle.dataset.id){
-        //console.log(value);
+        //console.log(value.courses);
         $.each(value.courses , function(i, courses){
           //console.log(courses.coursefullname);
           var tr = document.createElement('tr');
@@ -653,10 +660,8 @@ $(".accordion-titulo-5").click(function(e){
           $("#contenido-4").hide();
 
           $("#titulo-4").removeClass("open");
-          $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
-
-          $("#titulo-4").removeClass("open");  
+          $("#contenido-6").hide();
+          $("#titulo-6").removeClass("open");  
 
         }
         else{ //close
@@ -707,7 +712,7 @@ function abrirmodal(id){
                       
                     });
 
-                    /*document.getElementById("carga2").remove();*/
+                  //document.getElementById("carga2").remove();
 
                   }
                 })
@@ -746,14 +751,3 @@ function tipoCancha(deporteSel){
             break;
     }
 }*/
-
-
-
-
-
-
-
-
-
-
-

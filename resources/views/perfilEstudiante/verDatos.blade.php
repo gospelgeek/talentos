@@ -5,8 +5,12 @@
 
 @csrf
 <div id="container-main">
-	<div class="row">		
-		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">	
+	<div class="row">
+		@if($verDatosPerfil->photo != null)		
+		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">
+		@else
+		<img style="color: red;" alt="SIN SOPORTE" class="avatar">
+		@endif
 	</div>
 	<br>	
 	<div class="sticky-top">	
@@ -127,7 +131,11 @@
 						<div class="row">
 							<div class="col-xs-4 col-md-12">
 								{!!Form::text('n_documento',$verDatosPerfil->document_number,['class'=>'form-control fa fa-external-link','readonly','disabled'])!!}
+								@if($verDatosPerfil->url_document_type != null)
 								<a href="{{$verDatosPerfil->url_document_type}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+								@else
+								<span style="color: red;">Sin Soporte</span>
+								@endif
 							</div>
 						</div>               	
             		</div>
@@ -313,7 +321,11 @@
 						<div class="row">
 							<div class="col-xs-4 col-md-12"> 								
 								<input  readonly class="form-control" type="text" name="bachelor_title" id="bachelor_title" value="{{ old('bachelor_title',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->bachelor_title : null)}}">
-								<a href="{{$verDatosPerfil->previousacademicdata->url_academic_support}}" target="blank" class="fa fa-external-link">Enlace Documento</a>					
+								@if($verDatosPerfil->previousacademicdata->url_academic_support != null)
+								<a href="{{$verDatosPerfil->previousacademicdata->url_academic_support}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+								@else
+								<span style="color: red;">Sin soporte</span>
+								@endif					
 							</div>
 						</div>
             		</div>
@@ -385,8 +397,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="id_ethnicity" id="id_ethnicity" value="{{$verDatosPerfil->socioeconomicdata->ethnicity ? $verDatosPerfil->socioeconomicdata->ethnicity->name : null }}">
+								@if($verDatosPerfil->socioeconomicdata->url_ethnicity != null)
 								<a href="{{$verDatosPerfil->socioeconomicdata->url_ethnicity}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
-								
+								@else
+								<span style="color: red;">Sin soporte</span>
+								@endif	
 							</div>
 						</div>                	
             		</div>
@@ -437,7 +452,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="id_health_regime" id="id_health_regime" value="{{ old('id_health_regime', $verDatosPerfil->socioeconomicdata->healthregime ? $verDatosPerfil->socioeconomicdata->healthregime->name : null) }}">
+								@if($verDatosPerfil->socioeconomicdata->url_health_regime != null)
 								<a href="{{$verDatosPerfil->socioeconomicdata->url_health_regime}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+								@else
+								<span style="color: red;">Sin soporte</span>
+								@endif			
 							</div>
 						</div>             	
             		</div>
@@ -448,8 +467,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="sisben_category" id="sisben_category" value="{{ old('sisben_category', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sisben_category : null) }}">
+								@if($verDatosPerfil->socioeconomicdata->url_sisben_category != null)
 								<a href="{{$verDatosPerfil->socioeconomicdata->url_sisben_category}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
-								
+								@else
+								<span style="color: red;">Sin soporte</span>
+								@endif
 							</div>
 						</div>               	
 					</div>
@@ -545,7 +567,11 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="id_social_conditions" id="id_social_conditions" value="{{ $verDatosPerfil->socioeconomicdata->socialconditions ? $verDatosPerfil->socioeconomicdata->socialconditions->name : null }}">
+								@if($verDatosPerfil->socioeconomicdata->url_social_conditions != null)
 								<a href="{{$verDatosPerfil->socioeconomicdata->url_social_conditions}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+								@else
+								<span style="color: red;">Sin soporte</span>
+								@endif
 							</div>
 						</div>                	
             		</div>

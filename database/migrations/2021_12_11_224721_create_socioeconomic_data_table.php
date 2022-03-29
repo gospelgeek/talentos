@@ -35,6 +35,8 @@ class CreateSocioeconomicDataTable extends Migration
             $table->boolean('id_gender');
             $table->integer('id_social_conditions');
             $table->string('url_social_conditions');
+            //$table->string('srtatum');
+            //$table->string('rural_zone');
             $table->integer('id_disability');
             $table->integer('id_ethnicity');
             $table->string('url_ethnicity');

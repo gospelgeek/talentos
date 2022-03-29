@@ -19,9 +19,6 @@ Route::post('store/save/json', 'perfilEstudianteController@CargarJSon')->name('s
 /*iniciar la aplicacion*/ 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -37,12 +34,11 @@ Route::post('logout',  'Auth\LoginController@logout')->name('logout');
 Route::get('logout',   'Auth\LoginController@logout');
 
 
+
+
 //Rutas de CRUD estudiantes
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
-
-Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
-Route::get('info', 'perfilEstudianteController@enviar')->name('info');
 
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
@@ -53,7 +49,7 @@ Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerf
 
 Route::get('ver_datos_socioeconomicos/{id}', 'perfilEstudianteController@verDatosSocieconomicos')->name('ver_datos_socioeconomicos');
 Route::get('editar_datos_socioeconomicos/{id}', 'perfilEstudianteController@editarDatosSocioeconomicos')->name('editar_datos_socioeconomicos');
-/*Route::put('update_datos_socioeconomicos/{id}', 'perfilEstudianteController@updateDatosSocioeconomicos')->name('update_datos_socioeconomicos');*/
+
 Route::get('estudiantes_mayoria_edad', 'perfilEstudianteController@indexMenores')->name('estudiantes_mayoria_edad');
 Route::get('menores', 'perfilEstudianteController@mostrarMenores')->name('datos.estudiantes.menores');
 
@@ -71,6 +67,12 @@ Route::get('asistencias', 'perfilEstudianteController@indexAsistencias')->name('
 Route::get('Asistencias/{id}', 'perfilEstudianteController@Grupos_Asignaturas')->name('asistencias.grupos');
 Route::get('/Asistencias/{course?}/grupo/{id?}', 'perfilEstudianteController@sesiones')->name('asistencias.sesiones');
 Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEstudianteController@Asistencias_grupo')->name('asistencias.asignatura');
+
+
+Route::get('asistencias/estudiantes', 'perfilEstudianteController@indexEstudiantes')->name('asistencias.estudiantes');
+Route::get('inasistencias', 'perfilEstudianteController@json_inasistencias')->name('inasistencias');
+//Route::get('asistencias/estudiante/{id}', 'perfilEstudianteController@ver_Asistencias')->name('ver_asistencias');
+Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asistencias')->name('crear_excel_json');
 
 //RUTAS DE AJAX
 //ruta estado
@@ -92,6 +94,11 @@ Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
 Route::get('datos/{id}', 'perfilEstudianteController@datosNuevos')->name('datos');
 Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
+//Rutas para cargar datos por ajax al index
+Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
+Route::get('info', 'perfilEstudianteController@enviar')->name('info');
+
+
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');
@@ -109,7 +116,14 @@ Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_e
 //Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
 
 //Formalizacion
-Route::put('updateformalizacion/{id}', 'perfilEstudianteController@formalizacionupdate')->name('updateformalizacion');
+
+//index formalizacion
+Route::get('formalizacion', 'FormalizacionController@index')->name('formalizacion');
+//datos formalizacion por ajax
+Route::get('datos_formalizacion', 'FormalizacionController@formalizacionDatos')->name('datos.formalizacion');
+
+//Actualiar formalizacion
+Route::put('updateformalizacion/{id}', 'FormalizacionController@formalizacionupdate')->name('updateformalizacion');
 
 
 // borrar caché de la aplicación
@@ -142,6 +156,7 @@ Route::get('/storage', function () {
 });
 //Socioeducativo
 Route::get('socio_educativo', 'SocioEducativoController@index')->name('socioeducativo');
+
 Route::put('updateDato/{id}', 'SocioEducativoController@updateAssigment')->name('updateDato');
 Route::get('datosAsignacion', 'SocioEducativoController@DataJson')->name('data.asignacion');
 Route::post('verDatosExcel', 'SocioEducativoController@verificarInfo')->name('ejm');

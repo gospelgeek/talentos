@@ -8,6 +8,10 @@ const letnia =  document.getElementById('etniaLinea').getContext('2d');
 const locupacion =  document.getElementById('ocupacionLinea').getContext('2d');
 const lhijos = document.getElementById('hijosLinea').getContext('2d');
 const lregimen = document.getElementById('regimenLinea').getContext('2d');
+const lsisben =  document.getElementById('sisbenLinea').getContext('2d');
+const lbeneficios = document.getElementById('beneficiosLinea').getContext('2d');
+const linternetzona =  document.getElementById('internetZonaLinea').getContext('2d');
+const linternethome = document.getElementById('internetHogarLinea').getContext('2d');
 
 // botones
 
@@ -60,6 +64,26 @@ let regimenLinea1 = []
 let regimenLinea2 = []
 let regimenLinea3 = []
 
+//categoria de sisben
+let categoriaSisbenLinea1 = []
+let categoriaSisbenLinea2 = []
+let categoriaSisbenLinea3 = []
+
+// beneficios
+let beneficiosLinea1 = []
+let beneficiosLinea2 = []
+let beneficiosLinea3 = []
+
+// internet en la zona
+let internetZLinea1 = []
+let internetZLinea2 = []
+let internetZLinea3 = []
+
+//internet home
+let internetHomeLinea1 = []
+let internetHomeLinea2 = []
+let internetHomeLinea3 = []
+
 // variables 
 let renderSex
 let renderEdad
@@ -70,6 +94,10 @@ let renderEtniasLinea
 let renderOcupacionL
 let renderHijosN
 let renderRegimenS
+let renderCategoriaS
+let renderBeneficiosL
+let renderInternetZ
+let renderInternetH
 
 async function datosSexoPorLineas() {
     //linea 1
@@ -383,6 +411,82 @@ async function datosRegimen(arreglo, linea) {
     arreglo.push(json4[0].cantidad)
 }
 
+async function datosSisben(arreglo, linea) {
+    
+    const resA = await fetch(`/sisben/A/linea/${linea}`)
+    const jsonA = await resA.json()
+    arreglo.push(jsonA[0].cantidad)
+
+    const resB = await fetch(`/sisben/B/linea/${linea}`)
+    const jsonB = await resB.json()
+    arreglo.push(jsonB[0].cantidad)
+
+    const resC = await fetch(`/sisben/C/linea/${linea}`)
+    const jsonC = await resC.json()
+    arreglo.push(jsonC[0].cantidad)
+
+    const resD = await fetch(`/sisben/D/linea/${linea}`)
+    const jsonD = await resD.json()
+    arreglo.push(jsonD[0].cantidad)
+
+    const resNo = await fetch(`/sisben/No encontrado/linea/${linea}`)
+    const jsonNo = await resNo.json()
+    arreglo.push(jsonNo[0].cantidad)
+
+}
+
+async function datosBeneficios(arreglo, linea) {
+    
+    const res1 = await fetch(`/beneficios/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/beneficios/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/beneficios/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/beneficios/4/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+
+    const res5 = await fetch(`/beneficios/5/linea/${linea}`)
+    const json5 = await res5.json()
+    arreglo.push(json5[0].cantidad)
+
+    const res6 = await fetch(`/beneficios/6/linea/${linea}`)
+    const json6 = await res6.json()
+    arreglo.push(json6[0].cantidad)
+
+}
+
+async function datosIntenerZona(arreglo, linea){
+
+    const resS = await fetch(`/internetZona/s/linea/${linea}`)
+    const jsonS = await resS.json()
+    arreglo.push(jsonS[0].cantidad)
+
+    const resN = await fetch(`/internetZona/n/linea/${linea}`)
+    const jsonN = await resN.json()
+    arreglo.push(jsonN[0].cantidad)
+
+}
+
+async function datosInternetHogar(arreglo, linea) {
+    
+    const resS = await fetch(`/internetHome/s/linea/${linea}`)
+    const jsonS = await resS.json()
+    arreglo.push(jsonS[0].cantidad)
+
+    const resN = await fetch(`/internetHome/n/linea/${linea}`)
+    const jsonN = await resN.json()
+    arreglo.push(jsonN[0].cantidad)
+
+}
+
 toastr.info('cargando informacion....')
 datosSexoPorLineas().then(() => toastr.info('se cargo toda la informacion de Sexos '))
 datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edad en la linea 1 '))
@@ -409,6 +513,18 @@ datosHijos(hijosLinea3, 3).then(() => toastr.info('se cargo toda la informacion 
 datosRegimen(regimenLinea1, 1).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 1'))
 datosRegimen(regimenLinea2, 2).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 2'))
 datosRegimen(regimenLinea3, 3).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 3'))
+datosSisben(categoriaSisbenLinea1, 1).then(() => toastr.info('se cargo toda la informacion de categoria de sisben en la linea 1'))
+datosSisben(categoriaSisbenLinea2, 2).then(() => toastr.info('se cargo toda la informacion de categoria de sisben en la linea 2'))
+datosSisben(categoriaSisbenLinea3, 3).then(() => toastr.info('se cargo toda la informacion de categoria de sisben en la linea 3'))
+datosBeneficios(beneficiosLinea1, 1).then(() => toastr.info('se cargo toda la informacion de beneficios en la linea 1'))
+datosBeneficios(beneficiosLinea2, 2).then(() => toastr.info('se cargo toda la informacion de beneficios en la linea 2'))
+datosBeneficios(beneficiosLinea3, 3).then(() => toastr.info('se cargo toda la informacion de beneficios en la linea 3'))
+datosIntenerZona(internetZLinea1, 1).then(() => toastr.info('se cargo toda la informacion de internet en zona en la linea 1'))
+datosIntenerZona(internetZLinea2, 2).then(() => toastr.info('se cargo toda la informacion de internet en zona en la linea 2'))
+datosIntenerZona(internetZLinea3, 3).then(() => toastr.info('se cargo toda la informacion de internet en zona en la linea 3'))
+datosInternetHogar(internetHomeLinea1, 1).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 1'))
+datosInternetHogar(internetHomeLinea2, 2).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 2'))
+datosInternetHogar(internetHomeLinea3, 3).then(() => toastr.info('se cargo toda la informacion de internet en el hogar en la linea 3'))
 
 line1.addEventListener('click', () => {
     renderSexLineas(1, lsex, sexolinea1)
@@ -420,6 +536,10 @@ line1.addEventListener('click', () => {
     renderOcupacion(1, locupacion, ocupacionLinea1)
     renderNumeroDeHijos(1, lhijos, hijosLinea1)
     renderRegimenSalud(1, lregimen, regimenLinea1)
+    renderCategoriaSisben(1, lsisben, categoriaSisbenLinea1)
+    renderBeneficios(1, lbeneficios, beneficiosLinea1)
+    renderInternetZona(1, linternetzona, internetZLinea1)
+    renderInternetHome(1, linternethome, internetHomeLinea1)
 })
 
 line2.addEventListener('click', () => {
@@ -432,6 +552,10 @@ line2.addEventListener('click', () => {
     renderOcupacion(2, locupacion, ocupacionLinea2)
     renderNumeroDeHijos(2, lhijos, hijosLinea2)
     renderRegimenSalud(2, lregimen, regimenLinea2)
+    renderCategoriaSisben(2, lsisben, categoriaSisbenLinea2)
+    renderBeneficios(2, lbeneficios, beneficiosLinea2)
+    renderInternetZona(2, linternetzona, internetZLinea2)
+    renderInternetHome(2, linternethome, internetHomeLinea2)
 })
 
 line3.addEventListener('click', () => {
@@ -444,6 +568,10 @@ line3.addEventListener('click', () => {
     renderOcupacion(3, locupacion, ocupacionLinea3)
     renderNumeroDeHijos(3, lhijos, hijosLinea3)
     renderRegimenSalud(3, lregimen, regimenLinea3)
+    renderCategoriaSisben(3, lsisben, categoriaSisbenLinea3)
+    renderBeneficios(3, lbeneficios, beneficiosLinea3)
+    renderInternetZona(3, linternetzona, internetZLinea3)
+    renderInternetHome(3, linternethome, internetHomeLinea3)
 })
 
 function renderSexLineas(titulo,line, dataSex) {
@@ -868,6 +996,187 @@ function renderRegimenSalud(titulo, line, dataRegimen) {
                 legend: {
                     display: false
                 },
+            }
+        }
+    });
+}
+
+function renderCategoriaSisben(titulo, line, dataSisben) {
+    if(renderCategoriaS) renderCategoriaS.destroy()
+    renderCategoriaS =  new Chart(line, {
+        type: 'pie',
+        data: {
+            labels: ['A', 'B', 'C', 'D', 'No encontrado'],
+            datasets: [{
+                label: `LINEA ${titulo} ETNIAS` || '',
+                data: dataSisben,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA CATEGORIA SISBEN'
+                }
+            }
+        }
+    });
+}
+
+function renderBeneficios(titulo, line, dataBeneficio) {
+    if(renderBeneficiosL) renderBeneficiosL.destroy()
+    line.height = 500
+    renderBeneficiosL =  new Chart(line, {
+        type: 'line',
+        data: {
+            labels: ['Familias en accion', 'Ingreso solidario', 'Jovenes en accion', 'No Recibo', 'Otro', 'Subsidio de vivienda'],
+            datasets: [{
+                //label: `LINEA ${titulo} PUNTAJE ICFES` || '',
+                data: dataBeneficio,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE BENEFICIOS'
+                },
+                legend: {
+                    display: false
+                },
+            }
+        }
+    });   
+}
+
+function renderInternetZona(titulo, line, dataInternetZona) {
+    if(renderInternetZ) renderInternetZ.destroy()
+    renderInternetZ = new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['SI', 'NO'],
+            datasets: [{
+                label: `LINEA ${titulo} INTERNET EN ZONA` || '',
+                data: dataInternetZona,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE INTERNET EN ZONA'
+                }
+            }
+        }
+    });
+
+}
+
+function renderInternetHome(titulo, line, dataInternetH) {
+    if(renderInternetH) renderInternetH.destroy()
+    renderInternetH = new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['SI', 'NO'],
+            datasets: [{
+                label: `LINEA ${titulo} INTERNET EN EL HOGAR` || '',
+                data: dataInternetH,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE INTERNET EN EL HOGAR'
+                }
             }
         }
     });

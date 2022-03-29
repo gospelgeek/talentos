@@ -200,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         -->
         @if(auth()->user()->rol_id == 2)
           <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
-
+          <a href="{{route('graficas')}}" class="dropdown-item dropdown-footer"><i></i>Estadisticas Graficas</a>
           @endif
         @if(auth()->user()->rol_id == 1)
         <ul class="navbar-nav mr-auto">

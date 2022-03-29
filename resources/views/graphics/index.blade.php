@@ -70,6 +70,28 @@
                     <canvas id="regimenLinea"></canvas>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <canvas id="sisbenLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="beneficiosLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="internetZonaLinea"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <canvas id="internetHogarLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="condicionSocialLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="discapacidadLinea"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 

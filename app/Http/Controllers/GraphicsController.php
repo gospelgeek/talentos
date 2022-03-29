@@ -95,4 +95,36 @@ class GraphicsController extends Controller
         return $datos;
     }
 
+    public function categoriaDeSisben($sisben, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE sisben_category = ?
+         AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+         student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$sisben, $cohorte]);
+
+         return $datos;
+    }
+
+    public function beneficios($beneficio, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE id_benefits = ? 
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+        student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))",[$beneficio, $cohorte]);
+
+        return $datos;
+    }
+
+    public function internetZona($zona, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE internet_zon = ?
+         AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+         student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$zona, $cohorte]);
+
+        return $datos;
+    }
+
+    public function internetHome($home, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE internet_home = ?
+         AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups 
+         WHERE student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$home, $cohorte]);
+
+        return $datos;
+    }
+
 }

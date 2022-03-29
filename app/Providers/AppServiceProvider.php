@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
 
             $this->app->bind('path.public',function(){
-            return'/home/todosytodasaestu/public_html';
+            return'/home/todosytodasaestu/pruebas.todosytodasaestudiar.org';
             });
 
     }

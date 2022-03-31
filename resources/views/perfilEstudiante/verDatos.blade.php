@@ -226,7 +226,7 @@
 			<div class="form-group">
     			<div class="row">
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="barrio_residencia">Barrio de Residencia *</label></p>
+            			<p style="text-align: right"><label for="barrio_residencia">Barrio de residencia *</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">

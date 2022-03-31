@@ -70,7 +70,7 @@
                       {!!Form::text('cellphone', $verDatosPerfil ? $verDatosPerfil->cellphone : null,['id'=>'celular','class'=>'form-control','required','placeholder'=>'Celular'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('neighborhood','Barrio recidencia: ')!!}
+                      {!!Form::label('neighborhood','Barrio de residencia: ')!!}
                       {!!Form::select('barrio',$barrio, $verDatosPerfil->neighborhood ? $verDatosPerfil->neighborhood->id : null,['id'=>'barrioV','class'=>'form-control','required','placeholder'=>'Genero'])!!}  
                       </div>
                   </div>

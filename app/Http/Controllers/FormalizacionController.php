@@ -29,7 +29,8 @@ class FormalizacionController extends Controller
         FROM student_profile, formalizations, groups, student_groups
         WHERE student_profile.id = student_groups.id_student
         AND student_groups.id_group = groups.id
-        AND student_profile.id = formalizations.id_student");
+        AND student_profile.id = formalizations.id_student
+        AND student_profile.id_state = 1");
         
         
 

@@ -43,7 +43,11 @@
             </div>
             
         </div>
-
+        <div class="inactivos_student">
+            <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">
+            
+            </center>  
+        </div>
         
         @endif
         
@@ -244,6 +248,28 @@
                 
                             
 
+        });
+        $('.inactivos_student').on('change', function() {
+            //alert('checkLinea1');
+            var inctvs = $('#inactivos').is(":checked");
+
+            if(inctvs){
+                //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
+                var filtro = $('input:checkbox[id="inactivos"]').map(function() {
+                    return this.value;
+                }).get().join('|');
+                table.column(21).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                //
+            }
+
+            if(!inctvs){
+                //filtro por columna con varios valores segun el name de los checbox y su valor correspondiente
+                var offices = $('input:checkbox[name="filtro"]:checked').map(function() {
+                    return this.value;
+                }).get().join('|');
+                table.column(21).search(offices, true, false, false).draw(false);
+                //
+            }
         });
 
                 

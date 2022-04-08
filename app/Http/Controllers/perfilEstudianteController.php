@@ -122,8 +122,7 @@ class perfilEstudianteController extends Controller
             AND student_groups.id_student = student_profile.id
             AND student_profile.id = previous_academic_data.id_student 
             AND student_groups.id_group = groups.id
-            AND student_profile.id_state != 3 
-            AND student_profile.id_state != 4 
+          
         ");
 
         return datatables()->of($perfilEstudiantes)->toJson();

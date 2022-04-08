@@ -169,6 +169,7 @@ class perfilEstudianteController extends Controller
             AND YEAR(birth_date) = 2004
             AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
             AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
+            AND student_profile.id_state = 1
         ");
 
         return datatables()->of($mayoriaedad)->toJson();

@@ -122,6 +122,8 @@ class perfilEstudianteController extends Controller
             AND student_groups.id_student = student_profile.id
             AND student_profile.id = previous_academic_data.id_student 
             AND student_groups.id_group = groups.id
+            AND student_profile.id_state != 3 
+            AND student_profile.id_state != 4 
         ");
 
         return datatables()->of($perfilEstudiantes)->toJson();
@@ -167,6 +169,7 @@ class perfilEstudianteController extends Controller
             AND YEAR(birth_date) = 2004
             AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
             AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
+            AND student_profile.id_state = 1
         ");
 
         return datatables()->of($mayoriaedad)->toJson();

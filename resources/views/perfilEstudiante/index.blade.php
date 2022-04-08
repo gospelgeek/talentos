@@ -36,16 +36,16 @@
 
             </div>
             <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
-                <center><label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 2</label>&nbsp;<input type="checkbox" name="check" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">&nbsp;&nbsp;&nbsp;&nbsp;</center>
+                <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">
                 
             </div>
-            
+
         </div>
         <div class="inactivos_student">
-            <center>
-            <label>INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">
+            <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">
+            
             </center>  
         </div>
         

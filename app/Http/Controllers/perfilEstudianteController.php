@@ -230,7 +230,7 @@ class perfilEstudianteController extends Controller
             'id_user'                  => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
-            'id_usuario_accion'        => $data['id'],
+            'id_usuario_accion'        => $idPerfilEstudiantes['id'],
             'actividad_realizada'      => 'SE CREO UN REGISTRO',
         ]);
 

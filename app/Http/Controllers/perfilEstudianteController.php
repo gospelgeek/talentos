@@ -227,7 +227,7 @@ class perfilEstudianteController extends Controller
         $fecha = $fecha->format('d-m-Y h:i:s A');
         //dd($fecha);
         $datos = LogsCrudActions::create([
-            'identificacion'           => $id['id'],
+            'id_user'                  => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $data['id'],
@@ -395,7 +395,7 @@ class perfilEstudianteController extends Controller
             $fecha = $fecha->format('d-m-Y');
 
             $datos = LogsCrudActions::create([
-                'identificacion'           => $id['id'],
+                'id_user'                  => $id['id'],
                 'rol'                      => $id['rol_id'],
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $socio['id_student'],
@@ -521,7 +521,7 @@ class perfilEstudianteController extends Controller
             $fecha = $fecha->format('d-m-Y');
           
             $datos = LogsCrudActions::create([
-                'identificacion'           => $id['id'],
+                'id_user'                  => $id['id'],
                 'rol'                      => $id['rol_id'],
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $acade['id_student'],
@@ -696,7 +696,7 @@ class perfilEstudianteController extends Controller
             $fecha = $fecha->format('d-m-Y');
 
             $datos = LogsCrudActions::create([
-                'identificacion'           => $id['id'],
+                'id_user'                  => $id['id'],
                 'rol'                      => $id['rol_id'],
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $data['id'],

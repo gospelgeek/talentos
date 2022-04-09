@@ -321,7 +321,7 @@ class perfilEstudianteController extends Controller
         
         //dd($fecha);
         $datos = LogsCrudActions::create([
-            'identificacion'           => $id['id'],
+            'id_user'                  => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
             'id_usuario_accion'        => $verDatosPerfil['id'],

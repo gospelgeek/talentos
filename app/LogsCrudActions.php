@@ -12,7 +12,7 @@ class LogsCrudActions extends Model
 
     protected $fillable = [
         'id',
-        'identificacion',
+        'id_user',
         'rol',
         'ip',
         'id_usuario_accion',

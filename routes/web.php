@@ -179,6 +179,14 @@ Route::get('regimen/{regimen}/linea/{cohorte}', 'GraphicsController@regimenSalud
 Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
 Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
 
+//Rutas almuerzos
+Route::get('almuerzos_estudiantes', 'AlmuerzosController@index')->name('almuerzos_estudiantes');
+Route::post('almacenar_registro_almuerzos', 'AlmuerzosController@store')->name('almacenar_registro_almuerzos');
+Route::get('datos.almuerzos', 'AlmuerzosController@datos_almuerzos')->name('datos.almuerzos');
+Route::get('editar_registro_almuerzo/{id}', 'AlmuerzosController@editar')->name('editar_registro_almuerzo');
+Route::put('actualizar_registro_almuerzos/{id}', 'AlmuerzosController@actualizar')->name('actualizar_registro_almuerzos');
+Route::delete('eliminar_registro_almuerzo/{id}', 'AlmuerzosController@delete')->name('eliminar_registro_almuerzo');
+
 
 
 

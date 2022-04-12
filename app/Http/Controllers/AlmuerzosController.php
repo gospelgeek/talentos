@@ -27,8 +27,18 @@ class AlmuerzosController extends Controller
     public function datos_almuerzos(){
 
         $almuerzos = Lunches::all();
+        
+        $almuerzos->map(function ($datos) {
+            $datos->total = $this->total_almuerzos($datos->number_lunches_line1, $datos->number_lunches_line2, $datos->number_lunches_line3);
+        });
 
         return datatables()->of($almuerzos)->toJson();
+    }
+    
+    public function total_almuerzos($number_lunches_line1, $number_lunches_line2, $number_lunches_line3){
+         $total = $number_lunches_line1 + $number_lunches_line2 + $number_lunches_line3;
+
+         return $total;
     }
 
     public function index(){

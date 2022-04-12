@@ -21,6 +21,7 @@
 							<td>ALMUERZOS LINEA 1</td>
 							<td>ALMUERZOS LINEA 2</td>
 							<td>ALMUERZOS LINEA 3</td>
+                            <td>TOTAL</td>
 							<td>ACCIONES</td>
 						</tr>
 					</thead>
@@ -59,6 +60,7 @@
         	{data: 'number_lunches_line1'},
         	{data: 'number_lunches_line2'},
             {data: 'number_lunches_line3'},
+            {data: 'total'},
             {data: null, render:function(data, type, row, meta){
 
             	

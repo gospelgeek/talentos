@@ -244,7 +244,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
                           </div>
                       </li>
-                      
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Asdministrativo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                          <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
+                        </div>
+                      </li>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>

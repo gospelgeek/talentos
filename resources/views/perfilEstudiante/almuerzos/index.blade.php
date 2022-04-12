@@ -67,10 +67,10 @@
             	
             	mstr = '<div class="col-xs-6 col-sm-6 btn-group">'+
             			
-                            '<a class="btn btn-block fa fa-pencil-square-o" title="Editar seguimiento" onclick="editar_registro_almuerzo('+data.id+')"></a>'+
+                            '<a class="btn btn-block fa fa-pencil-square-o" title="Editar registro" onclick="editar_registro_almuerzo('+data.id+')"></a>'+
                         '</div>'+
                         '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar seguimiento" onclick="eliminar_registro_almuerzo('+data.id+', \''+data.date+'\')" id="boton"></button>'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar registro" onclick="eliminar_registro_almuerzo('+data.id+', \''+data.date+'\')" id="boton"></button>'+
                           "</div>"+
                 "</div>";
 

@@ -263,7 +263,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             </li>
         @endif
-        @if(auth()->user()->rol_id == 3 || auth()->user()->rol_id == 5 || auth()->user()->rol_id == 6)
+        @if(auth()->user()->rol_id == 3 || auth()->user()->rol_id == 6)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
                         <a href="{{route('graficas')}}" class="dropdown-item dropdown-footer"><i></i>Estadisticas Graficas</a>

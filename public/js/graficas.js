@@ -1,4 +1,4 @@
-// canvas
+// canvas normales por linea
 const lsex = document.getElementById('sexolineas').getContext('2d');
 const ledad = document.getElementById('edadlineas').getContext('2d');
 const lanioGraduacion = document.getElementById('anioGraduacion').getContext('2d');
@@ -13,11 +13,70 @@ const lbeneficios = document.getElementById('beneficiosLinea').getContext('2d');
 const linternetzona =  document.getElementById('internetZonaLinea').getContext('2d');
 const linternethome = document.getElementById('internetHogarLinea').getContext('2d');
 const lsocialcondicion = document.getElementById('condicionSocialLinea').getContext('2d');
+const ldiscapacidad = document.getElementById('discapacidadLinea').getContext('2d');
+
+// generales canvas
+const gsexo = document.getElementById('sexoGeneral').getContext('2d');
+const gedad = document.getElementById('edadGeneral').getContext('2d')
 // botones
 
 const line1 = document.getElementById('linea1')
 const line2 = document.getElementById('linea2')
 const line3 = document.getElementById('linea3')
+const generales = document.getElementById('generales')
+
+// vistas
+const cohorte1 = document.getElementById('cohorte1')
+const cohorte2 = document.getElementById('cohorte2')
+const cohorte3 = document.getElementById('cohorte3')
+const cohorte4 = document.getElementById('cohorte4')
+const cohorte5 = document.getElementById('cohorte5')
+
+function hiddenGraficas() {
+    cohorte1.setAttribute('hidden', '')
+    cohorte2.setAttribute('hidden', '')
+    cohorte3.setAttribute('hidden', '')
+    cohorte4.setAttribute('hidden', '')
+    cohorte5.setAttribute('hidden', '')
+}
+
+function removeHiddenGraficas() {
+    cohorte1.removeAttribute('hidden')
+    cohorte2.removeAttribute('hidden')
+    cohorte3.removeAttribute('hidden')
+    cohorte4.removeAttribute('hidden')
+    cohorte5.removeAttribute('hidden')
+}
+
+// general
+const gen1 = document.getElementById('gen1')
+const gen2 = document.getElementById('gen2')
+const gen3 = document.getElementById('gen3')
+const gen4 = document.getElementById('gen4')
+const gen5 = document.getElementById('gen5')
+const gen6 = document.getElementById('gen6')
+const gen7 = document.getElementById('gen7')
+
+function visualizarGenerales() {
+    gen1.setAttribute('hidden',"")
+    gen2.setAttribute('hidden',"")
+    gen3.setAttribute('hidden',"")
+    gen4.setAttribute('hidden',"")
+    gen5.setAttribute('hidden',"")
+    gen6.setAttribute('hidden',"")
+    gen7.setAttribute('hidden',"")
+}
+
+function removeGeneral() {
+    gen1.removeAttribute('hidden')
+    gen2.removeAttribute('hidden')
+    gen3.removeAttribute('hidden')
+    gen4.removeAttribute('hidden')
+    gen5.removeAttribute('hidden')
+    gen6.removeAttribute('hidden')
+    gen7.removeAttribute('hidden')
+    
+}
 
 // sexo lineas
 let sexolinea1 = []
@@ -89,6 +148,11 @@ let socialCondicionLinea1 = []
 let socialCondicionLinea2 = []
 let socialCondicionLinea3 = []
 
+// discapacidad
+let discapacidadLinea1 = []
+let discapacidadLinea2 = []
+let discapacidadLinea3 = []
+
 // variables 
 let renderSex
 let renderEdad
@@ -104,6 +168,11 @@ let renderBeneficiosL
 let renderInternetZ
 let renderInternetH
 let renderCondicionS
+let renderDiscapacidadL
+
+// generales 
+let generalRenderSexo
+let generalRenderEdad
 
 async function datosSexoPorLineas() {
     //linea 1
@@ -509,6 +578,30 @@ async function datosSocialCondicion(arreglo, linea) {
 
 }
 
+async function datosDiscapacidad(arreglo, linea) {
+
+    const res0 = await fetch(`/discapacidad/0/linea/${linea}`)
+    const json0 = await res0.json() 
+    arreglo.push(json0[0].cantidad)
+
+    const res1 = await fetch(`/discapacidad/1/linea/${linea}`)
+    const json1 = await res1.json() 
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/discapacidad/2/linea/${linea}`)
+    const json2 = await res2.json() 
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/discapacidad/3/linea/${linea}`)
+    const json3 = await res3.json() 
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/discapacidad/4/linea/${linea}`)
+    const json4 = await res4.json() 
+    arreglo.push(json4[0].cantidad)
+
+}
+
 toastr.info('cargando informacion....')
 datosSexoPorLineas().then(() => toastr.info('se cargo toda la informacion de Sexos '))
 datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edad en la linea 1 '))
@@ -550,8 +643,20 @@ datosInternetHogar(internetHomeLinea3, 3).then(() => toastr.info('se cargo toda 
 datosSocialCondicion(socialCondicionLinea1, 1).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 1'))
 datosSocialCondicion(socialCondicionLinea2, 2).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 2'))
 datosSocialCondicion(socialCondicionLinea3, 3).then(() => toastr.info('se cargo toda la informacion de condicion social en la linea 3'))
+datosDiscapacidad(discapacidadLinea1, 1).then(() => toastr.info('se cargo toda la informacion de discapacidad en la linea 1'))
+datosDiscapacidad(discapacidadLinea2, 2).then(() => toastr.info('se cargo toda la informacion de discapacidad en la linea 2'))
+datosDiscapacidad(discapacidadLinea3, 3).then(() => toastr.info('se cargo toda la informacion de discapacidad en la linea 3'))
+
+generales.addEventListener('click', () => {
+    hiddenGraficas()
+    removeGeneral()
+    renderGeneralSexos(gsexo)
+    renderGeneralEdad(gedad)
+})
 
 line1.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(1, lsex, sexolinea1)
     renderEdadPorLineas(1, ledad, edadlinea1)
     renderAnioGraduacion(1, lanioGraduacion, anioGlinea1)
@@ -566,9 +671,13 @@ line1.addEventListener('click', () => {
     renderInternetZona(1, linternetzona, internetZLinea1)
     renderInternetHome(1, linternethome, internetHomeLinea1)
     renderSocialCondicion(1, lsocialcondicion, socialCondicionLinea1)
+    renderDiscapacidad(1, ldiscapacidad, discapacidadLinea1)
+    
 })
 
 line2.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(2, lsex, sexolinea2)
     renderEdadPorLineas(2, ledad, edadlinea2)
     renderAnioGraduacion(2, lanioGraduacion, anioGlinea2)
@@ -583,9 +692,12 @@ line2.addEventListener('click', () => {
     renderInternetZona(2, linternetzona, internetZLinea2)
     renderInternetHome(2, linternethome, internetHomeLinea2)
     renderSocialCondicion(2, lsocialcondicion, socialCondicionLinea2)
+    renderDiscapacidad(2, ldiscapacidad, discapacidadLinea2)
 })
 
 line3.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(3, lsex, sexolinea3)
     renderEdadPorLineas(3, ledad, edadlinea3)
     renderAnioGraduacion(3, lanioGraduacion, anioGlinea3)
@@ -600,6 +712,7 @@ line3.addEventListener('click', () => {
     renderInternetZona(3, linternetzona, internetZLinea3)
     renderInternetHome(3, linternethome, internetHomeLinea3)
     renderSocialCondicion(3, lsocialcondicion, socialCondicionLinea3)
+    renderDiscapacidad(3, ldiscapacidad, discapacidadLinea3)
 })
 
 function renderSexLineas(titulo,line, dataSex) {
@@ -1253,4 +1366,183 @@ function renderSocialCondicion(titulo, line, dataCondicio) {
             }
         }
     });    
+}
+
+function renderDiscapacidad(titulo, line, dataDiscapacidad) {
+    if(renderDiscapacidadL) renderDiscapacidadL.destroy()
+    line.height = 500
+    renderDiscapacidadL =  new Chart(line, {
+        type: 'line',
+        data: {
+            labels: ['Ninguna', 'Auditiva', 'Cognitiva', 'Fisica', 'Visual'],
+            datasets: [{
+                //label: `LINEA ${titulo} REGIMEN DE SALUD` || '',
+                data: dataDiscapacidad,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE DISCAPACIDAD'
+                },
+                legend: {
+                    display: false
+                },
+            }
+        }
+    });
+}
+
+function renderGeneralSexos(line) {
+    if(generalRenderSexo) generalRenderSexo.destroy()
+    line.height = 800
+    generalRenderSexo = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['Hombres', 'Mujesres'],
+            datasets: [{
+                label: 'LINEA 1',
+                data: sexolinea1,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 2',
+                data: sexolinea2,
+                backgroundColor: [
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 3',
+                data: sexolinea3,
+                backgroundColor: [
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderColor: [
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            //showTooltips: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA GENERAL DE SEXOS'
+                },
+            },
+            
+        }
+    });
+}
+
+function renderGeneralEdad(line) {
+    if(generalRenderEdad) generalRenderEdad.destroy() 
+    line.height = 800
+    generalRenderEdad = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['14', '15', '16', '17', '18', '19', '20', '21', '22','23', '24', '25', '26', '27', '28', '29', '30'],
+            datasets: [{
+                label: 'LINEA 1',
+                data: edadlinea1,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 2',
+                data: edadlinea2,
+                backgroundColor: [
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 3',
+                data: edadlinea3,
+                backgroundColor: [
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderColor: [
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            //showTooltips: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA GENERAL DE SEXOS'
+                },
+            },
+            
+        }
+    });
 }

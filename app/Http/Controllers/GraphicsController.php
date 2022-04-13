@@ -135,4 +135,12 @@ class GraphicsController extends Controller
         return $datos;
     }
 
+    public function discapacidad($discapacidad, $cohorte){
+        $datos = DB::select("SELECT COUNT(id) as cantidad FROM socioeconomic_data WHERE id_disability = ? 
+        AND socioeconomic_data.id_student IN (SELECT student_groups.id_student FROM student_groups WHERE 
+        student_groups.id_group IN (SELECT groups.id FROM groups WHERE groups.id_cohort = ?))", [$discapacidad, $cohorte]);
+
+        return $datos;
+    }
+
 }

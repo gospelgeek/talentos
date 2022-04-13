@@ -206,9 +206,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a> 
+                 
                </div>
               
           </li>
@@ -218,6 +216,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
             <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
+            <a href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
           </div>
         </li>
           <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
@@ -240,8 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                             <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
                             <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                            <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                            <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                            
                           </div>
                       </li>
                       <li class="nav-item dropdown">
@@ -250,6 +249,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                           <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
+                          <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+                          <a href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
                         </div>
                       </li>
                         <a href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>

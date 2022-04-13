@@ -5,6 +5,7 @@
 @include('../alerts.request')
 
 <div class="container-fluid">
+<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<h1 style="text-align:center;">ALMUERZOS</h1>
 	<div class="card">
 		<div class="card-body">
@@ -63,17 +64,19 @@
             {data: 'total'},
             {data: null, render:function(data, type, row, meta){
 
-            	
-            	
-            	mstr = '<div class="col-xs-6 col-sm-6 btn-group">'+
+            	var rol = document.getElementById('roles').value;
+            	if(rol == 1 || rol == 2 || rol == 4){
+            		mstr = '<div class="col-xs-6 col-sm-6 btn-group">'+
             			
                             '<a class="btn btn-block fa fa-pencil-square-o" title="Editar seguimiento" onclick="editar_registro_almuerzo('+data.id+')"></a>'+
                         '</div>'+
                         '<div class="col-xs-6 col-sm-6 btn-group">'+
                             '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar seguimiento" onclick="eliminar_registro_almuerzo('+data.id+', \''+data.date+'\')" id="boton"></button>'+
                           "</div>"+
-                "</div>";
-
+                	"</div>";
+                }else{
+                	mstr = '';	
+                }
             	return mstr;
 
             	}

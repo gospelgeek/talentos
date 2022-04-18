@@ -24,7 +24,7 @@
     <h1 style="text-align:center;">ESTUDIANTES</h1>
     <div class="card">         
     <div class="card-body">
-        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
+        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 5) 
         <div class="btn-group">
             <div class="col-xs-6 col-md-5 col-sm-3">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            

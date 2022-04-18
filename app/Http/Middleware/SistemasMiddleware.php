@@ -44,10 +44,7 @@ class SistemasMiddleware
                 return Redirect::to('/estudiante');
                 Session::flash('message-error','Sin privilegios para Ingresar');                
             }
-            if($this->auth->user()->rol_id == '5'){
-                return Redirect::to('/estudiante');
-                Session::flash('message-error','Sin privilegios para Ingresar');                
-            }
+            
 
 
         }else{

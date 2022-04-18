@@ -28,7 +28,7 @@ class SistemasMiddleware
     {
         if(\Auth::check())
         {  
-            if($this->auth->user()->rol_id == '1')
+            if($this->auth->user()->rol_id == '1' || $this->auth->user()->rol_id == '5')
             {
                 return $next($request);              
             }

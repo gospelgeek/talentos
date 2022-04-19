@@ -32,9 +32,9 @@
 	</div>
 </div>
 
-@include('perfilEstudiante.almuerzos.modal.create');
-@include('perfilEstudiante.almuerzos.modal.edit');
-@include('perfilEstudiante.almuerzos.modal.alerta');
+@include('perfilEstudiante.almuerzos.modal.create')
+@include('perfilEstudiante.almuerzos.modal.edit')
+@include('perfilEstudiante.almuerzos.modal.alerta')
 
 {!!Form::open(['id'=>'form-edit','route'=>['editar_registro_almuerzo',':ALMUERZO_ID'], 'method'=>'GET'])!!}
 {!!Form::close()!!}

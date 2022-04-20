@@ -675,7 +675,7 @@
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
             		</div>
-            		@if($verDatosPerfil->formalization->acceptance_v1 != 'SI')
+            		@if($verDatosPerfil->formalization->acceptance_v1 != 'SI' && $verDatosPerfil->formalization->acceptance_v1 != null)
 					<div class="col-xs-6 col-md-3">
 						<input readonly class="form-control" type="text" name="acceptance_v1" id="acceptancev1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v1 : null }}">
 						<a href="{{$verDatosPerfil->formalization->acceptance_v1}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
@@ -686,7 +686,7 @@
 						
 					</div>
 					@endif
-					@if($verDatosPerfil->formalization->acceptance_v2 != 'SI')
+					@if($verDatosPerfil->formalization->acceptance_v2 != 'SI' && $verDatosPerfil->formalization->acceptance_v2 != null)
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="acceptance_v2">URL aceptacion V2</label></p>
             		</div>
@@ -710,7 +710,7 @@
             		<div class="col-xs-12 col-md-12">
             		<label>TABLETS</label>	
             		</div>
-            		@if($verDatosPerfil->formalization->tablets_v1 != 'SI')	
+            		@if($verDatosPerfil->formalization->tablets_v1 != 'SI' && $verDatosPerfil->formalization->tablets_v1 != null)	
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
             		</div>
@@ -726,7 +726,7 @@
 						<input readonly class="form-control" type="text" name="tablets_v1" id="tabletsv1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v1 : null }}">
 					</div>
 					@endif
-					@if($verDatosPerfil->formalization->tablets_v2 != 'SI')
+					@if($verDatosPerfil->formalization->tablets_v2 != 'SI' && $verDatosPerfil->formalization->tablets_v1 != null)
             		<div class="col-xs-3 col-md-3">
             			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
             		</div>

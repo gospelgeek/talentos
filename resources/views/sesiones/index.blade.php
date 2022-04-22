@@ -70,7 +70,7 @@
                             '<a class="btn btn-block fa fa-pencil-square-o" title="Editar sesión" onclick="editar_registro_sesion('+data.id+', '+data.idcohorte+')"></a>'+
                         '</div>'+
                         '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar seguimiento" onclick="eliminar_registro_sesion('+data.id+', \''+data.date_session+'\')" id="boton"></button>'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar sesión" onclick="eliminar_registro_sesion('+data.id+', \''+data.date_session+'\')" id="boton"></button>'+
                           "</div>"+
                 	"</div>";
                 }else{

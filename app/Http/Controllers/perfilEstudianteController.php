@@ -2458,40 +2458,40 @@ class perfilEstudianteController extends Controller
         }   
     }
     public function json_inasistencias(Request $request){
-        if(Storage::disk('local')->exists('inasistencias.json')) {
-            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
-            $prueba = collect($inasistencias);
+        if(Storage::disk('local')->exists('vistaasistencias.json')) {
+            $asistencias    = json_decode(Storage::get('vistaasistencias.json'));
+            $estudiantes = collect($asistencias);
                
-            return datatables()->of($prueba)->toJson();     
-        }
-        else{
-            $perfilEstudiantes = perfilEstudiante::select('id','name','lastname','document_number','id_moodle')->get();
-
-            $perfilEstudiantes->map(function($estudiante){
-                if($estudiante->id_moodle != null){
-                    $estudiante->studentGroup->group->cohort;
-                    $estudiante->inasistencia = $this->estudiantes_asistencias($estudiante->id_moodle);
-                }else{
-                    $estudiante->studentGroup->group->cohort;
-                    $estudiante->inasistencia = "-";
-                }
+            return datatables()->of($estudiantes)->toJson();
+        }else{
+            $estudiantes = perfilEstudiante::Estudiantes_cohort();
+            $estudiantes = collect($estudiantes);
+            $estudiantes->map(function($estudiante){
+            
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle);
+                unset($estudiante->grupo);
+                unset($estudiante->id_moodle);
+            //dd($estudiante);
             });
+        //dd($estudiantes);
+            $estudiantes = json_encode($estudiantes);
 
-            $perfilEstudiantes = json_encode($perfilEstudiantes);
+            Storage::disk('local')->put('vistaasistencias.json', $estudiantes);
 
-            Storage::disk('local')->put('inasistencias.json', $perfilEstudiantes);
+            $asistencias    = json_decode(Storage::get('vistaasistencias.json'));
 
-            $inasistencias    = json_decode(Storage::get('inasistencias.json'));
-
-            $prueba = collect($inasistencias);
+            $estudiantes = collect($asistencias);
                
-            return datatables()->of($prueba)->toJson();  
+            return datatables()->of($estudiantes)->toJson();
         }
+        
+       
+        
     }
         
     public function indexEstudiantes(){
-        
-        return view('perfilEstudiante.Asistencias.Individuales.index');   
+        $cohorte = Cohort::pluck('name','id');
+        return view('perfilEstudiante.Asistencias.Individuales.index',compact('cohorte'));   
     }
 
     public function sesiones_asistencias($id_curso){

@@ -5,11 +5,25 @@
 @include('../alerts.success')
 @include('../alerts.request')
 <div class="container-fluid">    
-    <h1 style="text-align:center;">ESTUDIANTES</h1>
+    <h1 style="text-align:center;">REPORTE GENERAL DE ASISTENCIAS</h1>
     <div class="card">         
     <div class="card-body">
-
-
+        <div class="row">
+            <div class="col-sm-2">
+                &nbsp;{!!Form::label('cohorte','Linea:')!!}
+                {!!Form::select('id_cohorte', $cohorte, null,['class'=>'form-control','placeholder'=>'Seleccione una Linea', 'display'=>'inline-block'])!!}
+            </div>
+            <div class="col-sm-6">
+                &nbsp;{!!Form::label('cohorte','fecha:')!!}<br>
+                &nbsp;{!!Form::label('cohorte','desde:')!!}
+                {!!Form::date('id_fecha_desde',null, null,['class'=>'form-control','placeholder'=>'Seleccione un mes', 'display'=>'inline-block'])!!}
+                &nbsp;{!!Form::label('cohorte','hasta:')!!}
+                {!!Form::date('id_fecha_hasta',null, null,['class'=>'form-control','placeholder'=>'Seleccione un mes', 'display'=>'inline-block'])!!}
+                <button class="btn btn-danger"type="button">Consultar</button>
+            </div>
+        </div>
+        
+        <br>
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
         <thead >
@@ -18,9 +32,12 @@
                 <td>Apellidos</td>
                 <td>Nº documento</td>
                 <td>Grupo</td>
-                <td>Cohorte</td>
-                <td>Total Inasistencias</td>
-                <td>Acciones</td>
+                <td>ARTES</td>
+                
+                <td>DEPORTE</td>
+                <td>DIALOGO</td>
+                <td>TIC</td>
+                <td>TOTAL</td>
             </tr>
         </thead> 
       </table>
@@ -44,25 +61,80 @@
                 {data: 'name'},
                 {data: 'lastname'},
                 {data: 'document_number'},
-                {data: 'student_group.group.name'},
-                {data: 'student_group.group.cohort.name'},
-                {data: 'inasistencia'},
+                {data: 'grupo_name'},
                 {data: null, render:function(data, type, row, meta){
-                    
-                    var mstr;
-                   
-                        mstr = '<div class="row">'+                                  
-                                                '<div class="col-xs-4 col-sm-4">'+
-                                                    '<a id="'+data.id+'" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
-                                                '</div>'+                                                
-                                            '</div>'; 
+                        console.log(data.cursos == null)
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;    
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                cero = data.cursos[i].Total;
+                            }
+                               
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0; 
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                cero = data.cursos[i].Total;
+                            }   
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
 
-                    return mstr;
-                }
-            }       
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;     
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                cero = data.cursos[i].Total;
+                            }    
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var contador=0;
+                        for(const i in data.cursos){
+                            contador = contador + data.cursos[i].Total
+                            
+                        }
+                        return contador;
+                    }
+                }       
             ],
 
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,"order": [[5,'dsc']],
+            "deferRender": true,"responsive": true,"processing": false,
+            "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
                 "copy",

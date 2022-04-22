@@ -128,7 +128,19 @@
                         }
                         return contador;
                     }
-                }       
+                },
+                {data: null, render:function(data, type, row, meta){
+                    
+                    var mstr;
+                   
+                        mstr = '<div class="row">'+                                  
+                                                '<div class="col-xs-4 col-sm-4">'+
+                                                    '<a id="'+data.id+'" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                                '</div>'+                                                
+                                            '</div>'; 
+                    return mstr;
+                }
+            }
             ],
 
             "deferRender": true,"responsive": true,"processing": false,

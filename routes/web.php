@@ -187,7 +187,17 @@ Route::get('editar_registro_almuerzo/{id}', 'AlmuerzosController@editar')->name(
 Route::put('actualizar_registro_almuerzos/{id}', 'AlmuerzosController@actualizar')->name('actualizar_registro_almuerzos');
 Route::delete('eliminar_registro_almuerzo/{id}', 'AlmuerzosController@delete')->name('eliminar_registro_almuerzo');
 
-
+//rutas sesiones
+Route::get('sesiones', 'SesionesController@index')->name('sesiones');
+//traer grupos
+Route::get('grupos_to_sesion/{id}', 'SesionesController@traerGrupos')->name('grupos_to_sesion');
+//traer asignaturas
+Route::get('asignatura_to_sesion/{id}', 'SesionesController@traerAsignaturas')->name('asignatura_to_sesion');
+Route::post('almacenar_registro_sesion', 'SesionesController@store')->name('almacenar_registro_sesion');
+Route::get('datos.sessiones', 'SesionesController@datos')->name('datos.sessiones');
+Route::get('editar_registro_sesion/{id}', 'SesionesController@edit')->name('editar_registro_sesion');
+Route::put('actualizar_registro_sesion/{id}', 'SesionesController@update')->name('actualizar_registro_sesion');
+Route::delete('eliminar_registro_sesion/{id}', 'SesionesController@delete')->name('eliminar_registro_sesion');
 
 
 

@@ -230,4 +230,23 @@ class perfilEstudiante extends Model
 
         return $this->hasMany(StudentDevices::class, 'id_student', 'id');
     }
+    public static function Estudiantes_cohort(){
+
+        $estudiantes = DB::select("select student_profile.id,student_profile.name,
+                                          student_profile.lastname,
+                                          student_profile.document_number,
+                                          student_profile.id_moodle,groups.id as grupo,
+                                          groups.name as grupo_name
+                                   from   student_profile,student_groups,groups
+                                   where  student_profile.id = student_groups.id_student
+                                   and    groups.id = student_groups.id_group
+                                   and    groups.id_cohort = 1
+                                   and    student_profile.deleted_at is null");
+        if($estudiantes != null){
+            return $estudiantes;
+        }else{
+            return null;
+        }
+
+    }
 }

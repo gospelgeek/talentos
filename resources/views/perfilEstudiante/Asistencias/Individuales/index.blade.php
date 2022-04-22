@@ -37,6 +37,7 @@
                 <td>DIALOGO</td>
                 <td>TIC</td>
                 <td>TOTAL</td>
+                <td>ACCIONES</td>
             </tr>
         </thead> 
       </table>

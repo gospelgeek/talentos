@@ -262,6 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a>
                         </div>
                       </li>
+             <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>

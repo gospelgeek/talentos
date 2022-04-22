@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
-@section('title', 'Sesiones')
+@section('title', 'Sesiones Programadas')
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
 
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
-	<h1 style="text-align:center;">SESIONES</h1>
+	<h1 style="text-align:center;">SESIONES PROGRAMADAS</h1>
 	<div class="card">
 		<div class="card-body">
 			<div class="btn-group">

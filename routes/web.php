@@ -178,3 +178,6 @@ Route::get('internetZona/{zona}/linea/{cohorte}', 'GraphicsController@internetZo
 Route::get('internetHome/{home}/linea/{cohorte}', 'GraphicsController@internetHome')->name('internetHomeCohorte');
 Route::get('condicion/{condicion}/linea/{cohorte}', 'GraphicsController@socialCondicion')->name('condicionSocialCohorte');
 Route::get('discapacidad/{discapacidad}/linea/{cohorte}', 'GraphicsController@discapacidad')->name('discapacidadCohorte');
+
+Route::get('reporte_pdfs_grupos', 'PdfsReportesController@index')->name('pdfs.grupos');
+Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');

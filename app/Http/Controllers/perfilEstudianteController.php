@@ -134,7 +134,7 @@ class perfilEstudianteController extends Controller
         });*/
 
                 
-        return datatables()->of($estudiante)->toJson();
+        return datatables()->of($perfilEstudiantes)->toJson();
     }
 
 

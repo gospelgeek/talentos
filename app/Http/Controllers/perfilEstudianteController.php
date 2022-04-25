@@ -252,7 +252,7 @@ class perfilEstudianteController extends Controller
             }           
         }*/
 
-        $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
@@ -574,7 +574,7 @@ class perfilEstudianteController extends Controller
     {
 
         //dd('entro a estudiante editar');
-        $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
@@ -659,8 +659,8 @@ class perfilEstudianteController extends Controller
    public function updatePerfilEstudiante($id, Request $request)
     {
 
-        $data = perfilEstudiante::findOrFail($id);
-        $dataOld = perfilEstudiante::findOrFail($id);
+        $data = perfilEstudiante::withTrashed()->findOrFail($id);
+        $dataOld = perfilEstudiante::withTrashed()->findOrFail($id);
 
         $mensaje = "Datos generales actualizados correctamente!!";
 

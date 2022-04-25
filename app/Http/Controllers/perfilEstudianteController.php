@@ -102,7 +102,7 @@ class perfilEstudianteController extends Controller
             return datatables()->of($perfilEstudiantes)->toJson();
         }
         
-        /*$perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio,
+        $perfilEstudiantes = DB::select("SELECT student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio,
             YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad,
             (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
             (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
@@ -124,14 +124,14 @@ class perfilEstudianteController extends Controller
             AND student_groups.id_group = groups.id
             AND student_profile.id_state != 3 
             AND student_profile.id_state != 4 
-        ");*/
-        $estudiante = perfilEstudiante::select('id','name', 'lastname', 'document_number', 'student_code', 'email', 'cellphone', 'id_state')->where('id_state', 1)->orWhere('id_state', 2)->get();
+        ");
+        /*$estudiante = perfilEstudiante::select('id','name', 'lastname', 'document_number', 'student_code', 'email', 'cellphone', 'id_state')->where('id_state', 1)->orWhere('id_state', 2)->get();
         
         $estudiante->map(function ($datos) {
             $datos->grupo = $datos->studentGroup->group->name;
             $datos->cohorte = $datos->studentGroup->group->cohort->name;    
             $datos->estado = $datos->condition;
-        });
+        });*/
 
                 
         return datatables()->of($estudiante)->toJson();

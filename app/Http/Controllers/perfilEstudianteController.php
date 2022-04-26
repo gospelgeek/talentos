@@ -872,7 +872,7 @@ class perfilEstudianteController extends Controller
             }
                  
             }
-            if(($request['id_state'] == 2) || ($request['id_state'] == 3) ){
+            if(($request['id_state'] == 2) || ($request['id_state'] == 3) || ($request['id_state'] == 5)){
                     if($borrar == ""){
                         $datos = Withdrawals::create([
                         'id_student'   =>  $id,

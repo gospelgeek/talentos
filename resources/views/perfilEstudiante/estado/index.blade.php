@@ -19,31 +19,11 @@
                 <td>Grupo</td>
                 <td>Cohorte</td>
                 <td>Estado</td>
+                <td>Motivo</td>
                 <td>Acciones</td>
             </tr>
-        </thead> 
-
-        <tbody>
-            @foreach ($verDatosPerfil  as $data)
-                <tr data-id="{{$data->id}}">
-                                        <td>{{ $data->name}}</td>
-                                        <td>{{ $data->lastname }}</td>
-                                        <td>{{ $data->document_number }}</td>
-                                        <td>{{ $data->studentGroup->group->name}}</td>
-                                        <td>{{ $data->studentGroup->group->cohort->name}}</td>
-                                        <td>{{ $data->condition->name}}</td>
-                                        <td >
-
-                                        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)   
-                                 
-                                                <a id="{{$data->id}}" type="button" onclick="abrirmodal(this);" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Cambiar Estado</a>
-                                        </td>
-                                        @csrf
-                </tr>
-                @endif
-            @endforeach    
-        </tbody>
-
+        </thead>
+        @csrf 
       </table>
       </div>
     </div>
@@ -52,7 +32,78 @@
 {!!Form::open(['id'=>'form-edit','route'=>['estudiantes.estado_edit',':ESTADO_ID'], 'method'=>'GET'])!!}
 {!!Form::close()!!}
 @include('perfilEstudiante.estado.modal.edit_estado')
+@include('perfilEstudiante.estado.modal.ver_estado')
 @push('scripts')
+<script type="text/javascript">
+    var table = $('#example1').DataTable({
+         processing: false,
+         serverSide: false,
+         ajax: "{{route('estudiantes.get_Estados')}}",
+         columns: [
+            { data: 'name' },
+            { data: 'lastname' },
+            { data: 'document_number' },
+            { data: 'grupo' },
+            { data: 'cohort' },
+            { data: 'condicion' },
+            { data: 'motivo'},
+            { data: null, render:function(data, type, row, meta){
+                    
+                    var mstr;
+                   
+                        mstr = '@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)<a id="'+data.id+'" type="button" onclick="abrirmodal_ver(this);" ><i class="fa fa-eye" aria-hidden="true"></i>Detalles</a>&nbsp;<a id="'+data.id+'" type="button" onclick="abrirmodal(this);" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Cambiar Estado</a> @else <a id="'+data.id+'" type="button" onclick="abrirmodal_ver(this);" ><i class="fa fa-eye" aria-hidden="true"></i>Detalles</a>@endif'; 
+
+                    return mstr;
+                }
+            }
+            
+         ],
+         "orderCellsTop": true,
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "order": [[5,'desc']],
+            "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "dom": 'Bfrtip',
+            buttons: [     
+                      {
+                        extend: 'excel',
+                        text: 'EXPORTAR EXCEL',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'all',
+
+                                                  }
+                                        }
+                      },
+                      {
+                        extend: 'pdf',
+                        text: 'EXPORTAR PDF',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'all'
+                                                  }
+                                        }
+                      },
+                      {
+                        extend: 'print',
+                        text: 'Imprimir',
+                        exportOptions: {
+                                        modifier: {
+                                                    page: 'all'
+                                                  }
+                                        }
+                      },
+                    ]
+      });
+
+</script>
 {!!Html::script('/js/estado.js')!!}
 @endpush
 @endsection

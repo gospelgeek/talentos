@@ -2606,19 +2606,42 @@ class perfilEstudianteController extends Controller
 
     public function index_Estados()
     {
-        $verDatosPerfil  = perfilEstudiante::withTrashed()->get();
         $estado = Condition::pluck('name', 'id');
         $motivos = Reasons::pluck('name', 'id');
-        return view('perfilEstudiante.estado.index', compact('verDatosPerfil','estado','motivos'));
+        $motivs = Reasons::select('name')->get();
+        return view('perfilEstudiante.estado.index', compact('estado','motivos','motivs'));
     }
 
     public function edit_Estado($id, Request $request){
-        $verDatosPerfil  = perfilEstudiante::withTrashed()->where('id',$id)->get();
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->select('id','id_state','name','lastname','document_number')->where('id',$id)->get();
         $data = $verDatosPerfil[0]->condition;
         $data2 = $verDatosPerfil[0]->withdrawals;
         if($request->ajax()){
             return Response::json($verDatosPerfil);
         };
+    }
+    
+    public function get_Estados(Request $request){
+
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','document_number','id_state']);
+        $verDatosPerfil->map(function($estudiante){
+            $estudiante->cohort = $estudiante->studentGroup->group->cohort->name;
+            $estudiante->grupo = $estudiante->studentGroup->group->name;
+            $estudiante->condicion = $estudiante->condition->name;
+            $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
+            //dd($withdrawals);
+            if($withdrawals == true){
+                $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
+            }else{
+                $estudiante->motivo = null;
+            }
+            unset($estudiante->withdrawals);
+            unset($estudiante->studentGroup);
+            unset($estudiante->condition);
+            //dd($estudiante);
+        });
+
+        return datatables()->of($verDatosPerfil)->toJson();
     }
 
     public function excel_asistencias(){

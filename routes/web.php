@@ -181,6 +181,7 @@ Route::get('regimen/{regimen}/linea/{cohorte}', 'GraphicsController@regimenSalud
 //RUTA INDEXESTADO ESTUDIANTES
 Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');
 Route::get('estudiante/estado/edit/{id}', 'perfilEstudianteController@edit_Estado')->name('estudiantes.estado_edit');
+Route::get('get_Estados', 'perfilEstudianteController@get_Estados')->name('estudiantes.get_Estados');
 
 //Rutas almuerzos
 Route::get('almuerzos_estudiantes', 'AlmuerzosController@index')->name('almuerzos_estudiantes');

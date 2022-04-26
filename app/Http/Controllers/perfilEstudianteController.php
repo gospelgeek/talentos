@@ -2450,18 +2450,18 @@ class perfilEstudianteController extends Controller
 
         }   
     }
-    public function json_inasistencias(Request $request){
-        if(Storage::disk('local')->exists('vistaasistencias.json')) {
-            $asistencias    = json_decode(Storage::get('vistaasistencias.json'));
+    public function asistencias_linea_1(Request $request){
+        if(Storage::disk('local')->exists('asistencias_linea_1.json')) {
+            $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
             $estudiantes = collect($asistencias);
                
             return datatables()->of($estudiantes)->toJson();
         }else{
-            $estudiantes = perfilEstudiante::Estudiantes_cohort();
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle);
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);
@@ -2469,17 +2469,70 @@ class perfilEstudianteController extends Controller
         //dd($estudiantes);
             $estudiantes = json_encode($estudiantes);
 
-            Storage::disk('local')->put('vistaasistencias.json', $estudiantes);
+            Storage::disk('local')->put('asistencias_linea_1.json', $estudiantes);
 
-            $asistencias    = json_decode(Storage::get('vistaasistencias.json'));
+            $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
 
             $estudiantes = collect($asistencias);
                
             return datatables()->of($estudiantes)->toJson();
-        }
-        
-       
-        
+        }      
+    }
+    public function asistencias_linea_2(Request $request){
+        if(Storage::disk('local')->exists('asistencias_linea_2.json')) {
+            $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
+            $estudiantes = collect($asistencias);
+               
+            return datatables()->of($estudiantes)->toJson();
+        }else{
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+            $estudiantes = collect($estudiantes);
+            $estudiantes->map(function($estudiante){
+            
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
+                unset($estudiante->grupo);
+                unset($estudiante->id_moodle);
+            //dd($estudiante);
+            });
+        //dd($estudiantes);
+            $estudiantes = json_encode($estudiantes);
+
+            Storage::disk('local')->put('asistencias_linea_2.json', $estudiantes);
+
+            $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
+
+            $estudiantes = collect($asistencias);
+               
+            return datatables()->of($estudiantes)->toJson();
+        }      
+    }
+    public function asistencias_linea_3(Request $request){
+        if(Storage::disk('local')->exists('asistencias_linea_3.json')) {
+            $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
+            $estudiantes = collect($asistencias);
+               
+            return datatables()->of($estudiantes)->toJson();
+        }else{
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+            $estudiantes = collect($estudiantes);
+            $estudiantes->map(function($estudiante){
+            
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
+                unset($estudiante->grupo);
+                unset($estudiante->id_moodle);
+            //dd($estudiante);
+            });
+        //dd($estudiantes);
+            $estudiantes = json_encode($estudiantes);
+
+            Storage::disk('local')->put('asistencias_linea_3.json', $estudiantes);
+
+            $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
+
+            $estudiantes = collect($asistencias);
+               
+            return datatables()->of($estudiantes)->toJson();
+        }      
     }
         
     public function indexEstudiantes(){

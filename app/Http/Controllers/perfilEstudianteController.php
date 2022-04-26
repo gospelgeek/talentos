@@ -827,24 +827,25 @@ class perfilEstudianteController extends Controller
        $status = "Estado actualizado correctamente!!";
         if($request->ajax())
         {   
-            $borrar = Withdrawals::where('id_student', $id)->get();
-            //return $borrar;
-            
+            $borrar = Withdrawals::where('id_student', $id)->exists();
+            //dd($borrar);
+
             if($request['id_state'] != 1){
-                if($borrar != null){
+                if($borrar != false){
                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
+
                 }else{
                     $estado = perfilEstudiante::findOrFail($id);        
                     $estado->id_state = $request['id_state'];
                     $estado->save();  
-                    $estado -> delete();
+                    $estado->delete();
                 }
             
             //eliminarPerfilEstudiante($id);
             }
             
             if($request['id_state'] == 1){
-                if($borrar != null){
+                if($borrar != false){
                     $borrar = Withdrawals::where('id_student', $id)->delete();
                     $estado = perfilEstudiante::withTrashed()->where('id', $id)->update(['deleted_at' => null]);
                     $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
@@ -856,7 +857,7 @@ class perfilEstudianteController extends Controller
                 }    
             }
             if($request['id_state'] == 4){
-                if($borrar == ""){
+                if($borrar == false){
                     $datos = Withdrawals::create([
                 'id_student'   =>  $id,
                 'observation'  =>  $request['observation'],
@@ -873,7 +874,7 @@ class perfilEstudianteController extends Controller
                  
             }
             if(($request['id_state'] == 2) || ($request['id_state'] == 3) || ($request['id_state'] == 5)){
-                    if($borrar == ""){
+                    if($borrar == false){
                         $datos = Withdrawals::create([
                         'id_student'   =>  $id,
                         'id_reasons'   =>  $request['id_reasons'],

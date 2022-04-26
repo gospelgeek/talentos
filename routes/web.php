@@ -70,7 +70,10 @@ Route::get('/Asistencias/{course?}/grupo/{id?}/session/{id_session?}', 'perfilEs
 
 
 Route::get('asistencias/estudiantes', 'perfilEstudianteController@indexEstudiantes')->name('asistencias.estudiantes');
-Route::get('inasistencias', 'perfilEstudianteController@json_inasistencias')->name('inasistencias');
+Route::get('asistencias/estudiantes', 'perfilEstudianteController@indexEstudiantes')->name('asistencias.estudiantes');
+Route::get('asistencias_linea_1', 'perfilEstudianteController@asistencias_linea_1')->name('asistencias_linea_1');
+Route::get('asistencias_linea_2', 'perfilEstudianteController@asistencias_linea_2')->name('asistencias_linea_2');
+Route::get('asistencias_linea_3', 'perfilEstudianteController@asistencias_linea_3')->name('asistencias_linea_3');
 //Route::get('asistencias/estudiante/{id}', 'perfilEstudianteController@ver_Asistencias')->name('ver_asistencias');
 Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asistencias')->name('crear_excel_json');
 

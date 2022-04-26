@@ -77,6 +77,84 @@ function abrirmodal(e) {
 
        });
 };
+function abrirmodal_ver(e) {
+       var url_retiro = document.createElement('a');
+       url_retiro.setAttribute('id', 'CBoton');
+       url_retiro.setAttribute('href'," ");
+       url_retiro.setAttribute('target', '_blank')         
+       //var row = $(this).parents('tr');
+       //console.log(row);
+       var id = $(e).attr("id"); 
+       //console.log(id);
+       var form = $('#form-edit');
+       var url = form.attr('action').replace(':ESTADO_ID', id);
+       //console.log(url);
+       var data = form.serialize();
+
+       $.get(url, function(result){
+
+        //alert(result);
+        //console.log(result[0]);
+          //document.getElementById('modal_crear_estado').reset();
+          if(result[0].id_state == 1){
+            $('#Vobservacion').hide();
+            $('#VMotivo').hide();
+            $('#VUrl').hide();
+            $('#VBoton').hide();
+            var valor = $('#estadoV').val();
+            //console.log(valor)
+            $('#idV').val(result[0].id);
+            $("#estadoV").val(result[0].id_state); 
+            $('#ver_estado').modal('show');
+          }else{
+                $("#estadoV").val(result[0].id_state);     
+                var valor = $('#estadoV').val();
+                //console.log(valor)
+                if(valor == ""){
+                  $('#Vobservacion').hide();
+                  $('#VMotivo').hide();
+                  $('#VUrl').hide();
+                  $('#VBoton').hide();
+                }
+                if(valor == 3 || valor == 2 || valor == 5){
+                  $('#VMotivo').show();
+                  $('#Vobservacion').show();
+                  $('#VUrl').show();
+                  $('#VBoton').show();
+                  $('#idV').val(result[0].id); 
+                  $("#VMotivo").val(result[0].withdrawals.id_reasons);
+                  $("#VUrl").val(result[0].withdrawals.url);
+
+                  if(result[0].withdrawals.url != null){
+                    document.getElementById('VBoton').setAttribute('href', result[0].withdrawals.url);
+                  }else{
+                      //console.log("entro");
+                      $('#VBoton').hide();
+                  }
+                  $("#Vobservacion").val(result[0].withdrawals.observation);
+                }
+                if(valor == 4){
+                  $('#idV').val(result[0].id);
+                  $("#Vobservacion").val(result[0].withdrawals.observation);
+                  $('#Vobservacion').show();
+                  $('#VMotivo').hide();
+                  $('#VUrl').hide();
+                  $('#VBoton').hide();               
+                }
+                if(valor == 1){
+                  $('#Vobservacion').hide();
+                  $('#VMotivo').hide();
+                  $('#VUrl').hide();
+                  $('#VBoton').hide();
+                }
+
+                 
+                $('#ver_estado').modal('show');   
+          }
+          
+
+       });
+};
 
 $("#estadoN").on('change',function(event) {
           var valor = $('#estadoN').val();
@@ -106,6 +184,7 @@ $("#estadoN").on('change',function(event) {
             $('#CBoton').hide();
           }
 });
+
 
 $('.boton_update_estado').click(function(e) { 
   e.preventDefault();   
@@ -140,7 +219,7 @@ $('.boton_update_estado').click(function(e) {
     },       
   });
   });
-$("#example1").DataTable({
+/*$("#example1").DataTable({
             "orderCellsTop": true,
             "processing": true,
             "paging": true,
@@ -150,7 +229,7 @@ $("#example1").DataTable({
             "info": true,
             "autoWidth": false,
             "responsive": true,
-            "order": [[5,'desc']],
+            "order": [[5,'dsc']],
             "language": {
                         "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
@@ -185,7 +264,7 @@ $("#example1").DataTable({
                                         }
                       },
                     ]
-      });
+      });*/
 
       
 

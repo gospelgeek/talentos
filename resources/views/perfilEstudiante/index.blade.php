@@ -50,6 +50,19 @@
             </center>  
         </div>
         
+        <div class="row justify-content-md-center">
+                <col-sm>
+                    <h3 class="mr-3">DESCARGAR LISTADO DE GRUPOS DE:</h3>
+                </col-sm>
+                <div class="col-sm">
+                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="/listado_estudiantes_grupo/1">Linea 1</a>  
+                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="/listado_estudiantes_grupo/2">Linea 2</a>
+                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="/listado_estudiantes_grupo/3">Linea 3</a>
+           
+                </div>
+
+         </div>
+        
         @endif
         
 

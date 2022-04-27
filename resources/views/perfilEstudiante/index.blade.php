@@ -52,7 +52,7 @@
         
         <div class="row justify-content-md-center">
                 <col-sm>
-                    <h3 class="mr-3">DESCARGAR LISTADO DE GRUPOS DE:</h3>
+                    <h5 class="mr-3 mt-2">DESCARGAR LISTADO DE GRUPOS DE:</h5>
                 </col-sm>
                 <div class="col-sm">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="/listado_estudiantes_grupo/1">Linea 1</a>  

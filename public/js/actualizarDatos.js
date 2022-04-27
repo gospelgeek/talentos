@@ -361,7 +361,7 @@ $('.boton_actualizar').click(function(e) {
   $.ajax({
   //ruta manual
     url:'/updatecohortegrupo/'+ idgroup,
-    type:'PUT',
+    type:'POST',
     data:{
       '_token': $('input[name=_token]').val(),
       'grupo': $("#grupOm").val(),

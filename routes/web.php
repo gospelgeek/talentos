@@ -203,6 +203,8 @@ Route::get('editar_registro_sesion/{id}', 'SesionesController@edit')->name('edit
 Route::put('actualizar_registro_sesion/{id}', 'SesionesController@update')->name('actualizar_registro_sesion');
 Route::delete('eliminar_registro_sesion/{id}', 'SesionesController@delete')->name('eliminar_registro_sesion');
 
+//PDFS grupos
+Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
 
 
 

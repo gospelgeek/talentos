@@ -92,7 +92,7 @@ Route::delete('deleteseguimiento/{id}', 'perfilEstudianteController@delete_segui
 //Rutas para update cohorte-grupo
 Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
 Route::get('datos/{id}', 'perfilEstudianteController@datosNuevos')->name('datos');
-Route::put('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
+Route::post('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorteGrupo')->name('updatecohortegrupo');
 
 //Rutas para cargar datos por ajax al index
 Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');

@@ -2317,7 +2317,7 @@ class perfilEstudianteController extends Controller
     public function export(){
 
         
-        $estudiantes = perfilEstudiante::select('id', 'college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date')->get();
+        $estudiantes = perfilEstudiante::select('id', 'college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date')->where('id_state', 1)->get();
 
         $excel = array();
         $motivo;
@@ -2370,7 +2370,7 @@ class perfilEstudianteController extends Controller
         }
         $exportar = new SabanaExport([$excel]);
 
-        return Excel::download($exportar, "sábana_export.xlsx");   
+        return Excel::download($exportar, "sábana_secretaía.xlsx");   
     }
 
    

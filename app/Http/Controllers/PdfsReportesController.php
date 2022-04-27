@@ -41,7 +41,7 @@ class PdfsReportesController extends Controller
                 }
                 
                 //$student = StudentDevices::all();
-                $pdf = PDF::loadView('pdfsreportes.PDF', [
+                $pdf = PDF::loadView('graphics.PDF', [
                     'grupo1' => $datos[1],
                     'grupo2' => $datos[2],
                     'grupo3' => $datos[3],
@@ -104,7 +104,7 @@ class PdfsReportesController extends Controller
                 }
                 
                 //$student = StudentDevices::all();
-                $pdf = PDF::loadView('pdfsreportes.PDF', [
+                $pdf = PDF::loadView('graphics.PDF', [
                     'grupo1' => $datos[1],
                     'grupo2' => $datos[2],
                     'grupo3' => $datos[3],
@@ -167,7 +167,7 @@ class PdfsReportesController extends Controller
                 }
                 
                 //$student = StudentDevices::all();
-                $pdf = PDF::loadView('pdfsreportes.PDF', [
+                $pdf = PDF::loadView('graphics.PDF', [
                     'grupo1' => $datos[1],
                     'grupo2' => $datos[2],
                     'grupo3' => $datos[3],

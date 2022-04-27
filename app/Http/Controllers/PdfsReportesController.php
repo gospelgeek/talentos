@@ -19,10 +19,6 @@ class PdfsReportesController extends Controller
         $this->middleware('socioeducativo');
     }
 
-    public function index()
-    {
-        return view('pdfsreportes.index');
-    }
 
     public function descargarPDFgrupos($cohorte)
     {

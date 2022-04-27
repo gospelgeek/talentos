@@ -20,7 +20,6 @@
         td,
         th {
             border-bottom: 1px solid black;
-            font-size: 6;
         }
 
         img {

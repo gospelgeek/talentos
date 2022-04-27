@@ -2275,19 +2275,44 @@ class perfilEstudianteController extends Controller
     {
 
         $group = StudentGroup::findOrFail($id);
-
+        
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
 
         $cohort = Group::where('id', $request['grupo'])->select('id_cohort')->first();
         $vlrchrte = $cohort->id_cohort;
-
+        
         if ($request->ajax()) {
 
             if ($vlrchrte == $request['cohorte']) {
-                $group->id_group = $request['grupo'];
+                //$group->id_group = $request['grupo'];
+                $group->delete();
 
-                $group->save();
+                $ip = User::getRealIP();
+                $id = auth()->user();
+            
+
+                $datos = LogsCrudActions::create([
+                    'id_user'                  => $id['id'],
+                    'rol'                      => $id['rol_id'],
+                    'ip'                       => $ip,
+                    'id_usuario_accion'        => $group['id'],
+                    'actividad_realizada'      => 'SE ELIMINÓ REGISTRO STUDENTGROUP',
+                ]);
+
+                $newregister = StudentGroup::create([
+                    'id_student'  => $group->id_student, 
+                    'id_group'    => $request['grupo'],
+                ]);
+
+                $datos = LogsCrudActions::create([
+                    'id_user'                  => $id['id'],
+                    'rol'                      => $id['rol_id'],
+                    'ip'                       => $ip,
+                    'id_usuario_accion'        => $newregister['id'],
+                    'actividad_realizada'      => 'NUEVO REGISTRO STUDENTGROUP',
+                ]);
+                
             } else {
                 return $error;
             }

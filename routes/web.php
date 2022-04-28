@@ -176,7 +176,12 @@ Route::get('etnia/{etnia}/linea/{cohorte}', 'GraphicsController@etniaPorLinea')-
 Route::get('ocupacion/{ocup}/linea/{cohorte}', 'GraphicsController@ocupacionLinea')->name('ocupacionCohorte');
 Route::get('hijos/{hijos}/linea/{cohorte}', 'GraphicsController@numeroDeHijos')->name('numeroDeHijosCohorte');
 Route::get('regimen/{regimen}/linea/{cohorte}', 'GraphicsController@regimenSalud')->name('regimenSaludCohorte');
-
+Route::get('sisben/{sisben}/linea/{cohorte}', 'GraphicsController@categoriaDeSisben')->name('categoriaSisbenCohorte');
+Route::get('beneficios/{beneficios}/linea/{cohorte}', 'GraphicsController@beneficios')->name('beneficiosCohorte');
+Route::get('internetZona/{zona}/linea/{cohorte}', 'GraphicsController@internetZona')->name('internetZonaCohorte');
+Route::get('internetHome/{home}/linea/{cohorte}', 'GraphicsController@internetHome')->name('internetHomeCohorte');
+Route::get('condicion/{condicion}/linea/{cohorte}', 'GraphicsController@socialCondicion')->name('condicionSocialCohorte');
+Route::get('discapacidad/{discapacidad}/linea/{cohorte}', 'GraphicsController@discapacidad')->name('discapacidadCohorte');
 
 //RUTA INDEXESTADO ESTUDIANTES
 Route::get('estudiantes/estado', 'perfilEstudianteController@index_Estados')->name('estudiantes.estado');

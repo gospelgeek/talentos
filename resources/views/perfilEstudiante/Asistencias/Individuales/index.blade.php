@@ -169,7 +169,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + parseInt(data.cursos[i].Total)
+                            contador = contador + data.cursos[i].Total
                             
                         }
                         return contador;
@@ -297,7 +297,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + parseInt(data.cursos[i].Total)
+                            contador = contador + data.cursos[i].Total
                             
                         }
                         return contador;
@@ -425,7 +425,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + parseInt(data.cursos[i].Total)
+                            contador = contador + data.cursos[i].Total
                             
                         }
                         return contador;
@@ -463,7 +463,7 @@
 $('#Ecohort').change(function(event){
     //alert(event.target.value);
     if(event.target.value == 1){
- 
+       $('#example1').DataTable().ajax.reload(); 
        document.getElementById("tabla_1").removeAttribute('style', 'display:none');
        document.getElementById("div_1").removeAttribute('style', 'display:none');
        document.getElementById("div_2").removeAttribute('style', 'display:none');
@@ -481,7 +481,7 @@ $('#Ecohort').change(function(event){
  
     }
     if(event.target.value == 2){
- 
+        $('#example2').DataTable().ajax.reload();
        document.getElementById("tabla_2").removeAttribute('style', 'display:none');
        document.getElementById("div_1").removeAttribute('style', 'display:none');
        document.getElementById("div_2").removeAttribute('style', 'display:none');
@@ -495,7 +495,7 @@ $('#Ecohort').change(function(event){
  
     }
     if(event.target.value == 3){
- 
+        $('#example3').DataTable().ajax.reload();
        document.getElementById("tabla_3").removeAttribute('style', 'display:none');
        document.getElementById("div_1").removeAttribute('style', 'display:none');
        document.getElementById("div_2").removeAttribute('style', 'display:none');

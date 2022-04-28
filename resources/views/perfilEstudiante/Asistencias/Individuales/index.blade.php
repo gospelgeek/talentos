@@ -12,17 +12,19 @@
             <div class="col-sm-2">  
                 {!!Form::select('id_cohorte', $cohorte, null,['id'=>'Ecohort','class'=>'form-control','placeholder'=>'Seleccione una Linea', 'display'=>'inline-block'])!!}
             </div>
-            {{--&nbsp;{!!Form::label('desde','desde:')!!}
-            <div class="col-sm-2">
-                {!!Form::date('id_fecha_desde',null,['id'=>'EfechaD','class'=>'form-control','placeholder'=>'Seleccione un mes', 'display'=>'inline-block'])!!}    
+            
+            <div id="div_1" class="col-sm-2" style="display:none">
+                <label for="">Desde</label>
+                <input  type="date" id="from_date" value="">    
             </div>
-            &nbsp;{!!Form::label('hasta','hasta:')!!}
-            <div class="col-sm-2">        
-                {!!Form::date('id_fecha_hasta',null,['id'=>'EfechaH','class'=>'form-control','placeholder'=>'Seleccione un mes', 'display'=>'inline-block'])!!}           
+            
+            <div id="div_2" class="col-sm-2" style="display:none">
+                <label for="">Hasta</label>       
+                <input  type="date" id="to_date" value="">          
             </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger sm-3"type="button" onclick="mostrar_tabla();">Consultar</button>
-            </div> --}}   
+            <div id="div_3" class=" col-sm-3" style="display:none">
+                <button id="Boton_C" class="btn btn-info sm-3" type="button" onclick="reload_tabla();">Consultar</button>
+            </div>  
         </div>
         
         <br>
@@ -89,17 +91,16 @@
 @push('scripts')
 <script type="text/javascript">
 
-function mostrar_tabla() {
-var fecha = $('#EfechaD').val();
-console.log(fecha)
-}
     var table = $("#example1").DataTable({
             
             "ajax":{
 
                 "method":"GET",
                 "url": "{{route('asistencias_linea_1')}}",
-                "dataSrc": 'data'            
+                "data": function(d){
+                        d.from_date = document.getElementById('from_date').value;
+                        d.to_date = document.getElementById('to_date').value;
+                },            
             },
             "columns": [
                 {data: 'name'},
@@ -189,7 +190,7 @@ console.log(fecha)
 
             ],
 
-            "deferRender": true,"responsive": true,"processing": false,
+            "deferRender": true,"responsive": true,"processing": true,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
@@ -209,7 +210,10 @@ console.log(fecha)
 
                 "method":"GET",
                 "url": "{{route('asistencias_linea_2')}}",
-                "dataSrc": 'data'            
+                "data": function(d){
+                        d.from_date = document.getElementById('from_date').value;
+                        d.to_date = document.getElementById('to_date').value;
+                },           
             },
             "columns": [
                 {data: 'name'},
@@ -314,7 +318,7 @@ console.log(fecha)
 
             ],
 
-            "deferRender": true,"responsive": true,"processing": false,
+            "deferRender": true,"responsive": true,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
@@ -334,7 +338,10 @@ console.log(fecha)
 
                 "method":"GET",
                 "url": "{{route('asistencias_linea_3')}}",
-                "dataSrc": 'data'            
+                "data": function(d){
+                        d.from_date = document.getElementById('from_date').value;
+                        d.to_date = document.getElementById('to_date').value;
+                },             
             },
             "columns": [
                 {data: 'name'},
@@ -439,7 +446,7 @@ console.log(fecha)
 
             ],
 
-            "deferRender": true,"responsive": true,"processing": false,
+            "deferRender": true,"responsive": true,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
@@ -452,20 +459,35 @@ console.log(fecha)
                 
             ]
         });
+
 $('#Ecohort').change(function(event){
     //alert(event.target.value);
     if(event.target.value == 1){
  
        document.getElementById("tabla_1").removeAttribute('style', 'display:none');
+       document.getElementById("div_1").removeAttribute('style', 'display:none');
+       document.getElementById("div_2").removeAttribute('style', 'display:none');
+       document.getElementById("div_3").removeAttribute('style', 'display:none');
+       document.getElementById("from_date").value = "";
+       document.getElementById("to_date").value = "";
+
  
     }else{
  
        document.getElementById("tabla_1").setAttribute('style', 'display:none');
+       document.getElementById("div_1").setAttribute('style', 'display:none');
+       document.getElementById("div_2").setAttribute('style', 'display:none');
+       document.getElementById("div_3").setAttribute('style', 'display:none');
  
     }
     if(event.target.value == 2){
  
        document.getElementById("tabla_2").removeAttribute('style', 'display:none');
+       document.getElementById("div_1").removeAttribute('style', 'display:none');
+       document.getElementById("div_2").removeAttribute('style', 'display:none');
+       document.getElementById("div_3").removeAttribute('style', 'display:none');
+       document.getElementById("from_date").value = "";
+       document.getElementById("to_date").value = "";
  
     }else{
  
@@ -475,13 +497,30 @@ $('#Ecohort').change(function(event){
     if(event.target.value == 3){
  
        document.getElementById("tabla_3").removeAttribute('style', 'display:none');
+       document.getElementById("div_1").removeAttribute('style', 'display:none');
+       document.getElementById("div_2").removeAttribute('style', 'display:none');
+       document.getElementById("div_3").removeAttribute('style', 'display:none');
+       document.getElementById("from_date").value = "";
+       document.getElementById("to_date").value = "";
  
     }else{
  
        document.getElementById("tabla_3").setAttribute('style', 'display:none');
  
     }
-});   
+});
+function reload_tabla(){
+    var tabla= $('#Ecohort').val();
+    if(tabla == 1){
+
+        $('#example1').DataTable().ajax.reload();
+    }else if(tabla == 2){
+        $('#example2').DataTable().ajax.reload();
+    }else if(tabla == 3){
+        $('#example3').DataTable().ajax.reload();
+    }
+}
+   
 </script>
 {!!Html::script('/js/asistencias_individuales.js')!!}
 @endpush

@@ -130,25 +130,7 @@ class perfilEstudianteController extends Controller
     public function mostrarMenores()
     {
 
-        $mayoriaedad = DB::select("select student_profile.id, student_profile.*, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
-            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupoid,
-            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,
-            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
-            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
-            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
-            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio
-            FROM student_profile, socioeconomic_data, student_groups, groups
-            WHERE student_profile.id = socioeconomic_data.id_student 
-            
-            AND student_groups.id_student = student_profile.id 
-            AND student_groups.id_group = groups.id
-            AND student_profile.id_document_type = 2
-            AND YEAR(birth_date) = 2004
-            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
-            AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
-            AND student_profile.id_state = 1
-        ");
+        $mayoriaedad = perfilEstudiante::mayoriaEdad();
 
         return datatables()->of($mayoriaedad)->toJson();
     }

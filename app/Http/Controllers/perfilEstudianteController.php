@@ -2391,7 +2391,11 @@ class perfilEstudianteController extends Controller
         }   
     }
     public function asistencias_linea_1(Request $request){
-        if(Storage::disk('local')->exists('asistencias_linea_1.json')) {
+
+        $this->from_date = $request->from_date;
+        $this->to_date = $request->to_date;
+        if(Storage::disk('local')->exists('asistencias_linea_1.json') 
+            && $request->from_date == null && $request->from_date == null) {
             $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
             $estudiantes = collect($asistencias);
                
@@ -2401,7 +2405,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);
@@ -2419,7 +2423,10 @@ class perfilEstudianteController extends Controller
         }      
     }
     public function asistencias_linea_2(Request $request){
-        if(Storage::disk('local')->exists('asistencias_linea_2.json')) {
+        $this->from_date = $request->from_date;
+        $this->to_date = $request->to_date;
+        if(Storage::disk('local')->exists('asistencias_linea_2.json')
+          && $request->from_date == null && $request->from_date == null) {
             $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
             $estudiantes = collect($asistencias);
                
@@ -2429,7 +2436,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);
@@ -2447,7 +2454,10 @@ class perfilEstudianteController extends Controller
         }      
     }
     public function asistencias_linea_3(Request $request){
-        if(Storage::disk('local')->exists('asistencias_linea_3.json')) {
+        $this->from_date = $request->from_date;
+        $this->to_date = $request->to_date;
+        if(Storage::disk('local')->exists('asistencias_linea_3.json')
+          && $request->from_date == null && $request->from_date == null) {
             $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
             $estudiantes = collect($asistencias);
                
@@ -2457,7 +2467,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,'2022-03-01','2022-03-31');
+                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);

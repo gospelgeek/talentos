@@ -4,7 +4,7 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-<!--<div class="col-xs-12 col-md-8">
+<div class="col-xs-12 col-md-8">
     <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
@@ -15,7 +15,7 @@
                         <button type="submit" class="btn btn-danger bg-lg form-group btn-block">Enviar</button>
                       </div>
     </form>
-</div>-->          
+</div>         
                       
 </div>
 
@@ -26,9 +26,9 @@
     <div class="card-body">
         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 5) 
         <div class="btn-group">
-            <div class="col-xs-6 col-md-5 col-sm-3">
+            {{--<div class="col-xs-6 col-md-5 col-sm-3">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>            
-            </div>
+            </div>--}}
             <div class="col-xs-6 col-md-12 col-sm-6">
 
 

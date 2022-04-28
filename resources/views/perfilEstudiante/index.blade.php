@@ -29,7 +29,7 @@
             <div class="col-sm">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>  
                              
-                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_completa_export')}}">EXPORTAR SÁBANA COMPLETA</a> 
+                    <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR SÁBANA COMPLETA</a> 
 
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR SÁBANA SECRETARÍA</a>
             </div>

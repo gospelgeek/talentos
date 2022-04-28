@@ -169,7 +169,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + data.cursos[i].Total
+                            contador = contador + parseInt(data.cursos[i].Total)
                             
                         }
                         return contador;
@@ -297,7 +297,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + data.cursos[i].Total
+                            contador = contador + parseInt(data.cursos[i].Total)
                             
                         }
                         return contador;
@@ -425,7 +425,7 @@
                 {data: null, render:function(data, type, row, meta){
                         var contador=0;
                         for(const i in data.cursos){
-                            contador = contador + data.cursos[i].Total
+                            contador = contador + parseInt(data.cursos[i].Total)
                             
                         }
                         return contador;

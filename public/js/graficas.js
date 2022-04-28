@@ -655,6 +655,8 @@ generales.addEventListener('click', () => {
 })
 
 line1.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(1, lsex, sexolinea1)
     renderEdadPorLineas(1, ledad, edadlinea1)
     renderAnioGraduacion(1, lanioGraduacion, anioGlinea1)
@@ -673,6 +675,8 @@ line1.addEventListener('click', () => {
 })
 
 line2.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(2, lsex, sexolinea2)
     renderEdadPorLineas(2, ledad, edadlinea2)
     renderAnioGraduacion(2, lanioGraduacion, anioGlinea2)
@@ -691,6 +695,8 @@ line2.addEventListener('click', () => {
 })
 
 line3.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(3, lsex, sexolinea3)
     renderEdadPorLineas(3, ledad, edadlinea3)
     renderAnioGraduacion(3, lanioGraduacion, anioGlinea3)

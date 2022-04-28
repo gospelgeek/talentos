@@ -2343,67 +2343,17 @@ class perfilEstudianteController extends Controller
     {
 
 
-        $collection1 = Excel::toArray(new CsvImport, 'codigo.xlsx');
-        //dd($collection);
-        foreach ($collection1 as $var) {
-
+        $collection2 = Excel::toArray(new CsvImport, request()->file('file'));
+        //dd($collection2[0][990]);
+        foreach ($collection2 as $var) {
+            //dd($var);
             foreach ($var as $key => $value) {
                 //var_dump($value);
                 //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
-                $insertar = perfilEstudiante::where('student_code', $value['codigo'])->update(['id_moodle' => $value['id_moodle']]);
+                $insertar = perfilEstudiante::where('id',$value['id'])->update(['id_moodle' => $value['id_moodle']]);
             }
         }
-
-        $collection2 = Excel::toArray(new CsvImport, 'document.xlsx');
-        //dd($collection);
-        foreach ($collection1 as $var) {
-
-            foreach ($var as $key => $value) {
-                //var_dump($value);
-                //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
-                $insertar = perfilEstudiante::where('document_number', $value['document'])->update(['id_moodle' => $value['id_moodle']]);
-            }
-        }
-
-        //dd($request);
-        $collection = Excel::toArray(new CsvImport, request()->file('file'));
-        //dd($collection);
-        foreach ($collection[1] as $var) {
-            //var_dump($var['nombres']);
-            $id_student = perfilEstudiante::where('document_number', $var['no_documento'])->get('id');
-            $consultar_grupo = Group::where('id_cohort', $var['linea'])->where('name', $var['nuevo_grupo'])->get('id');
-            //dd($consultar_grupo);
-            $id_students = 0;
-            foreach ($id_student as $student) {
-                $id_students = $student->id;
-            }
-            //dd($id_students);
-            $id_group = 0;
-            foreach ($consultar_grupo as $id) {
-                $id_group = $id->id;
-            }
-            //dd($id_group);
-            $cambio_grupo = StudentGroup::where('id_student', $id_students)->update(['id_group' => $id_group]);
-            //dd($cambio_grupo);
-        }
-        foreach ($collection[0] as $var) {
-            //var_dump($var['nombres']);
-            $id_student = perfilEstudiante::where('document_number', $var['no_documento'])->get('id');
-            $consultar_grupo = Group::where('id_cohort', $var['linea'])->where('name', $var['nuevo_grupo'])->get('id');
-            //dd($consultar_grupo);
-            $id_students = 0;
-            foreach ($id_student as $student) {
-                $id_students = $student->id;
-            }
-            //dd($id_students);
-            $id_group = 0;
-            foreach ($consultar_grupo as $id) {
-                $id_group = $id->id;
-            }
-            //dd($id_group);
-            $cambio_grupo = StudentGroup::where('id_student', $id_students)->update(['id_group' => $id_group]);
-            //dd($cambio_grupo);
-        }
+        
       
         return redirect('estudiante')->with('success', 'File imported successfully!');
     }

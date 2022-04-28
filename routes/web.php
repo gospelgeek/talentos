@@ -212,4 +212,10 @@ Route::delete('eliminar_registro_sesion/{id}', 'SesionesController@delete')->nam
 Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
 
 
+//RUTAS CONTROLADOR ASISTENCIAS
+
+Route::get('ver_asistencias/{id_moodle}/{id_grupo}', 'AsistenciasController@ver_asistencias')->name('estudiante.ver_asistencias');
+Route::post('cargar_asistencias', 'AsistenciasController@cargar_asistencias')->name('estudiante.cargar_asistencias');
+
+
 

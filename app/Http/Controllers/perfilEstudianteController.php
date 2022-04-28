@@ -2411,8 +2411,12 @@ class perfilEstudianteController extends Controller
             //dd($estudiante);
             });
         //dd($estudiantes);
+            
+            if(Storage::disk('local')->exists('asistencias_linea_1.json')){
+                 
+                return datatables()->of($estudiantes)->toJson();
+            }else{
             $estudiantes = json_encode($estudiantes);
-
             Storage::disk('local')->put('asistencias_linea_1.json', $estudiantes);
 
             $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
@@ -2420,6 +2424,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($asistencias);
                
             return datatables()->of($estudiantes)->toJson();
+            }    
         }      
     }
     public function asistencias_linea_2(Request $request){
@@ -2442,8 +2447,11 @@ class perfilEstudianteController extends Controller
             //dd($estudiante);
             });
         //dd($estudiantes);
+            if(Storage::disk('local')->exists('asistencias_linea_2.json')){
+                 
+                return datatables()->of($estudiantes)->toJson();
+            }else{
             $estudiantes = json_encode($estudiantes);
-
             Storage::disk('local')->put('asistencias_linea_2.json', $estudiantes);
 
             $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
@@ -2451,6 +2459,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($asistencias);
                
             return datatables()->of($estudiantes)->toJson();
+            }
         }      
     }
     public function asistencias_linea_3(Request $request){
@@ -2473,8 +2482,11 @@ class perfilEstudianteController extends Controller
             //dd($estudiante);
             });
         //dd($estudiantes);
+            if(Storage::disk('local')->exists('asistencias_linea_3.json')){
+                
+                return datatables()->of($estudiantes)->toJson();
+            }else{
             $estudiantes = json_encode($estudiantes);
-
             Storage::disk('local')->put('asistencias_linea_3.json', $estudiantes);
 
             $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
@@ -2482,6 +2494,7 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($asistencias);
                
             return datatables()->of($estudiantes)->toJson();
+            }
         }      
     }
         

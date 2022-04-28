@@ -47,6 +47,67 @@ class perfilEstudiante extends Model
     ];
 
     protected $dates = ['delete_at'];
+    
+    public static function estudiantes(){
+
+        $data = DB::select("select student_profile.id as idstudiante, student_profile.*,socioeconomic_data.id as idtabla, socioeconomic_data.id_student as idstudent, socioeconomic_data.id_civil_status as estadocivil, socioeconomic_data.id_ethnicity as etnia, previous_academic_data.institution_name as colegio,
+            YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad,
+            (SELECT document_type.name FROm document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento,
+            (SELECT birth_departaments.name FROM birth_departaments WHERE student_profile.id_birth_department = birth_departaments.id) as departamentoN,
+            (SELECT birth_city.name FROM birth_city WHERE student_profile.id_birth_city = birth_city.id) as ciudadN,
+            (SELECT comune.name FROM comune WHERE student_profile.id_commune = comune.id) as comuna,
+            (SELECT neighborhood.name FROM neighborhood WHERE student_profile.id_neighborhood = neighborhood.id) as barrio,
+            (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as genero,
+            (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as tutor,
+            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado,
+            (SELECT civil_statuses.name FROM civil_statuses WHERE socioeconomic_data.id_civil_status = civil_statuses.id) as nombreEstadocivil,
+            (SELECT ethnicities.name FROM ethnicities WHERE socioeconomic_data.id_ethnicity = ethnicities.id) as nombreEtnia,
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id AND student_groups.deleted_at is null) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, socioeconomic_data, student_groups, groups, previous_academic_data
+            WHERE student_profile.id = socioeconomic_data.id_student 
+            AND student_groups.id_student = student_profile.id
+            AND student_profile.id = previous_academic_data.id_student 
+            AND student_groups.id_group = groups.id
+            AND student_profile.id_state != 3 
+            AND student_profile.id_state != 4
+            AND student_groups.deleted_at is null 
+            
+        ");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+
+    //consulta que trae estudiantes que cumplen lña mayoria deedad durante el proceso
+    public static function mayoriaEdad(){
+
+        $consulta = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.birth_date, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
+            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id AND student_groups.deleted_at is null) as grupoid,
+            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
+            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
+            FROM student_profile, student_groups, groups
+            WHERE student_groups.id_student = student_profile.id 
+            AND student_groups.id_group = groups.id
+            AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
+            AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
+            AND student_profile.id_state = 1
+            AND YEAR(birth_date) = 2004
+            AND student_groups.deleted_at is null
+            
+        ");
+
+        if($consulta != null){
+            return $consulta;
+        }else{
+            return null;
+        }
+
+    }
 
     //RELACIONES UNO A UNO POR DEBAJO
 
@@ -230,7 +291,6 @@ class perfilEstudiante extends Model
 
         return $this->hasMany(StudentDevices::class, 'id_student', 'id');
     }
-
     public static function Estudiantes_cohort_linea1(){
 
         $estudiantes = DB::select("select student_profile.id,student_profile.name,

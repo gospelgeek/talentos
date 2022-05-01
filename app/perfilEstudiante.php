@@ -279,6 +279,17 @@ class perfilEstudiante extends Model
 
         return $this->hasOne(Formalization::class, 'id_student', 'id');
     }
+    
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla AssignmentStudent
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<AssignmentStudent>
+    */
+    public function assignmentstudent(){
+        return $this->hasOne(AssignmentStudent::class, 'id_student', 'id');
+    }
 
     /**
      * Relacion con los  datos que se tiene de student_profile  

@@ -111,9 +111,8 @@ Route::delete('eliminar_usuario/{id}', 'UsuarioController@delete')->name('elimin
 
 //Exportar excel sabana
 Route::get('sabana_export', 'perfilEstudianteController@export')->name('sabana_export');
+Route::get('sabana_completa_export', 'perfilEstudianteController@exportar_completa')->name('sabana_completa_export');
 
-//Rutas filtros
-//Route::get('linea1', 'perfilEstudianteController@primerfiltro')->name('linea1.estudiantes');
 
 //Formalizacion
 

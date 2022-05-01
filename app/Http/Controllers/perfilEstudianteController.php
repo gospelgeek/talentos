@@ -2331,8 +2331,63 @@ class perfilEstudianteController extends Controller
 
         return Excel::download($exportar, "sábana_export.xlsx");   
     }
+    
+    public function exportar_completa(){
 
-   
+         $estudiantes = perfilEstudiante::where('id_state', 1)->select('id', 'photo','college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'url_document_type', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date', 'sex')->get();
+
+         $excel = array();
+
+         $motivo;
+        $dispositivos;
+        
+        $comuna;
+        $tpodcmntotutor;
+        $si;
+
+        foreach($estudiantes as $estudiante){ 
+        $nameDispositivo = ' ';    
+            
+            if($estudiante->withdrawals != null){
+                if ($estudiante->withdrawals->id_reasons != null) {
+                    $motivo = $estudiante->withdrawals->reasons->name;
+                } 
+            }else{
+                    $motivo = null;
+            }
+
+            if($estudiante->neighborhood != null){
+                if ($estudiante->neighborhood->comune != null) {
+                    $comuna = $estudiante->neighborhood->comune->name;
+                } 
+            }else{
+                    $comuna = null;
+            }            
+
+            if($estudiante->studentdevices != null){
+                foreach($estudiante->studentdevices as $dispositivos){
+                    $nameDispositivo .= $dispositivos->devices->name.', ';    
+                }    
+            }else{
+                $nameDispositivo = null;
+            }    
+            
+            if ($estudiante->tutor != null) {
+                if ($estudiante->tutor->documenttype != null) {
+                    $tpodcmntotutor = $estudiante->tutor->documenttype->name;                    
+                }else{
+                    $tpodcmntotutor = null;
+                }
+            }
+
+            $excel[] = array('id' => $estudiante->id,'cohorte' => $estudiante->studentGroup ? $estudiante->studentGroup->group->cohort->name : null, 'grupo' =>$estudiante->studentGroup ? $estudiante->studentGroup->group->name : null, 'universiad' => $estudiante->college, 'fecha registro' => $estudiante->registration_date, 'usuario' => $estudiante->email, 'nombres' => $estudiante->name, 'apellidos' => $estudiante->lastname, 'photo' => $estudiante->photo, 'tipo documento' => $estudiante->documenttype ? $estudiante->documenttype->name : null, 'numero documento' => $estudiante->document_number, 'urldocumento' => $estudiante->url_document_type, 'fecha expedicion' => $estudiante->document_expedition_date, 'fecha nacimineto' => $estudiante->birth_date, 'edad' => Carbon::parse($estudiante->birth_date)->age, 'sexo' => $estudiante->sex, 'genero' => $estudiante->gender ? $estudiante->gender->name : null, 'codigo estudiante' => $estudiante->student_code, 'asignacion nombres' => $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->name : null, 'asignacion apellidos' => $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null, 'fijo' => $estudiante->landline, 'celular ' => $estudiante->cellphone,'celular 2' => $estudiante->phone, 'departamento nacimiento' => $estudiante->birthcity ? $estudiante->birthcity->birthdepartament->name : null, 'ciudad nacimiento' => $estudiante->birthcity ? $estudiante->birthcity->name : null, 'direccion' => $estudiante->direction, 'comuna' => $comuna, 'barrio' => $estudiante->neighborhood ? $estudiante->neighborhood->name : null, 'zona rural' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->rural_zone : null, 'estrato' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->stratum : null, 'ocupacion' => $estudiante->socioeconomicdata->occupation ? $estudiante->socioeconomicdata->occupation->name : null, 'estado civil' => $estudiante->socioeconomicdata->civilstatus ? $estudiante->socioeconomicdata->civilstatus->name : null, 'numero hijos' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->children_number : null, 'tiempo residencia' => $estudiante->socioeconomicdata->recidencetime ? $estudiante->socioeconomicdata->recidencetime->name : null, 'tipo vivienda' => $estudiante->socioeconomicdata->housingtype ? $estudiante->socioeconomicdata->housingtype->name : null, 'regimen salud' => $estudiante->socioeconomicdata->healthregime ? $estudiante->socioeconomicdata->healthregime->name : null, 'url regimen salud' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->url_health_regime  : null, 'categoria sisben' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->sisben_category : null, 'url categoria sisben' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->url_sisben_category : null, 'eps' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->eps_name  : null, 'beneficios' => $estudiante->socioeconomicdata->benefits ? $estudiante->socioeconomicdata->benefits->name : null, 'personas hogar' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->household_people : null, 'posicion economica' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->economic_possition : null, 'personas dependientes' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->dependent_people : null, 'internet zona' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->internet_zon : null, 'internet hogar' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->internet_home : null, 'dispositivos' => $nameDispositivo, 'sexo documento' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->sex_document_identidad : null, 'lgbtiq+' => $estudiante->gender ? $estudiante->gender->name : null, 'condicion social' => $estudiante->socioeconomicdata->socialconditions ? $estudiante->socioeconomicdata->socialconditions->name : null, 'url condicion social' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->url_social_conditions : null, 'discapacidad' => $estudiante->socioeconomicdata->disability ? $estudiante->socioeconomicdata->disability->name : null, 'etnia' => $estudiante->socioeconomicdata->ethnicity ? $estudiante->socioeconomicdata->ethnicity->name : null, 'url etnia' => $estudiante->socioeconomicdata ? $estudiante->socioeconomicdata->url_ethnicity : null, 'tipo institucion' => $estudiante->previousacademicdata->institutiontype ? $estudiante->previousacademicdata->institutiontype->name : null, 'nombre institucion' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->institution_name : null, 'año graduacion' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->year_graduation : null, 'titulo bachiller' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->bachelor_title : null, 'url soporte academico' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->url_academic_support : null, 'fecha icfes' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->icfes_date : null, 'registro snp' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->snp_register : null, 'puntaje icfes' => $estudiante->previousacademicdata ? $estudiante->previousacademicdata->icfes_score : null, 'nombre tutor' => $estudiante->tutor ? $estudiante->tutor->name : null, 'apellidos tutor' => $estudiante->tutor ? $estudiante->tutor->lastname : null, 'correo tutor' => $estudiante->tutor ? $estudiante->tutor->email : null, 'tipo documento tutor' => $tpodcmntotutor, 'numero documento tutor' => $estudiante->tutor ? $estudiante->tutor->document_number : null, 'fecha nacimiento tutor' => $estudiante->tutor ? $estudiante->tutor->birth_date : null, 'celular tutor' => $estudiante->tutor ? $estudiante->tutor->cellphone : null, 'ocupacion tutor' => $estudiante->tutor ? $estudiante->tutor->occupation : null, 'p1(icfes)' => $estudiante->admissionScores ? $estudiante->admissionScores->icfes_score_p1 : null, 'p2 vulnerabilidad' => $estudiante->admissionScores ? $estudiante->admissionScores->vulnerability : null, 'formula' => $estudiante->admissionScores ? $estudiante->admissionScores->formula : null, 'zonaRural' => $estudiante->admissionScores ? $estudiante->admissionScores->rural_zone : null, 'mujer' => $estudiante->admissionScores ? $estudiante->admissionScores->woman : null, 'Lqtbiq+' => $estudiante->admissionScores ? $estudiante->admissionScores->lgtbiq : null, 'Discapacidad' => $estudiante->admissionScores ? $estudiante->admissionScores->disability : null, 'victima' => $estudiante->admissionScores ? $estudiante->admissionScores->victim_conflict : null, 'reintegracion' => $estudiante->admissionScores ? $estudiante->admissionScores->social_reintegration : null, 'estrato 1 y 2' => $estudiante->admissionScores ? $estudiante->admissionScores->strata_1_2 : null, 'sisben a b c' => $estudiante->admissionScores ? $estudiante->admissionScores->sisben_a_b_c : null, 'afrodescendiente' => $estudiante->admissionScores ? $estudiante->admissionScores->afro : null, 'indigena' => $estudiante->admissionScores ? $estudiante->admissionScores->indigenous : null, 'motivo-retiro' => $motivo
+            );
+        }
+         
+        $exportar = new SabanaExportCompleta([$excel]);
+
+        return Excel::download($exportar, "sábana_completa.xlsx");  
+    }
 
     public function excel(Request $request)
     {

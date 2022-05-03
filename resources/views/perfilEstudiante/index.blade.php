@@ -48,8 +48,10 @@
             </div>
         </div>
         <div class="btn-group">
-            <div class="inactivos_student">
-                <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos"></center>  
+            <div class="inactivos_activos_student">                  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;
+                <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">
             </div>
         </div>
         
@@ -175,14 +177,15 @@
         document.getElementById('linea_1').checked = true;
         document.getElementById('linea_2').checked = true;
         document.getElementById('linea_3').checked = true;
-        
+        document.getElementById('activos').checked = true;
+        document.getElementById('inactivos').checked = true;
 
         $('.filtroCohortes').on('change', function() {
            
             var checkLinea1 = $('#linea_1').is(":checked");
             var checkLinea2 = $('#linea_2').is(":checked");
             var checkLinea3 = $('#linea_3').is(":checked");
-
+            
 
             if (!checkLinea1) {
                     if(checkLinea2 && checkLinea3){
@@ -246,23 +249,37 @@
 
         });
 
-        $('.inactivos_student').on('change', function() {
-            //alert('checkLinea1');
-            var inctvs = $('#inactivos').is(":checked");
+        //filtro activos e inactivos
+         $('.inactivos_activos_student').on('change', function() {
+            
+            var actvos = $('#activos').is(":checked");
+            var inctvos = $('#inactivos').is(":checked");
 
-            if(inctvs){
+            if(actvos){
+                
+                //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
+                var filtro = $('input:checkbox[id="activos"]').map(function() {
+                    return this.value;
+                }).get().join('|');
+                table.column(21).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                //
+
+            }
+            if(inctvos){
+                
+
                 //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
                 var filtro = $('input:checkbox[id="inactivos"]').map(function() {
                     return this.value;
                 }).get().join('|');
                 table.column(21).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                 //
+                
             }
-
-            if(!inctvs){
+            if (actvos && inctvos) {
                 //filtro por columna con varios valores segun el name de los checbox y su valor correspondiente
                 var offices = $('input:checkbox[name="filtro"]:checked').map(function() {
-                    return this.value;
+                return this.value;
                 }).get().join('|');
                 table.column(21).search(offices, true, false, false).draw(false);
                 //

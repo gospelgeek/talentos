@@ -44,14 +44,16 @@
         </div>
         <div class="btn-group">
             <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 2</label>&nbsp;<input type="checkbox" name="check" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">
             </div>
         </div>
         <div class="btn-group">
-            <div class="inactivos_student">
-                <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos"></center>  
+            <div class="inactivos_activos_student">                  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;
+                <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">
             </div>
         </div>
         
@@ -80,29 +82,13 @@
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
-                <td>Tipo Documento</td>
-                <td>Fecha expedicion documento</td>
                 <td>Nº Documento</td>
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
-                <td id="group">Grupo</td>
                 <td>Cohorte</td>
-                <td>Fecha nacimiento</td>
-                <td>Edad</td>
-                <td>Dpto. Nacimiento</td>
-                <td>Ciudad Nacimiento</td>
-                <td>Sexo</td>
-                <td>Genero</td>
-                <td>Direcion</td>
-                <td>Comuna</td>
-                <td>Barrio</td>
-                <td>Tel. Alternativo</td>
-                <td>Tutor</td>
+                <td>Grupo</td>
                 <td>Estado</td>
-                <td>Estado Civil</td>
-                <td>Etnia</td>
-                <td>Institucion</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
         </thead>       
@@ -133,30 +119,13 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
-                {data: 'tipodocumento', visible: false},
-                {data: 'document_expedition_date', visible: false},
                 {data: 'document_number'},
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
                 {data: 'namegrupo'},
                 {data: 'cohorte'},
-                {data: 'birth_date', visible: false},
-                {data: 'edad', visible: false},
-                {data: 'departamentoN', visible: false},
-                {data: 'ciudadN', visible: false},
-                {data: 'sex', visible: false},
-                {data: 'genero', visible: false},
-                {data: 'direction', visible: false},
-                {data: 'comuna', visible:false},
-                {data: 'barrio', visible: false},
-                {data: 'phone', visible: false},
-                {data: 'tutor', visible: false},
                 {data: 'estado', visible: false},
-                {data: 'nombreEstadocivil', visible: false},
-                {data: 'nombreEtnia', visible: false},
-                {data: 'colegio', visible: false},
-
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -200,12 +169,11 @@
         document.getElementById('linea_2').checked = true;
         document.getElementById('linea_3').checked = true;
 
-        $('.filtroCohortes').on('change', function() {
+       $('.filtroCohortes').on('change', function() {
            
             var checkLinea1 = $('#linea_1').is(":checked");
             var checkLinea2 = $('#linea_2').is(":checked");
             var checkLinea3 = $('#linea_3').is(":checked");
-
 
             if (!checkLinea1) {
                     if(checkLinea2 && checkLinea3){
@@ -213,80 +181,86 @@
                         var filtro = $('input:checkbox[id="linea_1"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                         //
                     }else if (checkLinea2) {
                         //filtros basicos por columna con un solo valor
-                        table.columns(9).search('LINEA 2'); 
+                        table.columns(7).search('LINEA 2'); 
                         //       
                     }else if (checkLinea3) {
-                        table.columns(9).search('LINEA 3');
+                        table.columns(7).search('LINEA 3');
                     }
                     table.draw();
                         
                 }
-
                 if(!checkLinea2){
                     if(checkLinea1 && checkLinea3){
                         var filtro = $('input:checkbox[id="linea_2"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(9).search('LINEA 1');
+                        table.columns(7).search('LINEA 1');
                     }else if(checkLinea3){
-                        table.columns(9).search('LINEA 3');
+                        table.columns(7).search('LINEA 3');
                     }
                     table.draw();
                 }
-
-
                 if(!checkLinea3){
                     if(checkLinea1 && checkLinea2){
                         var filtro = $('input:checkbox[id="linea_3"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(9).search('LINEA 1');
+                        table.columns(7).search('LINEA 1');
                     }else if(checkLinea2){
-                        table.columns(9).search('LINEA 2');
+                        table.columns(7).search('LINEA 2');
                     }
                     table.draw();
                 }
-
                 if (checkLinea1 && checkLinea2 && checkLinea3) {
                     //filtro por columna con varios valores segun el name de los checbox y su valor correspondiente
                     var offices = $('input:checkbox[name="check"]:checked').map(function() {
                         return this.value;
                     }).get().join('|');
-                    table.column(9).search(offices, true, false, false).draw(false);
+                    table.column(7).search(offices, true, false, false).draw(false);
                     //
                 }
-                    
-                
-                            
-
         });
-        $('.inactivos_student').on('change', function() {
-            //alert('checkLinea1');
-            var inctvs = $('#inactivos').is(":checked");
+        //filtro activos e inactivos
+         $('.inactivos_activos_student').on('change', function() {
+            
+            var actvos = $('#activos').is(":checked");
+            var inctvos = $('#inactivos').is(":checked");
 
-            if(inctvs){
+            if(actvos){
+                
+                //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
+                var filtro = $('input:checkbox[id="activos"]').map(function() {
+                    return this.value;
+                }).get().join('|');
+                table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                //
+
+            }
+            if(inctvos){
+                
+
                 //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
                 var filtro = $('input:checkbox[id="inactivos"]').map(function() {
                     return this.value;
                 }).get().join('|');
-                table.column(21).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                 //
+                
             }
-
-            if(!inctvs){
+            if (actvos && inctvos) {
                 //filtro por columna con varios valores segun el name de los checbox y su valor correspondiente
                 var offices = $('input:checkbox[name="filtro"]:checked').map(function() {
-                    return this.value;
+                return this.value;
                 }).get().join('|');
-                table.column(21).search(offices, true, false, false).draw(false);
+                table.column(8).search(offices, true, false, false).draw(false);
                 //
             }
         });

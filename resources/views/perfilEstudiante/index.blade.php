@@ -49,7 +49,7 @@
         </div>
         <div class="btn-group">
             <div class="inactivos_activos_student">                  
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;
                 <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">
             </div>

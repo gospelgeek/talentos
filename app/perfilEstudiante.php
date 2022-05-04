@@ -49,7 +49,7 @@ class perfilEstudiante extends Model
     protected $dates = ['delete_at'];
     
     public static function estudiantes(){
-        $data = DB::select("select student_profile.id, select student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, 
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, 
             (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id AND student_groups.deleted_at is null) as grupoid,
             (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
             (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,

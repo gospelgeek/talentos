@@ -101,7 +101,7 @@
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
-                {data: 'namegrupo'},
+                {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'estado', visible: false},
                 {data: null, render:function(data, type, row, meta){

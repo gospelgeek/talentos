@@ -80,7 +80,7 @@
                 {data: 'name'},
                 {data: 'lastname'},
                 {data: 'document_number'},
-                {data: 'namegrupo'},
+                {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'acceptance_v1', render:function(data, type, row, meta){
 

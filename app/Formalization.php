@@ -22,16 +22,18 @@ class Formalization extends Model
     
     public static function formalizacion(){
 
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,
-        (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-        (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) as cohorte,
-        formalizations.id_student,formalizations.acceptance_v1, formalizations.acceptance_v2, formalizations.tablets_v1, formalizations.tablets_v2, formalizations.serial_tablet 
-        FROM student_profile, formalizations, groups, student_groups
-        WHERE student_profile.id = student_groups.id_student
-        AND student_groups.id_group = groups.id
-        AND student_profile.id = formalizations.id_student
-        AND student_profile.id_state = 1
-        AND student_groups.deleted_at is null");
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,  
+            student_groups.id_group as groupid, groups.name as grupo, cohorts.name as cohorte,
+            formalizations.acceptance_v1 as acceptance_v1, formalizations.acceptance_v2 as acceptance_v2, 
+            formalizations.tablets_v1 as tablets_v1, formalizations.tablets_v2 as tablets_v2,
+            formalizations.serial_tablet as serial_tablet 
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN formalizations ON formalizations.id_student = student_profile.id 
+            WHERE student_groups.deleted_at is null
+            AND student_profile.id_state = 1");
 
         if($data != null){
             return $data;

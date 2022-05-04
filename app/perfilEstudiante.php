@@ -49,18 +49,15 @@ class perfilEstudiante extends Model
     protected $dates = ['delete_at'];
     
     public static function estudiantes(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, 
-            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id AND student_groups.deleted_at is null) as grupoid,
-            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte,
-            (SELECT conditions.name FROM conditions WHERE conditions.id = student_profile.id_state) as estado
-            FROM student_profile, student_groups, groups, conditions
-            WHERE student_groups.id_student = student_profile.id
-            AND student_groups.id_group = groups.id
-            AND student_profile.id_state = conditions.id
+        $data = DB::select("select student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state
+            WHERE student_groups.deleted_at IS null
             AND student_profile.id_state != 3 
-            AND student_profile.id_state != 4
-            AND student_groups.deleted_at is null");
+            AND student_profile.id_state != 4");
 
         if($data != null){
             return $data;

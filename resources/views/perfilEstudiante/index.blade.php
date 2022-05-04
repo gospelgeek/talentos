@@ -168,7 +168,9 @@
         document.getElementById('linea_1').checked = true;
         document.getElementById('linea_2').checked = true;
         document.getElementById('linea_3').checked = true;
-
+        document.getElementById('activos').checked = true;
+        document.getElementById('inactivos').checked = true;
+        
        $('.filtroCohortes').on('change', function() {
            
             var checkLinea1 = $('#linea_1').is(":checked");

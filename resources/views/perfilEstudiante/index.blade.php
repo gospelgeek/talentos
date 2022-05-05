@@ -4,7 +4,7 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-{{--<div class="col-xs-12 col-md-8">
+<div class="col-xs-12 col-md-8">
     <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
@@ -17,7 +17,7 @@
     </form>
 </div>         
                       
-</div>--}}
+</div>
 
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    

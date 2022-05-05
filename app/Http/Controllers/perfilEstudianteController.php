@@ -2398,7 +2398,6 @@ class perfilEstudianteController extends Controller
     public function excel(Request $request)
     {
 
-
         $collection2 = Excel::toArray(new CsvImport, request()->file('file'));
         //dd($collection2[0][990]);
         foreach ($collection2 as $var) {
@@ -2406,7 +2405,7 @@ class perfilEstudianteController extends Controller
             foreach ($var as $key => $value) {
                 //var_dump($value);
                 //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
-                $insertar = perfilEstudiante::where('id',$value['id'])->update(['id_moodle' => $value['id_moodle']]);
+                $insertar = perfilEstudiante::where('document_number',$value['documento'])->where('id','>=',3100)->update(['id_moodle' => $value['id_moodle']]);
             }
         }
         

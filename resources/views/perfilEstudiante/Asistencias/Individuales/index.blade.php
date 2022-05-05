@@ -56,9 +56,13 @@
                 <td>Grupo</td>
                 <td>BIOLOGIA</td>
                 <td>CONSTITUCION</td>
+                <td>FISICA</td>
+                <td>GEOGRAFIA</td>
+                <td>HISTORIA</td>
                 <td>INGLES</td>
                 <td>LECTURA CRITICA</td>
                 <td>MATEMATICAS</td>
+                <td>QUIMICA</td>
                 <td>TOTAL</td>
                 <td >ACCIONES</td>
             </tr>
@@ -73,6 +77,7 @@
                 <td>Apellidos</td>
                 <td>Nº documento</td>
                 <td>Grupo</td>
+                <td>BIOLOGIA</td>
                 <td>CONSTITUCION</td>
                 <td>INGLES</td>
                 <td>LECTURA CRITICA</td>
@@ -254,6 +259,51 @@
                         if(data.cursos == null){
                             return 0;
                         }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
                         var cero = 0; 
                         for(const i in data.cursos){
                             if( data.cursos[i].fullname.split(" ", 2)[0] == "INGLES"){
@@ -289,6 +339,21 @@
                             if( data.cursos[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
                                 cero = data.cursos[i].Total;
                             }    
+                        }
+                        return cero;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
                         }
                         return cero;
                         }
@@ -348,6 +413,21 @@
                 {data: 'lastname'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
+                {data: null, render:function(data, type, row, meta){
+                        if(data.cursos == null){
+                            return 0;
+                        }else{
+                        var cero = 0;
+                        for(const i in data.cursos){
+                            if( data.cursos[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                //console.log(data.cursos[i].Total);
+                                cero = data.cursos[i].Total;
+                            }      
+                        }
+                        return cero;
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos == null){
                             return 0;

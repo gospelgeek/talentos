@@ -20,10 +20,11 @@
         td,
         th {
             border-bottom: 1px solid black;
+            font-size: 8.2;
         }
 
         img {
-            height: 140px;
+            height: 100px;
             width: 300px;
         }
     </style>
@@ -40,7 +41,7 @@
 
     <main>
         <div style="text-align: center;">
-            <h4><strong>LISTADO DE ESTUDIANTES GRUPO 1 DE LINEA {{$cohorte}}</strong> </h4>
+            <h2><strong>LISTADO DE ESTUDIANTES GRUPO 1 DE LINEA {{$cohorte}}</strong> </h2>
         </div>
         <table style="border: 1px solid black;">
             <thead>

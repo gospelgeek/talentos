@@ -37,6 +37,7 @@ class SocioeconomicData extends Model
         'id_disability',
         'id_ethnicity',
         'url_ethnicity',
+        'eps_name',
     ];
 
     /**

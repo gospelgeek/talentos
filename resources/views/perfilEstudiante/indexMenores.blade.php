@@ -77,7 +77,7 @@
                 {data: 'lastname'},
                 {data: 'document_number'},
                 {data: 'student_code'},
-                {data: 'namegrupo'},
+                {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'birth_date'},
                 {data: 'edad'},

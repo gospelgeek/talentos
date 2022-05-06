@@ -585,7 +585,16 @@
 							</div>
 						</div>                	
             		</div>
-            			
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="id_disability">Nombre EPS</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="eps_name" id="eps_name" value="{{ old('eps_name', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->eps_name : null) }}">
+							</div>
+						</div>                	
+            		</div>	
             	</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)

@@ -69,20 +69,17 @@ class perfilEstudiante extends Model
      //consulta que trae estudiantes que cumplen lña mayoria deedad durante el proceso
     public static function mayoriaEdad(){
 
-        $consulta = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.birth_date, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad, 
-            (SELECT student_groups.id_group FROM student_groups WHERE student_groups.id_student = student_profile.id AND student_groups.deleted_at is null) as grupoid,
-            (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-            (SELECT cohorts.name FROM cohorts WHERE groups.id_cohort = cohorts.id) as cohorte
-            FROM student_profile, student_groups, groups
-            WHERE student_groups.id_student = student_profile.id 
-            AND student_groups.id_group = groups.id
+        $consulta = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.birth_date, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) as edad
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort    
+            WHERE student_groups.deleted_at IS null
             AND MONTH(birth_date) BETWEEN 02 AND MONTH(NOW())
             AND YEAR(CURDATE())-YEAR(student_profile.birth_date) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(student_profile.birth_date,'%m-%d'), 0 , -1 ) = 18
             AND student_profile.id_state = 1
             AND YEAR(birth_date) = 2004
-            AND student_groups.deleted_at is null
-            
-        ");
+            ");
 
         if($consulta != null){
             return $consulta;

@@ -347,6 +347,7 @@ class perfilEstudianteController extends Controller
             $socio->id_social_conditions    = $request['id_social_conditions'];
             $socio->id_disability           = $request['id_disability'];
             $socio->id_ethnicity            = $request['id_ethnicity'];
+            $socio->eps_name                = $request['eps_name'];
 
             $socio->save();
 
@@ -433,6 +434,10 @@ class perfilEstudianteController extends Controller
             if($socioOld->id_ethnicity != $socio->id_ethnicity){
                 $old[] = array('etnia' => $socioOld->id_ethnicity);
                 $new[] = array('etnia' => $socio->id_ethnicity);
+            }
+            if($socioOld->eps_name != $socio->eps_name){
+                $old[] = array('eps' => $socioOld->eps_name);
+                $new[] = array('eps' => $socio->eps_name);
             }
 
             $guardarOld = json_encode($old);

@@ -97,6 +97,10 @@
                       {!!Form::label('id_benefits','Beneficios: ')!!}
                       {!!Form::select('beneficiosD',$beneficios, $verDatosPerfil->socioeconomicdata->benefits ? $verDatosPerfil->socioeconomicdata->benefits->id : null,['id'=>'beneficiosD', 'class'=>'form-control','placeholder'=>'Beneficios'])!!}   
                       </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('eps_name','Nombre EPS: ')!!}
+                      {!!Form::text('eps_name', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->eps_name : null,['id'=>'eps', 'class'=>'form-control','placeholder'=>'Nombre EPS'])!!}   
+                      </div>
                   </div>
               </div>
           </div>

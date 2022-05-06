@@ -224,6 +224,7 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
       'id_social_conditions': $("#socialC").val(),
       'id_disability': $("#discapacidadS").val(),
       'id_ethnicity': $("#etnia").val(),
+      'eps_name': $("#eps").val(),  
     },
     success:function(result) {
       $('#modal_actualizar').modal('hide');
@@ -273,6 +274,7 @@ $('.boton_update_socioeconomicos').click(function(e) {
       'id_social_conditions': $("#idsocialconditions").val(),
       'id_disability': $("#iddisability").val(),
       'id_ethnicity': $("#idethnicity").val(),
+      'eps_name': $("#epS").val(),
     },
     success:function(result) {
       $('#contenido-3').modal('hide');

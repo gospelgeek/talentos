@@ -2667,7 +2667,8 @@ class perfilEstudianteController extends Controller
         return datatables()->of($verDatosPerfil)->toJson();
     }
 
-    public function excel_asistencias(){
+    public function excel_asistencias(Request $request){
+        //dd($request->from_date);
         $asistencias = json_decode(Storage::get('asistencias.json'));
         $sesiones    = json_decode(Storage::get('students.json'));
         //dd($sesiones);
@@ -2677,41 +2678,84 @@ class perfilEstudianteController extends Controller
             //dd($info);
             foreach($info->courses as $course){
                 foreach($course->attendance->fullsessionslog as $asistieron){
-                    //dump($asistieron->sessionid);
-                    $asistio[] = array('id_sesion'=>$asistieron->sessionid);
-                    
+                    //dd($asistieron);
+                    $sessdate = new Carbon();
+                    $sessdate->setTimestamp($asistieron->timestamp);
+                    $from_date = new Carbon($request->from_date);
+                    $to_date = new Carbon($request->to_date);
+                    $to_date = $to_date->addDay();
+                    //dd($from_date,$to_date);
+                    if($sessdate >= $from_date && $sessdate < $to_date && ($asistieron->statusacronym == "P" ||$asistieron->statusacronym == "R")){
+                        $asistio[] = array('id_sesion'=>$asistieron->sessionid);
+                    }                                   
                 }
             }
-
         }
-
+        //dd($asistio);
         $collection;
         foreach($sesiones as $key => $sesion){
             $date = new Carbon();
             $contador = 0;
+            $contador2 = 0;
+            $total2 =0;
             $total=0;
-            $prom=0;
+            $prom_virtual=0;
+            $prom_presencial=0;
+            $prom_total=0;
+            //dd($sesion);
             foreach($sesion->sessions as $session){
                 //dd($session);
-                $horas = $session->duration/60;
-                $date = Carbon::now()->subMinutes($horas);
+                //$horas = $session->duration/60;
+                //$date = Carbon::now();
                 $date2 = new Carbon($session->sessdate);
-                //dd($date);
-                if($date >= $date2){
+                $from_date = new Carbon($request->from_date);
+                $to_date = new Carbon($request->to_date);
+                $to_date = $to_date->addDay();
+                //dd($date2);
+                if($date2 >= $from_date && $date2 < $to_date && $date2->isoFormat('dddd') == "Saturday"){
+                    //dd($session->sessdate);
+                    $total2 = $total2 + $this->contar_valores($asistio,$session->id);
+                    $contador2++;
+                }
+                if($date2 >= $from_date && $date2 < $to_date && $date2->isoFormat('dddd') != "Saturday"){
+                    //dd($session->sessdate);
                     $total = $total + $this->contar_valores($asistio,$session->id);
                     $contador++;
-                }
-                
+                }   
+            }
+
+            if($contador != 0 || $contador2 != 0){
+                 $prom_total = ($total+$total2)/($contador+$contador2);
             }
             if($contador != 0){
-                 $prom = $total/$contador;
+                $prom_virtual = $total/$contador;
             }
-           
-            $collection[$key] = array('courseid'=>$sesion->courseid,'shortname'=>$sesion->shortname,'total-sesiones'=>$contador,'total-asistencias'=>$total,'Promedio-asistencias'=>intval($prom));
+            if($contador2 != 0){
+                $prom_presencial = $total2/$contador2;
+            }
+            $curso = explode("-",$sesion->shortname);
+            if($curso[4] == "A0"){
+                $curso[4] = "LINEA 1";
+            }else if($curso[4] == "TE"){
+                $curso[4] = "LINEA 2";
+            }else if($curso[4] == "TS"){
+                $curso[4] = "LINEA 3";
+            }
+            $url="https://campusvirtual.univalle.edu.co/moodle/mod/attendance/manage.php?id=".$sesion->instanceid."&view=5";
+            //dd($url);
+            $collection[$key] = array('asignatura'=>$curso[1],
+                                      'grupo'=>$curso[2],
+                                      'linea'=>$curso[4],
+                                      'url'  =>$url,
+                                      'sesiones_virtuales'=>$contador,
+                                      'prom_virtuales'=>intval($prom_virtual),
+                                      'sesiones_presenciales' =>$contador2,
+                                      'prom_presenciales'=>intval($prom_presencial),
+                                      'total_sesiones'   =>$contador2+$contador,
+                                      'Promedio-asistencias'=>intval($prom_total));
         }
 
         $export = new ReporteExport([$collection]);
-        
         $fechaexcel = Carbon::now();
 
         $fechaexcel = $fechaexcel->format('d-m-Y');

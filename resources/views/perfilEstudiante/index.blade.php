@@ -26,9 +26,7 @@
     <div class="card-body">
         @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 5) 
         <div class="btn-group">
-            <div class="col-xs-6 col-md-12 col-sm-6">
-                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('crear_estudiante')}}">Crear Perfil</a>
-            </div>
+            {!!link_to('#',$title = 'NUEVO REGISTRO', $attributes = ['class'=>'btn btn-primary btn-sm mt-3 mb-3 float-left abrir_modal_estudiante'],$secure = null)!!}
         </div>
         <div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
@@ -82,9 +80,9 @@
     </div>
     </div>
 </div>
-
+@include('perfilEstudiante.modal.createStudent')
 @push('scripts')
-
+{!!Html::script('/js/dep-mun.js')!
     <!-- Page specific script -->
 <script>
 

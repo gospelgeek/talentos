@@ -199,7 +199,10 @@ Route::get('datos.sessiones', 'SesionesController@datos')->name('datos.sessiones
 Route::get('editar_registro_sesion/{id}', 'SesionesController@edit')->name('editar_registro_sesion');
 Route::put('actualizar_registro_sesion/{id}', 'SesionesController@update')->name('actualizar_registro_sesion');
 Route::delete('eliminar_registro_sesion/{id}', 'SesionesController@delete')->name('eliminar_registro_sesion');
-
+//traer grupos filtro index sesiones
+Route::get('grupos_to_filter/{id}', 'SesionesController@grupos_filter')->name('grupos_to_filter');
+//traer asignaturas filtro index sesiones
+Route::get('asignaturas_to_filter/{id}', 'SesionesController@asignaturas_filter')->name('asignaturas_to_filter');
 
 
 

@@ -28,13 +28,10 @@ class perfilEstudianteRequest extends FormRequest
             'lastname'                   => 'required|min:4|max:60',
             'id_document_type'           => 'required',
             'document_number'            => 'required|integer', 
-            'birth_date'                 => 'required',
-            'id_birth_city'              => 'required',  
             'sex'                        => 'required',
-            'direction'                  => 'required',
             'email'                      => 'required|email',
-            'cellphone'                  => 'required|integer',
-            'phone'                      => 'required|integer',
+            'linea'                      => 'required',
+            'id_group'                   => 'required',
         ];
     }
 }

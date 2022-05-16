@@ -14,6 +14,7 @@ use App\SocioeconomicData;
 use App\PreviousAcademicData;
 use App\LogsCrudActions;
 use App\User;
+use App\Comune;
 use App\Gender;
 use App\DocumentType;
 use App\BirthDepartament;

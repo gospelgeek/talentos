@@ -18,7 +18,7 @@
 			<br>
 			<div class="btn-group">
 				<div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                	{!!Form::label('cohorte','Linea: ')!!}
+                	{!!Form::label('cohorte','Línea: ')!!}
        	        	{!!Form::select('cohorte', $cohorte, null,['id'=>'cohorTe','class'=>	'form-control','required', 'placeholder'=>'Seleccione una opción'])!!}
             	</div>
            	</div>

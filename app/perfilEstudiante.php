@@ -30,11 +30,13 @@ class perfilEstudiante extends Model
         'email',
         'birth_date',
         'id_birth_city',
+        'id_birth_department',
         'sex',
         'id_gender',
         'landline',
         'cellphone',
         'phone',
+        'id_commune',
         'id_neighborhood',
         'student_code',
         'college',
@@ -43,6 +45,7 @@ class perfilEstudiante extends Model
         'id_group',
         'id_cohort',
         'id_tutor',
+        'id_moodle',
         'id_state',
     ];
 

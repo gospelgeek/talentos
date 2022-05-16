@@ -158,19 +158,8 @@ $('.boton_almacenar_sesion').click(function(e) {
         $("#idsesion").val(sesiones.id);  
         $('#cohorT_e').val(sesiones.name_linea);
         $('#asigto_Sesion').val(sesiones.name_curso);
-        
-    
-      
-        
-
-    
-      
         $('#grupoto_Sesion').val(sesiones.name_grupo); 
         $("#dateSesion").val(sesiones.fecha);
-
-
-
-        
         $('#modal_editar_sesion').modal('show');
 
        });
@@ -179,7 +168,7 @@ $('.boton_almacenar_sesion').click(function(e) {
     
   }
 
-  //actualizar registro sesion
+//actualizar registro sesion
 $('.actualizar_registro_sesion').click(function(e) { 
   e.preventDefault();
   var idregistro = $('#idsesion').val();
@@ -255,3 +244,46 @@ $('.cerrar_modal_sesion').click(function(e) {
 
   $('#modal_alerta_sesion').modal('hide');
 });
+
+
+//filtro grupos vista sesiones
+$(document).on('change', '#cohorTe', function(event) {
+      
+      var linea_select = document.getElementById('cohorTe').value;
+      
+      $.get("/grupos_to_filter/"+linea_select+"", function(response, grupos)
+      {
+
+        var div = document.getElementById('grupotoFilter');
+        div.removeAttribute('disabled');
+        $('#grupotoFilter').html('<option value="" selected="true"> Seleccione una opción</option>');
+            response.forEach(element => {
+            $('#grupotoFilter').append('<option  value='+element.id+'> '+element.name+' </option>')
+        });  
+
+      });
+  });
+//
+
+//filtro asignaturas
+$(document).on('change', '#cohorTe', function(event) {
+      
+      var linea_select = document.getElementById('cohorTe').value;
+      
+      $.get("/asignaturas_to_filter/"+linea_select+"", function(response, grupos)
+      {
+
+        var div = document.getElementById('asigtoFilter');
+        div.removeAttribute('disabled');
+        $('#asigtoFilter').html('<option value="" selected="true"> Seleccione una opción</option>');
+            response.forEach(element => {
+            $('#asigtoFilter').append('<option  value='+element.id+'> '+element.name+' </option>')
+        });  
+
+      });
+  });
+//
+
+
+
+

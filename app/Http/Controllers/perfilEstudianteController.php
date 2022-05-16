@@ -111,21 +111,26 @@ class perfilEstudianteController extends Controller
 
     public function indexPerfilEstudiante()
     {
-        $user = auth()->user();
-        /*if($user['rol_id'] == 6){
-            $iden = $user['id'];
-            $perfilEstudiantes= perfilEstudiante::whereRaw("id IN (SELECT id_student FROM assignment_students WHERE id_user=?)", [$iden])->get();
-            return view('perfilEstudiante.index',compact('perfilEstudiantes'));
-        }else {
-            $perfilEstudiantes = perfilEstudiante::all();
-            return view('perfilEstudiante.index',compact('perfilEstudiantes'));
-        }*/
+        $genero = Gender::pluck('name', 'id');
+        $sexo = array(
+            'F' => 'Fenemino',
+            'M' => 'Masculino'
+        );
+        $tipo_documento = array(
+            '1' => 'Cedula de Ciudadania',
+            '2' => 'Tarjeta de Identidad',
+            '3' => 'Cedula Extranjera'
+        );
 
+        $depNacimiento = BirthDepartament::pluck('name', 'id');
+        $muni_nacimiento = BirthCity::pluck('name', 'id');
+        $barrios = Neighborhood::pluck('name', 'id');
+        $comunas = Comune::pluck('name', 'id');
+        $tutor = Tutor::pluck('name', 'id');
+        $cohorte = Cohort::pluck('name', 'id');
+        $grupo = Group::pluck('name', 'id');
 
-        //return datatables()->of($perfilEstudiantes)->toJson();
-
-
-        return view('perfilEstudiante.index');
+        return view('perfilEstudiante.index', compact('tipo_documento', 'depNacimiento', 'muni_nacimiento', 'sexo','genero', 'comunas', 'barrios', 'tutor','cohorte', 'grupo'));
     }
 
     public function mostrarMenores()
@@ -143,44 +148,54 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.index', compact('perfilEstudiantes'));
     }
 
-
-    public function crearPerfilEstudiante()
-    {
-        $genero = Gender::pluck('name', 'id');
-        $sexo = array(
-            'F' => 'Fenemino',
-            'M' => 'Masculino'
-        );
-        $tipo_documento = array(
-            '1' => 'Cedula de Ciudadania',
-            '2' => 'Tarjeta de Identidad',
-            '3' => 'Cedula Extranjera'
-        );
-
-        $depNacimiento = BirthDepartament::pluck('name', 'id');
-        $muni_nacimiento = BirthCity::pluck('name', 'id');
-        return view("perfilEstudiante.create", compact('genero', 'sexo', 'tipo_documento', 'depNacimiento', 'muni_nacimiento'), ['editarEstudiante' => new perfilEstudiante()]);
-    }
-
     public function storePerfilEstudiante(perfilEstudianteRequest $request)
     {
+        $mensaje = 'ESTUDIANTE CREADO EXITOSAMENTE!';
 
-        $idPerfilEstudiantes = perfilEstudiante::create([
-            'name'                      =>  $request['nombres'],
-            'lastname'                  =>  $request['apellidos'],
-            'id_document_type'          =>  $request['tipo_documento'],
-            'document_number'           =>  $request['numero_documento'],
-            'birth_date'                =>  $request['fecha_nacimiento'],
-            'document_expedition_date'  =>  $request['departamento_nacimiento'],
-            'id_birth_city'             =>  $request['ciudad_nacimiento'],
-            'sex'                       =>  $request['sexo'],
-            'id_gender'                 =>  $request['genero'],
-            'barrio_residencia'         =>  $request['barrio_residencia'],
-            'direction'                 =>  $request['direccion'],
+        $estudiante = perfilEstudiante::create([
+            'name'                      =>  $request['name'],
+            'lastname'                  =>  $request['lastname'],
+            'id_document_type'          =>  $request['id_document_type'],
+            'document_number'           =>  $request['document_number'],
+            'birth_date'                =>  $request['birth_date'],
+            'id_birth_department'       =>  $request['id_birth_department'],
+            'id_birth_city'             =>  $request['id_birth_city'],
             'email'                     =>  $request['email'],
-            'cellphone'                 =>  $request['telefono1'],
-            'phone'                     =>  $request['telefono2'],
+            'sex'                       =>  $request['sex'],
+            'id_gender'                 =>  $request['id_gender'],
+            'id_commune'                =>  $request['id_commune'],
+            'id_neighborhood'           =>  $request['id_neighborhood'],
+            'direction'                 =>  $request['direction'],
+            'id_tutor'                  =>  $request['id_tutor'],
+            'student_code'              =>  $request['student_code'],
+            'id_moodle'                 =>  $request['id_moodle'],
+            'cellphone'                 =>  $request['cellphone'],
+            'phone'                     =>  $request['phone'],
+            'id_state'                  => 1,
         ]);
+
+        $group_student = StudentGroup::create([
+            'id_student'  => $estudiante['id'],
+            'id_group'    => $request['id_group'], 
+        ]);
+
+        $admission_scores = AdmissionScores::create([
+            'id_student' => $estudiante['id'],
+        ]);
+
+        $formalization = Formalization::create([
+            'id_student' => $estudiante['id'],
+        ]);
+
+        $previous_academic = PreviousAcademicData::create([
+            'id_student' => $estudiante['id'],
+        ]);
+
+        $socioeconomicdata = SocioeconomicData::create([
+            'id_student' => $estudiante['id'],
+        ]);
+
+        
 
         $ip = User::getRealIP();
         $id = auth()->user();
@@ -191,11 +206,11 @@ class perfilEstudianteController extends Controller
             'id_user'                  => $id['id'],
             'rol'                      => $id['rol_id'],
             'ip'                       => $ip,
-            'id_usuario_accion'        => $data['id'],
-            'actividad_realizada'      => 'SE CREO UN REGISTRO',
+            'id_usuario_accion'        => $estudiante['id'],
+            'actividad_realizada'      => 'SE CREÓ UN ESTUDIANTE',
         ]);
 
-        return redirect('estudiante')->with('status', 'Perfil guardado exitosamente!');
+        return $mensaje;
     }
 
     public function verPerfilEstudiante($id)
@@ -744,9 +759,25 @@ class perfilEstudianteController extends Controller
         return $mensaje;
     }
 
-    
+    public function barrios(Request $request, $id) {
 
+        $barrios = Neighborhood::where('id_commune', $id)->get();
+        //dd($municipios);
+        if ($request->ajax()) {
 
+            return response()->json($barrios);
+        }   
+    }
+
+    public function gruposCreate(Request $request, $id) {
+
+        $grupos = Group::where('id_cohort', $id)->get();
+        //dd($municipios);
+        if ($request->ajax()) {
+
+            return response()->json($grupos);
+        } 
+    }
 
     public function municipios(Request $request, $id)
     {

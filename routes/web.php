@@ -39,10 +39,12 @@ Route::get('logout',   'Auth\LoginController@logout');
 //Rutas de CRUD estudiantes
 
 Route::get('departamento/{id}', 'perfilEstudianteController@municipios')->name('municipio');
+Route::get('comuna_barrios/{id}', 'perfilEstudianteController@barrios')->name('comuna_barrios');
+Route::get('cohorte_grupo/{id}', 'perfilEstudianteController@gruposCreate')->name('cohorte_grupo');
 
 Route::get('estudiante', 'perfilEstudianteController@indexPerfilEstudiante')->name('estudiante');
 Route::get('crear_estudiante', 'perfilEstudianteController@crearPerfilEstudiante')->name('crear_estudiante');
-Route::post('store_estudiante', 'perfilEstudianteController@storePerfilEstudiante')->name('store_estudiante');
+Route::post('create_student', 'perfilEstudianteController@storePerfilEstudiante')->name('create_student');
 Route::get('ver_estudiante/{id}', 'perfilEstudianteController@verPerfilEstudiante')->name('ver_estudiante');
 Route::get('editar_estudiante/{id}', 'perfilEstudianteController@editarPerfilEstudiante')->name('editar_estudiante');
 Route::delete('delete_estudiante/{id}', 'perfilEstudianteController@eliminarPerfilEstudiante')->name('delete_estudiante');

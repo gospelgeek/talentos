@@ -25,13 +25,13 @@
            	<div class="btn-group">
             	<div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                     {!!Form::label('id_group','Grupo: ')!!}
-       	            {!!Form::select('id_group', $grupos, null,['id'=>'grupotoFilter','class'=>'form-control','required','placeholder'=>'Pendiente', 'disabled'])!!}
+       	            {!!Form::select('id_group', $grupos, null,['id'=>'grupotoFilter','class'=>'form-control','required','placeholder'=>'Seleccionar', 'disabled'])!!}
                 </div>
             </div>
             <div class="btn-group">
             	<div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                     {!!Form::label('id_course','Asignatura: ')!!}
-           	        {!!Form::select('id_course', $asignaturas, null,['id'=>'asigtoFilter','class'=>'form-control','required','placeholder'=>'Pendiente', 'disabled'])!!}
+           	        {!!Form::select('id_course', $asignaturas, null,['id'=>'asigtoFilter','class'=>'form-control','required','placeholder'=>'Seleccionar', 'disabled'])!!}
                 </div>
             </div>
             <div class="btn-group">

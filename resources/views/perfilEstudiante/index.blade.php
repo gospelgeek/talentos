@@ -81,8 +81,7 @@
     </div>
 </div>
 @include('perfilEstudiante.modal.createStudent')
-@push('scripts')
-{!!Html::script('/js/dep-mun.js')!
+@push('scripts'){!!Html::script('/js/dep-mun.js')!!}
     <!-- Page specific script -->
 <script>
 

@@ -26,36 +26,16 @@ class SesionesController extends Controller
         $this->middleware('socioeducativo');
     }
 
-    public function datos(){
+    public function datos(Request $request){
+              
+       
+            
+        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
-        $session = Session::all();
 
-        $session->map(function ($datos) {
-            $datos->cohorte = $this->name_cohorte($datos->id_group);
-            $datos->grupo = $this->name_grupo($datos->id_group);
-            $datos->course = $this->name_course($datos->id_course);
-            $datos->idcohorte = $this->id_cohorte($datos->id_group);
-        });
-
-        return datatables()->of($session)->toJson();
+             return datatables()->of($sesiones)->toJson();
     }
-
-    public function name_cohorte($id_group){
-        
-        $name_grupo = Group::where('id', $id_group)->select('id_cohort')->first();
-        $id_cohort = $name_grupo->id_cohort; 
-        
-        $name_cohorte = Cohort::where('id', $id_cohort)->select('name')->first();
-
-        return $name_cohorte->name;
-    }
-
-    public function name_grupo($id_group) {
-        $name_grupo = Group::where('id', $id_group)->select('name')->first();
-        
-        return $name_grupo->name;
-    }
-
+    
 
     public function index(){
         
@@ -66,33 +46,38 @@ class SesionesController extends Controller
         return view('sesiones.index', compact('cohorte', 'grupos', 'asignaturas'));
     }
 
-    public function name_course($id_course) {
-        $name_course = Course::where('id', $id_course)->select('name')->first();
-
-        return $name_course->name;
-    }
-
-    public function id_cohorte($id_group){
-        $name_grupo = Group::where('id', $id_group)->select('id_cohort')->first();
-        $id_cohort = $name_grupo->id_cohort; 
-        
-        $name_cohorte = Cohort::where('id', $id_cohort)->select('id')->first();
-
-        return $name_cohorte->id;
-    }
-
     public function traerGrupos(Request $request, $id) {
 
         $grupos = Group::where('id_cohort', $id)->get();
-        //return $grupos;
-        if ($request->ajax()) {
+        
+        if($request->ajax()) {
 
             return response()->json($grupos);
         }
     
     }
 
+    public function grupos_filter(Request $request, $id) {
+        $grupos = Group::where('id_cohort', $id)->get();
+        
+        if($request->ajax()) {
+
+            return response()->json($grupos);
+        }
+
+    }
+
     public function traerAsignaturas(Request $request, $id){
+        $asignaturas = Course::where('id_cohort', $id)->get();
+        
+        if ($request->ajax()) {
+
+            return response()->json($asignaturas);
+        }
+    }
+
+    public function asignaturas_filter(Request $request, $id) {
+
         $asignaturas = Course::where('id_cohort', $id)->get();
         
         if ($request->ajax()) {

@@ -607,7 +607,7 @@
 		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
 		<div id="contenido-4" class="accordion-content-4">
 			{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: {{ $asignacion->UserInfo ? $asignacion->UserInfo->name : null }} {{ $asignacion->UserInfo ? $asignacion->UserInfo->apellidos_user : null }}</strong></center>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: {{ $verDatosPerfil->assignmentstudent ? $verDatosPerfil->assignmentstudent->UserInfo->name : null }} {{ $verDatosPerfil->assignmentstudent ? $verDatosPerfil->assignmentstudent->UserInfo->apellidos_user : null }}</strong></center>
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >

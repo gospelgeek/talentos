@@ -49,7 +49,8 @@
             <div class="inactivos_activos_student">                  
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;
-                <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">
+                <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">&nbsp;&nbsp;
+                <label>ADMITIDOS</label>&nbsp;<input type="checkbox" name="filtro" value="ADMITIDOS" id="admitidos">
             </div>
         </div>
         

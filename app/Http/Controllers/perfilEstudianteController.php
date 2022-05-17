@@ -2500,6 +2500,7 @@ class perfilEstudianteController extends Controller
 
         $this->from_date = $request->from_date;
         $this->to_date = $request->to_date;
+
         if(Storage::disk('local')->exists('asistencias_linea_1.json') 
             && $request->from_date == null && $request->from_date == null) {
             $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
@@ -2510,8 +2511,11 @@ class perfilEstudianteController extends Controller
             $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
-            
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                
+                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+
+                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);
@@ -2547,7 +2551,10 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+
+                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);
@@ -2582,7 +2589,10 @@ class perfilEstudianteController extends Controller
             $estudiantes = collect($estudiantes);
             $estudiantes->map(function($estudiante){
             
-                $estudiante->cursos = CourseMoodle::asistencias($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+
+                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                
                 unset($estudiante->grupo);
                 unset($estudiante->id_moodle);
             //dd($estudiante);

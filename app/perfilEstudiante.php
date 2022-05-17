@@ -290,12 +290,16 @@ class perfilEstudiante extends Model
                                           student_profile.lastname,
                                           student_profile.document_number,
                                           student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name
-                                   from   student_profile,student_groups,groups
+                                          groups.name as grupo_name,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users
                                    where  student_profile.id = student_groups.id_student
                                    and    groups.id = student_groups.id_group
                                    and    groups.id_cohort = 1
-                                   and    student_profile.deleted_at is null");
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null");
         if($estudiantes != null){
             return $estudiantes;
         }else{
@@ -308,12 +312,16 @@ class perfilEstudiante extends Model
                                           student_profile.lastname,
                                           student_profile.document_number,
                                           student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name
-                                   from   student_profile,student_groups,groups
+                                          groups.name as grupo_name,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users
                                    where  student_profile.id = student_groups.id_student
                                    and    groups.id = student_groups.id_group
                                    and    groups.id_cohort = 2
-                                   and    student_profile.deleted_at is null");
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null");
         if($estudiantes != null){
             return $estudiantes;
         }else{
@@ -326,12 +334,16 @@ class perfilEstudiante extends Model
                                           student_profile.lastname,
                                           student_profile.document_number,
                                           student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name
-                                   from   student_profile,student_groups,groups
+                                          groups.name as grupo_name,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users
                                    where  student_profile.id = student_groups.id_student
                                    and    groups.id = student_groups.id_group
                                    and    groups.id_cohort = 3
-                                   and    student_profile.deleted_at is null");
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null");
         if($estudiantes != null){
             return $estudiantes;
         }else{

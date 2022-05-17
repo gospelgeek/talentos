@@ -59,8 +59,7 @@ class perfilEstudiante extends Model
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
             WHERE student_groups.deleted_at IS null
-            AND student_profile.id_state != 3 
-            AND student_profile.id_state != 4");
+            ");
 
         if($data != null){
             return $data;

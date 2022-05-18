@@ -609,7 +609,7 @@
             @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			    {!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
 			@endif
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: {{ $asignacion ? $asignacion->UserInfo->name : null }} {{ $asignacion ? $asignacion->UserInfo->apellidos_user : null }}</strong></center>
+           
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >

@@ -609,7 +609,7 @@
             @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			    {!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
 			@endif
-           
+            PROFESIONAL ACOMPAÑAMIENTO: {{ $verDatosPerfil->assignmentstudent ? $verDatosPerfil->assignmentstudent->UserInfo->name : null }} {{ $verDatosPerfil->assignmentstudent ? $verDatosPerfil->assignmentstudent->UserInfo->apellidos_user : null }}
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >

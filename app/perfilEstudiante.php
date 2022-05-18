@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use DB;
-
+use Auth;
 
 class perfilEstudiante extends Model
 {
@@ -51,6 +51,108 @@ class perfilEstudiante extends Model
 
     protected $dates = ['delete_at'];
     
+    //consultas estudiantes asignacion
+    public static function estudiantes_asignacion(){
+        
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state
+            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            WHERE student_groups.deleted_at IS null
+            AND assignment_students.id_user = '".Auth::user()->id."'
+            ");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+
+    }
+    //
+
+    //Consulta estudiantes admitidos asignacion
+     public static function estudiantes_admitidos_asignacion(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            WHERE student_groups.deleted_at IS null
+            AND formalizations.acceptance_v1 IS null AND formalizations.acceptance_v2 IS null
+            AND student_profile.id_state != 2
+            AND student_profile.id_state != 3
+            AND student_profile.id_state != 5
+            AND assignment_students.id_user = '".Auth::user()->id."'
+            ");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
+
+    //Consulta estudiantes activos asignacion
+     public static function estudiantes_activos_asignacion(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, 
+                student_profile.document_number, student_profile.student_code, 
+                student_profile.email,student_profile.cellphone, student_groups.id_group as
+                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+                FROM student_profile
+                INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                INNER JOIN groups ON groups.id = student_groups.id_group
+                INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                INNER JOIN conditions on conditions.id = student_profile.id_state
+                INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+                INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+                WHERE student_groups.deleted_at IS null
+                AND student_profile.id_state != 2 
+                AND student_profile.id_state != 3
+                AND student_profile.id_state != 5
+                AND (formalizations.acceptance_v1 IS NOT null OR formalizations.acceptance_v2 IS NOT null)
+                AND assignment_students.id_user = '".Auth::user()->id."'
+                ");
+
+            if($data != null){
+                return $data;
+            }else{
+                return null;
+            }        
+    }
+    //
+
+    //consulta inactivos asignacion
+    public static function estudiantes_inactivos_asignacion(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state 
+            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            WHERE student_groups.deleted_at IS null
+            AND student_profile.id_state != 1
+            AND student_profile.id_state != 4
+            AND assignment_students.id_user = '".Auth::user()->id."'
+            ");
+
+        if($data != null){
+            return $data;
+        }else{
+                return null;
+        }    
+    }
+    //
+
+    //consulta que trae todos los estudiantes 
     public static function estudiantes(){
         $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
             FROM student_profile
@@ -67,6 +169,76 @@ class perfilEstudiante extends Model
             return null;
         }
     }
+
+    //estudiantes admitidos
+    public static function estudiantes_admitidos(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+            WHERE student_groups.deleted_at IS null
+            AND formalizations.acceptance_v1 IS null AND formalizations.acceptance_v2 IS null
+            AND student_profile.id_state != 2
+            AND student_profile.id_state != 3
+            AND student_profile.id_state != 5");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
+
+    //Estudiantes activos
+    public static function estudiantes_activos(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, 
+                student_profile.document_number, student_profile.student_code, 
+                student_profile.email,student_profile.cellphone, student_groups.id_group as
+                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+                FROM student_profile
+                INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                INNER JOIN groups ON groups.id = student_groups.id_group
+                INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                INNER JOIN conditions on conditions.id = student_profile.id_state
+                INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+                WHERE student_groups.deleted_at IS null
+                AND student_profile.id_state != 2 
+                AND student_profile.id_state != 3
+                AND student_profile.id_state != 5
+                AND (formalizations.acceptance_v1 IS NOT null OR formalizations.acceptance_v2 IS NOT null)"
+            );
+
+            if($data != null){
+                return $data;
+            }else{
+                return null;
+            }        
+    }
+    //
+
+    //estudiantes inactivos
+    public static function estudiantes_inactivos(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state 
+            WHERE student_groups.deleted_at IS null
+            AND student_profile.id_state != 1
+            AND student_profile.id_state != 4");
+
+        if($data != null){
+            return $data;
+        }else{
+                return null;
+        }    
+    }
+    //
     
      //consulta que trae estudiantes que cumplen lña mayoria deedad durante el proceso
     public static function mayoriaEdad(){

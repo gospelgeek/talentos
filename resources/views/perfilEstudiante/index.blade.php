@@ -49,9 +49,11 @@
         </div>
         <div class="btn-group">
             <div class="inactivos_activos_student">                  
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>SÓLO INACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;
-                <label>SÓLO ACTIVOS</label>&nbsp;<input type="checkbox" name="filtro" value="INACTIVO" id="activos">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="TODOS" id="todos" checked>&nbsp;&nbsp;
+                <label>ADMITIDOS</label>&nbsp;<input type="radio" name="filtro" value="ADMITIDOS" id="admitidos">&nbsp;&nbsp;
+                <label>SÓLO ACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="INACTIVO" id="activos">&nbsp;&nbsp;
+                <label>SÓLO INACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="ACTIVO" id="inactivos">
             </div>
         </div>
         
@@ -101,17 +103,24 @@
     <!-- Page specific script -->
 <script>
 
-/*$('input[type="checkbox"]').change(function (){
-    var ver = $("input[name=filtro]:checked").val();
-});*/
-     
-       
+        $('.inactivos_activos_student').on('change', function() {
+
+            $("#example1").DataTable().ajax.reload();
+                
+        });
 
         var table = $("#example1").DataTable({
             
             "ajax":{
                 "method":"GET",
                 "url": "{{route('datos.estudiantes')}}",
+                "data": function(d){
+
+                    d.activos = $('#activos').is(":checked");
+                    d.inactivos = $('#inactivos').is(":checked");
+                    d.admitidos = $('#admitidos').is(":checked");
+                    d.todos = $('#todos').is(":checked");
+                },
             },
 
             "columns": [
@@ -123,7 +132,7 @@
                 {data: 'cellphone'},
                 {data: 'grupo'},
                 {data: 'cohorte'},
-                {data: 'estado', visible: false},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -228,44 +237,7 @@
                     //
                 }
         });
-        //filtro activos e inactivos
-         $('.inactivos_activos_student').on('change', function() {
-            
-            var actvos = $('#activos').is(":checked");
-            var inctvos = $('#inactivos').is(":checked");
-
-            if(actvos){
-                
-                //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
-                var filtro = $('input:checkbox[id="activos"]').map(function() {
-                    return this.value;
-                }).get().join('|');
-                table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
-                //
-
-            }
-            if(inctvos){
-                
-
-                //filtro por columna excepto el valor de del id del checbox indicado(linea_1)
-                var filtro = $('input:checkbox[id="inactivos"]').map(function() {
-                    return this.value;
-                }).get().join('|');
-                table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
-                //
-                
-            }
-            if (actvos && inctvos) {
-                //filtro por columna con varios valores segun el name de los checbox y su valor correspondiente
-                var offices = $('input:checkbox[name="filtro"]:checked').map(function() {
-                return this.value;
-                }).get().join('|');
-                table.column(8).search(offices, true, false, false).draw(false);
-                //
-            }
-        });
-
-                
+        
 </script>
 
  

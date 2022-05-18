@@ -160,7 +160,7 @@
                     
             ],
 
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,
+            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,  "processing": true, "serverSide": true,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",

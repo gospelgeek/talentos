@@ -75,33 +75,71 @@ class perfilEstudianteController extends Controller
 
      
 
-    public function mostrar()
+    public function mostrar(Request $request)
     {
-       
+         
         $user = auth()->user();
+        
         if ($user['rol_id'] == 6) {
-            $iden = $user['id'];
 
-            $perfilEstudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
-                FROM student_profile
-                INNER JOIN student_groups ON student_groups.id_student = student_profile.id
-                INNER JOIN groups ON groups.id = student_groups.id_group
-                INNER JOIN cohorts on cohorts.id = groups.id_cohort
-                INNER JOIN conditions on conditions.id = student_profile.id_state
-                WHERE student_groups.deleted_at IS null
-                AND student_profile.id_state != 3 
-                AND student_profile.id_state != 4
-                AND student_profile.id IN (SELECT assignment_students.id_student FROM 
-                assignment_students WHERE assignment_students.id_user = ?)", [$iden]);
+            if($request['todos'] === "true"){
 
-            return datatables()->of($perfilEstudiantes)->toJson();
+                $estudiantes = perfilEstudiante::estudiantes_asignacion();
 
-            return datatables()->of($perfilEstudiantes)->toJson();
+                return datatables()->of($estudiantes)->toJson();    
+            }
+            if($request['admitidos'] === "true"){
+            
+                $estudiantes = perfilEstudiante::estudiantes_admitidos_asignacion();
+            
+                return datatables()->of($estudiantes)->toJson();
+
+            }
+            if($request['activos'] === "true"){
+            
+                $estudiantes = perfilEstudiante::estudiantes_activos_asignacion();
+            
+                return datatables()->of($estudiantes)->toJson();
+
+            }
+            if($request['inactivos'] === "true"){
+            
+                $estudiantes = perfilEstudiante::estudiantes_inactivos_asignacion();
+
+                return datatables()->of($estudiantes)->toJson();    
+            }
         }
         
-        $estudiantes = perfilEstudiante::estudiantes();
+        if($request['todos'] === "true")
+        {
+            //dd('entro a todos');
+            $estudiantes = perfilEstudiante::estudiantes();
            
-        return datatables()->of($estudiantes)->toJson();
+            return datatables()->of($estudiantes)->toJson();
+
+        }
+        if($request['admitidos'] === "true"){
+            //dd('entro a admitidos');
+            $estudiantes = perfilEstudiante::estudiantes_admitidos();
+            
+            return datatables()->of($estudiantes)->toJson();
+
+        }
+        if($request['activos'] === "true"){
+            //dd('entro a activos');
+            $estudiantes = perfilEstudiante::estudiantes_activos();
+            
+            return datatables()->of($estudiantes)->toJson();
+
+        }
+        if($request['inactivos'] === "true"){
+            //dd('entro a inactivos');
+            $estudiantes = perfilEstudiante::estudiantes_inactivos();
+
+            return datatables()->of($estudiantes)->toJson();    
+        }
+        
+
     }
 
 

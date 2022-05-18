@@ -116,7 +116,7 @@
                 {data: 'cellphone'},
                 {data: 'grupo'},
                 {data: 'cohorte'},
-                {data: 'estado', visible: false},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;

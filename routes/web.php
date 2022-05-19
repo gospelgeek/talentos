@@ -93,6 +93,7 @@ Route::post('crearseguimiento', 'perfilEstudianteController@store_seguimiento')-
 Route::get('editarseguimiento/{id}', 'perfilEstudianteController@edit_seguimiento')->name('editarseguimiento');
 Route::put('updateseguimientosocioeducativo/{id}', 'perfilEstudianteController@update_seguimiento')->name('updateseguimientosocioeducativo');
 Route::delete('deleteseguimiento/{id}', 'perfilEstudianteController@delete_seguimiento')->name('deleteseguimiento');
+Route::get('reporte_socioeducativo','perfilEstudianteController@exportar_reporte_socioeducativo')->name('reporte_socioeducativo');
 
 //Rutas para update cohorte-grupo
 Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');

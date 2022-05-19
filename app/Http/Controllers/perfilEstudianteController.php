@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use App\Exports\SabanaExport;
 use App\Exports\SabanaExportCompleta;
 use App\Exports\ReporteExport;
+use App\Exports\SocioeducativoExport;
 use App\perfilEstudiante;
 use App\AdmissionScores;
 use App\SocioeconomicData;

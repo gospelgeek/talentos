@@ -2266,6 +2266,87 @@ class perfilEstudianteController extends Controller
             return;
         }
     }
+    
+    public function exportar_reporte_socioeducativo(){
+
+        $estudiantes_socioeducativo = perfilEstudiante::select('id','name', 'lastname', 'id_document_type', 'document_number', 'student_code', 'email', 'cellphone', 'id_state')->get();
+
+        //dd($estudiantes_socioeducativo[46]->socioeducationalfollowup);
+        
+
+        $excel = array();
+        $fecha;
+        $lugar;
+        $hora_inicio;
+        $hora_fin;
+        $objetivos;
+        $descripcion_individual;
+        $descripcion_academica;
+        $descripcion_familiar;
+        $descripcion_economica;
+        $descripcion_vdaunvrstriaycdad;
+        $riesgo_indivdual;
+        $riesgo_academico;
+        $riesgo_familiar;
+        $riesgo_eonomico;
+        $riesgo_vdaunvrstriaycdad;
+        $observaciones;
+        $detalle_seguimiento;
+
+        foreach($estudiantes_socioeducativo as $estudiante_socioeducativo){
+        
+            if($estudiante_socioeducativo->socioeducationalfollowup != null){
+
+                $detalle_seguimiento = json_decode($estudiante_socioeducativo->socioeducationalfollowup->tracking_detail);
+
+                $fecha = $detalle_seguimiento->fecha;
+                $lugar = $detalle_seguimiento->Lugar;
+                $hora_inicio = $detalle_seguimiento->HoraInicio;
+                $hora_fin = $detalle_seguimiento->HoraFin;
+                $objetivos = $detalle_seguimiento->Objetivos;
+                $descripcion_individual = $detalle_seguimiento->Individual;
+                $descripcion_academica = $detalle_seguimiento->Academico;
+                $descripcion_familiar = $detalle_seguimiento->Familiar;
+                $descripcion_economica = $detalle_seguimiento->Economico;
+                $descripcion_vdaunvrstriaycdad = $detalle_seguimiento->VidaUniversitariaYciudad;
+                $riesgo_indivdual = $detalle_seguimiento->RiesgoIndividual;
+                $riesgo_academico = $detalle_seguimiento->RiesgoAcademico;
+                $riesgo_familiar = $detalle_seguimiento->RiesgoFamiliar; 
+                $riesgo_eonomico = $detalle_seguimiento->RiesgoEconomico;
+                $riesgo_vdaunvrstriaycdad = $detalle_seguimiento->RiesgoUc;
+                $observaciones = $detalle_seguimiento->Observaciones;
+            
+                }else{
+
+                    $fecha = null;
+                    $lugar = null;
+                    $hora_inicio = null;
+                    $hora_fin = null;
+                    $objetivos = null;
+                    $descripcion_individual = null;
+                    $descripcion_academica = null;
+                    $descripcion_familiar = null;
+                    $descripcion_economica = null;
+                    $descripcion_vdaunvrstriaycdad = null;
+                    $riesgo_indivdual = null;
+                    $riesgo_academico = null;
+                    $riesgo_familiar = null;
+                    $riesgo_eonomico = null;
+                    $riesgo_vdaunvrstriaycdad = null;
+                    $observaciones = null;
+                }
+          
+            $excel[] = array('id' => $estudiante_socioeducativo->id, 'nombres' => $estudiante_socioeducativo->name, 'apellidos' => $estudiante_socioeducativo->lastname, 'tipo documento' => $estudiante_socioeducativo->documenttype ? $estudiante_socioeducativo->documenttype->name : null, 'numero documento' => $estudiante_socioeducativo->document_number, 'codigo' => $estudiante_socioeducativo->student_code, 'correo' => $estudiante_socioeducativo->email, 'telefono' => $estudiante_socioeducativo->cellphone, 'cohorte' => $estudiante_socioeducativo->studentGroup ? $estudiante_socioeducativo->studentGroup->group->cohort->name : null, 'grupo' => $estudiante_socioeducativo->studentGroup ? $estudiante_socioeducativo->studentGroup->group->name : null, 'estado' => $estudiante_socioeducativo->condition ? $estudiante_socioeducativo->condition->name : null, 'aceptacion 1' => $estudiante_socioeducativo->formalization ? $estudiante_socioeducativo->formalization->acceptance_v1 : null, 'aceptacion 2' => $estudiante_socioeducativo->formalization ? $estudiante_socioeducativo->formalization->acceptance_v2 : null, 'fecha_seguimiento' => $fecha, 'lugar_seguimiento' => $lugar, 'hora_inicio' => $hora_inicio, 'hora_fin' => $hora_fin, 'objetivos' => $objetivos, 'descripcion_individual' => $descripcion_individual, 'riesgo_indivdual' => $riesgo_indivdual, 'descripcion_academica' => $descripcion_academica, 'riesgo_academico' => $riesgo_academico, 'descripcion_familiar' => $descripcion_familiar, 'riesgo_familiar' => $riesgo_familiar, 'descripcion_economica' => $descripcion_economica, 'riesgo_eonomico' => $riesgo_eonomico, 'descripcion_vdaunvrstriaycdad' => $descripcion_vdaunvrstriaycdad, 'riesgo_vdaunvrstriaycdad' => $riesgo_vdaunvrstriaycdad, 'observaciones' => $observaciones 
+            );
+        }
+
+        $exportar = new SocioeducativoExport([$excel]);
+
+
+        return Excel::download($exportar, 'socioeducativo_reporte.xlsx');
+
+
+    }
 
     public function grupos(Request $request, $id)
     {

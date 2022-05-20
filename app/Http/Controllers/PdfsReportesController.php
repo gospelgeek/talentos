@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Devices;
+use App\Formalization;
+use App\perfilEstudiante;
 use App\StudentDevices;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
+use FontLib\Table\Type\name;
 
 class PdfsReportesController extends Controller
 {
@@ -30,6 +33,7 @@ class PdfsReportesController extends Controller
         $now = new DateTimeZone("America/Bogota");
         $fecha = new DateTime("now", $now);
         $actual = $fecha->format('Y-m-d');
+        $acum = 1;
 
         switch ($cohorte) {
 
@@ -37,9 +41,9 @@ class PdfsReportesController extends Controller
                 $contador = 1;
                 $datos = [];
                 while ($contador <= 41) {
-                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code FROM 
+                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code, email FROM 
                     student_profile WHERE student_profile.id IN (SELECT student_groups.id_student FROM 
-                    student_groups WHERE student_groups.id_group = ?)", [$contador]);
+                    student_groups WHERE student_groups.id_group = ?) AND id_state = 1 ORDER BY lastname ASC", [$contador]);
                     $contador++;
                 }
                 
@@ -86,10 +90,12 @@ class PdfsReportesController extends Controller
                     'grupo39' => $datos[39],
                     'grupo40' => $datos[40],
                     'cohorte' => $cohorte,
-                ]);
+                    'fecha' => $actual,
+                    'cont' => $acum,
+                ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
-                //return $pdf->stream();
-                return $pdf->download("listado-linea1-$actual.pdf");
+                return $pdf->stream("listado-linea1-$actual.pdf");
+                //return $pdf->download("listado-linea1-$actual.pdf");
                 break;
 
             case 2:
@@ -97,9 +103,9 @@ class PdfsReportesController extends Controller
                 $gp = 1004;
                 $datos = [];
                 while ($contador <= 41) {
-                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code FROM 
+                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code, email FROM 
                     student_profile WHERE student_profile.id IN (SELECT student_groups.id_student FROM 
-                    student_groups WHERE student_groups.id_group = ?)", [$gp]);
+                    student_groups WHERE student_groups.id_group = ?) AND id_state = 1 ORDER BY lastname ASC", [$gp]);
                     $contador++;
                     $gp++;
                 }
@@ -147,9 +153,11 @@ class PdfsReportesController extends Controller
                     'grupo39' => $datos[39],
                     'grupo40' => $datos[40],
                     'cohorte' => $cohorte,
-                ]);
+                    'fecha' => $actual,
+                    'cont' => $acum,
+                ])->setPaper('a4', 'landscape');
                 //$pdf->loadHTML('<h1>Test</h1>');
-                //return $pdf->stream();
+                //return $pdf->stream("listado-linea2-$actual.pdf");
                 return $pdf->download("listado-linea2-$actual.pdf");
                 break;
 
@@ -158,9 +166,9 @@ class PdfsReportesController extends Controller
                 $gp = 50;
                 $datos = [];
                 while ($contador <= 41) {
-                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code FROM 
+                    $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code, email FROM 
                     student_profile WHERE student_profile.id IN (SELECT student_groups.id_student FROM 
-                    student_groups WHERE student_groups.id_group = ?)", [$gp]);
+                    student_groups WHERE student_groups.id_group = ?) AND id_state = 1 ORDER BY lastname ASC", [$gp]);
                     $contador++;
                     $gp++;
                 }
@@ -208,9 +216,12 @@ class PdfsReportesController extends Controller
                     'grupo39' => $datos[39],
                     'grupo40' => $datos[40],
                     'cohorte' => $cohorte,
-                ]);
+                    'fecha' => $actual,
+                    'fecha' => $actual,
+                    'cont' => $acum,
+                ])->setPaper('a4', 'landscape');
                 //$pdf->loadHTML('<h1>Test</h1>');
-                //return $pdf->stream();
+                //return $pdf->stream("listado-linea3-$actual.pdf");
                 return $pdf->download("listado-linea3-$actual.pdf");
                 break;
 
@@ -222,5 +233,27 @@ class PdfsReportesController extends Controller
         
     }
 
+    public function PDF_estudiante($id){
+
+        $formalizaciones = Formalization::findOrFail($id);
+
+        $student = DB::select("SELECT *, 
+        (SELECT name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipoD, 
+        (SELECT name FROM birth_city WHERE birth_city.id = student_profile.id_birth_city) as ciudad , 
+        (SELECT name FROM birth_departaments WHERE birth_departaments.id = student_profile.id_birth_department) as departamento, 
+        (SELECT name FROM gender WHERE gender.id = student_profile.id_gender) as genero, 
+        (SELECT name FROM neighborhood WHERE neighborhood.id = student_profile.id_neighborhood) as barrio 
+        FROM student_profile, socioeconomic_data WHERE student_profile.id = ? AND socioeconomic_data.id_student = ?", [
+            $id, $id
+        ]);
+        //dd($student);
+        $pdf = PDF::loadView('pdfsreportes.studentPDF', [
+            "student" => $student,
+            "formalization" => $formalizaciones
+        ])->setPaper('a4');
+
+        return $pdf->stream("Estudiante.pdf");
+
+    }
 
 }

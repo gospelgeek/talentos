@@ -20,8 +20,8 @@
                             <td>Documento</td>
                             <td>Codigo</td>
                             <td>Cohorte</td>
-                            <td>Nombre Acompañante</td>
-                            <td>Apellidos Acompañante</td>
+                            <td>Acompañante</td>
+                            
                             <td>Acciones</td>
                         </tr>
                     </thead>

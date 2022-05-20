@@ -2268,7 +2268,7 @@ class perfilEstudianteController extends Controller
         }
     }
     
-  
+    public function exportar_reporte_socioeducativo(){
 
         $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.id_document_type, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, socio_educational_follow_ups.tracking_detail as detalle, document_type.name as documento_tipo, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2
             FROM student_profile 

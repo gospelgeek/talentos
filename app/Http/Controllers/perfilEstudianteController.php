@@ -2270,7 +2270,7 @@ class perfilEstudianteController extends Controller
     
     public function exportar_reporte_socioeducativo(){
 
-        $estudiantes_socioeducativo = perfilEstudiante::select('id','name', 'lastname', 'id_document_type', 'document_number', 'student_code', 'email', 'cellphone', 'id_state')->get();
+        $estudiantes_socioeducativo = perfilEstudiante::select('id','name', 'lastname', 'id_document_type', 'document_number', 'student_code', 'email', 'cellphone', 'id_state')->withTrashed()->get();
 
         //dd($estudiantes_socioeducativo[46]->socioeducationalfollowup);
         
@@ -2435,7 +2435,7 @@ class perfilEstudianteController extends Controller
     public function export(){
 
         
-        $estudiantes = perfilEstudiante::select('id', 'college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date')->get();
+        $estudiantes = perfilEstudiante::select('id', 'college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date')->withTrashed()->get();
 
         $excel = array();
         $motivo;
@@ -2493,7 +2493,7 @@ class perfilEstudianteController extends Controller
 
     public function exportar_completa(){
 
-         $estudiantes = perfilEstudiante::select('id', 'photo','college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'url_document_type', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date', 'sex')->get();
+         $estudiantes = perfilEstudiante::select('id', 'photo','college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'url_document_type', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date', 'sex')->withTrashed()->get();
 
         $excel = array();
 

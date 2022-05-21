@@ -2303,7 +2303,7 @@ class perfilEstudianteController extends Controller
     
      public function exportar_reporte_estados(){
 
-       $estudiantes_retiros = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.id_document_type, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, document_type.name as documento_tipo, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, withdrawals.id_reasons as motivo, withdrawals.observation as obser, withdrawals.url as url, withdrawals.created_at as creado, reasons.name as namemotivo
+       $estudiantes_retiros = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.id_document_type, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, document_type.name as documento_tipo, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, withdrawals.id_reasons as motivo, withdrawals.observation as obser, withdrawals.url as url, withdrawals.created_at as creado
             FROM student_profile
             INNER JOIN withdrawals ON withdrawals.id_student = student_profile.id
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
@@ -2312,8 +2312,8 @@ class perfilEstudianteController extends Controller
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
-            INNER JOIN reasons ON reasons.id = withdrawals.id_reasons
-            WHERE student_groups.deleted_at IS null");
+            WHERE student_groups.deleted_at IS null
+            AND withdrawals.id_reasons IS null");
 
         //dd($estudiantes_retiros);
 
@@ -2322,7 +2322,7 @@ class perfilEstudianteController extends Controller
 
         foreach($estudiantes_colection as $estudiante_colection){
 
-            $excel[] = array('id' => $estudiante_colection->id, 'nombres' => $estudiante_colection->name, 'apellidos' => $estudiante_colection->lastname, 'tipo_documento' => $estudiante_colection->documento_tipo, 'numero documento' => $estudiante_colection->document_number, 'codigo' => $estudiante_colection->student_code, 'correo' => $estudiante_colection->email, 'telefono' => $estudiante_colection->cellphone, 'cohorte' => $estudiante_colection->cohorte, 'grupo' => $estudiante_colection->grupo, 'estado' => $estudiante_colection->estado, 'aceptacion1' => $estudiante_colection->aceptacion1, 'aceptacion2' => $estudiante_colection->aceptacion2, 'fecha cambio estado' => $estudiante_colection->creado, 'motivo' => $estudiante_colection->namemotivo, 'observation' => $estudiante_colection->obser, 'url' => $estudiante_colection->url);
+            $excel[] = array('id' => $estudiante_colection->id, 'nombres' => $estudiante_colection->name, 'apellidos' => $estudiante_colection->lastname, 'tipo_documento' => $estudiante_colection->documento_tipo, 'numero documento' => $estudiante_colection->document_number, 'codigo' => $estudiante_colection->student_code, 'correo' => $estudiante_colection->email, 'telefono' => $estudiante_colection->cellphone, 'cohorte' => $estudiante_colection->cohorte, 'grupo' => $estudiante_colection->grupo, 'estado' => $estudiante_colection->estado, 'aceptacion1' => $estudiante_colection->aceptacion1, 'aceptacion2' => $estudiante_colection->aceptacion2, 'fecha cambio estado' => $estudiante_colection->creado, 'motivo' => $estudiante_colection->motivo, 'observation' => $estudiante_colection->obser, 'url' => $estudiante_colection->url);
         }
 
         $exportar = new RetirosExport([$excel]);

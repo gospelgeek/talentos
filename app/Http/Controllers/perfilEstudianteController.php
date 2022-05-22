@@ -256,7 +256,7 @@ class perfilEstudianteController extends Controller
 
     public function verPerfilEstudiante($id)
     {
-
+         $iden = $id;
         //return $id;
         /* $user = auth()->user();
         /*if($user['rol_id'] == 6){
@@ -354,7 +354,7 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden'));
     }
 
 
@@ -595,7 +595,7 @@ class perfilEstudianteController extends Controller
     public function editarPerfilEstudiante($id)
     {
 
-        //dd('entro a estudiante editar');
+        $iden = $id;
         $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
@@ -673,7 +673,7 @@ class perfilEstudianteController extends Controller
         $ciudad = BirthCity::pluck('name', 'id');
 
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden'));
     }
 
 

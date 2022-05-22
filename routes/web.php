@@ -208,7 +208,7 @@ Route::get('asignaturas_to_filter/{id}', 'SesionesController@asignaturas_filter'
 
 //PDFS grupos
 Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
-
+Route::get('pdfEstudiante/{id}', 'PdfsReportesController@PDF_estudiante')->name('pdf.estudiante');
 
 //RUTAS CONTROLADOR ASISTENCIAS
 

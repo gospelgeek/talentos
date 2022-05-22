@@ -225,6 +225,37 @@ class PdfsReportesController extends Controller
 
         
     }
+    
+    public function PDF_estudiante($id){
+
+        $formalizaciones = Formalization::findOrFail($id);
+
+        $student = DB::select("SELECT *, 
+        (SELECT name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipoD, 
+        (SELECT name FROM birth_city WHERE birth_city.id = student_profile.id_birth_city) as ciudad , 
+        (SELECT name FROM birth_departaments WHERE birth_departaments.id = student_profile.id_birth_department) as departamento, 
+        (SELECT name FROM gender WHERE gender.id = student_profile.id_gender) as genero, 
+        (SELECT name FROM neighborhood WHERE neighborhood.id = student_profile.id_neighborhood) as barrio 
+        FROM student_profile, socioeconomic_data WHERE student_profile.id = ? AND socioeconomic_data.id_student = ?", [
+            $id, $id
+        ]);
+
+        if($student[0]->photo == ""){
+            $foto = null;
+        }else {
+            $foto = explode("/", $student[0]->photo);
+            $foto = $foto[5];
+        }
+        
+        $pdf = PDF::loadView('graphics.studentPDF', [
+            "student" => $student,
+            "formalization" => $formalizaciones,
+            "foto" => $foto
+        ])->setPaper('a4');
+
+        return $pdf->download("estudiante-$id.pdf");
+
+    }
 
 
 }

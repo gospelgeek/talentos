@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Devices;
+use App\Formalization;
 use App\StudentDevices;
 use DateTime;
 use DateTimeZone;

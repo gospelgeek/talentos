@@ -56,13 +56,15 @@ class perfilEstudiante extends Model
     public static function estudiantes_asignacion(){
         
 
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
-            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            INNER JOIN formalizations ON formalizations.id_student = student_profile.id
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
+            INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND assignment_students.id_user = '".Auth::user()->id."'
             ");
@@ -78,14 +80,15 @@ class perfilEstudiante extends Model
 
     //Consulta estudiantes admitidos asignacion
      public static function estudiantes_admitidos_asignacion(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
-            INNER JOIN formalizations on formalizations.id_student = student_profile.id 
-            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
+            INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND formalizations.acceptance_v1 IS null AND formalizations.acceptance_v2 IS null
             AND student_profile.id_state != 2
@@ -106,15 +109,17 @@ class perfilEstudiante extends Model
      public static function estudiantes_activos_asignacion(){
         $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, 
                 student_profile.document_number, student_profile.student_code, 
-                student_profile.email,student_profile.cellphone, student_groups.id_group as
-                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+                student_profile.email,student_profile.cellphone, student_profile.id_state, student_groups.id_group as
+                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado,
+                formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
                 FROM student_profile
                 INNER JOIN student_groups ON student_groups.id_student = student_profile.id
                 INNER JOIN groups ON groups.id = student_groups.id_group
                 INNER JOIN cohorts on cohorts.id = groups.id_cohort
                 INNER JOIN conditions on conditions.id = student_profile.id_state
                 INNER JOIN formalizations on formalizations.id_student = student_profile.id 
-                INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+                INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
+                INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
                 WHERE student_groups.deleted_at IS null
                 AND student_profile.id_state != 2 
                 AND student_profile.id_state != 3
@@ -133,13 +138,15 @@ class perfilEstudiante extends Model
 
     //consulta inactivos asignacion
     public static function estudiantes_inactivos_asignacion(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state 
-            INNER JOIN assignment_students on assignment_students.id_student = student_profile.id
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id
+            INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND student_profile.id_state != 1
             AND student_profile.id_state != 4
@@ -156,12 +163,14 @@ class perfilEstudiante extends Model
 
     //consulta que trae todos los estudiantes 
     public static function estudiantes(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone,  student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
+            INNER JOIN formalizations ON formalizations.id_student = student_profile.id
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             ");
 
@@ -174,13 +183,14 @@ class perfilEstudiante extends Model
 
     //estudiantes admitidos
     public static function estudiantes_admitidos(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
-            INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND formalizations.acceptance_v1 IS null AND formalizations.acceptance_v2 IS null
             AND student_profile.id_state != 2
@@ -199,14 +209,16 @@ class perfilEstudiante extends Model
     public static function estudiantes_activos(){
         $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, 
                 student_profile.document_number, student_profile.student_code, 
-                student_profile.email,student_profile.cellphone, student_groups.id_group as
-                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+                student_profile.email,student_profile.cellphone, student_profile.id_state, student_groups.id_group as
+                grupoid,groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado,
+                formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
                 FROM student_profile
                 INNER JOIN student_groups ON student_groups.id_student = student_profile.id
                 INNER JOIN groups ON groups.id = student_groups.id_group
                 INNER JOIN cohorts on cohorts.id = groups.id_cohort
                 INNER JOIN conditions on conditions.id = student_profile.id_state
                 INNER JOIN formalizations on formalizations.id_student = student_profile.id 
+                INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
                 WHERE student_groups.deleted_at IS null
                 AND student_profile.id_state != 2 
                 AND student_profile.id_state != 3
@@ -224,12 +236,14 @@ class perfilEstudiante extends Model
 
     //estudiantes inactivos
     public static function estudiantes_inactivos(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_profile.id_state, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, socioeconomic_data.eps_name as eps
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state 
+            INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
+            INNER JOIN formalizations on formalizations.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND student_profile.id_state != 1
             AND student_profile.id_state != 4");

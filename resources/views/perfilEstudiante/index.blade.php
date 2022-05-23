@@ -71,6 +71,8 @@
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
+                <td>EPS</td>
+                <td>Clasificación</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
                 <td>Estado</td>
@@ -114,6 +116,20 @@
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
+                {data: 'eps', visible:false},
+                {data: null, render:function(data, type, row, meta){
+                        
+                        if(data.id_state == 1 || data.id_state == 4){
+                            if(data.aceptacion1 === null && data.aceptacion2 === null){
+                                return 'ADMITIDO';
+                            }else if(data.aceptacion1 !== null || data.aceptacion2 !== null){
+                                return 'ACTIVO';
+                            }
+                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5){
+                            return 'INACTIVO';
+                        }
+                    }
+                },
                 {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'estado'},

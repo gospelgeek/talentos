@@ -26,7 +26,7 @@
             background: #1C2458;
             margin-right: 5%;
             margin-left: 5%;
-            height: 6%;
+            height: 4%;
             border-radius: 12px 12px 12px 12px;
             text-align: center;
         }
@@ -43,7 +43,7 @@
             text-align: center;
         }
         img {
-            height: 100px;
+            height: 80px;
             width: 200px;
         }
     </style>
@@ -134,8 +134,8 @@
             <thead>
                 <tr>
                     
-                    <td><strong>URL aceptacion V1: </strong>{{$formalization["acepptance_v1"]}}</td>
-                    <td><strong>URL aceptacion V2: </strong>{{$formalization["acepptance_v2"]}}</td>
+               
+                    <td><strong>URL aceptacion: </strong>{{$formalization["acepptance_v2"]}}</td>
                 </tr>
             </thead>
         </table>
@@ -144,12 +144,11 @@
             <thead>
                 <tr>
                    
-                    <td><strong>URL Tablet V1: </strong>{{$formalization["tablets_v1"]}}</td>
-                    <td><strong>URL Tablet V2: </strong>{{$formalization["tablets_v2"]}}</td>
-                </tr>
-                <tr>
+                    
+                    <td><strong>URL Tablet: </strong>{{$formalization["tablets_v2"]}}</td>
                     <td><strong>Serial tablet: </strong>{{$formalization["serial_tablet"]}}</td>
                 </tr>
+                
             </thead>
         </table>
     </div>

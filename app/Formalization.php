@@ -18,14 +18,19 @@ class Formalization extends Model
         'tablets_v1',
         'tablets_v2',
         'serial_tablet',
+        'especial_case',
+        'kit_date',
+        'pre_registration_icfes',
+        'inscription_icfes',
+        'presented_icfes',
+        'observations',
     ];
     
     public static function formalizacion(){
 
         $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,  
-            student_groups.id_group as groupid, groups.name as grupo, cohorts.name as cohorte,
-            formalizations.acceptance_v1 as acceptance_v1, formalizations.acceptance_v2 as acceptance_v2, 
-            formalizations.tablets_v1 as tablets_v1, formalizations.tablets_v2 as tablets_v2,
+            student_groups.id_group as groupid, groups.name as grupo, cohorts.name as cohorte, 
+            formalizations.acceptance_v2 as acceptance_v2, formalizations.tablets_v2 as tablets_v2,
             formalizations.serial_tablet as serial_tablet 
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id

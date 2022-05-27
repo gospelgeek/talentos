@@ -46,11 +46,9 @@
                             <td>Nº Documento</td>
                             <td>Grupo</td>
                             <td>Cohorte</td>
-                            <td>URL Acepación V1</td>
-                            <td>URL Acepación V2</td>
-                            <td>URL Tablets V1</td>
-                            <td>URL Tablets V2</td>
-                            <td>SERIAL TABLET</td>
+                            <td>Aceptación</td>
+                            <td>Tablet</td>
+                            <td>Serial Tablet</td>
                             <td id="botons" width="15%">Acciones</td>
                         </tr>
                     </thead>       
@@ -82,27 +80,6 @@
                 {data: 'document_number'},
                 {data: 'grupo'},
                 {data: 'cohorte'},
-                {data: 'acceptance_v1', render:function(data, type, row, meta){
-
-                        if(data !== " "){
-
-                            if(data !== null){
-                                if(data != 'SI'){
-                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                    return url;    
-                                }else{
-                                    var url = '<a target="blank">'+data+'</a>';
-                                    return url;
-                                }
-                                
-                            }else{
-                                var url = '';
-                                return url;
-                            }
-                            
-                        }
-                    }
-                },
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
 
                         if(data !== ""){
@@ -126,27 +103,6 @@
                         }
 
                     
-                    }
-                },
-                {data: 'tablets_v1', render:function(data, type, row, meta){
-
-                        if(data !== ""){
-
-                            if(data !== null){
-
-                                if(data != 'SI'){
-                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                    return url;    
-                                }else{
-                                    var url = '<a target="blank">'+data+'</a>';
-                                    return url;
-                                }
-                                
-                            }else{
-                                var url = '';
-                                return url;
-                            }
-                        }
                     }
                 },
                 {data: 'tablets_v2', render:function(data, type, row, meta){

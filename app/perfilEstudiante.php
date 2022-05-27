@@ -483,6 +483,17 @@ class perfilEstudiante extends Model
         return $this->hasOne(EconomicalSupport::class, 'id_student', 'id');
     }
     
+    /**
+     * Relacion con los  datos que se tiene de student_profile  
+     * con la tabla HealthCondition
+     * 
+     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
+     * @return Collection<HealthCondition>
+    */
+    public function healthcondition(){
+        return $this->hasOne(HealthCondition::class, 'id_student', 'id');
+    }
+    
     public static function Estudiantes_cohort(){
 
         $estudiantes = DB::select("select student_profile.id,student_profile.name,

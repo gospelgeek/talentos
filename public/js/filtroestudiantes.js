@@ -501,18 +501,6 @@ $(".accordion-titulo-6").click(function(e){
       //
 
       //marcar checks y radios segun lo que venga de la BD(ambas vistas)
-      var casoespecial = $("#especiaL_Case").val();
-      if(casoespecial == ''){
-        document.getElementById('especial_case_si').checked = false;
-        document.getElementById('especial_case_no').checked = false;
-      }else{
-        if(casoespecial == 1){
-          document.getElementById('especial_case_si').checked = true;
-        }else if(casoespecial == 0){
-          document.getElementById('especial_case_no').checked = true;
-        }  
-      }
-
       var registro = $("#rgstraton").val();
       var inscripcion = $("#inscrpton").val();
       var presento = $("#icfes_presented").val();

@@ -219,7 +219,6 @@ $('.boton_update_seguimiento').click(function(e) {
 $(function () {
           $('.condiciones').change(function(event)
           {
-            alert('hola');
             var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");
             var salud_mental = $('#slud_mntal').is(":checked");
             

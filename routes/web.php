@@ -204,6 +204,8 @@ Route::get('grupos_to_filter/{id}', 'SesionesController@grupos_filter')->name('g
 //traer asignaturas filtro index sesiones
 Route::get('asignaturas_to_filter/{id}', 'SesionesController@asignaturas_filter')->name('asignaturas_to_filter');
 
+//rutas condicione de salud
+Route::post('crear_condicion_salud', 'SocioEducativoController@crear_condicion')->name('crear_condicion_salud');
 
 
 

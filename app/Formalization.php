@@ -18,7 +18,6 @@ class Formalization extends Model
         'tablets_v1',
         'tablets_v2',
         'serial_tablet',
-        'especial_case',
         'kit_date',
         'pre_registration_icfes',
         'inscription_icfes',

@@ -434,24 +434,46 @@ $(".accordion-titulo-6").click(function(e){
         aceptacion.checked = false;
         const tablets = document.querySelector('#aceptandoTablet');
         tablets.checked = false;
-        document.getElementById('acceptancev1').disabled = true;
+
+        //capturar aceptacion, tablet y fecha para activor o no los chek(vista verDatos)
+        var aceptacion2 = $("#aceptacion_2").val();
+        var tablet2 = $("#tablet_2").val();
+        var fecha_kit = $("#fecha_kit").val();
+
+        if(aceptacion2 === ""){
+          document.getElementById('aceptacion_check').checked = false;
+
+        }else if(aceptacion2 !== ""){
+          document.getElementById('aceptacion_check').checked = true;
+        } 
+        
+        if(tablet2 === ""){
+          document.getElementById('tablet_check').checked = false;
+        }else if(tablet2 !== ""){
+          document.getElementById('tablet_check').checked = true;
+        }
+
+        if(fecha_kit === ""){
+           document.getElementById('fecha_check').checked = false;           
+        }else if(fecha_kit !== ""){
+          document.getElementById('fecha_check').checked = true;
+        }
+        //
+        
+        //habilitando y deshabilitando campos(vista verDatos)
         document.getElementById('acceptancev2').disabled = true;
-        document.getElementById('tabletsv1').disabled = true;
         document.getElementById('tabletsv2').disabled = true;
         document.getElementById('serialtablet').disabled = true;
+
         
-        
-      
         $(function () {
           $('#aceptandoAceptacion').change(function(event)
           {
             var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
             if(checkAcptacon) {
-              document.getElementById('acceptancev1').disabled = false;
               document.getElementById('acceptancev2').disabled = false;
 
             }else{
-              document.getElementById('acceptancev1').disabled = true;
               document.getElementById('acceptancev2').disabled = true;
 
             }
@@ -465,12 +487,10 @@ $(".accordion-titulo-6").click(function(e){
           {
             var checkTablets = $('#aceptandoTablet').is(":checked");
             if(checkTablets) {
-              document.getElementById('tabletsv1').disabled = false;
               document.getElementById('tabletsv2').disabled = false;
               document.getElementById('serialtablet').disabled = false;
 
             }else{
-              document.getElementById('tabletsv1').disabled = true;
               document.getElementById('tabletsv2').disabled = true;
               document.getElementById('serialtablet').disabled = true;
             }
@@ -478,6 +498,58 @@ $(".accordion-titulo-6").click(function(e){
       
           });
       });
+      //
+
+      //marcar checks y radios segun lo que venga de la BD(ambas vistas)
+      var casoespecial = $("#especiaL_Case").val();
+      if(casoespecial == ''){
+        document.getElementById('especial_case_si').checked = false;
+        document.getElementById('especial_case_no').checked = false;
+      }else{
+        if(casoespecial == 1){
+          document.getElementById('especial_case_si').checked = true;
+        }else if(casoespecial == 0){
+          document.getElementById('especial_case_no').checked = true;
+        }  
+      }
+
+      var registro = $("#rgstraton").val();
+      var inscripcion = $("#inscrpton").val();
+      var presento = $("#icfes_presented").val();
+
+      if(registro == '' || registro == 0){
+        document.getElementById('pre_registration').checked = false;
+      }else if(registro == 1){
+        document.getElementById('pre_registration').checked = true;
+      }
+
+      if(inscripcion == '' || inscripcion == 0){
+        document.getElementById('inscription').checked = false;
+      }else if(inscripcion == 1){
+        document.getElementById('inscription').checked = true;
+      }
+
+      if(presento == '' || presento == 0){
+        document.getElementById('presented').checked = false;
+      }else if(presento == 1){
+        document.getElementById('presented').checked = true;
+      }
+      //
+      
+      //poner info en text area(vista verDatos)
+      var observaciones = $("#obser").val();
+      $('textarea[id="observacionestext"]').val(observaciones);
+      //
+
+      //sacar mes de la fecha para mostar en campo(vista verDatos)
+      let fecha = $("#date_support").val();
+      
+      let fecha_convertida = new Date(fecha);
+      //garantizo que la zona horaria no me reste un dia en la fercha
+      fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
+      const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
+      $('#date_mes').val(mes_fecha);
+      //
         
          if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         

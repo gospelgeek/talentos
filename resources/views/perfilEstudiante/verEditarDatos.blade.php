@@ -667,6 +667,19 @@
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">
+			<input type="hidden" id="aceptacion_2" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null}}">
+			<input type="hidden" id="tablet_2" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null}}">
+			<input type="hidden" id="especiaL_Case" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->especial_case : null}}">
+			<input type="hidden" id="rgstraton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->pre_registration_icfes : null}}">
+			<input type="hidden" id="inscrpton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->inscription_icfes : null}}">
+			<input type="hidden" id="icfes_presented" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->presented_icfes : null}}">
+			<input type="hidden" id="fecha_kit" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null}}">
+			<input type="hidden" id="obser" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observations : null}}">
+			<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
+
+			<input type="hidden" name="aceptandoAcptacn" value="si" id="fecha_check">
+			<input type="hidden"  value="si" id="aceptacion_check">
+			<input type="hidden"  value="si" id="tablet_check">
 			{!!Form::model($verDatosPerfil,['route'=>['updateformalizacion',$verDatosPerfil->formalization->id], 'method'=>'PUT'])!!}
             {{csrf_field()}}
 			<div class="form-group">
@@ -676,16 +689,11 @@
                 </div>
     			<div class="row">
     				<div class="col-xs-12 col-md-12">
-            				<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">&nbsp;&nbsp;<label>ACEPTACIÓN</label>	
+            			<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptandoAceptacion">&nbsp;&nbsp;<label>ACEPTACIÓN</label>	
             		</div>			
+            		
             		<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="acceptance_v1">URL aceptacion V1</label></p>
-            		</div>
-					<div class="col-xs-6 col-md-3">
-						<input class="form-control" type="text" name="acceptance_v1" id="acceptancev1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v1 : null }}">
-					</div>
-            		<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="acceptance_v2">URL aceptacion V2</label></p>
+            			<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
 						<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
@@ -695,14 +703,9 @@
 					<div class="col-xs-12 col-md-12">
             			<input type="checkbox" name="aceptando" value="si" id="aceptandoTablet">&nbsp;&nbsp;<label>TABLETS</label>	
             		</div>			
+            		
             		<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="tablets_v1">URL Tablet V1</label></p>
-            		</div>
-					<div class="col-xs-6 col-md-3">
-						<input class="form-control" type="text" name="tablets_v1" id="tabletsv1" value="{{  $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v1 : null }}">
-					</div>
-            		<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="tablets_v2">URL Tablet V2</label></p>
+            			<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
             		</div>
 					<div class="col-xs-3 col-md-3">
 						<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
@@ -712,7 +715,91 @@
             		</div>
 					<div class="col-xs-3 col-md-3">
 						<input class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
-
+					</div>
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<label>CASO ESPECIAL</label>	
+            		</div>	
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="especial_case_si">SI</label></p>
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+						<input type="radio" name="especial_casE" id="especial_case_si" value="SI">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="especial_case_no">NO</label></p>
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+						<input type="radio" name="especial_casE" id="especial_case_no" value="NO">
+					</div>
+					{!!link_to('#',$title = 'Limpiar', $attributes = ['class'=>'btn bg-primary  elevation-3  boton_limpiar_casos_especiales'],$secure = null)!!}                        
+                  	{!!Form::close()!!}	
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<label>FECHA KIT</label>	
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="kit_date">Fecha kit</label></p>
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="date" name="kit_date" id="kit_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null) }}">
+					</div>
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<label>PRUEBA ICFES</label>	
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="pre_registration_icfes">PRE-INSCRIPCIÓN</label></p>
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+						<input type="checkbox" name="pre_registration_icfes" id="pre_registration"value="SI">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="inscription_icfes">INSCRIPCIÓN</label></p>
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+						<input type="checkbox" name="inscription_icfes" id="inscription" value="SI">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="presented_icfes">PRESENTÓ</label></p>
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+						<input type="checkbox" name="presented_icfes" id="presented" value="SI">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<label>OBSERVACIONES:</label>	
+            		</div>
+            		<div class="col-xs-6 col-md-3">
+            			<textarea name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
+                		</textarea>
+                	</div>
+				</div><hr>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+            			<label>APOYO ECONOMICO:</label>	
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="date">Fecha:</label></p>
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="date" name="date" id="date_support" value="{{ old('date', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->date : null) }}">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
+					</div>
+					<div class="col-xs-3 col-md-3">
+            			<p style="text-align: right"><label for="monto">Monto:</label></p>
+            		</div>
+            		<div class="col-xs-3 col-md-3">
+						<input class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
 					</div>
 				</div>
 			</div>

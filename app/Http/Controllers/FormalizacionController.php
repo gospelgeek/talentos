@@ -62,22 +62,6 @@ class FormalizacionController extends Controller
                     }
 
                     $data->serial_tablet = $request['serial_tablet'];
-                
-                    $caso_especial;
-                    if($request['caso_especial_si'] == null && $request['caso_especial_no'] == null){
-                        $caso_especial = null;
-                        $data->especial_case = $caso_especial;                    
-                    }else{
-                        if($request['caso_especial_si'] !== null){
-                            $caso_especial = true;
-                            $data->especial_case = $caso_especial;                        
-                        }else if($request['caso_especial_no'] !== null){
-                            $caso_especial = false;
-                            $data->especial_case = $caso_especial;    
-                        } 
-                    }
-                    
-
                     $data->kit_date = $request['date_kit'];
                     $data->observations = $request['observaciones'];
                 

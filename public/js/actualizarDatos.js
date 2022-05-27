@@ -432,8 +432,6 @@ $.ajax({
       'tablets_v1': $("#tabletsv1").val(),
       'tablets_v2': $("#tabletsv2").val(),
       'serial_tablet': $("#serialtablet").val(),
-      'caso_especial_si': $('input[id="especial_case_si"]:checked').val(),
-      'caso_especial_no': $('input[id="especial_case_no"]:checked').val(),
       'date_kit' : $("#kit_fecha").val(),
       'pre_registro_icfes': $('input[name="pre_registration_icfes"]:checked').val(),
       'inscripcion_icfes': $('input[name="inscription_icfes"]:checked').val(),
@@ -470,12 +468,4 @@ $.ajax({
   });
 });
 
-$('.boton_limpiar_casos_especiales').click(function(e) {
-  e.preventDefault();
-
-  var indiC = document.getElementsByName("especial_casE");
-        for(var i=0;i<indiC.length;i++){
-          indiC[i].checked = false;
-        }   
-});
 

@@ -411,7 +411,6 @@ $(".accordion-titulo-4").click(function(e){
         document.getElementById('slud_mntal').checked = true;
       }
       // 
-      alert('llega'); 
 
         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         

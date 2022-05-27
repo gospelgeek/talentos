@@ -468,4 +468,26 @@ $.ajax({
   });
 });
 
+//guardar condiciones de salud
+$(function () {
+          $('.condiciones').change(function(event)
+          {
+            var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");
+            var salud_mental = $('#slud_mntal').is(":checked");
+            
+            $.ajax({
+  
+                url:'/crear_condicion_salud/',
+                type:'POST',
+                data:{
+                    '_token': $('input[name=_token]').val(),
+                    'id': $("#estudiantE").val(),
+                    'requerimientos_especiales': requerimientos_especiales,
+                    'salud_mental': salud_mental,
+                }
+            });        
+                setTimeout("location.reload()", 2000);
+          });
+});
+
 

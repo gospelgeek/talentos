@@ -673,7 +673,6 @@
 		<div id="contenido-6" class="accordion-content-6">
 			<input type="hidden" id="aceptacion_2" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null}}">
 			<input type="hidden" id="tablet_2" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null}}">
-			<input type="hidden" id="especiaL_Case" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->especial_case : null}}">
 			<input type="hidden" id="fecha_kit" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null}}">
 			<input type="hidden" id="rgstraton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->pre_registration_icfes : null}}">
 			<input type="hidden" id="inscrpton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->inscription_icfes : null}}">
@@ -739,25 +738,6 @@
 						<input readonly class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
 
 					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col-xs-12 col-md-12">
-            			<label>CASO ESPECIAL:</label>	
-            		</div>	
-            		<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="especial_case_si">SI</label></p>
-            		</div>
-            		<div class="col-xs-6 col-md-3">
-						<input disabled type="radio" name="especial_casE" id="especial_case_si" value="SI">
-					</div>
-					<div class="col-xs-3 col-md-3">
-            			<p style="text-align: right"><label for="especial_case_no">NO</label></p>
-            		</div>
-            		<div class="col-xs-6 col-md-3">
-						<input disabled type="radio" name="especial_casE" id="especial_case_no" value="NO">
-					</div>
-					
 				</div><hr>
 				<div class="row">
 					<div class="col-xs-12 col-md-12">

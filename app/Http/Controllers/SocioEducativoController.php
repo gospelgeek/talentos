@@ -1345,9 +1345,9 @@ class SocioEducativoController extends Controller
             return;
         }
     }
-    
+
     public function crear_condicion(Request $request){
-       
+        
         $rqrmntos_spcles;
         if($request['requerimientos_especiales'] == 'true'){
             $rqrmntos_spcles = true; 

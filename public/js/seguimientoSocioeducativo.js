@@ -217,7 +217,7 @@ $('.boton_update_seguimiento').click(function(e) {
 
 //guardar condiciones de salud
 $(function () {
-          $('.condiciones').change(function(event)
+          $('.condicioneS').change(function(event)
           {
             
             var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");

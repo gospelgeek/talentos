@@ -608,7 +608,7 @@
 			@endif
 
 			<center>
-				<div class="condiciones">
+				<div class="condicioneS">
 					<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" id="espcales_rqrmntos">
 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

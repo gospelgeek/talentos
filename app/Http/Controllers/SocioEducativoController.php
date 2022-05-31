@@ -1367,7 +1367,7 @@ class SocioEducativoController extends Controller
         //dd($rqrmntos_spcles, $sld_mntal);
 
         $validar = HealthCondition::where('id_student', $request['id'])->exists();
-        echo $validar;
+        
         if($validar == true){
             $condicion_id = HealthCondition::select('id')->where('id_student', $request['id'])->first();
             $data_condicion = HealthCondition::findOrfail($condicion_id->id);

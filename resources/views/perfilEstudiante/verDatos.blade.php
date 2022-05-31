@@ -602,7 +602,7 @@
 			@endif
 		</div>
 	</div>
-	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6)
+	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6 || auth()->user()->rol_id == 5)
 	<div class="accordion-container">
 		<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
 		<input type="hidden" id="req_spcal" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->special_requirements : null }}">
@@ -616,10 +616,10 @@
 			
 			<center>
 				<div class="condiciones">
-					<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" disabled>
+					<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntoS" disabled>
 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" disabled>	
+					<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_MntaL" disabled>	
 				</div>
 			</center>
 
@@ -631,6 +631,7 @@
 					{{$verDatosPerfil->assignmentstudent->UserInfo->apellidos_user}}
 				@endif
 			@endif
+
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >

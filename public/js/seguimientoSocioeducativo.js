@@ -226,7 +226,7 @@ $(function () {
             $.ajax({
   
                 url:'/crear_condicion_salud/',
-                type:'POST',
+                type:'GET',
                 data:{
                     '_token': $('input[name=_token]').val(),
                     'id': $("#estudiantE").val(),

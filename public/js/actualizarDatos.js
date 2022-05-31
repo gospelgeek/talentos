@@ -470,7 +470,7 @@ $.ajax({
 
 //guardar condiciones de salud
 $(function () {
-          $('.condiciones').change(function(event)
+          $('.condicioneS').change(function(event)
           {
             var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");
             var salud_mental = $('#slud_mntal').is(":checked");
@@ -486,7 +486,6 @@ $(function () {
                     'salud_mental': salud_mental,
                 }
             });        
-                setTimeout("location.reload()", 2000);
           });
 });
 

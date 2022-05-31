@@ -605,7 +605,7 @@
 			@endif
 
 			<center>
-				<div class="condiciones">
+				<div class="condicioneS">
 					@if($verDatosPerfil->healthcondition()->exists())
 						@if($verDatosPerfil->healthcondition->special_requirements == 1)
 							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>

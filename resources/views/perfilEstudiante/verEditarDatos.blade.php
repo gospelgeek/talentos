@@ -595,9 +595,6 @@
 	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6)
 	<div class="accordion-container">
 		<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
-		<input type="hidden" id="req_spcal" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->special_requirements : null }}">
-		<input type="hidden" id="mntal_slud" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->mental_health : null }}">
-
 		<input type="hidden" id="espcales_rqrmntoS" disabled>
 		<input type="hidden" id="slud_MntaL" disabled>
 
@@ -608,11 +605,25 @@
 			@endif
 
 			<center>
-				<div class="condicioneS">
-					<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" id="espcales_rqrmntos">
-
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" id="slud_mntal">	
+				<div class="condiciones">
+					@if($verDatosPerfil->healthcondition()->exists())
+						@if($verDatosPerfil->healthcondition->special_requirements == 1)
+							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>
+						@else
+							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+						@endif
+						@if($verDatosPerfil->healthcondition->mental_health == 1)
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked>
+						@else
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal">
+						@endif
+					@else
+						<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal">
+					@endif	
 				</div>
 			</center>
 

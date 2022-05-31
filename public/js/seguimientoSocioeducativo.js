@@ -228,7 +228,7 @@ $(function () {
                 url:'/crear_condicion_salud/',
                 type:'POST',
                 data:{
-                    '_token': $('input[name=_token]').val(),
+                  
                     'id': $("#estudiantE").val(),
                     'requerimientos_especiales': requerimientos_especiales,
                     'salud_mental': salud_mental,

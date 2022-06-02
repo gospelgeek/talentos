@@ -47,6 +47,8 @@ class perfilEstudiante extends Model
         'id_tutor',
         'id_moodle',
         'id_state',
+        'first_name',
+        'emergency_contact',
     ];
 
     protected $dates = ['delete_at'];

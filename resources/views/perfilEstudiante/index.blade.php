@@ -67,10 +67,12 @@
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
+                <td>Nombre de Pila</td>
                 <td>Nº Documento</td>
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
+                <td>Contacto de emergencia</td>
                 <td>EPS</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
@@ -112,10 +114,12 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'first_name', visible:false},
                 {data: 'document_number'},
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
+                {data: 'emergency_contact', visible:false},
                 {data: 'eps', visible:false},
                 {data: 'grupo'},
                 {data: 'cohorte'},

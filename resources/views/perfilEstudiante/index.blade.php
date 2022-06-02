@@ -87,9 +87,9 @@
                 <td>Email</td>
                 <td>Telefono</td>
                 <td>EPS</td>
-                <td>Clasificación</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
+                <td>Clasificación</td>
                 <td>Estado</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
@@ -133,6 +133,8 @@
                 {data: 'email'},
                 {data: 'cellphone'},
                 {data: 'eps', visible:false},
+                {data: 'grupo'},
+                {data: 'cohorte'},
                 {data: null, render:function(data, type, row, meta){
                         
                         if(data.id_state == 1 || data.id_state == 4){
@@ -146,8 +148,6 @@
                         }
                     }
                 },
-                {data: 'grupo'},
-                {data: 'cohorte'},
                 {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;

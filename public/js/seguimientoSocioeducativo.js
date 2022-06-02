@@ -215,9 +215,43 @@ $('.boton_update_seguimiento').click(function(e) {
   });
 });
 
-//mostrar
+//guardar condiciones de salud
+$(function () {
+          $('.condiciones').change(function(event)
+          {
+            
+            var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");
+            var salud_mental = $('#slud_mntal').is(":checked");
+            
+            $.ajax({
+  
+                url:'/crear_condicion_salud/',
+                type:'GET',
+                data:{
+                    '_token': $('input[name=_token]').val(),
+                    'id': $("#estudiantE").val(),
+                    'requerimientos_especiales': requerimientos_especiales,
+                    'salud_mental': salud_mental,
+                },
+                success:function(result) {
+                    
+                    if(result.special_requirements == true){
+                        document.getElementById('espcales_rqrmntos').checked = true;
+                    }
+                    if(result.special_requirements == false){
+                        document.getElementById('espcales_rqrmntos').checked = false;
+                    }
+                    if(result.mental_health == true){
+                        document.getElementById('slud_mntal').checked = true;
+                    }
+                    if(result.mental_health == false){
+                        document.getElementById('slud_mntal').checked = false;
+                    }
+                },
 
+            });        
+                
+          });
 
-//Eliminar seguimiento
-
+});
 

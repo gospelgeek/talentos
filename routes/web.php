@@ -89,11 +89,12 @@ Route::put('updatedatossocioeconomicos/{id}', 'perfilEstudianteController@update
 Route::put('updatedatosacademicosprevios/{id}', 'perfilEstudianteController@updateDatosAcademicos')->name('updatedatosacademicosprevios');
 
 //rutas para seguimiento
-Route::post('crearseguimiento', 'perfilEstudianteController@store_seguimiento')->name('crearseguimiento');
-Route::get('editarseguimiento/{id}', 'perfilEstudianteController@edit_seguimiento')->name('editarseguimiento');
-Route::put('updateseguimientosocioeducativo/{id}', 'perfilEstudianteController@update_seguimiento')->name('updateseguimientosocioeducativo');
-Route::delete('deleteseguimiento/{id}', 'perfilEstudianteController@delete_seguimiento')->name('deleteseguimiento');
+Route::post('crearseguimiento', 'SocioEducativoController@store_seguimiento')->name('crearseguimiento');
+Route::get('editarseguimiento/{id}', 'SocioEducativoController@edit_seguimiento')->name('editarseguimiento');
+Route::put('updateseguimientosocioeducativo/{id}', 'SocioEducativoController@update_seguimiento')->name('updateseguimientosocioeducativo');
+Route::delete('deleteseguimiento/{id}', 'SocioEducativoController@delete_seguimiento')->name('deleteseguimiento');
 Route::get('reporte_socioeducativo','perfilEstudianteController@exportar_reporte_socioeducativo')->name('reporte_socioeducativo');
+
 //reporte estdos
 Route::get('reporte_estados', 'perfilEstudianteController@exportar_reporte_estados')->name('reporte_estados');
 

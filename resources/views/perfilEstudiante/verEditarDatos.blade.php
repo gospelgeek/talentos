@@ -616,19 +616,51 @@
 			@endif
 		</div>
 	</div>
-	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6)
-	<div class="accordion-container">
+		@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6)
+<div class="accordion-container">
+		<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
+		<input type="hidden" id="espcales_rqrmntoS" disabled>
+		<input type="hidden" id="slud_MntaL" disabled>
+
 		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
 		<div id="contenido-4" class="accordion-content-4">
-			{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: 
+			@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
+				{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
+			@endif
+
+			<center>
+				<div class="condiciones">
+					@if($verDatosPerfil->healthcondition()->exists())
+						@if($verDatosPerfil->healthcondition->special_requirements == 1)
+							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>
+						@else
+							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+						@endif
+						@if($verDatosPerfil->healthcondition->mental_health == 1)
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked>
+						@else
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal">
+						@endif
+					@else
+						<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal">
+					@endif	
+				</div>
+			</center>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: 
 
 			@if($verDatosPerfil->assignmentstudent()->exists())
 				@if($verDatosPerfil->assignmentstudent->id_user != 0)
 					{{$verDatosPerfil->assignmentstudent->UserInfo->name}}
 					{{$verDatosPerfil->assignmentstudent->UserInfo->apellidos_user}}
 				@endif
-			@endif
+			@endif	
+			</strong></center>
+			
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >
@@ -653,7 +685,6 @@
         	
 	</div>
 	@endif
-
 </div>
 <div class="accordion-container">
 

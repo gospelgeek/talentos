@@ -212,6 +212,7 @@ class perfilEstudianteController extends Controller
             'id_moodle'                 =>  $request['id_moodle'],
             'cellphone'                 =>  $request['cellphone'],
             'phone'                     =>  $request['phone'],
+            'first_name'                =>  $request['first_name'],
             'id_state'                  => 1,
         ]);
 

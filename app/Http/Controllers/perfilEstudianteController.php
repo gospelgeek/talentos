@@ -698,6 +698,8 @@ class perfilEstudianteController extends Controller
             $data->id_neighborhood          = $request['id_neighborhood'];
             $data->direction                = $request['direction'];
             $data->student_code             = $request['student_code'];
+            $data->first_name               = $request['first_name'];
+            $data->emergency_contact        = $request['emergency_contact'];
 
             $data->save();
 
@@ -776,6 +778,14 @@ class perfilEstudianteController extends Controller
             if($dataOld->student_code != $data->student_code){
                 $old[] = array('codigo estudiante' => $dataOld->student_code);
                 $new[] = array('codigo estudiante' => $data->student_code);
+            }
+            if($dataOld->first_name != $data->first_name){
+                $old[] = array('Nombre Pila' => $dataOld->first_name);
+                $new[] = array('Nombre Pila' => $data->first_name);
+            }
+            if($dataOld->emergency_contact != $data->emergency_contact){
+                $old[] = array('Contacto emergencia' => $dataOld->emergency_contact);
+                $new[] = array('Contacto emergencia' => $data->emergency_contact);
             }
 
             $guardarOld = json_encode($old);

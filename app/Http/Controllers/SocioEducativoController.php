@@ -1346,3 +1346,46 @@ class SocioEducativoController extends Controller
             return;
         }
     }
+    public function crear_condicion(Request $request){
+
+        $rqrmntos_spcles;
+        if($request['requerimientos_especiales'] == 'true'){
+            $rqrmntos_spcles = true; 
+        }else if($request['requerimientos_especiales'] !== 'true'){
+            $rqrmntos_spcles = false;
+        }
+
+        $sld_mntal;
+        if($request['salud_mental'] == 'true'){
+            $sld_mntal = true; 
+        }else if($request['salud_mental'] !== 'true'){
+            $sld_mntal = false;
+        }
+
+        //dd($rqrmntos_spcles, $sld_mntal);
+
+        $validar = HealthCondition::where('id_student', $request['id'])->exists();
+        //dd($validar);
+        if($validar == true){
+            $condicion_id = HealthCondition::select('id')->where('id_student', $request['id'])->first();
+            $data_condicion = HealthCondition::findOrfail($condicion_id->id);
+            $data_condicion->special_requirements = $rqrmntos_spcles;
+            $data_condicion->mental_health = $sld_mntal;
+                
+            $data_condicion->save();
+
+            return $data_condicion; 
+
+        }else if($validar == false){
+                    
+            $condicion_salud = HealthCondition::create([
+                'id_student'           => $request['id'],
+                'special_requirements' => $rqrmntos_spcles,
+                'mental_health'        => $sld_mntal,
+            ]);
+            
+            return $condicion_salud;
+        }
+
+    }
+}

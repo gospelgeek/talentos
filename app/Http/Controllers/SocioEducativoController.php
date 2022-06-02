@@ -52,6 +52,16 @@ class SocioEducativoController extends Controller
         $datosUser = User::findOrfail($request['id_user']);
         return $datosUser;
     }
+    
+    public function verificarInfo(Request $request){
+        $coleccion = Excel::toArray(new CsvImport, $request->file('file'));
+        foreach($coleccion[0] as $data){
+            
+            var_dump($data['id_student']);
+        }
+
+        return var_dump($coleccion);
+    }
 
     public function store_seguimiento(Request $request)
     {

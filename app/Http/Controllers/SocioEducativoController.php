@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AssignmentStudent;
+use App\HealthCondition;
 use App\Imports\CsvImport;
 use App\User;
 use Illuminate\Http\Request;

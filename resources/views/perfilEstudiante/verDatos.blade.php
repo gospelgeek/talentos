@@ -99,15 +99,15 @@
 						</div>	
             		</div>
 
-            		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="fecha_nacimiento">Fecha de nacimiento *</label></p>
+            		<div class="col-xs-4 col-md-2">
+            			<p style="text-align: right"><label for="first_name">Nombre de Pila</label></p>
             		</div>
-					<div class="col-xs-2 col-md-2">
+					<div class="col-xs-4 col-md-2">
 						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input  readonly class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $verDatosPerfil->birth_date) }}">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="first_name" id="first_name" value="{{ old('first_name', $verDatosPerfil->first_name) }}">
 							</div>
-						</div>  	
+						</div>	
             		</div>
             	</div>
 			</div>
@@ -155,6 +155,17 @@
 			<div class="form-group">
     			<div class="row">
     				<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="fecha_nacimiento">Fecha de nacimiento *</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input  readonly class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ old('fecha_nacimiento', $verDatosPerfil->birth_date) }}">
+							</div>
+						</div>  	
+            		</div>
+
+    				<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="departamento_nacimiento">Departamento nacimiento *</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
@@ -174,8 +185,12 @@
 							</div>
 						</div>                	
             		</div>
+            	</div>
+			</div>
 
-            		<div class="col-xs-2 col-md-2">
+			<div class="form-group">
+    			<div class="row">
+    				<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="email">Correo Electronico *</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
@@ -185,11 +200,7 @@
 							</div>
 						</div>	
             		</div>
-            	</div>
-			</div>
 
-			<div class="form-group">
-    			<div class="row">
             		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="sexo">Sexo</label></p>
             		</div>
@@ -209,16 +220,6 @@
 								{!!Form::select('genero', $genero,$verDatosPerfil->gender ? $verDatosPerfil->gender->id : null ,['placeholder'=>'Genero','class'=>'form-control','required','disabled'])!!}
 							</div>	
 						</div>
-            		</div>
-            		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="telefono1">Numero telefonico *</label></p>
-            		</div>
-					<div class="col-xs-2 col-md-2">
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="telefono1" id="telefono1" value="{{ old('telefono1', $verDatosPerfil->cellphone) }}">
-							</div>
-						</div>               	
             		</div>		
             	</div>
         	</div>
@@ -246,6 +247,17 @@
 						</div>	
             		</div>
             		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="telefono1">Numero telefonico *</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="telefono1" id="telefono1" value="{{ old('telefono1', $verDatosPerfil->cellphone) }}">
+							</div>
+						</div>               	
+            		</div>
+
+            		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="telefono2">Numero telefonico alternativo *</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
@@ -255,6 +267,18 @@
 							</div>
 						</div>     	
             		</div>
+
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="emergency_contact">Contacto de emergencia</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="emergency_contact" id="emergency_contact" value="{{ old('emergency_contact', $verDatosPerfil->emergency_contact) }}">
+							</div>
+						</div>     	
+            		</div>
+
             		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="telefono2">Codigo estudiante</label></p>
             		</div>

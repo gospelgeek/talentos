@@ -13,7 +13,8 @@
 		<div class="row">
 			<div class="col-sm-12">		             
            		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' =>'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
-			</div>
+			    {!!Form::text('nombre_pila',$verDatosPerfil->first_name,['class'=>'form-control','readonly','style' => 'font-size : 25px; text-align: center;','disabled'])!!}
+            </div>
 		</div>
 	</div>				
 	<br>
@@ -262,16 +263,6 @@
 							</div>
 						</div>     	
           			</div>
-          			<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="emergency_contact">Contacto de emergencia</label></p>
-            		</div>
-					<div class="col-xs-2 col-md-2">
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input  class="form-control" type="text" name="emergency_contact" id="emergency" value="{{ old('emergency_contact', $verDatosPerfil->emergency_contact) }}">
-							</div>
-						</div>     	
-          			</div>
           			@if(auth()->user()->rol_id == 1)
             		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="student_code">Codigo estudinate</label></p>
@@ -284,6 +275,37 @@
 						</div>     	
             		</div>
             		@endif
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="emergency_contact_name">Nombre contacto de emergencia</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input  class="form-control" type="text" name="emergency_contact_name" id="nmbre_emrgncia" value="{{ old('emergency_contact_name', $verDatosPerfil->emergency_contact_name) }}">
+							</div>
+						</div>     	
+          			</div>
+          			<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="relationship">Parentezco</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input  class="form-control" type="text" name="relationship" id="prntzco" value="{{ old('relationship', $verDatosPerfil->relationship) }}">
+							</div>
+						</div>     	
+          			</div>
+          			<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="emergency_contact">Contacto de emergencia</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input  class="form-control" type="text" name="emergency_contact" id="emergency" value="{{ old('emergency_contact', $verDatosPerfil->emergency_contact) }}">
+							</div>
+						</div>     	
+          			</div>
+          			
             	</div>
 			</div>			
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)

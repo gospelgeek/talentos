@@ -17,7 +17,8 @@
 		<div class="row">
 			<div class="col-sm-12">		             
            		{!!Form::text('nombres',$verDatosPerfil->name.' '.$verDatosPerfil->lastname,['class'=>'form-control','readonly','style' => 'font-size : 30px;font-weight: bolder; text-align: center;','disabled'])!!}
-			</div>
+			    {!!Form::text('nombre_pila',$verDatosPerfil->first_name,['class'=>'form-control','readonly','style' => 'font-size : 25px; text-align: center;','disabled'])!!}
+            </div>
 		</div>
 	</div>				
 	<br>
@@ -267,18 +268,6 @@
 							</div>
 						</div>     	
             		</div>
-
-            		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="emergency_contact">Contacto de emergencia</label></p>
-            		</div>
-					<div class="col-xs-2 col-md-2">
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="emergency_contact" id="emergency_contact" value="{{ old('emergency_contact', $verDatosPerfil->emergency_contact) }}">
-							</div>
-						</div>     	
-            		</div>
-
             		<div class="col-xs-2 col-md-2">
             			<p style="text-align: right"><label for="telefono2">Codigo estudiante</label></p>
             		</div>
@@ -286,6 +275,36 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
 								<input readonly class="form-control" type="text" name="student_code" id="student_code" value="{{ old('student_code', $verDatosPerfil ? $verDatosPerfil->student_code : null) }}">
+							</div>
+						</div>     	
+            		</div>
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="emergency_contact_name">Nombre contacto de emergencia</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="emergency_contact_name" id="emergency_contact_name" value="{{ old('emergency_contact_name', $verDatosPerfil->emergency_contact_name) }}">
+							</div>
+						</div>     	
+            		</div>
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="relationship">Parentezco</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="relationship" id="relationship" value="{{ old('relationship', $verDatosPerfil->relationship) }}">
+							</div>
+						</div>     	
+            		</div>
+            		<div class="col-xs-2 col-md-2">
+            			<p style="text-align: right"><label for="emergency_contact">Numero de contacto de emergencia</label></p>
+            		</div>
+					<div class="col-xs-2 col-md-2">
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<input readonly class="form-control" type="text" name="emergency_contact" id="emergency_contact" value="{{ old('emergency_contact', $verDatosPerfil->emergency_contact) }}">
 							</div>
 						</div>     	
             		</div>

@@ -96,9 +96,17 @@
                     </div>
                     @endif
                     <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('emergency_contact','Contacto de emergencia: ')!!}
+                      {!!Form::label('emergency_contact_name','Nombre contacto de emergencia: ')!!}
+                      {!!Form::text('emergency_contact_name', $verDatosPerfil ? $verDatosPerfil->emergency_contact_name : null,['id'=>'emergencia_nombre','class'=>'form-control','required','placeholder'=>'Nombre contacto emergencia'])!!}
+                    </div>
+                    <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('relationship','Parentezco: ')!!}
+                      {!!Form::text('relationship', $verDatosPerfil ? $verDatosPerfil->relationship : null,['id'=>'parentezco','class'=>'form-control','required','placeholder'=>'Parentezco'])!!}
+                    </div>
+                    <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('emergency_contact','Numero de contacto de emergencia: ')!!}
                       {!!Form::text('emergency_contact', $verDatosPerfil ? $verDatosPerfil->emergency_contact : null,['id'=>'emergencia','class'=>'form-control','required','placeholder'=>'Contacto emergencia'])!!}
-                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

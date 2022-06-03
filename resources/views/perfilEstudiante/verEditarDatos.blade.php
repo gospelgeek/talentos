@@ -630,23 +630,44 @@
 
 			<center>
 				<div class="condiciones">
-					@if($verDatosPerfil->healthcondition()->exists())
-						@if($verDatosPerfil->healthcondition->special_requirements == 1)
-							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>
+					@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
+						@if($verDatosPerfil->healthcondition()->exists())
+							@if($verDatosPerfil->healthcondition->special_requirements == 1)
+								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>
+							@else
+								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+							@endif
+							@if($verDatosPerfil->healthcondition->mental_health == 1)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked>
+							@else
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal">
+							@endif
 						@else
 							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
-						@endif
-						@if($verDatosPerfil->healthcondition->mental_health == 1)
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked>
-						@else
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal">
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal">
 						@endif
 					@else
-						<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal">
+						@if($verDatosPerfil->healthcondition()->exists())
+							@if($verDatosPerfil->healthcondition->special_requirements == 1)
+								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked disabled>
+							@else
+								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" disabled>
+							@endif
+							@if($verDatosPerfil->healthcondition->mental_health == 1)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked disabled>
+							@else
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" disabled>
+							@endif
+						@else
+							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" disabled>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal" disabled>
+						@endif
 					@endif	
 				</div>
 			</center>

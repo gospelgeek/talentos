@@ -234,7 +234,7 @@ $(function () {
                     'salud_mental': salud_mental,
                 },
                 success:function(result) {
-                    
+                    toastr.success('Guardado Exitoso');
                     if(result.special_requirements == true){
                         document.getElementById('espcales_rqrmntos').checked = true;
                     }

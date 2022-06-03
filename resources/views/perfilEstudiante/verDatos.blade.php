@@ -628,12 +628,26 @@
 	</div>
 	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6 || auth()->user()->rol_id == 5)
 	<div class="accordion-container">
+		<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
+		<input type="hidden" id="req_spcal" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->special_requirements : null }}">
+		<input type="hidden" id="mntal_slud" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->mental_health : null }}">
+
 		<a href="#" id="titulo-4" class="accordion-titulo-4">Seguimiento socioeducativo<span class="toggle-icon"></span></a>
 		<div id="contenido-4" class="accordion-content-4">
-            @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
-			    {!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
+			@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
+				{!!link_to('#',$title = 'Nuevo seguimiento', $attributes = ['class'=>'btn btn-primary abrir_modal_seguimiento_socioeducativo'],$secure = null)!!}
 			@endif
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: 
+			
+			<center>
+				<div class="condiciones">
+					<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntoS" disabled>
+
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_MntaL" disabled>	
+				</div>
+			</center>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><strong>PROFESIONAL ACOMPAÑAMIENTO: 
 
 			@if($verDatosPerfil->assignmentstudent()->exists())
 				@if($verDatosPerfil->assignmentstudent->id_user != 0)
@@ -641,6 +655,7 @@
 					{{$verDatosPerfil->assignmentstudent->UserInfo->apellidos_user}}
 				@endif
 			@endif
+
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >

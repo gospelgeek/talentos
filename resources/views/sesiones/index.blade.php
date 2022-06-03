@@ -39,6 +39,11 @@
 					<button id="consultar" class="btn btn-info sm-3" type="button" onclick="consultar_sesion();">Consultar</button>
 				</div>
 			</div>
+            <div class="btn-group">
+				<div class="col-xs-12 col-md-12 col-sm-3">
+					<a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('export_sesiones_linea')}}">Excel</a>
+				</div>
+			</div>
 			<br><div class="table-responsive">
 				<table id="example1" class=" table table-bordered table-striped">
 					<thead>

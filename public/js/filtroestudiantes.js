@@ -393,10 +393,23 @@ $(".accordion-titulo-4").click(function(e){
         //setTimeout("location.reload()", 2000);
        });
 
-});    
-        
-        
-        
+}); 
+    //mostrar la condicion de salud(verDatos)
+      var rqrmntos_spcles = $('#req_spcal').val();
+      var slud_mntal = $('#mntal_slud').val();
+
+      if(rqrmntos_spcles == null || rqrmntos_spcles == 0){
+        document.getElementById('espcales_rqrmntoS').checked = false;
+      }else if(rqrmntos_spcles !== null){
+        document.getElementById('espcales_rqrmntoS').checked = true;
+      }
+
+      if(slud_mntal == null || slud_mntal == 0){
+        document.getElementById('slud_MntaL').checked = false;
+      }else if(slud_mntal !== null){
+        document.getElementById('slud_MntaL').checked = true;
+      }
+      //
 
         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\SesionesRequest;
 use App\LogsCrudActions;
+use App\Exports\ReporteSesionesLineasExport;
 use App\Cohort;
 use App\Session;
 use App\Group;
@@ -16,6 +17,7 @@ use App\UpdateInformation;
 use App\User;
 use Redirect;
 use DB;
+use Excel;
 use Response;
 
 class SesionesController extends Controller
@@ -209,5 +211,29 @@ class SesionesController extends Controller
                 'actividad_realizada'      => 'SE ELIMINÓ UNA SESIÓN',
             ]);
         return $mensaje;
+    }
+    
+    public function exportar_excel_linea(){
+        $linea1 = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, groups.name as grupo, courses.name as asignatura
+            FROM sessions
+            INNER JOIN groups ON groups.id = sessions.id_group
+            INNER JOIN courses ON courses.id = sessions.id_course
+            WHERE sessions.id_group BETWEEN 1 AND 40
+            AND MONTH(sessions.date_session) = 05
+        ");
+
+        $linea1_colection = collect($linea1);
+        $excel = array();
+
+        foreach($linea1_colection as $colection_linea1){
+
+            $excel[] = array('grupo' => $colection_linea1->grupo, 'fecha' => $colection_linea1->date_session, 'asignatura' => $colection_linea1->asignatura);
+        }
+
+        $exportar = new ReporteSesionesLineasExport([$excel]);
+
+
+        return Excel::download($exportar, 'sesiones_linea_1.xlsx');
+
     }
 }

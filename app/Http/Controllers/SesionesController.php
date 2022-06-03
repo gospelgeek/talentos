@@ -218,7 +218,7 @@ class SesionesController extends Controller
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group BETWEEN 1004 AND 1043
+            WHERE sessions.id_group BETWEEN 50 AND 89
             AND MONTH(sessions.date_session) = 05
         ");
 

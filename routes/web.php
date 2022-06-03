@@ -201,6 +201,7 @@ Route::get('datos.sessiones', 'SesionesController@datos')->name('datos.sessiones
 Route::get('editar_registro_sesion/{id}', 'SesionesController@edit')->name('editar_registro_sesion');
 Route::put('actualizar_registro_sesion/{id}', 'SesionesController@update')->name('actualizar_registro_sesion');
 Route::delete('eliminar_registro_sesion/{id}', 'SesionesController@delete')->name('eliminar_registro_sesion');
+Route::get('export_sesiones_linea', 'SesionesController@exportar_excel_linea')->name('export_sesiones_linea');
 
 //traer grupos filtro index sesiones
 Route::get('grupos_to_filter/{id}', 'SesionesController@grupos_filter')->name('grupos_to_filter');

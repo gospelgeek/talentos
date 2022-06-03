@@ -119,6 +119,8 @@ $('.boton_update_datos_generales').click(function(e) {
       'direction': $("#direccion12").val(),
       'student_code': $('#codEstu').val(),
       'first_name': $('#nombre_pilA').val(),
+      'emergency_contact_name': $('#emergencia_nombre').val(),
+      'relationship': $('#parentezco').val(),
       'emergency_contact': $('#emergencia').val(),
     },
     success:function(result) {
@@ -167,6 +169,8 @@ $('.boton_update_generales').click(function(e) {
       'direction': $("#direccionnnnn").val(),
       'student_code': $('#codEstudiante').val(),
       'first_name': $('#npila').val(),
+      'emergency_contact_name': $('#nmbre_emrgncia').val(),
+      'relationship': $('#prntzco').val(),
       'emergency_contact': $('#emergency').val(),
     },
     success:function(result) {

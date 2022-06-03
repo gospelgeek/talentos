@@ -1348,8 +1348,6 @@ class SocioEducativoController extends Controller
 
     public function crear_condicion(Request $request){
 
-        //dd($request);
-
         $rqrmntos_spcles;
         if($request['requerimientos_especiales'] == 'true'){
             $rqrmntos_spcles = true; 
@@ -1367,7 +1365,7 @@ class SocioEducativoController extends Controller
         //dd($rqrmntos_spcles, $sld_mntal);
 
         $validar = HealthCondition::where('id_student', $request['id'])->exists();
-        
+        //dd($validar);
         if($validar == true){
             $condicion_id = HealthCondition::select('id')->where('id_student', $request['id'])->first();
             $data_condicion = HealthCondition::findOrfail($condicion_id->id);

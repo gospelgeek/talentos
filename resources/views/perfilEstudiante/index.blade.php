@@ -192,14 +192,14 @@
                         var filtro = $('input:checkbox[id="linea_1"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(10).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                         //
                     }else if (checkLinea2) {
                         //filtros basicos por columna con un solo valor
-                        table.columns(7).search('LINEA 2'); 
+                        table.columns(10).search('LINEA 2'); 
                         //       
                     }else if (checkLinea3) {
-                        table.columns(7).search('LINEA 3');
+                        table.columns(10).search('LINEA 3');
                     }
                     table.draw();
                         
@@ -209,11 +209,11 @@
                         var filtro = $('input:checkbox[id="linea_2"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(10).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(7).search('LINEA 1');
+                        table.columns(10).search('LINEA 1');
                     }else if(checkLinea3){
-                        table.columns(7).search('LINEA 3');
+                        table.columns(10).search('LINEA 3');
                     }
                     table.draw();
                 }
@@ -222,11 +222,11 @@
                         var filtro = $('input:checkbox[id="linea_3"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(10).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(7).search('LINEA 1');
+                        table.columns(10).search('LINEA 1');
                     }else if(checkLinea2){
-                        table.columns(7).search('LINEA 2');
+                        table.columns(10).search('LINEA 2');
                     }
                     table.draw();
                 }
@@ -235,7 +235,7 @@
                     var offices = $('input:checkbox[name="check"]:checked').map(function() {
                         return this.value;
                     }).get().join('|');
-                    table.column(7).search(offices, true, false, false).draw(false);
+                    table.column(10).search(offices, true, false, false).draw(false);
                     //
                 }
         });

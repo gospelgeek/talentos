@@ -20,7 +20,8 @@ class SocioEducativoController extends Controller
 
     public function index()
     {
-        $user = User::where('rol_id', '=', 6)->get();       
+        $user = User::where('rol_id', '=', 6)->get(); 
+        
         return view('socioeducativo.index', compact('user'));
     }
 

@@ -376,6 +376,7 @@ $('.boton_actualizar').click(function(e) {
       '_token': $('input[name=_token]').val(),
       'grupo': $("#grupOm").val(),
       'cohorte': $("#cohorT").val(),
+      'group_change_date': $("#fecha_cambio").val(),
     },
     success:function(result) {
       

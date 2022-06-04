@@ -18,6 +18,7 @@ class StudentGroup extends Model
         'id',
         'id_student',
         'id_group',
+        'group_change_date',
     ];
     
     protected $dates = ['delete_at'];

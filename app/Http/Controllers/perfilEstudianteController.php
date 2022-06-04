@@ -1106,10 +1106,10 @@ class perfilEstudianteController extends Controller
         }
     }
 
-    public function updateCohorteGrupo($id, Request $request)
+   public function updateCohorteGrupo($id, Request $request)
     {
-
         $group = StudentGroup::findOrFail($id);
+        
         
         $mensaje = "Datos actualizados correctamente!!";
         $error = 'El grupo seleccionado debe pertenecer a la cohorte correspondiente';
@@ -1120,35 +1120,42 @@ class perfilEstudianteController extends Controller
         if ($request->ajax()) {
 
             if ($vlrchrte == $request['cohorte']) {
-                //$group->id_group = $request['grupo'];
-                $group->delete();
+                if($request['group_change_date'] !== null && $request['grupo'] !== null){
 
-                $ip = User::getRealIP();
-                $id = auth()->user();
+                    $group->group_change_date = $request['group_change_date'];
+                    $group->save();                   
+                    
+                    $group->delete();
+
+                    $ip = User::getRealIP();
+                    $id = auth()->user();
             
+                    $datos = LogsCrudActions::create([
+                        'id_user'                  => $id['id'],
+                        'rol'                      => $id['rol_id'],
+                        'ip'                       => $ip,
+                        'id_usuario_accion'        => $group['id'],
+                        'actividad_realizada'      => 'SE ELIMINÓ REGISTRO STUDENTGROUP',
+                    ]);
 
-                $datos = LogsCrudActions::create([
-                    'id_user'                  => $id['id'],
-                    'rol'                      => $id['rol_id'],
-                    'ip'                       => $ip,
-                    'id_usuario_accion'        => $group['id'],
-                    'actividad_realizada'      => 'SE ELIMINÓ REGISTRO STUDENTGROUP',
-                ]);
 
-                $newregister = StudentGroup::create([
-                    'id_student'  => $group->id_student, 
-                    'id_group'    => $request['grupo'],
-                ]);
+                    $newregister = StudentGroup::create([
+                        'id_student'        => $group->id_student, 
+                        'id_group'          => $request['grupo'],
+                    ]);   
 
-                $datos = LogsCrudActions::create([
-                    'id_user'                  => $id['id'],
-                    'rol'                      => $id['rol_id'],
-                    'ip'                       => $ip,
-                    'id_usuario_accion'        => $newregister['id'],
-                    'actividad_realizada'      => 'NUEVO REGISTRO STUDENTGROUP',
-                ]);
-                
-            } else {
+                    $datos = LogsCrudActions::create([
+                        'id_user'                  => $id['id'],
+                        'rol'                      => $id['rol_id'],
+                        'ip'                       => $ip,
+                        'id_usuario_accion'        => $newregister['id'],
+                        'actividad_realizada'      => 'NUEVO REGISTRO STUDENTGROUP',
+                    ]);
+                }else{
+                    return 2;
+                }
+
+            }else {
                 return $error;
             }
         };

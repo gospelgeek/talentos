@@ -21,6 +21,9 @@
             {!!Form::select('estado', $estado, null,['id'=>'estadoV','class'=>'form-control','required','placeholder'=>'Estado','readonly','disabled'])!!}  
           </div>
           <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+              {!!Form::date('Fecha',null,['id'=>'Vfecha','class'=>'form-control','required','placeholder'=>'* Motivos','readonly','disabled'])!!}  
+          </div> 
+          <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
               {!!Form::select('Motivo', $motivos, null,['id'=>'VMotivo','class'=>'form-control','required','placeholder'=>'* Motivos','readonly','disabled'])!!}  
           </div>       
           <div id="urlRetiro" class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">    

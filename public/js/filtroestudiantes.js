@@ -7,30 +7,32 @@ $('.crear_estado').click(function(e) {
             $('#CMotivo').hide();
             $('#CUrl').hide();
             $('#CBoton').hide();
+            $('#Cfecha').hide();
           }
-
           if(valor == 3 || valor == 2 || valor == 5){
-
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
             $('#CBoton').show();
+            $('#Cfecha').show();
           }
           if(valor == 4){
             $('#Cobservacion').show();
             $('#CMotivo').hide();
             $('#CUrl').hide();
-            $('#CBoton').hide();               
+            $('#CBoton').hide();
+            $('#Cfecha').show();               
           }
           if(valor == 1){
             $('#Cobservacion').hide();
             $('#CMotivo').hide();
             $('#CUrl').hide();
             $('#CBoton').hide();
+            $('#Cfecha').hide();
           } 
 
         
-
+        //console.log("ss");
         $('#modal_crear_estado').modal('show'); 
 });
 
@@ -42,25 +44,28 @@ $('.crear_estado').click(function(e) {
             $('#CMotivo').hide();
             $('#CUrl').hide();
             $('#CBoton').hide();
+            $('#Cfecha').hide();
           }
-
           if(valor == 3 || valor == 2 || valor == 5){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
             $('#CBoton').show();
+            $('#Cfecha').show();
           }
           if(valor == 4){
             $('#Cobservacion').show();
             $('#CMotivo').hide();
             $('#CUrl').hide();
-            $('#CBoton').hide();               
+            $('#CBoton').hide();
+            $('#Cfecha').show();               
           }
           if(valor == 1){
             $('#Cobservacion').hide();
             $('#CMotivo').hide();
             $('#CUrl').hide();
             $('#CBoton').hide();
+            $('#Cfecha').hide();
           }
  });
 
@@ -73,19 +78,20 @@ $('.crear_estado').click(function(e) {
   $.ajax({
   //ruta manual
     url:'/update_estado/'+ idEstado,
-    type:'PUT',
+    type:'GET',
     data:{
       '_token': $('input[name=_token]').val(),
       'id_state': $("#estadoN").val(),
       'id_reasons': $("#CMotivo").val(),
       'observation': $("#Cobservacion").val(),
       'url':         $("#CUrl").val(),
+      'fecha':       $("#Cfecha").val(),     
     },
     success:function(msj) {
       $('#modal_crear_estado').modal('hide');
       //window.location.reload(); 
       toastr.success('Actualizado Correctamente!!');
-      setTimeout("location.replace('/estudiante')", 2000);
+      setTimeout("location.reload()", 2000);
     },
 
     error:function(msj) {          
@@ -95,7 +101,7 @@ $('.crear_estado').click(function(e) {
         //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
         console.log(mensajeError)
       });
-      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+      $("#msj-error-en-estado").html("<ul>"+mensajeError+"</ul>").fadeIn();         
     },       
   });
   });

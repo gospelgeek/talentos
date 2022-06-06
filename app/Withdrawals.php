@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Withdrawals extends Model
 {
+    use SoftDeletes;
     protected $table = 'withdrawals';
 
     protected $primarykey = 'id';
@@ -15,8 +17,9 @@ class Withdrawals extends Model
         'id_reasons',
         'observation',
         'url',
+        'fecha',
     ];
-
+    protected $dates = ['delete_at'];
     /**
      * Relacion con los  datos que se tiene de Withdrawals  
      * con la tabla Reasons

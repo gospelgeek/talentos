@@ -884,6 +884,7 @@ class perfilEstudianteController extends Controller
 
     public function updateEstado($id, Request $request){
        $status = "Estado actualizado correctamente!!";
+       //dd($request);
         if($request->ajax())
         {   
             $borrar = Withdrawals::where('id_student', $id)->exists();
@@ -899,8 +900,6 @@ class perfilEstudianteController extends Controller
                     $estado->save();  
                     $estado->delete();
                 }
-            
-            //eliminarPerfilEstudiante($id);
             }
             
             if($request['id_state'] == 1){
@@ -920,6 +919,7 @@ class perfilEstudianteController extends Controller
                     $datos = Withdrawals::create([
                 'id_student'   =>  $id,
                 'observation'  =>  $request['observation'],
+                'fecha'        =>  $request['fecha'], 
                  ]);
                 return 'true';
             }else{
@@ -927,6 +927,7 @@ class perfilEstudianteController extends Controller
                 $datos = Withdrawals::create([
                 'id_student'   =>  $id,
                 'observation'  =>  $request['observation'],
+                'fecha'        =>  $request['fecha'],
                  ]);
                 return 'true';
             }
@@ -939,6 +940,7 @@ class perfilEstudianteController extends Controller
                         'id_reasons'   =>  $request['id_reasons'],
                         'observation'  =>  $request['observation'],
                         'url'          =>  $request['url'],
+                        'fecha'        =>  $request['fecha'],
                         ]);
                         return 'true'; 
                     }else{
@@ -948,6 +950,7 @@ class perfilEstudianteController extends Controller
                         'id_reasons'   =>  $request['id_reasons'],
                         'observation'  =>  $request['observation'],
                         'url'          =>  $request['url'],
+                        'fecha'        =>  $request['fecha'],
                         ]);
                         return 'true'; 
                     }                        
@@ -1563,8 +1566,10 @@ class perfilEstudianteController extends Controller
             //dd($withdrawals);
             if($withdrawals == true){
                 $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
+                $estudiante->fecha = $estudiante->withdrawals ? $estudiante->withdrawals->fecha : null;
             }else{
                 $estudiante->motivo = null;
+                $estudiante->fecha = null;
             }
             unset($estudiante->withdrawals);
             unset($estudiante->studentGroup);

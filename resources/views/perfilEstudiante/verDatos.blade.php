@@ -993,7 +993,7 @@
             				<textarea disabled name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
                 			</textarea>
                 		</div>
-					</div><hr>
+					</div>
 				@endif
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)

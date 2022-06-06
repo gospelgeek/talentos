@@ -21,6 +21,9 @@
             {!!Form::select('estado', $estado, $verDatosPerfil->id_state,['id'=>'estadoN','class'=>'form-control','required','placeholder'=>'Estado'])!!}  
           </div>
           <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+              {!!Form::date('Fecha',$verDatosPerfil->withdrawals ? $verDatosPerfil->withdrawals->fecha : null,['id'=>'Cfecha','class'=>'form-control','required','placeholder'=>'* Fecha'])!!}
+          </div> 
+          <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
               {!!Form::select('Motivo', $motivos, $verDatosPerfil->withdrawals ? $verDatosPerfil->withdrawals->id_reasons : null,['id'=>'CMotivo','class'=>'form-control','required','placeholder'=>'* Motivos'])!!}  
           </div>       
           <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">    

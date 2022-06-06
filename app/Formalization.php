@@ -30,7 +30,9 @@ class Formalization extends Model
         $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,  
             student_groups.id_group as groupid, groups.name as grupo, cohorts.name as cohorte, 
             formalizations.acceptance_v2 as acceptance_v2, formalizations.tablets_v2 as tablets_v2,
-            formalizations.serial_tablet as serial_tablet 
+            formalizations.serial_tablet as serial_tablet, formalizations.kit_date as kit_date, 
+            formalizations.pre_registration_icfes as pre_registration_icfes, formalizations.inscription_icfes 
+            as inscription_icfes, formalizations.presented_icfes as presented_icfes
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group

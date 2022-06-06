@@ -422,11 +422,11 @@ $('.boton_cancelar').click(function(e) {
 //Guardar formalizacion
 $('.boton_update_formalizacion').click(function(e) { 
   e.preventDefault();   
+  
   var idDatos = $('#idfLz').val();
   
-  
-  var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
-  var checkTablet = $('#aceptandoTablet').is(":checked");
+  var checkAcptacon = $('#aceptacion_check').is(":checked");
+  var checkTablet = $('#tablet_check').is(":checked");
 
 
 $.ajax({
@@ -440,14 +440,22 @@ $.ajax({
       'tablets_v1': $("#tabletsv1").val(),
       'tablets_v2': $("#tabletsv2").val(),
       'serial_tablet': $("#serialtablet").val(),
+      'date_kit' : $("#kit_fecha").val(),
+      'pre_registro_icfes': $('input[name="pre_registration_icfes"]:checked').val(),
+      'inscripcion_icfes': $('input[name="inscription_icfes"]:checked').val(),
+      'presento_icfes': $('input[name="presented_icfes"]:checked').val(),
+      'observaciones': $('textarea[id="observacionestext"]').val(),
       'checkAceptacion': checkAcptacon,
-      'checkTablet': checkTablet, 
-      
+      'checkTablet': checkTablet,
+      'fecha_apoyo': $("#date_support").val(),
+      'banco_url': $("#url_banco").val(),  
+      'monto': $("#monto").val(),
+      'id': $("#estudiantE").val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
       if(result == 1){
-        toastr.info('FORMALIZACIÓN NO DILIGENCIADA');  
+        toastr.info('FORMALIZACION NO DILIGENCIADA');  
       }else if(result == 2){
         toastr.success('FORMALIZACIÓN GENERADA CORRECTAMENTE');
         setTimeout("location.reload()", 2000);  

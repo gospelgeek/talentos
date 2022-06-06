@@ -899,6 +899,30 @@
                 				</textarea>
                 			</div>
 						</div>
+						<hr>
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+            					<label>APOYO ECONOMICO:</label>	
+            				</div>
+            				<div class="col-xs-3 col-md-3">
+            					<p style="text-align: right"><label for="date">Mes:</label></p>
+            				</div>
+            				<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="text" name="date" id="date_mes">
+							</div>
+							<div class="col-xs-3 col-md-3">
+            					<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
+            				</div>
+            				<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
+							</div>
+							<div class="col-xs-3 col-md-3">
+            					<p style="text-align: right"><label for="monto">Monto:</label></p>
+            				</div>
+            				<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
+							</div>
+						</div>
 					@else
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
@@ -1003,9 +1027,33 @@
                					</textarea>
                				</div>
 						</div>
+						<!--<hr>
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+           						<label>APOYO ECONOMICO:</label>	
+           					</div>
+           					<div class="col-xs-3 col-md-3">
+           						<p style="text-align: right"><label for="date">Mes:</label></p>
+           					</div>
+           					<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="text" name="date" id="date_mes">
+							</div>
+							<div class="col-xs-3 col-md-3">
+           						<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
+           					</div>
+           					<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
+							</div>
+							<div class="col-xs-3 col-md-3">
+            					<p style="text-align: right"><label for="monto">Monto:</label></p>
+           					</div>
+            				<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
+							</div>
+						</div>-->
 					@endif
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 
 				{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
            		{!!Form::close()!!}

@@ -985,53 +985,8 @@
             				<textarea disabled name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
                 			</textarea>
                 		</div>
-					</div><hr>
+					</div>
 				@endif
-				<div class="row">
-					<div class="btn-group">
-            			<div class="col-xs-6 col-md-12 col-sm-6">
-            				<label>APOYO ECONOMICO:</label>
-            			</div>
-            		</div>
-            		<div class="btn-group">
-            			<div class="col-xs-6 col-md-12 col-sm-6">
-            				<button class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" onclick="apoyo_economico();"></button>
-            			</div>
-            		</div>
-            	</div>
-            	<div class="row">		
-            		<div class="col-xs-4 col-md-2">
-            			<p style="text-align: right"><label for="date">Fecha:</label></p>
-            		</div>
-            		<div class="col-xs-4 col-md-2">
-						<div class="row">
-							<div class="col-xs-4 col-md-12">
-								<input class="form-control" type="date" name="date" id="date_support" value="{{ old('date', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->date : null) }}">
-							</div>
-						</div>                	
-            		</div>
-					
-					<div class="col-xs-4 col-md-2">
-            			<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
-            		</div>
-            		<div class="col-xs-4 col-md-2">
-						<div class="row">
-							<div class="col-xs-4 col-md-12">
-								<input class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
-							</div>
-						</div>                	
-            		</div>
-					<div class="col-xs-4 col-md-2">
-            			<p style="text-align: right"><label for="monto">Monto:</label></p>
-            		</div>
-            		<div class="col-xs-4 col-md-2">
-						<div class="row">
-							<div class="col-xs-4 col-md-12">
-								<input class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
-							</div>
-						</div>                	
-            		</div>
-				</div>
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
 

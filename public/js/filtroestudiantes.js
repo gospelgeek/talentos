@@ -427,46 +427,11 @@ $(".accordion-titulo-6").click(function(e){
     
         var contenido=$(this).next(".accordion-content-6");
 
-        const aceptacion = document.querySelector('#aceptandoAceptacion');
-        aceptacion.checked = false;
-        const tablets = document.querySelector('#aceptandoTablet');
-        tablets.checked = false;
-
-        //capturar aceptacion, tablet y fecha para activor o no los chek(vista verDatos)
-        var aceptacion2 = $("#aceptacion_2").val();
-        var tablet2 = $("#tablet_2").val();
-        var fecha_kit = $("#fecha_kit").val();
-
-        if(aceptacion2 === ""){
-          document.getElementById('aceptacion_check').checked = false;
-
-        }else if(aceptacion2 !== ""){
-          document.getElementById('aceptacion_check').checked = true;
-        } 
-        
-        if(tablet2 === ""){
-          document.getElementById('tablet_check').checked = false;
-        }else if(tablet2 !== ""){
-          document.getElementById('tablet_check').checked = true;
-        }
-
-        if(fecha_kit === ""){
-           document.getElementById('fecha_check').checked = false;           
-        }else if(fecha_kit !== ""){
-          document.getElementById('fecha_check').checked = true;
-        }
-        //
-        
-        //habilitando y deshabilitando campos(vista verDatos)
-        document.getElementById('acceptancev2').disabled = true;
-        document.getElementById('tabletsv2').disabled = true;
-        document.getElementById('serialtablet').disabled = true;
-
-        
         $(function () {
-          $('#aceptandoAceptacion').change(function(event)
+          $('#aceptacion_check').change(function(event)
           {
-            var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
+            
+            var checkAcptacon = $('#aceptacion_check').is(":checked");
             if(checkAcptacon) {
               document.getElementById('acceptancev2').disabled = false;
 
@@ -480,9 +445,9 @@ $(".accordion-titulo-6").click(function(e){
         });
 
       $(function () {
-          $('#aceptandoTablet').change(function(event)
+          $('#tablet_check').change(function(event)
           {
-            var checkTablets = $('#aceptandoTablet').is(":checked");
+            var checkTablets = $('#tablet_check').is(":checked");
             if(checkTablets) {
               document.getElementById('tabletsv2').disabled = false;
               document.getElementById('serialtablet').disabled = false;

@@ -241,7 +241,7 @@
                                 contador = data.cursos_presenciales[i].Total;
                             }      
                         }
-                        return '<a class="btn btn-block btn-sm">'+contador+'</a>';
+                        return contador;
                         }
                     }
                 },
@@ -275,9 +275,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -341,9 +341,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -407,9 +407,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -473,9 +473,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -539,9 +539,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -666,9 +666,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -732,9 +732,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -798,9 +798,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -864,9 +864,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -930,9 +930,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -996,9 +996,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1062,9 +1062,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1128,9 +1128,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1194,9 +1194,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1320,9 +1320,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1386,9 +1386,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1452,9 +1452,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1518,9 +1518,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1584,9 +1584,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1650,9 +1650,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1887,7 +1887,7 @@
                                 contador = data.cursos_presenciales[i].Total;
                             }      
                         }
-                        return '<a class="btn btn-block btn-sm">'+contador+'</a>';
+                        return contador;
                         }
                     }
                 },
@@ -1921,9 +1921,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -1987,9 +1987,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2053,9 +2053,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2119,9 +2119,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2185,9 +2185,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2311,9 +2311,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2377,9 +2377,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2443,9 +2443,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2509,9 +2509,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2575,9 +2575,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2641,9 +2641,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2707,9 +2707,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2773,9 +2773,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2839,9 +2839,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -2965,9 +2965,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -3031,9 +3031,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -3097,9 +3097,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -3163,9 +3163,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -3229,9 +3229,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },
@@ -3295,9 +3295,9 @@
                                 }
                             }
                             if(contador > 0){
-                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');">'+contador+'</button>';
+                                return '<button class="btn" type="button" onclick="abrir_modal('+id+','+data.id+');"><u>'+contador+'</u></button>';
                             }
-                            return '<a class="btn">'+contador+'</a>';
+                            return '<a class="btn"><u>'+contador+'</u></a>';
                         }
                     }
                 },

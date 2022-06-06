@@ -491,21 +491,11 @@ $(".accordion-titulo-6").click(function(e){
       }
       //
       
-      //poner info en text area(vista verDatos)
+      //poner info en text area(vista ambas)
       var observaciones = $("#obser").val();
       $('textarea[id="observacionestext"]').val(observaciones);
       //
-
-      //sacar mes de la fecha para mostar en campo(vista verDatos)
-      let fecha = $("#date_support").val();
-      
-      let fecha_convertida = new Date(fecha);
-      //garantizo que la zona horaria no me reste un dia en la fercha
-      fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
-      const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
-      $('#date_mes').val(mes_fecha);
-      //
-        
+     
          if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         
           $(this).addClass("open");

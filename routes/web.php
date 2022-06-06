@@ -81,7 +81,7 @@ Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asis
 
 //RUTAS DE AJAX
 //ruta estado
-Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');
+Route::get('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');
 
 //rutas para actualizar datos del estudiante
 Route::put('updatedatosgenerales/{id}', 'perfilEstudianteController@updatePerfilEstudiante')->name('updatedatosgenerales');

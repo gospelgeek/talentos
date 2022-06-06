@@ -74,7 +74,7 @@
                 {data: 'name'},
                 {data: 'lastname'},
                 {data: 'document_number'},
-                {data: 'namegrupo'},
+                {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
 

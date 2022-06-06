@@ -908,18 +908,14 @@
           							<label>ACEPTACIÓN</label>&nbsp;&nbsp;<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">
          						@endif	
             				</div>
-            				
-							@if($verDatosPerfil->formalization->acceptance_v2 !== 'SI' && $verDatosPerfil->formalization->acceptance_v2 !== null)
-           						<div class="col-xs-3 col-md-3">
+            				<div class="col-xs-3 col-md-3">
            							<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
-           						</div>
+           					</div>
+							@if($verDatosPerfil->formalization->acceptance_v2 !== 'SI' && $verDatosPerfil->formalization->acceptance_v2 !== null)
 								<div class="col-xs-3 col-md-3">
 									<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">						<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 								</div>
 							@else
-								<div class="col-xs-3 col-md-3">
-           							<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
-           						</div>
 								<div class="col-xs-3 col-md-3">
 									<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 								</div>

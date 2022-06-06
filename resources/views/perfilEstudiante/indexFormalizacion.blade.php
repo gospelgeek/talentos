@@ -32,22 +32,21 @@
 
         
             @endif
-        
-
             <div class="table-responsive">
-    
                 <table id="example1" class=" table table-bordered table-striped">
-            
                     <thead>
-
                         <tr>
-                            <td>Nombres</td>
+                           <td>Nombres</td>
                             <td>Apellidos</td>
                             <td>Nº Documento</td>
                             <td>Grupo</td>
                             <td>Cohorte</td>
                             <td>Aceptación</td>
                             <td>Tablet</td>
+                            <td>Fecha Kit</td>
+                            <td>Pre-registro-ICFES</td>
+                            <td>Registro-ICFES</td>
+                            <td>Presentó-ICFES</td>
                             <td>Serial Tablet</td>
                             <td id="botons" width="15%">Acciones</td>
                         </tr>
@@ -123,6 +122,49 @@
                                 return url;
                             }
                         }
+                    }
+                },
+                {data: 'kit_date'},
+                {data: 'pre_registration_icfes', render:function(data, type, row, meta){
+                        if(data !== null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado"></button>';
+                                return si;
+                            }else if(data == 0) {
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado"></button>';
+                                return no;
+                            }
+                        }else{
+                            return null;
+                        }    
+                    }
+                },       
+                {data: 'inscription_icfes', render:function(data, type, row, meta){
+                        if(data !== null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado"></button>';
+                                return si;
+                            }else if(data == 0) {
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado"></button>';
+                                return no;
+                            }
+                        }else{
+                            return null;
+                        }    
+                    }
+                },
+                {data: 'presented_icfes', render:function(data, type, row, meta){
+                        if(data !== null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado"></button>';
+                                return si;
+                            }else if(data == 0) {
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado"></button>';
+                                return no;
+                            }
+                        }else{
+                            return null;
+                        }    
                     }
                 },
                 {data: 'serial_tablet'},

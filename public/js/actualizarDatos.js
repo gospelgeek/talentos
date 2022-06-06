@@ -428,9 +428,8 @@ $('.boton_update_formalizacion').click(function(e) {
   
   var idDatos = $('#idfLz').val();
   
-  //alert($("#estudiantE").val());
-  var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
-  var checkTablet = $('#aceptandoTablet').is(":checked");
+  var checkAcptacon = $('#aceptacion_check').is(":checked");
+  var checkTablet = $('#tablet_check').is(":checked");
 
 
 $.ajax({

@@ -20,6 +20,7 @@
                 <td>Cohorte</td>
                 <td>Estado</td>
                 <td>Motivo</td>
+                <td>Fecha</td>
                 <td>Acciones</td>
             </tr>
         </thead>
@@ -47,6 +48,7 @@
             { data: 'cohort' },
             { data: 'condicion' },
             { data: 'motivo'},
+            { data: 'fecha'},
             { data: null, render:function(data, type, row, meta){
                     
                     var mstr;

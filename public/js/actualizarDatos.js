@@ -447,9 +447,6 @@ $.ajax({
       'observaciones': $('textarea[id="observacionestext"]').val(),
       'checkAceptacion': checkAcptacon,
       'checkTablet': checkTablet,
-      'fecha_apoyo': $("#date_support").val(),
-      'banco_url': $("#url_banco").val(),  
-      'monto': $("#monto").val(),
       'id': $("#estudiantE").val(),
     },
     success:function(result) {

@@ -874,6 +874,7 @@
 							<input type="checkbox" name="presented_icfes" id="presented" value="SI">
 						</div>
 					</div>
+                    <hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
             				<label>OBSERVACIONES:</label>	

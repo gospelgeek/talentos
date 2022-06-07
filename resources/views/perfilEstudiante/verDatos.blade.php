@@ -1085,6 +1085,7 @@
 @include('perfilEstudiante.seguimientos.modal.create')
 @include('perfilEstudiante.seguimientos.modal.editar')
 @include('perfilEstudiante.seguimientos.modal.ver')
+@include('perfilEstudiante.apoyoeconomico.modal.edit')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
 
@@ -1095,6 +1096,11 @@
 {!!Form::open(['id'=>'form-delete','route'=>['deleteseguimiento',':SEGUIMIENTO_ID'], 'method'=>'DELETE'])!!}
 {!!Form::close()!!}
 
+{!!Form::open(['id'=>'form-edit-apoyo_economico','route'=>['editar_apoyo_economico',':APOYO_ID'], 'method'=>'GET'])!!}
+{!!Form::close()!!}
+
+{!!Form::open(['id'=>'form-delete_apoyo_economico','route'=>['delete_apoyo_economico',':APOYO_ID'], 'method'=>'DELETE'])!!}
+{!!Form::close()!!}
 
 @push('scripts')
 {!!Html::script('/js/filtroestudiantes.js')!!}

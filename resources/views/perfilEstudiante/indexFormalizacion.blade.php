@@ -124,7 +124,21 @@
                         }
                     }
                 },
-                {data: 'kit_date'},
+                {data: 'serial_tablet'},
+                {data: 'kit_date', render:function(data, type, row, meta){
+                        if(data !== ""){
+                            if(data !== null){
+                                var si = 'SI';
+                                return si;
+                            }else{
+                                return "";
+                            }
+                        }else{
+                            return "";
+                        }
+
+                    }
+                },
                 {data: 'pre_registration_icfes', render:function(data, type, row, meta){
                         if(data !== null){
                             if(data == 1){
@@ -167,7 +181,6 @@
                         }    
                     }
                 },
-                {data: 'serial_tablet'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;

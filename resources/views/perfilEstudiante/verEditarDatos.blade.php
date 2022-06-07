@@ -874,8 +874,8 @@
 							<input type="checkbox" name="presented_icfes" id="presented" value="SI">
 						</div>
 					</div>
-                    <hr>
-                    <div class="row">
+					<hr>
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
@@ -909,7 +909,7 @@
 							</tbody>
                 		</table>
         			</div>
-                    <hr>
+        			<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
             				<label>OBSERVACIONES:</label>	
@@ -918,7 +918,7 @@
             				<textarea name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
                 			</textarea>
                 		</div>
-					</div>
+					</div>	
 				@else
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
@@ -1012,7 +1012,7 @@
 						</div>
 					</div>
 					<hr>
-                    <div class="row">
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
@@ -1045,8 +1045,8 @@
 							</tbody>
                 		</table>
         			</div>
-                    <hr>
-					<div class="row">
+        			<hr>
+        			<div class="row">
 						<div class="col-xs-12 col-md-12">
             				<label>OBSERVACIONES:</label>	
             			</div>
@@ -1055,9 +1055,9 @@
                 			</textarea>
                 		</div>
 					</div>
-				@endif
+        		@endif
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
 
 			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
 

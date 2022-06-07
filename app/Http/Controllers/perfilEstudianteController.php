@@ -1118,10 +1118,7 @@ class perfilEstudianteController extends Controller
         if ($request->ajax()) {
 
             if ($vlrchrte == $request['cohorte']) {
-                if($request['group_change_date'] !== null && $request['grupo'] !== null){
-
-                    $group->group_change_date = $request['group_change_date'];
-                    $group->save();                   
+                if($request['group_change_date'] !== null && $request['grupo'] !== null){                   
                     
                     $group->delete();
 
@@ -1140,6 +1137,7 @@ class perfilEstudianteController extends Controller
                     $newregister = StudentGroup::create([
                         'id_student'        => $group->id_student, 
                         'id_group'          => $request['grupo'],
+                        'group_change_date' => $request['group_change_date'],
                     ]);   
 
                     $datos = LogsCrudActions::create([

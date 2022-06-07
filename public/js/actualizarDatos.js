@@ -422,6 +422,45 @@ $('.boton_cancelar').click(function(e) {
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
 
+//ACCIONES APOYO ECONOMICO
+//poner inputs 
+function apoyo_economico(){
+    
+    $('#inputs').append('<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="date">Fecha:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="date" name="date" id="date_supporT">'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="url_banco">URL banco:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="text" name="url_banco" id="url_banco">'+
+                            '</div>'+
+                          '</div>'+  
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="monto">Monto:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="number" name="monto" id="monto">'+
+                            '</div>'+
+                          '</div>'+                  
+                        '</div>');
+
+    $('#nuevo_registro').addClass('disabled');
+}
+//
+
 //Guardar formalizacion
 $('.boton_update_formalizacion').click(function(e) { 
   e.preventDefault();   

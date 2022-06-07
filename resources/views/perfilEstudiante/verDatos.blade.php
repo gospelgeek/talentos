@@ -891,9 +891,13 @@
             				</div>
             			</div>
             			<div class="btn-group">
-            				<div class="col-xs-6 col-md-12 col-sm-6">
-            					<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
-           					</div>
+            				@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+            					<div class="btn-group">
+            						<div class="col-xs-6 col-md-12 col-sm-6">
+            							<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           							</div>
+           						</div>
+           					@endif
            				</div>
            			</div>
            			<div class="row" id="inputs">
@@ -1028,9 +1032,13 @@
             				</div>
             			</div>
             			<div class="btn-group">
-            				<div class="col-xs-6 col-md-12 col-sm-6">
-            					<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
-           					</div>
+            				@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+            					<div class="btn-group">
+            						<div class="col-xs-6 col-md-12 col-sm-6">
+            							<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           							</div>
+           						</div>
+           					@endif
            				</div>
            			</div>
            			<div class="row" id="inputs">

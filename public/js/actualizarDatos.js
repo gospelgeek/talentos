@@ -419,6 +419,44 @@ $('.boton_cancelar').click(function(e) {
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
 
+//ACCIONES APOYO ECONOMICO
+//poner inputs 
+function apoyo_economico(){
+    
+    $('#inputs').append('<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="date">Fecha:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="date" name="date" id="date_supporT">'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="url_banco">URL banco:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="text" name="url_banco" id="url_banco">'+
+                            '</div>'+
+                          '</div>'+  
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="monto">Monto:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="number" name="monto" id="monto">'+
+                            '</div>'+
+                          '</div>'+                  
+                        '</div>');
+
+    $('#nuevo_registro').addClass('disabled');
+}
+
 //Guardar formalizacion
 $('.boton_update_formalizacion').click(function(e) { 
   e.preventDefault();   
@@ -447,6 +485,9 @@ $.ajax({
       'observaciones': $('textarea[id="observacionestext"]').val(),
       'checkAceptacion': checkAcptacon,
       'checkTablet': checkTablet,
+      'fecha_apoyo': $("#date_supporT").val(),
+      'banco_url': $("#url_banco").val(),  
+      'monto': $("#monto").val(),
       'id': $("#estudiantE").val(),
     },
     success:function(result) {
@@ -472,4 +513,41 @@ $.ajax({
     },       
   });
 });
+
+//actualizar registro apoyo economico
+$('.actualizar_apoyo_economico').click(function(e) { 
+  e.preventDefault();
+
+  var idDatos = $('#idapyoEcnmco').val();
+
+  $.ajax({
+  //ruta manual
+    url:'/update_apoyo_economico/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'date': $("#fchaApyo").val(),
+      'url_banco': $("#urlbnco").val(),
+      'monto': $("#mnto").val(),
+    },
+    success:function(result) {
+      $('#contenido-1').modal('hide');
+      if(result == 1){
+        toastr.success('Apoyo economico actualizado correctamente');  
+        setTimeout("location.reload()", 2000);
+      }
+      
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+}); 
 

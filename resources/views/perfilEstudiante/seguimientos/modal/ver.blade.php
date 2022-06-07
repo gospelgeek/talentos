@@ -38,6 +38,12 @@
               {!!Form::label('finhora','Hora finalizacion*: ')!!}
               {!!Form::time('finhora',null,['id'=>'horafinNh', 'class'=>'form-control','placeholder'=>'hora finalizacion', 'readonly'])!!}
             </div>
+            <hr>
+            <div class= "col-xs-12 col-sm-12">
+              {!!Form::label('url_document','URL documento: ')!!}
+              {!!Form::text('url_document',null,['id'=>'dcmnto_urL','class'=>'form-control','placeholder'=>'URL', 'readonly'])!!}
+            </div>
+            <hr>
             {!!Form::label('objetivos','Objetivos*: ')!!}
             <div class="col-xs-12 col-sm-12" size="100">
               <textarea disabled name="textareaobjetivos" id="textobjetivos" cols="105" rows="5" style="resize: both;">

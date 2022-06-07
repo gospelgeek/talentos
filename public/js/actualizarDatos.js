@@ -450,7 +450,7 @@ $.ajax({
       'observaciones': $('textarea[id="observacionestext"]').val(),
       'checkAceptacion': checkAcptacon,
       'checkTablet': checkTablet,
-      'fecha_apoyo': $("#date_support").val(),
+      'fecha_apoyo': $("#date_supporT").val(),
       'banco_url': $("#url_banco").val(),  
       'monto': $("#monto").val(),
       'id': $("#estudiantE").val(),
@@ -478,6 +478,43 @@ $.ajax({
     },       
   });
 });
+
+//actualizar registro apoyo economico
+$('.actualizar_apoyo_economico').click(function(e) { 
+  e.preventDefault();
+
+  var idDatos = $('#idapyoEcnmco').val();
+
+  $.ajax({
+  //ruta manual
+    url:'/update_apoyo_economico/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'date': $("#fchaApyo").val(),
+      'url_banco': $("#urlbnco").val(),
+      'monto': $("#mnto").val(),
+    },
+    success:function(result) {
+      $('#contenido-1').modal('hide');
+      if(result == 1){
+        toastr.success('Apoyo economico actualizado correctamente');  
+        setTimeout("location.reload()", 2000);
+      }
+      
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+}); 
 
 
 

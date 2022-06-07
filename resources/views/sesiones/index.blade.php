@@ -18,7 +18,7 @@
 			<br>
 			<div class="btn-group">
 				<div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                	{!!Form::label('cohorte','Línea: ')!!}
+                	{!!Form::label('cohorte','Linea: ')!!}
        	        	{!!Form::select('cohorte', $cohorte, null,['id'=>'cohorTe','class'=>	'form-control','required', 'placeholder'=>'Seleccione una opción'])!!}
             	</div>
            	</div>
@@ -86,13 +86,14 @@
 
             	d.id_grupo = $('#grupotoFilter').val();
             	d.id_curso = $('#asigtoFilter').val();
+            	d.id_cohort = $('#cohorTe').val();
 			},
         },	
 
         "columns": [
-        	{data: 'sesion_group.cohort.name'},
-        	{data: 'sesion_group.name'},
-        	{data: 'sesion_course.name'},
+        	{data: 'linea'},
+        	{data: 'grupo'},
+        	{data: 'asignatura'},
         	{data: 'date_session'},
             {data: null, render:function(data, type, row, meta){
 

@@ -29,16 +29,50 @@ class SesionesController extends Controller
     }
 
     public function datos(Request $request){
-              
-       
-            
-        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
+        if($request->id_cohort == null && $request->id_grupo == null && $request->id_curso == null){
+            $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
-             return datatables()->of($sesiones)->toJson();
+            return datatables()->of($sesiones)->toJson();
+        }else{
+            if($request->id_cohort !== null && $request->id_grupo == null && $request->id_curso == null){
+                    if($request->id_cohort == 1){
+                        $linea1 = Session::sesiones_linea1();
+                        return datatables()->of($linea1)->toJson();
+                    }
+                    if($request->id_cohort == 2){
+                       $linea2 = Session::sesiones_linea2();
+                        return datatables()->of($linea2)->toJson();
+                    }   
+                    if($request->id_cohort == 3){
+                        $linea3 = Session::sesiones_linea3();
+                        return datatables()->of($linea3)->toJson();
+                    }
+                }
+                if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso == null){
+                    $consultar_grupo = Session::grupos($request->id_grupo);
+                    if($consultar_grupo !== null){
+                        return datatables()->of($consultar_grupo)->toJson();    
+                    }else{
+                        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+
+                        return datatables()->of($sesiones)->toJson();
+                    }
+                    
+                }
+                if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso !== null){
+                    $consulta_general = Session::general($request->id_grupo, $request->id_curso);
+                    if($consulta_general !== null){
+                        return datatables()->of($consulta_general)->toJson();    
+                    }else{
+
+                        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+                        return datatables()->of($sesiones)->toJson();
+                    }
+                }
+        }
     }
-    
-
+                       
     public function index(){
         
         $cohorte = Cohort::pluck('name', 'id');
@@ -212,28 +246,5 @@ class SesionesController extends Controller
             ]);
         return $mensaje;
     }
-    
-    public function exportar_excel_linea(){
-        $linea1 = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, groups.name as grupo, courses.name as asignatura
-            FROM sessions
-            INNER JOIN groups ON groups.id = sessions.id_group
-            INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group BETWEEN 50 AND 89
-            AND MONTH(sessions.date_session) = 05
-        ");
 
-        $linea1_colection = collect($linea1);
-        $excel = array();
-
-        foreach($linea1_colection as $colection_linea1){
-
-            $excel[] = array('grupo' => $colection_linea1->grupo, 'fecha' => $colection_linea1->date_session, 'asignatura' => $colection_linea1->asignatura);
-        }
-
-        $exportar = new ReporteSesionesLineasExport([$excel]);
-
-
-        return Excel::download($exportar, 'sesiones_linea_1.xlsx');
-
-    }
 }

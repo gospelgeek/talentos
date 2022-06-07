@@ -83,16 +83,16 @@
             "method":"GET",
             "url": "{{route('datos.sessiones')}}",
             "data": function(d){
-
             	d.id_grupo = $('#grupotoFilter').val();
             	d.id_curso = $('#asigtoFilter').val();
+                d.id_cohort = $('#cohorTe').val();
 			},
         },	
 
         "columns": [
-        	{data: 'sesion_group.cohort.name'},
-        	{data: 'sesion_group.name'},
-        	{data: 'sesion_course.name'},
+        	{data: 'linea'},
+        	{data: 'grupo'},
+        	{data: 'asignatura'},
         	{data: 'date_session'},
             {data: null, render:function(data, type, row, meta){
 

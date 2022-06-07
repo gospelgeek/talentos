@@ -221,5 +221,9 @@ Route::get('detalles_sesiones/{id_student}/{id_course}', 'AsistenciasController@
 //rutas condicione de salud
 Route::get('crear_condicion_salud', 'SocioEducativoController@crear_condicion')->name('crear_condicion_salud');
 
+//Ruta apoyo economico
+Route::get('editar_apoyo_economico/{id}', 'FormalizacionController@apoyo_economico_editar')->name('editar_apoyo_economico');
+Route::put('update_apoyo_economico/{id}', 'FormalizacionController@apoyo_economico_update')->name('update_apoyo_economico');
+Route::delete('delete_apoyo_economico/{id}', 'FormalizacionController@apoyo_economico_delete')->name('delete_apoyo_economico');
 
 

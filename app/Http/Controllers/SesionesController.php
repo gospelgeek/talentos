@@ -31,7 +31,7 @@ class SesionesController extends Controller
         if($request->id_cohort == null && $request->id_grupo == null && $request->id_curso == null){
             $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
-                return datatables()->of($sesiones)->toJson();
+            return datatables()->of($sesiones)->toJson();
         }else{
             if($request->id_cohort !== null && $request->id_grupo == null && $request->id_curso == null){
                     if($request->id_cohort == 1){
@@ -49,11 +49,24 @@ class SesionesController extends Controller
                 }
                 if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso == null){
                     $consultar_grupo = Session::grupos($request->id_grupo);
-                    return datatables()->of($consultar_grupo)->toJson();
+                    if($consultar_grupo !== null){
+                        return datatables()->of($consultar_grupo)->toJson();    
+                    }else{
+                        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+
+                        return datatables()->of($sesiones)->toJson();
+                    }
+                    
                 }
                 if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso !== null){
                     $consulta_general = Session::general($request->id_grupo, $request->id_curso);
-                    return datatables()->of($consulta_general)->toJson();   
+                    if($consulta_general !== null){
+                        return datatables()->of($consulta_general)->toJson();    
+                    }else{
+
+                        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+                        return datatables()->of($sesiones)->toJson();
+                    }
                 }
         }
     }

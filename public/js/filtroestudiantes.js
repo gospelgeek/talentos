@@ -427,6 +427,10 @@ $(".accordion-titulo-6").click(function(e){
     
         var contenido=$(this).next(".accordion-content-6");
 
+        $('#mostrar_registros').empty();
+        $('#inputs').empty();
+        $('#nuevo_registro').removeClass('disabled');  
+    
         $(function () {
           $('#aceptacion_check').change(function(event)
           {
@@ -491,14 +495,95 @@ $(".accordion-titulo-6").click(function(e){
       $('textarea[id="observacionestext"]').val(observaciones);
       //
 
-      //sacar mes de la fecha para mostar en campo(vista verDatos)
-      let fecha = $("#date_support").val();
+      //mostrar registros de apoyos economicos en la tabla
+      let array = document.getElementById('apoyos').value;
+
+      const datos_json = JSON.parse(array);
+      var rol = document.getElementById('rol_login').value;
       
-      let fecha_convertida = new Date(fecha);
-      //garantizo que la zona horaria no me reste un dia en la fercha
-      fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
-      const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
-      $('#date_mes').val(mes_fecha);
+
+      $.each(datos_json, function(index, value) {
+
+          //sacar mes de la fecha para mostar en campo(ambas vistas)
+          let fecha = value.date;
+          let fecha_convertida = new Date(fecha);
+          //garantizo que la zona horaria no me reste un dia en la fercha
+          fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
+          const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
+          //*/
+          if(rol == 1 || rol == 4){
+
+            $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
+                    "<td>"+value.url_banco+"</td>"+
+                    "<td>"+value.monto+"</td>"+
+                    "<td>"+'<center>'+'<div class="btn-group">'+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-pencil-square-o fa editar_registro_apoyo_economico" title="Editar registro"></button>'+
+                          '</div>'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa delete_registro_apoyo_economico" title="Eliminar registro"></button>'+
+                          "</div>"+
+                      "</div>"+'</center>'+"</td>"+
+                    "</tr>");
+          }else{
+
+            $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
+                    "<td>"+value.url_banco+"</td>"+
+                    "<td>"+value.monto+"</td>"+
+                    "<td>"+'<center>'+'<div class="btn-group">'+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button disabled class="btn btn-block fa fa-pencil-square-o fa editar_registro_apoyo_economico" title="Editar registro"></button>'+
+                          '</div>'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button disabled class="btn text-danger btn-block fa fa-trash fa delete_registro_apoyo_economico" title="Eliminar registro"></button>'+
+                          "</div>"+
+                      "</div>"+'</center>'+"</td>"+
+                    "</tr>");
+          }
+            
+      });
+      //
+
+      //editar registro de apoyo economico
+      $('.editar_registro_apoyo_economico').click(function(e) {
+            e.preventDefault();
+            
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            var form = $('#form-edit-apoyo_economico');
+            var url = form.attr('action').replace(':APOYO_ID', id);
+            var data = form.serialize();
+
+            $.get(url, function(result){
+              
+              $("#idapyoEcnmco").val(result.id);
+              $('#fchaApyo').val(result.date);  
+              $('#urlbnco').val(result.url_banco);       
+              $('#mnto').val(result.monto);
+
+              $('#modal_editar_apoyo_economico').modal('show');
+            
+            });
+      });
+      //
+
+      //eliminar registro apoyo economico
+      $('.delete_registro_apoyo_economico').click(function(e) {       
+       e.preventDefault();
+
+       var row = $(this).parents('tr');
+       var id = row.data('id');
+       var form = $('#form-delete_apoyo_economico');
+       var url = form.attr('action').replace(':APOYO_ID', id);
+       var data = form.serialize();
+       
+      $.post(url, data, function(result){
+        row.fadeOut();
+        toastr.success(result); 
+        //setTimeout("location.reload()", 2000);
+       });
+
+      });  
       //
         
          if(contenido.css("display")=="none"){ //open        

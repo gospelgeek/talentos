@@ -27,10 +27,9 @@ class SesionesController extends Controller
     }
 
     public function datos(Request $request){
-            
-       if($request->id_cohort == null && $request->id_grupo == null && $request->id_curso == null){
-        
-                $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+
+        if($request->id_cohort == null && $request->id_grupo == null && $request->id_curso == null){
+            $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
                 return datatables()->of($sesiones)->toJson();
         }else{

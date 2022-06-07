@@ -35,6 +35,12 @@
               {!!Form::label('finhora','Hora finalizacion*: ')!!}
               {!!Form::time('',null,['id'=>'horafinn', 'class'=>'form-control','placeholder'=>'hora finalizacion'])!!}
             </div>
+            <hr>
+            <div class= "col-xs-12 col-sm-12">
+              {!!Form::label('url_document','URL documento: ')!!}
+              {!!Form::text('url_document',null,['id'=>'dcmnto_url','class'=>'form-control','placeholder'=>'URL'])!!}
+            </div>
+            <hr>
             <br>{!!Form::label('objetivos','Objetivos*: ')!!}
             <br>
             <div class="col-xs-12 col-sm-12" size="100">

@@ -43,11 +43,11 @@
                             <td>Cohorte</td>
                             <td>Aceptación</td>
                             <td>Tablet</td>
+                            <td>Serial Tablet</td>
                             <td>Fecha Kit</td>
                             <td>Pre-registro-ICFES</td>
                             <td>Registro-ICFES</td>
                             <td>Presentó-ICFES</td>
-                            <td>Serial Tablet</td>
                             <td id="botons" width="15%">Acciones</td>
                         </tr>
                     </thead>       

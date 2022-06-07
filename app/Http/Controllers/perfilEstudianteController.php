@@ -60,9 +60,7 @@ use Response;
 use Excel;
 use App\Imports\CsvImport;
 use Illuminate\Support\Facades\Storage;
-
-
-
+use App\EconomicalSupport;
 
 class perfilEstudianteController extends Controller
 
@@ -277,7 +275,7 @@ class perfilEstudianteController extends Controller
         //return $grupos;
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
-
+        $apoyo_economico = EconomicalSupport::all()->where('id_student', $id);
 
         $genero = Gender::pluck('name', 'id');
         $sexo = array(
@@ -355,7 +353,7 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico'));
     }
 
 
@@ -605,11 +603,8 @@ class perfilEstudianteController extends Controller
 
 
         $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
-
-
-        $seguimientos = SocioEducationalFollowUp::all()->where('id_student', $verDatosPerfil['id']);
-
-
+        $apoyo_economico = EconomicalSupport::all()->where('id_student', $id);
+        
         $genero = Gender::pluck('name', 'id');
         $sexo = array(
             'F' => 'Femenino',
@@ -674,7 +669,7 @@ class perfilEstudianteController extends Controller
         $ciudad = BirthCity::pluck('name', 'id');
 
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico'));
     }
 
 

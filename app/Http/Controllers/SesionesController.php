@@ -27,13 +27,36 @@ class SesionesController extends Controller
     }
 
     public function datos(Request $request){
-              
-       
             
-        $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
+       if($request->id_cohort == null && $request->id_grupo == null && $request->id_curso == null){
+        
+                $sesiones = Session::where('id_group', $request->id_grupo)->where('id_course', $request->id_curso)->with('sesionGroup.cohort', 'sesionCourse')->get();
 
-
-             return datatables()->of($sesiones)->toJson();
+                return datatables()->of($sesiones)->toJson();
+        }else{
+            if($request->id_cohort !== null && $request->id_grupo == null && $request->id_curso == null){
+                    if($request->id_cohort == 1){
+                        $linea1 = Session::sesiones_linea1();
+                        return datatables()->of($linea1)->toJson();
+                    }
+                    if($request->id_cohort == 2){
+                       $linea2 = Session::sesiones_linea2();
+                        return datatables()->of($linea2)->toJson();
+                    }   
+                    if($request->id_cohort == 3){
+                        $linea3 = Session::sesiones_linea3();
+                        return datatables()->of($linea3)->toJson();
+                    }
+                }
+                if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso == null){
+                    $consultar_grupo = Session::grupos($request->id_grupo);
+                    return datatables()->of($consultar_grupo)->toJson();
+                }
+                if($request->id_cohort !== null && $request->id_grupo !== null && $request->id_curso !== null){
+                    $consulta_general = Session::general($request->id_grupo, $request->id_curso);
+                    return datatables()->of($consulta_general)->toJson();   
+                }
+        }
     }
     
 

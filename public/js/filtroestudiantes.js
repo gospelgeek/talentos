@@ -255,6 +255,7 @@ $(".accordion-titulo-4").click(function(e){
             $('#lugar1').val(object.Lugar);       
             $('#hInicio').val(object.HoraInicio); 
             $("#horafin").val(object.HoraFin);
+            $("#dcmntOUrl").val(object.urlDocumento);    
             $('textarea[id="textobjetivos"]').val(object.Objetivos);
             $('textarea[id="textindividualT"]').val(object.Individual);
             if(checkind == 'alto'){
@@ -370,6 +371,7 @@ $(".accordion-titulo-4").click(function(e){
             $('textarea[id="textvdaunvrstria"]').val(object.VidaUniversitariaYciudad);
             $('#rsgvdUnyCdad').val(checkvuc);
             $('textarea[id="textobsrvacnes"]').val(object.Observaciones);
+            $('#dcmnto_urL').val(object.urlDocumento);
             $('#modal_ver').modal('show');
 
             });

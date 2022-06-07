@@ -41,7 +41,7 @@ $('.boton_almacenar_seguimiento').click(function(e) {
             'textareavidauni': $('textarea[id="vdaunvrstria"]').val(),
             'checkuniC': $('input[name="checkuniC"]:checked').val(),
             'textareobservaciones': $('textarea[id="obsrvacnes"]').val(),
-
+            'url_document': $('#dcmnto_url').val(),
 
         },
 
@@ -188,6 +188,7 @@ $('.boton_update_seguimiento').click(function(e) {
       'textareavidauni': $('textarea[id="textvdaunvrstria"]').val(),
       'checkuni': $('input[name="checkuni"]:checked').val(),
       'textareobservaciones': $('textarea[id="textobsrvacnes"]').val(),
+      'url_document': $("#dcmntOUrl").val(),
     },
     success:function(result) {
       //alert(result);

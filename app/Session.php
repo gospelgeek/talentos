@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use SoftDeletes;
+use DB;
 
 class Session extends Model
 {
@@ -20,8 +21,9 @@ class Session extends Model
     ];
 
     protected $dates = ['delete_at'];
-    
-        //consultas sesiones
+
+
+    //consultas sesiones
     public static function sesiones_linea1(){
         $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
@@ -103,6 +105,7 @@ class Session extends Model
         }
 
     }
+
 
     /**
      * Relacion con los  datos que se tiene de Session  

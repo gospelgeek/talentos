@@ -39,6 +39,12 @@
               {!!Form::label('finhora','Hora finalizacion*: ')!!}
               {!!Form::time('finhora',null,['id'=>'horafin', 'class'=>'form-control','placeholder'=>'hora finalizacion'])!!}
             </div>
+            <hr>
+            <div class= "col-xs-12 col-sm-12">
+              {!!Form::label('url_document','URL documento: ')!!}
+              {!!Form::text('url_document',null,['id'=>'dcmntOUrl','class'=>'form-control','placeholder'=>'URL'])!!}
+            </div>
+            <hr>
             {!!Form::label('objetivos','Objetivos*: ')!!}
             <div class="col-xs-12 col-sm-12" size="100">
               <textarea name="textareaobjetivos" id="textobjetivos" cols="105" rows="5" style="resize: both;">

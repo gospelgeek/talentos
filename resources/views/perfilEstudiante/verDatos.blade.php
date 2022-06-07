@@ -870,25 +870,59 @@
 							<div class="col-xs-12 col-md-12">
             					<label>PRUEBA ICFES</label>	
             				</div>
-            				<div class="col-xs-3 col-md-3">
+            				<div class="col-xs-4 col-md-2">
             					<p style="text-align: right"><label for="pre_registration_icfes">PRE-INSCRIPCIÓN</label></p>
             				</div>
-            				<div class="col-xs-6 col-md-3">
+            				<div class="col-xs-4 col-md-2">
 								<input type="checkbox" name="pre_registration_icfes" id="pre_registration"value="SI">
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
             					<p style="text-align: right"><label for="inscription_icfes">INSCRIPCIÓN</label></p>
             				</div>
-            				<div class="col-xs-6 col-md-3">
+            				<div class="col-xs-4 col-md-2">
 								<input type="checkbox" name="inscription_icfes" id="inscription" value="SI">
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
             					<p style="text-align: right"><label for="presented_icfes">PRESENTÓ</label></p>
             				</div>
-            				<div class="col-xs-6 col-md-3">
+            				<div class="col-xs-4 col-md-2">
 								<input type="checkbox" name="presented_icfes" id="presented" value="SI">
 							</div>
 						</div>
+                        <hr>
+                        <div class="row">
+							<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<label>APOYO ECONÓMICO:</label>
+            					</div>
+            				</div>
+            				<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           						</div>
+           					</div>
+           				</div>
+           				<div class="row" id="inputs">
+           			
+           				</div>
+           				<div id="mostrarsegui" class="table-responsive">
+     					<br>
+     						<table class=" table table-bordered table-striped">
+        						<thead >
+            						<tr>
+                						<td>MES</td>
+                						<td>BANCO</td>
+                						<td>MONTO</td>
+                						<td>ACCIONES</td>
+            						</tr>
+        						</thead>
+        						<input type="hidden" id="apoyos" value="{{$apoyo_economico}}">
+        						<input type="hidden" id="rol_login" value="{{auth()->user()->rol_id}}"> 	
+								<tbody id="mostrar_registros">
+						
+								</tbody>
+                			</table>
+        				</div>
 						<hr>
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
@@ -898,30 +932,6 @@
             					<textarea name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
                 				</textarea>
                 			</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-            					<label>APOYO ECONOMICO:</label>	
-            				</div>
-            				<div class="col-xs-3 col-md-3">
-            					<p style="text-align: right"><label for="date">Mes:</label></p>
-            				</div>
-            				<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="text" name="date" id="date_mes">
-							</div>
-							<div class="col-xs-3 col-md-3">
-            					<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
-            				</div>
-            				<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
-							</div>
-							<div class="col-xs-3 col-md-3">
-            					<p style="text-align: right"><label for="monto">Monto:</label></p>
-            				</div>
-            				<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
-							</div>
 						</div>
 					@else
 						<div class="row">
@@ -1002,25 +1012,59 @@
 							<div class="col-xs-12 col-md-12">
            						<label>PRUEBA ICFES</label>	
            					</div>
-           					<div class="col-xs-3 col-md-3">
+           					<div class="col-xs-4 col-md-2">
            						<p style="text-align: right"><label for="pre_registration_icfes">PRE-INSCRIPCIÓN</label></p>
            					</div>
-           					<div class="col-xs-6 col-md-3">
+           					<div class="col-xs-4 col-md-2">
 								<input disabled type="checkbox" name="pre_registration_icfes" id="pre_registration"value="SI">
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
             					<p style="text-align: right"><label for="inscription_icfes">INSCRIPCIÓN</label></p>
            					</div>
-           					<div class="col-xs-6 col-md-3">
+           					<div class="col-xs-4 col-md-2">
 								<input disabled type="checkbox" name="inscription_icfes" id="inscription" value="SI">
 							</div>
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
             					<p style="text-align: right"><label for="presented_icfes">PRESENTÓ</label></p>
            					</div>
-           					<div class="col-xs-6 col-md-3">
+           					<div class="col-xs-4 col-md-2">
 								<input disabled type="checkbox" name="presented_icfes" id="presented" value="SI">
 							</div>
 						</div>
+                        <hr>
+                        <div class="row">
+							<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<label>APOYO ECONÓMICO:</label>
+            					</div>
+            				</div>
+            				<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           						</div>
+           					</div>
+           				</div>
+           				<div class="row" id="inputs">
+           			
+           				</div>
+           				<div id="mostrarsegui" class="table-responsive">
+     					<br>
+     						<table class=" table table-bordered table-striped">
+        						<thead >
+            						<tr>
+                						<td>MES</td>
+                						<td>BANCO</td>
+                						<td>MONTO</td>
+                						<td>ACCIONES</td>
+            						</tr>
+        						</thead>
+        						<input type="hidden" id="apoyos" value="{{$apoyo_economico}}">
+        						<input type="hidden" id="rol_login" value="{{auth()->user()->rol_id}}">
+								<tbody id="mostrar_registros">
+						
+								</tbody>
+                			</table>
+        				</div>
 						<hr>
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
@@ -1031,30 +1075,6 @@
                					</textarea>
                				</div>
 						</div>
-						<!--<hr>
-						<div class="row">
-							<div class="col-xs-12 col-md-12">
-           						<label>APOYO ECONOMICO:</label>	
-           					</div>
-           					<div class="col-xs-3 col-md-3">
-           						<p style="text-align: right"><label for="date">Mes:</label></p>
-           					</div>
-           					<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="text" name="date" id="date_mes">
-							</div>
-							<div class="col-xs-3 col-md-3">
-           						<p style="text-align: right"><label for="url_banco">URL banco:</label></p>
-           					</div>
-           					<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="text" name="url_banco" id="url_banco" value="{{ old('url_banco', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->url_banco : null) }}">
-							</div>
-							<div class="col-xs-3 col-md-3">
-            					<p style="text-align: right"><label for="monto">Monto:</label></p>
-           					</div>
-            				<div class="col-xs-3 col-md-3">
-								<input readonly class="form-control" type="number" name="monto" id="monto" value="{{ old('monto', $verDatosPerfil->economicalsupport ? $verDatosPerfil->economicalsupport->monto : null) }}">
-							</div>
-						</div>-->
 					@endif
 			</div>
 			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
@@ -1075,6 +1095,7 @@
 @include('perfilEstudiante.seguimientos.modal.create')
 @include('perfilEstudiante.seguimientos.modal.editar')
 @include('perfilEstudiante.seguimientos.modal.ver')
+@include('perfilEstudiante.apoyoeconomico.modal.edit')
 @include('perfilEstudiante.modal.editcohortegrupo')
 @include('perfilEstudiante.modal.alerta')
 
@@ -1085,6 +1106,11 @@
 {!!Form::open(['id'=>'form-delete','route'=>['deleteseguimiento',':SEGUIMIENTO_ID'], 'method'=>'DELETE'])!!}
 {!!Form::close()!!}
 
+{!!Form::open(['id'=>'form-edit-apoyo_economico','route'=>['editar_apoyo_economico',':APOYO_ID'], 'method'=>'GET'])!!}
+{!!Form::close()!!}
+
+{!!Form::open(['id'=>'form-delete_apoyo_economico','route'=>['delete_apoyo_economico',':APOYO_ID'], 'method'=>'DELETE'])!!}
+{!!Form::close()!!}
 
 @push('scripts')
 {!!Html::script('/js/filtroestudiantes.js')!!}

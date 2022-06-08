@@ -69,42 +69,56 @@ $('.crear_estado').click(function(e) {
           }
  });
 
-//actualizar esatdo y crear retiro 
+//actualizar estado y crear retiro 
 
-  $('.boton_update_estado').click(function(e) { 
+$('.boton_update_estado').click(function(e) { 
   e.preventDefault();   
   var idEstado = $('#idE').val();
   //alert($("#estadoN").val());
-  $.ajax({
-  //ruta manual
-    url:'/update_estado/'+ idEstado,
-    type:'GET',
-    data:{
-      '_token': $('input[name=_token]').val(),
-      'id_state': $("#estadoN").val(),
-      'id_reasons': $("#CMotivo").val(),
-      'observation': $("#Cobservacion").val(),
-      'url':         $("#CUrl").val(),
-      'fecha':       $("#Cfecha").val(),     
-    },
-    success:function(msj) {
-      $('#modal_crear_estado').modal('hide');
-      //window.location.reload(); 
-      toastr.success('Actualizado Correctamente!!');
-      setTimeout("location.reload()", 2000);
-    },
+  var fecha = $('#Cfecha').val();
+  if(fecha != ""){
+    $.ajax({
+      //ruta manual
+      url:'/update_estado/'+ idEstado,
+      type:'GET',
+      data:{
+        '_token': $('input[name=_token]').val(),
+        'id_state': $("#estadoN").val(),
+        'id_reasons': $("#CMotivo").val(),
+        'observation': $("#Cobservacion").val(),
+        'url':         $("#CUrl").val(),
+        'fecha':       $("#Cfecha").val(),
+      },
+      success:function(msj) {
+        $('#modal_crear_estado').modal('hide');
+        //window.location.reload(); 
+        toastr.success('Actualizado Correctamente!!');
+        //setTimeout("location.replace('/estudiantes/estado')", 2000);
+      },
+      error:function(msj) {          
+        var mensajeError = "";
+        $.each(msj.responseJSON.errors,function(i,field){
+          mensajeError += "<li>"+field+"</li>"
+          //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+          console.log(mensajeError)
+        });
+        $("#msj-error-en-estado").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+      },       
+    });
+  }else{
+      var campo = document.getElementById("Cfecha");
+      campo.style.borderColor = "red";
+      toastr.error('!!El campo FECHA es obligatorio!!');
+  }
+});
 
-    error:function(msj) {          
-      var mensajeError = "";
-      $.each(msj.responseJSON.errors,function(i,field){
-        mensajeError += "<li>"+field+"</li>"
-        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
-        console.log(mensajeError)
-      });
-      $("#msj-error-en-estado").html("<ul>"+mensajeError+"</ul>").fadeIn();         
-    },       
-  });
-  });
+$("#Cfecha").on('change',function(event) {
+    var fecha = $('#Cfecha').val();
+    if(fecha != ""){
+      var campo = document.getElementById("Cfecha");
+      campo.style.borderColor = "#CED4DA";
+    }
+});
 
 
 $(".accordion-titulo").click(function(e){

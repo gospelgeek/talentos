@@ -4,18 +4,14 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-<script id="json" type="text" src="/json/students.json"></script>
-<script id="asisten" type="text" src="/json/asistencias.json"></script>
 <h1 id="num_sesiones" style="text-align: center;">{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}<br> Total Sesiones </h1>
-<input type="hidden" id="code_curse" data-id="{{$grupo->id}}" data-name="{{ $name->name}}" data-cohort="{{ $grupo->cohort->id}}" data-group="{{$grupo->name}}" data-courseid="{{$name->id}}">
-<input type="hidden" id="moodle" name="quotation" data-datos="{{json_encode($id_moole,TRUE)}}">
-<div class="table-responsive" id="datos">
+<div class="table-responsive" >
 	<table id="example1" class="table table-bordered table-striped">
-					<div id="carga" class="d-flex justify-content-center">
+					{{--<div id="carga" class="d-flex justify-content-center">
 						<strong>Procesando&nbsp;</strong>
                     	<div class="spinner-border spinner-border-sm" role="status">					
 						</div>
-					</div>	
+					</div>--}}
                     <thead>
                         <tr>
                             <td>Fecha</td>
@@ -24,14 +20,27 @@
                             <td width="15%">Accion</td>
                         </tr>
                     </thead>
-                    <tbody id="ddd">
-                    	
+                    <tbody>
+                        @foreach ($sesiones as $sesion)
+                    	<tr>
+                            <td>{{$sesion->sessdate}}</td>
+                            <td>{{$sesion->asistieron}}</td>
+                            <td>{{$sesion->no_asistieron}}</td>
+                            <td>
+                                <div >                                  
+                                    <div class="col-xs-12 col-sm-12">
+                                        <a title="Ver Informacion" href="/Asistencias/{{$name->id}}/grupo/{{$grupo->id}}/session/{{$sesion->session_id}}" class="btn  btn-sm  fa fa-eye">Lista</a>    
+                    
+                                        <a title="Enlace Campus virtual" href="https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id={{$course->instance_id}}&sessionid={{$sesion->session_id}}&grouptype=0" class="btn btn-sm fa fa-external-link" target="_blank">Campus</a>    
+                                    </div>
+                                </div>
+                            </td>   
+                        </tr>
+                        @endforeach
                     </tbody>
     </table>                
 </div>
 <a href="{{route('asistencias.grupos',$name->id)}}" class="fa fa-arrow-left">Regresar</a>
-{!!Form::open(['id'=>'form-edit','route'=>['asistencias.asignatura',$name->id,$grupo->id,':SESSIONID'], 'method'=>'GET'])!!}
-{!!Form::close()!!}
 @push('scripts')
 <script type="module" src="/js/asignaturas.js"></script>
 @endpush

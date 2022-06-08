@@ -38,8 +38,7 @@ class Formalization extends Model
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN formalizations ON formalizations.id_student = student_profile.id 
-            WHERE student_groups.deleted_at is null
-            AND student_profile.id_state = 1");
+            WHERE student_groups.deleted_at is null");
 
         if($data != null){
             return $data;

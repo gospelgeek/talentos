@@ -1,4 +1,4 @@
-
+/*
 
 	var url = document.getElementById('json').src;
         var asistencias = document.getElementById('asisten').src;
@@ -90,13 +90,14 @@
                                                 a.innerHTML = ' lista';
                                                 a.setAttribute('title', 'ver asistencias');
                                                 var route = form.attr('action').replace(':SESSIONID', value.sessions[i].id);
+                                                //console.log(value);
                                                 a.setAttribute("href", route);
                                                 let vinculo = document.createElement('a');
                                                 vinculo.className +="btn btn-sm fa fa-external-link";
                                                 vinculo.setAttribute('title', 'Enlace Campus virtual');
                                                 //vinculo.setAttribute('style', 'display:none');
                                                 vinculo.innerHTML = "Campus";
-                                                vinculo.setAttribute("href", "https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id="+value.instanceid+"&sessionid="+value.sessions[i].id+"&grouptype=0");
+                                                vinculo.setAttribute("href", "https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id=+"+value.instanceid+"&sessionid="+value.sessions[i].id+"&grouptype=0");
                                                 vinculo.setAttribute("target", "_blank");
                                                 let row_2 = document.createElement('tr');
                                                 let row_2_data_1 = document.createElement('td');
@@ -126,7 +127,21 @@
                         }       
                 });
                 document.getElementById("carga").remove();
-                $("#example1").DataTable({
+               
+
+         });
+        
+        });
+        
+        //const filas=document.querySelector("#987");
+        //const tr = document.querySelectorAll("#example1 thead tr th");
+        //console.log(tr);	
+
+
+*/  
+
+                 
+ $("#example1").DataTable({
                         "processing": true,
                         "LoadingRecords":true,
                         "paging": true,
@@ -142,17 +157,4 @@
                         },
                         "dom": 'Bfrtip',
                         "buttons": ["copy", "csv", "excel", "pdf", "print"]
-                });
-
-         });
-        
-        });
-        
-        //const filas=document.querySelector("#987");
-        //const tr = document.querySelectorAll("#example1 thead tr th");
-        //console.log(tr);	
-
-
-  
-
-                 
+});

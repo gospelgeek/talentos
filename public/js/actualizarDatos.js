@@ -365,7 +365,7 @@ $('.boton_mensaje_alerta').click(function(e) {
 //Actualizando campos
 $('.boton_actualizar').click(function(e) { 
   e.preventDefault();
-
+  
   var idgroup = $('#idGr').val();
 
   $.ajax({
@@ -379,15 +379,18 @@ $('.boton_actualizar').click(function(e) {
       'group_change_date': $("#fecha_cambio").val(),
     },
     success:function(result) {
-      
-      //$('#contenido-3').modal('hide');
-      //window.location.reload(); 
+       
       if(result == 'El grupo seleccionado debe pertenecer a la cohorte correspondiente'){
         toastr.warning(result); 
-    
-      }else if(result == 'Datos actualizados correctamente!!'){
+      }
+
+      if(result == 'Datos actualizados correctamente!!'){
         toastr.success(result);
         setTimeout("location.reload()", 2000);
+      }
+
+      if(result == 2){
+       toastr.warning('Debe diligenciar todos los campos'); 
       }
       
     },

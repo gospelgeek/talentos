@@ -207,9 +207,11 @@ $("#estadoN").on('change',function(event) {
 $('.boton_update_estado').click(function(e) { 
   e.preventDefault();   
   var idEstado = $('#idE').val();
-  //alert($("#estadoN").val());
+  var estado = $("#estadoN").val();
   var fecha = $('#Cfecha').val();
-  if(fecha != ""){
+  var observation = $('#Cobservacion').val();
+  //alert(observation)
+  if(fecha != "" && estado != 1 && observation != ""){
     $.ajax({
       //ruta manual
       url:'/update_estado/'+ idEstado,
@@ -239,16 +241,64 @@ $('.boton_update_estado').click(function(e) {
       },       
     });
   }else{
-      var campo = document.getElementById("Cfecha");
-      campo.style.borderColor = "red";
-      toastr.error('!!El campo FECHA es obligatorio!!');
+    if(estado != 1){
+      if(fecha == ""){
+        var campo1 = document.getElementById("Cfecha");
+        campo1.style.borderColor = "red";
+        toastr.error('!!El campo FECHA es obligatorio!!');
+      }
+      if(observation == ""){
+        var campo = document.getElementById("Cobservacion");
+        campo.style.borderColor = "red";
+        toastr.error('!!El campo OBSERVACION es obligatorio!!');
+      }
+      
+    }    
+    else{
+      $.ajax({
+      //ruta manual
+      url:'/update_estado/'+ idEstado,
+      type:'GET',
+      data:{
+        '_token': $('input[name=_token]').val(),
+        'id_state': $("#estadoN").val(),
+        'id_reasons': $("#CMotivo").val(),
+        'observation': $("#Cobservacion").val(),
+        'url':         $("#CUrl").val(),
+        'fecha':       $("#Cfecha").val(),
+      },
+      success:function(msj) {
+        $('#modal_crear_estado').modal('hide');
+        //window.location.reload(); 
+        toastr.success('Actualizado Correctamente!!');
+        setTimeout("location.replace('/estudiantes/estado')", 2000);
+      },
+      error:function(msj) {          
+        var mensajeError = "";
+        $.each(msj.responseJSON.errors,function(i,field){
+          mensajeError += "<li>"+field+"</li>"
+          //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+          console.log(mensajeError)
+        });
+        $("#msj-error-en-estado").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+      },       
+    });
+    }
   }
-  });
+});
 
 $("#Cfecha").on('change',function(event) {
     var fecha = $('#Cfecha').val();
     if(fecha != ""){
       var campo = document.getElementById("Cfecha");
+      campo.style.borderColor = "#CED4DA";
+    }
+});
+
+$("#Cobservacion").on('change',function(event) {
+    var observacion = $('#Cobservacion').val();
+    if(observacion != ""){
+      var campo = document.getElementById("Cobservacion");
       campo.style.borderColor = "#CED4DA";
     }
 });

@@ -890,7 +890,7 @@ class perfilEstudianteController extends Controller
                    $estado2 = perfilEstudiante::withTrashed()->where('id', $id)->update(['id_state' => $request['id_state']]);
 
                 }else{
-                    $estado = perfilEstudiante::findOrFail($id);        
+                    $estado = perfilEstudiante::withTrashed()->findOrFail($id);       
                     $estado->id_state = $request['id_state'];
                     $estado->save();  
                     $estado->delete();

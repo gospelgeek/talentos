@@ -958,18 +958,30 @@ class perfilEstudianteController extends Controller
     {
 
         $asignaturas = Course::All();
+        $cohorte = Cohort::pluck('name','id');
 
         //dd($asignaturas);
 
-        return view('perfilEstudiante.Asistencias.index', compact('asignaturas'));
+        return view('perfilEstudiante.Asistencias.index', compact('asignaturas','cohorte'));
     }
 
     public function Grupos_Asignaturas($id)
     {
         $name = Course::where('id', $id)->first();
-        $grupos = Group::all()->where('id_cohort', $name->id_cohort);
-
+        $this->course= $name->name;
         //dd($name);
+        $grupos = Group::all()->where('id_cohort', $name->id_cohort)->where('name','!=',"TEMPORAL");
+        //dd($grupos);
+        $grupos->map(function($grupo){
+            //dd($this->name);
+            $course_moodle = CourseMoodle::select('attendance_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
+            //dd($course_moodle->attendance_id);
+            $grupo->sesiones = SessionCourse::where('attendance_id',$course_moodle->attendance_id)->count();
+            //dd($grupo);
+        });
+        
+        //dd($grupos);
+        
 
         return view('perfilEstudiante.Asistencias.grupos', compact('grupos', 'name'));
     }
@@ -979,10 +991,28 @@ class perfilEstudianteController extends Controller
         $grupo = Group::where('id', $id)->first();
         $name = Course::where('id', $course)->first();
         $notas = StudentGroup::all()->where('id_group', $id);
-
-        //dd($grupo);
-
-        return view('perfilEstudiante.Asistencias.notas', compact('notas', 'grupo', 'name', 'id_session'));
+        $this->grupo = $id;
+        $this->sesion = $id_session;
+        $asistencias = perfilEstudiante::select('name','lastname','id_moodle')->whereHas('studentGroup',function($q)
+        {
+            $q->where('id_group', '=', $this->grupo);
+        })->get();
+        //dd($estudiantes);
+        //$asistencias = AttendanceStudent::where('session_id', $id_session)->get();
+        $asistencias->map(function($asistencia){
+            $estudiante = AttendanceStudent::where('session_id', $this->sesion)->where('id_moodle',$asistencia->id_moodle)->where('grade',['P','R'])->exists();
+            //dd($estudiante);
+            if($estudiante){
+                $asistencia->grade = 'Asistio';
+            }else{
+                $asistencia->grade = "No Asistio";
+            }
+            //$asistencia->name = $estudiante->name;
+            //$asistencia->lastname = $estudiante->lastname;
+            
+        });
+        //dd($asistencias);
+        return view('perfilEstudiante.Asistencias.notas', compact('notas', 'grupo', 'name', 'id_session','asistencias'));
     }
 
     public function sesiones($course, $id)
@@ -990,20 +1020,24 @@ class perfilEstudianteController extends Controller
 
         $grupo = Group::where('id', $id)->first();
         $name = Course::where('id', $course)->first();
-        $notas = StudentGroup::where('id_group', $id)->get('id_student');
-        $id_moole = array();
-        $contador = 0;
-        foreach ($notas as $student) {
+        $course = CourseMoodle::select('attendance_id','instance_id')->where('group_id',$id)->where('fullname','LIKE',"$name->name%")->first();
+        
+        $sesiones = SessionCourse::where('attendance_id',$course->attendance_id)->get();
+        $this->id_grupo= $id;
+        $this->grupo = perfilEstudiante::whereHas('studentGroup',function($q)
+        {
+            $q->where('id_group', '=', $this->id_grupo);
+        })->count();
+        $sesiones->map(function($sesion){
+            //dd($sesion);
+            $sesion->asistieron = AttendanceStudent::where('grade',['P','R'])->where('session_id',$sesion->session_id)->count();
+            $cant_estudiantes_grupo = $this->grupo;
+            //dd($cant_estudiantes_grupo);
+            $sesion->no_asistieron = $cant_estudiantes_grupo-$sesion->asistieron;
+            //dd($sesion);
+        });
 
-            $moodle = perfilEstudiante::where('id', $student['id_student'])->get('id_moodle');
-
-            foreach ($moodle as $id) {
-                $id_moole[$contador] = $id->id_moodle;
-            }
-            $contador++;
-        }
-
-        return view('perfilEstudiante.Asistencias.sesiones', compact('grupo', 'name', 'id_moole'));
+        return view('perfilEstudiante.Asistencias.sesiones', compact('grupo', 'name','sesiones','course'));
     }
    
     

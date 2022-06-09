@@ -38,6 +38,19 @@ class AsistenciasController extends Controller
         $sesiones = SessionCourse::all()->where('attendance_id', $sesiones->attendance_id);
         dd($asistencias);
     }
+    public function detalle_sesiones_ficha($attendance_id,$id_moodle){
+        //dd($attendance_id,$id_moodle);
+        $this->id_moodle = $id_moodle;
+        $sesiones = SessionCourse::select('sessdate','session_id','lasttaken')->where('attendance_id',$attendance_id)->get();
+        $this->curso = CourseMoodle::select('fullname')->where('attendance_id',$attendance_id)->firstOrfail();
+        //dd($this->curso);
+        $sesiones->map(function($sesion){
+                $sesion->asistio = AttendanceStudent::where('id_moodle',$this->id_moodle)->where('session_id',$sesion->session_id)->where('grade',['P',['R']])->exists();
+                $sesion->curso = $this->curso->fullname;
+        });
+
+        return $sesiones;
+    }
     public function detalles($id_student,$id_course){
         //dd($id_course);
         $estudiante =perfilEstudiante::findOrFail($id_student);

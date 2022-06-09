@@ -352,8 +352,25 @@ class perfilEstudianteController extends Controller
             $foto = explode("/", $verDatosPerfil->photo);
             $foto = $foto[5];
         }
+        $this->id_moodle = $verDatosPerfil->id_moodle;
+        
+        $cursos = DB::select("select course_moodles.attendance_id,course_moodles.fullname,COUNT(*) as asistencia
+                            FROM `course_moodles`,session_courses,attendance_students 
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id 
+                            and attendance_students.session_id = session_courses.session_id
+                            and attendance_students.grade = 'P' 
+                            and attendance_students.id_moodle = '".$verDatosPerfil->id_moodle."'
+                            GROUP BY course_moodles.fullname");
+        $cursos= collect($cursos);
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico'));
+        $cursos->map(function($curso)
+        {
+            $curso->sesiones = SessionCourse::where('attendance_id',$curso->attendance_id)->count();
+            //dd($curso);
+        });
+        
+
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos'));
     }
 
 
@@ -667,9 +684,25 @@ class perfilEstudianteController extends Controller
         $muni_nacimiento = BirthCity::pluck('name', 'id');
 
         $ciudad = BirthCity::pluck('name', 'id');
+        
+        $this->id_moodle = $verDatosPerfil->id_moodle;
+        
+        $cursos = DB::select("select course_moodles.attendance_id,course_moodles.fullname,COUNT(*) as asistencia
+                            FROM `course_moodles`,session_courses,attendance_students 
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id 
+                            and attendance_students.session_id = session_courses.session_id
+                            and attendance_students.grade = 'P' 
+                            and attendance_students.id_moodle = '".$verDatosPerfil->id_moodle."'
+                            GROUP BY course_moodles.fullname");
+        $cursos= collect($cursos);
 
+        $cursos->map(function($curso)
+        {
+            $curso->sesiones = SessionCourse::where('attendance_id',$curso->attendance_id)->count();
+            //dd($curso);
+        });
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos'));
     }
 
 

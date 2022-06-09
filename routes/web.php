@@ -217,6 +217,7 @@ Route::get('pdfEstudiante/{id}', 'PdfsReportesController@PDF_estudiante')->name(
 Route::get('ver_asistencias/{id_moodle}/{id_grupo}', 'AsistenciasController@ver_asistencias')->name('estudiante.ver_asistencias');
 Route::post('cargar_asistencias', 'AsistenciasController@cargar_asistencias')->name('estudiante.cargar_asistencias');
 Route::get('detalles_sesiones/{id_student}/{id_course}', 'AsistenciasController@detalles')->name('estudiante.detalles_sesiones');
+Route::get('detalle_sesiones_ficha/{attendance_id}/{id_moodle}', 'AsistenciasController@detalle_sesiones_ficha')->name('estudiante.detalle_sesiones_ficha');
 
 //rutas condicione de salud
 Route::get('crear_condicion_salud', 'SocioEducativoController@crear_condicion')->name('crear_condicion_salud');

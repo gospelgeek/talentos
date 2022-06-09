@@ -773,7 +773,25 @@ function abrir_modal(attendance_id,id_moodle){
 function cerrar_modal(){
   $("#recargar").load(" #recargar > *");
   $('#modal_asistencias').modal('hide');
-}    
+}
+$(document).ready(function()
+{
+  //Defino los totales de mis 2 columnas en 0
+  var total_col1 = 0;
+  var total_col2 = 0;
+  //Recorro todos los tr ubicados en el tbody
+  $('#example1 tbody').find('tr').each(function (i, el) {
+             
+        //Voy incrementando las variables segun la fila ( .eq(0) representa la fila 1 )     
+        total_col1 += parseFloat($(this).find('td').eq(1).text());
+        total_col2 += parseFloat($(this).find('td').eq(2).text());
+                
+    });
+    //Muestro el resultado en el th correspondiente a la columna
+    $('#totalsesiones').text(total_col1);
+    $('#totalasistencias').text(total_col2);
+
+});
 $(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);
@@ -792,7 +810,7 @@ function tipoCancha(deporteSel){
             //var contenido=$(this).next(".accordion-content-5");
             $('.accordion-content-5').slideDown(250);         
             $('.accordion-titulo-5').addClass("open");
-            document.getElementById('carga').remove();
+            //document.getElementById('carga').remove();
             //console.log("s");
             break;
     }

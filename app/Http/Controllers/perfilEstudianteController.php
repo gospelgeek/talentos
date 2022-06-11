@@ -1930,7 +1930,7 @@ class perfilEstudianteController extends Controller
                 break;    
             case '4':
                 if(Storage::disk('local')->exists('asistencias_linea_3_abril.json')) {
-                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_abril.json'));
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_abril.json'));
                     $estudiantes = collect($asistencias);
                
                     return datatables()->of($estudiantes)->toJson();

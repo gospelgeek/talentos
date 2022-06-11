@@ -1412,120 +1412,627 @@ class perfilEstudianteController extends Controller
         }   
     }
     public function asistencias_linea_1(Request $request){
-
-        $this->from_date = $request->from_date;
-        $this->to_date = $request->to_date;
-
-        if(Storage::disk('local')->exists('asistencias_linea_1.json') 
-            && $request->from_date == null && $request->from_date == null) {
-            $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
-            $estudiantes = collect($asistencias);
+        switch ($request->mes) {
+            case '1':
+                if(Storage::disk('local')->exists('asistencias_linea_1.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-        }else{
-            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
-            $estudiantes = collect($estudiantes);
-            $estudiantes->map(function($estudiante){
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
                 
-                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-                unset($estudiante->grupo);
-                unset($estudiante->id_moodle);
-            //dd($estudiante);
-            });
-        //dd($estudiantes);
-            
-            if(Storage::disk('local')->exists('asistencias_linea_1.json')){
-                 
-                return datatables()->of($estudiantes)->toJson();
-            }else{
-            $estudiantes = json_encode($estudiantes);
-            Storage::disk('local')->put('asistencias_linea_1.json', $estudiantes);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
 
-            $asistencias    = json_decode(Storage::get('asistencias_linea_1.json'));
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1.json', $estudiantes);
 
-            $estudiantes = collect($asistencias);
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-            }    
-        }      
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '2':
+                if(Storage::disk('local')->exists('asistencias_linea_1_febrero.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_febrero.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1643711398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1643711398);
+                    $this->month_end = date('Y/m/d', $month_end);
+
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_febrero.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '3':
+                if(Storage::disk('local')->exists('asistencias_linea_1_marzo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_marzo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1646130598);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1646130598);
+                    $this->month_end = date('Y/m/d', $month_end);
+                
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_marzo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
+            case '4':
+                if(Storage::disk('local')->exists('asistencias_linea_1_abril.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_abril.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1648808998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1648808998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_abril.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '5':
+                if(Storage::disk('local')->exists('asistencias_linea_1_mayo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_mayo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1651400998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1651400998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_mayo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '6':
+                if(Storage::disk('local')->exists('asistencias_linea_1_junio.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_junio.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1654079398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1654079398);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_junio.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            default:
+                echo "ERROR DE MES..";
+                break;
+        }
+              
     }
     public function asistencias_linea_2(Request $request){
-        $this->from_date = $request->from_date;
-        $this->to_date = $request->to_date;
-        if(Storage::disk('local')->exists('asistencias_linea_2.json')
-          && $request->from_date == null && $request->from_date == null) {
-            $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
-            $estudiantes = collect($asistencias);
+        switch ($request->mes) {
+            case '1':
+                if(Storage::disk('local')->exists('asistencias_linea_2.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-        }else{
-            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
-            $estudiantes = collect($estudiantes);
-            $estudiantes->map(function($estudiante){
-            
-                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-                unset($estudiante->grupo);
-                unset($estudiante->id_moodle);
-            //dd($estudiante);
-            });
-        //dd($estudiantes);
-            if(Storage::disk('local')->exists('asistencias_linea_2.json')){
-                 
-                return datatables()->of($estudiantes)->toJson();
-            }else{
-            $estudiantes = json_encode($estudiantes);
-            Storage::disk('local')->put('asistencias_linea_2.json', $estudiantes);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
 
-            $asistencias    = json_decode(Storage::get('asistencias_linea_2.json'));
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2.json', $estudiantes);
 
-            $estudiantes = collect($asistencias);
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-            }
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '2':
+                if(Storage::disk('local')->exists('asistencias_linea_2_febrero.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_febrero.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1643711398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1643711398);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_febrero.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '3':
+                if(Storage::disk('local')->exists('asistencias_linea_2_marzo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_marzo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1646130598);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1646130598);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_marzo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
+            case '4':
+                if(Storage::disk('local')->exists('asistencias_linea_2_abril.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_abril.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1648808998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1648808998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_abril.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '5':
+                if(Storage::disk('local')->exists('asistencias_linea_2_mayo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_mayo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1651400998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1651400998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_mayo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '6':
+                if(Storage::disk('local')->exists('asistencias_linea_2_junio.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_junio.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1654079398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1654079398);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_junio.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            default:
+                echo "ERROR DE MES..";
+                break;
         }      
     }
     public function asistencias_linea_3(Request $request){
-        $this->from_date = $request->from_date;
-        $this->to_date = $request->to_date;
-        if(Storage::disk('local')->exists('asistencias_linea_3.json')
-          && $request->from_date == null && $request->from_date == null) {
-            $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
-            $estudiantes = collect($asistencias);
+        switch ($request->mes) {
+            case '1':
+                if(Storage::disk('local')->exists('asistencias_linea_3.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-        }else{
-            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
-            $estudiantes = collect($estudiantes);
-            $estudiantes->map(function($estudiante){
-            
-                $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
-
-                $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->from_date,$this->to_date);
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
                 
-                unset($estudiante->grupo);
-                unset($estudiante->id_moodle);
-            //dd($estudiante);
-            });
-        //dd($estudiantes);
-            if(Storage::disk('local')->exists('asistencias_linea_3.json')){
-                
-                return datatables()->of($estudiantes)->toJson();
-            }else{
-            $estudiantes = json_encode($estudiantes);
-            Storage::disk('local')->put('asistencias_linea_3.json', $estudiantes);
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-            $asistencias    = json_decode(Storage::get('asistencias_linea_3.json'));
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
-            $estudiantes = collect($asistencias);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
                
-            return datatables()->of($estudiantes)->toJson();
-            }
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '2':
+                if(Storage::disk('local')->exists('asistencias_linea_3_febrero.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_febrero.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1643711398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1643711398);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                        
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_febrero.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '3':
+                if(Storage::disk('local')->exists('asistencias_linea_3_marzo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_marzo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1646130598);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1646130598);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_marzo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
+            case '4':
+                if(Storage::disk('local')->exists('asistencias_linea_3_abril.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_abril.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1648808998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1648808998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_abril.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '5':
+                if(Storage::disk('local')->exists('asistencias_linea_3_mayo.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_mayo.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1651400998);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1651400998);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_mayo.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            case '6':
+                if(Storage::disk('local')->exists('asistencias_linea_3_junio.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_junio.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    $month_start = strtotime('first day of this month', 1654079398);
+                    $this->month_start = date('Y/m/d', $month_start);
+                    $month_end = strtotime('last day of this month', 1654079398);
+                    $this->month_end = date('Y/m/d', $month_end);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                        //dd($estudiante);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_junio.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;
+            default:
+                echo "ERROR DE MES..";
+                break;
         }      
     }
         

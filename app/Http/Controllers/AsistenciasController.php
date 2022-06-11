@@ -51,62 +51,312 @@ class AsistenciasController extends Controller
 
         return $sesiones;
     }
-    public function detalles($id_student,$id_course){
-        //dd($id_course);
-        $estudiante =perfilEstudiante::findOrFail($id_student);
-        //dd($estudiante);
-        $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
-        $nombre = explode("-",$course_moodle->fullname)[0];
-        //dd($course_moodle->fullname);
-        $cohort = $estudiante->studentGroup->group->cohort->id;
-        //dd($cohort);
-        $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
-        $this->course = $curso->name;
-        $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
-        $fecha_actual = Carbon::now();
-        //dd($fecha_actual->format('y-m-d'));
-        $sesiones = Session::select('date_session')->where('date_session','<=',$fecha_actual)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
-        $this->attendance_id = $course_moodle->attendance_id;
-        $this->id_moodle = $estudiante->id_moodle;
-        $sesiones->map(function($sesion){
-            $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
-            $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
-            $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
-            $sesion->curso = $this->course;
-            $sesion->grupo_linea = $this->grupo_linea;
-            if($sesiones_moodle){
-                $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
-                //dd($moodle->session_id, $this->id_moodle);
-                $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
-                //dump($asistencia);
-                if($moodle->lasttaken != null){
-                    $sesion->calificada = "SI";
-                    if($asistencia == true){
-                        $sesion->asistio = "SI";
+    public function detalles($id_student,$id_course,$mes){
+        switch ($mes) {
+            case '1':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_actual = Carbon::now()->add(1, 'day');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','<=',$fecha_actual)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
                     }else{
                         $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
                     }
-                    
-                }else {
-                    //dump($asistencia,$moodle->lasttaken);
-                    $sesion->calificada = "NO";
-                    if($asistencia == true){
-                        $sesion->asistio = "SI";
+                });
+                return $sesiones;
+                break;
+            case '2':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of february 2022');
+                $fecha_fin = new Carbon('first day of March 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
                     }else{
                         $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
                     }
-                }  
-            }else{
-                $sesion->asistio = "NO";
-                $sesion->calificada = "NO";
-            }
-        });
-        /*foreach($sesiones as $sesion){
-            dump($sesion->asistio);
-        }*/
+                });
+                return $sesiones;
+                break;
+            case '3':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of March 2022');
+                $fecha_fin = new Carbon('first day of april 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
+                    }else{
+                        $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
+                    }
+                });
+                return $sesiones;
+                break;
+            case '4':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of april 2022');
+                $fecha_fin = new Carbon('first day of may 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
+                    }else{
+                        $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
+                    }
+                });
+                return $sesiones;
+                break;
+            case '5':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of may 2022');
+                $fecha_fin = new Carbon('first day of june 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
+                    }else{
+                        $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
+                    }
+                });
+                return $sesiones;
+                break;
+            case '6':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of june 2022');
+                $fecha_fin = new Carbon('first day of july 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
+                    }else{
+                        $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
+                    }
+                });
+                return $sesiones;
+                break;                   
+            default:
+                ECHO "ERROR MES...";
+                break;
+        }
         
-        //dd($sesiones);
-        return $sesiones;
     }
     
     public function cargar_asistencias(Request $request){

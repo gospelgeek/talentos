@@ -12,18 +12,16 @@
             <div class="col-sm-2">  
                 {!!Form::select('id_cohorte', $cohorte, null,['id'=>'Ecohort','class'=>'form-control','placeholder'=>'Seleccione una Linea', 'display'=>'inline-block'])!!}
             </div>
-            
-            <div id="div_1" class="col-sm-2" style="display:none">
-                <label for="">Desde</label>
-                <input  type="date" id="from_date" value="">    
-            </div>
-            
-            <div id="div_2" class="col-sm-2" style="display:none">
-                <label for="">Hasta</label>       
-                <input  type="date" id="to_date" value="">          
-            </div>
-            <div id="div_3" class=" col-sm-3" style="display:none">
-                <button id="Boton_C" class="btn btn-info sm-3" type="button" onclick="reload_tabla();">Consultar</button>
+            <div id="div_1" class="col-sm-8 asistencias_mes" style="display:none">
+            <form name="mes">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="1" id="todos" checked="">&nbsp;&nbsp;
+                <label>FEBRERO</label>&nbsp;<input type="radio" name="filtro" value="2" id="febrero">&nbsp;&nbsp;
+                <label>MARZO</label>&nbsp;<input type="radio" name="filtro" value="3" id="marzo">&nbsp;&nbsp;
+                <label>ABRIL</label>&nbsp;<input type="radio" name="filtro" value="4" id="abril">&nbsp;&nbsp;
+                <label>MAYO</label>&nbsp;<input type="radio" name="filtro" value="5" id="mayo">&nbsp;&nbsp;
+                <label>JUNIO</label>&nbsp;<input type="radio" name="filtro" value="6" id="junio">
+            </form>                     
             </div>  
         </div>
         <div class="btn-group">
@@ -205,8 +203,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_1')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;                 
                 },            
             },
             "columns": [
@@ -596,8 +599,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_2')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;
                 },           
             },
             "columns": [
@@ -1250,8 +1258,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_3')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;
                 },             
             },
             "columns": [
@@ -1852,8 +1865,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_1')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;
                 },            
             },
             "columns": [
@@ -2242,8 +2260,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_2')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;
                 },           
             },
             "columns": [
@@ -2896,8 +2919,13 @@
                 "method":"GET",
                 "url": "{{route('asistencias_linea_3')}}",
                 "data": function(d){
-                        d.from_date = document.getElementById('from_date').value;
-                        d.to_date = document.getElementById('to_date').value;
+                    var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+                    d.mes = document.mes.filtro[i].value;
                 },             
             },
             "columns": [
@@ -3501,26 +3529,19 @@
             //$('#example1').DataTable().ajax.reload(); 
             document.getElementById("tabla_1").removeAttribute('style', 'display:none');
             document.getElementById("div_1").removeAttribute('style', 'display:none');
-            document.getElementById("div_2").removeAttribute('style', 'display:none');
-            document.getElementById("div_3").removeAttribute('style', 'display:none');
-            document.getElementById("from_date").value = "";
-            document.getElementById("to_date").value = "";
+            document.getElementById("todos").checked = true;
             
         }else{
  
             document.getElementById("tabla_1").setAttribute('style', 'display:none');
             document.getElementById("div_1").setAttribute('style', 'display:none');
-            document.getElementById("div_2").setAttribute('style', 'display:none');
-            document.getElementById("div_3").setAttribute('style', 'display:none');
+            
         }
         if(event.target.value == 2){
             //$('#example2').DataTable().ajax.reload();
             document.getElementById("tabla_2").removeAttribute('style', 'display:none');
             document.getElementById("div_1").removeAttribute('style', 'display:none');
-            document.getElementById("div_2").removeAttribute('style', 'display:none');
-            document.getElementById("div_3").removeAttribute('style', 'display:none');
-            document.getElementById("from_date").value = "";
-            document.getElementById("to_date").value = "";
+            document.getElementById("todos").checked = true;
             
         }else{
  
@@ -3530,17 +3551,14 @@
             //$('#example3').DataTable().ajax.reload();
             document.getElementById("tabla_3").removeAttribute('style', 'display:none');
             document.getElementById("div_1").removeAttribute('style', 'display:none');
-            document.getElementById("div_2").removeAttribute('style', 'display:none');
-            document.getElementById("div_3").removeAttribute('style', 'display:none');
-            document.getElementById("from_date").value = "";
-            document.getElementById("to_date").value = "";
+            document.getElementById("todos").checked = true;
         }else{
  
             document.getElementById("tabla_3").setAttribute('style', 'display:none');
         }
     });
 
-    function reload_tabla(){
+    $('.asistencias_mes').on('change', function() {
         var tabla= $('#Ecohort').val();
         if(tabla == 1){
             $('#example1').DataTable().ajax.reload();
@@ -3548,12 +3566,19 @@
             $('#example2').DataTable().ajax.reload();
         }else if(tabla == 3){
             $('#example3').DataTable().ajax.reload();
-        }
-    }
+        }               
+    });
 
     function abrir_modal(id_course,id_student){
         $("#recargar").load(" #recargar > *");
-        $.get("/detalles_sesiones/"+id_student+"/"+id_course+"",function(response,municipios){
+        var i
+                    for (i = 0; i < document.mes.filtro.length; i++){ 
+                        if (document.mes.filtro[i].checked) {
+                            break; 
+                        }
+                    }
+        var mes = document.mes.filtro[i].value;
+        $.get("/detalles_sesiones/"+id_student+"/"+id_course+"/"+mes+"",function(response,municipios){
             //console.log(response)
             if(response.length == 0){
                 alert("ESTE CURSO NO TIENE SESIONES REGISTRADAS EN EL SISTEMA")

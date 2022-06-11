@@ -65,8 +65,19 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 >>>>>>> c84ab7b3a9b7396ac8aeb780cf4fbbc1bedc7597
 
 ## Instruciones de instalacion del proyecto localmente
-Paso 1: Descargar el repositorio del meet
-Paso 2: Tener el backup copmpleto de la base de datos
-Paso 3: Sincronizacion del servidor local de preferencia
-Paso 4: Tener version de php actualiazda
+Paso 1: Configurar el entorno php del servidor local sobre el cual se va trabajar
+Paso 2: Configurar el motor de base de datos sobre el cual vas a trabajar 
+Paso 3: Tener el backup copmpleto de la base de datos y hacer las configuraciones correspondientes 
+Paso 4: Gestionar la version de PHP con la cual se va a trabajar 
+Paso 5: Tener version de php actualiazda
+Paso 6: Descargar de git el repositorio del proyecto
+Paso 7: Instalar la carpeta vendor en el proyecto mediante el comando "composer installer"
+Paso 8: Actualizar las librerias mediante el comando "composer update"
+Paso 9: Correr el proyecto
 
+## Instrucciones de instalacion del proyecto en el servidor
+Paso 1: Configurar el servidor sobre el cual se va a trabajar(PHP, Base de datos, Credenciales de acceso)
+Paso 2: Configurar en el servidor la sincronizacion de las carpetas
+Paso 3: Tener el backup completo de la base de datos, importar el backup en la base de datos
+
+ 

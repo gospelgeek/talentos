@@ -76,8 +76,17 @@ Paso 8: Actualizar las librerias mediante el comando "composer update"
 Paso 9: Correr el proyecto
 
 ## Instrucciones de instalacion del proyecto en el servidor
-Paso 1: Configurar el servidor sobre el cual se va a trabajar(PHP, Base de datos, Credenciales de acceso)
-Paso 2: Configurar en el servidor la sincronizacion de las carpetas
-Paso 3: Tener el backup completo de la base de datos, importar el backup en la base de datos
+Paso 1: Realizar las siguentes configuraciones en nuestro proyecto
+    -   Modificar el archivo .env para cambiar el estado de debug a false y establecer el usuario y la contraseña para acceder a la base de datos
+    -   En la carpeta app-providers, en el archivo serviceprovider, y en el registro, asignar la funcion
+            $this->app->bind('path.public',function(){
+                return'/home/todosytodasaestu/public_html';
+            });
+    -   En la carpeta public modificar el archivo index.php, modificando la ruta de los archivos por la ruta en la que va a quedar en el seever
+    -   Ahora una vez subidos los archivos al servidor, copiar la carpera public y pegar todo lo que hay dentro de ella en public_html
+    
+Paso 2: Configurar el servidor sobre el cual se va a trabajar(PHP, Base de datos, Credenciales de acceso, Metodo para subir el proyecto) 
+Paso 3: Importar el backup completo de la base de datos
+
 
  

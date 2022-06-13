@@ -755,6 +755,7 @@ function abrir_modal(attendance_id,id_moodle){
                             "lengthChange": false,
                             "searching": true,
                             "ordering": true,
+                            "order": [ 0, 'desc'],
                             "info": true,
                             "autoWidth": false,
                             "responsive": true,

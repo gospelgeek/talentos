@@ -3562,10 +3562,13 @@
         var tabla= $('#Ecohort').val();
         if(tabla == 1){
             $('#example1').DataTable().ajax.reload();
+            toastr.success("Cambio exitoso!!");
         }else if(tabla == 2){
             $('#example2').DataTable().ajax.reload();
+            toastr.success("Cambio exitoso!!");
         }else if(tabla == 3){
             $('#example3').DataTable().ajax.reload();
+            toastr.success("Cambio exitoso!!");
         }               
     });
 

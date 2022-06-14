@@ -53,6 +53,7 @@ use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Controllers\Auth;
 use Carbon\Carbon;
+use App\Session as sesiones;
 use Session;
 use Redirect;
 use DB;
@@ -1002,15 +1003,19 @@ class perfilEstudianteController extends Controller
     {
         $name = Course::where('id', $id)->first();
         $this->course= $name->name;
+        $this->course_id= $id;
         //dd($name);
         $grupos = Group::all()->where('id_cohort', $name->id_cohort)->where('name','!=',"TEMPORAL");
         //dd($grupos);
         $grupos->map(function($grupo){
-            //dd($this->name);
+            //dd($grupo->id);
             $course_moodle = CourseMoodle::select('attendance_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
             //dd($course_moodle->attendance_id);
-            $grupo->sesiones = SessionCourse::where('attendance_id',$course_moodle->attendance_id)->count();
+            $grupo->sesiones = SessionCourse::where('lasttaken','!=',null)->where('attendance_id',$course_moodle->attendance_id)->count();
             //dd($grupo);
+            $fecha = Carbon::now();
+            //dd($fecha);
+            $grupo->programadas = sesiones::where('id_group',$grupo->id)->where('id_course',$this->course_id)->where('date_session','<=',$fecha)->count();
         });
         
         //dd($grupos);

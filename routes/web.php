@@ -218,6 +218,7 @@ Route::get('ver_asistencias/{id_moodle}/{id_grupo}', 'AsistenciasController@ver_
 Route::post('cargar_asistencias', 'AsistenciasController@cargar_asistencias')->name('estudiante.cargar_asistencias');
 Route::get('detalles_sesiones/{id_student}/{id_course}/{mes}', 'AsistenciasController@detalles')->name('estudiante.detalles_sesiones');
 Route::get('detalle_sesiones_ficha/{attendance_id}/{id_moodle}', 'AsistenciasController@detalle_sesiones_ficha')->name('estudiante.detalle_sesiones_ficha');
+Route::get('reporte_asistencias_programadas', 'AsistenciasController@reporte_asistencias_programadas')->name('estudiante.reporte_asistencias_programadas');
 
 //rutas condicione de salud
 Route::get('crear_condicion_salud', 'SocioEducativoController@crear_condicion')->name('crear_condicion_salud');

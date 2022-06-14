@@ -12,6 +12,12 @@
 <div class="container-fluid">    
     <div class="card">        
     	<div class="card-body">
+            <div class="row">
+                <a class="btn btn-primary" href="/reporte_asistencias_programadas">EXPORTAR REPORTE ASISTENCIAS PROGRAMADAS</a>
+                <div  class="d-flex justify-content-center">
+                        <div id="carga" style='display:none' class="spinner-border spinner-border-lg" role="status"></div>                    
+                </div>
+            </div>
         	@if((auth()->user()->rol_id == 1) || auth()->user()->cedula == 14837069) 
             
                 <form method="POST" action="cargar_asistencias" accept-charset="UTF-8" enctype="multipart/form-data"> 

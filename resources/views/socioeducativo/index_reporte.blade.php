@@ -28,13 +28,13 @@
                 <td>Clasificación</td>
                 <td>C.E</td>
                 <td>S.M</td>
-                <td>Acompañamiento</td>
                 <td>Cant.Seg</td>
                 <td>R.I</td>
                 <td>R.A</td>
                 <td>R.F</td>
                 <td>R.E</td>
                 <td>R.V</td>
+                <td>Acompañamiento</td>
                 <td width="15%">Acciones</td>
             </tr>
         </thead>
@@ -107,19 +107,6 @@
                         }else{
                             return null;
                         }    
-                    }
-                },
-                {data: null, render:function(data, type, row, meta){
-
-                        if(data.nombre_profesional !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
                     }
                 },
                 {data: 'cantidad_seguimientos'},
@@ -271,7 +258,20 @@
                             return '--';
                         }    
                     }
-                },  
+                },
+                {data: null, render:function(data, type, row, meta){
+
+                        if(data.nombre_profesional !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;

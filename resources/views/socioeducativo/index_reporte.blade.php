@@ -260,19 +260,6 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                    var rol = document.getElementById('roles').value;
-                    var mstr;
-                    
-                        mstr = '<div class="btn-group">'+
-                          '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar(this);" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
-                          '</div>'+                                 
-                        "</div>"; 
-                    
-
-                    return mstr;
-                },
-                {data: null, render:function(data, type, row, meta){
 
                         if(data.nombre_profesional !== null){
                             var celda;
@@ -284,9 +271,21 @@
                             return null;
                         }
                     }
-                
-            
-                
+                },
+                {data: null, render:function(data, type, row, meta){
+                    var rol = document.getElementById('roles').value;
+                    var mstr;
+                    
+                        mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar(this);" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
+                          '</div>'+                                 
+                        "</div>"; 
+                    
+
+                    return mstr;
+                }
+            }
             ],
 
           

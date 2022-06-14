@@ -93,7 +93,10 @@ Route::post('crearseguimiento', 'SocioEducativoController@store_seguimiento')->n
 Route::get('editarseguimiento/{id}', 'SocioEducativoController@edit_seguimiento')->name('editarseguimiento');
 Route::put('updateseguimientosocioeducativo/{id}', 'SocioEducativoController@update_seguimiento')->name('updateseguimientosocioeducativo');
 Route::delete('deleteseguimiento/{id}', 'SocioEducativoController@delete_seguimiento')->name('deleteseguimiento');
-Route::get('reporte_socioeducativo','perfilEstudianteController@exportar_reporte_socioeducativo')->name('reporte_socioeducativo');
+Route::get('reporte_socioeducativo','SocioEducativoController@exportar_reporte_socioeducativo')->name('reporte_socioeducativo');
+//reporte socioeducativo
+Route::get('socioeducativo_reporte', 'SocioEducativoController@index_reporte')->name('socioeducativo_reporte');
+Route::get('datos.reporte.socioeducativo', 'SocioEducativoController@datos_index')->name('datos.reporte.socioeducativo');
 
 //reporte estdos
 Route::get('reporte_estados', 'perfilEstudianteController@exportar_reporte_estados')->name('reporte_estados');

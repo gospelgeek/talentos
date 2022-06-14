@@ -246,13 +246,22 @@ class PdfsReportesController extends Controller
         FROM student_profile, socioeconomic_data WHERE student_profile.id = ? AND socioeconomic_data.id_student = ?", [
             $id, $id
         ]);
-        //dd($student);
+
+        if($student[0]->photo == ""){
+            $foto = null;
+        }else {
+            $foto = explode("/", $student[0]->photo);
+            $foto = $foto[5];
+        }
+        
         $pdf = PDF::loadView('pdfsreportes.studentPDF', [
             "student" => $student,
-            "formalization" => $formalizaciones
+            "formalization" => $formalizaciones,
+            "foto" => $foto
         ])->setPaper('a4');
 
-        return $pdf->stream("Estudiante.pdf");
+        //return $pdf->download("estudiante-$id.pdf");
+        return $pdf->stream("estudiante-$id.pdf");
 
     }
 

@@ -24,8 +24,8 @@
         }
 
         img {
-            height: 100px;
-            width: 300px;
+            height: 80px;
+            width: 210px;
         }
     </style>
 </head>
@@ -33,10 +33,17 @@
 <body>
 
     <header>
-        <div style="text-align: center;">
-            <img src="https://todosytodasaestudiar.org/img/logo.jpeg" alt="">
-        </div>
-        <h3 style="text-align: center;">PLAN DE NIVELACION ACADEMICA</h3>
+    <table border="none" style="border: none;">
+        <thead>
+            <tr>
+                <td style="border: none;">
+                    <img src="https://todosytodasaestudiar.org/img/todosytodas.png" alt="">
+                </td>
+                <td style="text-align: center; border: none">ESTRATEGIA TODAS Y TODOS A ESTUDIAR - UNIVALLE CONVENIO INTERADMINISTRATIVO No. 4143.010.27.1.8.-2021</td>
+                <td style="border: none;"><img src="https://todosytodasaestudiar.org/img/logo.jpeg" alt=""></td>
+            </tr>
+        </thead>
+    </table>
     </header>
 
     <main>
@@ -46,6 +53,13 @@
         <table style="border: 1px solid black;">
             <thead>
                 <tr>
+                    <th></th>
+                    <th>GRUPO</th>
+                    <th>FECHA</th>
+                    <td colspan="4">LUGAR: </td>    
+                </tr>
+
+                <tr>
                     <th>#</th>
                     <th>IDENTIFICACION</th>
                     <th>APELLIDOS</th>
@@ -54,8 +68,8 @@
                     <th>CODIGO</th>
                     @else
                     @endif
-                    <th>EMAIL</th>
-                    <th>ASISTENCIA</th>
+                    
+                    <th colspan="4">ASISTENCIA</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,8 +83,7 @@
                     <td>{{$data->student_code}}</td>
                     @else
                     @endif
-                    <td>{{$data->email}}</td>
-                    <td></td>
+                    <td colspan="4"></td>
                 </tr>
                 @endforeach
                 {{$cont = 1}}
@@ -82,7 +95,7 @@
         </footer>
 
         <div class="page-break"></div>
-
+      <!---
         <header>
             <div style="text-align: center;">
                 <img src="https://todosytodasaestudiar.org/img/logo.jpeg" alt="">
@@ -2065,7 +2078,7 @@
                 {{$cont = 1}}
             </tbody>
         </table>
-    
+    --->
     </main>
 
     <br>

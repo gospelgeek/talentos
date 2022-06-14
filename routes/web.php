@@ -182,3 +182,6 @@ Route::get('discapacidad/{discapacidad}/linea/{cohorte}', 'GraphicsController@di
 Route::get('reporte_pdfs_grupos', 'PdfsReportesController@index')->name('pdfs.grupos');
 Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
 Route::get('pdfEstudiante/{id}', 'PdfsReportesController@PDF_estudiante')->name('pdf.estudiante');
+
+Route::get('icfes', 'IcfesController@index')->name('icfes');
+Route::get('datos_icfes', 'IcfesController@DatosIcfes')->name('datos_icfes');

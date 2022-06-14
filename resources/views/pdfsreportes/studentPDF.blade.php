@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiante: </title>
+    <title>Estudiante</title>
     <style>
         body {
             margin: 0;
+            padding: 0;
         }
 
         .imagen {
@@ -26,7 +27,7 @@
             background: #1C2458;
             margin-right: 5%;
             margin-left: 5%;
-            height: 6%;
+            height: 4%;
             border-radius: 12px 12px 12px 12px;
             text-align: center;
         }
@@ -42,26 +43,48 @@
             margin-left: 5%;
             text-align: center;
         }
+        img {
+            height: 80px;
+            width: 210px;
+        }
+        header{
+            margin-top: 0;
+            padding-top: 0;
+        }
     </style>
 </head>
 
-<body>
+<body >
+
+    <header>
+    <table style="padding-top: 0; margin-top: 0;">
+        <thead>
+            <tr>
+                <td>
+                    <img src="https://todosytodasaestudiar.org/img/todosytodas.png" alt="">
+                </td>
+                <td style="text-align: center;">ESTRATEGIA TODAS Y TODOS A ESTUDIAR - UNIVALLE CONVENIO INTERADMINISTRATIVO No. 4143.010.27.1.8.-2021</td>
+                <td><img src="https://todosytodasaestudiar.org/img/logo.jpeg" alt=""></td>
+            </tr>
+        </thead>
+    </table>
+    </header>
+
+    <br>
 
     @foreach ( $student as $data )
 
     <div class="imagen">
-        @if ($data->photo)
-        <p>{{$data->photo}}</p>
-        <img src="" alt="">
+        @if ($foto != null)
+        <img src="https://drive.google.com/uc?id={{$foto}}" alt="">
         @else
         <h1 style="color: red">SIN FOTO</h1>
         @endif
     </div>
-    <br>
+    
     <div class="contenido_nombre">
         <h1>{{$data->name}} {{$data->lastname}}</h1>
     </div>
-    <br>
     <div class="titulos">
         <h3 class="nombre_generales">DATOS GENERALES</h3>
     </div>
@@ -106,33 +129,29 @@
     </div>
 
     @endforeach
-
     <br>
-    <br>
-
     <div class="titulos">
         <h3 class="nombre_generales">FORMALIZACION</h3>
     </div>
     <div class="contenedor">
+    <h4>ACEPTACION</h4>
         <table>
             <thead>
                 <tr>
-                    <th>ACEPTACION</th>
-                    <td><strong>URL aceptacion V1: </strong>{{$formalization["acepptance_v1"]}}</td>
-                    <td><strong>URL aceptacion V2: </strong>{{$formalization["acepptance_v2"]}}</td>
+                    
+                    <td><strong>URL aceptacion: </strong>{{$formalization["acepptance_v2"]}}</td>
                 </tr>
             </thead>
         </table>
+        <h4>TABLETS</h4>
         <table>
             <thead>
                 <tr>
-                    <th>TABLETS</th>
-                    <td><strong>URL Tablet V1: </strong>{{$formalization["tablets_v1"]}}</td>
-                    <td><strong>URL Tablet V2: </strong>{{$formalization["tablets_v2"]}}</td>
-                </tr>
-                <tr>
+                   
+                    <td><strong>URL Tablet: </strong>{{$formalization["tablets_v2"]}}</td>
                     <td><strong>Serial tablet: </strong>{{$formalization["serial_tablet"]}}</td>
                 </tr>
+                
             </thead>
         </table>
     </div>

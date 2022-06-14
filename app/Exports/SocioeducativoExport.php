@@ -28,7 +28,7 @@ class SocioeducativoExport implements FromArray, WithHeadings, ShouldAutoSize, W
             [' '],
             ['REPORTE GENERAL SOCIOEDUCATIVO'],
             [' '],
-            ['No', 'NOMBRES', 'APELLIDOS', 'DOCUMENTO', 'NUMERO DOCUMENTO', 'CODIGO', 'EMAIL', 'TELEFONO', 'COHORTE', 'GRUPO', 'ESTADO', 'ACEPTACION 1', 'ACEPTACION 2', 'FECHA SEGUIMIENTO', 'LUGAR SEGUIMIENTO', 'HORA INICIO', 'HORA FIN', 'OBJETIVOS', 'SEGUIMIENTO INDIVIDUAL', 'RIESGO INDIVIDUAL', 'SEGUIMIENTO ACADEMICO', 'RIESGO ACADEMICO', 'SEGUIMIENTO ECONOMICO', 'RIESGO ECONOMICO', 'SEGUIMIENTO VIDA UNIVERSITARIA Y CIUDAD', 'RIESGO VIDA UNIVERSITARIA Y CIUDAD', 'OBSERVACIONES'],
+            ['No', 'NOMBRES', 'APELLIDOS', 'DOCUMENTO', 'NUMERO DOCUMENTO', 'CODIGO', 'EMAIL', 'TELEFONO', 'COHORTE', 'GRUPO', 'ESTADO', 'ACEPTACION 1', 'ACEPTACION 2', 'CASO ESPECIAL', 'SALUD MENTAL', 'FECHA SEGUIMIENTO', 'LUGAR SEGUIMIENTO', 'HORA INICIO', 'HORA FIN', 'OBJETIVOS', 'SEGUIMIENTO INDIVIDUAL', 'RIESGO INDIVIDUAL', 'SEGUIMIENTO ACADEMICO', 'RIESGO ACADEMICO', 'SEGUIMIENTO FAMILIAR', 'RIESGO FAMILIAR', 'SEGUIMIENTO ECONOMICO', 'RIESGO ECONOMICO', 'SEGUIMIENTO VIDA UNIVERSITARIA Y CIUDAD', 'RIESGO VIDA UNIVERSITARIA Y CIUDAD', 'OBSERVACIONES'],
         ];
     }
 
@@ -48,16 +48,16 @@ class SocioeducativoExport implements FromArray, WithHeadings, ShouldAutoSize, W
         return [
             AfterSheet::class    => function(AfterSheet $event) {
                 
-                $event->sheet->getDelegate()->mergeCells('A2:AA2');
+                $event->sheet->getDelegate()->mergeCells('A2:AE2');
                 
-                $event->sheet->getDelegate()->getStyle('A4:AA4')
+                $event->sheet->getDelegate()->getStyle('A4:AE4')
                         ->getFill()
                         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                         ->getStartColor()
                         ->setARGB('C0C0C0');
 
                 $event->sheet->styleCells(
-                    'A4:AA3600',[
+                    'A4:AE3600',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -67,7 +67,7 @@ class SocioeducativoExport implements FromArray, WithHeadings, ShouldAutoSize, W
                 );
 
                 $event->sheet->styleCells(
-                    'A2:AA2',[
+                    'A2:AE2',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -77,7 +77,7 @@ class SocioeducativoExport implements FromArray, WithHeadings, ShouldAutoSize, W
                 );
 
                 $event->sheet->styleCells(
-                    'A4:AA4',
+                    'A4:AE4',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -89,7 +89,7 @@ class SocioeducativoExport implements FromArray, WithHeadings, ShouldAutoSize, W
                 );
 
                 $event->sheet->styleCells(
-                    'NN4:AA4',
+                    'NN4:AE4',
                         [
                             'font' => [
                             'name'      =>  'Calibri',

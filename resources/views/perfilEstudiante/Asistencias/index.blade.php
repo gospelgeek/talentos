@@ -17,20 +17,20 @@
                 <div  class="d-flex justify-content-center">
                         <div id="carga" style='display:none' class="spinner-border spinner-border-lg" role="status"></div>                    
                 </div>
-            </div>
+            </div><hr>
         	@if((auth()->user()->rol_id == 1) || auth()->user()->cedula == 14837069) 
             
                 <form method="POST" action="cargar_asistencias" accept-charset="UTF-8" enctype="multipart/form-data"> 
                    {{ csrf_field() }}
                     <div class="row">
                         <div class=" col-xs-4 col-md-4">
-                            {!!Form::label('archivo','Seleccione Archivo:')!!}                            
+                            {!!Form::label('archivo','Subir archivo JSON de asistencias:')!!}                            
                             {!!Form::file('sesiones',[ 'accept'=>'.json','class'=>'form-control-file form-group','required'])!!} 
                             <button type="submit" class="btn btn-danger ">Enviar</button>
                         </div>
                     </div>    
                 </form>
-                <br>
+                <hr>
             <div class="row">
                 <form action="asistencias/reporte_general" method="GET" class="col-sm-10">
 

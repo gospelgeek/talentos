@@ -4,7 +4,7 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-<h1 id="num_sesiones" style="text-align: center;">{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}<br> Total Sesiones </h1>
+<h1 id="num_sesiones" style="text-align: center;">{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}<br> Total Sesiones {{count($sesiones)}} </h1>
 <div class="table-responsive" >
 	<table id="example1" class="table table-bordered table-striped">
 					{{--<div id="carga" class="d-flex justify-content-center">

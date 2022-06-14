@@ -16,6 +16,8 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Auth;
 use Carbon\Carbon;
+use App\Exports\ReporteAsistencias;
+use Excel;
 
 class AsistenciasController extends Controller
 {
@@ -37,6 +39,64 @@ class AsistenciasController extends Controller
         $sesiones = SessionCourse::select('attendance_id')->where('session_id', 40522)->first();
         $sesiones = SessionCourse::all()->where('attendance_id', $sesiones->attendance_id);
         dd($asistencias);
+    }
+    public function reporte_asistencias_programadas(){
+        $grupos = Group::all()->where('name','!=',"TEMPORAL");
+        $collection;
+        $contador=0;
+        foreach($grupos as $grupo){
+            //dd($grupo->id);
+            $course_moodle = CourseMoodle::select('attendance_id','fullname')->where('group_id', $grupo->id)->get();
+            //dd($course_moodle);
+            foreach($course_moodle as $course){
+                $calificadas = SessionCourse::where('lasttaken','!=',null)->where('attendance_id',$course->attendance_id)->count();
+                //dd($grupo);
+                $fecha = Carbon::now();
+                //dd($fecha);
+                $fullname = explode("-",$course->fullname);
+                //dd($fullname[3]);
+                switch ($fullname[3]) {
+                    case ' A0':
+                        $fullname[3]=1;
+                        $linea="linea 1";
+                        break;
+                    case ' TE':
+                        $fullname[3]=2;
+                        $linea="linea 2";
+                        break;
+                    case ' TS':
+                        $fullname[3]=3;
+                        $linea="linea 3";
+                        break;    
+                    default:
+                        ECHO "ERROR";
+                        break;
+                }
+                //dump($fullname);
+                $course_BD = Course::select('id')->where('name',$fullname[0])->where('id_cohort',$fullname[3])->firstOrfail();
+                //dump($course_BD->id);
+                $programadas = Session::where('id_group',$grupo->id)->where('id_course',$course_BD->id)->where('date_session','<=',$fecha)->count();
+
+                $collection[$contador] = array('asignatura'=>$fullname[0],
+                                          'grupo'=>$grupo->name,
+                                          'linea'=>$linea,
+                                          'programadas'=>$programadas,
+                                          'calificadas'=>$calificadas,   
+                                            );
+                $contador++;
+            }
+            
+            
+
+            //dd($collection);
+        };
+        $export = new ReporteAsistencias([$collection]);
+        $fechaexcel = Carbon::now();
+
+        $fechaexcel = $fechaexcel->format('d-m-Y');
+        
+        
+        return Excel::download($export, "REPORTE SESIONES PROGRAMADAS"." ".$fechaexcel.".xlsx");
     }
     public function detalle_sesiones_ficha($attendance_id,$id_moodle){
         //dd($attendance_id,$id_moodle);

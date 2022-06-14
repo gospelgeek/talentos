@@ -34,8 +34,8 @@
                 <td>R.F</td>
                 <td>R.E</td>
                 <td>R.V</td>
-                <td>Acompañamiento</td>
                 <td width="15%">Acciones</td>
+                <td>Acompañamiento</td>
             </tr>
         </thead>
         
@@ -260,19 +260,6 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-
-                        if(data.nombre_profesional !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
-                    }
-                },
-                {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
                     
@@ -284,8 +271,21 @@
                     
 
                     return mstr;
+                },
+                {data: null, render:function(data, type, row, meta){
+
+                        if(data.nombre_profesional !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
+                    }
                 }
-            }
+            },
                 
             ],
 

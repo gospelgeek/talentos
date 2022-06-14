@@ -244,6 +244,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Estudiantes 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
+                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                            <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
+                          </div>
+                      </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Socioeducativo 
                         </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -253,16 +263,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Reporte socioeducativo</a>
                           </div>
                       </li> 
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Estudiantes 
-                        </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
-                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                            <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
-                          </div>
-                      </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Administrativo

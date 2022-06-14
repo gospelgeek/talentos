@@ -188,12 +188,10 @@ $(".accordion-titulo-3").click(function(e){
 $(".accordion-titulo-4").click(function(e){
            
         e.preventDefault();
-
-        $('#mostrarFcA').empty();
-    
         var contenido=$(this).next(".accordion-content-4");
-        
-        
+    
+        $('#mostrarFcA').empty();
+   
         let array = document.getElementById('detalle').value;
         
         const ver = JSON.parse(array);
@@ -837,7 +835,7 @@ function abrirmodal(id){
   });
   $('#modal_asistencias').modal('show');
 }
-/*$(function() {
+$(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);
     // Busca si existe el parámetro
@@ -851,12 +849,19 @@ function abrirmodal(id){
 
 function tipoCancha(deporteSel){
     switch(deporteSel){
-        case 'titulo-5':
-            //var contenido=$(this).next(".accordion-content-5");
-            $('.accordion-content-5').slideDown(250);         
-            $('.accordion-titulo-5').addClass("open");
-            document.getElementById('carga').remove();
+        case 'titulo-7':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-7').slideDown(250);         
+            $('.accordion-titulo-7').addClass("open");
+            
+            //console.log("s");
+            break;
+        case 'titulo-4':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-4').slideDown(250);         
+            $('.accordion-titulo-4').addClass("open");
+            
             //console.log("s");
             break;
     }
-}*/
+}

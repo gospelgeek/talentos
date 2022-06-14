@@ -220,7 +220,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
           </div>
         </li>
-          <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Socioeducativo 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a href="{{route('socioeducativo')}}" class="dropdown-item">
+                Asignacion Estudiantes</a>
+              <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
+                Reporte socioeducativo</a>
+              </div>
+          </li>     
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
@@ -232,7 +242,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 5)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
-                        <a href="{{route('socioeducativo')}}" class="dropdown-item dropdown-footer"><i></i>Socioeducativo</a>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Socioeducativo 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a href="{{route('socioeducativo')}}" class="dropdown-item">
+                            Asignacion Estudiantes</a>
+                            <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
+                            Reporte socioeducativo</a>
+                          </div>
+                      </li> 
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Estudiantes 

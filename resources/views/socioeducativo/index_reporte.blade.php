@@ -29,7 +29,7 @@
                 <td>C.E</td>
                 <td>S.M</td>
                 <td>Acompañamiento</td>
-                <td>Seguimientos</td>
+                <td>Cant.Seg</td>
                 <td>R.I</td>
                 <td>R.A</td>
                 <td>R.F</td>

@@ -22,15 +22,15 @@
         <thead>
             <tr>
                 <td>Nombres</td>
-                <td>N.Documento</td>
+                <td>Documento</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
                 <td>Clasificación</td>
                 <td>C.E</td>
                 <td>S.M</td>
-                <td>Prof.Acompañamiento</td>
+                <td>Acompañamiento</td>
                 <td>Seguimientos</td>
-                <td id="r1">R.I</td>
+                <td>R.I</td>
                 <td>R.A</td>
                 <td>R.F</td>
                 <td>R.E</td>

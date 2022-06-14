@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\AssignmentStudent;
 use App\SocioEducationalFollowUp;
 use App\HealthCondition;
+use App\Exports\SocioeducativoExport;
 use App\User;
 use Response;
+use Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -1396,6 +1398,113 @@ class SocioEducativoController extends Controller
             
             return $condicion_salud;
         }
+
+    }
+    
+    public function datos_index(){
+        
+        $datos = SocioEducationalFollowUp::socioeducativo_reporte();
+
+        $arreglo_datos = array();
+   
+        foreach($datos as $dato){
+
+            $json_detalle = json_decode($dato->detalle);            
+
+            $arreglo_datos[] = array('id' => $dato->id, 'name' => $dato->name, 'lastname' => $dato->lastname, 'document_number' => $dato->document_number, 'grupo_id' => $dato->grupoid, 'grupo' => $dato->grupo, 'cohorte' => $dato->cohorte, 'id_profesional' => $dato->id_profesional, 'nombre_profesional' => $dato->nombre_profesional, 'apellido_profesional' => $dato->apellido_profersional, 'cantidad_seguimientos' => $dato->cantidad_seguimientos, 'aceptacion1' => $dato->aceptacion1, 'aceptacion2' => $dato->aceptacion2, 'riesgo_indivdual' => $json_detalle->RiesgoIndividual, 'riesgo_academico' => $json_detalle->RiesgoAcademico, 'riesgo_familiar' => $json_detalle->RiesgoFamiliar, 'riesgo_economico' => $json_detalle->RiesgoEconomico, 'riesgo_Uc' => $json_detalle->RiesgoUc, 'caso_especial' => $dato->caso_especial, 'salud_mental' => $dato->salud_mental, 'id_state' => $dato->id_state); 
+        }
+
+        $colection_seguimiento = collect($arreglo_datos);
+        
+        return datatables()->of($colection_seguimiento)->toJson();
+                
+    }
+
+
+    public function index_reporte(){
+       
+        return view('socioeducativo.index_reporte');
+    }
+
+    public function exportar_reporte_socioeducativo(){
+
+        $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, socio_educational_follow_ups.tracking_detail as detalle, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, (SELECT health_conditions.special_requirements FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as caso_especial, (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_mental
+            FROM student_profile 
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN formalizations ON formalizations.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN conditions on conditions.id = student_profile.id_state
+            INNER JOIN socio_educational_follow_ups on socio_educational_follow_ups.id_student = student_profile.id
+            WHERE student_groups.deleted_at IS null
+            AND socio_educational_follow_ups.deleted_at IS NULL");
+
+        $estudiantes_colection = collect($estudiantes);
+        $excel = array();
+        $caso_especial;
+        $salud_mental;
+        foreach($estudiantes_colection as $estudiante_colection){
+
+            if($estudiante_colection->caso_especial !== null){
+                if($estudiante_colection->caso_especial == 1){
+                    $caso_especial = 'SI';
+                }else if($estudiante_colection->caso_especial == 0){
+                    $caso_especial = 'NO';
+                }
+            }else{
+                $caso_especial = null;
+            }
+
+            if($estudiante_colection->salud_mental !== null){
+                if($estudiante_colection->salud_mental == 1){
+                    $salud_mental = 'SI';
+                }else if($estudiante_colection->salud_mental == 0){
+                    $salud_mental = 'NO';
+                }
+            }else{
+                $salud_mental = null;
+            }
+
+            $detalle_seguimiento = json_decode($estudiante_colection->detalle);    
+            
+            $excel[] = array('id' => $estudiante_colection->id,
+                            'nombres' => $estudiante_colection->name,
+                            'apellidos' => $estudiante_colection->lastname,
+                            'tipo_documento' => $estudiante_colection->tipodocumento,
+                            'numero documento' => $estudiante_colection->document_number,
+                            'codigo' => $estudiante_colection->student_code,
+                            'correo' => $estudiante_colection->email, 
+                            'telefono' => $estudiante_colection->cellphone,
+                            'cohorte' => $estudiante_colection->cohorte,
+                            'grupo' => $estudiante_colection->grupo, 
+                            'estado' => $estudiante_colection->estado, 
+                            'aceptacion1' => $estudiante_colection->aceptacion1,
+                            'aceptacion2' => $estudiante_colection->aceptacion2,
+                            'caso_especial' => $caso_especial,
+                            'salud_mental' => $salud_mental, 
+                            'fecha_seguimiento' => $detalle_seguimiento->fecha, 
+                            'lugar_seguimiento' => $detalle_seguimiento->Lugar,
+                            'hora_inicio' => $detalle_seguimiento->HoraInicio,
+                            'hora_fin' => $detalle_seguimiento->HoraFin, 
+                            'objetivos' => $detalle_seguimiento->Objetivos, 
+                            'descripcion_individual' => $detalle_seguimiento->Individual, 
+                            'riesgo_indivdual' => $detalle_seguimiento->RiesgoIndividual,
+                            'descripcion_academica' => $detalle_seguimiento->Academico,
+                            'riesgo_academico' => $detalle_seguimiento->RiesgoAcademico,
+                            'descripcion_familiar' => $detalle_seguimiento->Familiar,
+                            'riesgo_familiar' => $detalle_seguimiento->RiesgoFamiliar,
+                            'descripcion_economica' => $detalle_seguimiento->Economico,
+                            'riesgo_eonomico' => $detalle_seguimiento->RiesgoEconomico, 
+                            'escripcion_vdaunvrstriaycdad' => $detalle_seguimiento->VidaUniversitariaYciudad,
+                            'riesgo_vdaunvrstriaycdad' => $detalle_seguimiento->RiesgoUc,
+                            'observaciones' => $detalle_seguimiento->Observaciones);
+        }      
+
+        $exportar = new SocioeducativoExport([$excel]);
+
+
+        return Excel::download($exportar, 'socioeducativo_reporte.xlsx');
+
 
     }
 }

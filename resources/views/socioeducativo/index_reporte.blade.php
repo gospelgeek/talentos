@@ -29,7 +29,7 @@
                 <td>C.E</td>
                 <td>S.M</td>
                 <td>Prof.Acompañamiento</td>
-                <td>N.Seguimientos</td>
+                <td>Seguimientos</td>
                 <td id="r1">R.I</td>
                 <td>R.A</td>
                 <td>R.F</td>

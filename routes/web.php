@@ -90,6 +90,10 @@ Route::post('crearseguimiento', 'SocioEducativoController@store_seguimiento')->n
 Route::get('editarseguimiento/{id}', 'SocioEducativoController@edit_seguimiento')->name('editarseguimiento');
 Route::put('updateseguimientosocioeducativo/{id}', 'SocioEducativoController@update_seguimiento')->name('updateseguimientosocioeducativo');
 Route::delete('deleteseguimiento/{id}', 'SocioEducativoController@delete_seguimiento')->name('deleteseguimiento');
+Route::get('reporte_socioeducativo','SocioEducativoController@exportar_reporte_socioeducativo')->name('reporte_socioeducativo');
+//reporte socioeducativo
+Route::get('socioeducativo_reporte', 'SocioEducativoController@index_reporte')->name('socioeducativo_reporte');
+Route::get('datos.reporte.socioeducativo', 'SocioEducativoController@datos_index')->name('datos.reporte.socioeducativo');
 
 //Rutas para update cohorte-grupo
 Route::get('grupos/{id}', 'perfilEstudianteController@grupos')->name('grupos');
@@ -99,8 +103,6 @@ Route::post('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorte
 //Rutas para cargar datos por ajax al index
 Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
 Route::get('info', 'perfilEstudianteController@enviar')->name('info');
-
-
 
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');

@@ -34,8 +34,8 @@
                 <td>R.F</td>
                 <td>R.E</td>
                 <td>R.V</td>
-                <td width="15%">Acciones</td>
                 <td>Acompañamiento</td>
+                <td width="15%">Acciones</td>
             </tr>
         </thead>
         

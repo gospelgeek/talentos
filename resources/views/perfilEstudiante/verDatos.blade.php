@@ -648,7 +648,7 @@
 		</div>
 	</div>
 	@if(auth()->user()->rol_id == 2 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 6 || auth()->user()->rol_id == 5)
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-4">
 		<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
 		<input type="hidden" id="req_spcal" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->special_requirements : null }}">
 		<input type="hidden" id="mntal_slud" value="{{ $verDatosPerfil->healthcondition ? $verDatosPerfil->healthcondition->mental_health : null }}">

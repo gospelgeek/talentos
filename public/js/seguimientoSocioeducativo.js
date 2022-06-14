@@ -257,3 +257,212 @@ $(function () {
 });
 
 
+$(function() {
+
+    $('#mostrarFcA').empty();
+    
+        let array = document.getElementById('detalle').value;
+        
+        const ver = JSON.parse(array);
+        //console.log(ver);
+        
+        $.each(ver, function(index, value) {
+
+            //const datos = JSON.parse(ver[key]);
+            console.log(value.tracking_detail);
+            const mostar = JSON.parse(value.tracking_detail);
+            console.log(mostar);   
+            //texto +=datos.fecha;
+
+            $('#mostrarFcA').append('<tr data-id='+value.id+'>'+"<td>"+mostar.fecha+"</td>"+
+                    "<td>"+
+                      '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-eye fa ver_seguimiento" title="Ver seguimiento"></button>'+
+                          "</div>"+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-pencil-square-o fa editar_seguimiento" title="Editar seguimiento"></button>'+
+                          '</div>'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa boton_delete_seguimiento" title="Eliminar seguimiento"></button>'+
+                          "</div>"+
+                      "</div>"+
+                    "</td>"+"</tr>");
+ 
+    });
+
+    $('.editar_seguimiento').click(function(e) {
+            e.preventDefault();
+            
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            //alert(id);
+
+            var form = $('#form-edit-seguimiento');
+            //console.log(form);
+            var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
+            console.log(url);
+            var data = form.serialize();
+
+            $.get(url, function(result){
+            const object = JSON.parse(result.tracking_detail);
+            console.log(object);
+            var fcha = object.fecha;
+            var checkind = object.RiesgoIndividual;
+            var checkaca = object.RiesgoAcademico;
+            var checkfam = object.RiesgoFamiliar;
+            var checkeco = object.RiesgoEconomico;
+            var checkvuc = object.RiesgoUc;
+
+            $("#idSeguI").val(result.id);
+            //alert($("#idSeguI"));
+            $('#datfecha').val(fcha);  
+            $('#lugar1').val(object.Lugar);       
+            $('#hInicio').val(object.HoraInicio); 
+            $("#horafin").val(object.HoraFin);
+            $("#dcmntOUrl").val(object.urlDocumento);
+            $('textarea[id="textobjetivos"]').val(object.Objetivos);
+            $('textarea[id="textindividualT"]').val(object.Individual);
+            if(checkind == 'alto'){
+                $("input[name=checkindi][value='alto']").prop("checked",true);
+            }
+    
+            if(checkind == 'medio') {
+              $("input[name=checkindi][value='medio']").prop("checked",true);  
+            }
+        
+            if(checkind == 'bajo') {
+              $("input[name=checkindi][value='bajo']").prop("checked",true);   
+            }
+               
+            $('textarea[id="textacademico"]').val(object.Academico); 
+              if(checkaca == 'alto'){
+            $("input[name=checkacad][value='alto']").prop("checked",true);
+            }
+
+            if(checkaca == 'medio') {
+              $("input[name=checkacad][value='medio']").prop("checked",true);  
+            }
+        
+            if(checkaca == 'bajo') {
+              $("input[name=checkacad][value='bajo']").prop("checked",true);   
+            }
+            //$('input[name="checkacad"]:checked').val(object.RiesgoAcademico);
+            $('textarea[id="textfamiliar"]').val(object.Familiar);        
+            if(checkfam == 'alto'){
+              $("input[name=checkfami][value='alto']").prop("checked",true);
+            }
+
+            if(checkfam == 'medio') {
+              $("input[name=checkfami][value='medio']").prop("checked",true);  
+            }
+        
+            if(checkfam == 'bajo') {
+              $("input[name=checkfami][value='bajo']").prop("checked",true);   
+            }
+            //$('input[name="checkfami"]:checked').val(object.RiesgoFamiliar);
+            $('textarea[id="texteconomico"]').val(object.Economico);
+            if(checkeco == 'alto'){
+              $("input[name=checkecono][value='alto']").prop("checked",true);
+            }
+
+            if(checkeco == 'medio') {
+              $("input[name=checkecono][value='medio']").prop("checked",true);  
+            }   
+        
+            if(checkeco == 'bajo') {
+              $("input[name=checkecono][value='bajo']").prop("checked",true);   
+            }
+              
+            $('textarea[id="textvdaunvrstria"]').val(object.VidaUniversitariaYciudad);
+            if(checkvuc == 'alto'){
+              $("input[name=checkuni][value='alto']").prop("checked",true);
+            }
+
+            if(checkvuc == 'medio') {
+              $("input[name=checkuni][value='medio']").prop("checked",true);  
+            }
+        
+            if(checkvuc == 'bajo') {
+              $("input[name=checkuni][value='bajo']").prop("checked",true);   
+            }
+            $('textarea[id="textobsrvacnes"]').val(object.Observaciones);
+        
+
+            $('#modal_editar').modal('show');
+
+            });
+
+        });
+
+      $('.ver_seguimiento').click(function(e) {
+            e.preventDefault();
+            
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            //alert(id);
+
+            var form = $('#form-edit-seguimiento');
+            //console.log(form);
+            var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
+            console.log(url);
+            var data = form.serialize();
+
+            $.get(url, function(result){
+            const object = JSON.parse(result.tracking_detail);
+        
+            var fcha = object.fecha;
+            var checkind = object.RiesgoIndividual;
+            var checkaca = object.RiesgoAcademico;
+            var checkfam = object.RiesgoFamiliar;
+            var checkeco = object.RiesgoEconomico;
+            var checkvuc = object.RiesgoUc;
+            //alert(checkvuc);
+
+            $("#idSeguI").val(object.id);
+            $('#datfechaAver').val(fcha);  
+            $('#lugar12').val(object.Lugar);       
+            $('#hInicioOs').val(object.HoraInicio); 
+            $("#horafinNh").val(object.HoraFin);
+            $('textarea[id="textobjetivos"]').val(object.Objetivos);
+            $('textarea[id="textindividualT"]').val(object.Individual);
+            $('#riesIndi').val(checkind);  
+            $('textarea[id="textacademico"]').val(object.Academico); 
+            $('#rsgAcdmcO').val(checkaca);
+            $('textarea[id="textfamiliar"]').val(object.Familiar);
+            $('#rsgFmlAr').val(checkfam);
+            $('textarea[id="texteconomico"]').val(object.Economico);
+            $('#rsgEcnmcO').val(checkeco);
+            $('textarea[id="textvdaunvrstria"]').val(object.VidaUniversitariaYciudad);
+            $('#rsgvdUnyCdad').val(checkvuc);
+            $('textarea[id="textobsrvacnes"]').val(object.Observaciones);
+            $('#dcmnto_urL').val(object.urlDocumento);
+            
+            $('#modal_ver').modal('show');
+
+            });
+
+        });
+
+      $('.boton_delete_seguimiento').click(function(e) {       
+       e.preventDefault();
+
+       var row = $(this).parents('tr');
+       var id = row.data('id');
+       var form = $('#form-delete');
+       var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
+       var data = form.serialize();
+       
+       //alert(id);
+       
+      $.post(url, data, function(result){
+        row.fadeOut();
+        toastr.success('Seguimiento eliminado correctamente!!'); 
+        //setTimeout("location.reload()", 2000);
+       });
+
+      });
+
+});
+
+

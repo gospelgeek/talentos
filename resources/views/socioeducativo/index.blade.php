@@ -14,6 +14,27 @@
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">
                     <thead>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="0">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="1">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="2">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="3">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="4">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="5">
+                        </td>
+                        <td></td>
+                    </thead>
+                    <thead>
                         <tr>
                             <td>Nombres</td>
                             <td>Apellidos</td>
@@ -36,6 +57,8 @@
 
 <!-- Page specific script -->
 <script>
+
+$(document).ready(function(){
     var table = $("#example1").DataTable({
         "ajax": {
             "method": "GET",
@@ -192,6 +215,14 @@
             "colvis"
         ]
     });
+    
+    $('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+    });
+    
+});
 </script>
 
 {!!Html::script('/js/socioeducativo.js')!!}">

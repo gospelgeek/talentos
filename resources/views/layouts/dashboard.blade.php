@@ -304,6 +304,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             </li>
             <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Socioeducativo 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a href="{{route('socioeducativo')}}" class="dropdown-item">
+                Asignacion Estudiantes</a>
+              <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
+                Reporte socioeducativo</a>
+              </div>
+          </li> 
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Academico
                 </a>

@@ -34,8 +34,12 @@
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="4">
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="5">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="6">
+            </td>
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="7">
             </td>

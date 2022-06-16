@@ -18,7 +18,47 @@
        
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        
+        <thead>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="0">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="1">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="2">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="3">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="4">
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="7">
+            </td>
+            <td>
+                <input type="text" class="form-control filter" placeholder="Search" data-column="8">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="9">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="10">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="11">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="12">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="13">
+            </td>
+            <td></td> 
+        </thead>
         <thead>
             <tr>
                 <td>Nombres</td>
@@ -48,7 +88,8 @@
 @push('scripts') 
 
     <script>
-
+    
+    $(document).ready(function(){
         
          $("#example1").DataTable({
             "ajax": "{{route('datos.reporte.socioeducativo')}}",
@@ -305,6 +346,13 @@
                 "colvis",
             ]
         });
+        
+        $('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
+   });
 
 
     function redireccionar(id){

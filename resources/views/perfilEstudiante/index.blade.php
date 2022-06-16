@@ -82,16 +82,15 @@
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
-                <td>Nombre de Pila</td>
                 <td>Nº Documento</td>
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
-                <td>EPS</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
                 <td>Clasificación</td>
                 <td>Estado</td>
+                <td>EPS</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
         </thead>       
@@ -112,6 +111,8 @@
                 
         });
 
+   $(document).ready(function(){
+   
         var table = $("#example1").DataTable({
             
             "ajax":{
@@ -129,12 +130,10 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
-                {data: 'first_name', visible:false},
                 {data: 'document_number'},
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
-                {data: 'eps', visible:false},
                 {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: null, render:function(data, type, row, meta){
@@ -151,6 +150,7 @@
                     }
                 },
                 {data: 'estado'},
+                {data: 'eps', visible:false},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -190,6 +190,25 @@
                 
             ]
         });
+        
+        $('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+   });
+        
         document.getElementById('linea_1').checked = true;
         document.getElementById('linea_2').checked = true;
         document.getElementById('linea_3').checked = true;

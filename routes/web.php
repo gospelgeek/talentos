@@ -214,4 +214,5 @@ Route::get('editar_apoyo_economico/{id}', 'FormalizacionController@apoyo_economi
 Route::put('update_apoyo_economico/{id}', 'FormalizacionController@apoyo_economico_update')->name('update_apoyo_economico');
 Route::delete('delete_apoyo_economico/{id}', 'FormalizacionController@apoyo_economico_delete')->name('delete_apoyo_economico');
 
-
+Route::get('icfes', 'IcfesController@index')->name('icfes');
+Route::get('datos_icfes', 'IcfesController@DatosIcfes')->name('datos_icfes');

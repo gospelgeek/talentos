@@ -91,7 +91,7 @@
     
     $(document).ready(function(){
         
-         $("#example1").DataTable({
+         var table = $("#example1").DataTable({
             "ajax": "{{route('datos.reporte.socioeducativo')}}",
             "columns": [
                 {data: null, render:function(data, type, row, meta) {

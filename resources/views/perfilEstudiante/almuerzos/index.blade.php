@@ -97,11 +97,6 @@ $(document).ready(function(){
 
 	});
     
-    $('.filter').keyup(function(){
-            table.column($(this).data('column'))
-            .search($(this).val())
-            .draw();
-    });
 });
 
 	function editar_registro_almuerzo(dato){

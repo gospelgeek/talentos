@@ -259,7 +259,7 @@ $(".accordion-titulo-4").click(function(e){
            
         e.preventDefault();
         var contenido=$(this).next(".accordion-content-4");
-
+        $('#mostrarFcA').empty();
          
         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         

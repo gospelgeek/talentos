@@ -266,14 +266,49 @@ $(function() {
         //console.log(ver);
         
         $.each(ver, function(index, value) {
-
-            //const datos = JSON.parse(ver[key]);
+            
             console.log(value.tracking_detail);
             const mostar = JSON.parse(value.tracking_detail);
             console.log(mostar);   
-            //texto +=datos.fecha;
+            
+            if(mostar.RiesgoIndividual !== null){
+                var indvdal = mostar.RiesgoIndividual;
+            }else{
+                var indvdal = '--';
+            }
 
-            $('#mostrarFcA').append('<tr data-id='+value.id+'>'+"<td>"+mostar.fecha+"</td>"+
+            if(mostar.RiesgoAcademico !== null){
+                var acdmco = mostar.RiesgoAcademico;
+            }else{
+                var acdmco = '--';
+            }
+
+            if(mostar.RiesgoFamiliar !== null){
+                var fmlar = mostar.RiesgoFamiliar;
+            }else{
+                var fmlar = '--';
+            }
+
+            if(mostar.RiesgoEconomico !== null){
+                var ecnmco = mostar.RiesgoEconomico;
+            }else{
+                var ecnmco = '--';
+            }
+
+            if(mostar.RiesgoUc !== null){
+                var vduyc = mostar.RiesgoUc;
+            }else{
+                var vduyc = '--';
+            }
+
+            $('#mostrarFcA').append(
+                '<tr data-id='+value.id+'>'+
+                    "<td>"+mostar.fecha+"</td>"+
+                    "<td>"+indvdal+"</td>"+
+                    "<td>"+acdmco+"</td>"+
+                    "<td>"+fmlar+"</td>"+
+                    "<td>"+ecnmco+"</td>"+
+                    "<td>"+vduyc+"</td>"+
                     "<td>"+
                       '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
@@ -286,7 +321,8 @@ $(function() {
                             '<button class="btn text-danger btn-block fa fa-trash fa boton_delete_seguimiento" title="Eliminar seguimiento"></button>'+
                           "</div>"+
                       "</div>"+
-                    "</td>"+"</tr>");
+                    "</td>"+
+                "</tr>");
  
     });
 

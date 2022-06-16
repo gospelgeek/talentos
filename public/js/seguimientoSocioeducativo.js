@@ -272,43 +272,83 @@ $(function() {
             console.log(mostar);   
             
             if(mostar.RiesgoIndividual !== null){
-                var indvdal = mostar.RiesgoIndividual;
+                if(mostar.RiesgoIndividual === 'alto'){
+                    var valor_individual = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoIndividual === 'medio'){
+                    var valor_individual = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoIndividual === 'bajo'){
+                    var valor_individual = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
             }else{
-                var indvdal = '--';
+                var valor_individual = '--';
             }
 
             if(mostar.RiesgoAcademico !== null){
-                var acdmco = mostar.RiesgoAcademico;
+                if(mostar.RiesgoAcademico === 'alto'){
+                    var valor_academico = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoAcademico === 'medio'){
+                    var valor_academico = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoAcademico === 'bajo'){
+                    var valor_academico = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
             }else{
-                var acdmco = '--';
+                var valor_academico = '--';
             }
 
             if(mostar.RiesgoFamiliar !== null){
-                var fmlar = mostar.RiesgoFamiliar;
+                if(mostar.RiesgoFamiliar === 'alto'){
+                    var valor_familiar = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoFamiliar === 'medio'){
+                    var valor_familiar = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoFamiliar === 'bajo'){
+                    var valor_familiar = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
             }else{
-                var fmlar = '--';
+                var valor_familiar = '--';
             }
 
             if(mostar.RiesgoEconomico !== null){
-                var ecnmco = mostar.RiesgoEconomico;
+                if(mostar.RiesgoEconomico === 'alto'){
+                    var valor_economico = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoEconomico === 'medio'){
+                    var valor_economico = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoEconomico === 'bajo'){
+                    var valor_economico = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
             }else{
-                var ecnmco = '--';
+                var valor_economico = '--';
             }
 
             if(mostar.RiesgoUc !== null){
-                var vduyc = mostar.RiesgoUc;
+                if(mostar.RiesgoUc === 'alto'){
+                    var valor_Uyc = "<div class='text-align-center' style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoUc === 'medio'){
+                    var valor_Uyc = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoUc === 'bajo'){
+                    var valor_Uyc = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
             }else{
-                var vduyc = '--';
+                var valor_Uyc = '--';
             }
 
             $('#mostrarFcA').append(
                 '<tr data-id='+value.id+'>'+
-                    "<td>"+mostar.fecha+"</td>"+
-                    "<td>"+indvdal+"</td>"+
-                    "<td>"+acdmco+"</td>"+
-                    "<td>"+fmlar+"</td>"+
-                    "<td>"+ecnmco+"</td>"+
-                    "<td>"+vduyc+"</td>"+
+                    "<td>"+mostar.fecha+"</td>"+    
+                    "<td>"+valor_individual+"</td>"+
+                    "<td>"+valor_academico+"</td>"+
+                    "<td>"+valor_familiar+"</td>"+
+                    "<td>"+valor_economico+"</td>"+
+                    "<td>"+valor_Uyc+"</td>"+
                     "<td>"+
                       '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+

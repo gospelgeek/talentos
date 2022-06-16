@@ -65,8 +65,8 @@
     }
 
    
-
- $("#example1").DataTable({
+    $(document).ready(function(){
+        var table = $("#example1").DataTable({
             "ajax": "{{route('datos.estudiantes.menores')}}",
             
 
@@ -122,10 +122,24 @@
  
  
 
-    /*$('#accion button.ver_seguimiento').on('click', function() {
-        //var id = $('this').parent('tr').attr('id');
-        console.log();
-    });*/
+         $('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+            $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+                $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+                $('input', this).on('keyup change', function () {
+                    if(table.column(i).search() !== this.value) {
+                        table
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+    });
               
     </script>
 

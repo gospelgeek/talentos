@@ -275,15 +275,18 @@
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
-                    
+
+                    if(rol == 1 || rol == 2 || rol == 6){
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
                             '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar(this);" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
                           '</div>'+                                 
                         "</div>"; 
-                    
+                        return mstr;
+                    }else{
 
-                    return mstr;
+                        return null;    
+                    }
                 }
             }
             ],

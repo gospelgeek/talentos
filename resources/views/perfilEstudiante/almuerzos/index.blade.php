@@ -16,6 +16,25 @@
 			</div><br>
 			<br><div class="table-responsive">
 				<table id="example1" class=" table table-bordered table-striped">
+                    <table id="example1" class=" table table-bordered table-striped">
+					<thead>
+						 <td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="0">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="1">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="2">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="3">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="4">
+            			</td>
+            			<td></td>
+					</thead>
 					<thead>
 						<tr>
 							<td>FECHA</td>
@@ -47,8 +66,7 @@
 
 <script>
 
-	
-	
+$(document).ready(function(){
 	var table = $("#example1").DataTable({
 
 		"ajax":{
@@ -96,6 +114,13 @@
          	]
 
 	});
+    
+    $('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+    });
+});
 
 	function editar_registro_almuerzo(dato){
 

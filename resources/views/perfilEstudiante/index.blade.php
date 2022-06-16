@@ -86,8 +86,8 @@
                 <td>Codigo</td>
                 <td>Email</td>
                 <td>Telefono</td>
-                <td>Cohorte</td>
                 <td>Grupo</td>
+                <td>Cohorte</td>
                 <td>Clasificación</td>
                 <td>Estado</td>
                 <td>EPS</td>

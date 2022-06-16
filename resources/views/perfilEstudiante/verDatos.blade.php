@@ -717,6 +717,11 @@
         			<thead >
             			<tr>
                 			<td>SEGUIMIENTO (YYYY-mm-dd)</td>
+                            <td>R.I</td>
+                			<td>R.A</td>
+                			<td>R.F</td>
+                			<td>R.E</td>
+                			<td>R.V</td>
                 			<td width="35%">ACCIONES</td>
             			</tr>
         			</thead>

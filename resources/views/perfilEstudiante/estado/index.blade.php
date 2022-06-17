@@ -36,6 +36,8 @@
 @include('perfilEstudiante.estado.modal.ver_estado')
 @push('scripts')
 <script type="text/javascript">
+
+$(document).ready(function(){
     var table = $('#example1').DataTable({
          processing: false,
          serverSide: false,
@@ -104,7 +106,24 @@
                       },
                     ]
       });
+      
+      $('#example1 thead tr').clone(true).appendTo('#example1 thead');
 
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+});
 </script>
 {!!Html::script('/js/estado.js')!!}
 @endpush

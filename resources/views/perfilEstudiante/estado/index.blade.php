@@ -112,7 +112,7 @@ $(document).ready(function(){
         $('#example1 thead tr:eq(1) td').each(function (i) {
             var title = $(this).text();
 
-            $(this).html('<input type="text" placeholder="Buscar"/>');
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
 
             $('input', this).on('keyup change', function () {
                 if(table.column(i).search() !== this.value) {

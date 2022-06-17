@@ -48,7 +48,7 @@
 
 <script>
 
-$(document).ready(function(){
+
 	var table = $("#example1").DataTable({
 
 		"ajax":{
@@ -97,7 +97,7 @@ $(document).ready(function(){
 
 	});
     
-});
+
 
 	function editar_registro_almuerzo(dato){
 

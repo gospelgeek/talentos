@@ -570,24 +570,7 @@ function cerrar_modal(){
   $("#recargar").load(" #recargar > *");
   $('#modal_asistencias').modal('hide');
 }
-$(document).ready(function()
-{
-  //Defino los totales de mis 2 columnas en 0
-  var total_col1 = 0;
-  var total_col2 = 0;
-  //Recorro todos los tr ubicados en el tbody
-  $('#example1 tbody').find('tr').each(function (i, el) {
-             
-        //Voy incrementando las variables segun la fila ( .eq(0) representa la fila 1 )     
-        total_col1 += parseFloat($(this).find('td').eq(1).text());
-        total_col2 += parseFloat($(this).find('td').eq(2).text());
-                
-    });
-    //Muestro el resultado en el th correspondiente a la columna
-    $('#totalsesiones').text(total_col1);
-    $('#totalasistencias').text(total_col2);
 
-});
 $(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);
@@ -619,51 +602,60 @@ function tipoCancha(deporteSel){
     }
 }
 
-$("#example1").DataTable({
-            "orderCellsTop": true,
-            "processing": true,
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            },
-            "dom": 'Bfrtip',
-            buttons: [     
-                      {
-                        extend: 'excel',
-                        text: 'EXPORTAR EXCEL',
-                        footer: 'true',
-                        exportOptions: {
-                                        modifier: {
-                                                    page: 'current',
+$("#asistencias").DataTable({
+            "ajax":{
 
-                                                  }
-                                        }
-                      },
-                      {
-                        extend: 'pdf',
-                        text: 'EXPORTAR PDF',
-                        footer: 'true',
-                        exportOptions: {
-                                        modifier: {
-                                                    page: 'current'
-                                                  }
-                                        }
-                      },
-                      {
-                        extend: 'print',
-                        text: 'Imprimir',
-                        footer: 'true',
-                        exportOptions: {
-                                        modifier: {
-                                                    page: 'current'
-                                                  }
-                                        }
-                      },
-                    ]
+                "method":"GET",
+                "url": "../asistencias_ficha",
+                "data": function(d){
+                    var url = window.location.pathname;
+                    var id = url.split("/",3);
+                    d.id_student = id[2];             
+                },            
+            },
+            "columns": [
+                {data: 'fullname'},
+                {data: 'cant_sesiones'},
+                {data: 'asistencia'},
+                {data: null, render:function(data, type, row, meta){
+                    
+                    var mstr;
+                   
+                        mstr ='<a type="button" onclick="abrir_modal('+data.attendance_id+','+data.id_moodle+');"><i class="fa fa-eye" aria-hidden="true"></i>Detalles</a>'; 
+                    return mstr;
+                  }
+                }    
+            ],
+            "footerCallback": function( tfoot, data, start, end, display ) {
+              var api = this.api();
+              $( api.column( 1 ).footer() ).html(
+                api.column( 1 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+              $( api.column( 2 ).footer() ).html(
+                api.column( 2 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+            },
+            "deferRender": true,"responsive": true,"processing": true,'serverSider':true, 'stateSave': true,
+            "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
+            "dom":'Bfrtip',
+            "buttons": [
+                "copy",
+                "csv",
+                {
+                extend: 'excelHtml5',
+                autoFilter: true
+                }, 
+                "pdf",
+                "print",
+                "colvis"
+                
+            ],
+            "fixedHeader": {
+            header: true,
+            footer: true
+            }
 }); 

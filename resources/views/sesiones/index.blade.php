@@ -124,6 +124,7 @@
                 "csv",
                 {
                         extend: 'excel',
+                        text: 'EXPORTAR EXCEL',
                         footer: 'true',
                         exportOptions: {
                                         modifier: {

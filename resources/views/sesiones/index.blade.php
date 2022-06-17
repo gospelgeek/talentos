@@ -71,13 +71,12 @@
 
 <script>
 
-$(document).ready(function(){	
-	function consultar_sesion(){
+function consultar_sesion(){
 		$("#example1").DataTable().ajax.reload();
 
-	}
-    
+}
 
+$(document).ready(function(){	
 	var table = $("#example1").DataTable({
 
 		"ajax":{

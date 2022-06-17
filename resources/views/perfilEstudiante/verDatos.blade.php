@@ -751,7 +751,7 @@
                         <div class="spinner-border spinner-border-sm" role="status">                    
                         </div>
             	</div> --}}
-				<table id="example1" class="table table-bordered table-striped">
+				<table id="asistencias" class="table table-bordered table-striped">
 					<caption style="caption-side: top;text-align:center;">Asistencias {{$verDatosPerfil->name}}</caption>
 					<thead>
 						<td>Asignatura</td>
@@ -759,16 +759,6 @@
 						<td>Asistencias</td>
 						<td>Acciones</td>
 					</thead>
-					<tbody id="insertar">
-						@foreach($cursos as $curso)
-						<tr>
-							<td>{{$curso->fullname}}</td>
-							<td>{{$curso->sesiones}}</td>
-							<td>{{$curso->asistencia}}</td>
-							<td><a type="button" onclick="abrir_modal({{$curso->attendance_id}},{{$verDatosPerfil->id_moodle}});"><i class="fa fa-eye" aria-hidden="true"></i>Detalles</a></td>
-						</tr>
-						@endforeach
-					</tbody>
 					<tfoot id="insertar2">
 						<td>TOTAL</td>
 						<td id="totalsesiones"></td>

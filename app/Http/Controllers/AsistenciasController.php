@@ -98,6 +98,33 @@ class AsistenciasController extends Controller
         
         return Excel::download($export, "REPORTE SESIONES PROGRAMADAS"." ".$fechaexcel.".xlsx");
     }
+    public function asistencias_ficha(Request $request){
+
+        //dd($request->id_student);
+        $estudiante = perfilEstudiante::select('id','id_moodle')->where('id', $request->id_student)->firstOrfail();
+        $this->id_moodle = $estudiante->id_moodle;
+        $cursos = CourseMoodle::select('id','fullname','attendance_id')->where('group_id',$estudiante->studentGroup->group->id)->with('sesiones')->get();
+        //dd($cursos);
+        $cursos->map(function($curso)
+        {
+            $contador=0;
+
+            foreach($curso->sesiones as $sesion){
+                $sesion = AttendanceStudent::where('session_id',$sesion->session_id)->where('grade',['P',['R']])->where('id_moodle',$this->id_moodle)->exists();
+                if($sesion){
+                    $contador++;
+                }
+            }
+            $curso->asistencia = $contador;
+
+            $curso->cant_sesiones = count($curso->sesiones);
+            $curso->id_moodle = $this->id_moodle;
+            unset($curso->sesiones);
+
+        });
+
+        return datatables()->of($cursos)->toJson();
+    }
     public function detalle_sesiones_ficha($attendance_id,$id_moodle){
         //dd($attendance_id,$id_moodle);
         $this->id_moodle = $id_moodle;

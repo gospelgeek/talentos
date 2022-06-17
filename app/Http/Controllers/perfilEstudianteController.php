@@ -183,9 +183,6 @@ class perfilEstudianteController extends Controller
     public function indexMenores()
     {
         return view('perfilEstudiante.indexMenores');
-        $perfilEstudiantes = perfilEstudiante::all();
-        //dd($perfilEstudiantes);
-        return view('perfilEstudiante.index', compact('perfilEstudiantes'));
     }
 
     public function storePerfilEstudiante(perfilEstudianteRequest $request)

@@ -122,16 +122,7 @@
             "buttons": [
                 "copy",
                 "csv",
-                {
-                        extend: 'excel',
-                        text: 'EXPORTAR EXCEL',
-                        footer: 'true',
-                        exportOptions: {
-                                        modifier: {
-                                                    page: 'all',
-                                                  }
-                                        }
-                      }, 
+                "excel", 
                 "pdf",
                 "print",
                 "colvis"

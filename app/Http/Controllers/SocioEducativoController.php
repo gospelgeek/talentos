@@ -1424,8 +1424,10 @@ class SocioEducativoController extends Controller
 
 
     public function index_reporte(){
+        $seguimiento = SocioEducationalFollowUp::ultimo_seguimiento();
+        $ultimo_seguimiento = $seguimiento[0]->created_at; 
        
-        return view('socioeducativo.index_reporte');
+        return view('socioeducativo.index_reporte', compact('ultimo_seguimiento'));
     }
 
     public function exportar_reporte_socioeducativo(){

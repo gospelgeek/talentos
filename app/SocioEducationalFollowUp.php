@@ -49,6 +49,25 @@ class SocioEducationalFollowUp extends Model
         }
     }
     //
+    
+    //Consulta ultimo seguimiento creado
+    public static function ultimo_seguimiento(){
+
+        $data = DB::select(
+                'select *
+                from socio_educational_follow_ups
+                order by id desc
+                limit 1'
+            );
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }   
+    //
+    
     /**
      * Relacion con los  datos que se tiene de SocioEducationalFollowUp  
      * con la tabla student_profile

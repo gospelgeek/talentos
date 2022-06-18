@@ -279,8 +279,23 @@ class perfilEstudiante extends Model
         }else{
             return null;
         }
-
     }
+    
+    //cumpleaños fecha actual
+    public static function ultimo_cumpleaños(){
+        $data = DB::select('
+                    select *
+                    FROM student_profile
+                    WHERE MONTH(birth_date) = MONTH(NOW()) 
+                    AND DAY(birth_date) = DAY(NOW())');
+        
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
 
     //RELACIONES UNO A UNO POR DEBAJO
 

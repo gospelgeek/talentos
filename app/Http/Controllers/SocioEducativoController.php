@@ -23,8 +23,10 @@ class SocioEducativoController extends Controller
     public function index()
     {
         $user = User::where('rol_id', '=', 6)->get(); 
+        $asignacion = AssignmentStudent::ultimo_asignacion();
+        $ultima_asignacion = $asignacion[0]->created_at; 
         
-        return view('socioeducativo.index', compact('user'));
+        return view('socioeducativo.index', compact('user', 'ultima_asignacion'));
     }
 
     public function DataJson(){

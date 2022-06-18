@@ -139,10 +139,7 @@ class perfilEstudianteController extends Controller
 
             return datatables()->of($estudiantes)->toJson();    
         }
-        
-
     }
-
 
     public function indexPerfilEstudiante()
     {
@@ -166,10 +163,10 @@ class perfilEstudianteController extends Controller
         $cohorte = Cohort::pluck('name', 'id');
         $grupo = Group::pluck('name', 'id');
         $profersinal = User::where('rol_id', 6)->pluck('name', 'id');
-
-        
-
-        return view('perfilEstudiante.index', compact('tipo_documento', 'depNacimiento', 'muni_nacimiento', 'sexo','genero', 'comunas', 'barrios', 'tutor','cohorte', 'grupo', 'profersinal'));
+        $ultimo_registro = Withdrawals::ultimo_registro();
+        $valor_ultimo = $ultimo_registro[0]->created_at;
+         
+        return view('perfilEstudiante.index', compact('tipo_documento', 'depNacimiento', 'muni_nacimiento', 'sexo','genero', 'comunas', 'barrios', 'tutor','cohorte', 'grupo', 'profersinal', 'valor_ultimo'));
     }
 
     public function mostrarMenores()

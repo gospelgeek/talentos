@@ -69,8 +69,8 @@
         @endif
         
     <div class="table-responsive">
-        <caption>Ultima modificación del estado de los estudiante: {{ $valor_ultimo }}</caption>
         <table id="example1" class=" table table-bordered table-striped">
+        <caption>Ultima modificación del estado de los estudiante: {{ $valor_ultimo }}</caption>
         <thead>
             <tr>
                 <td>Nombres</td>

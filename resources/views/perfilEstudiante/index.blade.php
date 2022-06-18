@@ -56,7 +56,6 @@
                 <label>SÓLO INACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="ACTIVO" id="inactivos">
             </div>
         </div>
-        
         <div class="row justify-content-md-center">
                 <col-sm>
                     <h5 class="mr-3 mt-2">DESCARGAR LISTADO DE GRUPOS DE:</h5>
@@ -65,20 +64,14 @@
                     <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/1">Linea 1</a>  
                      <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/2">Linea 2</a>
                      <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/3">Linea 3</a>
-           
                 </div>
-
          </div>
-        
         @endif
         
-
     <div class="table-responsive">
-    
-     <table id="example1" class=" table table-bordered table-striped">
-        
+        <caption>Ultima modificación del estado de los estudiante: {{ $valor_ultimo }}</caption>
+        <table id="example1" class=" table table-bordered table-striped">
         <thead>
-
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>

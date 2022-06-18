@@ -59,7 +59,19 @@
             },
             {
                 data: 'total_score'
-            }
+            },
+            {
+                data: null
+            },
+            {
+                data: null
+            },
+            {
+                data: null
+            },
+            {
+                data: null
+            },
 
         ],
 

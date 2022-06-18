@@ -42,8 +42,11 @@ class AlmuerzosController extends Controller
     }
 
     public function index(){
-
-        return view('perfilEstudiante.almuerzos.index');
+        $almuerzo = Lunches::lunches_update_ultimo();
+        $update_lunche = $almuerzo[0]->created_at;
+        $ultimo_lunche = $lunches[0]->created_at; 
+        
+        return view('perfilEstudiante.almuerzos.index', compact('ultimo_lunche', 'update_lunche'));
     }
 
     public function store(AlmuerzosRequest $request){

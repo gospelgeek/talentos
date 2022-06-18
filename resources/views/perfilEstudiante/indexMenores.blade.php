@@ -15,7 +15,7 @@
 
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        
+        <caption>Ultimos registros de mayoria de edad: {{ $cumpleaños_ultimos }}</caption>
         <thead>
             <tr>
                 <td>Nombres</td>

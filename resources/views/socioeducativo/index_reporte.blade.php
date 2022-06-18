@@ -18,6 +18,7 @@
        
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
+        <caption>Ultima Seguimiento registrado: {{ $ultimo_seguimiento }}</caption>
         <thead>
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="0">

@@ -61,16 +61,28 @@
                 data: 'total_score'
             },
             {
-                data: null
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
             },
             {
-                data: null
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
             },
             {
-                data: null
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
             },
             {
-                data: null
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
             },
 
         ],

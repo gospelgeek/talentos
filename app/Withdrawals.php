@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use DB;
 
 class Withdrawals extends Model
 {
@@ -20,6 +21,24 @@ class Withdrawals extends Model
         'fecha',
     ];
     protected $dates = ['delete_at'];
+    
+    //Ultimo registro de actualizacion de estado
+    public static function ultimo_registro(){
+
+        $data = DB::select('
+                select *
+                from withdrawals
+                order by id desc
+                limit 1;'
+            );
+        
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
     /**
      * Relacion con los  datos que se tiene de Withdrawals  
      * con la tabla Reasons

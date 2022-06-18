@@ -179,7 +179,11 @@ class perfilEstudianteController extends Controller
 
     public function indexMenores()
     {
-        return view('perfilEstudiante.indexMenores');
+        $cumpleaños = perfilEstudiante::ultimo_cumpleaños();
+        
+        $cumpleaños_ultimos = $cumpleaños[0]->birth_date;
+        
+        return view('perfilEstudiante.indexMenores', compact('cumpleaños_ultimos'));
     }
 
     public function storePerfilEstudiante(perfilEstudianteRequest $request)

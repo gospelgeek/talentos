@@ -6,13 +6,10 @@
 <div class="container-fluid">
     <h1 style="text-align:center;">ASIGNACION DE ESTUDIANTES</h1>
     <div class="card">
-
-
         <div class="card-body">
-
-           
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">
+                    <caption>Ultima modificación en asignaciones: {{ $ultima_asignacion }}</caption>
                     <thead>
                         <td>
                             <input type="text" class="form-control filter" placeholder="Search" data-column="0">

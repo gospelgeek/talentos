@@ -2109,7 +2109,10 @@ class perfilEstudianteController extends Controller
         $estado = Condition::pluck('name', 'id');
         $motivos = Reasons::pluck('name', 'id');
         $motivs = Reasons::select('name')->get();
-        return view('perfilEstudiante.estado.index', compact('estado','motivos','motivs'));
+        $ultimo_registro = Withdrawals::ultimo_registro();
+        $valor_ultimo = $ultimo_registro[0]->created_at;
+        
+        return view('perfilEstudiante.estado.index', compact('estado','motivos','motivs', 'valor_ultimo'));
     }
 
     public function edit_Estado($id, Request $request){

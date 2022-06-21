@@ -90,4 +90,18 @@ class CourseMoodle extends Model
             return null;
         }
     }
+    
+    public static function fecha_carga(){
+        $data = DB::select('
+            select course_moodles.created_at
+            from course_moodles
+            WHERE course_moodles.id = 1
+            ');
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
 }

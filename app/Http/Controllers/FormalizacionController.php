@@ -38,7 +38,10 @@ class FormalizacionController extends Controller
 
     public function index(){
 
-        return view('perfilEstudiante.indexFormalizacion');
+        $update_frmlzcon = Formalization::ultimo_update_formalizacion();
+        $update_formalizacion = $update_frmlzcon[0]->created_at; 
+        
+        return view('perfilEstudiante.indexFormalizacion', compact('update_formalizacion'));
     }
     
     public function formalizacionupdate($id, Request $request){

@@ -46,4 +46,21 @@ class Formalization extends Model
             return null;
         }
     }
+    
+    //Ultima formalizacion actualizada
+    public static function ultimo_update_formalizacion(){
+        
+        $data = DB::select('
+            select * FROM logs_crud_actions
+            WHERE logs_crud_actions.actividad_realizada = "FORMALIZACION ACTUALIZADA"
+            order by id desc
+            limit 1');    
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
 }

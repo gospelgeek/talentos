@@ -56,6 +56,7 @@
 
     		<div class="table-responsive">
      			<table id="example1" class=" table table-bordered table-striped">
+                    <caption>Fecha ultima carga: {{ $valor_carga }}</caption>
         			<thead>
             			<tr>
                 			<td width="30%">Nombre</td>

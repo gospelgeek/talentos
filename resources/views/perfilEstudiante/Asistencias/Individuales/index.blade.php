@@ -33,6 +33,7 @@
         <br>
     <div id="tabla_1" class="table-responsive" style='display:none'>
      <table id="example1" class="table table-bordered table-striped">
+        <caption>Fecha ultima carga: {{ $carga }}</caption>
         <thead >
             <tr >
                 <th rowspan="2">Nombres</th>

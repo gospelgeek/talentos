@@ -991,10 +991,10 @@ class perfilEstudianteController extends Controller
 
         $asignaturas = Course::All();
         $cohorte = Cohort::pluck('name','id');
-
-        //dd($asignaturas);
-
-        return view('perfilEstudiante.Asistencias.index', compact('asignaturas','cohorte'));
+        $ultima_carga = CourseMoodle::fecha_carga();
+        $valor_carga = $ultima_carga[0]->created_at;
+      
+        return view('perfilEstudiante.Asistencias.index', compact('asignaturas','cohorte', 'valor_carga'));
     }
 
     public function Grupos_Asignaturas($id)
@@ -2041,7 +2041,10 @@ class perfilEstudianteController extends Controller
         
     public function indexEstudiantes(){
         $cohorte = Cohort::pluck('name','id');
-        return view('perfilEstudiante.Asistencias.Individuales.index',compact('cohorte'));   
+        $fecha_carga = CourseMoodle::fecha_carga();
+        $carga = $fecha_carga[0]->created_at;
+        
+        return view('perfilEstudiante.Asistencias.Individuales.index',compact('cohorte', 'carga'));   
     }
 
     public function sesiones_asistencias($id_curso){

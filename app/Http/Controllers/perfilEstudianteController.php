@@ -2157,6 +2157,10 @@ class perfilEstudianteController extends Controller
             unset($estudiante->condition);
             unset($estudiante->documenttype);
             unset($estudiante->assignmentstudent);
+            
+        });
+        
+        return datatables()->of($verDatosPerfil)->toJson();
     }
 
     public function excel_asistencias(Request $request){

@@ -74,6 +74,7 @@
         <thead>
             <tr>
                 <td>Nombres</td>
+                <td>Apellidos</td>
                 <td>Tipo Doc.</td>
                 <td>Nº Doc.</td>
                 <td>Codigo</td>
@@ -121,18 +122,8 @@
             },
 
             "columns": [
-                {data: null, render:function(data, type, row, meta) {
-                        if(data.name !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.name+' '+data.lastname+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
-                    }
-                },
+                {data: 'name'},
+                {data: 'lastname'},
                 {data: 'tipodocumento'},
                 {data: 'document_number'},
                 {data: 'student_code'},
@@ -230,14 +221,14 @@
                         var filtro = $('input:checkbox[id="linea_1"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                         //
                     }else if (checkLinea2) {
                         //filtros basicos por columna con un solo valor
-                        table.columns(7).search('LINEA 2'); 
+                        table.columns(8).search('LINEA 2'); 
                         //       
                     }else if (checkLinea3) {
-                        table.columns(7).search('LINEA 3');
+                        table.columns(8).search('LINEA 3');
                     }
                     table.draw();
                         
@@ -247,11 +238,11 @@
                         var filtro = $('input:checkbox[id="linea_2"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(7).search('LINEA 1');
+                        table.columns(8).search('LINEA 1');
                     }else if(checkLinea3){
-                        table.columns(7).search('LINEA 3');
+                        table.columns(8).search('LINEA 3');
                     }
                     table.draw();
                 }
@@ -260,11 +251,11 @@
                         var filtro = $('input:checkbox[id="linea_3"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(7).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(7).search('LINEA 1');
+                        table.columns(8).search('LINEA 1');
                     }else if(checkLinea2){
-                        table.columns(7).search('LINEA 2');
+                        table.columns(8).search('LINEA 2');
                     }
                     table.draw();
                 }
@@ -273,7 +264,7 @@
                     var offices = $('input:checkbox[name="check"]:checked').map(function() {
                         return this.value;
                     }).get().join('|');
-                    table.column(7).search(offices, true, false, false).draw(false);
+                    table.column(8).search(offices, true, false, false).draw(false);
                     //
                 }
         });

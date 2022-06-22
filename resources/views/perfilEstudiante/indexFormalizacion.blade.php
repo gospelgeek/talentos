@@ -22,16 +22,16 @@
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
     <h1 style="text-align:center;">FORMALIZACIÓN ESTUDIANTE</h1>
-    <div class="card">         
+    <div class="card">       
         <div class="card-body">
             <div class="table-responsive">
                 <center><div class="btn-group">
                     <div class="dtlle col-xs-6 col-md-12 col-sm-6">
                         <label>DETALLES DE ESTADO</label>&nbsp;<input type="checkbox" name="detalleS" id="detalleS">
                     </div>
-                </div></center>
+                </div></center>  
                 <table id="example1" class=" table table-bordered table-striped">
-                <caption>Ultimo registro formalización actualizado: {{ $update_formalizacion }}</caption>
+                    <caption>Ultimo registro formalización actualizado: {{ $update_formalizacion }}</caption>
                     <thead>
                         <tr>
                             <td>Nombres</td>
@@ -69,7 +69,10 @@
 
 @push('scripts')
 
-   $(document).ready(function(){
+    <!-- Page specific script -->
+<script>
+
+    $(document).ready(function(){
        var table = $("#example1").DataTable({
             
             "ajax":{
@@ -333,7 +336,8 @@
     function redireccionar_edit(id){
             console.log($(id).attr("id"));
             location.href=`../editar_estudiante/${$(id).attr("id")}?css=titulo-6#ttlo-6`;
-    }
+    }  
+
                 
 </script>
 

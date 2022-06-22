@@ -2135,27 +2135,28 @@ class perfilEstudianteController extends Controller
 
         $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
         $verDatosPerfil->map(function($estudiante){
-            $estudiante->cohort = $estudiante->studentGroup->group->cohort->name;
-            $estudiante->grupo = $estudiante->studentGroup->group->name;
+            
             $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
             $estudiante->condicion = $estudiante->condition->name;
+            $estudiante->profesional_name = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->name : null;
+            $estudiante->profesional_lastname = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;
             $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
-            //dd($withdrawals);
             if($withdrawals == true){
                 $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
                 $estudiante->fecha = $estudiante->withdrawals ? $estudiante->withdrawals->fecha : null;
+                $estudiante->observacion = $estudiante->withdrawals ? $estudiante->withdrawals->observation : null;
+                $estudiante->url = $estudiante->withdrawals ? $estudiante->withdrawals->url : null;
             }else{
                 $estudiante->motivo = null;
                 $estudiante->fecha = null;
+                $estudiante->observacion = null;
+                $estudiante->url = null;
             }
             unset($estudiante->withdrawals);
             unset($estudiante->studentGroup);
             unset($estudiante->condition);
             unset($estudiante->documenttype);
-            //dd($estudiante);
-        });
-
-        return datatables()->of($verDatosPerfil)->toJson();
+            unset($estudiante->assignmentstudent);
     }
 
     public function excel_asistencias(Request $request){

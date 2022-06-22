@@ -61,8 +61,14 @@ class FormalizacionController extends Controller
             if($profesional == true){
                 $id_profesional = AssignmentStudent::where('id_student', $datos->id)->select('id_user')->first();
                 $datos_profesional = User::where('id', $id_profesional->id_user)->select('name', 'apellidos_user')->first();
-                $name_profesional = $datos_profesional->name;
-                $lastname_profesional = $datos_profesional->apellidos_user;     
+                if($datos_profesional !== null){
+                    $name_profesional = $datos_profesional->name;
+                    $lastname_profesional = $datos_profesional->apellidos_user;    
+                }else{
+                    $name_profesional = null;
+                    $lastname_profesional = null;
+                }
+                     
             }else{
                 $name_profesional = null;
                 $lastname_profesional = null;

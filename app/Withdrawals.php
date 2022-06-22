@@ -15,6 +15,7 @@ class Withdrawals extends Model
         'id_reasons',
         'observation',
         'url',
+        'fecha',
     ];
 
     /**

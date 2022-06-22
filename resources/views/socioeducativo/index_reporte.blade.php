@@ -12,7 +12,7 @@
          
         <div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
-                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('reporte_socioeducativo')}}">EXCEL SOCIOEDUCATIVO</a>
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('reporte_socioeducativo')}}">Descargar todos los seguimientos socioeducativos</a>
             </div>
         </div>
        
@@ -62,24 +62,28 @@
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="13">
             </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="14">
+            </td>
             <td></td> 
         </thead>
         <thead>
             <tr>
                 <td>Nombres</td>
-                <td>Documento</td>
+                <td>Nº Documento</td>
                 <td>Cohorte</td>
                 <td>Grupo</td>
+                <td>Estado</td>
                 <td>Clasificación</td>
-                <td>C.E</td>
-                <td>S.M</td>
-                <td>Cant.Seg</td>
-                <td>R.I</td>
+                <td>C. E</td>
+                <td>S. M</td>
+                <td>Prof. Acompañamiento</td>
+                <td>Cant. Seguimientos</td>
+                <td id="r1">R.I</td>
                 <td>R.A</td>
                 <td>R.F</td>
                 <td>R.E</td>
                 <td>R.V</td>
-                <td>Acompañamiento</td>
                 <td width="15%">Acciones</td>
             </tr>
         </thead>
@@ -114,6 +118,7 @@
                 {data: 'document_number'},
                 {data: 'cohorte'},
                 {data: 'grupo'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         
                         if(data.id_state == 1 || data.id_state == 4){

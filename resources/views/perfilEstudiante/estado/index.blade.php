@@ -17,6 +17,8 @@
                 <td>Nombres</td>
                 <td>Tipo Doc.</td>
                 <td>Nº documento</td>
+                <td>Cohorte</td>
+                <td>Grupo</td>
                 <td>Prof. Acomp.</td>
                 <td>Estado</td>
                 <td>Motivo</td>
@@ -59,6 +61,8 @@ $(document).ready(function(){
             },
             { data: 'tipodocumento' },
             { data: 'document_number' },
+            { data: 'cohorte' },
+            { data: 'grupo' },
             {data: null, render:function(data, type, row, meta) {
                         if(data.profesional_name !== null){
                             var celda;

@@ -2138,8 +2138,8 @@ class perfilEstudianteController extends Controller
             
             $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
             $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
-            $estudiante->profesional_name = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->name : null;
-            $estudiante->profesional_lastname = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;
+            $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+            $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;
             $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
             if($withdrawals == true){
                 $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;

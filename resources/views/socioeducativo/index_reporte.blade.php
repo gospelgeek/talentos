@@ -60,7 +60,7 @@
                 <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="12">
             </td>
             <td>
-                <input type="text" class="form-control filter" placeholder="Search" data-column="13">
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="13">
             </td>
             <td>
                 <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="14">

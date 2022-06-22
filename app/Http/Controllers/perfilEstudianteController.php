@@ -2140,8 +2140,8 @@ class perfilEstudianteController extends Controller
             $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
             $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
             if($profesionales == true){
-                $estudiante->profesional_name = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->name : null;
-                $estudiante->profesional_lastname = $estudiante->assignmentstudent ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
+                $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+                $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
             }else{
                 $estudiante->profesional_name = null;
                 $estudiante->profesional_lastname = null;

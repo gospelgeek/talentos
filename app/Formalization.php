@@ -32,7 +32,8 @@ class Formalization extends Model
             formalizations.acceptance_v2 as acceptance_v2, formalizations.tablets_v2 as tablets_v2,
             formalizations.serial_tablet as serial_tablet, formalizations.kit_date as kit_date, 
             formalizations.pre_registration_icfes as pre_registration_icfes, formalizations.inscription_icfes 
-            as inscription_icfes, formalizations.presented_icfes as presented_icfes
+            as inscription_icfes, formalizations.presented_icfes as presented_icfes,
+            (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group

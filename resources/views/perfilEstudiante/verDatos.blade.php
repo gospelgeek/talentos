@@ -769,6 +769,32 @@
 			</div>
 		</div>
 	</div>
+    
+    <div class="accordion-container" id="ti7">
+		<a  href="#" id="titulo-7" class="accordion-titulo-7">Icfes<span class="toggle-icon"></span></a>
+		<div id="contenido-7" class="accordion-content-7">
+			<div class="table-responsive">
+				<br>
+				<h4>INFORMACION DE ICFES</h4>
+				<table id="icfes">
+					<thead>
+
+					<th>AREA</th>
+					<th>ICFES ENTRADA</th>
+					<th>SIMULACRO 1</th>
+					<th>SIMULACRO 1</th>
+					<th>ICFES SALIDA</th>
+					</thead>
+					
+					<tfoot>
+						<th>TOTALES</th>
+					</tfoot>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+    
 	<div class="accordion-container">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">

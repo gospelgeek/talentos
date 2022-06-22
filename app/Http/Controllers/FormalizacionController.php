@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Auth;
 use App\Formalization;
+use App\AssignmentStudent;
 use App\perfilEstudiante;
+use App\Withdrawals;
+use App\Reasons;
 use App\EconomicalSupport;
 use App\Group;
 use App\Cohort;
@@ -32,8 +35,74 @@ class FormalizacionController extends Controller
     public function formalizacionDatos(){
         
         $datosFormalizacion = Formalization::formalizacion();
+        $arreglo_datos = array();
 
-        return datatables()->of($datosFormalizacion)->toJson();
+        foreach($datosFormalizacion as $datos){
+
+            $retiro = Withdrawals::where('id_student', $datos->id)->exists();
+            if($retiro == true){
+                $datos_retiro = Withdrawals::where('id_student', $datos->id)->select('id_reasons', 'fecha', 'url')->first();
+                $fecha = $datos_retiro->fecha;
+                $url = $datos_retiro->url;
+                $motivo = Reasons::where('id', $datos_retiro->id_reasons)->select('name')->first();
+                if($motivo != null){
+                    $motivo_name = $motivo->name;    
+                }else{
+                    $motivo_name = null;
+                }
+                
+            }else{
+                $fecha = null;
+                $url = null;
+                $motivo_name = null;
+            }
+
+            $profesional = AssignmentStudent::where('id_student', $datos->id)->exists();
+            if($profesional == true){
+                $id_profesional = AssignmentStudent::where('id_student', $datos->id)->select('id_user')->first();
+                $datos_profesional = User::where('id', $id_profesional->id_user)->select('name', 'apellidos_user')->first();
+                $name_profesional = $datos_profesional->name;
+                $lastname_profesional = $datos_profesional->apellidos_user;     
+            }else{
+                $name_profesional = null;
+                $lastname_profesional = null;
+            }
+
+            $arreglo_datos[] = array(
+                'id' => $datos->id,
+                'name' => $datos->name,
+                'lastname' => $datos->lastname,
+                'document_number' => $datos->document_number,
+                'email' => $datos->email,
+                'cellphone' => $datos->cellphone,
+                'groupid' => $datos->groupid,
+                'grupo' => $datos->grupo,
+                'cohorte' => $datos->cohorte,
+                'acceptance_v2' => $datos->acceptance_v2,
+                'tablets_v2' => $datos->tablets_v2,
+                'serial_tablet' => $datos->serial_tablet,
+                'kit_date' => $datos->kit_date,
+                'pre_registration_icfes' => $datos->pre_registration_icfes,
+                'inscription_icfes' => $datos->inscription_icfes,
+                'presented_icfes' => $datos->presented_icfes,
+                'acceptance_date' => $datos->acceptance_date,
+                'returned_tablet' => $datos->returned_tablet,
+                'loan_tablet' => $datos->loan_tablet,
+                'serial_loan_tablet' => $datos->serial_loan_tablet,
+                'loan_document_url' => $datos->loan_document_url,
+                'tipodocumento' => $datos->tipodocumento,
+                'estado' => $datos->estado,
+                'motivo' => $motivo_name,
+                'fecha' => $fecha,
+                'url' => $url,
+                'name_profesional' => $name_profesional,
+                'lastname_profesional' => $lastname_profesional
+            );
+        }
+        
+        $datos_collection = collect($arreglo_datos);
+
+        return datatables()->of($datos_collection)->toJson();
     }
 
     public function index(){
@@ -49,7 +118,7 @@ class FormalizacionController extends Controller
     }
     
    public function formalizacionupdate($id, Request $request){
-  
+    
     $data = Formalization::findOrFail($id);
     $dataOld = Formalization::findOrFail($id);
         
@@ -77,7 +146,25 @@ class FormalizacionController extends Controller
             $data->serial_tablet = $request['serial_tablet'];
             $data->kit_date = $request['date_kit'];
             $data->observations = $request['observaciones'];
-                
+            $data->acceptance_date = $request['fecha_aceptacion'];
+            $data->acceptance_observation = $request['observacion_aceptacion'];
+            
+            if($request['prestamo_tablet'] != null){
+                $data->loan_tablet = true;    
+            }else{
+                $data->loan_tablet = null;
+            }
+            
+            if($request['devolvio_tablet'] != null){
+                $data->returned_tablet = true;    
+            }else{
+                $data->returned_tablet = null;    
+            }
+            
+            $data->serial_loan_tablet = $request['serial_tablet_prestada'];
+            $data->observation_loan = $request['observacion_prestamo'];
+            $data->loan_document_url = $request['url_documento_prestamo'];
+
             $pre_registro;
             if($request['pre_registro_icfes'] !== null){
                 $pre_registro = true;
@@ -105,15 +192,14 @@ class FormalizacionController extends Controller
                 $data->presented_icfes = $presento_icfes;
             }
 
-           $apoyo_economico = EconomicalSupport::create([
+           /*$apoyo_economico = EconomicalSupport::create([
                 'id_student'    => $request['id'],
                 'date'          => $request['fecha_apoyo'],
                 'url_banco'     => $request['banco_url'],
                 'monto'         => $request['monto'],
             ]);
 
-            $ip = User::getRealIP();
-            $id = auth()->user();
+            
             
             $datos = LogsCrudActions::create([
                 'id_user'                  => $id['id'],
@@ -121,7 +207,7 @@ class FormalizacionController extends Controller
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $apoyo_economico['id'],
                 'actividad_realizada'      => 'NUEVO REGISTRO DE APOYO ECONOMICO',
-            ]);
+            ]);*/
             
         };
 
@@ -133,6 +219,14 @@ class FormalizacionController extends Controller
         if($dataOld->acceptance_v2 != $data->acceptance_v2){
             $old[] = array('aceptacion' => $dataOld->acceptance_v2);
             $new[] = array('aceptacion' => $data->acceptance_v2);
+        }
+        if($dataOld->acceptance_date != $data->acceptance_date){
+            $old[] = array('fecha_aceptacion' => $dataOld->acceptance_date);
+            $new[] = array('fecha_aceptacion' => $data->acceptance_date);
+        }
+        if($dataOld->acceptance_observation != $data->acceptance_observation){
+            $old[] = array('observacion_aceptacion' => $dataOld->acceptance_observation);
+            $new[] = array('observacion_aceptacion' => $data->acceptance_observation);
         }
         if($dataOld->tablets_v2 != $data->tablets_v2){
             $old[] = array('tablets' => $dataOld->tablets_v2);
@@ -162,6 +256,29 @@ class FormalizacionController extends Controller
             $old[] = array('observaciones' => $dataOld->observations);
             $new[] = array('observaciones' => $data->observations);
         }
+        if($dataOld->returned_tablet != $data->returned_tablet){
+            $old[] = array('devolvio_tablet' => $dataOld->returned_tablet);
+            $new[] = array('devolvio_tablet' => $data->returned_tablet);
+        }
+        if($dataOld->loan_tablet != $data->loan_tablet){
+            $old[] = array('prestamo_tablet' => $dataOld->loan_tablet);
+            $new[] = array('prestamo_tablet' => $data->loan_tablet);
+        }
+        if($dataOld->serial_loan_tablet != $data->serial_loan_tablet){
+            $old[] = array('serial_prestamo_tablet' => $dataOld->serial_loan_tablet);
+            $new[] = array('serial_prestamo_tablet' => $data->serial_loan_tablet);
+        }
+        if($dataOld->observation_loan != $data->observation_loan){
+            $old[] = array('observacion_prestamo' => $dataOld->observation_loan);
+            $new[] = array('observacion_prestamo' => $data->observation_loan);
+        }
+        if($dataOld->loan_document_url != $data->loan_document_url){
+            $old[] = array('url_documento_prestamo' => $dataOld->loan_document_url);
+            $new[] = array('url_documento_prestamo' => $data->loan_document_url);
+        }
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
 
         if($old != null && $new != null){
 

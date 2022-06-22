@@ -2133,10 +2133,11 @@ class perfilEstudianteController extends Controller
     
     public function get_Estados(Request $request){
 
-        $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','document_number','id_state']);
+        $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
         $verDatosPerfil->map(function($estudiante){
             $estudiante->cohort = $estudiante->studentGroup->group->cohort->name;
             $estudiante->grupo = $estudiante->studentGroup->group->name;
+            $estudiante->tipodocumento = $estudiante->documenttype->name;
             $estudiante->condicion = $estudiante->condition->name;
             $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
             //dd($withdrawals);
@@ -2150,6 +2151,7 @@ class perfilEstudianteController extends Controller
             unset($estudiante->withdrawals);
             unset($estudiante->studentGroup);
             unset($estudiante->condition);
+            unset($estudiante->documenttype);
             //dd($estudiante);
         });
 

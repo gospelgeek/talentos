@@ -1413,7 +1413,28 @@ class SocioEducativoController extends Controller
 
             $json_detalle = json_decode($dato->detalle);            
 
-            $arreglo_datos[] = array('id' => $dato->id, 'name' => $dato->name, 'lastname' => $dato->lastname, 'document_number' => $dato->document_number, 'grupo_id' => $dato->grupoid, 'grupo' => $dato->grupo, 'cohorte' => $dato->cohorte, 'id_profesional' => $dato->id_profesional, 'nombre_profesional' => $dato->nombre_profesional, 'apellido_profesional' => $dato->apellido_profersional, 'cantidad_seguimientos' => $dato->cantidad_seguimientos, 'aceptacion1' => $dato->aceptacion1, 'aceptacion2' => $dato->aceptacion2, 'riesgo_indivdual' => $json_detalle->RiesgoIndividual, 'riesgo_academico' => $json_detalle->RiesgoAcademico, 'riesgo_familiar' => $json_detalle->RiesgoFamiliar, 'riesgo_economico' => $json_detalle->RiesgoEconomico, 'riesgo_Uc' => $json_detalle->RiesgoUc, 'caso_especial' => $dato->caso_especial, 'salud_mental' => $dato->salud_mental, 'id_state' => $dato->id_state); 
+            $arreglo_datos[] = array(
+                'id' => $dato->id,
+                'name' => $dato->name, 'lastname' => $dato->lastname,
+                'document_number' => $dato->document_number,
+                'grupo_id' => $dato->grupoid,
+                'grupo' => $dato->grupo,
+                'estado' => $dato->estado,
+                'cohorte' => $dato->cohorte,
+                'id_profesional' => $dato->id_profesional,
+                'nombre_profesional' => $dato->nombre_profesional,
+                'apellido_profesional' => $dato->apellido_profersional,
+                'cantidad_seguimientos' => $dato->cantidad_seguimientos, 
+                'aceptacion1' => $dato->aceptacion1,
+                'aceptacion2' => $dato->aceptacion2,
+                'riesgo_indivdual' => $json_detalle->RiesgoIndividual,
+                'riesgo_academico' => $json_detalle->RiesgoAcademico,
+                'riesgo_familiar' => $json_detalle->RiesgoFamiliar,
+                'riesgo_economico' => $json_detalle->RiesgoEconomico,
+                'riesgo_Uc' => $json_detalle->RiesgoUc,
+                'caso_especial' => $dato->caso_especial,
+                'salud_mental' => $dato->salud_mental, 'id_state' => $dato->id_state
+            ); 
         }
 
         $colection_seguimiento = collect($arreglo_datos);

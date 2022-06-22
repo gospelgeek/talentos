@@ -2135,7 +2135,8 @@ class perfilEstudianteController extends Controller
 
         $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
         $verDatosPerfil->map(function($estudiante){
-            
+            $estudiante->cohorte = $estudiante->studentGroup->group->cohort ? $estudiante->studentGroup->group->cohort->name : null;
+            $estudiante->grupo = $estudiante->studentGroup->group ? $estudiante->studentGroup->group->name : null;
             $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
             $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
             $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();

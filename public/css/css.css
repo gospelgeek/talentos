@@ -113,6 +113,17 @@ img.avatar {
 	text-decoration: none;
 }
 
+.accordion-titulo-7 {
+	position: relative;
+	display: block;
+	padding: 20px;
+	font-size: 24px;
+	font-weight: 300;
+	background: #2c3e50;
+	color: #fff;
+	text-decoration: none;
+}
+
 .accordion-titulo.open {
 	background: #16a085;
 	color: #fff;
@@ -156,6 +167,31 @@ img.avatar {
 }
 
 .accordion-titulo-2 span.toggle-icon {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 38px;
+	font-weight:bold;
+}
+
+.accordion-titulo-7.open {
+	background: #16a085;
+	color: #fff;
+}
+
+.accordion-titulo-7:hover {
+	background: #1abc9c;
+}
+
+.accordion-titulo-7 span.toggle-icon:before {
+	content:"+";
+}
+
+.accordion-titulo-7.open span.toggle-icon:before {
+	content:"-";
+}
+
+.accordion-titulo-7 span.toggle-icon {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -288,6 +324,12 @@ img.avatar {
 }
 
 .accordion-content-5 {
+	display: none;
+	padding: 20px;
+	overflow: auto;
+}
+
+.accordion-content-7 {
 	display: none;
 	padding: 20px;
 	overflow: auto;

@@ -45,7 +45,7 @@ class FormalizacionController extends Controller
             $update_formalizacion = null;
         }
 
-        return view('perfilEstudiante.indexFormalizacion');
+        return view('perfilEstudiante.indexFormalizacion', compact('update_formalizacion'));
     }
     
    public function formalizacionupdate($id, Request $request){

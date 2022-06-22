@@ -19,7 +19,7 @@ class IcfesController extends Controller
 
     public function DatosIcfes()
     {
-        $datosIcfes = DB::select("SELECT id, (SELECT student_profile.name FROM student_profile 
+        $datosIcfes = DB::select("SELECT id, icfes_students.id_student as id_student, (SELECT student_profile.name FROM student_profile 
         WHERE student_profile.id = icfes_students.id_student LIMIT 1 ) as nombre, 
         (SELECT student_profile.lastname FROM student_profile 
         WHERE student_profile.id = icfes_students.id_student LIMIT 1 ) as apellidos, 

@@ -34,6 +34,7 @@
             @endif
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">
+                <caption>Ultimo registro formalización actualizado: {{ $update_formalizacion }}</caption>
                     <thead>
                         <tr>
                            <td>Nombres</td>

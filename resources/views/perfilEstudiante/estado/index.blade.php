@@ -15,14 +15,14 @@
         <thead >
             <tr >
                 <td>Nombres</td>
-                <td>Apellidos</td>
                 <td>Tipo Doc.</td>
                 <td>Nº documento</td>
-                <td>Grupo</td>
-                <td>Cohorte</td>
+                <td>Prof. Acomp.</td>
                 <td>Estado</td>
                 <td>Motivo</td>
                 <td>Fecha</td>
+                <td>Observacion</td>
+                <td>URL</td>
                 <td>Acciones</td>
             </tr>
         </thead>
@@ -45,15 +45,37 @@ $(document).ready(function(){
          serverSide: false,
          ajax: "{{route('estudiantes.get_Estados')}}",
          columns: [
-            { data: 'name' },
-            { data: 'lastname' },
+            {data: null, render:function(data, type, row, meta) {
+                        if(data.name !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.name+' '+data.lastname+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
+                    }
+            },
             { data: 'tipodocumento' },
             { data: 'document_number' },
-            { data: 'grupo' },
-            { data: 'cohort' },
+            {data: null, render:function(data, type, row, meta) {
+                        if(data.profesional_name !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.profesional_name+' '+data.profesional_lastname+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
+                    }
+            },
             { data: 'condicion' },
             { data: 'motivo'},
             { data: 'fecha'},
+            { data: 'observacion'},
+            { data: 'url'},
             { data: null, render:function(data, type, row, meta){
                     
                     var mstr;

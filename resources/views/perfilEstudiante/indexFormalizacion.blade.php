@@ -74,7 +74,7 @@
                     <thead>
                         <tr>
                             <td>Nombres</td>
-                            <td>Apellidos</td>
+                            <td>Tipo Doc.</td>
                             <td>Nº Documento</td>
                             <td>Grupo</td>
                             <td>Cohorte</td>
@@ -108,8 +108,19 @@
             },
 
             "columns": [
-                {data: 'name'},
-                {data: 'lastname'},
+                {data: null, render:function(data, type, row, meta) {
+                        if(data.name !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.name+' '+data.lastname+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
+                    }
+                },
+                {data: 'tipodocumento'},
                 {data: 'document_number'},
                 {data: 'grupo'},
                 {data: 'cohorte'},

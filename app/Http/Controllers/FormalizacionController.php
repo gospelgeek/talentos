@@ -104,15 +104,14 @@ class FormalizacionController extends Controller
                 $data->presented_icfes = $presento_icfes;
             }
 
-           $apoyo_economico = EconomicalSupport::create([
+           /*$apoyo_economico = EconomicalSupport::create([
                 'id_student'    => $request['id'],
                 'date'          => $request['fecha_apoyo'],
                 'url_banco'     => $request['banco_url'],
                 'monto'         => $request['monto'],
             ]);
 
-            $ip = User::getRealIP();
-            $id = auth()->user();
+            
             
             $datos = LogsCrudActions::create([
                 'id_user'                  => $id['id'],
@@ -120,7 +119,7 @@ class FormalizacionController extends Controller
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $apoyo_economico['id'],
                 'actividad_realizada'      => 'NUEVO REGISTRO DE APOYO ECONOMICO',
-            ]);
+            ]);*/
             
         };
 
@@ -161,6 +160,8 @@ class FormalizacionController extends Controller
             $old[] = array('observaciones' => $dataOld->observations);
             $new[] = array('observaciones' => $data->observations);
         }
+        $ip = User::getRealIP();
+        $id = auth()->user();
 
         if($old != null && $new != null){
 

@@ -16,6 +16,7 @@
             <tr >
                 <td>Nombres</td>
                 <td>Apellidos</td>
+                <td>Tipo Doc.</td>
                 <td>Nº documento</td>
                 <td>Grupo</td>
                 <td>Cohorte</td>
@@ -46,6 +47,7 @@ $(document).ready(function(){
          columns: [
             { data: 'name' },
             { data: 'lastname' },
+            { data: 'tipodocumento' },
             { data: 'document_number' },
             { data: 'grupo' },
             { data: 'cohort' },

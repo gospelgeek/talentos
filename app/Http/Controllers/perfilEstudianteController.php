@@ -2137,7 +2137,7 @@ class perfilEstudianteController extends Controller
         $verDatosPerfil->map(function($estudiante){
             $estudiante->cohort = $estudiante->studentGroup->group->cohort->name;
             $estudiante->grupo = $estudiante->studentGroup->group->name;
-            $estudiante->tipodocumento = $estudiante->documenttype->name;
+            $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
             $estudiante->condicion = $estudiante->condition->name;
             $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
             //dd($withdrawals);

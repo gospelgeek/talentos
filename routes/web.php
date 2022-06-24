@@ -235,3 +235,4 @@ Route::delete('delete_apoyo_economico/{id}', 'FormalizacionController@apoyo_econ
 //icfes
 Route::get('icfes', 'IcfesController@index')->name('icfes');
 Route::get('datos_icfes', 'IcfesController@DatosIcfes')->name('datos_icfes');
+Route::get('resultado_area/{id_student}', 'IcfesController@resultadoArea')->name('resultado_icfes');

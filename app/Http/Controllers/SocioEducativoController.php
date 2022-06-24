@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\AssignmentStudent;
 use App\SocioEducationalFollowUp;
 use App\HealthCondition;
+use App\LogsCrudActions;
+use App\UpdateInformation;
 use App\Exports\SocioeducativoExport;
 use App\User;
 use Response;

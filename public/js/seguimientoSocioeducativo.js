@@ -220,10 +220,11 @@ $('.boton_update_seguimiento').click(function(e) {
 $(function () {
           $('.condiciones').change(function(event)
           {
-            
-            var requerimientos_especiales = $('#espcales_rqrmntos').is(":checked");
+            var trabajador = $('#employee').is(":checked");
+            var salud_fisica = $('#physical_health').is(":checked");
             var salud_mental = $('#slud_mntal').is(":checked");
-            
+            var riesgo_psicosocial = $('#psychosocial_risk').is(":checked");
+
             $.ajax({
   
                 url:'/crear_condicion_salud/',
@@ -231,22 +232,36 @@ $(function () {
                 data:{
                     '_token': $('input[name=_token]').val(),
                     'id': $("#estudiantE").val(),
-                    'requerimientos_especiales': requerimientos_especiales,
+                    'trabajador': trabajador,
+                    'salud_fisica': salud_fisica, 
                     'salud_mental': salud_mental,
+                    'riesgo_psicosocial': riesgo_psicosocial,
                 },
                 success:function(result) {
-                    
-                    if(result.special_requirements == true){
-                        document.getElementById('espcales_rqrmntos').checked = true;
+                    toastr.success('Guardado Exitoso');
+                    if(result.employee == true){
+                        document.getElementById('employee').checked = true;
                     }
-                    if(result.special_requirements == false){
-                        document.getElementById('espcales_rqrmntos').checked = false;
+                    if(result.employee == false){
+                        document.getElementById('employee').checked = false;
+                    }
+                    if(result.physical_health == true){
+                        document.getElementById('physical_health').checked = true;
+                    }
+                    if(result.physical_health == false){
+                        document.getElementById('physical_health').checked = false;
                     }
                     if(result.mental_health == true){
                         document.getElementById('slud_mntal').checked = true;
                     }
                     if(result.mental_health == false){
                         document.getElementById('slud_mntal').checked = false;
+                    }
+                    if(result.psychosocial_risk == true){
+                        document.getElementById('psychosocial_risk').checked = true;
+                    }
+                    if(result.psychosocial_risk == false){
+                        document.getElementById('psychosocial_risk').checked = false;
                     }
                 },
 

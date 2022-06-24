@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\AssignmentStudent;
 use App\SocioEducationalFollowUp;
 use App\HealthCondition;
+use App\LogsCrudActions;
+use App\UpdateInformation;
 use App\Exports\SocioeducativoExport;
 use App\User;
 use Response;
@@ -1350,11 +1352,18 @@ class SocioEducativoController extends Controller
 
     public function crear_condicion(Request $request){
 
-        $rqrmntos_spcles;
-        if($request['requerimientos_especiales'] == 'true'){
-            $rqrmntos_spcles = true; 
-        }else if($request['requerimientos_especiales'] !== 'true'){
-            $rqrmntos_spcles = false;
+        $trabajador;
+        if($request['trabajador'] == 'true'){
+            $trabajador = true; 
+        }else if($request['trabajador'] !== 'true'){
+            $trabajador = false;
+        }
+
+        $sld_fisica;
+        if($request['salud_fisica'] == 'true'){
+            $sld_fisica = true; 
+        }else if($request['salud_fisica'] !== 'true'){
+            $sld_fisica = false;
         }
 
         $sld_mntal;
@@ -1364,26 +1373,89 @@ class SocioEducativoController extends Controller
             $sld_mntal = false;
         }
 
-        //dd($rqrmntos_spcles, $sld_mntal);
+        $rsgo_pscosocial;
+        if($request['riesgo_psicosocial'] == 'true'){
+            $rsgo_pscosocial = true; 
+        }else if($request['riesgo_psicosocial'] !== 'true'){
+            $rsgo_pscosocial = false;
+        }
+        //dd($trabajador, $sld_mntal);
 
         $validar = HealthCondition::where('id_student', $request['id'])->exists();
         //dd($validar);
         if($validar == true){
             $condicion_id = HealthCondition::select('id')->where('id_student', $request['id'])->first();
             $data_condicion = HealthCondition::findOrfail($condicion_id->id);
-            $data_condicion->special_requirements = $rqrmntos_spcles;
+            $data_condicion_old = HealthCondition::findOrfail($condicion_id->id);
+            
+            $data_condicion->employee = $trabajador;
+            $data_condicion->physical_health = $sld_fisica;
             $data_condicion->mental_health = $sld_mntal;
-                
+            $data_condicion->psychosocial_risk = $rsgo_pscosocial;
+                   
             $data_condicion->save();
+
+            $ip = User::getRealIP();
+            $id = auth()->user();
+            $datos = LogsCrudActions::create([
+                'id_user'                  => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $data_condicion['id'],
+                'actividad_realizada'      => 'CONDICION DE SALUD ACTUALIZADA',
+            ]);
+
+            $old = array();
+            $new = array();
+
+            if($data_condicion_old->employee != $data_condicion->employee){
+                $old[] = array('trabajador' => $data_condicion_old->employee);
+                $new[] = array('trabajador' => $data_condicion->employee);
+            }
+            if($data_condicion_old->physical_health != $data_condicion->physical_health){
+                $old[] = array('salud_fisica' => $data_condicion_old->physical_health);
+                $new[] = array('salud_fisica' => $data_condicion->physical_health);
+            }
+            if($data_condicion_old->mental_health != $data_condicion->mental_health){
+                $old[] = array('salud_mental' => $data_condicion_old->mental_health);
+                $new[] = array('salud_mental' => $data_condicion->mental_health);
+            }
+            if($data_condicion_old->psychosocial_risk != $data_condicion->psychosocial_risk){
+                $old[] = array('riesgo_psicosocial' => $data_condicion_old->psychosocial_risk);
+                $new[] = array('riesgo_psicosocial' => $data_condicion->psychosocial_risk);
+            }
+
+            $guardarOld = json_encode($old);
+            $guardarNew = json_encode($new);
+
+            if($guardarOld != null && $guardarNew != null){
+                $update = UpdateInformation::create([
+                    'id_log'              => $datos['id'],
+                    'changed_information' => $guardarOld,
+                    'new_information'     => $guardarNew,
+                ]);
+            }
 
             return $data_condicion; 
 
         }else if($validar == false){
                     
             $condicion_salud = HealthCondition::create([
-                'id_student'           => $request['id'],
-                'special_requirements' => $rqrmntos_spcles,
-                'mental_health'        => $sld_mntal,
+                'id_student'        => $request['id'],
+                'employee'          => $trabajador,
+                'physical_health'   => $sld_fisica,
+                'mental_health'     => $sld_mntal,
+                'psychosocial_risk' => $rsgo_pscosocial,
+            ]);
+
+            $ip = User::getRealIP();
+            $id = auth()->user();
+            $datos = LogsCrudActions::create([
+                'id_user'                  => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $condicion_salud['id'],
+                'actividad_realizada'      => 'NUEVA CONDICION DE SALUD',
             ]);
             
             return $condicion_salud;

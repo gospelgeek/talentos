@@ -786,9 +786,7 @@
 					<th>ICFES SALIDA</th>
 					</thead>
 					
-					<tfoot>
-						<th>TOTALES</th>
-					</tfoot>
+					
 				</table>
 				
 			</div>
@@ -1140,5 +1138,55 @@
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 @endpush
 
+<script>
+	
+	var table = $("#icfes").DataTable({
+		"ajax": {
+            "method": "GET",
+            "url": "{{route('resultado_icfes', $iden)}}"
+        },
+        "columns": [{
+                data: 'nombre'
+            },
+			{
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+            {
+                data: 'calificacion'
+            },
+			{
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+			{
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+            
+
+        ],
+
+		"deferRender": true,
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "dom": 'Bfrtip',
+        "buttons": [
+            "copy",
+            "csv",
+            "excel",
+            "pdf",
+            "print",
+            "colvis"
+        ]
+	});
+</script>
 
 @endsection

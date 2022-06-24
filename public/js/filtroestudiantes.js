@@ -710,26 +710,4 @@ $("#asistencias").DataTable({
             }
 }); 
 
-$("#icfes").DataTable({
-  
-  
-  "deferRender": true,"responsive": true,"processing": true,'serverSider':true, 'stateSave': true,
-  "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
-  "dom":'Bfrtip',
-  "buttons": [
-      "copy",
-      "csv",
-      {
-      extend: 'excelHtml5',
-      autoFilter: true
-      }, 
-      "pdf",
-      "print",
-      "colvis"
-      
-  ],
-  "fixedHeader": {
-  header: true,
-  footer: true
-  }
-});
+

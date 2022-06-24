@@ -782,7 +782,7 @@
 					<th>AREA</th>
 					<th>ICFES ENTRADA</th>
 					<th>SIMULACRO 1</th>
-					<th>SIMULACRO 1</th>
+					<th>SIMULACRO 2</th>
 					<th>ICFES SALIDA</th>
 					</thead>
 					
@@ -1140,7 +1140,7 @@
 
 <script>
 	
-	var table = $("#icfes").DataTable({
+	$("#icfes").DataTable({
 		"ajax": {
             "method": "GET",
             "url": "{{route('resultado_icfes', $iden)}}"

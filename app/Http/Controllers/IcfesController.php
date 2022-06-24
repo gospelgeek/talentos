@@ -34,4 +34,15 @@ class IcfesController extends Controller
 
         return datatables()->of($datosIcfes)->toJson();
     }
+    
+    public function resultadoArea($id_student)
+    {
+        $result = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
+        icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+         icfes_students.id_icfes_test = 1)", [$id_student, $id_student]);
+
+         return datatables()->of($result)->toJson();
+    }
 }

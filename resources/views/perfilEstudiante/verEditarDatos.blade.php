@@ -656,11 +656,20 @@
 				<div class="condiciones">
 					@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 						@if($verDatosPerfil->healthcondition()->exists())
-							@if($verDatosPerfil->healthcondition->special_requirements == 1)
-								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked>
+							@if($verDatosPerfil->healthcondition->employee == 1)
+								<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee" checked>
 							@else
-								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+								<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee">
 							@endif
+							
+							@if($verDatosPerfil->healthcondition->physical_health == 1)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI" id="physical_health" checked>
+							@else
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI" id="physical_health">
+							@endif
+
 							@if($verDatosPerfil->healthcondition->mental_health == 1)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" checked>
@@ -668,17 +677,34 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal">
 							@endif
+
+							@if($verDatosPerfil->healthcondition->psychosocial_risk == 1)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI" id="psychosocial_risk" checked>
+							@else
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI" id="psychosocial_risk">
+							@endif
 						@else
-							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos">
+							<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI"id="physical_health">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI"id="psychosocial_risk">
 						@endif
 					@else
 						@if($verDatosPerfil->healthcondition()->exists())
-							@if($verDatosPerfil->healthcondition->special_requirements == 1)
-								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" checked disabled>
+							@if($verDatosPerfil->healthcondition->employee == 1)
+								<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee" checked disabled>
 							@else
-								<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" disabled>
+								<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee" disabled>
+							@endif
+							@if($verDatosPerfil->healthcondition->physical_health == 1)
+								<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI" id="physical_health" checked disabled>
+							@else
+								<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI" id="physical_health" disabled>
 							@endif
 							@if($verDatosPerfil->healthcondition->mental_health == 1)
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -687,10 +713,21 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="slud_mntal" disabled>
 							@endif
+							@if($verDatosPerfil->healthcondition->psychosocial_risk == 1)
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI" id="psychosocial_ris" checked disabled>
+							@else
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI" id="psychosocial_risk" disabled>
+							@endif
 						@else
-							<label>CASO CON REQUERIMIENTOS ESPECIALES</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI" id="espcales_rqrmntos" disabled>
+							<label>TRABAJADOR</label>&nbsp;&nbsp;<input type="checkbox" name="employee" value="SI" id="employee" disabled>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>SALUD FISICA</label>&nbsp;&nbsp;<input type="checkbox" name="physical_health" value="SI"id="physical_health" disabled>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>SALUD MENTAL</label>&nbsp;&nbsp;<input type="checkbox" name="rqrmntos_espcales" value="SI"id="slud_mntal" disabled>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>RIESGO PSICOSOCIAL</label>&nbsp;&nbsp;<input type="checkbox" name="psychosocial_risk" value="SI"id="psychosocial_risk" disabled>
 						@endif
 					@endif	
 				</div>

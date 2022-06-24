@@ -1136,7 +1136,7 @@
 {!!Html::script('/js/filtroestudiantes.js')!!}
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
-@endpush
+
 
 <script>
 	
@@ -1188,5 +1188,6 @@
         ]
 	});
 </script>
+@endpush
 
 @endsection

@@ -33,16 +33,18 @@
         <br>
     <div id="tabla_1" class="table-responsive" style='display:none'>
      <table id="example1" class="table table-bordered table-striped">
-        <caption>Fecha ultima carga: {{ $carga }}</caption>
+     <caption>Fecha ultima carga: {{ $carga }}</caption>
         <thead >
             <tr >
                 <th rowspan="2">Nombres</th>
                 <th rowspan="2">Apellidos</th>
+                <th rowspan="2">Tipo Documento</th>
                 <th rowspan="2">Nº documento</th>
                 <th rowspan="2">Grupo</th>
                 @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
                 <th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                 @endif
+                <th rowspan="2">Estado</th>
                 <th colspan="3">ACCION CIUDADANA</th>
                 <th colspan="3">ARTES</th>
                 <th colspan="3">CULTURA DEMOCRATICA</th>
@@ -102,37 +104,39 @@
                 <th>Presencial</th>
                 <th>Total</th>
             </tr>
-        </thead>
+        </thead> 
       </table>
     </div>
 
     <div id="tabla_2" class="table-responsive" style='display:none'>
      <table id="example2" class="table table-bordered table-striped">
-        <caption>Fecha ultima carga: {{ $carga }}</caption>
+     <caption>Fecha ultima carga: {{ $carga }}</caption>
         <thead >
             <tr >
-                <td rowspan="2">Nombres</td>
-                <td rowspan="2">Apellidos</td>
-                <td rowspan="2">Nº documento</td>
-                <td rowspan="2">Grupo</td>
+                <th rowspan="2">Nombres</th>
+                <th rowspan="2">Apellidos</th>
+                <th rowspan="2">Tipo Documento</th>
+                <th rowspan="2">Nº documento</th>
+                <th rowspan="2">Grupo</th>
                 @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-                <td rowspan="2">Profesional Encargado</td>
+                <th rowspan="2">Profesional Encargado</th>
                 @endif
-                <td colspan="3">ARTES</td>
-                <td colspan="3">BIOLOGIA</td>
-                <td colspan="3">DEPORTE</td>
-                <td colspan="3">DIALOGO</td>
-                <td colspan="3">CONSTITUCION</td>
-                <td colspan="3">FISICA</td>
-                <td colspan="3">GEOGRAFIA</td>
-                <td colspan="3">HISTORIA</td>
-                <td colspan="3">INGLES</td>
-                <td colspan="3">LECTURA CRITICA</td>
-                <td colspan="3">MATEMATICAS</td>
-                <td colspan="3">QUIMICA</td>
-                <td colspan="3">TIC</td>
-                <td rowspan="2">TOTAL</td>
-                <td rowspan="2">VER DETALLES</td>
+                <th rowspan="2">Estado</th>
+                <th colspan="3">ARTES</th>
+                <th colspan="3">BIOLOGIA</th>
+                <th colspan="3">DEPORTE</th>
+                <th colspan="3">DIALOGO</th>
+                <th colspan="3">CONSTITUCION</th>
+                <th colspan="3">FISICA</th>
+                <th colspan="3">GEOGRAFIA</th>
+                <th colspan="3">HISTORIA</th>
+                <th colspan="3">INGLES</th>
+                <th colspan="3">LECTURA CRITICA</th>
+                <th colspan="3">MATEMATICAS</th>
+                <th colspan="3">QUIMICA</th>
+                <th colspan="3">TIC</th>
+                <th rowspan="2">TOTAL</th>
+                <th rowspan="2">VER DETALLES</th>
             </tr>
             <tr>
                 <th>Virtual</th>
@@ -192,27 +196,29 @@
     </div>
     <div id="tabla_3" class="table-responsive" style='display:none'>
      <table id="example3" class="table table-bordered table-striped">
-        <caption>Fecha ultima carga: {{ $carga }}</caption>
+     <caption>Fecha ultima carga: {{ $carga }}</caption>
         <thead >
             <tr >
-                <td rowspan="2">Nombres</td>
-                <td rowspan="2">Apellidos</td>
-                <td rowspan="2">Nº documento</td>
-                <td rowspan="2">Grupo</td>
+                <th rowspan="2">Nombres</th>
+                <th rowspan="2">Apellidos</th>
+                <th rowspan="2">Tipo Documento</th>
+                <th rowspan="2">Nº documento</th>
+                <th rowspan="2">Grupo</th>
                 @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-                <td rowspan="2">Profesional Encargado</td>
+                <th rowspan="2">Profesional Encargado</th>
                 @endif
-                <td colspan="3">BIOLOGIA</td>
-                <td colspan="3">CONSTITUCION</td>
-                <td colspan="3">FISICA</td>
-                <td colspan="3">GEOGRAFIA</td>
-                <td colspan="3">HISTORIA</td>
-                <td colspan="3">INGLES</td>
-                <td colspan="3">LECTURA CRITICA</td>
-                <td colspan="3">MATEMATICAS</td>
-                <td colspan="3">QUIMICA</td>
-                <td rowspan="2">TOTAL</td>
-                <td rowspan="2">ACCIONES</td>
+                <th rowspan="2">Estado</th>
+                <th colspan="3">BIOLOGIA</th>
+                <th colspan="3">CONSTITUCION</th>
+                <th colspan="3">FISICA</th>
+                <th colspan="3">GEOGRAFIA</th>
+                <th colspan="3">HISTORIA</th>
+                <th colspan="3">INGLES</th>
+                <th colspan="3">LECTURA CRITICA</th>
+                <th colspan="3">MATEMATICAS</th>
+                <th colspan="3">QUIMICA</th>
+                <th rowspan="2">TOTAL</th>
+                <th rowspan="2">ACCIONES</th>
             </tr>
             <tr>
                 <th>Virtual</th>
@@ -283,9 +289,11 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'encargado'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -1078,9 +1086,11 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'encargado'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -2001,9 +2011,11 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'encargado'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -2650,20 +2662,44 @@
             switch(tabla){
                 case '1':
                     if(!virtual){
-                        table.columns([5,7]).visible(false);
-                        table.columns([8,10]).visible(false);
-                        table.columns([11,13]).visible(false);
-                        table.columns([14,16]).visible(false);
-                        table.columns([17,19]).visible(false);
-                        table.columns([20,22]).visible(false);
-                        table.columns([23,25]).visible(false);
-                        table.columns([26,28]).visible(false);
-                        table.columns([29,31]).visible(false);
-                        table.columns([32,34]).visible(false);
-                        table.columns([35,37]).visible(false);
+                        table.columns([7,9]).visible(false);
+                        table.columns([10,12]).visible(false);
+                        table.columns([13,15]).visible(false);
+                        table.columns([16,18]).visible(false);
+                        table.columns([19,21]).visible(false);
+                        table.columns([22,24]).visible(false);
+                        table.columns([25,27]).visible(false);
+                        table.columns([28,30]).visible(false);
+                        table.columns([31,33]).visible(false);
+                        table.columns([34,36]).visible(false);
+                        table.columns([37,39]).visible(false);
 
                     }else if(virtual){
-                        table.columns(5).visible(true);
+                        table.columns(7).visible(true);
+                        table.columns(10).visible(true);
+                        table.columns(13).visible(true);
+                        table.columns(16).visible(true);
+                        table.columns(19).visible(true);
+                        table.columns(22).visible(true);
+                        table.columns(25).visible(true);
+                        table.columns(28).visible(true);
+                        table.columns(31).visible(true);
+                        table.columns(34).visible(true);      
+                        table.columns(37).visible(true);      
+                    }
+                    if(!presencial){ 
+                        table.columns([8,9]).visible(false);
+                        table.columns([11,12]).visible(false);
+                        table.columns([14,15]).visible(false);
+                        table.columns([17,18]).visible(false);
+                        table.columns([20,21]).visible(false);
+                        table.columns([23,24]).visible(false);
+                        table.columns([26,27]).visible(false);
+                        table.columns([29,30]).visible(false);
+                        table.columns([32,33]).visible(false);
+                        table.columns([35,36]).visible(false);
+                        table.columns([38,39]).visible(false);
+                    }else if(presencial){
                         table.columns(8).visible(true);
                         table.columns(11).visible(true);
                         table.columns(14).visible(true);
@@ -2672,46 +2708,22 @@
                         table.columns(23).visible(true);
                         table.columns(26).visible(true);
                         table.columns(29).visible(true);
-                        table.columns(32).visible(true);      
-                        table.columns(35).visible(true);      
-                    }
-                    if(!presencial){ 
-                        table.columns([6,7]).visible(false);
-                        table.columns([9,10]).visible(false);
-                        table.columns([12,13]).visible(false);
-                        table.columns([15,16]).visible(false);
-                        table.columns([18,19]).visible(false);
-                        table.columns([21,22]).visible(false);
-                        table.columns([24,25]).visible(false);
-                        table.columns([27,28]).visible(false);
-                        table.columns([30,31]).visible(false);
-                        table.columns([33,34]).visible(false);
-                        table.columns([36,37]).visible(false);
-                    }else if(presencial){
-                        table.columns(6).visible(true);
-                        table.columns(9).visible(true);
-                        table.columns(12).visible(true);
-                        table.columns(15).visible(true);
-                        table.columns(18).visible(true);
-                        table.columns(21).visible(true);
-                        table.columns(24).visible(true);
-                        table.columns(27).visible(true);
-                        table.columns(30).visible(true);
-                        table.columns(33).visible(true);     
-                        table.columns(36).visible(true);     
+                        table.columns(32).visible(true);
+                        table.columns(35).visible(true);     
+                        table.columns(38).visible(true);     
                     }
                     if(presencial && virtual){
-                        table.columns([5,6,7]).visible(true);
-                        table.columns([8,9,10]).visible(true);
-                        table.columns([11,12,13]).visible(true);
-                        table.columns([14,15,16]).visible(true);
-                        table.columns([17,18,19]).visible(true);
-                        table.columns([20,21,22]).visible(true);
-                        table.columns([23,24,25]).visible(true);
-                        table.columns([26,27,28]).visible(true);
-                        table.columns([29,30,31]).visible(true);
-                        table.columns([32,33,34]).visible(true); 
-                        table.columns([35,36,37]).visible(true); 
+                        table.columns([7,8,9]).visible(true);
+                        table.columns([10,11,12]).visible(true);
+                        table.columns([13,14,15]).visible(true);
+                        table.columns([16,17,18]).visible(true);
+                        table.columns([19,20,21]).visible(true);
+                        table.columns([22,23,24]).visible(true);
+                        table.columns([25,26,27]).visible(true);
+                        table.columns([28,29,30]).visible(true);
+                        table.columns([31,32,33]).visible(true);
+                        table.columns([34,35,36]).visible(true); 
+                        table.columns([37,38,39]).visible(true); 
                     }
 
                     break;
@@ -2719,21 +2731,50 @@
                     //alert("d")
                     if(!virtual){
                         
-                        table2.columns([5,7]).visible(false);
-                        table2.columns([8,10]).visible(false);
-                        table2.columns([11,13]).visible(false);
-                        table2.columns([14,16]).visible(false);
-                        table2.columns([17,19]).visible(false);
-                        table2.columns([20,22]).visible(false);
-                        table2.columns([23,25]).visible(false);
-                        table2.columns([26,28]).visible(false);
-                        table2.columns([29,31]).visible(false);
-                        table2.columns([32,34]).visible(false);
-                        table2.columns([35,37]).visible(false);
-                        table2.columns([38,40]).visible(false);
-                        table2.columns([41,43]).visible(false);
+                        table2.columns([7,9]).visible(false);
+                        table2.columns([10,12]).visible(false);
+                        table2.columns([13,15]).visible(false);
+                        table2.columns([16,18]).visible(false);
+                        table2.columns([19,21]).visible(false);
+                        table2.columns([22,24]).visible(false);
+                        table2.columns([25,27]).visible(false);
+                        table2.columns([28,30]).visible(false);
+                        table2.columns([31,33]).visible(false);
+                        table2.columns([34,36]).visible(false);
+                        table2.columns([37,39]).visible(false);
+                        table2.columns([40,42]).visible(false);
+                        table2.columns([43,45]).visible(false);
                     }else if(virtual){
-                        table2.columns(5).visible(true);
+                        table2.columns(7).visible(true);
+                        table2.columns(10).visible(true);
+                        table2.columns(13).visible(true);
+                        table2.columns(16).visible(true);
+                        table2.columns(19).visible(true);
+                        table2.columns(22).visible(true);
+                        table2.columns(25).visible(true);
+                        table2.columns(28).visible(true);
+                        table2.columns(31).visible(true);
+                        table2.columns(34).visible(true);
+                        table2.columns(37).visible(true);
+                        table2.columns(40).visible(true);
+                        table2.columns(43).visible(true);
+                    }
+
+                    if(!presencial){ 
+                        table2.columns([8,9]).visible(false);
+                        table2.columns([11,12]).visible(false);
+                        table2.columns([14,15]).visible(false);
+                        table2.columns([17,18]).visible(false);
+                        table2.columns([20,21]).visible(false);
+                        table2.columns([23,24]).visible(false);
+                        table2.columns([26,27]).visible(false);
+                        table2.columns([29,30]).visible(false);
+                        table2.columns([32,33]).visible(false);
+                        table2.columns([35,36]).visible(false);
+                        table2.columns([38,39]).visible(false);
+                        table2.columns([41,42]).visible(false);
+                        table2.columns([44,45]).visible(false);
+                    }else if(presencial){
                         table2.columns(8).visible(true);
                         table2.columns(11).visible(true);
                         table2.columns(14).visible(true);
@@ -2746,107 +2787,78 @@
                         table2.columns(35).visible(true);
                         table2.columns(38).visible(true);
                         table2.columns(41).visible(true);
-                    }
-
-                    if(!presencial){ 
-                        table2.columns([6,7]).visible(false);
-                        table2.columns([9,10]).visible(false);
-                        table2.columns([12,13]).visible(false);
-                        table2.columns([15,16]).visible(false);
-                        table2.columns([18,19]).visible(false);
-                        table2.columns([21,22]).visible(false);
-                        table2.columns([24,25]).visible(false);
-                        table2.columns([27,28]).visible(false);
-                        table2.columns([30,31]).visible(false);
-                        table2.columns([33,34]).visible(false);
-                        table2.columns([36,37]).visible(false);
-                        table2.columns([39,40]).visible(false);
-                        table2.columns([42,43]).visible(false);
-                    }else if(presencial){
-                        table2.columns(6).visible(true);
-                        table2.columns(9).visible(true);
-                        table2.columns(12).visible(true);
-                        table2.columns(15).visible(true);
-                        table2.columns(18).visible(true);
-                        table2.columns(21).visible(true);
-                        table2.columns(24).visible(true);
-                        table2.columns(27).visible(true);
-                        table2.columns(30).visible(true);
-                        table2.columns(33).visible(true);
-                        table2.columns(36).visible(true);
-                        table2.columns(39).visible(true);
-                        table2.columns(42).visible(true);
+                        table2.columns(44).visible(true);
                     }
 
                     if(presencial && virtual){
-                        table2.columns([5,6,7]).visible(true);
-                        table2.columns([8,9,10]).visible(true);
-                        table2.columns([11,12,13]).visible(true);
-                        table2.columns([14,15,16]).visible(true);
-                        table2.columns([17,18,19]).visible(true);
-                        table2.columns([20,21,22]).visible(true);
-                        table2.columns([23,24,25]).visible(true);
-                        table2.columns([26,27,28]).visible(true);
-                        table2.columns([29,30,31]).visible(true);
-                        table2.columns([32,33,34]).visible(true);
-                        table2.columns([35,36,37]).visible(true);
-                        table2.columns([38,39,40]).visible(true);
-                        table2.columns([41,42,43]).visible(true);
+                        table2.columns([7,8,9]).visible(true);
+                        table2.columns([10,11,12]).visible(true);
+                        table2.columns([13,14,15]).visible(true);
+                        table2.columns([16,17,18]).visible(true);
+                        table2.columns([19,20,21]).visible(true);
+                        table2.columns([22,23,24]).visible(true);
+                        table2.columns([25,26,27]).visible(true);
+                        table2.columns([28,29,30]).visible(true);
+                        table2.columns([31,32,33]).visible(true);
+                        table2.columns([34,35,36]).visible(true);
+                        table2.columns([37,38,39]).visible(true);
+                        table2.columns([40,41,42]).visible(true);
+                        table2.columns([43,44,45]).visible(true);
                     }
                     break;
                 case '3':
                     if(!virtual){
-                        table3.columns([5,7]).visible(false);
-                        table3.columns([8,10]).visible(false);
-                        table3.columns([11,13]).visible(false);
-                        table3.columns([14,16]).visible(false);
-                        table3.columns([17,19]).visible(false);
-                        table3.columns([20,22]).visible(false);
-                        table3.columns([23,25]).visible(false);
-                        table3.columns([26,28]).visible(false);
-                        table3.columns([29,31]).visible(false);
+                        table3.columns([7,9]).visible(false);
+                        table3.columns([10,12]).visible(false);
+                        table3.columns([13,15]).visible(false);
+                        table3.columns([16,18]).visible(false);
+                        table3.columns([19,21]).visible(false);
+                        table3.columns([22,24]).visible(false);
+                        table3.columns([25,27]).visible(false);
+                        table3.columns([28,30]).visible(false);
+                        table3.columns([31,33]).visible(false);
                     }else if(virtual){
-                        table3.columns(5).visible(true);
+                        table3.columns(7).visible(true);
+                        table3.columns(10).visible(true);
+                        table3.columns(13).visible(true);
+                        table3.columns(16).visible(true);
+                        table3.columns(19).visible(true);
+                        table3.columns(22).visible(true);
+                        table3.columns(25).visible(true);
+                        table3.columns(28).visible(true);
+                        table3.columns(31).visible(true);       
+                    }
+                    if(!presencial){ 
+                        table3.columns([8,9]).visible(false);
+                        table3.columns([11,12]).visible(false);
+                        table3.columns([14,15]).visible(false);
+                        table3.columns([17,18]).visible(false);
+                        table3.columns([20,21]).visible(false);
+                        table3.columns([23,24]).visible(false);
+                        table3.columns([26,27]).visible(false);
+                        table3.columns([29,30]).visible(false);
+                        table3.columns([32,33]).visible(false);                       
+                    }else if(presencial){
                         table3.columns(8).visible(true);
                         table3.columns(11).visible(true);
                         table3.columns(14).visible(true);
                         table3.columns(17).visible(true);
-                        table3.columns(20).visible(true);
+                        table3.columns(20).visible(true);     
                         table3.columns(23).visible(true);
                         table3.columns(26).visible(true);
-                        table3.columns(29).visible(true);       
-                    }
-                    if(!presencial){ 
-                        table3.columns([6,7]).visible(false);
-                        table3.columns([9,10]).visible(false);
-                        table3.columns([12,13]).visible(false);
-                        table3.columns([15,16]).visible(false);
-                        table3.columns([18,19]).visible(false);
-                        table3.columns([21,22]).visible(false);
-                        table3.columns([24,25]).visible(false);
-                        table3.columns([27,28]).visible(false);
-                        table3.columns([30,31]).visible(false);                       
-                    }else if(presencial){
-                        table3.columns(6).visible(true);
-                        table3.columns(9).visible(true);
-                        table3.columns(12).visible(true);
-                        table3.columns(15).visible(true);
-                        table3.columns(18).visible(true);     
-                        table3.columns(21).visible(true);
-                        table3.columns(24).visible(true);
-                        table3.columns(27).visible(true);     
-                        table3.columns(30).visible(true);     
+                        table3.columns(29).visible(true);     
+                        table3.columns(32).visible(true);     
                     }
                     if(presencial && virtual){
-                        table3.columns([5,6,7]).visible(true);
-                        table3.columns([8,9,10]).visible(true);
-                        table3.columns([11,12,13]).visible(true);
-                        table3.columns([14,15,16]).visible(true);
-                        table3.columns([17,18,19]).visible(true); 
-                        table3.columns([20,21,22]).visible(true);
-                        table3.columns([23,24,25]).visible(true);
-                        table3.columns([26,27,28]).visible(true); 
-                        table3.columns([29,30,31]).visible(true);  
+                        table3.columns([7,8,9]).visible(true);
+                        table3.columns([10,11,12]).visible(true);
+                        table3.columns([13,14,15]).visible(true);
+                        table3.columns([16,17,18]).visible(true);
+                        table3.columns([19,20,21]).visible(true); 
+                        table3.columns([22,23,24]).visible(true);
+                        table3.columns([25,26,27]).visible(true);
+                        table3.columns([28,29,30]).visible(true); 
+                        table3.columns([31,32,33]).visible(true);  
                     }
 
                     break;
@@ -2872,8 +2884,10 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -3663,8 +3677,10 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -4585,8 +4601,10 @@
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
+                {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'grupo_name'},
+                {data: 'estado'},
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
@@ -5236,19 +5254,44 @@
             switch(tabla){
                 case '1':
                     if(!virtual){
-                        table.columns([4,6]).visible(false);
-                        table.columns([7,9]).visible(false);
-                        table.columns([10,12]).visible(false);
-                        table.columns([13,15]).visible(false);
-                        table.columns([16,18]).visible(false);
-                        table.columns([19,21]).visible(false);
-                        table.columns([22,24]).visible(false);
-                        table.columns([25,27]).visible(false);
-                        table.columns([28,30]).visible(false);
-                        table.columns([31,33]).visible(false);
-                        table.columns([34,36]).visible(false);
+                        table.columns([6,8]).visible(false);
+                        table.columns([9,11]).visible(false);
+                        table.columns([12,14]).visible(false);
+                        table.columns([15,17]).visible(false);
+                        table.columns([18,20]).visible(false);
+                        table.columns([21,23]).visible(false);
+                        table.columns([24,26]).visible(false);
+                        table.columns([27,29]).visible(false);
+                        table.columns([30,32]).visible(false);
+                        table.columns([33,35]).visible(false);
+                        table.columns([36,38]).visible(false);
                     }else if(virtual){
-                        table.columns(4).visible(true);
+                        table.columns(6).visible(true);
+                        table.columns(9).visible(true);
+                        table.columns(12).visible(true);
+                        table.columns(15).visible(true);
+                        table.columns(18).visible(true);
+                        table.columns(21).visible(true);
+                        table.columns(24).visible(true);
+                        table.columns(27).visible(true);
+                        table.columns(30).visible(true);
+                        table.columns(33).visible(true);
+                        table.columns(36).visible(true);
+                    }
+            
+                    if(!presencial){ 
+                        table.columns([7,8]).visible(false);
+                        table.columns([10,11]).visible(false);
+                        table.columns([13,14]).visible(false);
+                        table.columns([16,17]).visible(false);
+                        table.columns([19,20]).visible(false);
+                        table.columns([22,23]).visible(false);
+                        table.columns([25,26]).visible(false);
+                        table.columns([28,29]).visible(false);
+                        table.columns([31,32]).visible(false);
+                        table.columns([34,35]).visible(false);
+                        table.columns([37,38]).visible(false);
+                    }else if(presencial){
                         table.columns(7).visible(true);
                         table.columns(10).visible(true);
                         table.columns(13).visible(true);
@@ -5259,66 +5302,70 @@
                         table.columns(28).visible(true);
                         table.columns(31).visible(true);
                         table.columns(34).visible(true);
-                    }
-            
-                    if(!presencial){ 
-                        table.columns([5,6]).visible(false);
-                        table.columns([8,9]).visible(false);
-                        table.columns([11,12]).visible(false);
-                        table.columns([14,15]).visible(false);
-                        table.columns([17,18]).visible(false);
-                        table.columns([20,21]).visible(false);
-                        table.columns([23,24]).visible(false);
-                        table.columns([26,27]).visible(false);
-                        table.columns([29,30]).visible(false);
-                        table.columns([32,33]).visible(false);
-                        table.columns([35,36]).visible(false);
-                    }else if(presencial){
-                        table.columns(5).visible(true);
-                        table.columns(8).visible(true);
-                        table.columns(11).visible(true);
-                        table.columns(14).visible(true);
-                        table.columns(17).visible(true);
-                        table.columns(20).visible(true);
-                        table.columns(23).visible(true);
-                        table.columns(26).visible(true);
-                        table.columns(29).visible(true);
-                        table.columns(32).visible(true);
-                        table.columns(35).visible(true);
+                        table.columns(37).visible(true);
                     }
 
                     if(presencial && virtual){
-                        table.columns([4,5,6]).visible(true);
-                        table.columns([7,8,9]).visible(true);
-                        table.columns([10,11,12]).visible(true);
-                        table.columns([13,14,15]).visible(true);
-                        table.columns([16,17,18]).visible(true);
-                        table.columns([19,20,21]).visible(true);
-                        table.columns([22,23,24]).visible(true);
-                        table.columns([25,26,27]).visible(true);
-                        table.columns([28,29,30]).visible(true);
-                        table.columns([31,32,33]).visible(true); 
-                        table.columns([34,35,36]).visible(true); 
+                        table.columns([6,7,8]).visible(true);
+                        table.columns([9,10,11]).visible(true);
+                        table.columns([12,13,14]).visible(true);
+                        table.columns([15,16,17]).visible(true);
+                        table.columns([18,19,20]).visible(true);
+                        table.columns([21,22,23]).visible(true);
+                        table.columns([24,25,26]).visible(true);
+                        table.columns([27,28,29]).visible(true);
+                        table.columns([30,31,32]).visible(true);
+                        table.columns([33,34,35]).visible(true); 
+                        table.columns([36,37,38]).visible(true); 
                     }
 
                     break;
                 case '2':
                     if(!virtual){
-                        table2.columns([4,6]).visible(false);
-                        table2.columns([7,9]).visible(false);
-                        table2.columns([10,12]).visible(false);
-                        table2.columns([13,15]).visible(false);
-                        table2.columns([16,18]).visible(false);
-                        table2.columns([19,21]).visible(false);
-                        table2.columns([22,24]).visible(false);
-                        table2.columns([25,27]).visible(false);
-                        table2.columns([28,30]).visible(false);
-                        table2.columns([31,33]).visible(false);
-                        table2.columns([34,36]).visible(false);
-                        table2.columns([37,39]).visible(false);
-                        table2.columns([40,42]).visible(false);
+                        table2.columns([6,8]).visible(false);
+                        table2.columns([9,11]).visible(false);
+                        table2.columns([12,14]).visible(false);
+                        table2.columns([15,17]).visible(false);
+                        table2.columns([18,20]).visible(false);
+                        table2.columns([21,23]).visible(false);
+                        table2.columns([24,26]).visible(false);
+                        table2.columns([27,29]).visible(false);
+                        table2.columns([30,32]).visible(false);
+                        table2.columns([33,35]).visible(false);
+                        table2.columns([36,38]).visible(false);
+                        table2.columns([39,41]).visible(false);
+                        table2.columns([42,44]).visible(false);
                     }else if(virtual){
-                        table2.columns(4).visible(true);
+                        table2.columns(6).visible(true);
+                        table2.columns(9).visible(true);
+                        table2.columns(12).visible(true);
+                        table2.columns(15).visible(true);
+                        table2.columns(18).visible(true);
+                        table2.columns(21).visible(true);
+                        table2.columns(24).visible(true);
+                        table2.columns(27).visible(true);
+                        table2.columns(30).visible(true);
+                        table2.columns(33).visible(true);
+                        table2.columns(36).visible(true);
+                        table2.columns(39).visible(true);
+                        table2.columns(42).visible(true);
+                    }
+            
+                    if(!presencial){ 
+                        table2.columns([7,8]).visible(false);
+                        table2.columns([10,11]).visible(false);
+                        table2.columns([13,14]).visible(false);
+                        table2.columns([16,17]).visible(false);
+                        table2.columns([19,20]).visible(false);
+                        table2.columns([22,23]).visible(false);
+                        table2.columns([25,26]).visible(false);
+                        table2.columns([28,29]).visible(false);
+                        table2.columns([31,32]).visible(false);
+                        table2.columns([34,35]).visible(false);
+                        table2.columns([37,38]).visible(false);
+                        table2.columns([40,41]).visible(false);
+                        table2.columns([43,44]).visible(false);
+                    }else if(presencial){
                         table2.columns(7).visible(true);
                         table2.columns(10).visible(true);
                         table2.columns(13).visible(true);
@@ -5331,68 +5378,60 @@
                         table2.columns(34).visible(true);
                         table2.columns(37).visible(true);
                         table2.columns(40).visible(true);
-                    }
-            
-                    if(!presencial){ 
-                        table2.columns([5,6]).visible(false);
-                        table2.columns([8,9]).visible(false);
-                        table2.columns([11,12]).visible(false);
-                        table2.columns([14,15]).visible(false);
-                        table2.columns([17,18]).visible(false);
-                        table2.columns([20,21]).visible(false);
-                        table2.columns([23,24]).visible(false);
-                        table2.columns([26,27]).visible(false);
-                        table2.columns([29,30]).visible(false);
-                        table2.columns([32,33]).visible(false);
-                        table2.columns([35,36]).visible(false);
-                        table2.columns([38,39]).visible(false);
-                        table2.columns([41,42]).visible(false);
-                    }else if(presencial){
-                        table2.columns(5).visible(true);
-                        table2.columns(8).visible(true);
-                        table2.columns(11).visible(true);
-                        table2.columns(14).visible(true);
-                        table2.columns(17).visible(true);
-                        table2.columns(20).visible(true);
-                        table2.columns(23).visible(true);
-                        table2.columns(26).visible(true);
-                        table2.columns(29).visible(true);
-                        table2.columns(32).visible(true);
-                        table2.columns(35).visible(true);
-                        table2.columns(38).visible(true);
-                        table2.columns(41).visible(true);
+                        table2.columns(43).visible(true);
                     }
 
                     if(presencial && virtual){
-                        table2.columns([4,5,6]).visible(true);
-                        table2.columns([7,8,9]).visible(true);
-                        table2.columns([10,11,12]).visible(true);
-                        table2.columns([13,14,15]).visible(true);
-                        table2.columns([16,17,18]).visible(true);
-                        table2.columns([19,20,21]).visible(true);
-                        table2.columns([22,23,24]).visible(true);
-                        table2.columns([25,26,27]).visible(true);
-                        table2.columns([28,29,30]).visible(true);
-                        table2.columns([31,32,33]).visible(true);
-                        table2.columns([34,35,36]).visible(true);
-                        table2.columns([37,38,39]).visible(true);
-                        table2.columns([40,41,42]).visible(true);  
+                        table2.columns([6,7,8]).visible(true);
+                        table2.columns([9,10,11]).visible(true);
+                        table2.columns([12,13,14]).visible(true);
+                        table2.columns([15,16,17]).visible(true);
+                        table2.columns([18,19,20]).visible(true);
+                        table2.columns([21,22,23]).visible(true);
+                        table2.columns([24,25,26]).visible(true);
+                        table2.columns([27,28,29]).visible(true);
+                        table2.columns([30,31,32]).visible(true);
+                        table2.columns([33,34,35]).visible(true);
+                        table2.columns([36,37,38]).visible(true);
+                        table2.columns([39,40,41]).visible(true);
+                        table2.columns([42,43,44]).visible(true);  
                     }
 
                     break;
                 case '3':
                     if(!virtual){
-                        table.columns([4,6]).visible(false);
-                        table.columns([7,9]).visible(false);
-                        table.columns([10,12]).visible(false);
-                        table.columns([13,15]).visible(false);
-                        table.columns([16,18]).visible(false);
-                        table.columns([19,21]).visible(false);
-                        table.columns([22,24]).visible(false);
-                        table.columns([25,27]).visible(false);
-                        table.columns([28,30]).visible(false);
+                        table.columns([6,8]).visible(false);
+                        table.columns([9,11]).visible(false);
+                        table.columns([12,14]).visible(false);
+                        table.columns([15,17]).visible(false);
+                        table.columns([18,20]).visible(false);
+                        table.columns([21,23]).visible(false);
+                        table.columns([24,26]).visible(false);
+                        table.columns([27,29]).visible(false);
+                        table.columns([30,32]).visible(false);
                     }else if(virtual){
-                        table.columns(4).visible(true);
+                        table.columns(6).visible(true);
+                        table.columns(9).visible(true);
+                        table.columns(12).visible(true);
+                        table.columns(15).visible(true);
+                        table.columns(18).visible(true);
+                        table.columns(21).visible(true);
+                        table.columns(24).visible(true);
+                        table.columns(27).visible(true);
+                        table.columns(30).visible(true);
+                    }
+            
+                    if(!presencial){ 
+                        table.columns([7,8]).visible(false);
+                        table.columns([10,11]).visible(false);
+                        table.columns([13,14]).visible(false);
+                        table.columns([16,17]).visible(false);
+                        table.columns([19,20]).visible(false);
+                        table.columns([22,23]).visible(false);
+                        table.columns([25,26]).visible(false);
+                        table.columns([28,29]).visible(false);
+                        table.columns([31,32]).visible(false);
+                    }else if(presencial){
                         table.columns(7).visible(true);
                         table.columns(10).visible(true);
                         table.columns(13).visible(true);
@@ -5401,40 +5440,19 @@
                         table.columns(22).visible(true);
                         table.columns(25).visible(true);
                         table.columns(28).visible(true);
-                    }
-            
-                    if(!presencial){ 
-                        table.columns([5,6]).visible(false);
-                        table.columns([8,9]).visible(false);
-                        table.columns([11,12]).visible(false);
-                        table.columns([14,15]).visible(false);
-                        table.columns([17,18]).visible(false);
-                        table.columns([20,21]).visible(false);
-                        table.columns([23,24]).visible(false);
-                        table.columns([26,27]).visible(false);
-                        table.columns([29,30]).visible(false);
-                    }else if(presencial){
-                        table.columns(5).visible(true);
-                        table.columns(8).visible(true);
-                        table.columns(11).visible(true);
-                        table.columns(14).visible(true);
-                        table.columns(17).visible(true);
-                        table.columns(20).visible(true);
-                        table.columns(23).visible(true);
-                        table.columns(26).visible(true);
-                        table.columns(29).visible(true);
+                        table.columns(31).visible(true);
                     }
 
                     if(presencial && virtual){
-                        table.columns([4,5,6]).visible(true);
-                        table.columns([7,8,9]).visible(true);
-                        table.columns([10,11,12]).visible(true);
-                        table.columns([13,14,15]).visible(true);
-                        table.columns([16,17,18]).visible(true); 
-                        table.columns([19,20,21]).visible(true);
-                        table.columns([22,23,24]).visible(true);
-                        table.columns([25,26,27]).visible(true); 
-                        table.columns([28,29,30]).visible(true);  
+                        table.columns([6,7,8]).visible(true);
+                        table.columns([9,10,11]).visible(true);
+                        table.columns([12,13,14]).visible(true);
+                        table.columns([15,16,17]).visible(true);
+                        table.columns([18,19,20]).visible(true); 
+                        table.columns([21,22,23]).visible(true);
+                        table.columns([24,25,26]).visible(true);
+                        table.columns([27,28,29]).visible(true); 
+                        table.columns([30,31,32]).visible(true);  
                     }
 
                     break;

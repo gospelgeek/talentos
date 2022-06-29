@@ -5,6 +5,7 @@
 @include('../alerts.request')
 @csrf
 <div id="container-main">
+    <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<div class="row">		
 		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">	
 	</div>

@@ -173,7 +173,7 @@
                     
             ],
 
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,
+            "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",

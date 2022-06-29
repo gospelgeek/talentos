@@ -499,7 +499,8 @@ $.ajax({
       'devolvio_tablet': $('input[name="returned_tablet"]:checked').val(),
       'serial_tablet_prestada': $("#serial_loan_tablet").val(),
       'observacion_prestamo': $("#observation_loan").val(),
-      'url_documento_prestamo': $("#loan_document_url").val(), 
+      'url_documento_prestamo': $("#loan_document_url").val(),
+      'cambio_de_linea': $('input[name="transfer_line2_to_line1"]:checked').val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');

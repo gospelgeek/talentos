@@ -22,14 +22,14 @@
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
     <h1 style="text-align:center;">FORMALIZACIÓN ESTUDIANTE</h1>
-    <div class="card">         
+    <div class="card">       
         <div class="card-body">
-            @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
-            <div class="row">
-         
-            </div>
-            @endif
             <div class="table-responsive">
+                <center><div class="btn-group">
+                    <div class="dtlle col-xs-6 col-md-12 col-sm-6">
+                        <label>DETALLES DE ESTADO</label>&nbsp;<input type="checkbox" name="detalleS" id="detalleS">
+                    </div>
+                </div></center>  
                 <table id="example1" class=" table table-bordered table-striped">
                     <caption>Ultimo registro formalización actualizado: {{ $update_formalizacion }}</caption>
                     <thead>
@@ -61,31 +61,83 @@
                             <input type="text" class="form-control filter" placeholder="Search" data-column="8">
                         </td>
                         <td>
-                            <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="9">
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="9">
                         </td>
                         <td>
-                            <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="10">
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="10">
                         </td>
                         <td>
-                            <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="11">
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="11">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="12">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="13">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="14">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="15">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="16">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="17">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="18">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="19">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="20">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="21">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="22">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="23">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="24">
                         </td>
                         <td></td>
                     </thead>
-                    <thead>
+                    <thead>                    
                         <tr>
-                            <td>Nombres</td>
-                            <td>Tipo Doc.</td>
-                            <td>Nº Documento</td>
-                            <td>Grupo</td>
-                            <td>Cohorte</td>
-                            <td>Aceptación</td>
-                            <td>Tablet</td>
-                            <td>Serial Tablet</td>
-                            <td>Fecha Kit</td>
-                            <td>Pre-registro-ICFES</td>
-                            <td>Registro-ICFES</td>
-                            <td>Presentó-ICFES</td>
-                            <td id="botons" width="15%">Acciones</td>
+                            <td><b>Nombres</b></td>
+                            <td><b>Tipo Doc.</b></td>
+                            <td><b>Nº Documento</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Tel.</b></td>
+                            <td><b>Grupo</b></td>
+                            <td><b>Cohorte</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Aceptación</b></td>
+                            <td><b>Fecha Aceptación</b></td>
+                            <td><b>Tablet</b></td>
+                            <td><b>Serial Tablet</b></td>
+                            <td><b>Regresó Tablet</b></td>
+                            <td><b>Prestó Tablet</b></td>
+                            <td><b>Serial Tablet Prestada</b></td>
+                            <td><b>Fecha Kit</b></td>
+                            <td><b>Pre-registro-ICFES</b></td>
+                            <td><b>Registro-ICFES</b></td>
+                            <td><b>Presentó-ICFES</b></td>
+                            <td><b>URL Prestamo</b></td>
+                            <td><b>Camb. Linea</b></td>
+                            <td class="prfsnal"><b>Prof. Acomp.</b></td>
+                            <td class="mtvo"><b>Motivo</b></td>
+                            <td class="fcha"><b>Fecha</b></td>
+                            <td class="urlrtro"><b>URL</b></td>
+                            <td id="botons" width="15%"><b>Acciones</b></td>
                         </tr>
                     </thead>       
                 </table>
@@ -96,10 +148,9 @@
 
 @push('scripts')
 
-    <!-- Page specific script -->
 <script>
 
-    $(document).ready(function(){         
+    $(document).ready(function(){
        var table = $("#example1").DataTable({
             
             "ajax":{
@@ -122,8 +173,11 @@
                 },
                 {data: 'tipodocumento'},
                 {data: 'document_number'},
+                {data: 'email', width: '50px'},
+                {data: 'cellphone'},
                 {data: 'grupo'},
                 {data: 'cohorte'},
+                {data: 'estado'},
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
 
                         if(data !== ""){
@@ -149,6 +203,7 @@
                     
                     }
                 },
+                {data: 'acceptance_date'},
                 {data: 'tablets_v2', render:function(data, type, row, meta){
                         if(data !== ""){
 
@@ -170,6 +225,29 @@
                     }
                 },
                 {data: 'serial_tablet'},
+                {data: 'returned_tablet', render:function(data, type, row, meta){
+                        if(data != null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }
+                        }else{
+                            return null;
+                        }
+                    }
+                },
+                {data: 'loan_tablet', render:function(data, type, row, meta){
+                        if(data != null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }
+                        }else{
+                            return null;
+                        }
+                    }
+                },
+                {data:'serial_loan_tablet'},
                 {data: 'kit_date', render:function(data, type, row, meta){
                         if(data !== ""){
                             if(data !== null){
@@ -226,24 +304,51 @@
                         }    
                     }
                 },
+                {data: 'loan_document_url'},
+                {data: 'cambio_linea', render:function(data, type, row, meta){
+                        if(data != null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }
+                        }else{
+                            return null;
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta) {
+                        if(data.name_profesional !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.name_profesional+' '+data.lastname_profesional+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }              
+                    }
+                },
+                {data: 'motivo'},
+                {data: 'fecha'},
+                {data: 'url'},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
                     if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<tr id="1">'+'<td">'+'<a href="ver_estudiante/'+data.id+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
+                            '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar(this);" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
                           '</div>'+                                 
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<a href="editar_estudiante/'+data.id+'" class="btn btn-block fa fa-pencil-square-o fa" title="Editar seguimiento"></a>'+
+                            '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar_edit(this);" class="ver btn btn-block fa fa-pencil fa" title="Editar estudiante"></a>'+'</td>'+'</tr>'+
                           '</div>'+
                           
                         "</div>"; 
                     }else{
                         mstr = '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<a href="ver_estudiante/'+data.id+'" class="btn btn-block fa fa-eye fa ver_seguimiento" title="Ver seguimiento"></a>'+
-                          "</div>"+
+                            '<tr id="1">'+'<td>'+'<a id="'+data.id+'" onclick="redireccionar(this);" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
+                          '</div>'+
                         "</div>";
                     }
 
@@ -253,7 +358,7 @@
                     
             ],
 
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false,
+            "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -265,15 +370,59 @@
                 
             ]
         });
-    
         $('.filter').keyup(function(){
             table.column($(this).data('column'))
             .search($(this).val())
             .draw();
         });
-    });
         
-    
+        document.getElementById('detalleS').checked = true;
+
+        $('.dtlle').on('change', function() {
+
+            var chek_detalle = $('#detalleS').is(":checked");
+            
+            if(chek_detalle){
+                $(".prfsnal").show();
+                $(".mtvo").show();
+                $(".fcha").show();
+                $(".urlrtro").show();
+                var column2 = table.column(20);
+                var column3 = table.column(21);
+                var column4 = table.column(22);
+                var column5 = table.column(23);
+                
+                column2.visible(true);
+                column3.visible(true);
+                column4.visible(true);
+                column5.visible(true);
+
+            }else if(!chek_detalle){
+                $(".prfsnal").hide();
+                $(".mtvo").hide();
+                $(".fcha").hide();
+                $(".urlrtro").hide();
+                var column2 = table.column(20);
+                var column3 = table.column(21);
+                var column4 = table.column(22);
+                var column5 = table.column(23);
+                
+                column2.visible(false);
+                column3.visible(false);
+                column4.visible(false);
+                column5.visible(false);
+            }
+        });
+    });
+
+    function redireccionar(id){
+            console.log($(id).attr("id"));
+            location.href=`../ver_estudiante/${$(id).attr("id")}?css=titulo-6#ttlo-6`;
+    }   
+    function redireccionar_edit(id){
+            console.log($(id).attr("id"));
+            location.href=`../editar_estudiante/${$(id).attr("id")}?css=titulo-6#ttlo-6`;
+    }  
 
                 
 </script>

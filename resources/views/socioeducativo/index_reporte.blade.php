@@ -12,7 +12,7 @@
     @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)         
         <div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
-                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('reporte_socioeducativo')}}">Descargar todos los seguiminetos socioeducativos</a>
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('reporte_socioeducativo')}}">Descargar todos los seguimientos socioeducativos</a>
             </div>
         </div>
     @endif
@@ -84,7 +84,7 @@
                 <td>Trabajador</td>
                 <td>S. F</td>
                 <td>S. M</td>
-                <td>R. P</td>
+                <td>R. Ps</td>
                 <td>Prof. Acompañamiento</td>
                 <td>Cant. Seguimientos</td>
                 <td id="r1">R.I</td>

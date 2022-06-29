@@ -30,6 +30,7 @@ class Formalization extends Model
         'serial_loan_tablet',
         'observation_loan',
         'loan_document_url',
+        'transfer_line2_to_line1',
     ];
     
     public static function formalizacion(){
@@ -42,7 +43,7 @@ class Formalization extends Model
             as inscription_icfes, formalizations.presented_icfes as presented_icfes, 
             formalizations.acceptance_date as acceptance_date, formalizations.returned_tablet as returned_tablet, 
             formalizations.loan_tablet as loan_tablet, formalizations.serial_loan_tablet as 
-            serial_loan_tablet, formalizations.loan_document_url as loan_document_url,  
+            serial_loan_tablet, formalizations.loan_document_url as loan_document_url, formalizations.transfer_line2_to_line1 as cambio_linea,  
             (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, conditions.name as estado,
             (SELECT withdrawals.id_reasons FROM withdrawals WHERE withdrawals.id_student = student_profile.id) as motivoid
             FROM student_profile

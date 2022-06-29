@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Auth;
 use App\Formalization;
+use App\AssignmentStudent;
 use App\perfilEstudiante;
+use App\Withdrawals;
+use App\Reasons;
 use App\EconomicalSupport;
 use App\Group;
 use App\Cohort;
@@ -19,6 +22,7 @@ use Session;
 use Redirect;
 use Response;
 use DB;
+
 
 class FormalizacionController extends Controller
 {

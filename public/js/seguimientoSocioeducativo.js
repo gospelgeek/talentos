@@ -382,8 +382,10 @@ $(function() {
     });
 
     $('.editar_seguimiento').click(function(e) {
-            e.preventDefault();
-            
+        e.preventDefault();
+
+        var rol = document.getElementById('roles').value;      
+        if(rol == 1 || rol == 2){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -481,13 +483,16 @@ $(function() {
 
             $('#modal_editar').modal('show');
 
-            });
-
-        });
+            });                
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }
+    });
 
       $('.ver_seguimiento').click(function(e) {
-            e.preventDefault();
-            
+        e.preventDefault();
+        var rol = document.getElementById('roles').value;
+        if(rol == 1 || rol == 2){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -530,28 +535,33 @@ $(function() {
             
             $('#modal_ver').modal('show');
 
-            });
+            });         
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }    
+            
 
-        });
+    });
 
       $('.boton_delete_seguimiento').click(function(e) {       
-       e.preventDefault();
-
-       var row = $(this).parents('tr');
-       var id = row.data('id');
-       var form = $('#form-delete');
-       var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
-       var data = form.serialize();
+        e.preventDefault();
+        var rol = document.getElementById('roles').value;
+        if(rol == 1 || rol == 2){
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            var form = $('#form-delete');
+            var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
+            var data = form.serialize();
        
-       //alert(id);
-       
-      $.post(url, data, function(result){
-        row.fadeOut();
-        toastr.success('Seguimiento eliminado correctamente!!'); 
-        //setTimeout("location.reload()", 2000);
-       });
-
-      });
+            $.post(url, data, function(result){
+                row.fadeOut();
+                toastr.success('Seguimiento eliminado correctamente!!'); 
+                //setTimeout("location.reload()", 2000);
+            });
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }
+    });
 
 });
 

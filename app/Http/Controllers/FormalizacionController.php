@@ -96,6 +96,7 @@ class FormalizacionController extends Controller
                 'loan_tablet' => $datos->loan_tablet,
                 'serial_loan_tablet' => $datos->serial_loan_tablet,
                 'loan_document_url' => $datos->loan_document_url,
+                'cambio_linea' => $datos->cambio_linea,
                 'tipodocumento' => $datos->tipodocumento,
                 'estado' => $datos->estado,
                 'motivo' => $motivo_name,
@@ -127,8 +128,8 @@ class FormalizacionController extends Controller
     
     $data = Formalization::findOrFail($id);
     $dataOld = Formalization::findOrFail($id);
-        
-        if ($request->ajax()) {
+    
+        if($request->ajax()) {
 
             if($request->checkAceptacion == 'true') {
                     
@@ -166,6 +167,12 @@ class FormalizacionController extends Controller
             }else{
                 $data->returned_tablet = null;    
             }
+
+            if($request['cambio_de_linea'] != null){
+                $data->transfer_line2_to_line1 = true;    
+            }else{
+                $data->transfer_line2_to_line1 = null;    
+            }
             
             $data->serial_loan_tablet = $request['serial_tablet_prestada'];
             $data->observation_loan = $request['observacion_prestamo'];
@@ -197,6 +204,7 @@ class FormalizacionController extends Controller
                 $presento_icfes = false;
                 $data->presented_icfes = $presento_icfes;
             }
+            
 
            /*$apoyo_economico = EconomicalSupport::create([
                 'id_student'    => $request['id'],
@@ -281,6 +289,10 @@ class FormalizacionController extends Controller
         if($dataOld->loan_document_url != $data->loan_document_url){
             $old[] = array('url_documento_prestamo' => $dataOld->loan_document_url);
             $new[] = array('url_documento_prestamo' => $data->loan_document_url);
+        }
+        if($dataOld->transfer_line2_to_line1 != $data->transfer_line2_to_line1){
+            $old[] = array('cambio_de_linea' => $dataOld->transfer_line2_to_line1);
+            $new[] = array('cambio_de_linea' => $data->transfer_line2_to_line1);
         }
 
         $ip = User::getRealIP();

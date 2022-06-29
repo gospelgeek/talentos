@@ -1487,7 +1487,8 @@ class SocioEducativoController extends Controller
 
             $arreglo_datos[] = array(
                 'id' => $dato->id,
-                'name' => $dato->name, 'lastname' => $dato->lastname,
+                'name' => $dato->name, 
+                'lastname' => $dato->lastname,
                 'document_number' => $dato->document_number,
                 'grupo_id' => $dato->grupoid,
                 'grupo' => $dato->grupo,
@@ -1504,8 +1505,11 @@ class SocioEducativoController extends Controller
                 'riesgo_familiar' => $json_detalle->RiesgoFamiliar,
                 'riesgo_economico' => $json_detalle->RiesgoEconomico,
                 'riesgo_Uc' => $json_detalle->RiesgoUc,
-                'caso_especial' => $dato->caso_especial,
-                'salud_mental' => $dato->salud_mental, 'id_state' => $dato->id_state
+                'trabajador' => $dato->trabajador,
+                'salud_fisica' => $dato->salud_fisica,
+                'salud_mental' => $dato->salud_mental,
+                'riesgo_psicosocial' => $dato->riesgo_psicosocial, 
+                'id_state' => $dato->id_state
             ); 
         }
 
@@ -1525,7 +1529,9 @@ class SocioEducativoController extends Controller
 
     public function exportar_reporte_socioeducativo(){
 
-        $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, socio_educational_follow_ups.tracking_detail as detalle, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, (SELECT health_conditions.special_requirements FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as caso_especial, (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_mental
+        $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, socio_educational_follow_ups.tracking_detail as detalle, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, (SELECT health_conditions.employee FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as trabajador, (SELECT health_conditions.physical_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_fisica, (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_mental,
+            (SELECT health_conditions.psychosocial_risk FROM health_conditions WHERE 
+            health_conditions.id_student = student_profile.id) as riesgo_psicosocial
             FROM student_profile 
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN formalizations ON formalizations.id_student = student_profile.id
@@ -1538,18 +1544,30 @@ class SocioEducativoController extends Controller
 
         $estudiantes_colection = collect($estudiantes);
         $excel = array();
-        $caso_especial;
+        $trabajador;
+        $salud_fisica;
         $salud_mental;
+        $riesgo_psicosocial;
         foreach($estudiantes_colection as $estudiante_colection){
 
-            if($estudiante_colection->caso_especial !== null){
-                if($estudiante_colection->caso_especial == 1){
-                    $caso_especial = 'SI';
-                }else if($estudiante_colection->caso_especial == 0){
-                    $caso_especial = 'NO';
+            if($estudiante_colection->trabajador !== null){
+                if($estudiante_colection->trabajador == 1){
+                    $trabajador = 'SI';
+                }else if($estudiante_colection->trabajador == 0){
+                    $trabajador = 'NO';
                 }
             }else{
-                $caso_especial = null;
+                $trabajador = null;
+            }
+
+            if($estudiante_colection->salud_fisica !== null){
+                if($estudiante_colection->salud_fisica == 1){
+                    $salud_fisica = 'SI';
+                }else if($estudiante_colection->salud_fisica == 0){
+                    $salud_fisica = 'NO';
+                }
+            }else{
+                $salud_fisica = null;
             }
 
             if($estudiante_colection->salud_mental !== null){
@@ -1560,6 +1578,16 @@ class SocioEducativoController extends Controller
                 }
             }else{
                 $salud_mental = null;
+            }
+
+            if($estudiante_colection->riesgo_psicosocial !== null){
+                if($estudiante_colection->riesgo_psicosocial == 1){
+                    $riesgo_psicosocial = 'SI';
+                }else if($estudiante_colection->riesgo_psicosocial == 0){
+                    $riesgo_psicosocial = 'NO';
+                }
+            }else{
+                $riesgo_psicosocial = null;
             }
 
             $detalle_seguimiento = json_decode($estudiante_colection->detalle);    
@@ -1577,8 +1605,10 @@ class SocioEducativoController extends Controller
                             'estado' => $estudiante_colection->estado, 
                             'aceptacion1' => $estudiante_colection->aceptacion1,
                             'aceptacion2' => $estudiante_colection->aceptacion2,
-                            'caso_especial' => $caso_especial,
-                            'salud_mental' => $salud_mental, 
+                            'trabajador' => $trabajador,
+                            'salud_fisica' => $salud_fisica,
+                            'salud_mental' => $salud_mental,
+                            'riesgo_psicosocial' => $riesgo_psicosocial, 
                             'fecha_seguimiento' => $detalle_seguimiento->fecha, 
                             'lugar_seguimiento' => $detalle_seguimiento->Lugar,
                             'hora_inicio' => $detalle_seguimiento->HoraInicio,
@@ -1599,9 +1629,6 @@ class SocioEducativoController extends Controller
 
         $exportar = new SocioeducativoExport([$excel]);
 
-
         return Excel::download($exportar, 'socioeducativo_reporte.xlsx');
-
-
     }
 }

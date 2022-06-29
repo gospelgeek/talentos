@@ -816,13 +816,19 @@
 				<table id="icfes">
 					<thead>
 
-					<th>AREA</th>
-					<th>ICFES ENTRADA</th>
-					<th>SIMULACRO 1</th>
-					<th>SIMULACRO 2</th>
-					<th>ICFES SALIDA</th>
+					    <th>AREA</th>
+					    <th>ICFES ENTRADA</th>
+					    <th>SIMULACRO 1</th>
+					    <th>SIMULACRO 2</th>
+					    <th>ICFES SALIDA</th>
 					</thead>
-					
+					<tfoot>
+						<th>TOTAL</th>
+						<th>--</th>
+						<th>{{$totalS1[0]->total1}}</th>
+						<th>{{$totalS2[0]->total2}}</th>
+						<th>--</th>
+					</tfoot>
 					
 				</table>
 				
@@ -1192,13 +1198,11 @@
                 }
             },
             {
-                data: 'calificacion'
+                data: 'simulacro1'
             },
 			{
-                data: null,
-                render:function(data, type, row, meta){
-                     return "--"
-                }
+                data: 'simulacro2',
+                
             },
 			{
                 data: null,

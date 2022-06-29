@@ -9,16 +9,16 @@
     <h1 style="text-align:center;">REPORTE SOCIOEDUCATIVO</h1>
     <div class="card">         
     <div class="card-body">
-         
+    @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)         
         <div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('reporte_socioeducativo')}}">Descargar todos los seguimientos socioeducativos</a>
             </div>
         </div>
-       
+    @endif
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        <caption>Ultima Seguimiento registrado: {{ $ultimo_seguimiento }}</caption>
+        <caption>Ultimo Seguimiento registrado: {{ $ultimo_seguimiento }}</caption>
         <thead>
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="0">
@@ -42,19 +42,19 @@
                 <input type="text" class="form-control filter" placeholder="Search" data-column="6">
             </td>
             <td>
-                <input type="text" class="form-control filter" placeholder="Search" data-column="7">
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="7">
             </td>
             <td>
-                <input type="text" class="form-control filter" placeholder="Search" data-column="8">
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="8">
             </td>
             <td>
-                <input type="text" class="form-control filter" placeholder="Search" data-column="9">
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="9">
             </td>
             <td>
-                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="10">
+                <input type="text" class="form-control filter" placeholder="Search" data-column="10">
             </td>
             <td>
-                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="11">
+                <input type="text" class="form-control filter" placeholder="Search" data-column="11">
             </td>
             <td>
                 <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="12">
@@ -64,6 +64,12 @@
             </td>
             <td>
                 <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="14">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="15">
+            </td>
+            <td>
+                <input type="text" style="width:50px" class="form-control filter" placeholder="Search" data-column="16">
             </td>
             <td></td> 
         </thead>
@@ -75,8 +81,10 @@
                 <td>Grupo</td>
                 <td>Estado</td>
                 <td>Clasificación</td>
-                <td>C. E</td>
+                <td>Trabajador</td>
+                <td>S. F</td>
                 <td>S. M</td>
+                <td>R. Ps</td>
                 <td>Prof. Acompañamiento</td>
                 <td>Cant. Seguimientos</td>
                 <td id="r1">R.I</td>
@@ -86,8 +94,7 @@
                 <td>R.V</td>
                 <td width="15%">Acciones</td>
             </tr>
-        </thead>
-        
+        </thead>   
     </table>
       </div>
     </div>
@@ -97,10 +104,10 @@
 @push('scripts') 
 
     <script>
-    
+
     $(document).ready(function(){
-        
-         var table = $("#example1").DataTable({
+
+        var table = $("#example1").DataTable({
             "ajax": "{{route('datos.reporte.socioeducativo')}}",
             "columns": [
                 {data: null, render:function(data, type, row, meta) {
@@ -132,7 +139,21 @@
                         }
                     }
                 },
-                {data: 'caso_especial', render:function(data, type, row, meta){
+                {data: 'trabajador', render:function(data, type, row, meta){
+                        if(data !== null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }else if(data == 0) {
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">NO</button>';
+                                return no;
+                            }
+                        }else{
+                            return null;
+                        }    
+                    }
+                },
+                {data: 'salud_fisica', render:function(data, type, row, meta){
                         if(data !== null){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
@@ -158,6 +179,33 @@
                         }else{
                             return null;
                         }    
+                    }
+                },
+                {data: 'riesgo_psicosocial', render:function(data, type, row, meta){
+                        if(data !== null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }else if(data == 0) {
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">NO</button>';
+                                return no;
+                            }
+                        }else{
+                            return null;
+                        }    
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+
+                        if(data.nombre_profesional !== null){
+                            var celda;
+                            celda = '<div>'+
+                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
+                                '</div>';
+                            return celda;
+                        }else{
+                            return null;
+                        }
                     }
                 },
                 {data: 'cantidad_seguimientos'},
@@ -309,20 +357,7 @@
                             return '--';
                         }    
                     }
-                },
-                {data: null, render:function(data, type, row, meta){
-
-                        if(data.nombre_profesional !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.nombre_profesional+' '+data.apellido_profesional+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
-                    }
-                },
+                },  
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -340,12 +375,10 @@
                     }
                 }
             }
+                
             ],
-
-          
-
             
-            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "responsive": false, "lengthChange": false, "autoWidth": false, "fixedHeader": true, "orderCellsTop": true,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -356,13 +389,30 @@
                 "colvis",
             ]
         });
-        
+
         $('.filter').keyup(function(){
             table.column($(this).data('column'))
             .search($(this).val())
             .draw();
         });
-   });
+
+        /*$('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });*/
+    });
 
 
     function redireccionar(id){
@@ -370,10 +420,6 @@
         location.href=`../ver_estudiante/${$(id).attr("id")}?css=titulo-4#ttlo-4`;
     }
 
-    function redireccionaredit(id){
-        console.log($(id).attr("id"));
-        location.href=`../editar_estudiante/${$(id).attr("id")}?css=titulo-4#ttlo-4`;
-    }
     </script>
  
 @endpush

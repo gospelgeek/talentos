@@ -826,8 +826,8 @@
 					<tfoot>
 						<th>TOTAL</th>
 						<th>--</th>
-						<th>0</th>
-						<th>0</th>
+						<th>{{$t1}}</th>
+						<th>{{$t2}}</th>
 						<th>--</th>
 					</tfoot>
 					

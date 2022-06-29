@@ -825,8 +825,8 @@
 					<tfoot>
 						<th>TOTAL</th>
 						<th>--</th>
-						<th>{{$totalS1[0]->total1}}</th>
-						<th>{{$totalS2[0]->total2}}</th>
+						<th>0</th>
+						<th>0</th>
 						<th>--</th>
 					</tfoot>
 					

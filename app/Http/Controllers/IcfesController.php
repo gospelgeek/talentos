@@ -37,12 +37,33 @@ class IcfesController extends Controller
     
     public function resultadoArea($id_student)
     {
-        $result = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
-        icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
-        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
-         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
-         icfes_students.id_icfes_test = 1)", [$id_student, $id_student]);
+        $datosNombre = [];
+        $datosCalificacionS1 = [];
+        $datosCalificacionS2 = [];
+        $datos = [];
 
-         return datatables()->of($result)->toJson();
+        $resultSimulacro1 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
+        icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? ", [$id_student]);
+
+        for ($i = 0; $i < 5; $i++) {
+            $datosNombre[$i] = $resultSimulacro1[$i]->nombre;
+        }
+        for ($i=0; $i < 5; $i++) { 
+            $datosCalificacionS1[$i] = $resultSimulacro1[$i]->calificacion;
+        }
+        $cont = 0;
+        for ($i=5; $i < 10; $i++) { 
+            $datosCalificacionS2[$cont] = $resultSimulacro1[$i]->calificacion;
+            $cont++;
+        }
+        
+        for ($i=0; $i < 5; $i++) { 
+            $datos[$i] = array("nombre" => $datosNombre[$i],"simulacro1" => $datosCalificacionS1[$i],"simulacro2" => $datosCalificacionS2[$i]);
+        }
+
+        $result = $datos;
+
+        return datatables()->of($result)->toJson();
     }
 }

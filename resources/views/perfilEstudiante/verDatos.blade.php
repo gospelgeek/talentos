@@ -837,7 +837,7 @@
 		</div>
 	</div>
     
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-6">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">
 			<input type="hidden" id="rgstraton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->pre_registration_icfes : null}}">
@@ -865,18 +865,42 @@
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
             				@endif
             			</div>			
-            			<div class="col-xs-3 col-md-3">
+            			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== 'SI')
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
 						@else
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-2 col-md-2">
 								<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
 						@endif
 					</div>
 					<hr>
@@ -888,25 +912,69 @@
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
             				@endif
             			</div>
-            			<div class="col-xs-3 col-md-3">
+            			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== 'SI')
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 							</div>
 						@else
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 							</div>
 						@endif
-						<div class="col-xs-3 col-md-3">
+						<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
             			</div>
-						<div class="col-xs-3 col-md-3">
+						<div class="col-xs-4 col-md-2">
 							<input class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
 						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="returned_tablet">Devolvió tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->returned_tablet != null)
+								<input type="checkbox" name="returned_tablet" id="returned_tablet" value="SI" checked>
+							@else
+								<input type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
+							@endif
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null)
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
+            			</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input class="form-control" type="text" name="serial_loan_tablet" id="serial_loan_tablet" value="{{ old('serial_loan_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_loan_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="observation_loan">Observación prestamo</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="observation_loan" id="observation_loan" value="{{ old('observation_loan', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_loan : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->loan_document_url != null)
+            			<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+            				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+						</div>
+						@else
+						<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+						</div>
+						@endif
 					</div>
 					<hr>
 					<div class="row">
@@ -950,20 +1018,34 @@
 					</div>
 					<hr>
 					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
             				</div>
             			</div>
-            			<div class="btn-group">
-            				@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
-            					<div class="btn-group">
-            						<div class="col-xs-6 col-md-12 col-sm-6">
-            							<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
-           							</div>
+            			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+            				<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
            						</div>
-           					@endif
-           				</div>
+           					</div>
+           				@endif
            			</div>
            			<div class="row" id="inputs">
            			
@@ -987,7 +1069,7 @@
 							</tbody>
                 		</table>
         			</div>
-        			<hr>
+        			<hr>-->
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
             				<label>OBSERVACIONES:</label>	
@@ -1006,18 +1088,42 @@
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
             				@endif
             			</div>
-            			<div class="col-xs-3 col-md-3">
+            			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== 'SI')
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input readonly class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
 						@else
 							<div class="col-xs-3 col-md-3">
 								<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input readonly class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
 						@endif
 					</div>
 					<hr>
@@ -1029,25 +1135,69 @@
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
             				@endif
             			</div>
-            			<div class="col-xs-3 col-md-3">
+            			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== 'SI')
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input readonly class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 							</div>
 						@else
-							<div class="col-xs-3 col-md-3">
+							<div class="col-xs-4 col-md-2">
 								<input readonly class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 							</div>
 						@endif
-						<div class="col-xs-3 col-md-3">
+						<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
             			</div>
-						<div class="col-xs-3 col-md-3">
+						<div class="col-xs-4 col-md-2">
 							<input readonly class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
 						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="returned_tablet">Devolvió tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->returned_tablet != null)
+								<input disabled type="checkbox" name="returned_tablet" id="returned_tablet" value="SI" checked>
+							@else
+								<input disabled type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
+							@endif
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null)
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
+            			</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input readonly class="form-control" type="text" name="serial_loan_tablet" id="serial_loan_tablet" value="{{ old('serial_loan_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_loan_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="observation_loan">Observación prestamo</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<input readonly class="form-control" type="text" name="observation_loan" id="observation_loan" value="{{ old('observation_loan', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_loan : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->loan_document_url != null)
+            			<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+            				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+						</div>
+						@else
+						<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+						</div>
+						@endif
 					</div>
 					<hr>
 					<div class="row">
@@ -1091,6 +1241,22 @@
 					</div>
 					<hr>
 					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
@@ -1126,7 +1292,7 @@
 						
 							</tbody>
                 		</table>
-        			</div>
+        			</div>-->
         			<hr>
         			<div class="row">
 						<div class="col-xs-12 col-md-12">

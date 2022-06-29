@@ -913,18 +913,15 @@
 								<input type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
 							@endif
 						</div>
-						<div class="col-xs-4 col-md-2">
-            				<p style="text-align: right"><label for="loan_tablet">Prestamo tablet</label></p>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null)
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
             			</div>
-						<div class="col-xs-4 col-md-2">
-							@if($verDatosPerfil->formalization->loan_tablet != null)
-								<input type="checkbox" name="loan_tablet" id="loan_tablet" value="SI" checked>
-							@else
-								<input type="checkbox" name="loan_tablet" id="loan_tablet" value="SI">
-							@endif
-						</div>
-						
-						
 						<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
             			</div>
@@ -941,12 +938,12 @@
             				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->loan_document_url != null)
-            			<div class="col-xs-3 col-md-3">
+            			<div class="col-xs-4 col-md-2">
             				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
             				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 						</div>
 						@else
-						<div class="col-xs-3 col-md-3">
+						<div class="col-xs-4 col-md-2">
             				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
 						</div>
 						@endif
@@ -993,6 +990,22 @@
 					</div>
 					<hr>
 					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
@@ -1028,7 +1041,7 @@
 							</tbody>
                 		</table>
         			</div>
-        			<hr>
+        			<hr>-->
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
             				<label>OBSERVACIONES:</label>	
@@ -1123,16 +1136,15 @@
 								<input disabled type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
 							@endif
 						</div>
-						<div class="col-xs-4 col-md-2">
-            				<p style="text-align: right"><label for="loan_tablet">Prestamo tablet</label></p>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null)
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
             			</div>
-						<div class="col-xs-4 col-md-2">
-							@if($verDatosPerfil->formalization->loan_tablet != null)
-								<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" value="SI" checked>
-							@else
-								<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" value="SI">
-							@endif
-						</div>
 						<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
             			</div>
@@ -1149,13 +1161,13 @@
             				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
             			</div>
             			@if($verDatosPerfil->formalization->loan_document_url != null)
-            			<div class="col-xs-3 col-md-3">
-            				<input readonly class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+            			<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
             				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
 						</div>
 						@else
-						<div class="col-xs-3 col-md-3">
-            				<input readonly class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+						<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
 						</div>
 						@endif
 					</div>
@@ -1201,6 +1213,22 @@
 					</div>
 					<hr>
 					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
 						<div class="btn-group">
             				<div class="col-xs-6 col-md-12 col-sm-6">
             					<label>APOYO ECONÓMICO:</label>
@@ -1236,7 +1264,7 @@
 						
 							</tbody>
                 		</table>
-        			</div>
+        			</div>-->
         			<hr>
         			<div class="row">
 						<div class="col-xs-12 col-md-12">

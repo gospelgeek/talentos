@@ -42,26 +42,59 @@ class IcfesController extends Controller
         $datosCalificacionS2 = [];
         $datos = [];
 
-        $resultSimulacro1 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
-        icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
-        as calificacion FROM result_by_areas WHERE id_student = ? ", [$id_student]);
+        $nombres = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
+        icfes_areas.id = result_by_areas.id_icfes_area) as nombre FROM result_by_areas WHERE 
+        result_by_areas.id_student = ? limit 5", [$id_student]);
 
-        for ($i = 0; $i < 5; $i++) {
-            $datosNombre[$i] = $resultSimulacro1[$i]->nombre;
-        }
-        for ($i=0; $i < 5; $i++) { 
-            $datosCalificacionS1[$i] = $resultSimulacro1[$i]->calificacion;
-        }
-        $cont = 0;
-        for ($i=5; $i < 10; $i++) { 
-            $datosCalificacionS2[$cont] = $resultSimulacro1[$i]->calificacion;
-            $cont++;
+        $resultSimulacro1 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+         icfes_students.id_icfes_test = 1) ", [$id_student, $id_student]);
+
+        $resultSimulacro2 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+         icfes_students.id_icfes_test = 2) ", [$id_student, $id_student]);
+
+        if($nombres == []){
+            for ($i=0; $i < 5; $i++) { 
+                $datos[$i] = array("nombre" => "--","simulacro1" => 0,"simulacro2" => 0);
+            }
+        }else {
+            for ($i = 0; $i < 5; $i++) {
+                $datosNombre[$i] = $nombres[$i]->nombre;
+            }
+    
+            if($resultSimulacro1 == []){
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS1[$i] = 0;
+                }
+            }else{
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS1[$i] = $resultSimulacro1[$i]->calificacion;
+                }
+            }
+            
+            if($resultSimulacro2 == []){
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS2[$i] = 0;
+                
+                }
+            }else {
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS2[$i] = $resultSimulacro2[$i]->calificacion;
+                
+                }
+            }
+
+            for ($i=0; $i < 5; $i++) { 
+                $datos[$i] = array("nombre" => $datosNombre[$i],"simulacro1" => $datosCalificacionS1[$i],"simulacro2" => $datosCalificacionS2[$i]);
+            }
+            
         }
         
-        for ($i=0; $i < 5; $i++) { 
-            $datos[$i] = array("nombre" => $datosNombre[$i],"simulacro1" => $datosCalificacionS1[$i],"simulacro2" => $datosCalificacionS2[$i]);
-        }
-
         $result = $datos;
 
         return datatables()->of($result)->toJson();

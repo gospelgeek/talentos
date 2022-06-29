@@ -267,6 +267,14 @@ class perfilEstudianteController extends Controller
             }           
         }*/
 
+        $totalS1 = DB::select("SELECT icfes_students.total_score as total1 
+        FROM icfes_students WHERE icfes_students.id_student = ? 
+        AND icfes_students.id_icfes_test = 1", [$id]);
+
+        $totalS2 = DB::select("SELECT icfes_students.total_score as total2 
+        FROM icfes_students WHERE icfes_students.id_student = ? 
+        AND icfes_students.id_icfes_test = 2", [$id]);
+        
         $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->firstOrFail();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
@@ -369,7 +377,7 @@ class perfilEstudianteController extends Controller
         });
         
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 'totalS1', 'totalS2'));
     }
 
 

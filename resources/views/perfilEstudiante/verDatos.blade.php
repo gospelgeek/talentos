@@ -5,6 +5,7 @@
 
 @csrf
 <div id="container-main">
+    <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<div class="row">
 		@if($verDatosPerfil->photo != null)		
 		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">

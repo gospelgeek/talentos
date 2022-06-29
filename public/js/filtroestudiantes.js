@@ -649,6 +649,13 @@ function tipoCancha(deporteSel){
             $('.accordion-titulo-7').addClass("open");
             
             break;
+        case 'titulo-6':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-6').slideDown(250);         
+            $('.accordion-titulo-6').addClass("open");
+            
+            //console.log("s");
+            break;
     }
 }
 

@@ -290,6 +290,8 @@ class perfilEstudianteController extends Controller
             $t2 = $totalS2[0]->total2;
         }
         
+        $totalSimulacros = $t1 + $t2;
+        
         $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->firstOrFail();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
@@ -392,7 +394,7 @@ class perfilEstudianteController extends Controller
         });
         
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 't1', 't2'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 't1', 't2', 'totalSimulacros'));
     }
 
 

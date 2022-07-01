@@ -4,21 +4,6 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-<!--<div class="col-xs-12 col-md-8">
-    <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="row">
-                <div class=" col-xs-12 col-md-8">
-                  {!!Form::label('archivo','Seleccione Archivo:')!!}                            
-                  {!!Form::file('file',[ 'accept'=>'.xls,.xlsx','class'=>'form-control-file form-group','required'])!!}
-                        
-                        <button type="submit" class="btn btn-danger bg-lg form-group btn-block">Enviar</button>
-                      </div>
-    </form>
-</div>-->          
-                      
-
-
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
     <h1 style="text-align:center;">FORMALIZACIÓN ESTUDIANTE</h1>
@@ -26,8 +11,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <center><div class="btn-group">
-                    <div class="dtlle col-xs-6 col-md-12 col-sm-6">
-                        <label>DETALLES DE ESTADO</label>&nbsp;<input type="checkbox" name="detalleS" id="detalleS">
+                    <div class="dtllE col-xs-6 col-md-12 col-sm-6">
+                        <label>DETALLES DE ESTADO</label>&nbsp;<input type="checkbox" name="detalle_estado" id="detalle_estado">
                     </div>
                 </div></center>  
                 <table id="example1" class=" table table-bordered table-striped">
@@ -58,88 +43,11 @@
                             <td class="prfsnal"><b>Prof. Acomp.</b></td>
                             <td class="mtvo"><b>Motivo</b></td>
                             <td class="fcha"><b>Fecha</b></td>
-                            <td class="urlrtro"><b>URL</b></td>
-                            <td id="botons" width="15%"><b>Acciones</b></td>
+                            <td class="urlrtro"><b>URL Retiro</b></td>
+                            <td><b>Acciones</b></td>
                         </tr>
                     </thead>
-                    <thead>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="1">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="2">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="3">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="4">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="5">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="6">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="7">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="8">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="9">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="10">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="11">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="12">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="13">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="14">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="15">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="16">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="17">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="18">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="19">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="20">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="21">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="22">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="23">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control filter" placeholder="Search" data-column="24">
-                        </td>
-                        <td></td>
-                    </thead>
+                    </thead>    
                 </table>
             </div>
         </div>
@@ -304,7 +212,15 @@
                         }    
                     }
                 },
-                {data: 'loan_document_url'},
+                {data: 'loan_document_url', render:function(data, type, row, meta){
+                        if(data !== null){
+                            var url = '<a href="'+data+'" target="blank">ENLACE URL</a>';
+                            return url;    
+                        }else{
+                            return null;
+                        }
+                    }
+                },
                 {data: 'cambio_linea', render:function(data, type, row, meta){
                         if(data != null){
                             if(data == 1){
@@ -330,7 +246,18 @@
                 },
                 {data: 'motivo'},
                 {data: 'fecha'},
-                {data: 'url'},
+                {data: 'url', render:function(data, type, row, meta){
+                        if(data !== "" && data !== null){
+                            
+                                var url = '<a href="'+data+'" target="blank">ENLACE URL</a>';
+                                return url;    
+                            }else{
+                                var url = "";
+                                return url;
+                            }
+                        }
+                    
+                },                
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -365,47 +292,59 @@
                 "csv",
                 "excel", 
                 "pdf",
-                "print",
-                "colvis"
+                "print"
                 
             ]
-        });
-        $('.filter').keyup(function(){
-            table.column($(this).data('column'))
-            .search($(this).val())
-            .draw();
+        }); 
+
+        $('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
         });
         
-        document.getElementById('detalleS').checked = true;
+        
+        document.getElementById('detalle_estado').checked = true;
 
-        $('.dtlle').on('change', function() {
+        $('.dtllE').on('change', function() {
 
-            var chek_detalle = $('#detalleS').is(":checked");
-            
+            var chek_detalle = $('#detalle_estado').is(":checked");
             if(chek_detalle){
-                $(".prfsnal").show();
-                $(".mtvo").show();
-                $(".fcha").show();
-                $(".urlrtro").show();
-                var column2 = table.column(20);
-                var column3 = table.column(21);
-                var column4 = table.column(22);
-                var column5 = table.column(23);
+                var column2 = table.column(21);
+                var column3 = table.column(22);
+                var column4 = table.column(23);
+                var column5 = table.column(24);
                 
                 column2.visible(true);
                 column3.visible(true);
                 column4.visible(true);
                 column5.visible(true);
 
+                $(".prfsnal").show();
+                $(".mtvo").show();
+                $(".fcha").show();
+                $(".urlrtro").show();
+
             }else if(!chek_detalle){
                 $(".prfsnal").hide();
                 $(".mtvo").hide();
                 $(".fcha").hide();
                 $(".urlrtro").hide();
-                var column2 = table.column(20);
-                var column3 = table.column(21);
-                var column4 = table.column(22);
-                var column5 = table.column(23);
+                var column2 = table.column(21);
+                var column3 = table.column(22);
+                var column4 = table.column(23);
+                var column5 = table.column(24);
                 
                 column2.visible(false);
                 column3.visible(false);

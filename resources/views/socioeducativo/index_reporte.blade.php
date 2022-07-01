@@ -18,7 +18,7 @@
     @endif
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        <caption>Ultimo Seguimiento registrado: {{ $ultimo_seguimiento }}<br>
+        <caption>Ultimo Seguimiento registrado:<br>
         S.F: Salud Fisica<br> S.M: Salud Mental<br> R.Ps: Riesgo Psicosocial<br> R.I: Riesgo Individual<br> R.A: Riesgo Academico<br> R.F: Riesgo Familiar<br> R.E: Riesgo Economico<br> R.V: Riesgo Vida Universitaria y ciudad</caption>
         <thead>
             <tr>

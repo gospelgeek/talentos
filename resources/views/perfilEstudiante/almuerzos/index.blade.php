@@ -17,7 +17,18 @@
 			<br><div class="table-responsive">
 				<table id="example1" class=" table table-bordered table-striped">
 					<caption>Ultimo registro creado de almuerzos: {{ $ultimo_lunche }}</caption>
+					</thead>
 					<thead>
+						<tr>
+							<td><b>FECHA</b></td>
+							<td><b>ALMUERZOS LINEA 1</b></td>
+							<td><b>ALMUERZOS LINEA 2</b></td>
+							<td><b>ALMUERZOS LINEA 3</b></td>
+							<td><b>TOTAL</b></td>
+							<td><b>ACCIONES</b></td>
+						</tr>
+					</thead>
+                    <thead>
 						 <td>
                 			<input type="text" class="form-control filter" placeholder="Search" data-column="0">
             			</td>
@@ -34,17 +45,6 @@
                 			<input type="text" class="form-control filter" placeholder="Search" data-column="4">
             			</td>
             			<td></td>
-					</thead>
-					<thead>
-						<tr>
-							<td>FECHA</td>
-							<td>ALMUERZOS LINEA 1</td>
-							<td>ALMUERZOS LINEA 2</td>
-							<td>ALMUERZOS LINEA 3</td>
-							<td>TOTAL</td>
-							<td>ACCIONES</td>
-						</tr>
-					</thead>
 				</table>
 			</div>
 		</div>

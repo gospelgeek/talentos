@@ -32,6 +32,36 @@
                 </div></center>  
                 <table id="example1" class=" table table-bordered table-striped">
                     <caption>Ultimo registro formalización actualizado: {{ $update_formalizacion }}</caption>
+                    <thead>                    
+                        <tr>
+                            <td><b>Nombres</b></td>
+                            <td><b>Tipo Doc.</b></td>
+                            <td><b>Nº Documento</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Tel.</b></td>
+                            <td><b>Grupo</b></td>
+                            <td><b>Cohorte</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Aceptación</b></td>
+                            <td><b>Fecha Aceptación</b></td>
+                            <td><b>Tablet</b></td>
+                            <td><b>Serial Tablet</b></td>
+                            <td><b>Regresó Tablet</b></td>
+                            <td><b>Prestó Tablet</b></td>
+                            <td><b>Serial Tablet Prestada</b></td>
+                            <td><b>Fecha Kit</b></td>
+                            <td><b>Pre-registro-ICFES</b></td>
+                            <td><b>Registro-ICFES</b></td>
+                            <td><b>Presentó-ICFES</b></td>
+                            <td><b>URL Prestamo</b></td>
+                            <td><b>Camb. Linea</b></td>
+                            <td class="prfsnal"><b>Prof. Acomp.</b></td>
+                            <td class="mtvo"><b>Motivo</b></td>
+                            <td class="fcha"><b>Fecha</b></td>
+                            <td class="urlrtro"><b>URL</b></td>
+                            <td id="botons" width="15%"><b>Acciones</b></td>
+                        </tr>
+                    </thead>
                     <thead>
                         <td>
                             <input type="text" class="form-control filter" placeholder="Search" data-column="0">
@@ -110,36 +140,6 @@
                         </td>
                         <td></td>
                     </thead>
-                    <thead>                    
-                        <tr>
-                            <td><b>Nombres</b></td>
-                            <td><b>Tipo Doc.</b></td>
-                            <td><b>Nº Documento</b></td>
-                            <td><b>Email</b></td>
-                            <td><b>Tel.</b></td>
-                            <td><b>Grupo</b></td>
-                            <td><b>Cohorte</b></td>
-                            <td><b>Estado</b></td>
-                            <td><b>Aceptación</b></td>
-                            <td><b>Fecha Aceptación</b></td>
-                            <td><b>Tablet</b></td>
-                            <td><b>Serial Tablet</b></td>
-                            <td><b>Regresó Tablet</b></td>
-                            <td><b>Prestó Tablet</b></td>
-                            <td><b>Serial Tablet Prestada</b></td>
-                            <td><b>Fecha Kit</b></td>
-                            <td><b>Pre-registro-ICFES</b></td>
-                            <td><b>Registro-ICFES</b></td>
-                            <td><b>Presentó-ICFES</b></td>
-                            <td><b>URL Prestamo</b></td>
-                            <td><b>Camb. Linea</b></td>
-                            <td class="prfsnal"><b>Prof. Acomp.</b></td>
-                            <td class="mtvo"><b>Motivo</b></td>
-                            <td class="fcha"><b>Fecha</b></td>
-                            <td class="urlrtro"><b>URL</b></td>
-                            <td id="botons" width="15%"><b>Acciones</b></td>
-                        </tr>
-                    </thead>       
                 </table>
             </div>
         </div>

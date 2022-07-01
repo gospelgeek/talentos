@@ -18,7 +18,37 @@
     @endif
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        <caption>Ultimo Seguimiento registrado: {{ $ultimo_seguimiento }}</caption>
+        <caption>Ultimo Seguimiento registrado: {{ $ultimo_seguimiento }}<br>
+        S.F: Salud Fisica<br>
+        S.M: Salud Mental<br>
+        R.Ps: Riesgo Psicosocial<br>
+        R.I: Riesgo Individual<br> 
+        R.A: Riesgo Academico<br>
+        R.F: Riesgo Familiar<br>
+        R.E: Riesgo Economico<br>
+        R.V: Riesgo Vida Universitaria y ciudad</caption>
+        <thead>
+            <tr>
+                <td><b>Nombres</b></td>
+                <td><b>Nº Documento</b></td>
+                <td><b>Cohorte</b></td>
+                <td><b>Grupo</b></td>
+                <td><b>Estado</b></td>
+                <td><b>Clasificación</b></td>
+                <td><b>Trabajador</b></td>
+                <td title="Salud Fisica"><b>S. F</b></td>
+                <td title="Salud Mental"><b>S. M</b></td>
+                <td title="Riesgo Psicosocial"><b>R. Ps</b></td>
+                <td><b>Prof. Acompañamiento</b></td>
+                <td><b>Cant. Seguimientos</b></td>
+                <td title="Riesgo Idividual"><b>R.I</b></td>
+                <td title="Riesgo Academico"><b>R.A</b></td>
+                <td title="Riesgo Familiar"><b>R.F</b></td>
+                <td title="Riesgo Economico"><b>R.E</b></td>
+                <td title="Riesgo Vida universitaria y ciudad"><b>R.V</b></td>
+                <td width="15%"><b>Acciones</td>
+            </tr>
+        </thead>
         <thead>
             <td>
                 <input type="text" class="form-control filter" placeholder="Search" data-column="0">
@@ -73,28 +103,6 @@
             </td>
             <td></td> 
         </thead>
-        <thead>
-            <tr>
-                <td>Nombres</td>
-                <td>Nº Documento</td>
-                <td>Cohorte</td>
-                <td>Grupo</td>
-                <td>Estado</td>
-                <td>Clasificación</td>
-                <td>Trabajador</td>
-                <td>S. F</td>
-                <td>S. M</td>
-                <td>R. Ps</td>
-                <td>Prof. Acompañamiento</td>
-                <td>Cant. Seguimientos</td>
-                <td id="r1">R.I</td>
-                <td>R.A</td>
-                <td>R.F</td>
-                <td>R.E</td>
-                <td>R.V</td>
-                <td width="15%">Acciones</td>
-            </tr>
-        </thead>   
     </table>
       </div>
     </div>

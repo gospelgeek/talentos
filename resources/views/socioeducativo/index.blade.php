@@ -11,6 +11,17 @@
                 <table id="example1" class=" table table-bordered table-striped">
                     <caption>Ultima modificación en asignaciones: {{ $ultima_asignacion }}</caption>
                     <thead>
+                        <tr>
+                            <td><b>Nombres</b></td>
+                            <td><b>Apellidos</b></td>
+                            <td><b>Documento</b></td>
+                            <td><b>Codigo</b></td>
+                            <td><b>Cohorte</b></td>
+                            <td><b>Acompañante</b></td>
+                            <td><b>Acciones</b></td>
+                        </tr>
+                    </thead>
+                    <thead>
                         <td>
                             <input type="text" class="form-control filter" placeholder="Search" data-column="0">
                         </td>
@@ -31,19 +42,6 @@
                         </td>
                         <td></td>
                     </thead>
-                    <thead>
-                        <tr>
-                            <td>Nombres</td>
-                            <td>Apellidos</td>
-                            <td>Documento</td>
-                            <td>Codigo</td>
-                            <td>Cohorte</td>
-                            <td>Acompañante</td>
-                            <td>Acciones</td>
-                        </tr>
-                    </thead>
-                    
-
                 </table>
             </div>
         </div>

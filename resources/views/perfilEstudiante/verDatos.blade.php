@@ -822,6 +822,7 @@
 					    <th>SIMULACRO 1</th>
 					    <th>SIMULACRO 2</th>
 					    <th>ICFES SALIDA</th>
+                        <th>TOTAL SIMULACROS</th>
 					</thead>
 					<tfoot>
 						<th>TOTAL</th>
@@ -829,6 +830,7 @@
 						<th>{{$t1}}</th>
 						<th>{{$t2}}</th>
 						<th>--</th>
+                        <th>{{$totalSimulacros}}</th>
 					</tfoot>
 					
 				</table>
@@ -1375,6 +1377,12 @@
                 data: null,
                 render:function(data, type, row, meta){
                      return "--"
+                }
+            },
+            {
+                data: null,
+                render:function(data, type, row, meta){
+                     return ""
                 }
             },
             

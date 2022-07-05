@@ -110,7 +110,7 @@ class AsistenciasController extends Controller
             $contador=0;
 
             foreach($curso->sesiones as $sesion){
-                $sesion = AttendanceStudent::where('session_id',$sesion->session_id)->where('grade',['P',['R']])->where('id_moodle',$this->id_moodle)->exists();
+                $sesion = AttendanceStudent::where('session_id',$sesion->session_id)->where('grade',['P','R'])->where('id_moodle',$this->id_moodle)->exists();
                 if($sesion){
                     $contador++;
                 }
@@ -132,7 +132,7 @@ class AsistenciasController extends Controller
         $this->curso = CourseMoodle::select('fullname')->where('attendance_id',$attendance_id)->firstOrfail();
         //dd($this->curso);
         $sesiones->map(function($sesion){
-                $sesion->asistio = AttendanceStudent::where('id_moodle',$this->id_moodle)->where('session_id',$sesion->session_id)->where('grade',['P',['R']])->exists();
+                $sesion->asistio = AttendanceStudent::where('id_moodle',$this->id_moodle)->where('session_id',$sesion->session_id)->where('grade',['P','R'])->exists();
                 $sesion->curso = $this->curso->fullname;
         });
 
@@ -164,7 +164,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -214,7 +214,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -264,7 +264,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -314,7 +314,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -364,7 +364,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -414,7 +414,7 @@ class AsistenciasController extends Controller
                     if($sesiones_moodle){
                         $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
                         //dd($moodle->session_id, $this->id_moodle);
-                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->exists();
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
                         //dump($asistencia);
                         if($moodle->lasttaken != null){
                             $sesion->calificada = "SI";
@@ -439,11 +439,60 @@ class AsistenciasController extends Controller
                 });
                 return $sesiones;
                 break;                   
+            case '7':
+                $estudiante =perfilEstudiante::findOrFail($id_student);
+                $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();
+                $nombre = explode("-",$course_moodle->fullname)[0];
+                //dd($course_moodle->fullname);
+                $cohort = $estudiante->studentGroup->group->cohort->id;
+                //dd($cohort);
+                $curso = Course::select('id','name')->where('name',$nombre)->where('id_cohort',$cohort)->firstOrfail();
+                $this->course = $curso->name;
+                $this->grupo_linea = $estudiante->studentGroup->group->name." ".$estudiante->studentGroup->group->cohort->name;
+                $fecha_inicio = new Carbon('first day of july 2022');
+                $fecha_fin = new Carbon('first day of August 2022');
+                //dd($fecha_actual->format('y-m-d'));
+                $sesiones = Session::select('date_session')->where('date_session','>=',$fecha_inicio)->where('date_session','<=',$fecha_fin)->where('id_group',$course_moodle->group_id)->where('id_course',$curso->id)->get();
+                $this->attendance_id = $course_moodle->attendance_id;
+                $this->id_moodle = $estudiante->id_moodle;
+                $sesiones->map(function($sesion){
+                    $sesiones_moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->exists();
+                    $estudiante = perfilEstudiante::select('name','lastname')->where('id_moodle',$this->id_moodle)->firstOrfail();
+                    $sesion->estudiante = $estudiante->name." ".$estudiante->lastname;
+                    $sesion->curso = $this->course;
+                    $sesion->grupo_linea = $this->grupo_linea;
+                    if($sesiones_moodle){
+                        $moodle = SessionCourse::where('attendance_id',$this->attendance_id)->where('sessdate',$sesion->date_session)->firstOrfail();
+                        //dd($moodle->session_id, $this->id_moodle);
+                        $asistencia = AttendanceStudent::where('session_id',intval($moodle->session_id))->where('id_moodle',intval($this->id_moodle))->where('grade',['P','R'])->exists();
+                        //dump($asistencia);
+                        if($moodle->lasttaken != null){
+                            $sesion->calificada = "SI";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }    
+                        }else {
+                            //dump($asistencia,$moodle->lasttaken);
+                            $sesion->calificada = "NO";
+                            if($asistencia == true){
+                                $sesion->asistio = "SI";
+                            }else{
+                                $sesion->asistio = "NO";
+                            }
+                        }  
+                    }else{
+                        $sesion->asistio = "NO";
+                        $sesion->calificada = "NO";
+                    }
+                });
+                return $sesiones;
+                break;                  
             default:
                 ECHO "ERROR MES...";
                 break;
-        }
-        
+        }     
     }
     
     public function cargar_asistencias(Request $request){

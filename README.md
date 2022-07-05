@@ -75,7 +75,7 @@ Paso 7: Instalar la carpeta vendor en el proyecto mediante el comando "composer 
 Paso 8: Actualizar las librerias mediante el comando "composer update"
 Paso 9: Correr el proyecto
 
-## Instrucciones de instalacion del proyecto en el servidor
+
 Paso 1: Realizar las siguentes configuraciones en nuestro proyecto
     -   Modificar el archivo .env para cambiar el estado de debug a false y establecer el usuario y la contraseña para acceder a la base de datos
     -   En la carpeta app-providers, en el archivo serviceprovider, y en el registro, asignar la funcion

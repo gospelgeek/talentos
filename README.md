@@ -64,19 +64,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 >>>>>>> c84ab7b3a9b7396ac8aeb780cf4fbbc1bedc7597
 
-## Instruciones de instalacion del proyecto localmente
-Paso 1: Configurar el entorno php del servidor local sobre el cual se va trabajar
-Paso 2: Configurar el motor de base de datos sobre el cual vas a trabajar 
-Paso 3: Tener el backup copmpleto de la base de datos y hacer las configuraciones correspondientes 
-Paso 4: Gestionar la version de PHP con la cual se va a trabajar 
-Paso 5: Tener version de php actualiazda
+## Instruciones de instalacion del proyecto
+Paso 1: Contar con un servidor local (laragon o Xampp)
+Paso 2: Configurar el servidor con la version de php a trabajar(7.4.19) 
+Paso 3: Configurar el motor de base de datos, crear base de datos "talentos_update" 
+Paso 4: Importar el backup de la base de datos descargada del servidor principal
 Paso 6: Descargar de git el repositorio del proyecto
 Paso 7: Instalar la carpeta vendor en el proyecto mediante el comando "composer installer"
 Paso 8: Actualizar las librerias mediante el comando "composer update"
-Paso 9: Correr el proyecto
+Paso 9: Correr el proyecto mediante su servidor local
 
-
-Paso 1: Realizar las siguentes configuraciones en nuestro proyecto
+Paso 10: Realizar las siguentes configuraciones en nuestro proyecto
     -   Modificar el archivo .env para cambiar el estado de debug a false y establecer el usuario y la contraseña para acceder a la base de datos
     -   En la carpeta app-providers, en el archivo serviceprovider, y en el registro, asignar la funcion
             $this->app->bind('path.public',function(){
@@ -85,5 +83,5 @@ Paso 1: Realizar las siguentes configuraciones en nuestro proyecto
     -   En la carpeta public modificar el archivo index.php, modificando la ruta de los archivos por la ruta en la que va a quedar en el seever
     -   Ahora una vez subidos los archivos al servidor, copiar la carpera public y pegar todo lo que hay dentro de ella en public_html
     
-Paso 2: Configurar el servidor sobre el cual se va a trabajar(PHP, Base de datos, Credenciales de acceso, Metodo para subir el proyecto) 
-Paso 3: Importar el backup completo de la base de datos
+Paso 11: Configurar el servidor sobre el cual se va a trabajar(version 7.4.19 de PHP, Base de datos(talentos_update), Credenciales de acceso, Metodo para subir el proyecto(sea asociado a git o sea como lo permita el servidor)) 
+Paso 12: Importar el backup completo de la base de datos

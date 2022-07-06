@@ -26,6 +26,7 @@
                             <td><b>Tel.</b></td>
                             <td><b>Grupo</b></td>
                             <td><b>Cohorte</b></td>
+                            <td><b>Camb. Linea</b></td>
                             <td><b>Estado</b></td>
                             <td><b>Aceptación</b></td>
                             <td><b>Fecha Aceptación</b></td>
@@ -39,7 +40,6 @@
                             <td><b>Registro-ICFES</b></td>
                             <td><b>Presentó-ICFES</b></td>
                             <td><b>URL Prestamo</b></td>
-                            <td><b>Camb. Linea</b></td>
                             <td class="prfsnal"><b>Prof. Acomp.</b></td>
                             <td class="mtvo"><b>Motivo</b></td>
                             <td class="fcha"><b>Fecha</b></td>
@@ -85,6 +85,17 @@
                 {data: 'cellphone'},
                 {data: 'grupo'},
                 {data: 'cohorte'},
+                {data: 'cambio_linea', render:function(data, type, row, meta){
+                        if(data != null){
+                            if(data == 1){
+                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            }
+                        }else{
+                            return null;
+                        }
+                    }
+                },
                 {data: 'estado'},
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
 
@@ -216,17 +227,6 @@
                         if(data !== null){
                             var url = '<a href="'+data+'" target="blank">ENLACE URL</a>';
                             return url;    
-                        }else{
-                            return null;
-                        }
-                    }
-                },
-                {data: 'cambio_linea', render:function(data, type, row, meta){
-                        if(data != null){
-                            if(data == 1){
-                                var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
-                                return si;
-                            }
                         }else{
                             return null;
                         }

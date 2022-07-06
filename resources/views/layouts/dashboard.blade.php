@@ -231,7 +231,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
                 Reporte socioeducativo</a>
               </div>
-          </li>     
+          </li>
+          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="" class="dropdown-item">Sesiones</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',3)}}">Linea 3</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
@@ -276,14 +290,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                       </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Academico
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                          <a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a>
-                          <a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a>
-                        </div>
-                      </li>
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="" class="dropdown-item">Sesiones</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',3)}}">Linea 3</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
                         
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
@@ -317,14 +336,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
           </li> 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Academico
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                   <a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a>
-                   <a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a>
-                </div>
-             </li>
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="" class="dropdown-item">Sesiones</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>
+                                  <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',3)}}">Linea 3</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
 
         </ul>
         @endif

@@ -311,7 +311,7 @@
           			
             	</div>
 			</div>			
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			
 		    {!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_generales'])!!}                       
             {!!Form::close()!!} 	

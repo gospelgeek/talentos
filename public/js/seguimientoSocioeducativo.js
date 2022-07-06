@@ -385,7 +385,7 @@ $(function() {
         e.preventDefault();
 
         var rol = document.getElementById('roles').value;      
-        if(rol == 1 || rol == 2){
+        if(rol == 1 || rol == 2 || rol == 6){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -492,7 +492,7 @@ $(function() {
       $('.ver_seguimiento').click(function(e) {
         e.preventDefault();
         var rol = document.getElementById('roles').value;
-        if(rol == 1 || rol == 2){
+        if(rol == 1 || rol == 2 || rol == 6){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -546,7 +546,7 @@ $(function() {
       $('.boton_delete_seguimiento').click(function(e) {       
         e.preventDefault();
         var rol = document.getElementById('roles').value;
-        if(rol == 1 || rol == 2){
+        if(rol == 1 || rol == 2 || rol == 6){
             var row = $(this).parents('tr');
             var id = row.data('id');
             var form = $('#form-delete');

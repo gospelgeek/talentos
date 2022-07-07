@@ -42,6 +42,7 @@ class AsistenciasController extends Controller
     }
     public function reporte_asistencias_programadas(){
         $grupos = Group::all()->where('name','!=',"TEMPORAL");
+        //dd($grupos);
         $collection;
         $contador=0;
         foreach($grupos as $grupo){
@@ -73,10 +74,13 @@ class AsistenciasController extends Controller
                         break;
                 }
                 //dump($fullname);
-                $course_BD = Course::select('id')->where('name',$fullname[0])->where('id_cohort',$fullname[3])->firstOrfail();
+                $course_BD = Course::select('id')->where('name',$fullname[0])->where('id_cohort',$fullname[3])->exists();
                 //dump($course_BD->id);
-                $programadas = Session::where('id_group',$grupo->id)->where('id_course',$course_BD->id)->where('date_session','<=',$fecha)->count();
+                if($course_BD){
+                $course_BD = Course::select('id')->where('name',$fullname[0])->where('id_cohort',$fullname[3])->firstOrfail();
 
+                    $programadas = Session::where('id_group',$grupo->id)->where('id_course',$course_BD->id)->where('date_session','<=',$fecha)->count();
+                //dump($programadas,$fullname[0]);
                 $collection[$contador] = array('asignatura'=>$fullname[0],
                                           'grupo'=>$grupo->name,
                                           'linea'=>$linea,
@@ -84,12 +88,16 @@ class AsistenciasController extends Controller
                                           'calificadas'=>$calificadas,   
                                             );
                 $contador++;
+                }
+                
             }
             
             
 
             //dd($collection);
         };
+        //dd("é");
+        //dd($collection);
         $export = new ReporteAsistencias([$collection]);
         $fechaexcel = Carbon::now();
 

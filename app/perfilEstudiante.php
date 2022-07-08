@@ -156,8 +156,7 @@ class perfilEstudiante extends Model
             INNER JOIN formalizations on formalizations.id_student = student_profile.id
             INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND student_profile.id_state != 1
-            AND student_profile.id_state != 4
+            AND (student_profile.id_state = 2 OR student_profile.id_state = 5)
             AND assignment_students.id_user = '".Auth::user()->id."'
             ");
 
@@ -241,7 +240,7 @@ class perfilEstudiante extends Model
                 return $data;
             }else{
                 return null;
-            }        
+            }         
     }
     //
 
@@ -257,8 +256,8 @@ class perfilEstudiante extends Model
             INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
             INNER JOIN formalizations on formalizations.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND student_profile.id_state != 1
-            AND student_profile.id_state != 4");
+            AND (student_profile.id_state = 2 OR student_profile.id_state = 5)
+            ");
 
         if($data != null){
             return $data;

@@ -33,21 +33,50 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_completa_export')}}">EXPORTAR SÁBANA COMPLETA</a>
             </div>
         </div>
+        <div class="tabla_resumen btn-group" style="float:right;">
+            <div class="col-xs-6 col-md-12 col-sm-6">
+                <label>Por estado</label>&nbsp;<input type="radio" name="check" value="SI" id="por_estado">&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>Por clasificación</label>&nbsp;<input type="radio" name="check" value="SI" id="por_clasificacion">&nbsp;
+                <table id="estado_por" class="table_estado table-bordered table-striped">
+                    <thead>
+                        <tr id="encabezado">
+                            <td></td>
+                            <td><b>Activo</b></td>
+                            <td><b>Deserta</b></td>
+                            <td><b>Desiste</b></td>
+                            <td><b>Total</b></td>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="clasificacion_por" class="table_clasisicacion table-bordered table-striped">
+                    <thead>
+                        <tr id="encabezado">
+                            <td></td>
+                            <td><b>Admitidos</b></td>
+                            <td><b>Activos</b></td>
+                            <td><b>Inactivos</b></td>
+                            <td><b>Total</b></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
         <!--<div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR SÁBANA SECRETARÍA</a>
             </div>
         </div>-->
+        <br>
         <div class="btn-group">
-            <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
+            <div class="filtroCohortes">
                 <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 2</label>&nbsp;<input type="checkbox" name="check" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">
             </div>
         </div>
+        <br>
         <div class="btn-group">
             <div class="inactivos_activos_student">                  
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="TODOS" id="todos" checked>&nbsp;&nbsp;
                 <label>ADMITIDOS</label>&nbsp;<input type="radio" name="filtro" value="ADMITIDOS" id="admitidos">&nbsp;&nbsp;
                 <label>SÓLO ACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="INACTIVO" id="activos">&nbsp;&nbsp;
@@ -96,6 +125,68 @@
              
         
        });
+       
+       document.getElementById('por_estado').checked = true;
+        if(por_estado){
+            $('#estado_por').show();
+            $('#clasificacion_por').hide();
+        }
+        $('.tabla_resumen').on('change', function() {
+            var por_estado = $('#por_estado').is(":checked");
+            var por_clasificacion = $('#por_clasificacion').is(":checked");
+            if(por_estado){
+                $('#estado_por').show();
+                $('#clasificacion_por').hide();
+            }else if (!por_estado) {
+                $('#clasificacion_por').show();
+                $('#estado_por').hide();
+            }
+        });
+
+        var table_estados = $("#estado_por").DataTable({
+            "ajax":{
+                "method": "GET",
+                "url": "{{route('resumen_tabla_estados')}}"
+            },
+            "columns": [
+                {data: 'linea', render:function(data, type, row, meta) {
+                        return '<td><b>'+data+'</b></td>'
+                    }
+                },
+                {data: 'activos'},
+                {data: 'desertores'},
+                {data: 'desestimientos'},
+                {data: null, render:function(data, type, row, meta){
+                        var total = data.activos + data.desertores + data.desestimientos
+                        return total;
+                    }
+                }
+            ],
+            "bPaginate": false, "searching": false, "info": false,
+
+        });
+
+        var table_clasificacion = $("#clasificacion_por").DataTable({
+            "ajax":{
+                "method": "GET",
+                "url": "{{route('resumen_tabla_clasificacion')}}"
+            },
+            "columns": [
+                {data: 'linea', render:function(data, type, row, meta) {
+                        return '<td><b>'+data+'</b></td>'
+                    }
+                },
+                {data: 'admitidos'},
+                {data: 'activos'},
+                {data: 'inactivos'},
+                {data: null, render:function(data, type, row, meta){
+                        var total = data.admitidos + data.activos + data.inactivos
+                        return total;
+                    }
+                }
+            ],
+            "bPaginate": false, "searching": false, "info": false,
+        });
 
        var table = $("#example1").DataTable({
             

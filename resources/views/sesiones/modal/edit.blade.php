@@ -20,19 +20,19 @@
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                          {!!Form::label('cohorte','Linea: ')!!}
+                          {!!Form::label('cohorte','Linea: *')!!}
                           {!!Form::select('cohorte', $cohorte, null,['id'=>'cohorT_e','class'=>'form-control','required', 'placeholder'=>'Seleccione una opción'])!!} 
                         </div>
                         <div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                          {!!Form::label('id_course','Asignatura: ')!!}
+                          {!!Form::label('id_course','Asignatura: *')!!}
                           {!!Form::select('id_course', $asignaturas, null,['id'=>'asigto_Sesion','class'=>'form-control','required','placeholder'=>'Pendiente'])!!}
                         </div>
                         <div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                          {!!Form::label('id_group','Grupo: ')!!}
+                          {!!Form::label('id_group','Grupo: *')!!}
                           {!!Form::select('id_group', $grupos, null,['id'=>'grupoto_Sesion','class'=>'form-control','required','placeholder'=>'Pendiente'])!!}
                         </div>
                         <div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                          {!!Form::label('date_session','Fecha: ')!!}
+                          {!!Form::label('date_session','Fecha: *')!!}
                           {!!Form::date('date_session',null,['id'=>'dateSesion','class'=>'form-control','placeholder'=>'Fecha'])!!} 
                         </div>
                       </div>

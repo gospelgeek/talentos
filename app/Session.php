@@ -25,12 +25,13 @@ class Session extends Model
 
     //consultas sesiones
     public static function sesiones_linea1(){
-        $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
+        $data = DB::select("select sessions.id, sessions.id_group, sessions.id_course, sessions.date_session, cohorts.id as idcohorte, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group BETWEEN 1 AND 40");
+            WHERE sessions.id_group BETWEEN 1 AND 40
+            AND sessions.deleted_at IS null");
 
         if($data != null) {
             return $data;
@@ -41,12 +42,13 @@ class Session extends Model
     }
 
     public static function sesiones_linea2(){
-        $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
+        $data = DB::select("select sessions.id, sessions.id_group, sessions.id_course, sessions.date_session, cohorts.id as idcohorte, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group BETWEEN 1004 AND 1044");
+            WHERE sessions.id_group BETWEEN 1004 AND 1044
+            AND sessions.deleted_at IS null");
 
         if($data != null) {
             return $data;
@@ -57,12 +59,13 @@ class Session extends Model
     }
 
     public static function sesiones_linea3(){
-        $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
+        $data = DB::select("select sessions.id, sessions.id_group, sessions.id_course, sessions.date_session, cohorts.id as idcohorte, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group BETWEEN 50 AND 89");
+            WHERE sessions.id_group BETWEEN 50 AND 89
+            AND sessions.deleted_at IS null");
 
         if($data != null) {
             return $data;
@@ -73,12 +76,13 @@ class Session extends Model
     }
 
     public static function grupos($grupo){
-        $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
+        $data = DB::select("select sessions.id, sessions.id_group, sessions.id_course, sessions.date_session, cohorts.id as idcohorte, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN courses ON courses.id = sessions.id_course
-            WHERE sessions.id_group = '".$grupo."'");
+            WHERE sessions.id_group = '".$grupo."'
+            AND sessions.deleted_at IS null");
 
         if($data != null) {
             return $data;
@@ -89,13 +93,14 @@ class Session extends Model
     }
 
     public static function general($grupo, $curso){
-        $data = DB::select("select sessions.id_group, sessions.id_course, sessions.date_session, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
+        $data = DB::select("select sessions.id, sessions.id_group, sessions.id_course, sessions.date_session, cohorts.id as idcohorte, cohorts.name as linea, groups.name as grupo, courses.name as asignatura
             FROM sessions
             INNER JOIN groups ON groups.id = sessions.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN courses ON courses.id = sessions.id_course
             WHERE sessions.id_group = '".$grupo."'
-            AND sessions.id_course = '".$curso."'"
+            AND sessions.id_course = '".$curso."'
+            AND sessions.deleted_at IS null"
             );
 
         if($data != null) {

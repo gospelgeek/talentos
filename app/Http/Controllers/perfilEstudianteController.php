@@ -1500,5 +1500,182 @@ class perfilEstudianteController extends Controller
         return $i;
     }
     
-    
+    public function tabla_estados_resumen(){
+        
+        $activos_linea1 = perfilEstudiante::activos_linea1();
+        $desertores_linea1 = perfilEstudiante::desertados_linea1();
+        $desestimientos_linea1 = perfilEstudiante::desestimientos_linea1();
+
+        $activos_linea2 = perfilEstudiante::activos_linea2();
+        $desertores_linea2 = perfilEstudiante::desertados_linea2();
+        $desestimientos_linea2 = perfilEstudiante::desestimientos_linea2();
+
+        $activos_linea3 = perfilEstudiante::activos_linea3();
+        $desertores_linea3 = perfilEstudiante::desertados_linea3();
+        $desestimientos_linea3 = perfilEstudiante::desestimientos_linea3();
+        
+        $linea1_activos;
+        $linea1_desertores;
+        $linea1_desestimientos;
+
+        $linea2_activos;
+        $linea2_desertores;
+        $linea2_desestimientos;
+
+        $linea3_activos;
+        $linea3_desertores;
+        $linea3_desestimientos;
+
+        foreach($activos_linea1 as $activos){
+            $linea1_activos = $activos->activos;
+        }
+        foreach($desertores_linea1 as $desertores){
+            $linea1_desertores = $desertores->desertados;
+        }
+        foreach($desestimientos_linea1 as $desestimientos){
+            $linea1_desestimientos = $desestimientos->desestimientos;
+        }
+
+        foreach($activos_linea2 as $activos){
+            $linea2_activos = $activos->activos;
+        }
+        foreach($desertores_linea2 as $desertores){
+            $linea2_desertores = $desertores->desertados;
+        }
+        foreach($desestimientos_linea2 as $desestimientos){
+            $linea2_desestimientos = $desestimientos->desestimientos;
+        }
+
+        foreach($activos_linea3 as $activos){
+            $linea3_activos = $activos->activos;
+        }
+        foreach($desertores_linea3 as $desertores){
+            $linea3_desertores = $desertores->desertados;
+        }
+        foreach($desestimientos_linea3 as $desestimientos){
+            $linea3_desestimientos = $desestimientos->desestimientos;
+        }
+
+        $total_activos = $linea1_activos + $linea2_activos + $linea3_activos;
+        $total_desertados = $linea1_desertores + $linea2_desertores + $linea3_desertores;
+        $total_desestimientos = $linea1_desestimientos + $linea2_desestimientos + $linea3_desestimientos;
+        $totales = array();
+        $totales = array('linea' => 'TOTAL',
+                        'activos' => $total_activos,
+                        'desertores' => $total_desertados,
+                        'desestimientos' => $total_desestimientos);
+
+        $linea_1 = array();
+        $linea_1 = array('linea' => 'LINEA 1',
+                        'activos' => $linea1_activos,
+                        'desertores' => $linea1_desertores,
+                        'desestimientos' => $linea1_desestimientos);
+
+        $linea_2 = array();
+        $linea_2 = array('linea' => 'LINEA 2',
+                        'activos' => $linea2_activos,
+                        'desertores' => $linea2_desertores,
+                        'desestimientos' => $linea2_desestimientos);
+
+        $linea_3 = array();
+        $linea_3 = array('linea' => 'LINEA 3',
+                        'activos' => $linea3_activos,
+                        'desertores' => $linea3_desertores,
+                        'desestimientos' => $linea3_desestimientos);
+
+
+        $general = array($linea_1, $linea_2, $linea_3, $totales);
+        
+        return datatables()->of($general)->toJson();
+        
+    }
+
+    public function tabla_clasificacion_resumen(){
+
+        $admitidos_linea1 = perfilEstudiante::admitidos_linea1();
+        $activos_linea1 = perfilEstudiante::activos_linea_1();
+        $inactivos_linea1 = perfilEstudiante::inactivos_linea1();
+
+        $admitidos_linea2 = perfilEstudiante::admitidos_linea2();
+        $activos_linea2 = perfilEstudiante::activos_linea_2();
+        $inactivos_linea2 = perfilEstudiante::inactivos_linea2();
+
+        $admitidos_linea3 = perfilEstudiante::admitidos_linea3();
+        $activos_linea3 = perfilEstudiante::activos_linea_3();
+        $inactivos_linea3 = perfilEstudiante::inactivos_linea3();
+        
+        $linea1_admitidos;
+        $linea1_activos;
+        $linea1_inactivos;
+
+        $linea2_admitidos;
+        $linea2_activos;
+        $linea2_inactivos;
+
+        $linea3_admitidos;
+        $linea3_activos;
+        $linea3_inactivos;
+
+        foreach($admitidos_linea1 as $admitidos){
+            $linea1_admitidos = $admitidos->admitidos;
+        }
+        foreach($activos_linea1 as $activos){
+            $linea1_activos = $activos->activos;
+        }
+        foreach($inactivos_linea1 as $inactivos){
+            $linea1_inactivos = $inactivos->inactivos;
+        }
+
+        foreach($admitidos_linea2 as $admitidos){
+            $linea2_admitidos = $admitidos->admitidos;
+        }
+        foreach($activos_linea2 as $activos){
+            $linea2_activos = $activos->activos;
+        }
+        foreach($inactivos_linea2 as $inactivos){
+            $linea2_inactivos = $inactivos->inactivos;
+        }
+
+        foreach($admitidos_linea3 as $admitidos){
+            $linea3_admitidos = $admitidos->admitidos;
+        }
+        foreach($activos_linea3 as $activos){
+            $linea3_activos = $activos->activos;
+        }
+        foreach($inactivos_linea3 as $inactivos){
+            $linea3_inactivos = $inactivos->inactivos;
+        }
+
+        $total_admitidos = $linea1_admitidos + $linea2_admitidos + $linea3_admitidos;
+        $total_activos = $linea1_activos + $linea2_activos + $linea3_activos;
+        $total_inactivos = $linea1_inactivos + $linea2_inactivos + $linea3_inactivos;
+        $totales = array();
+        $totales = array('linea' => 'TOTAL',
+                        'admitidos' => $total_admitidos,
+                        'activos' => $total_activos,
+                        'inactivos' => $total_inactivos);
+
+        $linea_1 = array();
+        $linea_1 = array('linea' => 'LINEA1',
+                        'admitidos' => $linea1_admitidos,
+                        'activos' => $linea1_activos,
+                        'inactivos' => $linea1_inactivos);
+
+        $linea_2 = array();
+        $linea_2 = array('linea' => 'LINEA2',
+                        'admitidos' => $linea2_admitidos,
+                        'activos' => $linea2_activos,
+                        'inactivos' => $linea2_inactivos);
+
+        $linea_3 = array();
+        $linea_3 = array('linea' => 'LINEA3',
+                        'admitidos' => $linea3_admitidos,
+                        'activos' => $linea3_activos,
+                        'inactivos' => $linea3_inactivos);
+
+        
+        $general = array($linea_1, $linea_2, $linea_3, $totales);
+
+        return datatables()->of($general)->toJson();
+    }
 }

@@ -28,9 +28,11 @@
         <div class="btn-group">
             {!!link_to('#',$title = 'NUEVO REGISTRO', $attributes = ['class'=>'btn btn-primary btn-sm mt-3 mb-3 float-left abrir_modal_estudiante'],$secure = null)!!}
         </div>
+        @endif
+        @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 3 || auth()->user()->rol_id == 4 || auth()->user()->rol_id == 5 || auth()->user()->rol_id == 6)
         <div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
-                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_completa_export')}}">EXPORTAR SÁBANA COMPLETA</a>
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="{{route('sabana_completa_export')}}">EXPORTAR SÁBANA COMPLETA</a>
             </div>
         </div>
         <div class="tabla_resumen btn-group" style="float:right;">
@@ -80,117 +82,117 @@
                 <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="TODOS" id="todos" checked>&nbsp;&nbsp;
                 <label>ADMITIDOS</label>&nbsp;<input type="radio" name="filtro" value="ADMITIDOS" id="admitidos">&nbsp;&nbsp;
                 <label>SÓLO ACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="INACTIVO" id="activos">&nbsp;&nbsp;
-                <label>SÓLO INACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="ACTIVO" id="inactivos">
+                <label>SÓLO INACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="ACTIVO" id="inactivos">&nbsp;&nbsp;&nbsp;&nbsp;
+                
             </div>
         </div>
     </div>
-    @endif
-        
-
+    @endif   
     <div class="table-responsive">
-    
-     <table id="example1" class=" table table-bordered table-striped">
+     <table id="example1" class="table table-bordered table-striped">
+        <caption>Ultima modificación del estado de los estudiante: {{ $valor_ultimo }}</caption>
         
         <thead>
-
             <tr>
                 <td>Nombres</td>
                 <td>Apellidos</td>
-                <td>Nombre de Pila</td>
-                <td>Nº Documento</td>
+                <td>Tipo Doc.</td>
+                <td>Nº Doc.</td>
                 <td>Codigo</td>
                 <td>Email</td>
-                <td>Telefono</td>
-                <td>EPS</td>
-                <td>Cohorte</td>
+                <td>Tel.</td>
                 <td>Grupo</td>
+                <td>Cohorte</td>
                 <td>Clasificación</td>
                 <td>Estado</td>
+                <td>EPS</td>
                 <td id="botons" width="15%">Acciones</td>
             </tr>
-        </thead>       
+        </thead>
     </table>
+
       </div>
     </div>
     </div>
 </div>
+
 @include('perfilEstudiante.modal.createStudent')
-@push('scripts'){!!Html::script('/js/dep-mun.js')!!}
+@push('scripts')
+{!!Html::script('/js/dep-mun.js')!!}
     <!-- Page specific script -->
 <script>
-      
-      $('.inactivos_activos_student').on('change', function() {
 
-            $("#example1").DataTable().ajax.reload();
-             
-        
-       });
-       
-       document.getElementById('por_estado').checked = true;
+   
+    document.getElementById('por_estado').checked = true;
+    if(por_estado){
+        $('#estado_por').show();
+        $('#clasificacion_por').hide();
+    }
+    $('.tabla_resumen').on('change', function() {
+        var por_estado = $('#por_estado').is(":checked");
+        var por_clasificacion = $('#por_clasificacion').is(":checked");
         if(por_estado){
             $('#estado_por').show();
             $('#clasificacion_por').hide();
+        }else if (!por_estado) {
+            $('#clasificacion_por').show();
+            $('#estado_por').hide();
         }
-        $('.tabla_resumen').on('change', function() {
-            var por_estado = $('#por_estado').is(":checked");
-            var por_clasificacion = $('#por_clasificacion').is(":checked");
-            if(por_estado){
-                $('#estado_por').show();
-                $('#clasificacion_por').hide();
-            }else if (!por_estado) {
-                $('#clasificacion_por').show();
-                $('#estado_por').hide();
+        
+    });
+
+
+    var table_estados = $("#estado_por").DataTable({
+        "ajax":{
+            "method": "GET",
+            "url": "{{route('resumen_tabla_estados')}}"
+        },
+        "columns": [
+            {data: 'linea', render:function(data, type, row, meta) {
+                    return '<td><b>'+data+'</b></td>'
+                }
+            },
+            {data: 'activos'},
+            {data: 'desertores'},
+            {data: 'desestimientos'},
+            {data: null, render:function(data, type, row, meta){
+                    var total = data.activos + data.desertores + data.desestimientos
+                    return total;
+                }
             }
-        });
+        ],
+        "bPaginate": false, "searching": false, "info": false,
 
-        var table_estados = $("#estado_por").DataTable({
-            "ajax":{
-                "method": "GET",
-                "url": "{{route('resumen_tabla_estados')}}"
-            },
-            "columns": [
-                {data: 'linea', render:function(data, type, row, meta) {
-                        return '<td><b>'+data+'</b></td>'
-                    }
-                },
-                {data: 'activos'},
-                {data: 'desertores'},
-                {data: 'desestimientos'},
-                {data: null, render:function(data, type, row, meta){
-                        var total = data.activos + data.desertores + data.desestimientos
-                        return total;
-                    }
+    });
+
+    var table_clasificacion = $("#clasificacion_por").DataTable({
+        "ajax":{
+            "method": "GET",
+            "url": "{{route('resumen_tabla_clasificacion')}}"
+        },
+        "columns": [
+            {data: 'linea', render:function(data, type, row, meta) {
+                    return '<td><b>'+data+'</b></td>'
                 }
-            ],
-            "bPaginate": false, "searching": false, "info": false,
-
-        });
-
-        var table_clasificacion = $("#clasificacion_por").DataTable({
-            "ajax":{
-                "method": "GET",
-                "url": "{{route('resumen_tabla_clasificacion')}}"
             },
-            "columns": [
-                {data: 'linea', render:function(data, type, row, meta) {
-                        return '<td><b>'+data+'</b></td>'
-                    }
-                },
-                {data: 'admitidos'},
-                {data: 'activos'},
-                {data: 'inactivos'},
-                {data: null, render:function(data, type, row, meta){
-                        var total = data.admitidos + data.activos + data.inactivos
-                        return total;
-                    }
+            {data: 'admitidos'},
+            {data: 'activos'},
+            {data: 'inactivos'},
+            {data: null, render:function(data, type, row, meta){
+                    var total = data.admitidos + data.activos + data.inactivos
+                    return total;
                 }
-            ],
-            "bPaginate": false, "searching": false, "info": false,
-        });
+            }
+        ],
+        "bPaginate": false, "searching": false, "info": false,
+    });
 
-       var table = $("#example1").DataTable({
+    $(document).ready(function(){
+            
+        var table = $("#example1").DataTable({
             
             "ajax":{
+                
                 "method":"GET",
                 "url": "{{route('datos.estudiantes')}}",
                 "data": function(d){
@@ -200,16 +202,17 @@
                     d.admitidos = $('#admitidos').is(":checked");
                     d.todos = $('#todos').is(":checked");
                 },
+                   
             },
+
             "columns": [
                 {data: 'name'},
                 {data: 'lastname'},
-                {data: 'first_name', visible:false},
+                {data: 'tipodocumento'},
                 {data: 'document_number'},
                 {data: 'student_code'},
                 {data: 'email'},
                 {data: 'cellphone'},
-                {data: 'eps', visible:false},
                 {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: null, render:function(data, type, row, meta){
@@ -226,6 +229,7 @@
                     }
                 },
                 {data: 'estado'},
+                {data: 'eps', visible:false},
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -235,7 +239,7 @@
                             '<tr id="1">'+'<td">'+'<a href="ver_estudiante/'+data.id+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
                           '</div>'+                                 
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<a href="editar_estudiante/'+data.id+'" class="btn btn-block fa fa-pencil-square-o fa" title="Editar seguimiento"></a>'+
+                            '<a href="editar_estudiante/'+data.id+'" class="btn btn-block fa fa-pencil-square-o fa" title="Editar estudiante"></a>'+
                           '</div>'+
                           
                         "</div>"; 
@@ -246,12 +250,14 @@
                           "</div>"+
                         "</div>";
                     }
+
                     return mstr;
                 }
             }
                     
             ],
-            "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false, "processing": true,"serverSide": true,
+
+            "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false,"loading": false, 
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -264,10 +270,32 @@
             ]
         });
 
+        /*$('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });*/
+        $('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+    
         document.getElementById('linea_1').checked = true;
         document.getElementById('linea_2').checked = true;
         document.getElementById('linea_3').checked = true;
-
+        
 
         $('.filtroCohortes').on('change', function() {
            
@@ -281,14 +309,14 @@
                         var filtro = $('input:checkbox[id="linea_1"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                         //
                     }else if (checkLinea2) {
                         //filtros basicos por columna con un solo valor
-                        table.columns(10).search('LINEA 2'); 
+                        table.columns(8).search('LINEA 2'); 
                         //       
                     }else if (checkLinea3) {
-                        table.columns(9).search('LINEA 3');
+                        table.columns(8).search('LINEA 3');
                     }
                     table.draw();
                         
@@ -298,11 +326,11 @@
                         var filtro = $('input:checkbox[id="linea_2"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(9).search('LINEA 1');
+                        table.columns(8).search('LINEA 1');
                     }else if(checkLinea3){
-                        table.columns(9).search('LINEA 3');
+                        table.columns(8).search('LINEA 3');
                     }
                     table.draw();
                 }
@@ -311,11 +339,11 @@
                         var filtro = $('input:checkbox[id="linea_3"]').map(function() {
                             return this.value;
                         }).get().join('|');
-                        table.column(9).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+                        table.column(8).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
                     }else if(checkLinea1){
-                        table.columns(9).search('LINEA 1');
+                        table.columns(8).search('LINEA 1');
                     }else if(checkLinea2){
-                        table.columns(9).search('LINEA 2');
+                        table.columns(8).search('LINEA 2');
                     }
                     table.draw();
                 }
@@ -324,15 +352,16 @@
                     var offices = $('input:checkbox[name="check"]:checked').map(function() {
                         return this.value;
                     }).get().join('|');
-                    table.column(9).search(offices, true, false, false).draw(false);
+                    table.column(8).search(offices, true, false, false).draw(false);
                     //
                 }
         });
+    });
+
+        
 
        
-    
-
-                
+             
 </script>
 
  

@@ -624,7 +624,7 @@ $(function() {
     //
 
     //mostrar registros de apoyos economicos en la tabla
-      let array = document.getElementById('apoyos').value;
+      //let array = document.getElementById('apoyos').value;
       const datos_json = JSON.parse(array);
       var rol = document.getElementById('rol_login').value;
       

@@ -76,6 +76,11 @@ Route::get('inasistencias', 'perfilEstudianteController@json_inasistencias')->na
 //Route::get('asistencias/estudiante/{id}', 'perfilEstudianteController@ver_Asistencias')->name('ver_asistencias');
 Route::get('asistencias/reporte_general', 'perfilEstudianteController@excel_asistencias')->name('crear_excel_json');
 
+//ruta para elresumende la tabla
+Route::get('resumen_tabla_estados', 'perfilEstudianteController@tabla_estados_resumen')->name('resumen_tabla_estados');
+Route::get('resumen_tabla_clasificacion', 'perfilEstudianteController@tabla_clasificacion_resumen')->name('resumen_tabla_clasificacion');
+//
+
 //RUTAS DE AJAX
 //ruta estado
 Route::put('updateestado/{id}', 'perfilEstudianteController@updateEstado')->name('updateestado');

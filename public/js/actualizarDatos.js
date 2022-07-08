@@ -625,7 +625,7 @@ $(function() {
 
     //mostrar registros de apoyos economicos en la tabla
       //let array = document.getElementById('apoyos').value;
-      const datos_json = JSON.parse(array);
+     /* const datos_json = JSON.parse(array);
       var rol = document.getElementById('rol_login').value;
       
       $.each(datos_json, function(index, value) {
@@ -636,7 +636,7 @@ $(function() {
           //garantizo que la zona horaria no me reste un dia en la fercha
           fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
           const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
-          //*/
+          //
           if(rol == 1 || rol == 4){
 
             $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
@@ -667,7 +667,7 @@ $(function() {
                     "</tr>");
           }
             
-      });
+      });*/
       //
 
       //editar registro de apoyo economico

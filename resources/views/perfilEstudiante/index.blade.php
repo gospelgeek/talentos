@@ -156,7 +156,8 @@
             {data: 'desertores'},
             {data: 'desestimientos'},
             {data: null, render:function(data, type, row, meta){
-                    var total = data.activos + data.desertores + data.desestimientos
+                    var total = 0
+                    total = data.activos + data.desertores + data.desestimientos
                     return total;
                 }
             }

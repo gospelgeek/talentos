@@ -155,12 +155,7 @@
             {data: 'activos'},
             {data: 'desertores'},
             {data: 'desestimientos'},
-            {data: null, render:function(data, type, row, meta){
-                    var total = 0
-                    total = data.activos + data.desertores + data.desestimientos
-                    return total;
-                }
-            }
+            {data: 'total'},
         ],
         "bPaginate": false, "searching": false, "info": false,
 
@@ -179,11 +174,7 @@
             {data: 'admitidos'},
             {data: 'activos'},
             {data: 'inactivos'},
-            {data: null, render:function(data, type, row, meta){
-                    var total = data.admitidos + data.activos + data.inactivos
-                    return total;
-                }
-            }
+            {data: 'total'}
         ],
         "bPaginate": false, "searching": false, "info": false,
     });

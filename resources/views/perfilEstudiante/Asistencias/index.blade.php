@@ -13,7 +13,7 @@
     <div class="card">        
     	<div class="card-body">
             <div class="row">
-                <a class="btn btn-primary" href="/reporte_asistencias_programadas">EXPORTAR REPORTE ASISTENCIAS PROGRAMADAS</a>
+                <a class="btn btn-primary" href="/reporte_asistencias_programadas">EXPORTAR REPORTE ASISTENCIAS PROGRAMADAS</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div  class="d-flex justify-content-center">
                         <div id="carga" style='display:none' class="spinner-border spinner-border-lg" role="status"></div>                    
                 </div>

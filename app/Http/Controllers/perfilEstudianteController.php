@@ -2462,21 +2462,21 @@ class perfilEstudianteController extends Controller
         }
 
         $linea_1 = array();
-        $linea_1 = array('linea' => 'LINEA 1',
+        $linea_1 = array('linea' => 'LINEA1',
                         'activos' => $linea1_activos,
                         'desertores' => $linea1_desertores,
                         'desestimientos' => $linea1_desestimientos,
                         'total' => $linea1_activos + $linea1_desertores + $linea1_desestimientos);
 
         $linea_2 = array();
-        $linea_2 = array('linea' => 'LINEA 2',
+        $linea_2 = array('linea' => 'LINEA2',
                         'activos' => $linea2_activos,
                         'desertores' => $linea2_desertores,
                         'desestimientos' => $linea2_desestimientos,
                         'total' => $linea2_activos + $linea2_desertores + $linea2_desestimientos);
 
         $linea_3 = array();
-        $linea_3 = array('linea' => 'LINEA 3',
+        $linea_3 = array('linea' => 'LINEA3',
                         'activos' => $linea3_activos,
                         'desertores' => $linea3_desertores,
                         'desestimientos' => $linea3_desestimientos,

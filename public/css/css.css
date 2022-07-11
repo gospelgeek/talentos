@@ -13,7 +13,15 @@
   width: 900px;
 
 }
+.table_estado{
+	width: 150%;
+	height: 10px;
+}
 
+.table_clasisicacion{
+	width: 150%;
+	height: 10px;
+}
 body{
 	background: #ecf0f1;
 }

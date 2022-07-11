@@ -347,9 +347,6 @@ class perfilEstudianteController extends Controller
         return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'apoyo_economico'));
     }
 
-
-
-
     public function verDatosSocieconomicos($id)
     {
         //dd($id_student);
@@ -364,14 +361,9 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosSocioeconomicos($id, Request $request)
     {
-
-    
         $socio = SocioeconomicData::findOrFail($id);
         $socioOld = SocioeconomicData::findOrFail($id);
     
-
-        
-        
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
 
         if ($request->ajax()) {
@@ -394,6 +386,10 @@ class perfilEstudianteController extends Controller
             $socio->id_disability           = $request['id_disability'];
             $socio->id_ethnicity            = $request['id_ethnicity'];
             $socio->eps_name                = $request['eps_name'];
+            $socio->url_health_regime       = $request['url_health_regime'];
+            $socio->url_sisben_category     = $request['url_sisben_category'];
+            $socio->url_social_conditions   = $request['url_social_conditions'];
+            $socio->url_ethnicity           = $request['url_ethnicity'];
 
             $socio->save();
 
@@ -485,6 +481,22 @@ class perfilEstudianteController extends Controller
                 $old[] = array('eps' => $socioOld->eps_name);
                 $new[] = array('eps' => $socio->eps_name);
             }
+            if($socioOld->url_health_regime != $socio->url_health_regime){
+                $old[] = array('soporte_regimen_salud' => $socioOld->url_health_regime);
+                $new[] = array('soporte_regimen_salud' => $socio->url_health_regime);
+            }
+            if($socioOld->url_sisben_category != $socio->url_sisben_category){
+                $old[] = array('soporte_categoria_sisben' => $socioOld->url_sisben_category);
+                $new[] = array('soporte_categoria_sisben' => $socio->url_sisben_category);
+            }
+            if($socioOld->url_social_conditions != $socio->url_social_conditions){
+                $old[] = array('soporte_condicion_social' => $socioOld->url_social_conditions);
+                $new[] = array('soporte_condicion_social' => $socio->url_social_conditions);
+            }
+            if($socioOld->url_ethnicity != $socio->url_ethnicity){
+                $old[] = array('soporte_etnia' => $socioOld->url_ethnicity);
+                $new[] = array('soporte_etnia' => $socio->url_ethnicity);
+            }
 
             $guardarOld = json_encode($old);
             $guardarNew = json_encode($new);
@@ -523,7 +535,8 @@ class perfilEstudianteController extends Controller
             $acade->icfes_date          = $request['icfes_date'];
             $acade->snp_register        = $request['snp_register'];
             $acade->icfes_score         = $request['icfes_score'];
-
+            $acade->url_academic_support = $request['url_academic_support'];
+            
             $acade->save();
 
             $ip = User::getRealIP();
@@ -566,6 +579,10 @@ class perfilEstudianteController extends Controller
             if($acadeOld->icfes_score != $acade->icfes_score){
                 $old[] = array('puntaje icfes' => $acadeOld->icfes_score);
                 $new[] = array('puntaje icfes' => $acade->icfes_score);
+            }
+            if($acadeOld->url_academic_support != $acade->url_academic_support){
+                $old[] = array('Soporte_academico' => $acadeOld->url_academic_support);
+                $new[] = array('Soporte_academico' => $acade->url_academic_support);
             }
 
             $guardarOld = json_encode($old);
@@ -699,6 +716,7 @@ class perfilEstudianteController extends Controller
             $data->emergency_contact_name   = $request['emergency_contact_name'];
             $data->relationship             = $request['relationship'];
             $data->emergency_contact        = $request['emergency_contact'];
+            $data->url_document_type        = $request['url_document_type'];
 
             $data->save();
 
@@ -793,6 +811,10 @@ class perfilEstudianteController extends Controller
             if($dataOld->emergency_contact != $data->emergency_contact){
                 $old[] = array('Contacto emergencia' => $dataOld->emergency_contact);
                 $new[] = array('Contacto emergencia' => $data->emergency_contact);
+            }
+            if($dataOld->url_document_type != $data->url_document_type){
+                $old[] = array('soporte_documento' => $dataOld->url_document_type);
+                $new[] = array('soporte_documento' => $data->url_document_type);
             }
 
             $guardarOld = json_encode($old);

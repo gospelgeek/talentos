@@ -43,6 +43,7 @@
         <br>
         <div class="btn-group">
             <div class="filtroCohortes">
+                <label>Seleccione la(s) linea(s) deseadas:</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 2</label>&nbsp;<input type="checkbox" name="check" value="LINEA 2" id="linea_2">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">
@@ -50,7 +51,8 @@
         </div>
         <br>
         <div class="btn-group">
-            <div class="inactivos_activos_student">                  
+            <div class="inactivos_activos_student">    
+                <label>Filtrar por:</label>&nbsp;&nbsp;&nbsp;
                 <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="TODOS" id="todos" checked>&nbsp;&nbsp;
                 <label>ADMITIDOS</label>&nbsp;<input type="radio" name="filtro" value="ADMITIDOS" id="admitidos">&nbsp;&nbsp;
                 <label>SÓLO ACTIVOS</label>&nbsp;<input type="radio" name="filtro" value="INACTIVO" id="activos">&nbsp;&nbsp;

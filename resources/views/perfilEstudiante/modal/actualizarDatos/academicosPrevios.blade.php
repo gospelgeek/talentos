@@ -34,6 +34,10 @@
                   </div>
                   <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('url_academic_support','Soporte academico: ')!!}
+                      {!!Form::text('url_academic_support',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->url_academic_support : null,['id'=>'soporteAcademico', 'class'=>'form-control','placeholder'=>'Soporte academico'])!!}   
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('icfes_date','Fecha icfes')!!}
                       {!!Form::date('fechaIcfes',$verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_date : null,['id'=>'fechaIcfes','class'=>'form-control','placeholder'=>'Fecha icfes'])!!}
                       </div>  
@@ -41,12 +45,13 @@
                       {!!Form::label('snp_register','Registro SNP: ')!!}
                       {!!Form::text('snpRegistro', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->snp_register : null,['id'=>'snpRegistro','class'=>'form-control','required','placeholder'=>'Registro SNP'])!!}  
                       </div>
+                    </div>
+                    <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('icfes_score','Puntaje ICFES: ')!!}
                       {!!Form::text('icfesPuntaje', $verDatosPerfil->previousacademicdata ? $verDatosPerfil->previousacademicdata->icfes_score : null,['id'=>'icfesPuntaje','class'=>'form-control','required','placeholder'=>'Puntaje icfes'])!!}  
                       </div>
                     </div>
-                    
                   </div>
               </div>
 

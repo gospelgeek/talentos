@@ -303,6 +303,314 @@ class perfilEstudiante extends Model
         }
     }
     //
+    //consulta para tabla resumen por estado
+    public static function activos_linea1(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as activos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 1
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desertados_linea1(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desertados
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 1
+                    AND student_profile.id_state = 3
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desestimientos_linea1(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desestimientos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 1
+                    AND student_profile.id_state = 5
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function activos_linea2(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as activos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 2
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desertados_linea2(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desertados
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 2
+                    AND student_profile.id_state = 3
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desestimientos_linea2(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desestimientos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 2
+                    AND student_profile.id_state = 5
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function activos_linea3(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as activos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 3
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desertados_linea3(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desertados
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 3
+                    AND student_profile.id_state = 3
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function desestimientos_linea3(){
+        $data = DB::select("
+                    select COUNT(student_profile.id) as desestimientos
+                    FROM student_profile, student_groups, groups, cohorts
+                    WHERE student_groups.id_student = student_profile.id
+                    AND student_groups.id_group = groups.id
+                    AND groups.id_cohort = cohorts.id
+                    AND cohorts.id = 3
+                    AND student_profile.id_state = 5
+                    AND student_groups.deleted_at IS null");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
+
+    //consultas tabla resumen por calificacion
+    public static function admitidos_linea1(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as admitidos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 1
+                        AND student_groups.deleted_at is null
+                        AND formalizations.acceptance_v1 IS null 
+                        AND formalizations.acceptance_v2 IS null
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function admitidos_linea2(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as admitidos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 2
+                        AND student_groups.deleted_at is null
+                        AND formalizations.acceptance_v1 IS null 
+                        AND formalizations.acceptance_v2 IS null
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function admitidos_linea3(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as admitidos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 3
+                        AND student_groups.deleted_at is null
+                        AND formalizations.acceptance_v1 IS null 
+                        AND formalizations.acceptance_v2 IS null
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function activos_linea_1(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as activos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 1
+                        AND student_groups.deleted_at is null
+                        AND (formalizations.acceptance_v1 IS NOT null OR formalizations.acceptance_v2 IS NOT null)
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function activos_linea_2(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as activos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 2
+                        AND student_groups.deleted_at is null
+                        AND (formalizations.acceptance_v1 IS NOT null OR formalizations.acceptance_v2 IS NOT null)
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function activos_linea_3(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as activos
+                        FROM student_profile, formalizations, student_groups, groups, cohorts
+                        WHERE student_profile.id = formalizations.id_student
+                        AND student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 3
+                        AND student_groups.deleted_at is null
+                        AND (formalizations.acceptance_v1 IS NOT null OR formalizations.acceptance_v2 IS NOT null)
+                        AND (student_profile.id_state = 1 OR student_profile.id_state = 4)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function inactivos_linea1(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as inactivos
+                        FROM student_profile, student_groups, groups, cohorts
+                        WHERE student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 1
+                        AND student_groups.deleted_at is null
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function inactivos_linea2(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as inactivos
+                        FROM student_profile, student_groups, groups, cohorts
+                        WHERE student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 2
+                        AND student_groups.deleted_at is null
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    public static function inactivos_linea3(){
+        $data = DB::select("
+                        select COUNT(student_profile.id) as inactivos
+                        FROM student_profile, student_groups, groups, cohorts
+                        WHERE student_profile.id = student_groups.id_student
+                        AND student_groups.id_group = groups.id
+                        AND groups.id_cohort = cohorts.id
+                        AND cohorts.id = 3
+                        AND student_groups.deleted_at is null
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+    //
 
     //RELACIONES UNO A UNO POR DEBAJO
 

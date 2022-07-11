@@ -156,7 +156,7 @@ class perfilEstudiante extends Model
             INNER JOIN formalizations on formalizations.id_student = student_profile.id
             INNER JOIN assignment_students ON assignment_students.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND (student_profile.id_state = 2 OR student_profile.id_state = 5)
+            AND (student_profile.id_state = 2 OR student_profile.id_state = 5 OR student_profile.id_state = 3)
             AND assignment_students.id_user = '".Auth::user()->id."'
             ");
 
@@ -256,8 +256,7 @@ class perfilEstudiante extends Model
             INNER JOIN socioeconomic_data ON socioeconomic_data.id_student = student_profile.id
             INNER JOIN formalizations on formalizations.id_student = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND (student_profile.id_state = 2 OR student_profile.id_state = 5)
-            ");
+            AND (student_profile.id_state = 2 OR student_profile.id_state = 5 OR student_profile.id_state = 3)");
 
         if($data != null){
             return $data;
@@ -571,7 +570,7 @@ class perfilEstudiante extends Model
                         AND groups.id_cohort = cohorts.id
                         AND cohorts.id = 1
                         AND student_groups.deleted_at is null
-                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5 OR student_profile.id_state = 3)");
         if($data != null){
             return $data;
         }else{
@@ -587,7 +586,7 @@ class perfilEstudiante extends Model
                         AND groups.id_cohort = cohorts.id
                         AND cohorts.id = 2
                         AND student_groups.deleted_at is null
-                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5 OR student_profile.id_state = 3)");
         if($data != null){
             return $data;
         }else{
@@ -603,7 +602,7 @@ class perfilEstudiante extends Model
                         AND groups.id_cohort = cohorts.id
                         AND cohorts.id = 3
                         AND student_groups.deleted_at is null
-                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5)");
+                        AND (student_profile.id_state = 2 OR student_profile.id_state = 5 OR student_profile.id_state = 3)");
         if($data != null){
             return $data;
         }else{

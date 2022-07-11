@@ -40,6 +40,7 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR SÁBANA SECRETARÍA</a>
             </div>
         </div>-->
+        <br>
         <div class="btn-group">
             <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
                 <label>LINEA 1</label>&nbsp;<input type="checkbox" name="check" value="LINEA 1" id="linea_1">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,6 +48,7 @@
                 <label>LINEA 3</label>&nbsp;<input type="checkbox" name="check" value="LINEA 3" id="linea_3">
             </div>
         </div>
+        <br>
         <div class="btn-group">
             <div class="inactivos_activos_student">                  
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

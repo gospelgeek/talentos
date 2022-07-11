@@ -17,6 +17,7 @@
                 <div  class="d-flex justify-content-center">
                         <div id="carga" style='display:none' class="spinner-border spinner-border-lg" role="status"></div>                    
                 </div>
+                <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1f6BpVbEAaVHthIYLkmEgzcqS3EZ4PZh-?usp=sharing">REPORTE ACTUALIZADO DE ASISTENCIAS GRUPALES</a>
             </div><hr>
         	@if((auth()->user()->rol_id == 1) || auth()->user()->cedula == 14837069) 
             

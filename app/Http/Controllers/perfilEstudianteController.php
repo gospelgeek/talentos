@@ -1556,6 +1556,27 @@ class perfilEstudianteController extends Controller
             $linea3_desestimientos = $desestimientos->desestimientos;
         }
 
+        $linea_1 = array();
+        $linea_1 = array('linea' => 'LINEA 1',
+                        'activos' => $linea1_activos,
+                        'desertores' => $linea1_desertores,
+                        'desestimientos' => $linea1_desestimientos,
+                        'total' => $linea1_activos + $linea1_desertores + $linea1_desestimientos);
+
+        $linea_2 = array();
+        $linea_2 = array('linea' => 'LINEA 2',
+                        'activos' => $linea2_activos,
+                        'desertores' => $linea2_desertores,
+                        'desestimientos' => $linea2_desestimientos,
+                        'total' => $linea2_activos + $linea2_desertores + $linea2_desestimientos);
+
+        $linea_3 = array();
+        $linea_3 = array('linea' => 'LINEA 3',
+                        'activos' => $linea3_activos,
+                        'desertores' => $linea3_desertores,
+                        'desestimientos' => $linea3_desestimientos,
+                        'total' => $linea3_activos + $linea3_desertores + $linea3_desestimientos);
+
         $total_activos = $linea1_activos + $linea2_activos + $linea3_activos;
         $total_desertados = $linea1_desertores + $linea2_desertores + $linea3_desertores;
         $total_desestimientos = $linea1_desestimientos + $linea2_desestimientos + $linea3_desestimientos;
@@ -1563,25 +1584,8 @@ class perfilEstudianteController extends Controller
         $totales = array('linea' => 'TOTAL',
                         'activos' => $total_activos,
                         'desertores' => $total_desertados,
-                        'desestimientos' => $total_desestimientos);
-
-        $linea_1 = array();
-        $linea_1 = array('linea' => 'LINEA 1',
-                        'activos' => $linea1_activos,
-                        'desertores' => $linea1_desertores,
-                        'desestimientos' => $linea1_desestimientos);
-
-        $linea_2 = array();
-        $linea_2 = array('linea' => 'LINEA 2',
-                        'activos' => $linea2_activos,
-                        'desertores' => $linea2_desertores,
-                        'desestimientos' => $linea2_desestimientos);
-
-        $linea_3 = array();
-        $linea_3 = array('linea' => 'LINEA 3',
-                        'activos' => $linea3_activos,
-                        'desertores' => $linea3_desertores,
-                        'desestimientos' => $linea3_desestimientos);
+                        'desestimientos' => $total_desestimientos,
+                        'total' => $total_activos + $total_desertados + $total_desestimientos);
 
 
         $general = array($linea_1, $linea_2, $linea_3, $totales);
@@ -1646,6 +1650,27 @@ class perfilEstudianteController extends Controller
             $linea3_inactivos = $inactivos->inactivos;
         }
 
+        $linea_1 = array();
+        $linea_1 = array('linea' => 'LINEA1',
+                        'admitidos' => $linea1_admitidos,
+                        'activos' => $linea1_activos,
+                        'inactivos' => $linea1_inactivos,
+                        'total' => $linea1_admitidos + $linea1_activos + $linea1_inactivos);
+
+        $linea_2 = array();
+        $linea_2 = array('linea' => 'LINEA2',
+                        'admitidos' => $linea2_admitidos,
+                        'activos' => $linea2_activos,
+                        'inactivos' => $linea2_inactivos,
+                        'total' => $linea2_admitidos + $linea2_activos + $linea2_inactivos);
+
+        $linea_3 = array();
+        $linea_3 = array('linea' => 'LINEA3',
+                        'admitidos' => $linea3_admitidos,
+                        'activos' => $linea3_activos,
+                        'inactivos' => $linea3_inactivos,
+                        'total' => $linea3_admitidos + $linea3_activos + $linea3_inactivos);
+
         $total_admitidos = $linea1_admitidos + $linea2_admitidos + $linea3_admitidos;
         $total_activos = $linea1_activos + $linea2_activos + $linea3_activos;
         $total_inactivos = $linea1_inactivos + $linea2_inactivos + $linea3_inactivos;
@@ -1653,25 +1678,8 @@ class perfilEstudianteController extends Controller
         $totales = array('linea' => 'TOTAL',
                         'admitidos' => $total_admitidos,
                         'activos' => $total_activos,
-                        'inactivos' => $total_inactivos);
-
-        $linea_1 = array();
-        $linea_1 = array('linea' => 'LINEA1',
-                        'admitidos' => $linea1_admitidos,
-                        'activos' => $linea1_activos,
-                        'inactivos' => $linea1_inactivos);
-
-        $linea_2 = array();
-        $linea_2 = array('linea' => 'LINEA2',
-                        'admitidos' => $linea2_admitidos,
-                        'activos' => $linea2_activos,
-                        'inactivos' => $linea2_inactivos);
-
-        $linea_3 = array();
-        $linea_3 = array('linea' => 'LINEA3',
-                        'admitidos' => $linea3_admitidos,
-                        'activos' => $linea3_activos,
-                        'inactivos' => $linea3_inactivos);
+                        'inactivos' => $total_inactivos,
+                        'total' => $total_admitidos + $total_activos + $total_inactivos);
 
         
         $general = array($linea_1, $linea_2, $linea_3, $totales);

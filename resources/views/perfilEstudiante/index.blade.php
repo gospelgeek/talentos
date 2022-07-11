@@ -35,7 +35,7 @@
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_completa_export')}}">EXPORTAR SÁBANA COMPLETA</a>
             </div>
         </div>
-        <!--<div class="tabla_resumen btn-group" style="float:right;">
+        <div class="tabla_resumen btn-group" style="float:right;">
             <div class="col-xs-6 col-md-12 col-sm-6">
                 <label>Por estado</label>&nbsp;<input type="radio" name="check" value="SI" id="por_estado">&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>Por clasificación</label>&nbsp;<input type="radio" name="check" value="SI" id="por_clasificacion">&nbsp;
@@ -62,7 +62,7 @@
                     </thead>
                 </table>
             </div>
-        </div>-->
+        </div>
         <!--<div class="btn-group">
             <div class="col-xs-6 col-md-12 col-sm-6">
                 <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('sabana_export')}}">EXPORTAR SÁBANA SECRETARÍA</a>
@@ -136,7 +136,7 @@
                 
         });
         
-    /*document.getElementById('por_estado').checked = true;
+    document.getElementById('por_estado').checked = true;
     if(por_estado){
         $('#estado_por').show();
         $('#clasificacion_por').hide();
@@ -190,7 +190,7 @@
             {data: 'total'}
         ],
         "bPaginate": false, "searching": false, "info": false,
-    }); */    
+    }); 
 
    $(document).ready(function(){
    

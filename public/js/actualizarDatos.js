@@ -23,7 +23,7 @@ $('.boton_update_datos_academicos_previos').click(function(e) {
       'icfes_date': $("#fechaIcfes").val(),
       'snp_register': $("#snpRegistro").val(),
       'icfes_score': $("#icfesPuntaje").val(),
-  
+      'url_academic_support': $("#soporteAcademico").val(),
     },
     success:function(result) {
       $('#modal_actualizar_datos_academicos_previos').modal('hide');
@@ -61,7 +61,7 @@ $('.boton_update_academicos_previos').click(function(e) {
       'icfes_date': $("#icfesdate").val(),
       'snp_register': $("#bachelortitle").val(),
       'icfes_score': $("#icfesscore").val(),
-  
+      'url_academic_support': $("#soporte_academico").val(),
     },
     success:function(result) {
       $('#contenido-2').modal('hide');
@@ -122,6 +122,7 @@ $('.boton_update_datos_generales').click(function(e) {
       'emergency_contact_name': $('#emergencia_nombre').val(),
       'relationship': $('#parentezco').val(),
       'emergency_contact': $('#emergencia').val(),
+      'url_document_type': $('#enlaceDocumento').val(),
     },
     success:function(result) {
       $('#modal_actualizar_datos_generales').modal('hide');
@@ -172,6 +173,7 @@ $('.boton_update_generales').click(function(e) {
       'emergency_contact_name': $('#nmbre_emrgncia').val(),
       'relationship': $('#prntzco').val(),
       'emergency_contact': $('#emergency').val(),
+      'url_document_type': $('#enlace_documento').val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
@@ -232,7 +234,11 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
       'id_social_conditions': $("#socialC").val(),
       'id_disability': $("#discapacidadS").val(),
       'id_ethnicity': $("#etnia").val(),
-      'eps_name': $("#eps").val(),  
+      'eps_name': $("#eps").val(), 
+      'url_health_regime': $("#soporteRegimen").val(),
+      'url_sisben_category': $("#soporteSisben").val(),
+      'url_social_conditions': $("#soporteCondicion").val(),
+      'url_ethnicity': $("#soporteEtnia").val(),
     },
     success:function(result) {
       $('#modal_actualizar').modal('hide');
@@ -283,6 +289,10 @@ $('.boton_update_socioeconomicos').click(function(e) {
       'id_disability': $("#iddisability").val(),
       'id_ethnicity': $("#idethnicity").val(),
       'eps_name': $("#epS").val(),
+      'url_sisben_category': $("#soporte_categoria").val(),
+      'url_health_regime': $("#soporte_regimen").val(),
+      'url_social_conditions': $("#soporte_condicion").val(),
+      'url_ethnicity': $("#soporte_etnia").val(),
     },
     success:function(result) {
       $('#contenido-3').modal('hide');

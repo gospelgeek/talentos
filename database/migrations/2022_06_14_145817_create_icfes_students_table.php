@@ -18,6 +18,7 @@ class CreateIcfesStudentsTable extends Migration
             $table->integer("id_student");
             $table->integer("id_icfes_test");
             $table->float("total_score");
+            $table->string("url_support");
             $table->softDeletes();
             $table->timestamps();
         });

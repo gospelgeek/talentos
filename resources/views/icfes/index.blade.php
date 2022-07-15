@@ -59,7 +59,38 @@
             },
             {
                 data: 'total_score'
-            }
+            },
+            {
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+            {
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+            {
+                data: null,
+                render:function(data, type, row, meta){
+                     return "--"
+                }
+            },
+            {
+                data: null,
+                render:function(data, type, row, meta){
+                     return `
+                    <div class="row">                                  
+                        <div class="col-xs-4 col-sm-4">
+                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                        </div>                                       
+                    </div>
+                     
+                     `
+                }
+            },
 
         ],
 

@@ -220,6 +220,33 @@ class perfilEstudianteController extends Controller
             }           
         }*/
 
+        $totalS1 = DB::select("SELECT icfes_students.total_score as total1 
+        FROM icfes_students WHERE icfes_students.id_student = ? 
+        AND icfes_students.id_icfes_test = 1", [$id]);
+
+        $totalS2 = DB::select("SELECT icfes_students.total_score as total2 
+        FROM icfes_students WHERE icfes_students.id_student = ? 
+        AND icfes_students.id_icfes_test = 2", [$id]);
+
+        $t1 = 0;
+        $t2 = 0;
+
+        if($totalS1 == []){
+            $t1 = 0;
+        }else {
+            $t1 = $totalS1[0]->total1;
+        }
+
+        if($totalS2 == []){
+            //dd($t2);
+            $t2 = 0;
+        }else {
+            $t2 = $totalS2[0]->total2;
+        }
+
+        $totalSimulacros = $t1 + $t2;
+        
+
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
@@ -304,7 +331,7 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'iden'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'iden', 't1', 't2', 'totalSimulacros'));
     }
 
 
@@ -492,7 +519,7 @@ class perfilEstudianteController extends Controller
                 'ip'                       => $ip,
                 'id_usuario_accion'        => $acade['id_student'],
                 'actividad_realizada'      => 'ACTUALIZACION DATOS ACADEMICOS',
-            ]);
+            ]); 
 
 
             $old = array();

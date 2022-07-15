@@ -113,8 +113,8 @@ $(".accordion-titulo").click(function(e){
           $("#titulo-2").removeClass("open");
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
+          $("#contenido-7").hide();
+          $("#titulo-7").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
         }
@@ -139,8 +139,8 @@ $(".accordion-titulo-2").click(function(e){
           $("#titulo-3").removeClass("open"); 
           $("#contenido-4").hide();
           $("#titulo-4").removeClass("open");
-          $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
+          $("#contenido-7").hide();
+          $("#titulo-7").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open"); 
         }
@@ -402,8 +402,8 @@ $(".accordion-titulo-4").click(function(e){
           $("#titulo-2").removeClass("open");
           $("#contenido-3").hide();
           $("#titulo-3").removeClass("open");
-          $("#contenido-5").hide();
-          $("#titulo-5").removeClass("open");
+          $("#contenido-7").hide();
+          $("#titulo-7").removeClass("open");
           $("#contenido-6").hide();
           $("#titulo-6").removeClass("open");  
 
@@ -496,7 +496,7 @@ $(".accordion-titulo-6").click(function(e){
             
         }
 });
-
+/*
 var id_moodle= document.getElementById("moodle");
 var url = document.getElementById('json').src;
 var asistencias = document.getElementById('asisten').src;
@@ -661,7 +661,40 @@ $(".accordion-titulo-5").click(function(e){
           $(this).removeClass("open");
                     
         }
+});*/
+
+$(".accordion-titulo-7").click(function(e){
+        
+  e.preventDefault();
+
+  var contenido=$(this).next(".accordion-content-7");
+
+
+  if(contenido.css("display")=="none"){ //open        
+    contenido.slideDown(250);         
+    $(this).addClass("open");
+    $("#contenido-1").hide();
+    $("#titulo-1").removeClass("open");
+    $("#contenido-2").hide();
+    $("#titulo-2").removeClass("open");
+    $("#contenido-3").hide();
+    $("#titulo-3").removeClass("open");
+    $("#contenido-4").hide();
+    $("#titulo-4").removeClass("open");
+    //$("#contenido-5").hide();
+    //$("#titulo-5").removeClass("open");
+    $("#contenido-6").hide();
+    $("#titulo-6").removeClass("open"); 
+      
+  }
+  else{ //close
+
+    contenido.slideUp(250);
+    $(this).removeClass("open");
+              
+  }
 });
+
 function abrirmodal(id){
 
   $('#sesiones').empty();
@@ -717,7 +750,7 @@ function abrirmodal(id){
   });
   $('#modal_asistencias').modal('show');
 }
-/*$(function() {
+$(function() {
     // Crear un objeto URL con la ubicación de la página
     let url = new URL(window.location.href);
     // Busca si existe el parámetro
@@ -731,15 +764,18 @@ function abrirmodal(id){
 
 function tipoCancha(deporteSel){
     switch(deporteSel){
-        case 'titulo-5':
+        case 'titulo-7':
             //var contenido=$(this).next(".accordion-content-5");
-            $('.accordion-content-5').slideDown(250);         
-            $('.accordion-titulo-5').addClass("open");
-            document.getElementById('carga').remove();
+            $('.accordion-content-7').slideDown(250);         
+            $('.accordion-titulo-7').addClass("open");
+            //document.getElementById('carga').remove();
             //console.log("s");
             break;
     }
-}*/
+}
+
+
+ 
 
 
 

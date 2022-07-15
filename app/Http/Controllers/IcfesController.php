@@ -13,13 +13,14 @@ class IcfesController extends Controller
         $this->middleware('socioeducativo');
     }
 
-    public function index(){
+    public function index()
+    {
         return view('icfes.index');
     }
 
     public function DatosIcfes()
     {
-        $datosIcfes = DB::select("SELECT id, (SELECT student_profile.name FROM student_profile 
+        $datosIcfes = DB::select("SELECT id, icfes_students.id_student as id_student, (SELECT student_profile.name FROM student_profile 
         WHERE student_profile.id = icfes_students.id_student LIMIT 1 ) as nombre, 
         (SELECT student_profile.lastname FROM student_profile 
         WHERE student_profile.id = icfes_students.id_student LIMIT 1 ) as apellidos, 
@@ -33,5 +34,74 @@ class IcfesController extends Controller
         icfes_students.total_score FROM icfes_students");
 
         return datatables()->of($datosIcfes)->toJson();
+    }
+
+    public function resultadoArea($id_student)
+    {
+        $datosNombre = [];
+        $datosCalificacionS1 = [];
+        $datosCalificacionS2 = [];
+        $datos = [];
+
+        $nombres = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
+        icfes_areas.id = result_by_areas.id_icfes_area) as nombre FROM result_by_areas WHERE 
+        result_by_areas.id_student = ? limit 5", [$id_student]);
+
+        $resultSimulacro1 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+         icfes_students.id_icfes_test = 1) ", [$id_student, $id_student]);
+
+        $resultSimulacro2 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+         = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+         icfes_students.id_icfes_test = 2) ", [$id_student, $id_student]);
+
+        if($nombres == []){
+            for ($i=0; $i < 5; $i++) { 
+                $datos[$i] = array("nombre" => "--","simulacro1" => 0,"simulacro2" => 0);
+            }
+        }else {
+            for ($i = 0; $i < 5; $i++) {
+                $datosNombre[$i] = $nombres[$i]->nombre;
+            }
+    
+            if($resultSimulacro1 == []){
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS1[$i] = 0;
+                }
+            }else{
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS1[$i] = $resultSimulacro1[$i]->calificacion;
+                }
+            }
+            
+            if($resultSimulacro2 == []){
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS2[$i] = 0;
+                
+                }
+            }else {
+                for ($i=0; $i < 5; $i++) { 
+                    $datosCalificacionS2[$i] = $resultSimulacro2[$i]->calificacion;
+                
+                }
+            }
+
+            for ($i=0; $i < 5; $i++) { 
+                $datos[$i] = array("nombre" => $datosNombre[$i],"simulacro1" => $datosCalificacionS1[$i],"simulacro2" => $datosCalificacionS2[$i]);
+            }
+            
+        }
+
+        
+        
+        
+
+        $result = $datos;
+
+        return datatables()->of($result)->toJson();
     }
 }

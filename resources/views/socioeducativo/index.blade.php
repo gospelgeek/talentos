@@ -63,13 +63,13 @@
                     var apel;
                   
                     if(data.nameUser === null && data.apellidosUser === null){
-                        apel = `<div id="nameapel${data.id}">
-                            <td></td>
+                        apel = `<div style="background-color: black; " id="nameapel${data.id}">
+                            <td>jhjkh</td>
                             </div>`
 
                         return apel
                     }
-                    apel = `<div id="nameapel${data.id}">
+                    apel = `<div style="background-color: red; " id="nameapel${data.id}">
                             <td><strong>${data.nameUser} ${data.apellidosUser}</strong></td>
                             </div>`
                     

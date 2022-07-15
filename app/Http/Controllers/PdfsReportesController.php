@@ -265,4 +265,6 @@ class PdfsReportesController extends Controller
 
     }
 
+    
+
 }

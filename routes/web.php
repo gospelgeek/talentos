@@ -244,3 +244,7 @@ Route::get('resultado_area/{id_student}', 'IcfesController@resultadoArea')->name
 
 //RUTAS CONTROLADOR SEGUIMIENTOS
 Route::get('reporte_notas/{linea}', 'SeguimientosController@reporte_notas')->name('estudiante.reporte_notas');
+
+// certificado
+Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');
+Route::get('certificado/', 'CertificadoController@index')->name('descarga.certificado');

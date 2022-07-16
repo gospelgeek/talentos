@@ -16,7 +16,7 @@ class CertificadoController extends Controller
 
     public function index()
     {
-        return view("pdfsreportes.formularioCertificado");
+        return view("graphics.formularioCertificado");
     }
 
     public function certificado(Request $request)
@@ -55,7 +55,7 @@ class CertificadoController extends Controller
 
             //dd($consulta);
 
-            $pdf = PDF::loadView('pdfsreportes.certificadoPDF', [
+            $pdf = PDF::loadView('graphics.certificadoPDF', [
                 "data" => $consulta,
                 "fecha" => $actual
             ]);

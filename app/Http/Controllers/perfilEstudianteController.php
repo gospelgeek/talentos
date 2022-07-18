@@ -261,6 +261,7 @@ class perfilEstudianteController extends Controller
         }*/
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        dd($verDatosPerfil);
         $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');

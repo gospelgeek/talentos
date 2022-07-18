@@ -292,7 +292,8 @@ class perfilEstudianteController extends Controller
         
         $totalSimulacros = $t1 + $t2;
         
-        $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
+        //$verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
+        $verDatosPerfil = perfilEstudiante::findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->firstOrFail();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');

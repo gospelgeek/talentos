@@ -254,7 +254,8 @@ class perfilEstudianteController extends Controller
 
     public function verPerfilEstudiante($id)
     {
-         $iden = $id;
+        $iden = $id;
+        $verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         //return $id;
         /* $user = auth()->user();
         /*if($user['rol_id'] == 6){
@@ -293,7 +294,7 @@ class perfilEstudianteController extends Controller
         $totalSimulacros = $t1 + $t2;
         
         //$verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
-        $verDatosPerfil = perfilEstudiante::findOrFail($id);
+        //$verDatosPerfil = perfilEstudiante::findOrFail($id);
         $asignacion = AssignmentStudent::where('id_student', $id)->firstOrFail();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
@@ -415,14 +416,9 @@ class perfilEstudianteController extends Controller
 
     public function updateDatosSocioeconomicos($id, Request $request)
     {
-
-    
         $socio = SocioeconomicData::findOrFail($id);
         $socioOld = SocioeconomicData::findOrFail($id);
-    
-
-        
-        
+       
         $mensaje = "Datos Socieconomicos actualizados correctamente!!";
 
         if ($request->ajax()) {

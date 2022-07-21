@@ -237,7 +237,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
-                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
                                 <ul class="dropdown-menu">
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>
@@ -294,7 +295,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
-                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
                                 <ul class="dropdown-menu">
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>
@@ -340,7 +342,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
-                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos</a>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
                                 <ul class="dropdown-menu">
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',1)}}">Linea 1</a></li>
                                   <li><a class="dropdown-item" href="{{route('estudiante.reporte_notas',2)}}">Linea 2</a></li>

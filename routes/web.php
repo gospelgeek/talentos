@@ -242,8 +242,16 @@ Route::get('icfes', 'IcfesController@index')->name('icfes');
 Route::get('datos_icfes', 'IcfesController@DatosIcfes')->name('datos_icfes');
 Route::get('resultado_area/{id_student}', 'IcfesController@resultadoArea')->name('resultado_icfes');
 
-//RUTAS CONTROLADOR SEGUIMIENTOS
+//RUTAS CONTROLADOR SEGUIMIENTOS ACADEMICOS
 Route::get('reporte_notas/{linea}', 'SeguimientosController@reporte_notas')->name('estudiante.reporte_notas');
+
+Route::get('seguimiento_academico', 'SeguimientosController@index')->name('seguimiento_academico.index');
+
+Route::post('cargar_seguimientos', 'SeguimientosController@Cargar_notas')->name('cargar_seguimientos');
+
+Route::get('seguimiento_academico/{id_course}', 'SeguimientosController@Grupos_Asignatura')->name('seguimientos_academicos.grupos');
+
+Route::get('seguimiento_academico/{id_course}/grupo/{id_grupo}','SeguimientosController@detalle_seguimientos_grupo')->name('seguimiento_academicos.dettalle_grupo');
 
 // certificado
 Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');

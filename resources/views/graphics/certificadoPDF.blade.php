@@ -29,9 +29,13 @@
             margin-top: 6%;
             font-family: Arial, Helvetica, sans-serif;
         }
-        img {
-            height: 80px;
-            width: 210px;
+        .en {
+            height: 90px;
+            width: 350px;
+        }
+        .pie {
+            height: 160px;
+            width: 650px;
         }
         header{
             margin-top: 0;
@@ -42,17 +46,7 @@
 
 <body>
     <header>
-        <table style="padding-top: 0; margin-top: 0;">
-            <thead>
-                <tr>
-                    <td>
-                        <img src="https://todosytodasaestudiar.org/img/todosytodas.png" alt="">
-                    </td>
-                    <td style="text-align: center;">ESTRATEGIA TODAS Y TODOS A ESTUDIAR - UNIVALLE CONVENIO INTERADMINISTRATIVO No. 4143.010.27.1.8.-2021</td>
-                    <td><img src="https://todosytodasaestudiar.org/img/logo.jpeg" alt=""></td>
-                </tr>
-            </thead>
-        </table>
+        <img class="en" src="https://todosytodasaestudiar.org/img/encabezado.png" alt="">
     </header>
 
     <div class="contenido">
@@ -78,7 +72,12 @@
         Este certificado tiene vigencia por un mes a partir de la fecha de generación.
         </div>
     </div>
-
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <div  style="text-align: center;">
+            <img class="pie" src="https://todosytodasaestudiar.org/img/pie.png" alt="">
+        </div>
+    </footer>
 </body>
 
 </html>

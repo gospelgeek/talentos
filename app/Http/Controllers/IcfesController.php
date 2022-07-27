@@ -277,10 +277,10 @@ class IcfesController extends Controller
                 "documento" => $estudiantes[$contador]->documento,
                 "linea" => $estudiantes[$contador]->linea,
                 "grupo" => $estudiantes[$contador]->grupo,
+                "ie" => $total_ie,
                 "s1" => $total_s1,
                 "s2" => $total_s2,
                 "s3" => $total_s3,
-                "ie" => $total_ie,
                 "if" => $total_if,
             );
 

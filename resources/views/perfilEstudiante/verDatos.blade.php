@@ -809,6 +809,105 @@
 			</div>
 		</div>
 	</div>
+    
+    <div class="accordion-container" id="ti7">
+		<a href="#" id="titulo-7" class="accordion-titulo-7">Icfes<span class="toggle-icon"></span></a>
+		<div id="contenido-7" class="accordion-content-7">
+			<div class="row">
+				&nbsp;
+				<h4>INFORMACION DE ICFES</h4>
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				<div class="col-ms-2">
+					<label for="">CAMBIAR A PORCENTAJE</label>
+					<input class="form-control" type="checkbox" id="cambio">
+				</div>
+			</div>
+			&nbsp;
+			&nbsp;
+			<div class="table-responsive">
+				<br>
+
+				<table id="icfes">
+					<thead>
+
+						<th>AREA</th>
+						@if($url_entrada == [])
+						<th><u>ICFES ENTRADA</u></th>
+						@else
+						<th>
+							<a href="https://drive.google.com/uc?id={{$url_entrada[0]->url}}">
+								<u>ICFES ENTRADA</u>
+							</a>
+						</th>
+
+						@endif
+
+						@if($pruebaS1 == [])
+						@else
+						<th>SIMULACRO 1</th>
+						<th>VARIACION</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
+						<th>SIMULACRO 2</th>
+						<th>VARIACION</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th>SIMULACRO 3</th>
+						<th>VARIACION</th>
+						@endif
+
+						@if($url_salida == [])
+						<th><u>ICFES SALIDA</u></th>
+						@else
+						<th>
+							<a href="https://drive.google.com/uc?id={{$url_salida[0]->url}}">
+								<u>ICFES SALIDA</u>
+							</a>
+						</th>
+
+						@endif
+						<th>TOTAL SIMULACROS</th>
+
+					</thead>
+					<tbody id="icfes">
+
+					</tbody>
+					<tfoot>
+						<th>TOTAL</th>
+						<th>--</th>
+						@if($pruebaS1 == [])
+						@else
+						<th>{{$t1}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
+						<th>{{$t2}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th>S3</th>
+						<th>--</th>
+						@endif
+						<th>--</th>
+						<th>{{$totalSimulacros}}</th>
+					</tfoot>
+
+				</table>
+
+			</div>
+		</div>
+	</div>
+    
 	<div class="accordion-container" id="ttlo-6">
 		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
 		<div id="contenido-6" class="accordion-content-6">
@@ -1317,6 +1416,263 @@
 {!!Html::script('/js/filtroestudiantes.js')!!}
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
+
+<script>
+	const icfesBody = document.getElementById('icfes')
+	let variacion = parseInt("{{$variacion}}")
+	const cambio = document.getElementById('cambio')
+
+	const data = fetch("{{route('resultado_icfes', $iden)}}")
+		.then(res => res.json())
+		.then(data => {
+
+			if (data.data === []) {
+				console.log("no hay datos")
+			} else {
+				data.data.forEach(data => {
+					if (data) {
+						let row_2 = document.createElement('tr');
+						let row_2_data_1 = document.createElement('td');
+						let row_2_data_2 = document.createElement('td');
+
+						row_2_data_1.innerHTML = data.nombre;
+						row_2_data_2.innerHTML = "--"
+
+						row_2.appendChild(row_2_data_1);
+						row_2.appendChild(row_2_data_2);
+
+						if (data.simulacro1 !== 0) {
+							let row_2_data_3 = document.createElement('td')
+							row_2_data_3.innerHTML = data.simulacro1
+							let row_2_data_4 = document.createElement('td')
+							let resultado = 0
+
+							cambio.addEventListener('change', () => {
+								if (cambio.checked == true) {
+									resultado = Math.round(((data.simulacro1 - variacion) / variacion) * 100)
+
+									if (resultado < 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_3);
+									row_2.appendChild(row_2_data_4);
+								} else {
+									resultado = data.simulacro1 - variacion
+
+									if (resultado < 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_3);
+									row_2.appendChild(row_2_data_4);
+								}
+							})
+
+							resultado = data.simulacro1 - variacion
+
+							if (resultado < 0) {
+								row_2_data_4.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado > 0) {
+								row_2_data_4.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado == 0) {
+								row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+
+							row_2.appendChild(row_2_data_3);
+							row_2.appendChild(row_2_data_4);
+
+						}
+
+						if (data.simulacro2 !== 0) {
+							let row_2_data_5 = document.createElement('td');
+							row_2_data_5.innerHTML = data.simulacro2
+							let row_2_data_6 = document.createElement('td');
+							let resultado = 0
+
+
+							cambio.addEventListener('change', () => {
+
+								if (cambio.checked == true) {
+									resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
+									if (resultado < 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_5);
+									row_2.appendChild(row_2_data_6);
+								} else {
+									resultado = data.simulacro2 - variacion
+									if (resultado < 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_5);
+									row_2.appendChild(row_2_data_6);
+								}
+
+
+							})
+							resultado = data.simulacro2 - variacion
+							if (resultado < 0) {
+								row_2_data_6.innerHTML = `
+									<div style="background-color: red;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado > 0) {
+								row_2_data_6.innerHTML = `
+									<div style="background-color: green;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado == 0) {
+								row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+
+							row_2.appendChild(row_2_data_5);
+							row_2.appendChild(row_2_data_6);
+						}
+
+						icfesBody.appendChild(row_2)
+					}
+
+				});
+			}
+			//console.log(data.data[0].simulacro1)
+		})
+
+
+	$("#icfes").DataTable({
+		"processing": false,
+		"LoadingRecords": true,
+		"paging": true,
+		"deferRender": true,
+		"lengthChange": false,
+		"searching": true,
+		"ordering": true,
+		"order": [0, 'desc'],
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
+		"language": {
+			"url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+		},
+		"dom": 'Bfrtip',
+		"buttons": ["copy", "excel", "pdf", "print"]
+	});
+</script>
+
 @endpush
 
 

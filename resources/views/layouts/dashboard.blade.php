@@ -219,6 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
             <a href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+            <a class="dropdown-item" href="{{route('descarga.certificado')}}">Certificado</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -288,6 +289,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
                           <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
                           <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                          <a class="dropdown-item" href="{{route('descarga.certificado')}}">Certificado</a>
                         </div>
                       </li>
                       <li class="nav-item dropdown">

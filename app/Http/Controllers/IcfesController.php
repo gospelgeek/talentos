@@ -295,7 +295,11 @@ class IcfesController extends Controller
 
     public function icfesResultadoArea($id_student, $id_icfes_test)
     {
-        $con = DB::select("SELECT id FROM icfes_students WHERE id_icfes_test = ? AND id_student = ?", [$id_icfes_test, $id_student]);
+         $con = DB::select("SELECT id FROM icfes_students WHERE id_icfes_test = ? AND id_student = ?", [$id_icfes_test, $id_student]);
+        if($con == []){
+            
+            return datatables()->of($con)->toJson();
+        }
         $idPrueba = $con[0]->id;
 
         $data = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE icfes_areas.id = result_by_areas.id_icfes_area)

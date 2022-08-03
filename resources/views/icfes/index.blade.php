@@ -126,6 +126,1028 @@
 
 <script>
     
+    const cambio = document.getElementById("cambio")
+
+    cambio.addEventListener('change', () => {
+
+        console.log(cambio.checked)
+        if (cambio.checked === true) {
+            puntosDeVariacionConPorcentaje()
+        }
+
+        if (cambio.checked === false) {
+            puntosDeVariacionSinPorcentaje()
+        }
+
+    })
+
+    function puntosDeVariacionSinPorcentaje() {
+
+        $("#tablaLinea1").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 1)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: 'ie'
+
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                       
+                    `
+                    }
+
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+
+                        let variacion = data.s3 - data.ie;
+                        let resultado
+
+                        if (variacion < 0) {
+                            resultado = `
+                                <div style="background-color: red;" >
+                                    <td>${variacion}</td>
+
+                                </div>
+                                `
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                    <td>${variacion}</td>
+                                </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                    <td>${variacion}</td>
+                                </div>`
+                        }
+
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                       
+                    `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+
+                        let variacion = data.if-data.ie;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                    <td>${variacion}</td>
+                                </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                    <td>${variacion}</td>
+                                </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                    <td>${variacion}</td>
+                                </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <div class="row">                                  
+                        <div class="col-xs-4 col-sm-4">
+                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                        </div>                                       
+                    </div>
+                     
+                     `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+
+        $("#tablaLinea2").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 2)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: 'ie'
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s1 - data.ie;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s2 - data.ie;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s3 - data.ie;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.if-data.ie;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacion}</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <div class="row">                                  
+                            <div class="col-xs-4 col-sm-4">
+                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                            </div>                                       
+                        </div>
+                         
+                         `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+
+        $("#tablaLinea3").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 3)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s2 - data.s1;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s3 - data.s1;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.if-data.s1;
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                            <div class="row">                                  
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                </div>                                       
+                            </div>
+                             
+                             `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+
+    }
+
+    function puntosDeVariacionConPorcentaje() {
+
+        $("#tablaLinea1").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 1)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: 'ie'
+
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                       
+                    `
+                    }
+
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+
+                        let variacion = data.s3 - data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+
+                        let resultado
+
+                        if (variacion < 0) {
+                            resultado = `
+                                <div style="background-color: red;" >
+                                    <td >${variacionPor}%</td>
+
+                                </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                    <td>${variacionPor} %</td>
+                                </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                    <td>${variacionPor} %</td>
+                                </div>`
+                        }
+
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.nombre},${data.id_student}, 5);"><u>${data.if}</u></button>
+                       
+                    `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+
+                        let variacion = data.if-data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                    <td>${variacionPor} %</td>
+                                </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                    <td>${variacionPor} %</td>
+                                </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                    <td>${variacionPor} %</td>
+                                </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                    <div class="row">                                  
+                        <div class="col-xs-4 col-sm-4">
+                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                        </div>                                       
+                    </div>
+                     
+                     `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+
+        $("#tablaLinea2").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 2)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: 'ie'
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s1 - data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s2 - data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s3 - data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.if-data.ie;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                        <td>${variacionPor} %</td>
+                                    </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <div class="row">                                  
+                            <div class="col-xs-4 col-sm-4">
+                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                            </div>                                       
+                        </div>
+                         
+                         `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+
+        $("#tablaLinea3").DataTable({
+            "ajax": {
+                "method": "GET",
+                "url": "{{route('datos_icfes_lineas', 3)}}"
+            },
+            "columns": [{
+                    data: 'nombre'
+                },
+                {
+                    data: 'apellidos'
+                },
+                {
+                    data: 'documento'
+                },
+                {
+                    data: 'linea'
+                },
+                {
+                    data: 'grupo'
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s2 - data.s1;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.s3 - data.s1;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        let variacion = data.if-data.s1;
+                        let variacionPor = 0
+
+                        if (data.ie === 0) {
+                            variacionPor = 0
+                        } else {
+                            variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
+                        }
+                        let resultado;
+                        if (variacion < 0) {
+                            resultado = `<div style="background-color: red;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion > 0) {
+                            resultado = `<div style="background-color: green;">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        if (variacion == 0) {
+                            resultado = `<div ">
+                                            <td>${variacionPor} %</td>
+                                        </div>`
+                        }
+                        return resultado
+                    }
+                },
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `
+                            <div class="row">                                  
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                </div>                                       
+                            </div>
+                             
+                             `
+                    }
+                },
+
+            ],
+
+            "deferRender": true,
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "dom": 'Bfrtip',
+            "destroy": true,
+            "buttons": [
+                "copy",
+                "csv",
+                "excel",
+                "pdf",
+                "print",
+                "colvis"
+            ]
+        });
+    }
+
+
     var table1 = $("#tablaLinea1").DataTable({
         "ajax": {
             "method": "GET",
@@ -147,17 +1169,17 @@
                 data: 'grupo'
             },
             {
-                data: null,
-                render: function(data, type, row, meta) {
-                    return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.ie}</u></button>
-                       
-                    `
-                }
+                data: 'ie'
 
             },
             {
-                data: 's3'
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                       
+                    `
+                }
 
             },
             {
@@ -170,17 +1192,8 @@
 
                     if (variacion < 0) {
                         resultado = `
-                                <div >
-
                                 <div style="background-color: red;" >
-                                    <a data-toggle="modal" data-target="#exampleModal${data.id_student}">${variacion}</a>
-
-                                </div>
-                                
-                                
-                                
-
-                        
+                                    <td >${variacion}</td>
 
                                 </div>`
                     }
@@ -199,7 +1212,13 @@
                 }
             },
             {
-                data: 'if'
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                       
+                    `
+                }
             },
             {
                 data: null,
@@ -246,6 +1265,7 @@
         "lengthChange": false,
         "autoWidth": false,
         "dom": 'Bfrtip',
+        "destroy": true,
         "buttons": [
             "copy",
             "csv",
@@ -283,9 +1303,9 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
-                       
-                    `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
                 }
             },
             {
@@ -295,18 +1315,18 @@
                     let resultado;
                     if (variacion < 0) {
                         resultado = `<div style="background-color: red;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion > 0) {
                         resultado = `<div style="background-color: green;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     return resultado
                 }
@@ -315,9 +1335,9 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                       
-                    `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
                 }
             },
             {
@@ -327,18 +1347,18 @@
                     let resultado;
                     if (variacion < 0) {
                         resultado = `<div style="background-color: red;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion > 0) {
                         resultado = `<div style="background-color: green;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     return resultado
                 }
@@ -347,9 +1367,9 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                       
-                    `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
                 }
             },
             {
@@ -359,44 +1379,18 @@
                     let resultado;
                     if (variacion < 0) {
                         resultado = `<div style="background-color: red;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion > 0) {
                         resultado = `<div style="background-color: green;">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                    <td>${variacion}</td>
-                                </div>`
-                    }
-                    return resultado
-                }
-            },
-            {
-                data: 'if'
-            },
-            {
-                data: null,
-                render: function(data, type, row, meta) {
-                    let variacion = data.if-data.ie;
-                    let resultado;
-                    if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                    <td>${variacion}</td>
-                                </div>`
-                    }
-                    if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                    <td>${variacion}</td>
-                                </div>`
-                    }
-                    if (variacion == 0) {
-                        resultado = `<div ">
-                                    <td>${variacion}</td>
-                                </div>`
+                                        <td>${variacion}</td>
+                                    </div>`
                     }
                     return resultado
                 }
@@ -405,13 +1399,45 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <div class="row">                                  
-                        <div class="col-xs-4 col-sm-4">
-                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                        </div>                                       
-                    </div>
-                     
-                     `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let variacion = data.if-data.ie;
+                    let resultado;
+                    if (variacion < 0) {
+                        resultado = `<div style="background-color: red;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                    }
+                    if (variacion > 0) {
+                        resultado = `<div style="background-color: green;">
+                                        <td>${variacion}</td>
+                                    </div>`
+                    }
+                    if (variacion == 0) {
+                        resultado = `<div ">
+                                        <td>${variacion}</td>
+                                    </div>`
+                    }
+                    return resultado
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                        <div class="row">                                  
+                            <div class="col-xs-4 col-sm-4">
+                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                            </div>                                       
+                        </div>
+                         
+                         `
                 }
             },
 
@@ -422,6 +1448,7 @@
         "lengthChange": false,
         "autoWidth": false,
         "dom": 'Bfrtip',
+        "destroy": true,
         "buttons": [
             "copy",
             "csv",
@@ -431,180 +1458,244 @@
             "colvis"
         ]
     });
-    
+
     var table3 = $("#tablaLinea3").DataTable({
-            "ajax": {
-                "method": "GET",
-                "url": "{{route('datos_icfes_lineas', 3)}}"
+        "ajax": {
+            "method": "GET",
+            "url": "{{route('datos_icfes_lineas', 3)}}"
+        },
+        "columns": [{
+                data: 'nombre'
             },
-            "columns": [{
-                    data: 'nombre'
-                },
-                {
-                    data: 'apellidos'
-                },
-                {
-                    data: 'documento'
-                },
-                {
-                    data: 'linea'
-                },
-                {
-                    data: 'grupo'
-                },
-                {
-                    data: 's1'
-                },
-                {
-                    data: 's2'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        let variacion = data.s2 - data.s1;
-                        let resultado;
-                        if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if(variacion == 0){
-                            resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        return resultado
+            {
+                data: 'apellidos'
+            },
+            {
+                data: 'documento'
+            },
+            {
+                data: 'linea'
+            },
+            {
+                data: 'grupo'
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                           
+                        `
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                           
+                        `
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let variacion = data.s2 - data.s1;
+                    let resultado;
+                    if (variacion < 0) {
+                        resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
                     }
-                },
-                {
-                    data: 's3'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        let variacion = data.s3 - data.s1;
-                        let resultado;
-                        if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if(variacion == 0){
-                            resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        return resultado
+                    if (variacion > 0) {
+                        resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
                     }
-                },
-                {
-                    data: 'if'
-                },
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        let variacion = data.if-data.s1;
-                        let resultado;
-                        if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        if(variacion == 0){
-                            resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
-                        }
-                        return resultado
+                    if (variacion == 0) {
+                        resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
                     }
-                },
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return `
-                        <div class="row">                                  
-                            <div class="col-xs-4 col-sm-4">
-                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                            </div>                                       
-                        </div>
-                         
-                         `
+                    return resultado
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                           
+                        `
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let variacion = data.s3 - data.s1;
+                    let resultado;
+                    if (variacion < 0) {
+                        resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
                     }
-                },
+                    if (variacion > 0) {
+                        resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                    }
+                    if (variacion == 0) {
+                        resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
+                    }
+                    return resultado
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                           
+                        `
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let variacion = data.if-data.s1;
+                    let resultado;
+                    if (variacion < 0) {
+                        resultado = `<div style="background-color: red;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                    }
+                    if (variacion > 0) {
+                        resultado = `<div style="background-color: green;">
+                                            <td>${variacion}</td>
+                                        </div>`
+                    }
+                    if (variacion == 0) {
+                        resultado = `<div ">
+                                            <td>${variacion}</td>
+                                        </div>`
+                    }
+                    return resultado
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `
+                            <div class="row">                                  
+                                <div class="col-xs-4 col-sm-4">
+                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                </div>                                       
+                            </div>
+                             
+                             `
+                }
+            },
 
-            ],
+        ],
 
-            "deferRender": true,
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "dom": 'Bfrtip',
-            "buttons": [
-                "copy",
-                "csv",
-                "excel",
-                "pdf",
-                "print",
-                "colvis"
-            ]
-        });
+        "deferRender": true,
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "dom": 'Bfrtip',
+        "destroy": true,
+        "buttons": [
+            "copy",
+            "csv",
+            "excel",
+            "pdf",
+            "print",
+            "colvis"
+        ]
+    });
+
 
     function abrirModal(id, idP) {
-        //$("#recargar").load(" #recargar > *");
         
-        $("#pruebaAreas").DataTable({
-            "ajax": {
-                "method": "GET",
-                "url": `/pruebaAreas/${id}/${idP}`
-            },
-            "columns": [{
-                    data: 'nombre'
-                },
-                {
-                    data: 'calificacion'
+        fetch(`/pruebaAreas/${id}/${idP}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.data === []) {
+                    
+                    $("#pruebaAreas").DataTable({
+                        "processing": false,
+                        "LoadingRecords": true,
+                        "paging": true,
+                        "deferRender": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "order": [0, 'desc'],
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        "destroy": true,
+                        "language": {
+                            "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        "buttons": [
+                            "copy",
+                            "csv",
+                            "excel",
+                            "pdf",
+                            "print",
+                            "colvis"
+                        ]
+                    });
+                } else {
+                    
+                    $("#pruebaAreas").DataTable({
+                        "data": data.data,
+                        /*"ajax": {
+                            "method": "GET",
+                            "url": `/pruebaAreas/${id}/${idP}`
+                        },*/
+                        "columns": [{
+                                data: 'nombre'
+                            },
+                            {
+                                data: 'calificacion'
+                            }
+
+                        ],
+
+                        "processing": true,
+                        "LoadingRecords": true,
+                        "paging": true,
+                        "deferRender": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "order": [0, 'desc'],
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        "destroy": true,
+                        "language": {
+                            "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        "buttons": [
+                            "copy",
+                            "csv",
+                            "excel",
+                            "pdf",
+                            "print",
+                            "colvis"
+                        ]
+                    });
                 }
 
-            ],
 
-            "processing": true,
-            "LoadingRecords": true,
-            "paging": true,
-            "deferRender": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "order": [0, 'desc'],
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "destroy": true,
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            },
-            "buttons": [
-                "copy",
-                "csv",
-                "excel",
-                "pdf",
-                "print",
-                "colvis"
-            ]
-        });
+            })
+
+
         $('#modal-areas').modal('show')
     }
 </script>

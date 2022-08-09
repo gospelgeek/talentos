@@ -13,6 +13,7 @@ use App\Group;
 use App\StudentGroup;
 use App\Session;
 use App\Course;
+use App\Cohort;
 use App\CourseItems;
 use App\StudentsGrade;
 use DB;
@@ -21,6 +22,9 @@ use App\Http\Controllers\Auth;
 use Carbon\Carbon;
 use App\Exports\NotasExport;
 use Excel;
+use App\Imports\CsvImport;
+use App\Exports\ReporteExport;
+use Response;
 
 class SeguimientosController extends Controller
 {
@@ -35,22 +39,27 @@ public function __construct()
     }
 
     public function Grupos_Asignatura($id){
+
         $name = Course::where('id', $id)->first();
         $this->course= $name->name;
         $this->course_id= $id;
         $grupos = Group::all()->where('id_cohort', $name->id_cohort)->where('name','!=',"TEMPORAL");
         $this->eliminar = array();
         $grupos->map(function($grupo,$index){
-            //dd($grupo->id,$index);
+            //dd($grupo->name,$index);
             $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->exists();
+            //dd($course_moodle);
             if($course_moodle){
-            //dump($course_moodle->course_id);
-            $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->firstOrfail();    
-            $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','ASISTENCIA PARTICIPATIVA')->exists();
+            
+            $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->firstOrfail();
+
+            $grupo->items_huerfanos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('category_name',"ITEM HUERFANO")->count();
+            //dd($course_moodle);    
+            $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->exists();
            //dd($Asistencia);
             
             if($Asistencia){
-                $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','ASISTENCIA PARTICIPATIVA')->first();
+                $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->first();
 
                 //dd($Asistencia);
                 $grades = StudentsGrade::select('grade')->where('item_id',$Asistencia->item_id)->get();
@@ -69,12 +78,17 @@ public function __construct()
                 $grupo->promedio_asistencia = "-";
             }
 
-            $seguimientos =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name',['SEGUIMIENTO ACADÉMICO','Actividades autogestionarias'])->exists();
-            //dd($seguimientos);
+            $seguimientos =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where(function($q){
+                    $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
+                })->exists();
+            
             if($seguimientos){
-                $seguimientos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name',['SEGUIMIENTO ACADÉMICO','Actividades autogestionarias'])->first();
-
+                $seguimientos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where(function($q){
+                    $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
+                })->first();
+                //dd($seguimientos->item_id);
                 $grades = StudentsGrade::select('grade')->where('item_id',$seguimientos->item_id)->get();
+                //dd($grades);
                 $total_seguimientos = 0;
                 foreach($grades as $grade){
                     $total_seguimientos = $total_seguimientos + $grade->grade;
@@ -89,10 +103,10 @@ public function __construct()
                 $grupo->promedio_seguimientos = "-";
             }
 
-            $autoevaluacion =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','Autoevaluación')->exists();
+            $autoevaluacion =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->exists();
             //dd($autoevaluacion);
             if($autoevaluacion){
-                $autoevaluacion = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','Autoevaluación')->first();
+                $autoevaluacion = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->first();
                 //dd($autoevaluacion);
 
                 $grades = StudentsGrade::select('grade')->where('item_id',$autoevaluacion->item_id)->get();
@@ -143,96 +157,89 @@ public function __construct()
         {
             $q->where('id_group', '=', $this->grupo);
         })->get();
-
+        //dd($estudiantes);
+        $items_huerfanos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('category_name',"ITEM HUERFANO")->count();
 
         $estudiantes->map(function($estudiante){
 
-            //dd($course_moodle);
-            $estudiante->id_curso = $this->course;
-            $Asistencia = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','ASISTENCIA PARTICIPATIVA')->exists();
-            //dd($Asistencia);
-            if($Asistencia){
-                $Asistencia = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','ASISTENCIA PARTICIPATIVA')->first();
+                $Asistencia = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','like','ASISTENCIA%')->first();
 
-                $grades = StudentsGrade::select('grade','item_id')->where('item_id',$Asistencia->item_id)->where('id_moodle',$estudiante->id_moodle)->exists();
+                $grades = $Asistencia ? StudentsGrade::select('grade','item_id')->where('item_id',$Asistencia->item_id)->where('id_moodle',$estudiante->id_moodle)->exists() : null;
 
-                if($grades){
-                    $grades = StudentsGrade::select('grade','item_id')->where('item_id',$Asistencia->item_id)->where('id_moodle',$estudiante->id_moodle)->first();
+                
+                $grades = $grades ? StudentsGrade::select('grade','item_id')->where('item_id',$Asistencia->item_id)->where('id_moodle',$estudiante->id_moodle)->first() : null;
+                //dd($grades);
+                $estudiante->asistencia = $grades ? $grades->grade : "-";
+
+                $seguimientos =  CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where(function($q){
+                    $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
+                })->first();
+
+                $grades = $seguimientos ? StudentsGrade::select('grade','item_id')->where('item_id',$seguimientos->item_id)->where('id_moodle',$estudiante->id_moodle)->exists() : null;
+
+               
+                $grades = $grades ? StudentsGrade::select('grade','item_id')->where('item_id',$seguimientos->item_id)->where('id_moodle',$estudiante->id_moodle)->first() : null;
+                //dump($grades->grade);
+                $estudiante->seguimientos = $grades ? $grades->grade : "-";
+                
+                $autoevaluacion = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','like','auto%')->first();
+
+                $grades = $autoevaluacion ? StudentsGrade::select('grade','item_id')->where('item_id',$autoevaluacion->item_id)->where('id_moodle',$estudiante->id_moodle)->first() : null;
                     //dump($grades->grade);
-                    $estudiante->asistencia = $grades->grade;
-                }else{
-                    $estudiante->asistencia = "-";
-                }
-                  
-            }else{
-                $estudiante->asistencia = "-";
-            }
 
+                $estudiante->autoevaluacion = $grades ? $grades->grade : "-";
 
-            $seguimientos = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name',['SEGUIMIENTO ACADÉMICO','Actividades autogestionarias'])->exists();
-
-            if($seguimientos){
-                $seguimientos = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name',['SEGUIMIENTO ACADÉMICO','Actividades autogestionarias'])->first();
-
-                $grades = StudentsGrade::select('grade','item_id')->where('item_id',$seguimientos->item_id)->where('id_moodle',$estudiante->id_moodle)->exists();
-
-                if($grades){
-                    $grades = StudentsGrade::select('grade','item_id')->where('item_id',$seguimientos->item_id)->where('id_moodle',$estudiante->id_moodle)->first();
-                    //dump($grades->grade);
-                    $estudiante->seguimientos = $grades->grade;
-                }else{
-                    $estudiante->seguimientos = "-";
-                }
-                  
-            }else{
-                $estudiante->seguimientos = "-";
-            }
-
-
-            $autoevaluacion = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','AUTOEVALUACIÓN')->exists();
-
-            if($autoevaluacion){
-                $autoevaluacion = CourseItems::select('item_id')->where('course_id',$this->course)->where('item_type',"category")->where('item_name','AUTOEVALUACIÓN')->first();
-
-                $grades = StudentsGrade::select('grade','item_id')->where('item_id',$autoevaluacion->item_id)->where('id_moodle',$estudiante->id_moodle)->exists();
-
-                if($grades){
-                    $grades = StudentsGrade::select('grade','item_id')->where('item_id',$autoevaluacion->item_id)->where('id_moodle',$estudiante->id_moodle)->first();
-                    //dump($grades->grade);
-                    $estudiante->autoevaluacion = $grades->grade;
-                }else{
-                    $estudiante->autoevaluacion = "-";
-                }
-                  
-            }else{
-                $estudiante->autoevaluacion = "-";
-            }
-
-            $total_curso =CourseItems::select('item_id')->where('course_id',$this->course)->where('category_name',"TOTAL CURSO")->exists();
-
-            if($total_curso){
                 $total_curso = CourseItems::select('item_id')->where('course_id',$this->course)->where('category_name',"TOTAL CURSO")->first();
 
-                $grades = StudentsGrade::select('grade','item_id')->where('item_id',$total_curso->item_id)->where('id_moodle',$estudiante->id_moodle)->exists();
-
-                if($grades){
-                    $grades = StudentsGrade::select('grade','item_id')->where('item_id',$total_curso->item_id)->where('id_moodle',$estudiante->id_moodle)->first();
-                    //dump($grades->grade);
-                    $estudiante->total_curso = $grades->grade;
-                }else{
-                    $estudiante->total_curso = "-";
-                }
-                  
-            }else{
-                $estudiante->total_curso = "-";
-            }
+                $grades = $total_curso ? StudentsGrade::select('grade','item_id')->where('item_id',$total_curso->item_id)->where('id_moodle',$estudiante->id_moodle)->first() : null;
+                
+                $estudiante->total_curso = $grades ? $grades->grade : "-";
 
         });
 
         //dd($estudiantes);
 
-        return view('academico.reporteGrupal.detalle_grupo', compact('grupo', 'name','estudiantes'));
+        return view('academico.reporteGrupal.detalle_grupo', compact('grupo', 'name','estudiantes','course_moodle','items_huerfanos'));
     }
+
+    public function items_huerfanos_y_items_categorias(Request $request){
+        //dd($request->tipo);
+
+
+        switch ($request->tipo) {
+
+            case '1':
+                $items_estudiante = CourseItems::select('item_id','item_name')->where('course_id',$request->id_curso)->where('item_type','!=',"category")->where('category_name','like','ASISTENCIA%')->get();
+                break;
+
+            case '2':
+                $items_estudiante = CourseItems::select('item_id','item_name')->where('course_id',$request->id_curso)->where('item_type','!=',"category")->where(function($q){
+                    $q->where('category_name', 'like', 'seguimiento%')->Orwhere('category_name','like','componente%')->Orwhere('category_name','like','actividades%')->Orwhere('category_name','like','parciales%')->Orwhere('category_name','like','seminario%');
+                })->get();
+                break;
+
+            case '3':
+                $items_estudiante  = CourseItems::select('item_id','item_name')->where('course_id',$request->id_curso)->where('item_type','!=',"category")->where('category_name','like','auto%')->get();
+                break;
+
+            case '4':
+                $items_estudiante  = CourseItems::select('item_id','item_name')->where('category_name','ITEM HUERFANO')->where('course_id',$request->id_curso)->get();
+                break;
+
+            default:
+                echo "ERROR CONSULTAR CON EL ADMINISTRADOR";
+                break;
+        }
+        $this->id_moodle = $request->id_moodle;
+        $items_estudiante->map(function($item){
+            $grade = StudentsGrade::select('grade')->where('item_id',$item->item_id)->where('id_moodle',$this->id_moodle)->first();
+                    //dd($grade);
+            $item->grade = $grade ? $grade->grade : "-";
+        });
+        return datatables()->of($items_estudiante)->toJson();
+        
+    }
+    
     public function reporte_notas($id){
         ini_set('memory_limit', '1024M');
         $notas_generales = json_decode(Storage::get('itemsbycoursereport.json'));
@@ -398,15 +405,30 @@ public function __construct()
                     foreach($student_grade->courses as $courses){
                         foreach($courses->items as $items){
                             //dd($items->grade,$student_grade->userid);
-                            if($items->grade != "-" && $items->grade != "Cumplió" && $items->grade != "Present" && $items->grade != "Error" && $items->grade != "" && $items->grade != "Yes" && $items->grade != "No"){
+                            if($items->grade != "-" && $items->grade != "Cumplió" && $items->grade != "Present" && $items->grade != "Error" && $items->grade != "" && $items->grade != "Yes" && $items->grade != "No" && $items->grade != "No cumplió"){
                                 $grade = explode(",",$items->grade);
-                                //dd(count($grade));
+                                $grade2 = explode(" ",$items->grade);
+
+                                //dd(count($grade2));
                                 if(count($grade) > 1){
-                                    $grades = StudentsGrade::create([
-                                        'item_id'       => $items->itemid,
-                                        'id_moodle'     => $student_grade->userid,
-                                        'grade'         => $grade[0].".".$grade[1],
-                                    ]);
+                                    if(count($grade2) == 1){
+                                       $grades = StudentsGrade::create([
+                                            'item_id'       => $items->itemid,
+                                            'id_moodle'     => $student_grade->userid,
+                                            'grade'         => $grade[0].".".$grade[1],
+                                        ]); 
+                                    }
+                                    else if(count($grade2) > 1){
+                                        $grade = explode(" ",$items->grade)[0];
+                                        $grade1 = explode(",",$grade);
+                                        //$grade2 = $grade2[0] + explode(",",$items->grade);
+                                        //dd($grade,$grade1);
+                                        $grades = StudentsGrade::create([
+                                            'item_id'       => $items->itemid,
+                                            'id_moodle'     => $student_grade->userid,
+                                            'grade'         => $grade1[0].".".$grade1[1],
+                                        ]); 
+                                    }
                                 }else{
                                     $grades = StudentsGrade::create([
                                         'item_id'       => $items->itemid,
@@ -460,7 +482,7 @@ public function __construct()
                                 $items = CourseItems::create([
                                         'category_name' => 'TOTAL CURSO',
                                         'course_id'     => $items_course_student->courseid,
-                                        'item_type'     => $item->itemtype,
+                                        'item_type'     => 'total curso',
                                         'item_id'       => $item->itemid,
                                         'item_instance' => $item->iteminstance,
                                         'item_name'     => $item->itemname,
@@ -469,7 +491,7 @@ public function __construct()
 
                             case 'filler':
                                    $items = CourseItems::create([
-                                        'category_name' => 'TOTAL CURSO',
+                                        'category_name' => 'ITEM HUERFANO',
                                         'course_id'     => $items_course_student->courseid,
                                         'item_type'     => $item->itemtype,
                                         'item_id'       => $item->itemid,
@@ -478,9 +500,20 @@ public function __construct()
                                     ]); 
                                    break;
 
+                            case 'fillerfirst':
+                                   $items = CourseItems::create([
+                                        'category_name' => 'ITEM HUERFANO',
+                                        'course_id'     => $items_course_student->courseid,
+                                        'item_type'     => $item->itemtype,
+                                        'item_id'       => $item->itemid,
+                                        'item_instance' => $item->iteminstance,
+                                        'item_name'     => $item->itemname,
+                                    ]); 
+                                   break;  
+                                        
                             case 'item':
                                    $items = CourseItems::create([
-                                        'category_name' => 'TOTAL CURSO',
+                                        'category_name' => 'ITEM HUERFANO',
                                         'course_id'     => $items_course_student->courseid,
                                         'item_type'     => $item->itemtype,
                                         'item_id'       => $item->itemid,
@@ -493,7 +526,7 @@ public function __construct()
                                     $items = CourseItems::create([
                                         'category_name' => 'TOTAL CURSO',
                                         'course_id'     => $items_course_student->courseid,
-                                        'item_type'     => $item->itemtype,
+                                        'item_type'     => 'total curso',
                                         'item_id'       => $item->itemid,
                                         'item_instance' => $item->iteminstance,
                                         'item_name'     => $item->itemname,

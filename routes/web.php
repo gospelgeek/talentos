@@ -256,6 +256,8 @@ Route::get('seguimiento_academico/{id_course}', 'SeguimientosController@Grupos_A
 
 Route::get('seguimiento_academico/{id_course}/grupo/{id_grupo}','SeguimientosController@detalle_seguimientos_grupo')->name('seguimiento_academicos.dettalle_grupo');
 
+Route::get('estudiante_items_huerfanos', 'SeguimientosController@items_huerfanos_y_items_categorias')->name('estudiante.itemshuerfanos');
+
 // certificado
 Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');
 Route::get('certificado/', 'CertificadoController@index')->name('descarga.certificado');

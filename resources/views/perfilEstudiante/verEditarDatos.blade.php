@@ -299,7 +299,7 @@
           	<div class="form-group">
           		<div class="row">
           			<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="relationship">Parentezco</label></p>
+            			<p style="text-align: right"><label for="relationship">Parentesco</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
@@ -309,7 +309,7 @@
 						</div>     	
           			</div>
           			<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="emergency_contact">Numero ontacto de emergencia</label></p>
+            			<p style="text-align: right"><label for="emergency_contact">Numero contacto de emergencia</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
@@ -320,7 +320,7 @@
           			</div>
           			@if(auth()->user()->rol_id == 1)
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="student_code">Codigo estudinate</label></p>
+            			<p style="text-align: right"><label for="student_code">Código Estudiante</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">

@@ -255,8 +255,22 @@ Route::post('cargar_seguimientos', 'SeguimientosController@Cargar_notas')->name(
 Route::get('seguimiento_academico/{id_course}', 'SeguimientosController@Grupos_Asignatura')->name('seguimientos_academicos.grupos');
 
 Route::get('seguimiento_academico/{id_course}/grupo/{id_grupo}','SeguimientosController@detalle_seguimientos_grupo')->name('seguimiento_academicos.dettalle_grupo');
-
 Route::get('estudiante_items_huerfanos', 'SeguimientosController@items_huerfanos_y_items_categorias')->name('estudiante.itemshuerfanos');
+
+//rutas mango
+Route::get('reporte_notas_individuales', 'SeguimientosController@notasIndividuales')->name('reporte_notas_individuales');
+//datos para reporte notas individuales por linea
+Route::get('datos_notas_individuales_linea1', 'SeguimientosController@notas_linea1')->name('datos_notas_individuales_linea1');
+Route::get('datos_notas_individuales_linea2', 'SeguimientosController@notas_linea2')->name('datos_notas_individuales_linea2');
+Route::get('datos_notas_individuales_linea3', 'SeguimientosController@notas_linea3')->name('datos_notas_individuales_linea3');
+//rutas para items huerfanos y categorias
+Route::get('datos.huerfanos.linea3', 'SeguimientosController@datos_items_huerfanos_linea3')->name('datos.huerfanos.linea3');
+Route::get('datos.categorias', 'SeguimientosController@items_categorias')->name('datos.categorias');
+//rutas para exportar sabana de notas por linea
+Route::get('sabana_notas_linea_1', 'SeguimientosController@exportar_excel_notas_linea1')->name('sabana_notas_linea_1');
+Route::get('sabana_notas_linea_2', 'SeguimientosController@exportar_excel_notas_linea2')->name('sabana_notas_linea_2');
+Route::get('sabana_notas_linea_3', 'SeguimientosController@exportar_excel_notas_linea3')->name('sabana_notas_linea_3');
+//
 
 // certificado
 Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');

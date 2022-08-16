@@ -911,42 +911,62 @@ class perfilEstudiante extends Model
     
     public static function Estudiantes_cohort_linea1(){
 
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 1
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null");
+        $estudiantes = DB::select("select 
+                                        student_profile.id, 
+                                        student_profile.name, 
+                                        student_profile.lastname, 
+                                        student_profile.document_number, 
+                                        student_profile.id_moodle,
+                                        student_groups.id_group as grupo,
+                                        groups.name AS grupo_name,
+                                        conditions.name as estado,
+                                        (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipo_documento,
+                                        (select CONCAT(users.name,' ', users.apellidos_user)encargado 
+                                            FROM users,assignment_students
+                                            WHERE users.id = assignment_students.id_user
+                                            and assignment_students.deleted_at is null
+                                            and student_profile.id = assignment_students.id_student
+                                        limit 1) as encargado
+                                        FROM student_profile
+                                        INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                                        INNER JOIN groups ON groups.id = student_groups.id_group
+                                        INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                                        INNER JOIN conditions on conditions.id = student_profile.id_state
+                                        WHERE student_groups.deleted_at IS null
+                                        AND groups.id_cohort = 1
+                                        AND student_profile.id_state = 1");
         if($estudiantes != null){
-            return $estudiantes;
+            return collect($estudiantes);
         }else{
             return null;
         }
     }
     public static function Estudiantes_cohort_linea2(){
 
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 2
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null");
+        $estudiantes = DB::select("select 
+                                        student_profile.id, 
+                                        student_profile.name, 
+                                        student_profile.lastname, 
+                                        student_profile.document_number, 
+                                        student_profile.id_moodle,
+                                        student_groups.id_group as grupo,
+                                        groups.name AS grupo_name,
+                                        conditions.name as estado,
+                                        (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipo_documento,
+                                        (select CONCAT(users.name,' ', users.apellidos_user)encargado 
+                                            FROM users,assignment_students
+                                            WHERE users.id = assignment_students.id_user
+                                            and assignment_students.deleted_at is null
+                                            and student_profile.id = assignment_students.id_student
+                                        limit 1) as encargado
+                                        FROM student_profile
+                                        INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                                        INNER JOIN groups ON groups.id = student_groups.id_group
+                                        INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                                        INNER JOIN conditions on conditions.id = student_profile.id_state
+                                        WHERE student_groups.deleted_at IS null
+                                        AND groups.id_cohort = 2
+                                        AND student_profile.id_state = 1");
         if($estudiantes != null){
             return $estudiantes;
         }else{
@@ -955,20 +975,30 @@ class perfilEstudiante extends Model
     }
     public static function Estudiantes_cohort_linea3(){
 
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 3
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null");
+        $estudiantes = DB::select("select 
+                                        student_profile.id, 
+                                        student_profile.name, 
+                                        student_profile.lastname, 
+                                        student_profile.document_number, 
+                                        student_profile.id_moodle,
+                                        student_groups.id_group as grupo,
+                                        groups.name AS grupo_name,
+                                        conditions.name as estado,
+                                        (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipo_documento,
+                                        (select CONCAT(users.name,' ', users.apellidos_user)encargado 
+                                            FROM users,assignment_students
+                                            WHERE users.id = assignment_students.id_user
+                                            and assignment_students.deleted_at is null
+                                            and student_profile.id = assignment_students.id_student
+                                        limit 1) as encargado
+                                        FROM student_profile
+                                        INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                                        INNER JOIN groups ON groups.id = student_groups.id_group
+                                        INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                                        INNER JOIN conditions on conditions.id = student_profile.id_state
+                                        WHERE student_groups.deleted_at IS null
+                                        AND groups.id_cohort = 3
+                                        AND student_profile.id_state = 1");
         if($estudiantes != null){
             return $estudiantes;
         }else{

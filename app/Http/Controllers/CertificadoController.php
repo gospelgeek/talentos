@@ -39,10 +39,14 @@ class CertificadoController extends Controller
 
         //dd($datos['success']);
         if ($datos['success'] == true && $datos['score'] >=0.9) {
+            $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
             $now = new DateTimeZone("America/Bogota");
             $fecha = new DateTime("now", $now);
             $actual = $fecha->format('Y-m-d');
-
+            $dia = $fecha->format('d');
+            $mes = $meses [$fecha->format('n') - 1];
+            $anio = $fecha->format('Y');
+            
             $consulta = DB::select("SELECT id, name as nombre, lastname as apellidos, 
             (SELECT document_type.name FROM document_type WHERE document_type.id = 
             student_profile.id_document_type) as tipo_documento, document_number as numero_identificacion, 
@@ -57,7 +61,10 @@ class CertificadoController extends Controller
 
             $pdf = PDF::loadView('graphics.certificadoPDF', [
                 "data" => $consulta,
-                "fecha" => $actual
+                "fecha" => $actual,
+                "dia" => $dia,
+                "mes" => $mes,
+                "anio" => $anio
             ]);
             //download
             //return $pdf->stream("certificado.pdf");

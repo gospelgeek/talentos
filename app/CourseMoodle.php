@@ -104,4 +104,20 @@ class CourseMoodle extends Model
             return null;
         }
     }
+    
+    public static function asignaturas($grupo, $moodle){
+        $data = DB::select("
+                    select course_moodles.id,course_moodles.fullname,course_items.category_name,students_grades.grade
+                    FROM course_moodles,course_items,students_grades
+                    WHERE course_moodles.group_id = '".$grupo."'
+                    and course_items.course_id = course_moodles.course_id 
+                    and course_items.item_id = students_grades.item_id
+                    and (course_items.item_type = 'category' or course_items.item_type = 'total curso' or course_items.category_name = 'ITEM HUERFANO')
+                    and students_grades.id_moodle = '".$moodle."'");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
 }

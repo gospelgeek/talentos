@@ -610,6 +610,88 @@ class perfilEstudiante extends Model
         }
     }
     //
+    //consultas para reporte individual academico
+    public static function Estudiantes_cohort_linea1(){
+
+        $estudiantes = DB::select("select student_profile.id,student_profile.name,
+                                          student_profile.lastname,
+                                          student_profile.document_number,
+                                          student_profile.id_moodle,groups.id as grupo,
+                                          groups.name as grupo_name,
+                                          conditions.name as estado,      
+                                          document_type.name as tipo_documento,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
+                                   where  student_profile.id = student_groups.id_student
+                                   and    groups.id = student_groups.id_group
+                                   and    groups.id_cohort = 1
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null
+                                   and    conditions.id = student_profile.id_state
+                                   and    document_type.id = student_profile.id_document_type");
+        if($estudiantes != null){
+            return $estudiantes;
+        }else{
+            return null;
+        }
+    }
+
+    public static function Estudiantes_cohort_linea2(){
+
+        $estudiantes = DB::select("select student_profile.id,student_profile.name,
+                                          student_profile.lastname,
+                                          student_profile.document_number,
+                                          student_profile.id_moodle,groups.id as grupo,
+                                          groups.name as grupo_name,
+                                          conditions.name as estado,      
+                                          document_type.name as tipo_documento,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
+                                   where  student_profile.id = student_groups.id_student
+                                   and    groups.id = student_groups.id_group
+                                   and    groups.id_cohort = 2
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null
+                                   and    conditions.id = student_profile.id_state
+                                   and    document_type.id = student_profile.id_document_type");
+        if($estudiantes != null){
+            return $estudiantes;
+        }else{
+            return null;
+        }
+    }
+
+    public static function Estudiantes_cohort_linea3(){
+
+        $estudiantes = DB::select("select student_profile.id,student_profile.name,
+                                          student_profile.lastname,
+                                          student_profile.document_number,
+                                          student_profile.id_moodle,groups.id as grupo,
+                                          groups.name as grupo_name,
+                                          conditions.name as estado,      
+                                          document_type.name as tipo_documento,
+                                          CONCAT(users.name,' ', users.apellidos_user) encargado
+                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
+                                   where  student_profile.id = student_groups.id_student
+                                   and    groups.id = student_groups.id_group
+                                   and    groups.id_cohort = 3
+                                   and    student_profile.deleted_at is null
+                                   and    student_profile.id = assignment_students.id_student
+                                   and    assignment_students.id_user = users.id
+                                   and    assignment_students.deleted_at is null
+                                   and    conditions.id = student_profile.id_state
+                                   and    document_type.id = student_profile.id_document_type");
+        if($estudiantes != null){
+            return $estudiantes;
+        }else{
+            return null;
+        }
+    }
+    //
 
     //RELACIONES UNO A UNO POR DEBAJO
 

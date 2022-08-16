@@ -298,13 +298,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
                               <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
-                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
-                                <ul class="dropdown-menu">
-                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/u/2/folders/1Wdj0RP5Lv1iy3r1xrAFCWypFqZ85M-FC">Linea 1</a></li>
-                                  <li><a target="_blank"  class="dropdown-item" href="https://drive.google.com/drive/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI?usp=sharing">Linea 2</a></li>
-                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX?usp=sharing">Linea 3</a></li>
-                                </ul>
-                              </li>
+                              <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
                             </ul>
                           </li>
                         
@@ -345,13 +339,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
                               <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
-                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
-                                <ul class="dropdown-menu">
-                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/u/2/folders/1Wdj0RP5Lv1iy3r1xrAFCWypFqZ85M-FC">Linea 1</a></li>
-                                  <li><a target="_blank"  class="dropdown-item" href="https://drive.google.com/drive/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI?usp=sharing">Linea 2</a></li>
-                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX?usp=sharing">Linea 3</a></li>
-                                </ul>
-                              </li>
+                              <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
                             </ul>
                           </li>
 

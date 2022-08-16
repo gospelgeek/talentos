@@ -611,7 +611,7 @@ class perfilEstudiante extends Model
     }
     //
     //consultas para reporte individual academico
-    public static function Estudiantes_cohort_linea1(){
+    public static function estudiantes_cohort_linea1(){
 
         $estudiantes = DB::select("select student_profile.id,student_profile.name,
                                           student_profile.lastname,
@@ -638,7 +638,7 @@ class perfilEstudiante extends Model
         }
     }
 
-    public static function Estudiantes_cohort_linea2(){
+    public static function estudiantes_cohort_linea2(){
 
         $estudiantes = DB::select("select student_profile.id,student_profile.name,
                                           student_profile.lastname,
@@ -665,7 +665,7 @@ class perfilEstudiante extends Model
         }
     }
 
-    public static function Estudiantes_cohort_linea3(){
+    public static function estudiantes_cohort_linea3(){
 
         $estudiantes = DB::select("select student_profile.id,student_profile.name,
                                           student_profile.lastname,

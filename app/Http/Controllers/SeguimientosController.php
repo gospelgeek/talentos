@@ -1195,7 +1195,7 @@ public function __construct()
                 return datatables()->of($estudiantes)->toJson();
         }else{
 
-            $estudiantes_linea1 = perfilEstudiante::estudiantes_linea1();
+            $estudiantes_linea1 = perfilEstudiante::Estudiantes_cohort_linea1();
             $estudiantes = collect($estudiantes_linea1);
             //dd($estudiantes);
             /*$cursos = explode(',', $estudiantes[0]->asignatura);
@@ -2361,7 +2361,7 @@ public function __construct()
                 return datatables()->of($estudiantes)->toJson();
         }else{
 
-            $estudiantes_linea1 = perfilEstudiante::estudiantes_linea2();
+            $estudiantes_linea1 = perfilEstudiante::Estudiantes_cohort_linea2();
             $estudiantes = collect($estudiantes_linea1);
             //dd($estudiantes);
 
@@ -3263,7 +3263,7 @@ public function __construct()
             
             return datatables()->of($estudiantes)->toJson();
         }else{
-            $estudiantes_linea3 = perfilEstudiante::estudiantes_linea3();
+            $estudiantes_linea3 = perfilEstudiante::Estudiantes_cohort_linea3();
             $estudiantes = collect($estudiantes_linea3);
             //dd($estudiantes);
 

@@ -22,12 +22,12 @@
            	</div>
            	<div id="export_2" class="btn-group">
 				<div class="col-xs-6 col-md-12 col-sm-6">
-                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/u/2/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI">EXPORTAR SÁBANA LINEA 2</a>
+                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI?usp=sharing">EXPORTAR SÁBANA LINEA 2</a>
             	</div>
            	</div>
            	<div id="export_3" class="btn-group">
 				<div class="col-xs-6 col-md-12 col-sm-6">
-                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/u/2/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX">EXPORTAR SÁBANA LINEA 3</a>
+                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX?usp=sharing">EXPORTAR SÁBANA LINEA 3</a>
             	</div>
            	</div>
 			<br>

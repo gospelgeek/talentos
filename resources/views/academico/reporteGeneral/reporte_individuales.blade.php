@@ -1046,7 +1046,7 @@
                 }
             }
         ],
-        "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
+        "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
@@ -1639,7 +1639,7 @@
                 }
             }
         ],
-        "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
+        "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [

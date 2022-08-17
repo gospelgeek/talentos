@@ -3276,9 +3276,9 @@ public function __construct()
             Storage::disk('local')->put('notas_linea_3.json', $estudiantes_notas);
             $notas = json_decode($estudiantes_notas);
 
-            $estudiantes_notas = collect($notas);
+            $estudiantes_notas_linea3 = collect($notas);
 
-            $estudiantes->map(function($estudiante){
+            $estudiantes_notas_linea3->map(function($estudiante){
                 $biologia_asistencia = 0;
                 $biologia_seguimiento_academico = 0;
                 $biologia_autoevaluacion = 0;
@@ -3625,7 +3625,7 @@ public function __construct()
             });
             //dd($estudiantes);
             
-            return datatables()->of($estudiantes_notas)->toJson();
+            return datatables()->of($$estudiantes_notas_linea3)->toJson();
         }
     }
 

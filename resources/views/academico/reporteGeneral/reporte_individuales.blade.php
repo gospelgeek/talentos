@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
-	<h1 style="text-align:center;">REPORTE GENERAL DE NOTAS INDIVUDALES</h1>
+	<h1 style="text-align:center;">REPORTE GENERAL DE NOTAS INDIVIDUALES</h1>
 	<div class="card">
 		<div class="card-body">
 			<div class="btn-group">

@@ -2361,8 +2361,8 @@ public function __construct()
                 return datatables()->of($estudiantes)->toJson();
         }else{
 
-            $estudiantes_linea1 = perfilEstudiante::Estudiantes_cohort_linea2();
-            $estudiantes = collect($estudiantes_linea1);
+            $estudiantes_linea2 = perfilEstudiante::Estudiantes_cohort_linea2();
+            $estudiantes = collect($estudiantes_linea2);
             //dd($estudiantes);
 
             $estudiantes->map(function($estudiante){
@@ -2374,9 +2374,9 @@ public function __construct()
             Storage::disk('local')->put('notas_linea_2.json', $estudiantes_notas);
             $notas = json_decode($estudiantes_notas);
 
-            $estudiantes_notas = collect($notas);
+            $estudiantes_notas_linea2 = collect($notas);
 
-            $estudiantes_notas->map(function($estudiante){
+            $estudiantes_notas_linea2->map(function($estudiante){
                         $biologia_asistencia = 0;
                         $biologia_seguimiento_academico = 0;
                         $biologia_autoevaluacion = 0;
@@ -2884,7 +2884,7 @@ public function __construct()
                         unset($estudiante->asignaturas);
                         //dd($estudiante);
                     });
-                return datatables()->of($estudiantes_notas)->toJson();
+                return datatables()->of($estudiantes_notas_linea2)->toJson();
         }           
     }
 

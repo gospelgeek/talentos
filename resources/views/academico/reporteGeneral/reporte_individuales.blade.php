@@ -11,25 +11,26 @@
 		<div class="card-body">
 			<div class="btn-group">
 				<div class="col-xs-12 col-sm-12 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                	{!!Form::label('cohorte','Linea: ')!!}
-       	        	{!!Form::select('cohorte', $cohorte, null,['id'=>'cohorTe','class'=>	'form-control','required', 'placeholder'=>'Seleccione una opción'])!!}
-            	</div>
-           	</div>
-           	<div id="export_1" class="btn-group">
+          {!!Form::label('cohorte','Linea: ')!!}
+       	  {!!Form::select('cohorte', $cohorte, null,['id'=>'cohorTe','class'=>	'form-control','required', 'placeholder'=>'Seleccione una opción'])!!}
+        </div>
+      </div>
+      <div id="export_1" class="btn-group" style="display:none;">
 				<div class="col-xs-6 col-md-12 col-sm-6">
-                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/u/2/folders/1Wdj0RP5Lv1iy3r1xrAFCWypFqZ85M-FC">EXPORTAR SÁBANA LINEA 1</a>
-            	</div>
-           	</div>
-           	<div id="export_2" class="btn-group">
+          <a class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="	
+          	{{route('sabana_notas_linea_1')}}">EXPORTAR SÁBANA LINEA 1</a>
+        </div>
+      </div>
+      <div id="export_2" class="btn-group" style="display:none;">
 				<div class="col-xs-6 col-md-12 col-sm-6">
-                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI?usp=sharing">EXPORTAR SÁBANA LINEA 2</a>
-            	</div>
-           	</div>
-           	<div id="export_3" class="btn-group">
+          <a class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="{{route('sabana_notas_linea_2')}}">EXPORTAR SÁBANA LINEA 2</a>
+        </div>
+      </div>
+      <div id="export_3" class="btn-group" style="display:none;">
 				<div class="col-xs-6 col-md-12 col-sm-6">
-                	<a target="_blank" class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="https://drive.google.com/drive/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX?usp=sharing">EXPORTAR SÁBANA LINEA 3</a>
-            	</div>
-           	</div>
+          <a class="btn btn-primary btn-sm mt-3 mb-3 float-right" href="{{route('sabana_notas_linea_3')}}">EXPORTAR SÁBANA LINEA 3</a>
+        </div>
+      </div>
 			<br>
 			<div class="table-responsive">
 				<div id="tabla_1" class="table-responsive" style='display:none'>
@@ -363,25 +364,25 @@
         var linea = $('#cohorTe').val();
         if(linea == 1){
         	document.getElementById("tabla_1").removeAttribute('style', 'display:none');
-        	//document.getElementById("export_1").removeAttribute('style', 'display:none');
+        	document.getElementById("export_1").removeAttribute('style', 'display:none');
         }
         else{
         	document.getElementById("tabla_1").setAttribute('style', 'display:none');
-        	//document.getElementById("export_1").setAttribute('style', 'display:none');	
+        	document.getElementById("export_1").setAttribute('style', 'display:none');	
         }
         if(linea == 2){
         	document.getElementById("tabla_2").removeAttribute('style', 'display:none');
-        	//document.getElementById("export_2").removeAttribute('style', 'display:none');	
+        	document.getElementById("export_2").removeAttribute('style', 'display:none');	
         }else{
         	document.getElementById("tabla_2").setAttribute('style', 'display:none');
-        	//document.getElementById("export_2").setAttribute('style', 'display:none');
+        	document.getElementById("export_2").setAttribute('style', 'display:none');
         }
         if(linea == 3){
         	document.getElementById("tabla_3").removeAttribute('style', 'display:none');
-        	//document.getElementById("export_3").removeAttribute('style', 'display:none');	
+        	document.getElementById("export_3").removeAttribute('style', 'display:none');	
         }else{
         	document.getElementById("tabla_3").setAttribute('style', 'display:none');
-        	//document.getElementById("export_3").setAttribute('style', 'display:none');
+        	document.getElementById("export_3").setAttribute('style', 'display:none');
         }
     });
 
@@ -401,7 +402,7 @@
             {data: 'encargado'},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.accionciudadana_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.accionciudadana_asistencias+'</u></button>';
             		}else{
             			return data.accionciudadana_asistencias;
             		}
@@ -409,7 +410,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.accionciudadana_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.accionciudadana_seguimientos+'</u></button>';
             		}else{
             			return data.accionciudadana_seguimientos;
             		}
@@ -417,7 +418,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.accionciudadana_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.accionciudadana_autoevaluacion+'</u></button>';
             		}else{
             			return data.accionciudadana_autoevaluacion;
             		}
@@ -443,7 +444,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.artes_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.artes_asistencias+'</u></button>';
             		}else{
             			return data.artes_asistencias;
             		}
@@ -451,7 +452,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimientos+'</u></button>';
             		}else{
             			return data.artes_seguimientos;
             		}
@@ -459,7 +460,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></button>';
             		}else{
             			return data.artes_autoevaluacion;
             		}
@@ -485,7 +486,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencias+'</u></button>';
             		}else{
             			return data.biologia_asistencias;
             		}
@@ -493,7 +494,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimientos+'</u></button>';
             		}else{
             			return data.biologia_seguimientos;
             		}
@@ -501,7 +502,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
             		}else{
             			return data.biologia_autoevaluacion;
             		}
@@ -527,7 +528,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.cultura_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.cultura_asistencias+'</u></button class="btn" type="button">';
             		}else{
             			return data.cultura_asistencias;
             		}
@@ -535,7 +536,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.cultura_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.cultura_seguimientos+'</u></button >';
             		}else{
             			return data.cultura_seguimientos;
             		}
@@ -543,7 +544,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.cultura_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.cultura_autoevaluacion+'</u></button>';
             		}else{
             			return data.cultura_autoevaluacion;
             		}
@@ -569,7 +570,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.deporte_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.deporte_asistencias+'</u></button>';
             		}else{
             			return data.deporte_asistencias;
             		}
@@ -577,7 +578,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimientos+'</u></button>';
             		}else{
             			return data.deporte_seguimientos;
             		}
@@ -585,7 +586,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></button>';
             		}else{
             			return data.deporte_autoevaluacion;
             		}
@@ -611,7 +612,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencias+'</u></button>';
             		}else{
             			return data.dialogo_asistencias;
             		}
@@ -619,7 +620,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimientos+'</u></button>';
             		}else{
             			return data.dialogo_seguimientos;
             		}
@@ -627,7 +628,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
             		}else{
             			return data.dialogo_autoevaluacion;
             		}
@@ -653,7 +654,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.filosofia_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.filosofia_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.filosofia_asistencias+'</u></button>';
             		}else{
             			return data.filosofia_asistencias;
             		}
@@ -661,7 +662,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.filosofia_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.filosofia_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.filosofia_seguimientos+'</u></button>';
             		}else{
             			return data.filosofia_seguimientos;
             		}
@@ -669,7 +670,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.filosofia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.filosofia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.filosofia_autoevaluacion+'</u></button>';
             		}else{
             			return data.filosofia_autoevaluacion;
             		}
@@ -695,7 +696,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencias+'</u></button>';
             		}else{
             			return data.fisica_asistencias;
             		}
@@ -703,7 +704,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimientos+'</u></button>';
             		}else{
             			return data.fisica_seguimientos;
             		}
@@ -711,7 +712,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
             		}else{
             			return data.fisica_autoevaluacion;
             		}
@@ -737,7 +738,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencias+'</u></button>';
             		}else{
             			return data.geografia_asistencias;
             		}
@@ -745,7 +746,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimientos+'</u></button>';
             		}else{
             			return data.geografia_seguimientos;
             		}
@@ -753,7 +754,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
             		}else{
             			return data.geografia_autoevaluacion;
             		}
@@ -779,7 +780,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencias+'</u></button>';
             		}else{
             			return data.historia_asistencias;
             		}
@@ -787,7 +788,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimientos+'</u></button>';
             		}else{
             			return data.historia_seguimientos;
             		}
@@ -795,7 +796,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
             		}else{
             			return data.historia_autoevaluacion;
             		}
@@ -821,7 +822,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencias+'</u></button>';
             		}else{
             			return data.ingles_asistencias;
             		}
@@ -829,7 +830,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimientos+'</u></button>';
             		}else{
             			return data.ingles_seguimientos;
             		}
@@ -837,7 +838,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
             		}else{
             			return data.ingles_autoevaluacion;
             		}
@@ -863,7 +864,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencias+'</u></button>';
             		}else{
             			return data.lectura_asistencias;
             		}
@@ -871,7 +872,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimientos+'</u></button>';
             		}else{
             			return data.lectura_seguimientos;
             		}
@@ -879,7 +880,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
             		}else{
             			return data.lectura_autoevaluacion;
             		}
@@ -905,7 +906,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencias+'</u></button>';
             		}else{
             			return data.matematicas_asistencias;
             		}
@@ -913,7 +914,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimientos+'</u></button>';
             		}else{
             			return data.matematicas_seguimientos;
             		}
@@ -921,7 +922,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
             		}else{
             			return data.matematicas_autoevaluacion;
             		}
@@ -947,7 +948,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencias+'</u></button>';
             		}else{
             			return data.quimica_asistencias;
             		}
@@ -955,7 +956,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimientos+'</u></button>';
             		}else{
             			return data.quimica_seguimientos;
             		}
@@ -963,7 +964,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
             		}else{
             			return data.quimica_autoevaluacion;
             		}
@@ -989,7 +990,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_asistencias != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencias+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencias+'</u></button>';
             		}else{
             			return data.tic_asistencias;
             		}
@@ -997,7 +998,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_seguimientos != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimientos+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimientos+'</u></button>';
             		}else{
             			return data.tic_seguimientos;
             		}
@@ -1005,7 +1006,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_tic+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
             		}else{
             			return data.tic_autoevaluacion;
             		}
@@ -1046,16 +1047,12 @@
                 }
             }
         ],
-        "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
+        "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
                 "csv",
-                {
-                extend: 'excelHtml5',
-                autoFilter: true
-                }, 
                 "pdf",
                 "print",
                 "colvis"
@@ -1078,7 +1075,7 @@
             {data: 'encargado'},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencia+'</u></button>';
             		}else{
             			return data.biologia_asistencia;
             		}
@@ -1086,7 +1083,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.biologia_seguimiento_academico;
             		}
@@ -1094,7 +1091,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
             		}else{
             			return data.biologia_autoevaluacion;
             		}
@@ -1120,7 +1117,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.artes_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.artes_asistencia+'</u></button>';
             		}else{
             			return data.artes_asistencia;
             		}
@@ -1128,7 +1125,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimiento_academico+'</u></button>';
             		}else{
             			return data.artes_seguimiento_academico;
             		}
@@ -1136,7 +1133,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></button>';
             		}else{
             			return data.artes_autoevaluacion;
             		}
@@ -1162,7 +1159,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.deporte_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.deporte_asistencia+'</u></button>';
             		}else{
             			return data.deporte_asistencia;
             		}
@@ -1170,7 +1167,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimiento_academico+'</u></button>';
             		}else{
             			return data.deporte_seguimiento_academico;
             		}
@@ -1178,7 +1175,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></button>';
             		}else{
             			return data.deporte_autoevaluacion;
             		}
@@ -1204,7 +1201,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencia+'</u></button>';
             		}else{
             			return data.dialogo_asistencia;
             		}
@@ -1212,7 +1209,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></button>';
             		}else{
             			return data.dialogo_seguimiento_academico;
             		}
@@ -1220,7 +1217,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
             		}else{
             			return data.dialogo_autoevaluacion;
             		}
@@ -1246,7 +1243,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></button>';
             		}else{
             			return data.constitucion_asistencia;
             		}
@@ -1254,7 +1251,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></button>';
             		}else{
             			return data.constitucion_seguimiento_academico;
             		}
@@ -1262,7 +1259,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></button>';
             		}else{
             			return data.constitucion_autoevaluacion;
             		}
@@ -1288,7 +1285,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencia+'</u></button>';
             		}else{
             			return data.fisica_asistencia;
             		}
@@ -1296,7 +1293,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></button>';
             		}else{
             			return data.fisica_seguimiento_academico;
             		}
@@ -1304,7 +1301,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
             		}else{
             			return data.fisica_autoevaluacion;
             		}
@@ -1330,7 +1327,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencia+'</u></button>';
             		}else{
             			return data.geografia_asistencia;
             		}
@@ -1338,7 +1335,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.geografia_seguimiento_academico;
             		}
@@ -1346,7 +1343,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
             		}else{
             			return data.geografia_autoevaluacion;
             		}
@@ -1372,7 +1369,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencia+'</u></button>';
             		}else{
             			return data.historia_asistencia;
             		}
@@ -1380,7 +1377,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.historia_seguimiento_academico;
             		}
@@ -1388,7 +1385,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
             		}else{
             			return data.historia_autoevaluacion;
             		}
@@ -1414,7 +1411,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencia+'</u></button>';
             		}else{
             			return data.ingles_asistencia;
             		}
@@ -1422,7 +1419,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></button>';
             		}else{
             			return data.ingles_seguimiento_academico;
             		}
@@ -1430,7 +1427,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
             		}else{
             			return data.ingles_autoevaluacion;
             		}
@@ -1456,7 +1453,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencia+'</u></button>';
             		}else{
             			return data.lectura_asistencia;
             		}
@@ -1464,7 +1461,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></button>';
             		}else{
             			return data.lectura_seguimiento_academico;
             		}
@@ -1472,7 +1469,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
             		}else{
             			return data.lectura_autoevaluacion;
             		}
@@ -1498,7 +1495,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencia+'</u></button>';
             		}else{
             			return data.matematicas_asistencia;
             		}
@@ -1506,7 +1503,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></button>';
             		}else{
             			return data.matematicas_seguimiento_academico;
             		}
@@ -1514,7 +1511,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
             		}else{
             			return data.matematicas_autoevaluacion;
             		}
@@ -1540,7 +1537,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencia+'</u></button>';
             		}else{
             			return data.quimica_asistencia;
             		}
@@ -1548,7 +1545,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></button>';
             		}else{
             			return data.quimica_seguimiento_academico;
             		}
@@ -1556,7 +1553,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
             		}else{
             			return data.quimica_autoevaluacion;
             		}
@@ -1582,7 +1579,7 @@
 
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencia+'</u></button>';
             		}else{
             			return data.tic_asistencia;
             		}
@@ -1590,7 +1587,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></button>';
             		}else{
             			return data.tic_seguimiento_academico;
             		}
@@ -1598,7 +1595,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
             		}else{
             			return data.tic_autoevaluacion;
             		}
@@ -1639,16 +1636,12 @@
                 }
             }
         ],
-        "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
+        "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
                 "csv",
-                {
-                extend: 'excelHtml5',
-                autoFilter: true
-                }, 
                 "pdf",
                 "print",
                 "colvis"
@@ -1671,7 +1664,7 @@
             {data: 'encargado'},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencia+'</u></button>';
             		}else{
             			return data.biologia_asistencia;
             		}
@@ -1679,7 +1672,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.biologia_seguimiento_academico;
             		}
@@ -1687,7 +1680,7 @@
         	},
         	{data: null, render:function(data, type, row, meta){
             		if(data.biologia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
             		}else{
             			return data.biologia_autoevaluacion;
             		}
@@ -1708,12 +1701,13 @@
         	},
             {data: 'biologia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
-            	}
+            }
+
         	},
 
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></button>';
             		}else{
             			return data.constitucion_asistencia;
             		}
@@ -1721,7 +1715,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></button>';
             		}else{
             			return data.constitucion_seguimiento_academico;
             		}
@@ -1729,7 +1723,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></button>';
             		}else{
             			return data.constitucion_autoevaluacion;
             		}
@@ -1748,11 +1742,14 @@
             		}
             	}
         	},
-            {data: 'constitucion_total_curso'},
+            {data: 'constitucion_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            }
+          },
 
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencia+'</u></button>';
             		}else{
             			return data.fisica_asistencia;
             		}
@@ -1760,7 +1757,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></button>';
             		}else{
             			return data.fisica_seguimiento_academico;
             		}
@@ -1768,7 +1765,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
             		}else{
             			return data.fisica_autoevaluacion;
             		}
@@ -1787,11 +1784,14 @@
             		}
             	}
         	},
-            {data: 'fisica_total_curso'},
+            {data: 'fisica_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
 
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencia+'</u></button>';
             		}else{
             			return data.geografia_asistencia;
             		}
@@ -1799,7 +1799,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.geografia_seguimiento_academico;
             		}
@@ -1807,7 +1807,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
             		}else{
             			return data.geografia_autoevaluacion;
             		}
@@ -1826,11 +1826,13 @@
             		}
             	}
         	},
-            {data: 'geografia_total_curso'},
-
+            {data: 'geografia_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencia+'</u></button>';
             		}else{
             			return data.historia_asistencia;
             		}
@@ -1838,7 +1840,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></button>';
             		}else{
             			return data.historia_seguimiento_academico;
             		}
@@ -1846,7 +1848,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
             		}else{
             			return data.historia_autoevaluacion;
             		}
@@ -1865,11 +1867,14 @@
             		}
             	}
         	},
-            {data: 'historia_total_curso'},
-
+            
+            {data: 'historia_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencia+'</u></button>';
             		}else{
             			return data.ingles_asistencia;
             		}
@@ -1877,7 +1882,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></button>';
             		}else{
             			return data.ingles_seguimiento_academico;
             		}
@@ -1885,7 +1890,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
             		}else{
             			return data.ingles_autoevaluacion;
             		}
@@ -1904,11 +1909,13 @@
             		}
             	}
         	},
-            {data: 'ingles_total_curso'},
-
+            {data: 'ingles_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencia+'</u></button>';
             		}else{
             			return data.lectura_asistencia;
             		}
@@ -1916,7 +1923,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></a>';
+            			return '<button  class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></button>';
             		}else{
             			return data.lectura_seguimiento_academico;
             		}
@@ -1924,7 +1931,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></a>';
+            			return '<button  class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
             		}else{
             			return data.lectura_autoevaluacion;
             		}
@@ -1943,11 +1950,13 @@
             		}
             	}
         	},
-            {data: 'lectura_total_curso'},
-
+            {data: 'lectura_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencia+'</u></button>';
             		}else{
             			return data.matematicas_asistencia;
             		}
@@ -1955,7 +1964,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></button>';
             		}else{
             			return data.matematicas_seguimiento_academico;
             		}
@@ -1963,7 +1972,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
             		}else{
             			return data.matematicas_autoevaluacion;
             		}
@@ -1982,11 +1991,13 @@
             		}
             	}
         	},
-            {data: 'matematicas_total_curso'},
-
+            {data: 'matematicas_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_asistencia != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencia+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencia+'</u></button>';
             		}else{
             			return data.quimica_asistencia;
             		}
@@ -1994,7 +2005,7 @@
         	},
         	{data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimiento_academico != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></button>';
             		}else{
             			return data.quimica_seguimiento_academico;
             		}
@@ -2002,7 +2013,7 @@
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
-            			return '<a onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></a>';
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
             		}else{
             			return data.quimica_autoevaluacion;
             		}
@@ -2021,7 +2032,10 @@
             		}
             	}
         	},
-            {data: 'quimica_total_curso'},
+            {data: 'quimica_total_curso', render:function(data, type, row, meta){
+            		return '<b>'+data+'</b>';
+            	}
+            },
             {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -2045,11 +2059,7 @@
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
-                "csv",
-                {
-                extend: 'excelHtml5',
-                autoFilter: true
-                }, 
+                "csv", 
                 "pdf",
                 "print",
                 "colvis"

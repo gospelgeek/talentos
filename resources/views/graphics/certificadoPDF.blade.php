@@ -58,6 +58,10 @@
             height: 90px;
             width: 650px;
         }
+        .firma{
+            height: 80px;
+            width: 200px;
+        }
         header{
             margin: 0%;
             padding: 0%;
@@ -128,7 +132,7 @@
         </div>
 
         <div class="generacion">
-        Tulio Gerardo Motoa Garavito
+        <img class="firma" src="https://todosytodasaestudiar.org/img/firmaTulio.png" alt="">
         <br>
         Director Proyecto Convenio No. 4143.010.27.1.8.-2021
         </div>
@@ -177,7 +181,7 @@
         </div>
 
         <div class="generacion">
-        Tulio Gerardo Motoa Garavito
+        <img class="firma" src="https://todosytodasaestudiar.org/img/firmaTulio.png" alt="">
         <br>
         Director Proyecto Convenio No. 4143.010.27.1.8.-2021
         </div>
@@ -227,7 +231,7 @@
         </div>
 
         <div class="generacion">
-        Tulio Gerardo Motoa Garavito
+        <img class="firma" src="https://todosytodasaestudiar.org/img/firmaTulio.png" alt="">
         <br>
         Director Proyecto Convenio No. 4143.010.27.1.8.-2021
         </div>
@@ -236,7 +240,7 @@
         
 
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br>
     <footer>
         <div  style="text-align: center;">
             <img class="pie" src="https://todosytodasaestudiar.org/img/pie2.png" alt="">

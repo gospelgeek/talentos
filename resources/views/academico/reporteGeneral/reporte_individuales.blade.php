@@ -36,6 +36,7 @@
 				<div id="tabla_1" class="table-responsive" style='display:none'>
 				  
 				  <table id="linea_1" class=" table table-bordered table-striped">
+                    <caption>Fecha ultima carga: {{ $carga }}</caption>
 					<thead>
 						<tr>
 							<th rowspan="2">Nombres</th>
@@ -160,6 +161,7 @@
 				</div>
 				<div id="tabla_2" class="table-responsive" style='display:none'>
 				  <table id="linea_2" class=" table table-bordered table-striped">
+                    <caption>Fecha ultima carga: {{ $carga }}</caption>
 					<thead>
 						<tr>
 							<th rowspan="2">Nombres</th>
@@ -270,6 +272,7 @@
 				</div>
 				<div id="tabla_3" class="table-responsive" style='display:none'>
 				  <table id="linea_3" class=" table table-bordered table-striped">
+                    <caption>Fecha ultima carga: {{ $carga }}</caption>
 					<thead>
 						<tr>
 							<th rowspan="2">Nombres</th>

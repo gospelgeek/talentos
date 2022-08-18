@@ -33,7 +33,7 @@
                         <div class="form-group row">
                             <label for="iden" class="col-md-4 col-form-label text-md-right">Nº de Identificacion</label>
                             <div class="col-md-4">
-                                <input class="form-control" type="number" id="iden" name="iden">
+                                <input class="form-control" type="text" id="iden" name="iden">
                             </div>
                         </div>
                         <div style="text-align: center;">

@@ -557,8 +557,10 @@ public function __construct()
    public function notasIndividuales(){
 
         $cohorte = Cohort::pluck('name', 'id');
+        $ultima_carga = StudentsGrade::fecha_carga();
+        $carga = $ultima_carga[0]->created_at;
          
-        return view('academico.reporteGeneral.reporte_individuales', compact('cohorte'));
+        return view('academico.reporteGeneral.reporte_individuales', compact('cohorte', 'carga'));
     }
 
     public function notas_linea1(){

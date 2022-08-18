@@ -49,12 +49,12 @@ class CertificadoController extends Controller
             
             $consulta = DB::select("SELECT id, name as nombre, lastname as apellidos, 
             (SELECT document_type.name FROM document_type WHERE document_type.id = 
-            student_profile.id_document_type) as tipo_documento, document_number as numero_identificacion, 
-            (SELECT (SELECT name FROM groups WHERE groups.id = student_groups.id_group) 
-            FROM student_groups WHERE student_groups.id_student = student_profile.id) as grupo, 
-            (SELECT (SELECT (SELECT name FROM cohorts WHERE cohorts.id = groups.id_cohort) 
-            FROM groups WHERE groups.id = student_groups.id_group) FROM student_groups 
-            WHERE student_groups.id_student = student_profile.id) as linea FROM student_profile 
+            student_profile.id_document_type limit 1) as tipo_documento, document_number as numero_identificacion, 
+            (SELECT (SELECT name FROM groups WHERE groups.id = student_groups.id_group limit 1) 
+            FROM student_groups WHERE student_groups.id_student = student_profile.id limit 1) as grupo, 
+            (SELECT (SELECT (SELECT name FROM cohorts WHERE cohorts.id = groups.id_cohort limit 1) 
+            FROM groups WHERE groups.id = student_groups.id_group limit 1) FROM student_groups 
+            WHERE student_groups.id_student = student_profile.id limit 1) as linea FROM student_profile 
             WHERE student_profile.document_number = ?", [$id]);
 
             //dd($consulta);

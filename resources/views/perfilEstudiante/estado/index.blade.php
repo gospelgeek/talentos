@@ -126,7 +126,7 @@ $(document).ready(function(){
             "ordering": true,
             "info": true,
             "autoWidth": false,
-            "responsive": true,
+            "responsive": false,
             "processing": true,
             "order": [[5,'desc']],
             "language": {

@@ -2420,7 +2420,7 @@ class perfilEstudianteController extends Controller
     
    public function get_Estados(Request $request){
         
-        if($request['febrero'] === "false" && $request['marzo'] === "false" && $request['abril'] === "false" && $request['mayo'] === "false" && $request['junio'] === "false" && $request['julio'] === "false" && $request['agosto'] === "false" && $request['septiembre'] === "false"){
+        if($request['febrero'] === "false" && $request['marzo'] === "false" && $request['abril'] === "false" && $request['mayo'] === "false" && $request['junio'] === "false" && $request['julio'] === "false" && $request['agosto'] === "false"){
 
             $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
             $verDatosPerfil->map(function($estudiante){
@@ -2534,6 +2534,43 @@ class perfilEstudianteController extends Controller
                     $validar = collect($cambios_agosto);
                     return datatables()->of($validar)->toJson();
                 }     
+            }
+            if($request['todos'] === "true"){
+                $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','
+                id_document_type','document_number','id_state']);
+                $verDatosPerfil->map(function($estudiante){
+                    //$estudiante->cohorte = $estudiante->studentGroup->group->cohort ? $estudiante->studentGroup->group->cohort->name : null;
+                    //$estudiante->grupo = $estudiante->studentGroup->group ? $estudiante->studentGroup->group->name : null;
+                    $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
+                    $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
+                    $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
+                    if($profesionales == true){
+                        $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+                        $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
+                    }else{
+                        $estudiante->profesional_name = null;
+                        $estudiante->profesional_lastname = null;
+                    }
+
+                    $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
+                    if($withdrawals == true){
+                        $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
+                        $estudiante->fecha = $estudiante->withdrawals ? $estudiante->withdrawals->fecha : null;
+                        $estudiante->observacion = $estudiante->withdrawals ? $estudiante->withdrawals->observation : null;
+                        $estudiante->url = $estudiante->withdrawals ? $estudiante->withdrawals->url : null;
+                    }else{
+                        $estudiante->motivo = null;
+                        $estudiante->fecha = null;
+                        $estudiante->observacion = null;
+                        $estudiante->url = null;
+                    }
+                    unset($estudiante->withdrawals);
+                    unset($estudiante->studentGroup);
+                    unset($estudiante->condition);
+                    unset($estudiante->documenttype);
+                    unset($estudiante->assignmentstudent);
+                });
+                return datatables()->of($verDatosPerfil)->toJson();    
             }
             /*if($request['septiembre'] === "true"){
                 $cambios_septiembre = Withdrawals::septiembre();

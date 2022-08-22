@@ -59,8 +59,10 @@ $(document).ready(function(){
     var table = $('#example1').DataTable({
          processing: false,
          serverSide: false,
-         ajax: "{{route('estudiantes.get_Estados')}}",
-         "data": function(d){
+         "ajax":{
+            "method":"GET",
+            "url": "{{route('estudiantes.get_Estados')}}",
+            "data": function(d){
                 d.febrero = $('#fbrero').is(":checked");
                 d.marzo = $('#mrzo').is(":checked");
                 d.abril = $('#abrl').is(":checked");
@@ -69,6 +71,7 @@ $(document).ready(function(){
                 d.julio = $('#jlio').is(":checked");
                 d.agosto = $('#agsto').is(":checked");
                 d.septiembre = $('#sptmbre').is(":checked");
+            },
          },
          columns: [
             {data: null, render:function(data, type, row, meta) {

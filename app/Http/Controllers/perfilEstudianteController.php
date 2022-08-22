@@ -2457,7 +2457,7 @@ class perfilEstudianteController extends Controller
             });
             return datatables()->of($verDatosPerfil)->toJson();
         }else{
-            dd($request);
+            //dd($request);
             if($request['febrero'] === "true"){
                 $cambios_febrero = Withdrawals::febrero();
                 //dd($cambios_febrero);

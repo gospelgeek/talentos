@@ -2418,44 +2418,135 @@ class perfilEstudianteController extends Controller
         };
     }
     
-    public function get_Estados(Request $request){
+   public function get_Estados(Request $request){
+        
+        if($request['febrero'] === "false" && $request['marzo'] === "false" && $request['abril'] === "false" && $request['mayo'] === "false" && $request['junio'] === "false" && $request['julio'] === "false" && $request['agosto'] === "false" && $request['septiembre'] === "false"){
 
-        $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
-        $verDatosPerfil->map(function($estudiante){
-            $estudiante->cohorte = $estudiante->studentGroup->group->cohort ? $estudiante->studentGroup->group->cohort->name : null;
-            $estudiante->grupo = $estudiante->studentGroup->group ? $estudiante->studentGroup->group->name : null;
-            $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
-            $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
-            $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
-            if($profesionales == true){
-                $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
-                $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
-            }else{
+            $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
+            $verDatosPerfil->map(function($estudiante){
+                $estudiante->cohorte = $estudiante->studentGroup->group->cohort ? $estudiante->studentGroup->group->cohort->name : null;
+                $estudiante->grupo = $estudiante->studentGroup->group ? $estudiante->studentGroup->group->name : null;
+                $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
+                $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
+                $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
+                if($profesionales == true){
+                    $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+                    $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
+                }else{
                 $estudiante->profesional_name = null;
                 $estudiante->profesional_lastname = null;
-            }
+                }
 
-            $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
-            if($withdrawals == true){
-                $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
-                $estudiante->fecha = $estudiante->withdrawals ? $estudiante->withdrawals->fecha : null;
-                $estudiante->observacion = $estudiante->withdrawals ? $estudiante->withdrawals->observation : null;
-                $estudiante->url = $estudiante->withdrawals ? $estudiante->withdrawals->url : null;
-            }else{
-                $estudiante->motivo = null;
-                $estudiante->fecha = null;
-                $estudiante->observacion = null;
-                $estudiante->url = null;
+                $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
+                if($withdrawals == true){
+                    $estudiante->motivo = $estudiante->withdrawals->reasons ? $estudiante->withdrawals->reasons->name : null;
+                    $estudiante->fecha = $estudiante->withdrawals ? $estudiante->withdrawals->fecha : null;
+                    $estudiante->observacion = $estudiante->withdrawals ? $estudiante->withdrawals->observation : null;
+                    $estudiante->url = $estudiante->withdrawals ? $estudiante->withdrawals->url : null;
+                }else{
+                    $estudiante->motivo = null;
+                    $estudiante->fecha = null;
+                    $estudiante->observacion = null;
+                    $estudiante->url = null;
+                }
+                unset($estudiante->withdrawals);
+                unset($estudiante->studentGroup);
+                unset($estudiante->condition);
+                unset($estudiante->documenttype);
+                unset($estudiante->assignmentstudent);
+            });
+            return datatables()->of($verDatosPerfil)->toJson();
+        }else{
+            dd($request);
+            if($request['febrero'] === "true"){
+                $cambios_febrero = Withdrawals::febrero();
+                //dd($cambios_febrero);
+                if($cambios_febrero != null){
+                    return datatables()->of($cambios_febrero)->toJson();    
+                }else{
+                    $cambios_febrero = null;
+                    $validar = collect($cambios_febrero);
+                    return datatables()->of($validar)->toJson();
+                }     
             }
-            unset($estudiante->withdrawals);
-            unset($estudiante->studentGroup);
-            unset($estudiante->condition);
-            unset($estudiante->documenttype);
-            unset($estudiante->assignmentstudent);
-            
-        });
-        
-        return datatables()->of($verDatosPerfil)->toJson();
+            if($request['marzo'] === "true"){
+                $cambios_marzo = Withdrawals::marzo();
+                //dd($cambios_marzo);
+                if($cambios_marzo != null){
+                    return datatables()->of($cambios_marzo)->toJson();    
+                }else{
+                    $cambios_marzo = null;
+                    $validar = collect($cambios_marzo);
+                    return datatables()->of($validar)->toJson();
+                }   
+            }
+            if($request['abril'] === "true"){
+                $cambios_abril = Withdrawals::abril();
+                //dd($cambios_abril);
+                if($cambios_abril != null){
+                    return datatables()->of($cambios_abril)->toJson();    
+                }else{
+                    $cambios_abril = null;
+                    $validar = collect($cambios_abril);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            if($request['mayo'] === "true"){
+                $cambios_mayo = Withdrawals::mayo();
+                //dd($cambios_mayo);
+                if($cambios_mayo != null){
+                    return datatables()->of($cambios_mayo)->toJson();    
+                }else{
+                    $cambios_mayo = null;
+                    $validar = collect($cambios_mayo);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            if($request['junio'] === "true"){
+                $cambios_junio = Withdrawals::junio();
+                //dd($cambios_junio);
+                if($cambios_junio != null){
+                    return datatables()->of($cambios_junio)->toJson();    
+                }else{
+                    $cambios_junio = null;
+                    $validar = collect($cambios_junio);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            if($request['julio'] === "true"){
+                $cambios_julio = Withdrawals::julio();
+                //dd($cambios_julio);
+                if($cambios_julio != null){
+                    return datatables()->of($cambios_julio)->toJson();    
+                }else{
+                    $cambios_julio = null;
+                    $validar = collect($cambios_julio);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            if($request['agosto'] === "true"){
+                $cambios_agosto = Withdrawals::agosto();
+                //dd($cambios_agosto);
+                if($cambios_agosto != null){
+                    return datatables()->of($cambios_agosto)->toJson();    
+                }else{
+                    $cambios_agosto = null;
+                    $validar = collect($cambios_agosto);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            /*if($request['septiembre'] === "true"){
+                $cambios_septiembre = Withdrawals::septiembre();
+                dd($cambios_septiembre);
+                if($cambios_septiembre != null){
+                    return datatables()->of($cambios_septiembre)->toJson();    
+                }else{
+                    $cambios_septiembre = null;
+                    $validar = collect($cambios_septiembre);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }*/
+        }
     }
 
     public function excel_asistencias(Request $request){

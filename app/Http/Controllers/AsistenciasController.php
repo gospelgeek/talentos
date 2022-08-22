@@ -109,7 +109,7 @@ class AsistenciasController extends Controller
     public function asistencias_ficha(Request $request){
 
         //dd($request->id_student);
-        $estudiante = perfilEstudiante::select('id','id_moodle')->where('id', $request->id_student)->firstOrfail();
+        $estudiante = perfilEstudiante::withTrashed()->select('id','id_moodle')->where('id', $request->id_student)->firstOrfail();
         $this->id_moodle = $estudiante->id_moodle;
         $cursos = CourseMoodle::select('id','fullname','attendance_id')->where('group_id',$estudiante->studentGroup->group->id)->with('sesiones')->get();
         //dd($cursos);

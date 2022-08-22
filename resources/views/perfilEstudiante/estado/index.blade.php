@@ -6,7 +6,7 @@
 @include('../alerts.request')
 
 <div class="container-fluid">
-<h1 style="text-align:center;">ESTADO</h1>
+<h1 style="text-align:center;">ESTADO ESTUDIANTES</h1>
     <div class="card">         
     <div class="card-body">
     <div class="btn-group">

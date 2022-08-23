@@ -55,10 +55,12 @@ class CertificadoController extends Controller
             (SELECT (SELECT (SELECT name FROM cohorts WHERE cohorts.id = groups.id_cohort limit 1) 
             FROM groups WHERE groups.id = student_groups.id_group limit 1) FROM student_groups 
             WHERE student_groups.id_student = student_profile.id limit 1) as linea FROM student_profile 
-            WHERE student_profile.document_number = ?", [$id]);
+            WHERE student_profile.document_number = ? AND student_profile.id_state = 1", [$id]);
 
             //dd($consulta);
-
+            if($consulta == []){
+                return "El numero de documento suministrado, no pertenece al programa Todos y Todas a Estudiar";
+            }else {
             $pdf = PDF::loadView('graphics.certificadoPDF', [
                 "data" => $consulta,
                 "fecha" => $actual,
@@ -69,6 +71,7 @@ class CertificadoController extends Controller
             //download
             //return $pdf->stream("certificado.pdf");
             return $pdf->download("certificado.pdf");
+            }
         }else {
             return "No pasaste la verificacion del Recaptcha";
         }

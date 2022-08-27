@@ -19,10 +19,19 @@
                         <option value="3">LINEA 3</option>
                     </select>
                 </div>
-                <div class="col-md-2">
-                    <label for="">CAMBIAR A PORCENTAJE</label>
-                    <input class="form-control" type="checkbox" name="cambio" id="cambio">
+                <div class="row">
+                    &nbsp;
+                    <div class="col-ms-2">
+                        <label for="">CAMBIAR A PORCENTAJE</label>
+                    </div>
+                    &nbsp;
+                    &nbsp;
+                    <div class="col-ms-4">
+                        <input class="form-control mt-0" style="width: 25px; height: 25px;" type="checkbox" id="cambio">
+                    </div>
                 </div>
+                &nbsp;
+                &nbsp;
                 <div class="col-md-3">
                     <a class="btn btn-primary" href="{{ route('sabana_icfes') }}">
                         DESCARGAR SABANA
@@ -39,17 +48,17 @@
                     <table id="tablaLinea1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <td>Nombres</td>
-                                <td>Apellidos</td>
-                                <td>Nº documento</td>
-                                <td>Linea</td>
-                                <td>Grupo</td>
-                                <td>Icfes Entrada</td>
-                                <td>Simulacro 3</td>
-                                <td>Puntos Variacion</td>
-                                <td>Icfes De Salida</td>
-                                <td>Puntos Variacion</td>
-                                <td>Ver Detalle</td>
+                                <td align="center">Nombres</td>
+                                <td align="center">Apellidos</td>
+                                <td align="center">Nº documento</td>
+                                <td align="center">Linea</td>
+                                <td align="center">Grupo</td>
+                                <td align="center">Icfes Entrada</td>
+                                <td align="center">Simulacro 3</td>
+                                <td align="center" id="pV1">Puntos Variacion</td>
+                                <td align="center">Icfes De Salida</td>
+                                <td align="center" id="pV2">Puntos Variacion</td>
+                                <td align="center">Ver Detalle</td>
 
 
                             </tr>
@@ -63,21 +72,21 @@
                     <table id="tablaLinea2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <td>Nombres</td>
-                                <td>Apellidos</td>
-                                <td>Nº documento</td>
-                                <td>Linea</td>
-                                <td>Grupo</td>
-                                <td>Icfes Entrada</td>
-                                <td>Simulacro 1</td>
-                                <td>Puntos Variacion</td>
-                                <td>Simulacro 2</td>
-                                <td>Puntos Variacion</td>
-                                <td>Simulacro 3</td>
-                                <td>Puntos Variacion</td>
-                                <td>Icfes De Salida</td>
-                                <td>Puntos Variacion</td>
-                                <td>Ver Detalle</td>
+                                <td align="center">Nombres</td>
+                                <td align="center">Apellidos</td>
+                                <td align="center">Nº documento</td>
+                                <td align="center">Linea</td>
+                                <td align="center">Grupo</td>
+                                <td align="center">Icfes Entrada</td>
+                                <td align="center">Simulacro 1</td>
+                                <td align="center" id="pV3">Puntos Variacion</td>
+                                <td align="center">Simulacro 2</td>
+                                <td align="center" id="pV4">Puntos Variacion</td>
+                                <td align="center">Simulacro 3</td>
+                                <td align="center" id="pV5">Puntos Variacion</td>
+                                <td align="center">Icfes De Salida</td>
+                                <td align="center" id="pV6">Puntos Variacion</td>
+                                <td align="center">Ver Detalle</td>
 
 
                             </tr>
@@ -91,19 +100,19 @@
                     <table id="tablaLinea3" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <td>Nombres</td>
-                                <td>Apellidos</td>
-                                <td>Nº documento</td>
-                                <td>Linea</td>
-                                <td>Grupo</td>
-                                <td>Simulacro 1</td>
-                                <td>Simulacro 2</td>
-                                <td>Puntos Variacion</td>
-                                <td>Simulacro 3</td>
-                                <td>Puntos Variacion</td>
-                                <td>Icfes De Salida</td>
-                                <td>Puntos Variacion</td>
-                                <td>Ver Detalle</td>
+                                <td align="center">Nombres</td>
+                                <td align="center">Apellidos</td>
+                                <td align="center">Nº documento</td>
+                                <td align="center">Linea</td>
+                                <td align="center">Grupo</td>
+                                <td align="center">Simulacro 1</td>
+                                <td align="center">Simulacro 2</td>
+                                <td align="center" id="pV7">Puntos Variacion</td>
+                                <td align="center">Simulacro 3</td>
+                                <td align="center" id="pV8">Puntos Variacion</td>
+                                <td align="center">Icfes De Salida</td>
+                                <td align="center" id="pV9">Puntos Variacion</td>
+                                <td align="center">Ver Detalle</td>
 
 
                             </tr>
@@ -127,16 +136,43 @@
 <script>
     
     const cambio = document.getElementById("cambio")
-
+    const pv1 = document.getElementById('pV1')
+    const pv2 = document.getElementById('pV2')
+    const pv3 = document.getElementById('pV3')
+    const pv4 = document.getElementById('pV4')
+    const pv5 = document.getElementById('pV5')
+    const pv6 = document.getElementById('pV6')
+    const pv7 = document.getElementById('pV7')
+    const pv8 = document.getElementById('pV8')
+    const pv9 = document.getElementById('pV9')
+    
     cambio.addEventListener('change', () => {
 
         console.log(cambio.checked)
         if (cambio.checked === true) {
             puntosDeVariacionConPorcentaje()
+            pv1.innerHTML = `Porcentaje`
+            pv2.innerHTML = `Porcentaje`
+            pv3.innerHTML = `Porcentaje`
+            pv4.innerHTML = `Porcentaje`
+            pv5.innerHTML = `Porcentaje`
+            pv6.innerHTML = `Porcentaje`
+            pv7.innerHTML = `Porcentaje`
+            pv8.innerHTML = `Porcentaje`
+            pv9.innerHTML = `Porcentaje`
         }
 
         if (cambio.checked === false) {
             puntosDeVariacionSinPorcentaje()
+            pv1.innerHTML=`Puntos Variacion`
+            pv2.innerHTML=`Puntos Variacion`
+            pv3.innerHTML=`Puntos Variacion`
+            pv4.innerHTML=`Puntos Variacion`
+            pv5.innerHTML=`Puntos Variacion`
+            pv6.innerHTML=`Puntos Variacion`
+            pv7.innerHTML=`Puntos Variacion`
+            pv8.innerHTML=`Puntos Variacion`
+            pv9.innerHTML=`Puntos Variacion`
         }
 
     })
@@ -164,7 +200,10 @@
                     data: 'grupo'
                 },
                 {
-                    data: 'ie'
+                   data: null,
+                   render: function(data, type, row, meta) {
+                        return `<td><strong>${data.ie}</strong></td>`
+                   }
 
                 },
                 {
@@ -292,7 +331,10 @@
                     data: 'grupo'
                 },
                 {
-                    data: 'ie'
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `<td><strong>${data.ie}</strong></td>`
+                    }
                 },
                 {
                     data: null,
@@ -478,7 +520,7 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
                            
                         `
                     }
@@ -636,7 +678,10 @@
                     data: 'grupo'
                 },
                 {
-                    data: 'ie'
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `<td><strong>${data.ie}</strong></td>`
+                    }
 
                 },
                 {
@@ -778,7 +823,10 @@
                     data: 'grupo'
                 },
                 {
-                    data: 'ie'
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return `<td><strong>${data.ie}</strong></td>`
+                    }
                 },
                 {
                     data: null,
@@ -992,7 +1040,7 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
                            
                         `
                     }
@@ -1169,7 +1217,10 @@
                 data: 'grupo'
             },
             {
-                data: 'ie'
+                data: null,
+                render: function(data, type, row, meta) {
+                   return `<td><strong>${data.ie}</strong></td>`
+                }
 
             },
             {
@@ -1297,7 +1348,10 @@
                 data: 'grupo'
             },
             {
-                data: 'ie'
+                data: null,
+                render: function(data, type, row, meta) {
+                   return `<td><strong>${data.ie}</strong></td>`
+                }
             },
             {
                 data: null,
@@ -1483,7 +1537,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
                            
                         `
                 }

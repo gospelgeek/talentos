@@ -365,3 +365,7 @@ img.avatar {
 .dropdown-menu {
   margin-top: 0;
 }
+
+td{
+	font-weight: normal;
+}

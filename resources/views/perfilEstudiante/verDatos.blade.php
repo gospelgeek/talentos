@@ -819,14 +819,14 @@
 				<table id="icfes">
 					<thead>
 
-						<th>AREA</th>
+						<th style="text-align: center;">AREA</th>
 						@if($pruebaS4 == [])
 						<input type="text" id="ie" value="ie" hidden>
 						@else
 						@if($url_entrada == [])
-						<th><u>ICFES ENTRADA</u></th>
+						<th style="text-align: center;"><u>ICFES ENTRADA</u></th>
 						@else
-						<th>
+						<th style="text-align: center;">
 							<a href="{{$url_entrada[0]->url}}">
 								<u>ICFES ENTRADA</u>
 							</a>
@@ -838,29 +838,29 @@
 
 						@if($pruebaS1 == [])
 						@else
-						<th>SIMULACRO 1</th>
-						<th>VARIACION</th>
+						<th style="text-align: center;">SIMULACRO 1</th>
+						<th style="text-align: center;">VARIACION</th>
 						@endif
 
 						@if($pruebaS2 == [])
 						@else
-						<th>SIMULACRO 2</th>
-						<th>VARIACION</th>
+						<th style="text-align: center;">SIMULACRO 2</th>
+						<th style="text-align: center;">VARIACION</th>
 						@endif
 
 						@if($pruebaS3 == [])
 						@else
-						<th>SIMULACRO 3</th>
-						<th>VARIACION</th>
+						<th style="text-align: center;">SIMULACRO 3</th>
+						<th style="text-align: center;">VARIACION</th>
 						@endif
 
 						@if($pruebaS5 == [])
 						<input type="text" id="if" value="if" hidden>
 						@else
 						@if($url_salida == [])
-						<th><u>ICFES SALIDA</u></th>
+						<th style="text-align: center;"><u>ICFES SALIDA</u></th>
 						@else
-						<th>
+						<th style="text-align: center;">
 							<a href="{{$url_salida[0]->url}}">
 								<u>ICFES SALIDA</u>
 							</a>
@@ -869,8 +869,7 @@
 						@endif
 
 						@endif
-
-						<th>TOTAL SIMULACROS</th>
+						
 
 					</thead>
 					<tbody id="icfes">
@@ -905,7 +904,7 @@
 						@else
 						<th>--</th>
 						@endif
-						<th>{{$totalSimulacros}}</th>
+						
 					</tfoot>
 
 				</table>
@@ -1705,7 +1704,7 @@
 		})
 
 
-	$("#icfes").DataTable({
+	/*$("#icfes").DataTable({
 		"processing": false,
 		"LoadingRecords": true,
 		"paging": true,
@@ -1722,7 +1721,8 @@
 		},
 		"dom": 'Bfrtip',
 		"buttons": ["copy", "excel", "pdf", "print"]
-	});
+	});*/
+    
 </script>
 
 @endpush

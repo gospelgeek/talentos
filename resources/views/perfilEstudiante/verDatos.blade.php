@@ -73,9 +73,9 @@
 
 	<br>
 
-	<div class="accordion-container">
-		<a href="#" id="titulo-1" class="accordion-titulo">Datos Generales<span class="toggle-icon"></span></a>
-		<div id="contenido-1" class="accordion-content">
+	<div class="accordion-container" id="ttlo-1">
+		<a href="#" id="titulo-1" class="accordion-titulo-1">Datos Generales<span class="toggle-icon"></span></a>
+		<div id="contenido-1" class="accordion-content-1">
 			<div class="form-group">
     			<div class="row">
             		<div class="col-xs-3 col-md-2">
@@ -320,7 +320,7 @@
 		</div>			
 	</div>
 
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-2">
 		<a href="#" id="titulo-2" class="accordion-titulo-2">Datos Academicos Previos<span class="toggle-icon"></span></a>
 		<div id="contenido-2" class="accordion-content-2">
 			<div class="form-group">
@@ -411,7 +411,7 @@
 		</div>
 	</div>
 
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-3">
 		<a href="#" id="titulo-3" class="accordion-titulo-3">Datos SocioEconomicos<span class="toggle-icon"></span></a>
 		<div id="contenido-3" class="accordion-content-3">
 			<div class="form-group">

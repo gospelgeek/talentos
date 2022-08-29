@@ -738,7 +738,7 @@ public function __construct()
                                 case 'BIOLOGIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $biologia_asistencia = $cursos->grade;
+                                        $biologia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -765,7 +765,7 @@ public function __construct()
                                 case 'CULTURA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $cultura_asistencia = $cursos->grade;
+                                        $cultura_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -792,7 +792,7 @@ public function __construct()
                                 case 'DEPORTE':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $deporte_asistencia = $cursos->grade;
+                                        $deporte_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -819,7 +819,7 @@ public function __construct()
                                 case 'DIALOGO':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $dialogo_asistencia = $cursos->grade;
+                                        $dialogo_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -846,7 +846,7 @@ public function __construct()
                                 case 'FILOSOFIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $filosofia_asistencia = $cursos->grade;
+                                        $filosofia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -873,7 +873,7 @@ public function __construct()
                                 case 'FISICA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $filosofia_asistencias = $cursos->grade;
+                                        $fisica_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -900,7 +900,7 @@ public function __construct()
                                 case 'GEOGRAFIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $geografia_asistencia = $cursos->grade;
+                                        $geografia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -927,7 +927,7 @@ public function __construct()
                                 case 'HISTORIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $historia_asistencia = $cursos->grade;
+                                        $historia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -954,7 +954,7 @@ public function __construct()
                                 case 'INGLES':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $ingles_asistencia = $cursos->grade;
+                                        $ingles_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -979,7 +979,7 @@ public function __construct()
                                 case 'LECTURA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $lectura_asistencia = $cursos->grade;
+                                        $lectura_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1006,7 +1006,7 @@ public function __construct()
                                 case 'MATEMATICAS':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $matematicas_asistencia = $cursos->grade;
+                                        $matematicas_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1032,7 +1032,7 @@ public function __construct()
                                 case 'QUIMICA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $quimica_asistencia = $cursos->grade;
+                                        $quimica_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1059,7 +1059,7 @@ public function __construct()
                                 case 'TECNOLOGIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $tic_asistencia = $cursos->grade;
+                                        $tic_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1330,7 +1330,7 @@ public function __construct()
                                 case 'JORNADAS':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $accionciudadana_asistencia = $cursos->grade;
+                                        $accionciudadana_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1357,7 +1357,7 @@ public function __construct()
                                 case 'ARTES:':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $artes_asistencia = $cursos->grade;
+                                        $artes_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1384,7 +1384,7 @@ public function __construct()
                                 case 'BIOLOGIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $biologia_asistencia = $cursos->grade;
+                                        $biologia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1411,7 +1411,7 @@ public function __construct()
                                 case 'CULTURA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $cultura_asistencia = $cursos->grade;
+                                        $cultura_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1438,7 +1438,7 @@ public function __construct()
                                 case 'DEPORTE':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $deporte_asistencia = $cursos->grade;
+                                        $deporte_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1465,7 +1465,7 @@ public function __construct()
                                 case 'DIALOGO':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $dialogo_asistencia = $cursos->grade;
+                                        $dialogo_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1492,7 +1492,7 @@ public function __construct()
                                 case 'FILOSOFIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $filosofia_asistencia = $cursos->grade;
+                                        $filosofia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1519,7 +1519,7 @@ public function __construct()
                                 case 'FISICA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $fisica_asistencia = $cursos->grade;
+                                        $fisica_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1546,7 +1546,7 @@ public function __construct()
                                 case 'GEOGRAFIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $geografia_asistencia = $cursos->grade;
+                                        $geografia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1573,7 +1573,7 @@ public function __construct()
                                 case 'HISTORIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $historia_asistencia = $cursos->grade;
+                                        $historia_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1600,7 +1600,7 @@ public function __construct()
                                 case 'INGLES':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $ingles_asistencia = $cursos->grade;
+                                        $ingles_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1626,7 +1626,7 @@ public function __construct()
                                 case 'LECTURA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $lectura_asistencia = $cursos->grade;
+                                        $lectura_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1653,7 +1653,7 @@ public function __construct()
                                 case 'MATEMATICAS':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $matematicas_asistencia = $cursos->grade;
+                                        $matematicas_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1679,7 +1679,7 @@ public function __construct()
                                 case 'QUIMICA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $quimica_asistencia = $cursos->grade;
+                                        $quimica_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1706,7 +1706,7 @@ public function __construct()
                                 case 'TECNOLOGIA':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $tic_asistencia = $cursos->grade;
+                                        $tic_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {

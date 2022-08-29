@@ -497,6 +497,27 @@ function tipoCancha(deporteSel){
             
             //console.log("s");
             break;
+        case 'titulo-1':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-1').slideDown(250);         
+            $('.accordion-titulo-1').addClass("open");
+            
+            //console.log("s");
+            break;
+        case 'titulo-2':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-2').slideDown(250);         
+            $('.accordion-titulo-2').addClass("open");
+            
+            //console.log("s");
+            break;
+        case 'titulo-3':
+            //var contenido=$(this).next(".accordion-content-7");
+            $('.accordion-content-3').slideDown(250);         
+            $('.accordion-titulo-3').addClass("open");
+            
+            //console.log("s");
+            break;
     }
 }
 

@@ -448,7 +448,7 @@
 		</div>
 	</div>
 
-	<div class="accordion-container" id="ttlo-3>
+	<div class="accordion-container" id="ttlo-3">
 		<a href="#" id="titulo-3" class="accordion-titulo-3">Datos SocioEconomicos<span class="toggle-icon"></span></a>
 		<div id="contenido-3" class="accordion-content-3">
 			{!!Form::model($verDatosPerfil,['route'=>['updatedatossocioeconomicos',$verDatosPerfil->socioeconomicdata->id], 'method'=>'PUT'])!!}

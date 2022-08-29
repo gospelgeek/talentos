@@ -610,83 +610,52 @@ class perfilEstudiante extends Model
         }
     }
     //
-    //consultas para reporte individual academico
-    public static function estudiantes_linea1(){
+    //consultas datos pendientes
+    public static function generales(){
+        $data = DB::select("
+                    select student_profile.id, student_profile.photo, student_profile.name,
+                    student_profile.lastname, 
+                    student_profile.first_name,
+                    (SELECT document_type.name FROM document_type WHERE document_type.id = 
+                    student_profile.id_document_type) as tipo_documento, 
+                    student_profile.url_document_type, student_profile.document_number, 
+                    student_profile.document_expedition_date, student_profile.email, cohorts.id as 
+                    idcohort, cohorts.name as cohorte, groups.id as grupo, groups.name as 
+                    grupo_name,
+                    (select CONCAT(users.name,' ', users.apellidos_user)profesional 
+                    FROM users,assignment_students
+                    WHERE users.id = assignment_students.id_user
+                    and assignment_students.deleted_at is null
+                    and student_profile.id = assignment_students.id_student
+                    limit 1) as profesional,
+                    (SELECT conditions.name FROM conditions WHERE conditions.id = 
+                    student_profile.id_state) as estado,
+                    student_profile.birth_date,
+                    (SELECT birth_departaments.name FROM birth_departaments WHERE 
+                    birth_departaments.id = student_profile.id_birth_department) as 
+                    departamento_nacimiento,
+                    (SELECT birth_city.name FROM birth_city WHERE birth_city.id = 
+                    student_profile.id_birth_city) as ciudad_nacimiento, student_profile.sex,
+                    (SELECT gender.name FROM gender WHERE gender.id = student_profile.id_gender) as 
+                    genero, student_profile.landline, student_profile.cellphone, 
+                    student_profile.phone, student_profile.emergency_contact_name, 
+                    student_profile.relationship, student_profile.emergency_contact, 
+                    (SELECT comune.name FROM comune WHERE comune.id = student_profile.id_commune) 
+                    as comuna,
+                    (SELECT neighborhood.name FROM neighborhood WHERE neighborhood.id = 
+                    student_profile.id_neighborhood) as barrio, student_profile.student_code, 
+                    student_profile.college, student_profile.registration_date, 
+                    student_profile.direction,
+                    (SELECT tutor.name FROM tutor WHERE tutor.id = student_profile.id_tutor) as 
+                    tutor, student_profile.id_moodle
+                    FROM student_profile
+                    INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                    INNER JOIN groups ON groups.id = student_groups.id_group
+                    INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                    WHERE student_groups.deleted_at is null");
 
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          conditions.name as estado,      
-                                          document_type.name as tipo_documento,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 1
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null
-                                   and    conditions.id = student_profile.id_state
-                                   and    document_type.id = student_profile.id_document_type");
-        if($estudiantes != null){
-            return $estudiantes;
-        }else{
-            return null;
-        }
-    }
-
-    public static function estudiantes_linea2(){
-
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          conditions.name as estado,      
-                                          document_type.name as tipo_documento,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 2
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null
-                                   and    conditions.id = student_profile.id_state
-                                   and    document_type.id = student_profile.id_document_type");
-        if($estudiantes != null){
-            return $estudiantes;
-        }else{
-            return null;
-        }
-    }
-
-    public static function estudiantes_linea3(){
-
-        $estudiantes = DB::select("select student_profile.id,student_profile.name,
-                                          student_profile.lastname,
-                                          student_profile.document_number,
-                                          student_profile.id_moodle,groups.id as grupo,
-                                          groups.name as grupo_name,
-                                          conditions.name as estado,      
-                                          document_type.name as tipo_documento,
-                                          CONCAT(users.name,' ', users.apellidos_user) encargado
-                                   from   student_profile,student_groups,groups,assignment_students,users,conditions,document_type
-                                   where  student_profile.id = student_groups.id_student
-                                   and    groups.id = student_groups.id_group
-                                   and    groups.id_cohort = 3
-                                   and    student_profile.deleted_at is null
-                                   and    student_profile.id = assignment_students.id_student
-                                   and    assignment_students.id_user = users.id
-                                   and    assignment_students.deleted_at is null
-                                   and    conditions.id = student_profile.id_state
-                                   and    document_type.id = student_profile.id_document_type");
-        if($estudiantes != null){
-            return $estudiantes;
+        if($data != null){
+            return $data;
         }else{
             return null;
         }

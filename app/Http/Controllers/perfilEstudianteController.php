@@ -2879,4 +2879,31 @@ class perfilEstudianteController extends Controller
 
         return datatables()->of($general)->toJson();
     }
+    public function datosPendientes(){
+        return view('perfilEstudiante.datosPendientes.index');
+    }
+
+    public function datos_generales(){
+        $generales = perfilEstudiante::generales();
+        
+        return datatables()->of($generales)->toJson();
+    }
+
+    public function datos_socioeconomicos(){
+        $socioeconomicos = SocioeconomicData::socioeconomicos();
+        
+        return datatables()->of($socioeconomicos)->toJson();
+    }
+
+    public function datos_academicos(){
+        $academicos = PreviousAcademicData::academicos();
+        
+        return datatables()->of($academicos)->toJson();   
+    }
+
+    public function datos_formalizacion(){
+        $formalizacion = Formalization::formalizacion_pendientes();
+        
+        return datatables()->of($formalizacion)->toJson();   
+    }
 }

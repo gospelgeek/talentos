@@ -171,11 +171,11 @@ $("#Cobservacion").on('change',function(event) {
 });
 
 
-$(".accordion-titulo").click(function(e){
+$(".accordion-titulo-1").click(function(e){
            
         e.preventDefault();
     
-        var contenido=$(this).next(".accordion-content");
+        var contenido=$(this).next(".accordion-content-1");
 
         if(contenido.css("display")=="none"){ //open        
           contenido.slideDown(250);         

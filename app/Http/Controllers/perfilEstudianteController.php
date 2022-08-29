@@ -307,7 +307,7 @@ class perfilEstudianteController extends Controller
         
         //$verDatosPerfil = perfilEstudiante::withTrashed()->findOrFail($id);
         //$verDatosPerfil = perfilEstudiante::findOrFail($id);
-        $asignacion = AssignmentStudent::where('id_student', $id)-first();
+        $asignacion = AssignmentStudent::where('id_student', $id)->first();
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
         
         $variacion = 0;

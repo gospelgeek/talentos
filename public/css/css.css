@@ -51,13 +51,13 @@ img.avatar {
 	text-shadow:4px 4px 5px #16a085;
 }
 
-.accordion-container {
+.accordion-container-1 {
 	width: 100%;
 	margin: 0 0 20px;
 	clear:both;
 }
 
-.accordion-titulo {
+.accordion-titulo-1 {
 	position: relative;
 	display: block;
 	padding: 20px;
@@ -132,24 +132,24 @@ img.avatar {
 	text-decoration: none;
 }
 
-.accordion-titulo.open {
+.accordion-titulo-1.open {
 	background: #16a085;
 	color: #fff;
 }
 
-.accordion-titulo:hover {
+.accordion-titulo-1:hover {
 	background: #1abc9c;
 }
 
-.accordion-titulo span.toggle-icon:before {
+.accordion-titulo-1 span.toggle-icon:before {
 	content:"+";
 }
 
-.accordion-titulo.open span.toggle-icon:before {
+.accordion-titulo-1.open span.toggle-icon:before {
 	content:"-";
 }
 
-.accordion-titulo span.toggle-icon {
+.accordion-titulo-1 span.toggle-icon {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -304,7 +304,7 @@ img.avatar {
 	font-weight:bold;
 }
 
-.accordion-content {
+.accordion-content-1 {
 	display: none;	
 	padding: 20px;
 	overflow: auto;
@@ -343,11 +343,11 @@ img.avatar {
 	overflow: auto;
 }
 
-.accordion-content p{
+.accordion-content-1 p{
 	margin:0;
 }
 
-.accordion-content img {
+.accordion-content-1 img {
 	display: block;
 	float: left;
 	margin: 0 15px 10px 0;
@@ -357,7 +357,7 @@ img.avatar {
 
 
 @media (max-width: 767px) {
-	.accordion-content {
+	.accordion-content-1 {
 		padding: 10px 0;
 	}
 }

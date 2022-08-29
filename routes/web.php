@@ -275,3 +275,11 @@ Route::get('sabana_notas_linea_3', 'SeguimientosController@exportar_excel_notas_
 // certificado
 Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');
 Route::get('certificado/', 'CertificadoController@index')->name('descarga.certificado');
+
+//datos pendientes
+Route::get('datos_pendientes', 'perfilEstudianteController@datosPendientes')->name('datos_pendientes');
+Route::get('datos.generales', 'perfilEstudianteController@datos_generales')->name('datos.generales');
+Route::get('datos.socioeconomicos', 'perfilEstudianteController@datos_socioeconomicos')->name('datos.socioeconomicos');
+Route::get('datos.academicos', 'perfilEstudianteController@datos_academicos')->name('datos.academicos');
+Route::get('datos.formalizacion', 'perfilEstudianteController@datos_formalizacion')->name('datos.formalizacion');
+//

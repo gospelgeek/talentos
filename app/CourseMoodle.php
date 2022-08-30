@@ -120,4 +120,65 @@ class CourseMoodle extends Model
             return null;
         }
     }
+    
+    public static function asignaturas_items_asistencia($moodle,$course_id){
+        $data = DB::select("select course_items.item_name,students_grades.grade
+                    FROM course_items
+                    INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                    Where students_grades.id_moodle = '".$moodle."'
+                    AND course_items.item_type != 'category'
+                    AND course_items.category_name like 'asistencia%'
+                    AND course_items.course_id = '".$course_id."'");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }   
+    }
+
+    public static function asignaturas_items_seguimientos($moodle,$course_id){
+        $data = DB::select("select course_items.item_name,students_grades.grade
+                    FROM course_items
+                    INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                    Where students_grades.id_moodle = '".$moodle."'
+                    AND course_items.item_type != 'category'
+                    AND (course_items.category_name like 'seguimiento%' OR course_items.category_name like 'componente%'
+                        OR course_items.category_name like 'actividades%' OR course_items.category_name like 'parciales%'
+                        OR course_items.category_name like 'seminario%')
+                    AND course_items.course_id = '".$course_id."'");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }   
+    }
+
+    public static function asignaturas_items_autoevaluacion($moodle,$course_id){
+        $data = DB::select("select course_items.item_name,students_grades.grade
+                    FROM course_items
+                    INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                    Where students_grades.id_moodle = '".$moodle."'
+                    AND course_items.item_type != 'category'
+                    AND course_items.category_name like 'auto%'
+                    AND course_items.course_id = '".$course_id."'");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }   
+    }
+
+    public static function asignaturas_items_huerfanos($moodle,$course_id){
+        $data = DB::select("select course_items.item_name,students_grades.grade
+                    FROM course_items
+                    INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                    Where students_grades.id_moodle = '".$moodle."'
+                    AND course_items.category_name = 'ITEM HUERFANO'
+                    AND course_items.course_id = '".$course_id."'");
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }   
+    }
 }

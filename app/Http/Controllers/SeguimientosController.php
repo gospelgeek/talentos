@@ -3676,638 +3676,10 @@ public function __construct()
         return datatables()->of($items_estudiante)->toJson();
     }
 
-    public function exportar_excel_notas_linea1(){
+public function exportar_excel_notas_linea1(){
 
-        if(Storage::disk('local')->exists('notas_linea_1.json')) {
-                    $asistencias    = json_decode(Storage::get('notas_linea_1.json'));
-                    //dd($asistencias);
-                    $estudiantes = collect($asistencias);
-                    
-                    $estudiantes->map(function($estudiante){
-
-                        $accionciudadana_asistencias = 0;
-                        $accionciudadana_seguimientos = 0;
-                        $accionciudadana_autoevaluacion = 0;
-                        $accionciudadana_totalcurso = 0;
-                        $item_huerfano_accion_ciudadana = 0;
-                        $courseid_accion_ciudadana = 0;
-
-                        $artes_asistencias = 0;
-                        $artes_seguimientos = 0;
-                        $artes_autoevaluacion = 0;
-                        $artes_totalcurso = 0;
-                        $item_huerfano_artes = 0;
-                        $courseid_artes = 0;
-
-                        $biologia_asistencias = 0;
-                        $biologia_seguimientos = 0;
-                        $biologia_autoevaluacion = 0;
-                        $biologia_totalcurso = 0;
-                        $item_huerfano_biologia = 0;
-                        $courseid_biologia = 0;
-
-                        $cultura_asistencias = 0;
-                        $cultura_seguimientos = 0;
-                        $cultura_autoevaluacion = 0;
-                        $cultura_totalcurso = 0;
-                        $item_huerfano_cultura = 0;
-                        $courseid_cultura = 0;
-
-                        $deporte_asistencias = 0;
-                        $deporte_seguimientos = 0;
-                        $deporte_autoevaluacion = 0;
-                        $deporte_totalcurso = 0;
-                        $item_huerfano_deporte = 0;
-                        $courseid_deporte = 0;
-
-                        $dialogo_asistencias = 0;
-                        $dialogo_seguimientos = 0;
-                        $dialogo_autoevaluacion = 0;
-                        $dialogo_totalcurso = 0;
-                        $item_huerfano_dialogo = 0;
-                        $courseid_dialogo = 0;
-
-                        $filosofia_asistencias = 0;
-                        $filosofia_seguimientos = 0;
-                        $filosofia_autoevaluacion = 0;
-                        $filosofia_totalcurso = 0;
-                        $item_huerfano_filosofia = 0;
-                        $courseid_filosofia = 0;
-
-                        $fisica_asistencias = 0;
-                        $fisica_seguimientos = 0;
-                        $fisica_autoevaluacion = 0;
-                        $fisica_totalcurso = 0;
-                        $item_huerfano_fisica = 0;
-                        $courseid_fisica = 0;
-
-                        $geografia_asistencias = 0;
-                        $geografia_seguimientos = 0;
-                        $geografia_autoevaluacion = 0;
-                        $geografia_totalcurso = 0;
-                        $item_huerfano_geografia = 0;
-                        $courseid_geografia = 0;
-
-                        $historia_asistencias = 0;
-                        $historia_seguimientos = 0;
-                        $historia_autoevaluacion = 0;
-                        $historia_totalcurso = 0;
-                        $item_huerfano_historia = 0;
-                        $courseid_historia = 0;
-
-                        $ingles_asistencias = 0;
-                        $ingles_seguimientos = 0;
-                        $ingles_autoevaluacion = 0;
-                        $ingles_totalcurso = 0;
-                        $item_huerfano_ingles = 0;
-                        $courseid_ingles = 0;
-
-                        $lectura_asistencias = 0;
-                        $lectura_seguimientos = 0;
-                        $lectura_autoevaluacion = 0;
-                        $lectura_totalcurso = 0;
-                        $item_huerfano_lectura = 0;
-                        $courseid_lectura = 0;
-
-                        $matematicas_asistencias = 0;
-                        $matematicas_seguimientos = 0;
-                        $matematicas_autoevaluacion = 0;
-                        $matematicas_totalcurso = 0;
-                        $item_huerfano_matematicas = 0;
-                        $courseid_matematicas = 0;
-
-                        $quimica_asistencias = 0;
-                        $quimica_seguimientos = 0;
-                        $quimica_autoevaluacion = 0;
-                        $quimica_totalcurso = 0;
-                        $item_huerfano_quimica = 0;
-                        $courseid_quimica = 0;
-
-                        $tic_asistencias = 0;
-                        $tic_seguimientos = 0;
-                        $tic_autoevaluacion = 0;
-                        $tic_totalcurso = 0;
-                        $item_huerfano_tic = 0;
-                        $courseid_tic = 0;
-
-                        //dd($estudiante->asignaturas);
-                        foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode(' ',$cursos->fullname)[0];
-                            //dd($cursos);
-                            switch ($cursos->fullname) {
-                                case 'JORNADAS':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $accionciudadana_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $accionciudadana_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $accionciudadana_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $accionciudadana_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_accion_ciudadana += 1;
-                                    }                                           
-                                    
-                                    $courseid_accion_ciudadana = $cursos->id;
-                                    break;
-
-                                case 'ARTES:':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $artes_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $artes_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $artes_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $artes_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_artes +=1;
-                                    }                                           
-                                    
-                                    $courseid_artes = $cursos->id;
-                                    break;
-
-                                case 'BIOLOGIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $biologia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $biologia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $biologia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $biologia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_biologia += 1;
-                                    }                                           
-                                    
-                                    $courseid_biologia = $cursos->id;
-                                    break;
-
-                                case 'CULTURA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $cultura_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $cultura_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $cultura_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $cultura_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_cultura += 1;
-                                    }                                           
-                                    
-                                    $courseid_cultura = $cursos->id;
-                                    break;
-
-                                case 'DEPORTE':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $deporte_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $deporte_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $deporte_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $deporte_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_deporte += 1;
-                                    }                                           
-                                    
-                                    $courseid_deporte = $cursos->id;
-                                    break;
-
-                                case 'DIALOGO':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $dialogo_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $dialogo_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $dialogo_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $dialogo_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_dialogo += 1;
-                                    }                                           
-                                    
-                                    $courseid_dialogo = $cursos->id;
-                                    break;
-
-                                case 'FILOSOFIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $filosofia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $filosofia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $filosofia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $filosofia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_filosofia += 1;
-                                    }                                           
-                                    
-                                    $courseid_filosofia = $cursos->id;
-                                    break;
-
-                                case 'FISICA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $fisica_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $fisica_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $fisica_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $fisica_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_fisica += 1;
-                                    }                                           
-                                    
-                                    $courseid_fisica = $cursos->id;
-                                    break;
-
-                                case 'GEOGRAFIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $geografia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $geografia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $geografia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $geografia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_geografia += 1;
-                                    }                                           
-                                    
-                                    $courseid_geografia = $cursos->id;
-                                    break;
-
-                                case 'HISTORIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $historia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $historia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $historia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $historia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_historia += 1;
-                                    }                                           
-                                    
-                                    $courseid_historia = $cursos->id;
-                                    break;
-
-                                case 'INGLES':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $ingles_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $ingles_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $ingles_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $ingles_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_ingles += 1;
-                                    }                                           
-                                    $courseid_ingles = $cursos->id;
-                                    break;                               
-                                case 'LECTURA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $lectura_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $lectura_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $lectura_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $lectura_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_lectura +=1 ;
-                                    }                                           
-                                    
-                                    $courseid_lectura = $cursos->id;
-                                    break;
-
-                                case 'MATEMATICAS':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $matematicas_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $matematicas_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $matematicas_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $matematicas_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_matematicas += 1;
-                                    }                                           
-                                    $courseid_matematicas = $cursos->id;
-                                    break;                          
-
-                                case 'QUIMICA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $quimica_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $quimica_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $quimica_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $quimica_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_quimica += 1;
-                                    }                                           
-                                    
-                                    $courseid_quimica = $cursos->id;
-                                    break;
-
-                                case 'TECNOLOGIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $tic_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $tic_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $tic_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $tic_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_tic += 1;
-                                    }                                           
-                                                                            
-                                    $courseid_tic = $cursos->id;
-                                    break;
-                                default:                                        
-                                    echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADO";
-                                    break;
-                            }
-                        }
-                        unset($estudiante->asignaturas);
-                        $estudiante->accionciudadana_asistencias = $accionciudadana_asistencias;
-                        $estudiante->accionciudadana_seguimientos = $accionciudadana_seguimientos;
-                        $estudiante->accionciudadana_autoevaluacion = $accionciudadana_autoevaluacion;
-                        $estudiante->accionciudadana_totalcurso = $accionciudadana_totalcurso;
-                        $estudiante->accionciudadana_item_huerfano = $item_huerfano_accion_ciudadana;
-                        $estudiante->courseid_accion_ciudadana = $courseid_accion_ciudadana;
-
-                        $estudiante->artes_asistencias = $artes_asistencias;
-                        $estudiante->artes_seguimientos = $artes_seguimientos;
-                        $estudiante->artes_autoevaluacion = $artes_autoevaluacion;
-                        $estudiante->artes_totalcurso = $artes_totalcurso;
-                        $estudiante->artes_item_huerfano = $item_huerfano_artes;
-                        $estudiante->courseid_artes = $courseid_artes;
-
-                        $estudiante->biologia_asistencias = $biologia_asistencias;
-                        $estudiante->biologia_seguimientos = $biologia_seguimientos;
-                        $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                        $estudiante->biologia_totalcurso = $biologia_totalcurso;
-                        $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                        $estudiante->courseid_biologia = $courseid_biologia;
-
-                        $estudiante->cultura_asistencias = $cultura_asistencias;
-                        $estudiante->cultura_seguimientos = $cultura_seguimientos;
-                        $estudiante->cultura_autoevaluacion = $cultura_autoevaluacion;
-                        $estudiante->cultura_totalcurso = $cultura_totalcurso;
-                        $estudiante->cultura_item_huerfano = $item_huerfano_cultura;
-                        $estudiante->courseid_cultura = $courseid_cultura;
-
-                        $estudiante->deporte_asistencias = $deporte_asistencias;
-                        $estudiante->deporte_seguimientos = $deporte_seguimientos;
-                        $estudiante->deporte_autoevaluacion = $deporte_autoevaluacion;
-                        $estudiante->deporte_totalcurso = $deporte_totalcurso;
-                        $estudiante->deporte_item_huerfano = $item_huerfano_deporte;
-                        $estudiante->courseid_deporte = $courseid_deporte;
-
-                        $estudiante->dialogo_asistencias = $dialogo_asistencias;
-                        $estudiante->dialogo_seguimientos = $dialogo_seguimientos;
-                        $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
-                        $estudiante->dialogo_totalcurso = $dialogo_totalcurso;
-                        $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
-                        $estudiante->courseid_dialogo = $courseid_dialogo;
-
-                        $estudiante->filosofia_asistencias = $filosofia_asistencias;
-                        $estudiante->filosofia_seguimientos = $filosofia_seguimientos;
-                        $estudiante->filosofia_autoevaluacion = $filosofia_autoevaluacion;
-                        $estudiante->filosofia_totalcurso = $filosofia_totalcurso;
-                        $estudiante->filosofia_item_huerfano = $item_huerfano_filosofia;
-                        $estudiante->courseid_filosofia = $courseid_filosofia;
-
-                        $estudiante->fisica_asistencias = $fisica_asistencias;
-                        $estudiante->fisica_seguimientos = $fisica_seguimientos;
-                        $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                        $estudiante->fisica_totalcurso = $fisica_totalcurso;
-                        $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                        $estudiante->courseid_fisica = $courseid_fisica;
-
-                        $estudiante->geografia_asistencias = $geografia_asistencias;
-                        $estudiante->geografia_seguimientos = $geografia_seguimientos;
-                        $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                        $estudiante->geografia_totalcurso = $geografia_totalcurso;
-                        $estudiante->geografia_item_huerfano = $item_huerfano_geografia;
-                        $estudiante->courseid_geografia = $courseid_geografia;
-
-                        $estudiante->historia_asistencias = $historia_asistencias;
-                        $estudiante->historia_seguimientos = $historia_seguimientos;
-                        $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                        $estudiante->historia_totalcurso = $historia_totalcurso;
-                        $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                        $estudiante->courseid_historia = $courseid_historia;
-
-                        $estudiante->ingles_asistencias = $ingles_asistencias;
-                        $estudiante->ingles_seguimientos = $ingles_seguimientos;
-                        $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                        $estudiante->ingles_totalcurso = $ingles_totalcurso;
-                        $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                        $estudiante->courseid_ingles = $courseid_ingles;
-
-                        $estudiante->lectura_asistencias = $lectura_asistencias;
-                        $estudiante->lectura_seguimientos = $lectura_seguimientos;
-                        $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                        $estudiante->lectura_totalcurso = $lectura_totalcurso;
-                        $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                        $estudiante->courseid_lectura = $courseid_lectura;
-
-                        $estudiante->matematicas_asistencias = $matematicas_asistencias;
-                        $estudiante->matematicas_seguimientos = $matematicas_seguimientos;
-                        $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                        $estudiante->matematicas_totalcurso = $matematicas_totalcurso;
-                        $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                        $estudiante->courseid_matematicas = $courseid_matematicas;
-
-                        $estudiante->quimica_asistencias = $quimica_asistencias;
-                        $estudiante->quimica_seguimientos = $quimica_seguimientos;
-                        $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                        $estudiante->quimica_totalcurso = $quimica_totalcurso;
-                        $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                        $estudiante->courseid_quimica = $courseid_quimica;
-
-                        $estudiante->tic_asistencias = $tic_asistencias;
-                        $estudiante->tic_seguimientos = $tic_seguimientos;
-                        $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
-                        $estudiante->tic_totalcurso = $tic_totalcurso;
-                        $estudiante->tic_item_huerfano = $item_huerfano_tic;
-                        $estudiante->courseid_tic = $courseid_tic;
-                        //dd($estudiante);
-                    });
+        if(Storage::disk('local')->exists('notas_linea_1_items.json')){
+                $estudiantes    = json_decode(Storage::get('notas_linea_1_items.json'));
                 $excel = array();
                 foreach($estudiantes as $estudiante){
                     $excel[] = array(
@@ -4318,2875 +3690,3013 @@ public function __construct()
                                 'document_number' => $estudiante->document_number,
                                 'grupo' => $estudiante->grupo_name,
                                 'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
+                                'profesional' => $estudiante->encargado,
 
-                                'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencias,
+                                'accionciudadana_asistencias_items' => $estudiante->accionciudadana_items_asistencia,
+                                'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencia,
+                                'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
                                 'accionciudadana_seguimientos' => $estudiante->accionciudadana_seguimientos,
+                                'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
                                 'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
+                                'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
                                 'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
 
-                                'artes_asistencias' => $estudiante->artes_asistencias,
+                                'artes_items_asistencia' => $estudiante->artes_items_asistencia,
+                                'artes_asistencias' => $estudiante->artes_asistencia,
+                                'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
                                 'artes_seguimientos' => $estudiante->artes_seguimientos,
+                                'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
                                 'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
+                                'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
                                 'artes_totalcurso' => $estudiante->artes_totalcurso,
 
-                                'biologia_asistencias' => $estudiante->biologia_asistencias,
+                                'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                                'biologia_asistencias' => $estudiante->biologia_asistencia,
+                                'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
                                 'biologia_seguimientos' => $estudiante->biologia_seguimientos,
+                                'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
                                 'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                                'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                                 'biologia_totalcurso' => $estudiante->biologia_totalcurso,
 
-                                'cultura_asistencias' => $estudiante->cultura_asistencias,
+                                'cultura_items_asistencia' => $estudiante->cultura_items_asistencia,
+                                'cultura_asistencias' => $estudiante->cultura_asistencia,
+                                'cultura_items_seguimientos' => $estudiante->cultura_items_seguimientos,
                                 'cultura_seguimientos' => $estudiante->cultura_seguimientos,
+                                'cultura_items_autoevaluacion' => $estudiante->cultura_items_autoevaluacion,
                                 'cultura_autoevaluacion' => $estudiante->cultura_autoevaluacion,
+                                'cultura_items_huerfanos' => $estudiante->cultura_items_huerfanos,
                                 'cultura_totalcurso' => $estudiante->cultura_totalcurso,
                                 
-                                'deporte_asistencias' => $estudiante->deporte_asistencias,
+                                'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
+                                'deporte_asistencias' => $estudiante->deporte_asistencia,
+                                'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
                                 'deporte_seguimientos' => $estudiante->deporte_seguimientos,
+                                'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
                                 'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
+                                'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
                                 'deporte_totalcurso' => $estudiante->deporte_totalcurso,
 
-                                'dialogo_asistencias' => $estudiante->dialogo_asistencias,
+                                'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                                'dialogo_asistencias' => $estudiante->dialogo_asistencia,
+                                'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
                                 'dialogo_seguimientos' => $estudiante->dialogo_seguimientos,
+                                'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
                                 'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                                'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                                 'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
 
-                                'filosofia_asistencias' => $estudiante->filosofia_asistencias,
+                                'filosofia_items_asistencia' => $estudiante->filosofia_items_asistencia,
+                                'filosofia_asistencias' => $estudiante->filosofia_asistencia,
+                                'filosofia_items_seguimientos' => $estudiante->filosofia_items_seguimientos,
                                 'filosofia_seguimientos' => $estudiante->filosofia_seguimientos,
+                                'filosofia_items_autoevaluacion' => $estudiante->filosofia_items_autoevaluacion,
                                 'filosofia_autoevaluacion' => $estudiante->filosofia_autoevaluacion,
+                                'filosofia_items_huerfanos' => $estudiante->filosofia_items_huerfanos,
                                 'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
 
-                                'fisica_asistencias' => $estudiante->fisica_asistencias,
+                                'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                                'fisica_asistencias' => $estudiante->fisica_asistencia,
+                                'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
                                 'fisica_seguimientos' => $estudiante->fisica_seguimientos,
+                                'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
                                 'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                                'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                                 'fisica_totalcurso' => $estudiante->fisica_totalcurso,
 
-                                'geografia_asistencias' => $estudiante->geografia_asistencias,
+                                'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                                'geografia_asistencias' => $estudiante->geografia_asistencia,
+                                'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
                                 'geografia_seguimientos' => $estudiante->geografia_seguimientos,
+                                'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
                                 'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                                'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                                 'geografia_totalcurso' => $estudiante->geografia_totalcurso,
 
-                                'historia_asistencias' => $estudiante->historia_asistencias,
+                                'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                                'historia_asistencias' => $estudiante->historia_asistencia,
+                                'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
                                 'historia_seguimientos' => $estudiante->historia_seguimientos,
+                                'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
                                 'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                                'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                                 'historia_totalcurso' => $estudiante->historia_totalcurso,
 
-                                'ingles_asistencias' => $estudiante->ingles_asistencias,
+                                'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                                'ingles_asistencias' => $estudiante->ingles_asistencia,
+                                'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
                                 'ingles_seguimientos' => $estudiante->ingles_seguimientos,
+                                'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
                                 'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                                'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                                 'ingles_totalcurso' => $estudiante->ingles_totalcurso,
 
-                                'lectura_asistencias' => $estudiante->lectura_asistencias,
+                                'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                                'lectura_asistencias' => $estudiante->lectura_asistencia,
+                                'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
                                 'lectura_seguimientos' => $estudiante->lectura_seguimientos,
+                                'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
                                 'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                                'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                                 'lectura_totalcurso' => $estudiante->lectura_totalcurso,
 
-                                'matematicas_asistencias' => $estudiante->matematicas_asistencias,
+                                'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                                'matematicas_asistencias' => $estudiante->matematicas_asistencia,
+                                'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
                                 'matematicas_seguimientos' => $estudiante->matematicas_seguimientos,
+                                'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
                                 'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                                'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                                 'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
 
-                                'quimica_asistencias' => $estudiante->quimica_asistencias,
+                                'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                                'quimica_asistencias' => $estudiante->quimica_asistencia,
+                                'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
                                 'quimica_seguimientos' => $estudiante->quimica_seguimientos,
+                                'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
                                 'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                                'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                                 'quimica_totalcurso' => $estudiante->quimica_totalcurso,
 
-                                'tic_asistencias' => $estudiante->tic_asistencias,
+                                'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                                'tic_asistencias' => $estudiante->tic_asistencia,
+                                'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
                                 'tic_seguimientos' => $estudiante->tic_seguimientos,
+                                'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
                                 'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                                'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
                                 'tic_totalcurso' => $estudiante->tic_totalcurso,
                             );
                 }
-                //dd($excel);
                 $exportar = new NotasLinea1Export([$excel]);
 
                 return Excel::download($exportar, "reporte_notas_linea_1.xlsx");
-                //return datatables()->of($estudiantes)->toJson();
         }else{
 
-            $estudiantes_linea1 = perfilEstudiante::Estudiantes_cohort_linea1();
-            $estudiantes = collect($estudiantes_linea1);
-            //dd($estudiantes);
-            /*$cursos = explode(',', $estudiantes[0]->asignatura);
-            $estudiantes[0]->asignatura = $cursos;*/
-            //dd($estudiantes[0]);
-
-            $estudiantes->map(function($estudiante){
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+            $excel = array();
+            foreach($estudiantes as $estudiante){
+                ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
-                //dd($estudiante);   
-            });
-
-            $estudiantes_notas = json_encode($estudiantes);
-            Storage::disk('local')->put('notas_linea_1.json', $estudiantes_notas);
-            $notas = json_decode($estudiantes_notas);
-
-            $estudiantes_notas = collect($notas);
-                           
-            $estudiantes->map(function($estudiante){
-
-                        $accionciudadana_asistencias = 0;
-                        $accionciudadana_seguimientos = 0;
-                        $accionciudadana_autoevaluacion = 0;
-                        $accionciudadana_totalcurso = 0;
-                        $item_huerfano_accion_ciudadana = 0;
-                        $courseid_accion_ciudadana = 0;
-
-                        $artes_asistencias = 0;
-                        $artes_seguimientos = 0;
-                        $artes_autoevaluacion = 0;
-                        $artes_totalcurso = 0;
-                        $item_huerfano_artes = 0;
-                        $courseid_artes = 0;
-
-                        $biologia_asistencias = 0;
-                        $biologia_seguimientos = 0;
-                        $biologia_autoevaluacion = 0;
-                        $biologia_totalcurso = 0;
-                        $item_huerfano_biologia = 0;
-                        $courseid_biologia = 0;
-
-                        $cultura_asistencias = 0;
-                        $cultura_seguimientos = 0;
-                        $cultura_autoevaluacion = 0;
-                        $cultura_totalcurso = 0;
-                        $item_huerfano_cultura = 0;
-                        $courseid_cultura = 0;
-
-                        $deporte_asistencias = 0;
-                        $deporte_seguimientos = 0;
-                        $deporte_autoevaluacion = 0;
-                        $deporte_totalcurso = 0;
-                        $item_huerfano_deporte = 0;
-                        $courseid_deporte = 0;
-
-                        $dialogo_asistencias = 0;
-                        $dialogo_seguimientos = 0;
-                        $dialogo_autoevaluacion = 0;
-                        $dialogo_totalcurso = 0;
-                        $item_huerfano_dialogo = 0;
-                        $courseid_dialogo = 0;
-
-                        $filosofia_asistencias = 0;
-                        $filosofia_seguimientos = 0;
-                        $filosofia_autoevaluacion = 0;
-                        $filosofia_totalcurso = 0;
-                        $item_huerfano_filosofia = 0;
-                        $courseid_filosofia = 0;
-
-                        $fisica_asistencias = 0;
-                        $fisica_seguimientos = 0;
-                        $fisica_autoevaluacion = 0;
-                        $fisica_totalcurso = 0;
-                        $item_huerfano_fisica = 0;
-                        $courseid_fisica = 0;
-
-                        $geografia_asistencias = 0;
-                        $geografia_seguimientos = 0;
-                        $geografia_autoevaluacion = 0;
-                        $geografia_totalcurso = 0;
-                        $item_huerfano_geografia = 0;
-                        $courseid_geografia = 0;
-
-                        $historia_asistencias = 0;
-                        $historia_seguimientos = 0;
-                        $historia_autoevaluacion = 0;
-                        $historia_totalcurso = 0;
-                        $item_huerfano_historia = 0;
-                        $courseid_historia = 0;
-
-                        $ingles_asistencias = 0;
-                        $ingles_seguimientos = 0;
-                        $ingles_autoevaluacion = 0;
-                        $ingles_totalcurso = 0;
-                        $item_huerfano_ingles = 0;
-                        $courseid_ingles = 0;
-
-                        $lectura_asistencias = 0;
-                        $lectura_seguimientos = 0;
-                        $lectura_autoevaluacion = 0;
-                        $lectura_totalcurso = 0;
-                        $item_huerfano_lectura = 0;
-                        $courseid_lectura = 0;
-
-                        $matematicas_asistencias = 0;
-                        $matematicas_seguimientos = 0;
-                        $matematicas_autoevaluacion = 0;
-                        $matematicas_totalcurso = 0;
-                        $item_huerfano_matematicas = 0;
-                        $courseid_matematicas = 0;
-
-                        $quimica_asistencias = 0;
-                        $quimica_seguimientos = 0;
-                        $quimica_autoevaluacion = 0;
-                        $quimica_totalcurso = 0;
-                        $item_huerfano_quimica = 0;
-                        $courseid_quimica = 0;
-
-                        $tic_asistencias = 0;
-                        $tic_seguimientos = 0;
-                        $tic_autoevaluacion = 0;
-                        $tic_totalcurso = 0;
-                        $item_huerfano_tic = 0;
-                        $courseid_tic = 0;
-
-                        //dd($estudiante->asignaturas);
-                        foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode(' ',$cursos->fullname)[0];
-                            //dd($cursos);
-                            switch ($cursos->fullname) {
-                                case 'JORNADAS':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $accionciudadana_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $accionciudadana_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $accionciudadana_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $accionciudadana_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_accion_ciudadana += 1;
-                                    }                                           
-                                    
-                                    $courseid_accion_ciudadana = $cursos->id;
-                                    break;
-
-                                case 'ARTES:':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $artes_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $artes_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $artes_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $artes_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_artes += 1;
-                                    }                                           
-                                    
-                                    $courseid_artes = $cursos->id;
-                                    break;
-
-                                case 'BIOLOGIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $biologia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $biologia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $biologia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $biologia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_biologia += 1;
-                                    }                                           
-                                    
-                                    $courseid_biologia = $cursos->id;
-                                    break;
-
-                                case 'CULTURA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $cultura_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $cultura_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $cultura_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $cultura_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_cultura += 1;
-                                    }                                           
-                                    
-                                    $courseid_cultura = $cursos->id;
-                                    break;
-
-                                case 'DEPORTE':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $deporte_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $deporte_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $deporte_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $deporte_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_deporte += 1;
-                                    }                                           
-                                    
-                                    $courseid_deporte = $cursos->id;
-                                    break;
-
-                                case 'DIALOGO':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $dialogo_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $dialogo_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $dialogo_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $dialogo_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_dialogo += 1;
-                                    }                                           
-                                    
-                                    $courseid_dialogo = $cursos->id;
-                                    break;
-
-                                case 'FILOSOFIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $filosofia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $filosofia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $filosofia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $filosofia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_filosofia += 1;
-                                    }                                           
-                                    
-                                    $courseid_filosofia = $cursos->id;
-                                    break;
-
-                                case 'FISICA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $fisica_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $fisica_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $fisica_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $fisica_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_fisica += 1;
-                                    }                                           
-                                    
-                                    $courseid_fisica = $cursos->id;
-                                    break;
-
-                                case 'GEOGRAFIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $geografia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $geografia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $geografia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $geografia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_geografia += 1;
-                                    }                                           
-                                    
-                                    $courseid_geografia = $cursos->id;
-                                    break;
-
-                                case 'HISTORIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $historia_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $historia_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $historia_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $historia_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_historia += 1;
-                                    }                                           
-                                    
-                                    $courseid_historia = $cursos->id;
-                                    break;
-
-                                case 'INGLES':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $ingles_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $ingles_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $ingles_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $ingles_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_ingles += 1;
-                                    }                                           
-                                    $courseid_ingles = $cursos->id;
-                                    break;                              
-
-                                case 'LECTURA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $lectura_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $lectura_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $lectura_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $lectura_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_lectura += 1;
-                                    }                                           
-                                    
-                                    $courseid_lectura = $cursos->id;
-                                    break;
-
-                                case 'MATEMATICAS':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $matematicas_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $matematicas_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $matematicas_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $matematicas_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_matematicas += 1;
-                                    }                                           
-                                    $courseid_matematicas = $cursos->id;
-                                    break;                         
-
-                                case 'QUIMICA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $quimica_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $quimica_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $quimica_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $quimica_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_quimica += 1;
-                                    }                                           
-                                    
-                                    $courseid_quimica = $cursos->id;
-                                    break;
-
-                                case 'TECNOLOGIA':
-                                    if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        
-                                        $tic_asistencia = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
-                                        
-                                        $tic_seguimientos = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'Auto') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
-                                        
-                                        $tic_autoevaluacion = $cursos->grade;
-                                    }
-
-                                    if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
-                                        
-                                        $tic_totalcurso = $cursos->grade;
-                                    }
-                                    if(strpos($cursos->category_name, 'HUERFANO') !== false){
-                                        $item_huerfano_tic += 1;
-                                    }                                           
-                                                                            
-                                    $courseid_tic = $cursos->id;
-                                    break;
-                                default:                                        
-                                    echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADO";
-                                    break;
+                //dd($estudiante->asignaturas);
+                $estudiante->accionciudadana_asistencia = "";
+                $estudiante->accionciudadana_items_asistencia = "";
+                $estudiante->accionciudadana_seguimientos = "";
+                $estudiante->accionciudadana_items_seguimientos = "";
+                $estudiante->accionciudadana_autoevaluacion = "";
+                $estudiante->accionciudadana_items_autoevaluacion = "";
+                $estudiante->accionciudadana_items_huerfanos = "";
+                $estudiante->accionciudadana_totalcurso = "";
+
+                $estudiante->artes_asistencia = "";
+                $estudiante->artes_items_asistencia = "";
+                $estudiante->artes_seguimientos = "";
+                $estudiante->artes_items_seguimientos = "";
+                $estudiante->artes_autoevaluacion = "";
+                $estudiante->artes_items_autoevaluacion = "";
+                $estudiante->artes_items_huerfanos = "";
+                $estudiante->artes_totalcurso = "";
+
+                $estudiante->biologia_asistencia = "";
+                $estudiante->biologia_items_asistencia ="";
+                $estudiante->biologia_seguimientos = "";
+                $estudiante->biologia_items_seguimientos = "";
+                $estudiante->biologia_autoevaluacion = "";
+                $estudiante->biologia_items_autoevaluacion = "";
+                $estudiante->biologia_items_huerfanos = "";
+                $estudiante->biologia_totalcurso = "";
+
+
+                $estudiante->cultura_asistencia = "";
+                $estudiante->cultura_items_asistencia = "";
+                $estudiante->cultura_seguimientos = "";
+                $estudiante->cultura_items_seguimientos = "";
+                $estudiante->cultura_autoevaluacion = "";
+                $estudiante->cultura_items_autoevaluacion = "";
+                $estudiante->cultura_items_huerfanos = "";
+                $estudiante->cultura_totalcurso = "";
+
+                $estudiante->deporte_asistencia = "";
+                $estudiante->deporte_items_asistencia = "";
+                $estudiante->deporte_seguimientos = "";
+                $estudiante->deporte_items_seguimientos = "";
+                $estudiante->deporte_autoevaluacion = "";
+                $estudiante->deporte_items_autoevaluacion = "";
+                $estudiante->deporte_items_huerfanos = "";
+                $estudiante->deporte_totalcurso = "";
+
+                $estudiante->dialogo_asistencia = "";
+                $estudiante->dialogo_items_asistencia = "";
+                $estudiante->dialogo_seguimientos = "";
+                $estudiante->dialogo_items_seguimientos = "";
+                $estudiante->dialogo_autoevaluacion = "";
+                $estudiante->dialogo_items_autoevaluacion = "";
+                $estudiante->dialogo_items_huerfanos = "";
+                $estudiante->dialogo_totalcurso = "";
+
+                $estudiante->filosofia_asistencia = "";
+                $estudiante->filosofia_items_asistencia = "";
+                $estudiante->filosofia_seguimientos = "";
+                $estudiante->filosofia_items_seguimientos = "";
+                $estudiante->filosofia_autoevaluacion = "";
+                $estudiante->filosofia_items_autoevaluacion = "";
+                $estudiante->filosofia_items_huerfanos = "";
+                $estudiante->filosofia_totalcurso = "";
+
+                $estudiante->fisica_asistencia = "";
+                $estudiante->fisica_items_asistencia = "";
+                $estudiante->fisica_seguimientos = "";
+                $estudiante->fisica_items_seguimientos = "";
+                $estudiante->fisica_autoevaluacion = "";
+                $estudiante->fisica_items_autoevaluacion= "";
+                $estudiante->fisica_items_huerfanos = "";
+                $estudiante->fisica_totalcurso = "";
+
+                $estudiante->geografia_asistencia = "";
+                $estudiante->geografia_items_asistencia = "";
+                $estudiante->geografia_seguimientos = "";
+                $estudiante->geografia_items_seguimientos = "";
+                $estudiante->geografia_autoevaluacion = "";
+                $estudiante->geografia_items_autoevaluacion = "";
+                $estudiante->geografia_items_huerfanos = "";
+                $estudiante->geografia_totalcurso = "";
+
+                $estudiante->historia_asistencia = "";
+                $estudiante->historia_items_asistencia = "";
+                $estudiante->historia_seguimientos = "";
+                $estudiante->historia_items_seguimientos = "";
+                $estudiante->historia_autoevaluacion = "";
+                $estudiante->historia_items_autoevaluacion = "";
+                $estudiante->historia_items_huerfanos = "";
+                $estudiante->historia_totalcurso = "";
+
+                $estudiante->ingles_asistencia = "";
+                $estudiante->ingles_items_asistencia = "";
+                $estudiante->ingles_seguimientos = "";
+                $estudiante->ingles_items_seguimientos = "";
+                $estudiante->ingles_autoevaluacion = "";
+                $estudiante->ingles_items_autoevaluacion = "";
+                $estudiante->ingles_items_huerfanos = "";
+                $estudiante->ingles_totalcurso = "";
+
+                $estudiante->lectura_asistencia = "";
+                $estudiante->lectura_items_asistencia = "";
+                $estudiante->lectura_seguimientos = "";
+                $estudiante->lectura_items_seguimientos = "";
+                $estudiante->lectura_autoevaluacion = "";
+                $estudiante->lectura_items_autoevaluacion = "";
+                $estudiante->lectura_items_huerfanos = "";
+                $estudiante->lectura_totalcurso = "";
+
+                $estudiante->matematicas_asistencia = "";
+                $estudiante->matematicas_items_asistencia = "";
+                $estudiante->matematicas_seguimientos = "";
+                $estudiante->matematicas_items_seguimientos = "";
+                $estudiante->matematicas_autoevaluacion = "";
+                $estudiante->matematicas_items_autoevaluacion = "";
+                $estudiante->matematicas_items_huerfanos= "";
+                $estudiante->matematicas_totalcurso = "";
+
+                $estudiante->quimica_asistencia = "";
+                $estudiante->quimica_items_asistencia = "";
+                $estudiante->quimica_seguimientos = "";
+                $estudiante->quimica_items_seguimientos = "";
+                $estudiante->quimica_autoevaluacion = "";
+                $estudiante->quimica_items_autoevaluacion = "";
+                $estudiante->quimica_items_huerfanos = "";
+                $estudiante->quimica_totalcurso = "";
+
+                $estudiante->tic_asistencia = "";
+                $estudiante->tic_items_asistencia = "";
+                $estudiante->tic_seguimientos = "";
+                $estudiante->tic_items_seguimientos = "";
+                $estudiante->tic_autoevaluacion = "";
+                $estudiante->tic_items_autoevaluacion = "";
+                $estudiante->tic_items_huerfanos = "";
+                $estudiante->tic_totalcurso = "";
+
+                foreach((array)$estudiante->asignaturas as $cursos){
+                    $cursos->fullname = explode(' ',$cursos->fullname)[0];
+                    //dd($cursos);
+                    switch ($cursos->fullname) {
+                        case 'JORNADAS':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)){
+                                       
+                                $estudiante->accionciudadana_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->accionciudadana_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }    
                             }
-                        }
-                        unset($estudiante->asignaturas);
-                        $estudiante->accionciudadana_asistencias = $accionciudadana_asistencias;
-                        $estudiante->accionciudadana_seguimientos = $accionciudadana_seguimientos;
-                        $estudiante->accionciudadana_autoevaluacion = $accionciudadana_autoevaluacion;
-                        $estudiante->accionciudadana_totalcurso = $accionciudadana_totalcurso;
-                        $estudiante->accionciudadana_item_huerfano = $item_huerfano_accion_ciudadana;
-                        $estudiante->courseid_accion_ciudadana = $courseid_accion_ciudadana;
 
-                        $estudiante->artes_asistencias = $artes_asistencias;
-                        $estudiante->artes_seguimientos = $artes_seguimientos;
-                        $estudiante->artes_autoevaluacion = $artes_autoevaluacion;
-                        $estudiante->artes_totalcurso = $artes_totalcurso;
-                        $estudiante->artes_item_huerfano = $item_huerfano_artes;
-                        $estudiante->courseid_artes = $courseid_artes;
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)){
+                                        
+                                $estudiante->accionciudadana_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->accionciudadana_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
 
-                        $estudiante->biologia_asistencias = $biologia_asistencias;
-                        $estudiante->biologia_seguimientos = $biologia_seguimientos;
-                        $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                        $estudiante->biologia_totalcurso = $biologia_totalcurso;
-                        $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                        $estudiante->courseid_biologia = $courseid_biologia;
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->accionciudadana_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->accionciudadana_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
 
-                        $estudiante->cultura_asistencias = $cultura_asistencias;
-                        $estudiante->cultura_seguimientos = $cultura_seguimientos;
-                        $estudiante->cultura_autoevaluacion = $cultura_autoevaluacion;
-                        $estudiante->cultura_totalcurso = $cultura_totalcurso;
-                        $estudiante->cultura_item_huerfano = $item_huerfano_cultura;
-                        $estudiante->courseid_cultura = $courseid_cultura;
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->accionciudadana_totalcurso = $cursos->grade;
+                            } 
 
-                        $estudiante->deporte_asistencias = $deporte_asistencias;
-                        $estudiante->deporte_seguimientos = $deporte_seguimientos;
-                        $estudiante->deporte_autoevaluacion = $deporte_autoevaluacion;
-                        $estudiante->deporte_totalcurso = $deporte_totalcurso;
-                        $estudiante->deporte_item_huerfano = $item_huerfano_deporte;
-                        $estudiante->courseid_deporte = $courseid_deporte;
+                            if($estudiante->accionciudadana_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
 
-                        $estudiante->dialogo_asistencias = $dialogo_asistencias;
-                        $estudiante->dialogo_seguimientos = $dialogo_seguimientos;
-                        $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
-                        $estudiante->dialogo_totalcurso = $dialogo_totalcurso;
-                        $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
-                        $estudiante->courseid_dialogo = $courseid_dialogo;
+                                    $estudiante->accionciudadana_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                       
+                            break;
 
-                        $estudiante->filosofia_asistencias = $filosofia_asistencias;
-                        $estudiante->filosofia_seguimientos = $filosofia_seguimientos;
-                        $estudiante->filosofia_autoevaluacion = $filosofia_autoevaluacion;
-                        $estudiante->filosofia_totalcurso = $filosofia_totalcurso;
-                        $estudiante->filosofia_item_huerfano = $item_huerfano_filosofia;
-                        $estudiante->courseid_filosofia = $courseid_filosofia;
-
-                        $estudiante->fisica_asistencias = $fisica_asistencias;
-                        $estudiante->fisica_seguimientos = $fisica_seguimientos;
-                        $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                        $estudiante->fisica_totalcurso = $fisica_totalcurso;
-                        $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                        $estudiante->courseid_fisica = $courseid_fisica;
-
-                        $estudiante->geografia_asistencias = $geografia_asistencias;
-                        $estudiante->geografia_seguimientos = $geografia_seguimientos;
-                        $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                        $estudiante->geografia_totalcurso = $geografia_totalcurso;
-                        $estudiante->geografia_item_huerfano = $item_huerfano_geografia;
-                        $estudiante->courseid_geografia = $courseid_geografia;
-
-                        $estudiante->historia_asistencias = $historia_asistencias;
-                        $estudiante->historia_seguimientos = $historia_seguimientos;
-                        $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                        $estudiante->historia_totalcurso = $historia_totalcurso;
-                        $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                        $estudiante->courseid_historia = $courseid_historia;
-
-                        $estudiante->ingles_asistencias = $ingles_asistencias;
-                        $estudiante->ingles_seguimientos = $ingles_seguimientos;
-                        $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                        $estudiante->ingles_totalcurso = $ingles_totalcurso;
-                        $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                        $estudiante->courseid_ingles = $courseid_ingles;
-
-                        $estudiante->lectura_asistencias = $lectura_asistencias;
-                        $estudiante->lectura_seguimientos = $lectura_seguimientos;
-                        $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                        $estudiante->lectura_totalcurso = $lectura_totalcurso;
-                        $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                        $estudiante->courseid_lectura = $courseid_lectura;
-
-                        $estudiante->matematicas_asistencias = $matematicas_asistencias;
-                        $estudiante->matematicas_seguimientos = $matematicas_seguimientos;
-                        $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                        $estudiante->matematicas_totalcurso = $matematicas_totalcurso;
-                        $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                        $estudiante->courseid_matematicas = $courseid_matematicas;
-
-                        $estudiante->quimica_asistencias = $quimica_asistencias;
-                        $estudiante->quimica_seguimientos = $quimica_seguimientos;
-                        $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                        $estudiante->quimica_totalcurso = $quimica_totalcurso;
-                        $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                        $estudiante->courseid_quimica = $courseid_quimica;
-
-                        $estudiante->tic_asistencias = $tic_asistencias;
-                        $estudiante->tic_seguimientos = $tic_seguimientos;
-                        $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
-                        $estudiante->tic_totalcurso = $tic_totalcurso;
-                        $estudiante->tic_item_huerfano = $item_huerfano_tic;
-                        $estudiante->courseid_tic = $courseid_tic;
-                        //dd($estudiante);
-                    });
-                $excel = array();
-                foreach($estudiantes as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
-
-                                'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencias,
-                                'accionciudadana_seguimientos' => $estudiante->accionciudadana_seguimientos,
-                                'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
-                                'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
-
-                                'artes_asistencias' => $estudiante->artes_asistencias,
-                                'artes_seguimientos' => $estudiante->artes_seguimientos,
-                                'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
-                                'artes_totalcurso' => $estudiante->artes_totalcurso,
-
-                                'biologia_asistencias' => $estudiante->biologia_asistencias,
-                                'biologia_seguimientos' => $estudiante->biologia_seguimientos,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_totalcurso' => $estudiante->biologia_totalcurso,
-
-                                'cultura_asistencias' => $estudiante->cultura_asistencias,
-                                'cultura_seguimientos' => $estudiante->cultura_seguimientos,
-                                'cultura_autoevaluacion' => $estudiante->cultura_autoevaluacion,
-                                'cultura_totalcurso' => $estudiante->cultura_totalcurso,
+                        case 'ARTES:':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->artes_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->artes_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
                                 
-                                'deporte_asistencias' => $estudiante->deporte_asistencias,
-                                'deporte_seguimientos' => $estudiante->deporte_seguimientos,
-                                'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
-                                'deporte_totalcurso' => $estudiante->deporte_totalcurso,
+                            }
 
-                                'dialogo_asistencias' => $estudiante->dialogo_asistencias,
-                                'dialogo_seguimientos' => $estudiante->dialogo_seguimientos,
-                                'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
-                                'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->artes_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->artes_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                                
+                            }
 
-                                'filosofia_asistencias' => $estudiante->filosofia_asistencias,
-                                'filosofia_seguimientos' => $estudiante->filosofia_seguimientos,
-                                'filosofia_autoevaluacion' => $estudiante->filosofia_autoevaluacion,
-                                'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                        
+                                $estudiante->artes_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->artes_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
 
-                                'fisica_asistencias' => $estudiante->fisica_asistencias,
-                                'fisica_seguimientos' => $estudiante->fisica_seguimientos,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_totalcurso' => $estudiante->fisica_totalcurso,
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->artes_totalcurso = $cursos->grade;
+                            }
 
-                                'geografia_asistencias' => $estudiante->geografia_asistencias,
-                                'geografia_seguimientos' => $estudiante->geografia_seguimientos,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_totalcurso' => $estudiante->geografia_totalcurso,
+                            if($estudiante->artes_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
 
-                                'historia_asistencias' => $estudiante->historia_asistencias,
-                                'historia_seguimientos' => $estudiante->historia_seguimientos,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_totalcurso' => $estudiante->historia_totalcurso,
+                                    $estudiante->artes_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }              
+                            break;
 
-                                'ingles_asistencias' => $estudiante->ingles_asistencias,
-                                'ingles_seguimientos' => $estudiante->ingles_seguimientos,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_totalcurso' => $estudiante->ingles_totalcurso,
+                        case 'BIOLOGIA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->biologia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->biologia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }     
+                            }
 
-                                'lectura_asistencias' => $estudiante->lectura_asistencias,
-                                'lectura_seguimientos' => $estudiante->lectura_seguimientos,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_totalcurso' => $estudiante->lectura_totalcurso,
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->biologia_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->biologia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }  
+                            }
 
-                                'matematicas_asistencias' => $estudiante->matematicas_asistencias,
-                                'matematicas_seguimientos' => $estudiante->matematicas_seguimientos,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->biologia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->biologia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
 
-                                'quimica_asistencias' => $estudiante->quimica_asistencias,
-                                'quimica_seguimientos' => $estudiante->quimica_seguimientos,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_totalcurso' => $estudiante->quimica_totalcurso,
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->biologia_totalcurso = $cursos->grade;
+                            }
 
-                                'tic_asistencias' => $estudiante->tic_asistencias,
-                                'tic_seguimientos' => $estudiante->tic_seguimientos,
-                                'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
-                                'tic_totalcurso' => $estudiante->tic_totalcurso,
-                            );
+                            if($estudiante->biologia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                         
+                            break;
+
+                        case 'CULTURA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->cultura_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->cultura_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->cultura_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->cultura_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->cultura_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->cultura_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->cultura_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->cultura_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->cultura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                         
+                            break;
+
+                        case 'DEPORTE':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->deporte_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->deporte_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->deporte_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->deporte_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->deporte_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->deporte_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->deporte_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->deporte_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->deporte_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                      
+                            break;
+
+                        case 'DIALOGO':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->dialogo_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->dialogo_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->dialogo_seguimientos = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->dialogo_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->dialogo_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->dialogo_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->dialogo_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->dialogo_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                          
+                            break;
+
+                        case 'FILOSOFIA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->filosofia_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->filosofia_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->filosofia_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->filosofia_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->filosofia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->filosofia_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->filosofia_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->filosofia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->filosofia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'FISICA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->fisica_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->fisica_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->fisica_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->fisica_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->fisica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->fisica_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->fisica_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->fisica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'GEOGRAFIA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->geografia_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->geografia_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->geografia_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->geografia_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->geografia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->geografia_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->geografia_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->geografia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'HISTORIA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->historia_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->historia_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->historia_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->historia_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->historia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->historia_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->historia_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->historia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'INGLES':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->ingles_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->ingles_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->ingles_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->ingles_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->ingles_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->ingles_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->ingles_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->ingles_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;   
+
+                        case 'LECTURA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->lectura_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->lectura_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->lectura_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->lectura_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->lectura_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->lectura_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->lectura_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->lectura_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'MATEMATICAS':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->matematicas_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->matematicas_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->matematicas_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->matematicas_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->matematicas_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->matematicas_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->matematicas_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->matematicas_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;                          
+
+                        case 'QUIMICA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->quimica_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->quimica_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->quimica_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->quimica_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->quimica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->quimica_items_autoevaluacion  .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->quimica_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->quimica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'TECNOLOGIA':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                        
+                                $estudiante->tic_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->tic_items_asistencia  .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
+                                        
+                                $estudiante->tic_seguimientos = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->tic_items_seguimientos  .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->tic_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->tic_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->tic_totalcurso = $cursos->grade;
+                            }
+
+                            if($estudiante->tic_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        default:                                        
+                            echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADOR";
+                            break;
+                    }
                 }
-                //dd($excel);
-                $exportar = new NotasLinea1Export([$excel]);
 
-                return Excel::download($exportar, "reporte_notas_linea_1.xlsx");
-            }           
-        
+                unset($estudiante->asignaturas);
+                //dd($estudiante);
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profesional' => $estudiante->encargado,
+
+                    'accionciudadana_asistencias_items' => $estudiante->accionciudadana_items_asistencia,
+                    'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencia,
+                    'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
+                    'accionciudadana_seguimientos' => $estudiante->accionciudadana_seguimientos,
+                    'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
+                    'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
+                    'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
+                    'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
+
+                    'artes_items_asistencia' => $estudiante->artes_items_asistencia,
+                    'artes_asistencias' => $estudiante->artes_asistencia,
+                    'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
+                    'artes_seguimientos' => $estudiante->artes_seguimientos,
+                    'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
+                    'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
+                    'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
+                    'artes_totalcurso' => $estudiante->artes_totalcurso,
+
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencias' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimientos' => $estudiante->biologia_seguimientos,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_totalcurso' => $estudiante->biologia_totalcurso,
+
+                    'cultura_items_asistencia' => $estudiante->cultura_items_asistencia,
+                    'cultura_asistencias' => $estudiante->cultura_asistencia,
+                    'cultura_items_seguimientos' => $estudiante->cultura_items_seguimientos,
+                    'cultura_seguimientos' => $estudiante->cultura_seguimientos,
+                    'cultura_items_autoevaluacion' => $estudiante->cultura_items_autoevaluacion,
+                    'cultura_autoevaluacion' => $estudiante->cultura_autoevaluacion,
+                    'cultura_items_huerfanos' => $estudiante->cultura_items_huerfanos,
+                    'cultura_totalcurso' => $estudiante->cultura_totalcurso,
+                                
+                    'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
+                    'deporte_asistencias' => $estudiante->deporte_asistencia,
+                    'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
+                    'deporte_seguimientos' => $estudiante->deporte_seguimientos,
+                    'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
+                    'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
+                    'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
+                    'deporte_totalcurso' => $estudiante->deporte_totalcurso,
+
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencias' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimientos' => $estudiante->dialogo_seguimientos,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
+
+                    'filosofia_items_asistencia' => $estudiante->filosofia_items_asistencia,
+                    'filosofia_asistencias' => $estudiante->filosofia_asistencia,
+                    'filosofia_items_seguimientos' => $estudiante->filosofia_items_seguimientos,
+                    'filosofia_seguimientos' => $estudiante->filosofia_seguimientos,
+                    'filosofia_items_autoevaluacion' => $estudiante->filosofia_items_autoevaluacion,
+                    'filosofia_autoevaluacion' => $estudiante->filosofia_autoevaluacion,
+                    'filosofia_items_huerfanos' => $estudiante->filosofia_items_huerfanos,
+                    'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
+
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencias' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimientos' => $estudiante->fisica_seguimientos,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_totalcurso' => $estudiante->fisica_totalcurso,
+
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencias' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimientos' => $estudiante->geografia_seguimientos,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_totalcurso' => $estudiante->geografia_totalcurso,
+
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencias' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimientos' => $estudiante->historia_seguimientos,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_totalcurso' => $estudiante->historia_totalcurso,
+
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencias' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimientos' => $estudiante->ingles_seguimientos,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_totalcurso' => $estudiante->ingles_totalcurso,
+
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencias' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimientos' => $estudiante->lectura_seguimientos,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_totalcurso' => $estudiante->lectura_totalcurso,
+
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencias' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimientos' => $estudiante->matematicas_seguimientos,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
+
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencias' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimientos' => $estudiante->quimica_seguimientos,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_totalcurso' => $estudiante->quimica_totalcurso,
+
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencias' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimientos' => $estudiante->tic_seguimientos,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_totalcurso' => $estudiante->tic_totalcurso,
+                );
+                //dd($excel);
+            }
+            $estudiantes = json_encode($estudiantes);
+            Storage::disk('local')->put('notas_linea_1_items.json', $estudiantes);
+            $exportar = new NotasLinea1Export([$excel]);
+            return Excel::download($exportar, "reporte_notas_linea_1.xlsx");
+        }              
     }
 
     public function exportar_excel_notas_linea2(){
-        if(Storage::disk('local')->exists('notas_linea_2.json')) {
-                    $notas = json_decode(Storage::get('notas_linea_2.json'));
-                    $estudiantes = collect($notas);
-                    //dd($estudiantes);
-                    $estudiantes->map(function($estudiante){
-                        $biologia_asistencia = 0;
-                        $biologia_seguimiento_academico = 0;
-                        $biologia_autoevaluacion = 0;
-                        $biologia_total_curso = 0;
-                        $item_huerfano_biologia = 0;
-                        $courseid_biologia = 0;
-                        $artes_asistencia = 0;
-                        $artes_seguimiento_academico = 0;
-                        $artes_autoevaluacion = 0;
-                        $artes_total_curso = 0;
-                        $item_huerfano_artes = 0;
-                        $courseid_artes = 0;
-                        $deporte_asistencia = 0;
-                        $deporte_seguimiento_academico = 0;
-                        $deporte_autoevaluacion = 0;
-                        $deporte_total_curso = 0;
-                        $item_huerfano_deporte = 0;
-                        $courseid_deporte = 0;
-                        $dialogo_asistencia = 0;
-                        $dialogo_seguimiento_academico = 0;
-                        $dialogo_autoevaluacion = 0;
-                        $dialogo_total_curso = 0;
-                        $item_huerfano_dialogo = 0;
-                        $courseid_dialogo = 0;
-                        $constitucion_asistencia = 0;
-                        $constitucion_seguimiento_academico = 0;
-                        $constitucion_autoevaluacion = 0;
-                        $constitucion_total_curso = 0;
-                        $item_huerfano_constitucion = 0;
-                        $courseid_constitucion = 0;
-                        $fisica_asistencia = 0;
-                        $fisica_seguimiento_academico = 0;
-                        $fisica_autoevaluacion = 0;
-                        $fisica_total_curso = 0;
-                        $item_huerfano_fisica = 0;
-                        $courseid_fisica = 0;
-                        $geografia_asistencia = 0;
-                        $geografia_seguimiento_academico = 0;
-                        $geografia_autoevaluacion = 0;
-                        $geografia_total_curso = 0;
-                        $item_huerfano_grografia = 0;
-                        $courseid_geografia = 0;
-                        $historia_asistencia = 0;
-                        $historia_seguimiento_academico = 0;
-                        $historia_autoevaluacion = 0;
-                        $historia_total_curso = 0;
-                        $item_huerfano_historia = 0;
-                        $courseid_historia = 0;
-                        $ingles_asistencia = 0;
-                        $ingles_seguimiento_academico = 0;
-                        $ingles_autoevaluacion = 0;
-                        $ingles_total_curso = 0;
-                        $item_huerfano_ingles = 0;
-                        $courseid_ingles = 0;
-                        $lectura_asistencia = 0;
-                        $lectura_seguimiento_academico = 0;
-                        $lectura_autoevaluacion = 0;
-                        $lectura_total_curso = 0;
-                        $item_huerfano_lectura = 0;
-                        $courseid_lectura = 0;
-                        $matematicas_asistencia = 0;
-                        $matematicas_seguimiento_academico = 0;
-                        $matematicas_autoevaluacion = 0;
-                        $matematicas_total_curso = 0;
-                        $item_huerfano_matematicas = 0;
-                        $courseid_matematicas = 0;
-                        $quimica_asistencia = 0;
-                        $quimica_seguimiento_academico = 0;
-                        $quimica_autoevaluacion = 0;
-                        $quimica_total_curso = 0;
-                        $item_huerfano_quimica = 0;
-                        $courseid_quimica = 0;
-                        $tic_asistencia = 0;
-                        $tic_seguimiento_academico = 0;
-                        $tic_autoevaluacion = 0;
-                        $tic_total_curso = 0;
-                        $item_huerfano_tic = 0;
-                        $courseid_tic = 0;
-                        foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode('-',$cursos->fullname)[0];
-                            //dd($cursos->fullname);
-                            switch ($cursos->fullname) {
-                                case 'BIOLOGIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $biologia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $biologia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $biologia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $biologia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_biologia += 1;
-                                    }
-                                    $courseid_biologia = $cursos->id;                                               
-                                    break;
-                                
-                                case 'ARTES: CONOCIMIENTO EN ACCION ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $artes_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $artes_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $artes_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $artes_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_artes += 1;
-                                    }
-                                    $courseid_artes = $cursos->id;
-                                    break;
-                                case 'DEPORTE Y SALUD INTEGRAL ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $deporte_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $deporte_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $deporte_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $deporte_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_deporte += 1;
-                                    }
-                                    $courseid_deporte = $cursos->id;
-                                    break;
-                                case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $dialogo_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $dialogo_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $dialogo_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $dialogo_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_dialogo += 1;
-                                    }
-                                    $courseid_dialogo = $cursos->id;
-                                    break;
-                                case 'CONSTITUCION ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $constitucion_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $constitucion_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $constitucion_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $constitucion_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_constitucion += 1;
-                                    }
-                                    $courseid_constitucion = $cursos->id;
-                                    break;    
-                                case 'FISICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $fisica_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $fisica_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $fisica_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $fisica_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_fisica += 1;
-                                    }
-                                    $courseid_fisica = $cursos->id;
-                                    break;
-                                case 'GEOGRAFIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $geografia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $geografia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $geografia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $geografia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_grografia += 1;
-                                    }
-                                    $courseid_geografia = $cursos->id;
-                                    break;
-                                case 'HISTORIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $historia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $historia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $historia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $historia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_historia += 1;
-                                    }
-                                    $courseid_historia = $cursos->id;
-                                    break;
-                                case 'INGLES ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $ingles_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $ingles_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $ingles_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $ingles_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_ingles += 1;
-                                    }
-                                    $courseid_ingles = $cursos->id;
-                                    break;
-                                case 'LECTURA CRITICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $lectura_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $lectura_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $lectura_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $lectura_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_lectura += 1;
-                                    }
-                                    $courseid_lectura = $cursos->id;
-                                    break;
-                                case 'MATEMATICAS ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $matematicas_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $matematicas_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $matematicas_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $matematicas_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_matematicas += 1;
-                                    }
-                                    $courseid_matematicas = $cursos->id;
-                                    break;
-                                case 'QUIMICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $quimica_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $quimica_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $quimica_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $quimica_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_quimica += 1;
-                                    }
-                                    $courseid_quimica = $cursos->id;
-                                    break;
-                                case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $tic_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $tic_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $tic_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $tic_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_tic += 1;
-                                    }
-                                    $courseid_tic = $cursos->id;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }  
-                        //dd($estudiante->asignaturas);
-                        $estudiante->biologia_asistencia = $biologia_asistencia;
-                        $estudiante->biologia_seguimiento_academico = $biologia_seguimiento_academico;
-                        $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                        $estudiante->biologia_total_curso = $biologia_total_curso;
-                        $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                        $estudiante->biologia_course_id = $courseid_biologia;
-                        $estudiante->artes_asistencia = $artes_asistencia;
-                        $estudiante->artes_seguimiento_academico = $artes_seguimiento_academico;
-                        $estudiante->artes_autoevaluacion = $artes_autoevaluacion;
-                        $estudiante->artes_total_curso = $artes_total_curso;
-                        $estudiante->artes_item_huerfano = $item_huerfano_artes;
-                        $estudiante->artes_course_id = $courseid_artes;
-                        $estudiante->deporte_asistencia = $deporte_asistencia;
-                        $estudiante->deporte_seguimiento_academico = $deporte_seguimiento_academico;
-                        $estudiante->deporte_autoevaluacion = $deporte_autoevaluacion;
-                        $estudiante->deporte_total_curso = $deporte_total_curso;
-                        $estudiante->deporte_item_huerfano = $item_huerfano_deporte;
-                        $estudiante->deporte_course_id = $courseid_deporte;
-                        $estudiante->dialogo_asistencia = $dialogo_asistencia;
-                        $estudiante->dialogo_seguimiento_academico = $dialogo_seguimiento_academico;
-                        $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
-                        $estudiante->dialogo_total_curso = $dialogo_total_curso;
-                        $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
-                        $estudiante->dialogo_course_id = $courseid_dialogo;
-                        $estudiante->constitucion_asistencia = $constitucion_asistencia;
-                        $estudiante->constitucion_seguimiento_academico = $constitucion_seguimiento_academico;
-                        $estudiante->constitucion_autoevaluacion = $constitucion_autoevaluacion;
-                        $estudiante->constitucion_total_curso = $constitucion_total_curso;
-                        $estudiante->constitucion_item_huerfano = $item_huerfano_constitucion;
-                        $estudiante->constitucion_course_id = $courseid_constitucion;
-                        $estudiante->fisica_asistencia = $fisica_asistencia;
-                        $estudiante->fisica_seguimiento_academico = $fisica_seguimiento_academico;
-                        $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                        $estudiante->fisica_total_curso = $fisica_total_curso;
-                        $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                        $estudiante->fisica_course_id = $courseid_fisica;
-                        $estudiante->geografia_asistencia = $geografia_asistencia;
-                        $estudiante->geografia_seguimiento_academico = $geografia_seguimiento_academico;
-                        $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                        $estudiante->geografia_total_curso = $geografia_total_curso;
-                        $estudiante->geografia_item_huerfano = $item_huerfano_grografia;
-                        $estudiante->geografia_course_id = $courseid_geografia;
-                        $estudiante->historia_asistencia = $historia_asistencia;
-                        $estudiante->historia_seguimiento_academico = $historia_seguimiento_academico;
-                        $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                        $estudiante->historia_total_curso = $historia_total_curso;
-                        $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                        $estudiante->historia_course_id = $courseid_historia;
-                        $estudiante->ingles_asistencia = $ingles_asistencia;
-                        $estudiante->ingles_seguimiento_academico = $ingles_seguimiento_academico;
-                        $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                        $estudiante->ingles_total_curso = $ingles_total_curso;
-                        $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                        $estudiante->ingles_course_id = $courseid_ingles;
-                        $estudiante->lectura_asistencia = $lectura_asistencia;
-                        $estudiante->lectura_seguimiento_academico = $lectura_seguimiento_academico;
-                        $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                        $estudiante->lectura_total_curso = $lectura_total_curso;
-                        $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                        $estudiante->lectura_course_id = $courseid_lectura;
-                        $estudiante->matematicas_asistencia = $matematicas_asistencia;
-                        $estudiante->matematicas_seguimiento_academico = $matematicas_seguimiento_academico;
-                        $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                        $estudiante->matematicas_total_curso = $matematicas_total_curso;
-                        $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                        $estudiante->matematicas_course_id = $courseid_matematicas;
-                        $estudiante->quimica_asistencia = $quimica_asistencia;
-                        $estudiante->quimica_seguimiento_academico = $quimica_seguimiento_academico;
-                        $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                        $estudiante->quimica_total_curso = $quimica_total_curso;
-                        $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                        $estudiante->quimica_course_id = $courseid_quimica;
-                        $estudiante->tic_asistencia = $tic_asistencia;
-                        $estudiante->tic_seguimiento_academico = $tic_seguimiento_academico;
-                        $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
-                        $estudiante->tic_total_curso = $tic_total_curso;
-                        $estudiante->tic_item_huerfano = $item_huerfano_tic;
-                        $estudiante->tic_course_id = $courseid_tic;
-                        unset($estudiante->asignaturas);
-                        //dd($estudiante);
-                    });
-                //dd($estudiantes);
-                $excel = array();
-                foreach($estudiantes as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
-                                'biologia_asistencia' => $estudiante->biologia_asistencia,
-                                'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_total_curso' => $estudiante->biologia_total_curso,
+        if(Storage::disk('local')->exists('notas_linea_2_items.json')){
 
-                                'artes_asistencia' => $estudiante->artes_asistencia,
-                                'artes_seguimiento_academico' => $estudiante->artes_seguimiento_academico,
-                                'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
-                                'artes_total_curso' => $estudiante->artes_total_curso,
+            $estudiantes = json_decode(Storage::get('notas_linea_2_items.json'));
 
-                                'deporte_asistencia' => $estudiante->deporte_asistencia,
-                                'deporte_seguimiento_academico' => $estudiante->deporte_seguimiento_academico,
-                                'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
-                                'deporte_total_curso' => $estudiante->deporte_total_curso,
+            $excel = array();
+            foreach($estudiantes as $estudiante){
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profersional' => $estudiante->encargado,
 
-                                'dialogo_asistencia' => $estudiante->dialogo_asistencia,
-                                'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
-                                'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
-                                'dialogo_total_curso' => $estudiante->dialogo_total_curso,
+                    'accionciudadana_items_asistencia' => $estudiante->accionciudadana_items_asistencia,
+                    'accionciudadana_asistencia' => $estudiante->accionciudadana_asistencia,
+                    'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
+                    'accionciudadana_seguimiento_academico' => $estudiante->accionciudadana_seguimiento_academico,
+                    'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
+                    'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
+                    'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
+                    'accionciudadana_total_curso' => $estudiante->accionciudadana_total_curso,
 
-                                'constitucion_asistencia' => $estudiante->constitucion_asistencia,
-                                'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
-                                'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
-                                'constitucion_total_curso' => $estudiante->constitucion_total_curso,
+                    'artes_items_asistencia' => $estudiante->artes_items_asistencia,
+                    'artes_asistencia' => $estudiante->artes_asistencia,
+                    'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
+                    'artes_seguimiento_academico' => $estudiante->artes_seguimiento_academico,
+                    'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
+                    'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
+                    'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
+                    'artes_total_curso' => $estudiante->artes_total_curso,
 
-                                'fisica_asistencia' => $estudiante->fisica_asistencia,
-                                'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_total_curso' => $estudiante->fisica_total_curso,
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencia' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_total_curso' => $estudiante->biologia_total_curso,    
 
-                                'geografia_asistencia' => $estudiante->geografia_asistencia,
-                                'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_total_curso' => $estudiante->geografia_total_curso,
+                    'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
+                    'deporte_asistencia' => $estudiante->deporte_asistencia,
+                    'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
+                    'deporte_seguimiento_academico' => $estudiante->deporte_seguimiento_academico,
+                    'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
+                    'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
+                    'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
+                    'deporte_total_curso' => $estudiante->deporte_total_curso,
 
-                                'historia_asistencia' => $estudiante->historia_asistencia,
-                                'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_total_curso' => $estudiante->historia_total_curso,
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencia' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
-                                'ingles_asistencia' => $estudiante->ingles_asistencia,
-                                'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_total_curso' => $estudiante->ingles_total_curso,
+                    'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
+                    'constitucion_asistencia' => $estudiante->constitucion_asistencia,
+                    'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
+                    'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
+                    'constitucion_items_autoevaluacion' => $estudiante->constitucion_items_autoevaluacion,
+                    'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
+                    'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
+                    'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
-                                'lectura_asistencia' => $estudiante->lectura_asistencia,
-                                'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_total_curso' => $estudiante->lectura_total_curso,
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencia' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_total_curso' => $estudiante->fisica_total_curso,
 
-                                'matematicas_asistencia' => $estudiante->matematicas_asistencia,
-                                'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencia' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_total_curso' => $estudiante->geografia_total_curso,
 
-                                'quimica_asistencia' => $estudiante->quimica_asistencia,
-                                'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_total_curso' => $estudiante->quimica_total_curso,
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencia' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_total_curso' => $estudiante->historia_total_curso,
 
-                                'tic_asistencia' => $estudiante->tic_asistencia,
-                                'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
-                                'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
-                                'tic_total_curso' => $estudiante->tic_total_curso,
-                            );
-                }
-                //dd($excel);
-                $exportar = new NotasLinea2Export([$excel]);
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencia' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_total_curso' => $estudiante->ingles_total_curso,
 
-                return Excel::download($exportar, "reporte_notas_linea_2.xlsx");
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencia' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_total_curso' => $estudiante->lectura_total_curso,
+
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencia' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencia' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_total_curso' => $estudiante->quimica_total_curso,
+
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencia' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_total_curso' => $estudiante->tic_total_curso,
+                );
+            }
+            //dd($excel);
+            $exportar = new NotasLinea2Export([$excel]);
+            return Excel::download($exportar, "reporte_notas_linea_2.xlsx");
         }else{
 
-            $estudiantes_linea1 = perfilEstudiante::Estudiantes_cohort_linea2();
-            $estudiantes = collect($estudiantes_linea1);
-            //dd($estudiantes);
-
-            $estudiantes->map(function($estudiante){
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+            $excel = array();
+            foreach($estudiantes as $estudiante){
+                ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
-                //dd($estudiante);   
-            });
 
-            $estudiantes_notas = json_encode($estudiantes);
-            Storage::disk('local')->put('notas_linea_2.json', $estudiantes_notas);
-            $notas = json_decode($estudiantes_notas);
+                $estudiante->accionciudadana_items_asistencia = "";
+                $estudiante->accionciudadana_asistencia = "";
+                $estudiante->accionciudadana_items_seguimientos = "";
+                $estudiante->accionciudadana_seguimiento_academico = "";
+                $estudiante->accionciudadana_items_autoevaluacion = "";
+                $estudiante->accionciudadana_autoevaluacion = "";
+                $estudiante->accionciudadana_items_huerfanos = "";
+                $estudiante->accionciudadana_total_curso = "";
 
-            $estudiantes_notas = collect($notas);
+                $estudiante->biologia_items_asistencia = "";
+                $estudiante->biologia_asistencia = "";
+                $estudiante->biologia_items_seguimientos = "";
+                $estudiante->biologia_seguimiento_academico = "";
+                $estudiante->biologia_items_autoevaluacion = "";
+                $estudiante->biologia_autoevaluacion = "";
+                $estudiante->biologia_items_huerfanos = "";
+                $estudiante->biologia_total_curso = "";
 
-            $estudiantes_notas->map(function($estudiante){
-                        $biologia_asistencia = 0;
-                        $biologia_seguimiento_academico = 0;
-                        $biologia_autoevaluacion = 0;
-                        $biologia_total_curso = 0;
-                        $item_huerfano_biologia = 0;
-                        $courseid_biologia = 0;
-                        $artes_asistencia = 0;
-                        $artes_seguimiento_academico = 0;
-                        $artes_autoevaluacion = 0;
-                        $artes_total_curso = 0;
-                        $item_huerfano_artes = 0;
-                        $courseid_artes = 0;
-                        $deporte_asistencia = 0;
-                        $deporte_seguimiento_academico = 0;
-                        $deporte_autoevaluacion = 0;
-                        $deporte_total_curso = 0;
-                        $item_huerfano_deporte = 0;
-                        $courseid_deporte = 0;
-                        $dialogo_asistencia = 0;
-                        $dialogo_seguimiento_academico = 0;
-                        $dialogo_autoevaluacion = 0;
-                        $dialogo_total_curso = 0;
-                        $item_huerfano_dialogo = 0;
-                        $courseid_dialogo = 0;
-                        $constitucion_asistencia = 0;
-                        $constitucion_seguimiento_academico = 0;
-                        $constitucion_autoevaluacion = 0;
-                        $constitucion_total_curso = 0;
-                        $item_huerfano_constitucion = 0;
-                        $courseid_constitucion = 0;
-                        $fisica_asistencia = 0;
-                        $fisica_seguimiento_academico = 0;
-                        $fisica_autoevaluacion = 0;
-                        $fisica_total_curso = 0;
-                        $item_huerfano_fisica = 0;
-                        $courseid_fisica = 0;
-                        $geografia_asistencia = 0;
-                        $geografia_seguimiento_academico = 0;
-                        $geografia_autoevaluacion = 0;
-                        $geografia_total_curso = 0;
-                        $item_huerfano_grografia = 0;
-                        $courseid_geografia = 0;
-                        $historia_asistencia = 0;
-                        $historia_seguimiento_academico = 0;
-                        $historia_autoevaluacion = 0;
-                        $historia_total_curso = 0;
-                        $item_huerfano_historia = 0;
-                        $courseid_historia = 0;
-                        $ingles_asistencia = 0;
-                        $ingles_seguimiento_academico = 0;
-                        $ingles_autoevaluacion = 0;
-                        $ingles_total_curso = 0;
-                        $item_huerfano_ingles = 0;
-                        $courseid_ingles = 0;
-                        $lectura_asistencia = 0;
-                        $lectura_seguimiento_academico = 0;
-                        $lectura_autoevaluacion = 0;
-                        $lectura_total_curso = 0;
-                        $item_huerfano_lectura = 0;
-                        $courseid_lectura = 0;
-                        $matematicas_asistencia = 0;
-                        $matematicas_seguimiento_academico = 0;
-                        $matematicas_autoevaluacion = 0;
-                        $matematicas_total_curso = 0;
-                        $item_huerfano_matematicas = 0;
-                        $courseid_matematicas = 0;
-                        $quimica_asistencia = 0;
-                        $quimica_seguimiento_academico = 0;
-                        $quimica_autoevaluacion = 0;
-                        $quimica_total_curso = 0;
-                        $item_huerfano_quimica = 0;
-                        $courseid_quimica = 0;
-                        $tic_asistencia = 0;
-                        $tic_seguimiento_academico = 0;
-                        $tic_autoevaluacion = 0;
-                        $tic_total_curso = 0;
-                        $item_huerfano_tic = 0;
-                        $courseid_tic = 0;
-                        foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode('-',$cursos->fullname)[0];
-                            //dd($cursos);
-                            switch ($cursos->fullname) {
-                                case 'BIOLOGIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $biologia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $biologia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $biologia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $biologia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_biologia += 1;
-                                    }
-                                    $courseid_biologia = $cursos->id;                                               
-                                    break;
-                                
-                                case 'ARTES: CONOCIMIENTO EN ACCION ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $artes_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $artes_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $artes_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $artes_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_artes += 1;
-                                    }
-                                    $courseid_artes = $cursos->id;
-                                    break;
-                                case 'DEPORTE Y SALUD INTEGRAL ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $deporte_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $deporte_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $deporte_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $deporte_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_deporte += 1;
-                                    }
-                                    $courseid_deporte = $cursos->id;
-                                    break;
-                                case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $dialogo_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $dialogo_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $dialogo_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $dialogo_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_dialogo += 1;
-                                    }
-                                    $courseid_dialogo = $cursos->id;
-                                    break;
-                                case 'CONSTITUCION ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $constitucion_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $constitucion_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $constitucion_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $constitucion_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_constitucion += 1;
-                                    }
-                                    $courseid_constitucion = $cursos->id;
-                                    break;    
-                                case 'FISICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $fisica_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $fisica_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $fisica_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $fisica_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_fisica += 1;
-                                    }
-                                    $courseid_fisica = $cursos->id;
-                                    break;
-                                case 'GEOGRAFIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $geografia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $geografia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $geografia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $geografia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_grografia += 1;
-                                    }
-                                    $courseid_grografia = $cursos->id;
-                                    break;
-                                case 'HISTORIA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $historia_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $historia_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $historia_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $historia_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_historia += 1;
-                                    }
-                                    $courseid_historia = $cursos->id;
-                                    break;
-                                case 'INGLES ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $ingles_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $ingles_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $ingles_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $ingles_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_ingles += 1;
-                                    }
-                                    $courseid_ingles = $cursos->id;
-                                    break;
-                                case 'LECTURA CRITICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $lectura_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $lectura_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $lectura_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $lectura_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_lectura += 1;
-                                    }
-                                    $courseid_lectura = $cursos->id;
-                                    break;
-                                case 'MATEMATICAS ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $matematicas_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $matematicas_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $matematicas_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $matematicas_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_matematicas += 1;
-                                    }
-                                    $courseid_matematicas = $cursos->id;
-                                    break;
-                                case 'QUIMICA ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $quimica_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $quimica_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $quimica_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $quimica_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_quimica += 1;
-                                    }
-                                    $courseid_quimica = $cursos->id;
-                                    break;
-                                case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
-                                    if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                        (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                        $tic_asistencia = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                        (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                        (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                        (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                        (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                        $tic_seguimiento_academico = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                        (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                        || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $tic_autoevaluacion = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                        $tic_total_curso = $cursos->grade;
-                                    }
-                                    if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                        $item_huerfano_tic += 1;
-                                    }
-                                    $courseid_tic = $cursos->id;
-                                    break;
-                                default:
-                                    break;
+                $estudiante->artes_items_asistencia = "";
+                $estudiante->artes_asistencia = "";
+                $estudiante->artes_items_seguimientos = "";
+                $estudiante->artes_seguimiento_academico = "";
+                $estudiante->artes_items_autoevaluacion = "";
+                $estudiante->artes_autoevaluacion = "";
+                $estudiante->artes_items_huerfanos = "";
+                $estudiante->artes_total_curso = "";
+
+
+                $estudiante->deporte_items_asistencia = "";
+                $estudiante->deporte_asistencia = "";
+                $estudiante->deporte_items_seguimientos = "";
+                $estudiante->deporte_seguimiento_academico = "";
+                $estudiante->deporte_items_autoevaluacion = "";
+                $estudiante->deporte_autoevaluacion = "";
+                $estudiante->deporte_items_huerfanos = "";
+                $estudiante->deporte_total_curso = "";
+
+
+                $estudiante->dialogo_items_asistencia = "";
+                $estudiante->dialogo_asistencia = "";
+                $estudiante->dialogo_items_seguimientos = "";
+                $estudiante->dialogo_seguimiento_academico = "";
+                $estudiante->dialogo_items_autoevaluacion = "";
+                $estudiante->dialogo_autoevaluacion = "";
+                $estudiante->dialogo_items_huerfanos = "";
+                $estudiante->dialogo_total_curso = "";
+
+
+                $estudiante->constitucion_items_asistencia = "";
+                $estudiante->constitucion_asistencia = "";
+                $estudiante->constitucion_items_seguimientos = "";
+                $estudiante->constitucion_seguimiento_academico = "";
+                $estudiante->constitucion_items_autoevaluacion = "";
+                $estudiante->constitucion_autoevaluacion = "";
+                $estudiante->constitucion_items_huerfanos = "";
+                $estudiante->constitucion_total_curso = "";
+
+
+                $estudiante->fisica_items_asistencia = "";
+                $estudiante->fisica_asistencia = "";
+                $estudiante->fisica_items_seguimientos = "";
+                $estudiante->fisica_seguimiento_academico = "";
+                $estudiante->fisica_items_autoevaluacion = "";
+                $estudiante->fisica_autoevaluacion = "";
+                $estudiante->fisica_items_huerfanos = "";
+                $estudiante->fisica_total_curso = "";
+
+
+                $estudiante->geografia_items_asistencia = "";
+                $estudiante->geografia_asistencia = "";
+                $estudiante->geografia_items_seguimientos = "";
+                $estudiante->geografia_seguimiento_academico = "";
+                $estudiante->geografia_items_autoevaluacion = "";
+                $estudiante->geografia_autoevaluacion = "";
+                $estudiante->geografia_items_huerfanos = "";
+                $estudiante->geografia_total_curso = "";
+
+                $estudiante->historia_items_asistencia = "";
+                $estudiante->historia_asistencia = "";
+                $estudiante->historia_items_seguimientos = "";
+                $estudiante->historia_seguimiento_academico = "";
+                $estudiante->historia_items_autoevaluacion = "";
+                $estudiante->historia_autoevaluacion = "";
+                $estudiante->historia_items_huerfanos = "";
+                $estudiante->historia_total_curso = "";
+
+
+                $estudiante->ingles_items_asistencia = "";
+                $estudiante->ingles_asistencia = "";
+                $estudiante->ingles_items_seguimientos = "";
+                $estudiante->ingles_seguimiento_academico = "";
+                $estudiante->ingles_items_autoevaluacion = "";
+                $estudiante->ingles_autoevaluacion = "";
+                $estudiante->ingles_items_huerfanos = "";
+                $estudiante->ingles_total_curso = "";
+
+                $estudiante->lectura_items_asistencia = "";
+                $estudiante->lectura_asistencia = "";
+                $estudiante->lectura_items_seguimientos = "";
+                $estudiante->lectura_seguimiento_academico = "";
+                $estudiante->lectura_items_autoevaluacion = "";
+                $estudiante->lectura_autoevaluacion = "";
+                $estudiante->lectura_items_huerfanos = "";
+                $estudiante->lectura_total_curso = "";
+
+                $estudiante->matematicas_items_asistencia = "";
+                $estudiante->matematicas_asistencia = "";
+                $estudiante->matematicas_items_seguimientos = "";
+                $estudiante->matematicas_seguimiento_academico = "";
+                $estudiante->matematicas_items_autoevaluacion = "";
+                $estudiante->matematicas_autoevaluacion = "";
+                $estudiante->matematicas_items_huerfanos = "";
+                $estudiante->matematicas_total_curso = "";
+
+                $estudiante->quimica_items_asistencia = "";
+                $estudiante->quimica_asistencia = "";
+                $estudiante->quimica_items_seguimientos = "";
+                $estudiante->quimica_seguimiento_academico = "";
+                $estudiante->quimica_items_autoevaluacion = "";
+                $estudiante->quimica_autoevaluacion = "";
+                $estudiante->quimica_items_huerfanos = "";
+                $estudiante->quimica_total_curso = "";
+
+                $estudiante->tic_items_asistencia = "";
+                $estudiante->tic_asistencia = "";
+                $estudiante->tic_items_seguimientos = "";
+                $estudiante->tic_seguimiento_academico = "";
+                $estudiante->tic_items_autoevaluacion = "";
+                $estudiante->tic_autoevaluacion = "";
+                $estudiante->tic_items_huerfanos = "";
+                $estudiante->tic_total_curso = "";
+                //dd($estudiante->asignaturas);
+                foreach((array)$estudiante->asignaturas as $cursos){
+                    $cursos->fullname = explode(' ',$cursos->fullname)[0];
+                    //dd($cursos);
+                    switch ($cursos->fullname) {
+                        case 'JORNADAS':
+                            if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)){
+                                       
+                                $estudiante->accionciudadana_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->accionciudadana_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }    
                             }
-                        }  
-                        //dd($estudiante->asignaturas);
-                        $estudiante->biologia_asistencia = $biologia_asistencia;
-                        $estudiante->biologia_seguimiento_academico = $biologia_seguimiento_academico;
-                        $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                        $estudiante->biologia_total_curso = $biologia_total_curso;
-                        $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                        $estudiante->biologia_course_id = $courseid_biologia;
-                        $estudiante->artes_asistencia = $artes_asistencia;
-                        $estudiante->artes_seguimiento_academico = $artes_seguimiento_academico;
-                        $estudiante->artes_autoevaluacion = $artes_autoevaluacion;
-                        $estudiante->artes_total_curso = $artes_total_curso;
-                        $estudiante->artes_item_huerfano = $item_huerfano_artes;
-                        $estudiante->artes_course_id = $courseid_artes;
-                        $estudiante->deporte_asistencia = $deporte_asistencia;
-                        $estudiante->deporte_seguimiento_academico = $deporte_seguimiento_academico;
-                        $estudiante->deporte_autoevaluacion = $deporte_autoevaluacion;
-                        $estudiante->deporte_total_curso = $deporte_total_curso;
-                        $estudiante->deporte_item_huerfano = $item_huerfano_deporte;
-                        $estudiante->deporte_course_id = $courseid_deporte;
-                        $estudiante->dialogo_asistencia = $dialogo_asistencia;
-                        $estudiante->dialogo_seguimiento_academico = $dialogo_seguimiento_academico;
-                        $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
-                        $estudiante->dialogo_total_curso = $dialogo_total_curso;
-                        $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
-                        $estudiante->dialogo_course_id = $courseid_dialogo;
-                        $estudiante->constitucion_asistencia = $constitucion_asistencia;
-                        $estudiante->constitucion_seguimiento_academico = $constitucion_seguimiento_academico;
-                        $estudiante->constitucion_autoevaluacion = $constitucion_autoevaluacion;
-                        $estudiante->constitucion_total_curso = $constitucion_total_curso;
-                        $estudiante->constitucion_item_huerfano = $item_huerfano_constitucion;
-                        $estudiante->constitucion_course_id = $courseid_constitucion;
-                        $estudiante->fisica_asistencia = $fisica_asistencia;
-                        $estudiante->fisica_seguimiento_academico = $fisica_seguimiento_academico;
-                        $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                        $estudiante->fisica_total_curso = $fisica_total_curso;
-                        $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                        $estudiante->fisica_course_id = $courseid_fisica;
-                        $estudiante->geografia_asistencia = $geografia_asistencia;
-                        $estudiante->geografia_seguimiento_academico = $geografia_seguimiento_academico;
-                        $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                        $estudiante->geografia_total_curso = $geografia_total_curso;
-                        $estudiante->geografia_item_huerfano = $item_huerfano_geografia;
-                        $estudiante->geografia_course_id = $courseid_geografia;
-                        $estudiante->historia_asistencia = $historia_asistencia;
-                        $estudiante->historia_seguimiento_academico = $historia_seguimiento_academico;
-                        $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                        $estudiante->historia_total_curso = $historia_total_curso;
-                        $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                        $estudiante->historia_course_id = $courseid_historia;
-                        $estudiante->ingles_asistencia = $ingles_asistencia;
-                        $estudiante->ingles_seguimiento_academico = $ingles_seguimiento_academico;
-                        $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                        $estudiante->ingles_total_curso = $ingles_total_curso;
-                        $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                        $estudiante->ingles_course_id = $courseid_ingles;
-                        $estudiante->lectura_asistencia = $lectura_asistencia;
-                        $estudiante->lectura_seguimiento_academico = $lectura_seguimiento_academico;
-                        $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                        $estudiante->lectura_total_curso = $lectura_total_curso;
-                        $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                        $estudiante->lectura_course_id = $courseid_lectura;
-                        $estudiante->matematicas_asistencia = $matematicas_asistencia;
-                        $estudiante->matematicas_seguimiento_academico = $matematicas_seguimiento_academico;
-                        $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                        $estudiante->matematicas_total_curso = $matematicas_total_curso;
-                        $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                        $estudiante->matematicas_course_id = $courseid_matematicas;
-                        $estudiante->quimica_asistencia = $quimica_asistencia;
-                        $estudiante->quimica_seguimiento_academico = $quimica_seguimiento_academico;
-                        $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                        $estudiante->quimica_total_curso = $quimica_total_curso;
-                        $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                        $estudiante->quimica_course_id = $courseid_quimica;
-                        $estudiante->tic_asistencia = $tic_asistencia;
-                        $estudiante->tic_seguimiento_academico = $tic_seguimiento_academico;
-                        $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
-                        $estudiante->tic_total_curso = $tic_total_curso;
-                        $estudiante->tic_item_huerfano = $item_huerfano_tic;
-                        $estudiante->tic_course_id = $courseid_tic;
-                        unset($estudiante->asignaturas);
-                        //dd($estudiante);
-                    });
-                
-                $excel = array();
-                foreach($estudiantes as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
-                                'biologia_asistencia' => $estudiante->biologia_asistencia,
-                                'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_total_curso' => $estudiante->biologia_total_curso,
-                                'artes_asistencia' => $estudiante->artes_asistencia,
-                                'artes_seguimiento_academico' => $estudiante->artes_seguimiento_academico,
-                                'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
-                                'artes_total_curso' => $estudiante->artes_total_curso,
-                                'deporte_asistencia' => $estudiante->deporte_asistencia,
-                                'deporte_seguimiento_academico' => $estudiante->deporte_seguimiento_academico,
-                                'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
-                                'deporte_total_curso' => $estudiante->deporte_total_curso,
-                                'dialogo_asistencia' => $estudiante->dialogo_asistencia,
-                                'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
-                                'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
-                                'dialogo_total_curso' => $estudiante->dialogo_total_curso,
-                                'constitucion_asistencia' => $estudiante->constitucion_asistencia,
-                                'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
-                                'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
-                                'constitucion_total_curso' => $estudiante->constitucion_total_curso,
-                                'fisica_asistencia' => $estudiante->fisica_asistencia,
-                                'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_total_curso' => $estudiante->fisica_total_curso,
-                                'geografia_asistencia' => $estudiante->geografia_asistencia,
-                                'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_total_curso' => $estudiante->geografia_total_curso,
-                                'historia_asistencia' => $estudiante->historia_asistencia,
-                                'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_total_curso' => $estudiante->historia_total_curso,
-                                'ingles_asistencia' => $estudiante->ingles_asistencia,
-                                'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_total_curso' => $estudiante->ingles_total_curso,
-                                'lectura_asistencia' => $estudiante->lectura_asistencia,
-                                'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_total_curso' => $estudiante->lectura_total_curso,
-                                'matematicas_asistencia' => $estudiante->matematicas_asistencia,
-                                'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_total_curso' => $estudiante->matematicas_total_curso,
-                                'quimica_asistencia' => $estudiante->quimica_asistencia,
-                                'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_total_curso' => $estudiante->quimica_total_curso,
-                                'tic_asistencia' => $estudiante->tic_asistencia,
-                                'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
-                                'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
-                                'tic_total_curso' => $estudiante->tic_total_curso,
-                            );
-                }
-                //dd($excel);
-                $exportar = new NotasLinea2Export([$excel]);
 
-                return Excel::download($exportar, "reporte_notas_linea_2.xlsx");
-            }           
-        
+                            if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)){
+                                        
+                                $estudiante->accionciudadana_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->accionciudadana_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'Autoevaluación') !== false) || (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)) {
+                                        
+                                $estudiante->accionciudadana_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->accionciudadana_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if ((strpos($cursos->category_name, 'TOTAL') !== false)) {
+                                        
+                                $estudiante->accionciudadana_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->accionciudadana_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+
+                                    $estudiante->accionciudadana_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                        
+                            break;
+                        case 'BIOLOGIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->biologia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->biologia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)){
+
+                                $estudiante->biologia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->biologia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || 
+                                (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+
+                                $estudiante->biologia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->biologia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->biologia_total_curso = $cursos->grade;
+                            }
+                            if($estudiante->biologia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                        
+                            break;
+                                
+                        case 'ARTES:':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->artes_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->artes_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->artes_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->artes_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->artes_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->artes_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->artes_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->artes_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->artes_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'DEPORTE':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->deporte_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->deporte_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->deporte_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->deporte_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->deporte_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->deporte_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->deporte_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->deporte_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->deporte_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'DIALOGO':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->dialogo_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->dialogo_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->dialogo_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->dialogo_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->dialogo_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->dialogo_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->dialogo_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->dialogo_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'CONSTITUCION':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->constitucion_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->constitucion_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->constitucion_seguimiento_academico = $cursos->grade;
+                                $estudiante->constitucion_asistencia = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->constitucion_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->constitucion_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->constitucion_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->constitucion_total_curso = $cursos->grade;
+                            }
+                            if($estudiante->constitucion_items_huerfanos == ""){
+                                $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                 $estudiante->constitucion_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                }  
+                            }
+                            break;  
+
+                        case 'FISICA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->fisica_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->fisica_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->fisica_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->fisica_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->fisica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->fisica_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->fisica_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->fisica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'GEOGRAFIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->geografia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->geografia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->geografia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->geografia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->geografia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->geografia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->geografia_total_curso = $cursos->grade;
+                            }
+                            
+                            if($estudiante->geografia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'HISTORIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->historia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->historia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->historia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->historia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->historia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->historia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->historia_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->historia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            } 
+                            break;
+
+                        case 'INGLES':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->ingles_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->ingles_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->ingles_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->ingles_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->ingles_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->ingles_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->ingles_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->ingles_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            } 
+                            break;
+
+                        case 'LECTURA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->lectura_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->lectura_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->lectura_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->lectura_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->lectura_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->lectura_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->lectura_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->lectura_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'MATEMATICAS':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->matematicas_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->matematicas_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->matematicas_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->matematicas_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->matematicas_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->matematicas_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->matematicas_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->matematicas_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'QUIMICA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->quimica_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->quimica_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->quimica_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->quimica_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->quimica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->quimica_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->quimica_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->quimica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'TECNOLOGIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->tic_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->tic_items_asistencia .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->tic_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->tic_items_seguimientos .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->tic_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->tic_items_autoevaluacion .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->tic_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->tic_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+                        default:
+                            echo $cursos->id;
+                            break;
+                    }
+                }
+                unset($estudiante->asignaturas);
+                //dd($estudiante);
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profersional' => $estudiante->encargado,
+
+                    'accionciudadana_items_asistencia' => $estudiante->accionciudadana_items_asistencia,
+                    'accionciudadana_asistencia' => $estudiante->accionciudadana_asistencia,
+                    'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
+                    'accionciudadana_seguimiento_academico' => $estudiante->accionciudadana_seguimiento_academico,
+                    'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
+                    'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
+                    'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
+                    'accionciudadana_total_curso' => $estudiante->accionciudadana_total_curso,
+
+                    'artes_items_asistencia' => $estudiante->artes_items_asistencia,
+                    'artes_asistencia' => $estudiante->artes_asistencia,
+                    'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
+                    'artes_seguimiento_academico' => $estudiante->artes_seguimiento_academico,
+                    'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
+                    'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
+                    'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
+                    'artes_total_curso' => $estudiante->artes_total_curso,
+
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencia' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_total_curso' => $estudiante->biologia_total_curso,    
+
+                    'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
+                    'deporte_asistencia' => $estudiante->deporte_asistencia,
+                    'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
+                    'deporte_seguimiento_academico' => $estudiante->deporte_seguimiento_academico,
+                    'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
+                    'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
+                    'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
+                    'deporte_total_curso' => $estudiante->deporte_total_curso,
+
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencia' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_total_curso' => $estudiante->dialogo_total_curso,
+
+                    'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
+                    'constitucion_asistencia' => $estudiante->constitucion_asistencia,
+                    'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
+                    'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
+                    'constitucion_items_autoevaluacion' => $estudiante->constitucion_items_autoevaluacion,
+                    'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
+                    'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
+                    'constitucion_total_curso' => $estudiante->constitucion_total_curso,
+
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencia' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_total_curso' => $estudiante->fisica_total_curso,
+
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencia' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_total_curso' => $estudiante->geografia_total_curso,
+
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencia' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_total_curso' => $estudiante->historia_total_curso,
+
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencia' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_total_curso' => $estudiante->ingles_total_curso,
+
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencia' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_total_curso' => $estudiante->lectura_total_curso,
+
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencia' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencia' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_total_curso' => $estudiante->quimica_total_curso,
+
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencia' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_total_curso' => $estudiante->tic_total_curso,
+                );
+            }
+
+            $estudiantes = json_encode($estudiantes);
+            Storage::disk('local')->put('notas_linea_2_items.json', $estudiantes);
+                      
+            $exportar = new NotasLinea2Export([$excel]);
+
+            return Excel::download($exportar, "reporte_notas_linea_2.xlsx");
+        }                   
     }
 
     public function exportar_excel_notas_linea3(){
-        if(Storage::disk('local')->exists('notas_linea_3.json')) {
-            $notas = json_decode(Storage::get('notas_linea_3.json'));
-            $estudiantes = collect($notas);
-            //dd($estudiantes);      
-            $estudiantes->map(function($estudiante){
-                $biologia_asistencia = 0;
-                $biologia_seguimiento_academico = 0;
-                $biologia_autoevaluacion = 0;
-                $biologia_total_curso = 0;
-                $item_huerfano_biologia = 0;
-                $courseid_biologia = 0;
-
-                $constitucion_asistencia = 0;
-                $constitucion_seguimiento_academico = 0;
-                $constitucion_autoevaluacion = 0;
-                $constitucion_total_curso = 0;
-                $item_huerfano_constitucion = 0;
-                $courseid_constitucion = 0;
-
-                $fisica_asistencia = 0;
-                $fisica_seguimiento_academico = 0;
-                $fisica_autoevaluacion = 0;
-                $fisica_total_curso = 0;
-                $item_huerfano_fisica = 0;
-                $courseid_fisica = 0;
-
-                $geografia_asistencia = 0;
-                $geografia_seguimiento_academico = 0;
-                $geografia_autoevaluacion = 0;
-                $geografia_total_curso = 0;
-                $item_huerfano_geografia = 0;
-                $courseid_geografia = 0;
-                
-                $historia_asistencia = 0;
-                $historia_seguimiento_academico = 0;
-                $historia_autoevaluacion = 0;
-                $historia_total_curso = 0;
-                $item_huerfano_historia = 0;
-                $courseid_historia = 0;
-
-                $ingles_asistencia = 0;
-                $ingles_seguimiento_academico = 0;
-                $ingles_autoevaluacion = 0;
-                $ingles_total_curso = 0;
-                $item_huerfano_ingles = 0;
-                $courseid_ingles = 0;
-
-                $lectura_asistencia = 0;
-                $lectura_seguimiento_academico = 0;
-                $lectura_autoevaluacion = 0;
-                $lectura_total_curso = 0;
-                $item_huerfano_lectura = 0;
-                $courseid_lectura = 0;
-
-                $matematicas_asistencia = 0;
-                $matematicas_seguimiento_academico = 0;
-                $matematicas_autoevaluacion = 0;
-                $matematicas_total_curso = 0;
-                $item_huerfano_matematicas = 0;
-                $courseid_matematicas = 0;
-
-                $quimica_asistencia = 0;
-                $quimica_seguimiento_academico = 0;
-                $quimica_autoevaluacion = 0;
-                $quimica_total_curso = 0;
-                $item_huerfano_quimica = 0;
-                $courseid_quimica = 0;
-
-                foreach((array)$estudiante->asignaturas as $cursos){
-                    $cursos->fullname = explode('-',$cursos->fullname)[0];
-                    //dd($cursos);
-                    switch ($cursos->fullname) {
-                        case 'BIOLOGIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $biologia_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $biologia_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $biologia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $biologia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_biologia += 1;
-                            }
-                            $courseid_biologia = $cursos->id;                                           
-                        break;
-                        case 'CONSTITUCION ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $constitucion_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $constitucion_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $constitucion_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $constitucion_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_constitucion += 1;
-                            }
-                            $courseid_constitucion = $cursos->id;
-                        break;    
-                        case 'FISICA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $fisica_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $fisica_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $fisica_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $fisica_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_fisica += 1;
-                            }
-                            $courseid_fisica = $cursos->id;
-                        break;
-                        case 'GEOGRAFIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $geografia_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $geografia_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $geografia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $geografia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_geografia += 1;
-                            }
-                            $courseid_geografia = $cursos->id;
-                        break;
-                        case 'HISTORIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $historia_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $historia_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $historia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $historia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_historia += 1;
-                            }
-                            $courseid_historia = $cursos->id;
-                        break;
-                        case 'INGLES ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $ingles_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $ingles_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $ingles_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $ingles_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_ingles += 1;
-                            }
-                            $courseid_ingles = $cursos->id;
-                        break;
-                        case 'LECTURA CRITICA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $lectura_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $lectura_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $lectura_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $lectura_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_lectura += 1;
-                            }
-                            $courseid_lectura = $cursos->id;
-                            break;
-                            case 'MATEMATICAS ':
-                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                    $matematicas_asistencia = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                    $matematicas_seguimiento_academico = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                    $matematicas_autoevaluacion = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                    $matematicas_total_curso = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                    $item_huerfano_matematicas += 1;
-                                }
-                                $courseid_matematicas = $cursos->id;
-                            break;
-                            case 'QUIMICA ':
-                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                                (strpos($cursos->category_name, 'asistencia') !== false) || 
-                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                    $quimica_asistencia = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                    $quimica_seguimiento_academico = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'Auto') !== false) ||
-                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                    $quimica_autoevaluacion = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                    $quimica_total_curso = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                    $item_huerfano_quimica += 1;
-                                }
-                                $courseid_quimica = $cursos->id;
-                                break;    
-                        default:
-                            break;
-                    }
-                }
-                //dd($courseid);
-                
-                $estudiante->biologia_asistencia = $biologia_asistencia;
-                $estudiante->biologia_seguimiento_academico = $biologia_seguimiento_academico;
-                $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                $estudiante->biologia_total_curso = $biologia_total_curso;
-                $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                $estudiante->biologia_course_id = $courseid_biologia;
-                $estudiante->constitucion_asistencia = $constitucion_asistencia;
-                $estudiante->constitucion_seguimiento_academico = $constitucion_seguimiento_academico;
-                $estudiante->constitucion_autoevaluacion = $constitucion_autoevaluacion;
-                $estudiante->constitucion_total_curso = $constitucion_total_curso;
-                $estudiante->constitucion_item_huerfano = $item_huerfano_constitucion;
-                $estudiante->constitucion_course_id = $courseid_constitucion;
-                $estudiante->fisica_asistencia = $fisica_asistencia;
-                $estudiante->fisica_seguimiento_academico = $fisica_seguimiento_academico;
-                $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                $estudiante->fisica_total_curso = $fisica_total_curso;
-                $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                $estudiante->fisica_course_id = $courseid_fisica;
-                $estudiante->geografia_asistencia = $geografia_asistencia;
-                $estudiante->geografia_seguimiento_academico = $geografia_seguimiento_academico;
-                $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                $estudiante->geografia_total_curso = $geografia_total_curso;
-                $estudiante->geografia_item_huerfano = $item_huerfano_geografia;
-                $estudiante->geografia_course_id = $courseid_geografia;
-                $estudiante->historia_asistencia = $historia_asistencia;
-                $estudiante->historia_seguimiento_academico = $historia_seguimiento_academico;
-                $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                $estudiante->historia_total_curso = $historia_total_curso;
-                $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                $estudiante->historia_course_id = $courseid_historia;
-                $estudiante->ingles_asistencia = $ingles_asistencia;
-                $estudiante->ingles_seguimiento_academico = $ingles_seguimiento_academico;
-                $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                $estudiante->ingles_total_curso = $ingles_total_curso;
-                $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                $estudiante->ingles_course_id = $courseid_ingles;
-                $estudiante->lectura_asistencia = $lectura_asistencia;
-                $estudiante->lectura_seguimiento_academico = $lectura_seguimiento_academico;
-                $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                $estudiante->lectura_total_curso = $lectura_total_curso;
-                $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                $estudiante->lectura_course_id = $courseid_lectura;
-                $estudiante->matematicas_asistencia = $matematicas_asistencia;
-                $estudiante->matematicas_seguimiento_academico = $matematicas_seguimiento_academico;
-                $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                $estudiante->matematicas_total_curso = $matematicas_total_curso;
-                $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                $estudiante->matematicas_course_id = $courseid_matematicas;
-                $estudiante->quimica_asistencia = $quimica_asistencia;
-                $estudiante->quimica_seguimiento_academico = $quimica_seguimiento_academico;
-                $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                $estudiante->quimica_total_curso = $quimica_total_curso;
-                $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                $estudiante->quimica_course_id = $courseid_quimica;
-                unset($estudiante->asignaturas);
-                //dd($estudiante);
-            });
-
-            //dd($estudiantes);
+        if(Storage::disk('local')->exists('notas_linea_3_items.json')){
+            $estudiantes = json_decode(Storage::get('notas_linea_3_items.json'));
             $excel = array();
-                foreach($estudiantes as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
-                                
-                                'biologia_asistencia' => $estudiante->biologia_asistencia,
-                                'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_total_curso' => $estudiante->biologia_total_curso,
+            foreach($estudiantes as $estudiante){
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profersional' => $estudiante->encargado,
 
-                                'constitucion_asistencia' => $estudiante->constitucion_asistencia,
-                                'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
-                                'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
-                                'constitucion_total_curso' => $estudiante->constitucion_total_curso,
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencia' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_total_curso' => $estudiante->biologia_total_curso,
 
-                                'fisica_asistencia' => $estudiante->fisica_asistencia,
-                                'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_total_curso' => $estudiante->fisica_total_curso,
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencia' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
-                                'geografia_asistencia' => $estudiante->geografia_asistencia,
-                                'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_total_curso' => $estudiante->geografia_total_curso,
+                    'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
+                    'constitucion_asistencia' => $estudiante->constitucion_asistencia,
+                    'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
+                    'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
+                    'constitucion_items_autoevaluacion' => $estudiante->constitucion_items_autoevaluacion,
+                    'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
+                    'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
+                    'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
-                                'historia_asistencia' => $estudiante->historia_asistencia,
-                                'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_total_curso' => $estudiante->historia_total_curso,
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencia' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_total_curso' => $estudiante->fisica_total_curso,
 
-                                'ingles_asistencia' => $estudiante->ingles_asistencia,
-                                'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_total_curso' => $estudiante->ingles_total_curso,
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencia' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_total_curso' => $estudiante->geografia_total_curso,
 
-                                'lectura_asistencia' => $estudiante->lectura_asistencia,
-                                'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_total_curso' => $estudiante->lectura_total_curso,
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencia' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_total_curso' => $estudiante->historia_total_curso,
 
-                                'matematicas_asistencia' => $estudiante->matematicas_asistencia,
-                                'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencia' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_total_curso' => $estudiante->ingles_total_curso,
 
-                                'quimica_asistencia' => $estudiante->quimica_asistencia,
-                                'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_total_curso' => $estudiante->quimica_total_curso,
-                            );
-                }
-                //dd($excel);
-                $exportar = new NotasLinea3Export([$excel]);
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencia' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_total_curso' => $estudiante->lectura_total_curso,
 
-                return Excel::download($exportar, "reporte_notas_linea_3.xlsx");
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencia' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+
+                    'practicas_items_asistencia' => $estudiante->practicas_items_asistencia,
+                    'practicas_asistencia' => $estudiante->practicas_asistencia,
+                    'practicas_items_seguimientos' => $estudiante->practicas_items_seguimientos,
+                    'practicas_seguimiento_academico' => $estudiante->practicas_seguimiento_academico,
+                    'practicas_items_autoevaluacion' => $estudiante->practicas_items_autoevaluacion,
+                    'practicas_autoevaluacion' => $estudiante->practicas_autoevaluacion,
+                    'practicas_items_huerfanos' => $estudiante->practicas_items_huerfanos,
+                    'practicas_total_curso' => $estudiante->practicas_total_curso,
+
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencia' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_total_curso' => $estudiante->quimica_total_curso,
+
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencia' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_total_curso' => $estudiante->tic_total_curso,
+                );
+            }
+            //dd($excel);
+            $exportar = new NotasLinea3Export([$excel]);
+            return Excel::download($exportar, "reporte_notas_linea_3.xlsx");
         }else{
-            $estudiantes_linea3 = perfilEstudiante::Estudiantes_cohort_linea3();
-            $estudiantes = collect($estudiantes_linea3);
-            //dd($estudiantes);
-
-            $estudiantes->map(function($estudiante){
+            $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+            $excel = array(); 
+            foreach($estudiantes as$estudiante){
+                ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
-                //dd($estudiante);   
-            });
+                //dd($estudiante->asignaturas);
+                $estudiante->biologia_items_asistencia = "";
+                $estudiante->biologia_asistencia = "";
+                $estudiante->biologia_items_seguimientos = "";
+                $estudiante->biologia_seguimiento_academico = "";
+                $estudiante->biologia_items_autoevaluacion = "";
+                $estudiante->biologia_autoevaluacion = "";
+                $estudiante->biologia_items_huerfanos = "";
+                $estudiante->biologia_total_curso = "";
 
-            $estudiantes_notas = json_encode($estudiantes);
-            Storage::disk('local')->put('notas_linea_3.json', $estudiantes_notas);
-            $notas = json_decode($estudiantes_notas);
+                $estudiante->dialogo_items_asistencia = "";
+                $estudiante->dialogo_asistencia = "";
+                $estudiante->dialogo_items_seguimientos = "";
+                $estudiante->dialogo_seguimiento_academico = "";
+                $estudiante->dialogo_items_autoevaluacion = "";
+                $estudiante->dialogo_autoevaluacion = "";
+                $estudiante->dialogo_items_huerfanos = "";
+                $estudiante->dialogo_total_curso = "";    
 
-            $estudiantes_notas = collect($notas);
+                $estudiante->constitucion_items_asistencia = "";
+                $estudiante->constitucion_asistencia = "";
+                $estudiante->constitucion_items_seguimientos = "";
+                $estudiante->constitucion_seguimiento_academico = "";
+                $estudiante->constitucion_items_autoevaluacion = "";
+                $estudiante->constitucion_autoevaluacion = "";
+                $estudiante->constitucion_items_huerfanos = "";
+                $estudiante->constitucion_total_curso = "";
 
-            $estudiantes->map(function($estudiante){
-                $biologia_asistencia = 0;
-                $biologia_seguimiento_academico = 0;
-                $biologia_autoevaluacion = 0;
-                $biologia_total_curso = 0;
-                $item_huerfano_biologia = 0;
+                $estudiante->fisica_items_asistencia = "";
+                $estudiante->fisica_asistencia = "";
+                $estudiante->fisica_items_seguimientos = "";
+                $estudiante->fisica_seguimiento_academico = "";
+                $estudiante->fisica_items_autoevaluacion = "";
+                $estudiante->fisica_autoevaluacion = "";
+                $estudiante->fisica_items_huerfanos = "";
+                $estudiante->fisica_total_curso = "";
 
-                $constitucion_asistencia = 0;
-                $constitucion_seguimiento_academico = 0;
-                $constitucion_autoevaluacion = 0;
-                $constitucion_total_curso = 0;
-                $item_huerfano_constitucion = 0;
-
-                $fisica_asistencia = 0;
-                $fisica_seguimiento_academico = 0;
-                $fisica_autoevaluacion = 0;
-                $fisica_total_curso = 0;
-                $item_huerfano_fisica = 0;
-
-                $geografia_asistencia = 0;
-                $geografia_seguimiento_academico = 0;
-                $geografia_autoevaluacion = 0;
-                $geografia_total_curso = 0;
-                $item_huerfano_geografia = 0;
+                $estudiante->geografia_items_asistencia = "";
+                $estudiante->geografia_asistencia = "";
+                $estudiante->geografia_items_seguimientos = "";
+                $estudiante->geografia_seguimiento_academico = "";
+                $estudiante->geografia_items_autoevaluacion = "";
+                $estudiante->geografia_autoevaluacion = "";
+                $estudiante->geografia_items_huerfanos = "";
+                $estudiante->geografia_total_curso = "";
                 
-                $historia_asistencia = 0;
-                $historia_seguimiento_academico = 0;
-                $historia_autoevaluacion = 0;
-                $historia_total_curso = 0;
-                $item_huerfano_historia = 0;
+                $estudiante->historia_items_asistencia = "";
+                $estudiante->historia_asistencia = "";
+                $estudiante->historia_items_seguimientos = "";
+                $estudiante->historia_seguimiento_academico = "";
+                $estudiante->historia_items_autoevaluacion = "";
+                $estudiante->historia_autoevaluacion = "";
+                $estudiante->historia_items_huerfanos = "";
+                $estudiante->historia_total_curso = "";
 
-                $ingles_asistencia = 0;
-                $ingles_seguimiento_academico = 0;
-                $ingles_autoevaluacion = 0;
-                $ingles_total_curso = 0;
-                $item_huerfano_ingles = 0;
+                $estudiante->ingles_items_asistencia = "";
+                $estudiante->ingles_asistencia = "";
+                $estudiante->ingles_items_seguimientos = "";
+                $estudiante->ingles_seguimiento_academico = "";
+                $estudiante->ingles_items_autoevaluacion = "";
+                $estudiante->ingles_autoevaluacion = "";
+                $estudiante->ingles_items_huerfanos = "";
+                $estudiante->ingles_total_curso = "";
 
-                $lectura_asistencia = 0;
-                $lectura_seguimiento_academico = 0;
-                $lectura_autoevaluacion = 0;
-                $lectura_total_curso = 0;
-                $item_huerfano_lectura = 0;
+                $estudiante->lectura_items_asistencia = "";
+                $estudiante->lectura_asistencia = "";
+                $estudiante->lectura_items_seguimientos = "";
+                $estudiante->lectura_seguimiento_academico = "";
+                $estudiante->lectura_items_autoevaluacion = "";
+                $estudiante->lectura_autoevaluacion = "";
+                $estudiante->lectura_items_huerfanos = "";
+                $estudiante->lectura_total_curso = "";
 
-                $matematicas_asistencia = 0;
-                $matematicas_seguimiento_academico = 0;
-                $matematicas_autoevaluacion = 0;
-                $matematicas_total_curso = 0;
-                $item_huerfano_matematicas = 0;
+                $estudiante->matematicas_items_asistencia = "";
+                $estudiante->matematicas_asistencia = "";
+                $estudiante->matematicas_items_seguimientos = "";
+                $estudiante->matematicas_seguimiento_academico = "";
+                $estudiante->matematicas_items_autoevaluacion = "";
+                $estudiante->matematicas_autoevaluacion = "";
+                $estudiante->matematicas_items_huerfanos = "";
+                $estudiante->matematicas_total_curso = "";
 
-                $quimica_asistencia = 0;
-                $quimica_seguimiento_academico = 0;
-                $quimica_autoevaluacion = 0;
-                $quimica_total_curso = 0;
-                $item_huerfano_quimica = 0;
+                $estudiante->practicas_items_asistencia = "";
+                $estudiante->practicas_asistencia = "";
+                $estudiante->practicas_items_seguimientos = "";
+                $estudiante->practicas_seguimiento_academico = "";
+                $estudiante->practicas_items_autoevaluacion = "";
+                $estudiante->practicas_autoevaluacion = "";
+                $estudiante->practicas_items_huerfanos = "";
+                $estudiante->practicas_total_curso = "";
+
+                $estudiante->quimica_items_asistencia = "";
+                $estudiante->quimica_asistencia = "";
+                $estudiante->quimica_items_seguimientos = "";
+                $estudiante->quimica_seguimiento_academico = "";
+                $estudiante->quimica_items_autoevaluacion = "";
+                $estudiante->quimica_autoevaluacion = "";
+                $estudiante->quimica_items_huerfanos = "";
+                $estudiante->quimica_total_curso = "";
+
+                $estudiante->tic_items_asistencia = "";
+                $estudiante->tic_asistencia = "";
+                $estudiante->tic_items_seguimientos = "";
+                $estudiante->tic_seguimiento_academico = "";
+                $estudiante->tic_items_autoevaluacion = "";
+                $estudiante->tic_autoevaluacion = "";
+                $estudiante->tic_items_huerfanos = "";
+                $estudiante->tic_total_curso = "";
 
                 foreach((array)$estudiante->asignaturas as $cursos){
-                    $cursos->fullname = explode('-',$cursos->fullname)[0];
-                    dd($cursos);
+                    $cursos->fullname = explode(' ',$cursos->fullname)[0];
+                    //dd($cursos);
+                    
                     switch ($cursos->fullname) {
-                        case 'BIOLOGIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $biologia_asistencia = $cursos->grade;
+                        case 'BIOLOGIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->biologia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->biologia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
                             }
                             if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $biologia_seguimiento_academico = $cursos->grade;
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)){
+
+                                $estudiante->biologia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->biologia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
                             }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                        $biologia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $biologia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_biologia += 1;
-                            }                                               
-                        break;
-                        case 'CONSTITUCION ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $constitucion_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $constitucion_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $constitucion_autoevaluacion = $cursos->grade;
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) || 
+                                (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+
+                                $estudiante->biologia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->biologia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
                             }
                             if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $constitucion_total_curso = $cursos->grade;
+                                $estudiante->biologia_total_curso = $cursos->grade;
                             }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_constitucion += 1;
-                            }
-                        break;    
-                        case 'FISICA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $fisica_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $fisica_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $fisica_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $fisica_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_fisica += 1;
-                            }
-                        break;
-                        case 'GEOGRAFIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $geografia_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $geografia_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $geografia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $geografia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_geografia += 1;
-                            }
-                        break;
-                        case 'HISTORIA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $historia_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $historia_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $historia_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $historia_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_historia += 1;
-                            }
-                        break;
-                        case 'INGLES ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $ingles_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $ingles_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $ingles_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $ingles_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_ingles += 1;
-                            }
-                        break;
-                        case 'LECTURA CRITICA ':
-                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'asistencia') !== false) || 
-                            (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $lectura_asistencia = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
-                            (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
-                            (strpos($cursos->category_name, 'PARCIALES') !== false) || 
-                            (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
-                            (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $lectura_seguimiento_academico = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'Auto') !== false) ||
-                            (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
-                            || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $lectura_autoevaluacion = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $lectura_total_curso = $cursos->grade;
-                            }
-                            if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_lectura += 1;
-                            }
+                            if($estudiante->biologia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }                                        
                             break;
-                            case 'MATEMATICAS ':
-                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+
+                        case 'DIALOGO':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                    $matematicas_asistencia = $cursos->grade;
+                                $estudiante->dialogo_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->dialogo_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
                                 (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
                                 (strpos($cursos->category_name, 'PARCIALES') !== false) || 
                                 (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
                                 (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                    $matematicas_seguimiento_academico = $cursos->grade;
+                                $estudiante->dialogo_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->dialogo_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
                                 (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
                                 || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                    $matematicas_autoevaluacion = $cursos->grade;
+                                $estudiante->dialogo_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->dialogo_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                    $matematicas_total_curso = $cursos->grade;
-                                }
-                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                    $item_huerfano_matematicas += 1;
-                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->dialogo_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->dialogo_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
                             break;
-                            case 'QUIMICA ':
-                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+
+                        case 'CONSTITUCION':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                    $quimica_asistencia = $cursos->grade;
+                                $estudiante->constitucion_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->constitucion_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                            }
+
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
                                 (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
                                 (strpos($cursos->category_name, 'PARCIALES') !== false) || 
                                 (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
                                 (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                    $quimica_seguimiento_academico = $cursos->grade;
+                                $estudiante->constitucion_seguimiento_academico = $cursos->grade;
+                                $estudiante->constitucion_asistencia = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->constitucion_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                            }
+
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
                                 (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
                                 || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                    $quimica_autoevaluacion = $cursos->grade;
+                                $estudiante->constitucion_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->constitucion_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                    $quimica_total_curso = $cursos->grade;
+                            }
+
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->constitucion_total_curso = $cursos->grade;
+                            }
+                            if($estudiante->constitucion_items_huerfanos == ""){
+                                $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                 $estudiante->constitucion_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                }  
+                            }
+                            break;  
+
+                        case 'FISICA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->fisica_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->fisica_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
                                 }
-                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                    $item_huerfano_quimica += 1;
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->fisica_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->fisica_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
                                 }
-                                break;    
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->fisica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->fisica_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->fisica_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->fisica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'GEOGRAFIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->geografia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->geografia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->geografia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->geografia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->geografia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->geografia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->geografia_total_curso = $cursos->grade;
+                            }
+                            
+                            if($estudiante->geografia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'HISTORIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->historia_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->historia_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->historia_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->historia_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->historia_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->historia_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->historia_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->historia_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            } 
+                            break;
+
+                        case 'INGLES':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->ingles_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->ingles_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->ingles_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->ingles_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->ingles_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->ingles_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->ingles_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->ingles_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            } 
+                            break;
+
+                        case 'LECTURA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->lectura_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->lectura_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->lectura_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->lectura_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->lectura_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->lectura_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->lectura_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->lectura_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'MATEMATICAS':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->matematicas_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->matematicas_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->matematicas_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->matematicas_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->matematicas_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->matematicas_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->matematicas_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->matematicas_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'PRACTICAS':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->practicas_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->practicas_items_asistencia .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->practicas_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->practicas_items_seguimientos .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->practicas_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->practicas_items_autoevaluacion .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->practicas_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->practicas_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->practicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;    
+                            
+                        case 'QUIMICA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->quimica_asistencia = $cursos->grade;
+                                $items_asistencia = CourseMoodle::asignaturas_items_asistencia($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia as $asistencia){
+                                    $estudiante->quimica_items_asistencia .= $asistencia->item_name.': '. $asistencia->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->quimica_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos = CourseMoodle::asignaturas_items_seguimientos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos as $seguimientos){
+                                    $estudiante->quimica_items_seguimientos .= $seguimientos->item_name.': '. $seguimientos->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->quimica_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion = CourseMoodle::asignaturas_items_autoevaluacion($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion as $autoevaluacion){
+                                    $estudiante->quimica_items_autoevaluacion .= $autoevaluacion->item_name.': '. $autoevaluacion->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->quimica_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->quimica_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+
+                        case 'TECNOLOGIA':
+                            if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                $estudiante->tic_asistencia = $cursos->grade;
+                                $items_asistencia  = CourseMoodle::asignaturas_items_asistencia ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_asistencia  as $asistencia ){
+                                    $estudiante->tic_items_asistencia .= $asistencia ->item_name.': '. $asistencia ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                $estudiante->tic_seguimiento_academico = $cursos->grade;
+                                $items_seguimientos  = CourseMoodle::asignaturas_items_seguimientos ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_seguimientos  as $seguimientos ){
+                                    $estudiante->tic_items_seguimientos .= $seguimientos ->item_name.': '. $seguimientos ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'Autoevaluación') !== false) ||
+                                (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                $estudiante->tic_autoevaluacion = $cursos->grade;
+                                $items_autoevaluacion  = CourseMoodle::asignaturas_items_autoevaluacion ($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_autoevaluacion  as $autoevaluacion ){
+                                    $estudiante->tic_items_autoevaluacion .= $autoevaluacion ->item_name.': '. $autoevaluacion ->grade.','."\n";
+                                }
+                            }
+                            if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                $estudiante->tic_total_curso = $cursos->grade;
+                            }
+
+                            if($estudiante->tic_items_huerfanos == ""){
+                               $items_huerfanos = CourseMoodle::asignaturas_items_huerfanos($estudiante->id_moodle,$cursos->course_id);
+                                foreach((array)$items_huerfanos as $huerfanos){
+                                    $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
+                                } 
+                            }
+                            break;
+                                
                         default:
+                            echo $cursos->fullname;
                             break;
                     }
+                
                 }
-                $estudiante->biologia_asistencia = $biologia_asistencia;
-                $estudiante->biologia_seguimiento_academico = $biologia_seguimiento_academico;
-                $estudiante->biologia_autoevaluacion = $biologia_autoevaluacion;
-                $estudiante->biologia_total_curso = $biologia_total_curso;
-                $estudiante->biologia_item_huerfano = $item_huerfano_biologia;
-                $estudiante->biologia_course_id = $estudiante->cursos->course_id;
-                $estudiante->constitucion_asistencia = $constitucion_asistencia;
-                $estudiante->constitucion_seguimiento_academico = $constitucion_seguimiento_academico;
-                $estudiante->constitucion_autoevaluacion = $constitucion_autoevaluacion;
-                $estudiante->constitucion_total_curso = $constitucion_total_curso;
-                $estudiante->constitucion_item_huerfano = $item_huerfano_constitucion;
-                $estudiante->constitucion_course_id = $estudiante->cursos->course_id;
-                $estudiante->fisica_asistencia = $fisica_asistencia;
-                $estudiante->fisica_seguimiento_academico = $fisica_seguimiento_academico;
-                $estudiante->fisica_autoevaluacion = $fisica_autoevaluacion;
-                $estudiante->fisica_total_curso = $fisica_total_curso;
-                $estudiante->fisica_item_huerfano = $item_huerfano_fisica;
-                $estudiante->fisica_course_id = $estudiante->cursos->course_id;
-                $estudiante->geografia_asistencia = $geografia_asistencia;
-                $estudiante->geografia_seguimiento_academico = $geografia_seguimiento_academico;
-                $estudiante->geografia_autoevaluacion = $geografia_autoevaluacion;
-                $estudiante->geografia_total_curso = $geografia_total_curso;
-                $estudiante->geografia_item_huerfano = $item_huerfano_geografia;
-                $estudiante->geografia_course_id = $estudiante->cursos->course_id;
-                $estudiante->historia_asistencia = $historia_asistencia;
-                $estudiante->historia_seguimiento_academico = $historia_seguimiento_academico;
-                $estudiante->historia_autoevaluacion = $historia_autoevaluacion;
-                $estudiante->historia_total_curso = $historia_total_curso;
-                $estudiante->historia_item_huerfano = $item_huerfano_historia;
-                $estudiante->historia_course_id = $estudiante->cursos->course_id;
-                $estudiante->ingles_asistencia = $ingles_asistencia;
-                $estudiante->ingles_seguimiento_academico = $ingles_seguimiento_academico;
-                $estudiante->ingles_autoevaluacion = $ingles_autoevaluacion;
-                $estudiante->ingles_total_curso = $ingles_total_curso;
-                $estudiante->ingles_item_huerfano = $item_huerfano_ingles;
-                $estudiante->ingles_course_id = $estudiante->cursos->course_id;
-                $estudiante->lectura_asistencia = $lectura_asistencia;
-                $estudiante->lectura_seguimiento_academico = $lectura_seguimiento_academico;
-                $estudiante->lectura_autoevaluacion = $lectura_autoevaluacion;
-                $estudiante->lectura_total_curso = $lectura_total_curso;
-                $estudiante->lectura_item_huerfano = $item_huerfano_lectura;
-                $estudiante->lectura_course_id = $estudiante->cursos->course_id;
-                $estudiante->matematicas_asistencia = $matematicas_asistencia;
-                $estudiante->matematicas_seguimiento_academico = $matematicas_seguimiento_academico;
-                $estudiante->matematicas_autoevaluacion = $matematicas_autoevaluacion;
-                $estudiante->matematicas_total_curso = $matematicas_total_curso;
-                $estudiante->matematicas_item_huerfano = $item_huerfano_matematicas;
-                $estudiante->matematicas_course_id = $estudiante->cursos->course_id;
-                $estudiante->quimica_asistencia = $quimica_asistencia;
-                $estudiante->quimica_seguimiento_academico = $quimica_seguimiento_academico;
-                $estudiante->quimica_autoevaluacion = $quimica_autoevaluacion;
-                $estudiante->quimica_total_curso = $quimica_total_curso;
-                $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
-                $estudiante->quimica_course_id = $estudiante->cursos->course_id;
                 unset($estudiante->asignaturas);
                 //dd($estudiante);
-            });
-            //dd($estudiantes);
-            $excel = array();
-                foreach($estudiantes_notas as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profersional' => $estudiante->encargado,
-                                'biologia_asistencia' => $estudiante->biologia_asistencia,
-                                'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_total_curso' => $estudiante->biologia_total_curso,
-                                'constitucion_asistencia' => $estudiante->constitucion_asistencia,
-                                'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
-                                'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
-                                'constitucion_total_curso' => $estudiante->constitucion_total_curso,
-                                'fisica_asistencia' => $estudiante->fisica_asistencia,
-                                'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_total_curso' => $estudiante->fisica_total_curso,
-                                'geografia_asistencia' => $estudiante->geografia_asistencia,
-                                'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_total_curso' => $estudiante->geografia_total_curso,
-                                'historia_asistencia' => $estudiante->historia_asistencia,
-                                'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_total_curso' => $estudiante->historia_total_curso,
-                                'ingles_asistencia' => $estudiante->ingles_asistencia,
-                                'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_total_curso' => $estudiante->ingles_total_curso,
-                                'lectura_asistencia' => $estudiante->lectura_asistencia,
-                                'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_total_curso' => $estudiante->lectura_total_curso,
-                                'matematicas_asistencia' => $estudiante->matematicas_asistencia,
-                                'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_total_curso' => $estudiante->matematicas_total_curso,
-                                'quimica_asistencia' => $estudiante->quimica_asistencia,
-                                'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_total_curso' => $estudiante->quimica_total_curso,
-                            );
-                }
-                //dd($excel);
-                $exportar = new NotasLinea3Export([$excel]);
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profersional' => $estudiante->encargado,
 
-                return Excel::download($exportar, "reporte_notas_linea_3.xlsx");
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencia' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimiento_academico' => $estudiante->biologia_seguimiento_academico,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_total_curso' => $estudiante->biologia_total_curso,
+
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencia' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimiento_academico' => $estudiante->dialogo_seguimiento_academico,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_total_curso' => $estudiante->dialogo_total_curso,
+
+                    'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
+                    'constitucion_asistencia' => $estudiante->constitucion_asistencia,
+                    'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
+                    'constitucion_seguimiento_academico' => $estudiante->constitucion_seguimiento_academico,
+                    'constitucion_items_autoevaluacion' => $estudiante->constitucion_items_autoevaluacion,
+                    'constitucion_autoevaluacion' => $estudiante->constitucion_autoevaluacion,
+                    'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
+                    'constitucion_total_curso' => $estudiante->constitucion_total_curso,
+
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencia' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimiento_academico' => $estudiante->fisica_seguimiento_academico,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_total_curso' => $estudiante->fisica_total_curso,
+
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencia' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimiento_academico' => $estudiante->geografia_seguimiento_academico,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_total_curso' => $estudiante->geografia_total_curso,
+
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencia' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimiento_academico' => $estudiante->historia_seguimiento_academico,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_total_curso' => $estudiante->historia_total_curso,
+
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencia' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimiento_academico' => $estudiante->ingles_seguimiento_academico,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_total_curso' => $estudiante->ingles_total_curso,
+
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencia' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimiento_academico' => $estudiante->lectura_seguimiento_academico,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_total_curso' => $estudiante->lectura_total_curso,
+
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencia' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimiento_academico' => $estudiante->matematicas_seguimiento_academico,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_total_curso' => $estudiante->matematicas_total_curso,
+
+                    'practicas_items_asistencia' => $estudiante->practicas_items_asistencia,
+                    'practicas_asistencia' => $estudiante->practicas_asistencia,
+                    'practicas_items_seguimientos' => $estudiante->practicas_items_seguimientos,
+                    'practicas_seguimiento_academico' => $estudiante->practicas_seguimiento_academico,
+                    'practicas_items_autoevaluacion' => $estudiante->practicas_items_autoevaluacion,
+                    'practicas_autoevaluacion' => $estudiante->practicas_autoevaluacion,
+                    'practicas_items_huerfanos' => $estudiante->practicas_items_huerfanos,
+                    'practicas_total_curso' => $estudiante->practicas_total_curso,
+
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencia' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimiento_academico' => $estudiante->quimica_seguimiento_academico,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_total_curso' => $estudiante->quimica_total_curso,
+
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencia' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimiento_academico' => $estudiante->tic_seguimiento_academico,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_total_curso' => $estudiante->tic_total_curso,
+                );
+                //dd($excel);
+            }
+                       
+            $estudiantes = json_encode($estudiantes);
+            Storage::disk('local')->put('notas_linea_3_items.json', $estudiantes);
+            $exportar = new NotasLinea3Export([$excel]);
+
+            return Excel::download($exportar, "reporte_notas_linea_3.xlsx");
         }
-    
     } 
 }

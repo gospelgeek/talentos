@@ -2958,6 +2958,27 @@ public function __construct()
                 $quimica_total_curso = 0;
                 $item_huerfano_quimica = 0;
                 $courseid_quimica = 0;
+                
+                $tic_asistencia = 0;
+                $tic_seguimiento_academico = 0;
+                $tic_autoevaluacion = 0;
+                $tic_total_curso = 0;
+                $item_huerfano_tic = 0;
+                $courseid_tic = 0;
+
+                $dialogo_asistencia = 0;
+                $dialogo_seguimiento_academico = 0;
+                $dialogo_autoevaluacion = 0;
+                $dialogo_total_curso = 0;
+                $item_huerfano_dialogo = 0;
+                $courseid_dialogo = 0;
+
+                $practicas_asistencia = 0;
+                $practicas_seguimiento_academico = 0;
+                $practicas_autoevaluacion = 0;
+                $practicas_total_curso = 0;
+                $item_huerfano_practicas = 0;
+                $courseid_practicas = 0;
 
                 foreach((array)$estudiante->asignaturas as $cursos){
                     $cursos->fullname = explode('-',$cursos->fullname)[0];
@@ -3196,7 +3217,59 @@ public function __construct()
                                     $item_huerfano_quimica += 1;
                                 }
                                 $courseid_quimica = $cursos->id;
-                                break;    
+                            break; 
+                            case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
+                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                    $tic_asistencia = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                    (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                    (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                    (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                    (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                    $tic_seguimiento_academico = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                                    (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                    || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                    $tic_autoevaluacion = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                    $tic_total_curso = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
+                                    $item_huerfano_tic += 1;
+                                }
+                                $courseid_tic = $cursos->id;
+                            break;
+                            case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
+                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                    $dialogo_asistencia = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                    (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                    (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                    (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                    (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                    $dialogo_seguimiento_academico = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                                    (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                    || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                    $dialogo_autoevaluacion = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                    $dialogo_total_curso = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
+                                    $item_huerfano_dialogo += 1;
+                                }
+                                $courseid_dialogo = $cursos->id;
+                            break;
                         default:
                             break;
                     }
@@ -3257,6 +3330,18 @@ public function __construct()
                 $estudiante->quimica_total_curso = $quimica_total_curso;
                 $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
                 $estudiante->quimica_course_id = $courseid_quimica;
+                $estudiante->tic_asistencia = $tic_asistencia;
+                $estudiante->tic_seguimiento_academico = $tic_seguimiento_academico;
+                $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
+                $estudiante->tic_total_curso = $tic_total_curso;
+                $estudiante->tic_item_huerfano = $item_huerfano_tic;
+                $estudiante->tic_course_id = $courseid_tic;
+                $estudiante->dialogo_asistencia = $dialogo_asistencia;
+                $estudiante->dialogo_seguimiento_academico = $dialogo_seguimiento_academico;
+                $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
+                $estudiante->dialogo_total_curso = $dialogo_total_curso;
+                $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
+                $estudiante->dialogo_course_id = $courseid_dialogo;
                 unset($estudiante->asignaturas);
                 //dd($estudiante);
             });
@@ -3334,6 +3419,27 @@ public function __construct()
                 $quimica_autoevaluacion = 0;
                 $quimica_total_curso = 0;
                 $item_huerfano_quimica = 0;
+                
+                $tic_asistencia = 0;
+                $tic_seguimiento_academico = 0;
+                $tic_autoevaluacion = 0;
+                $tic_total_curso = 0;
+                $item_huerfano_tic = 0;
+                $courseid_tic = 0;
+
+                $dialogo_asistencia = 0;
+                $dialogo_seguimiento_academico = 0;
+                $dialogo_autoevaluacion = 0;
+                $dialogo_total_curso = 0;
+                $item_huerfano_dialogo = 0;
+                $courseid_dialogo = 0;
+
+                $practicas_asistencia = 0;
+                $practicas_seguimiento_academico = 0;
+                $practicas_autoevaluacion = 0;
+                $practicas_total_curso = 0;
+                $item_huerfano_practicas = 0;
+                $courseid_practicas = 0;
 
                 foreach((array)$estudiante->asignaturas as $cursos){
                     $cursos->fullname = explode('-',$cursos->fullname)[0];
@@ -3563,7 +3669,59 @@ public function __construct()
                                 if((strpos($cursos->category_name, 'HUERFANO') !== false)){
                                     $item_huerfano_quimica += 1;
                                 }
-                                break;    
+                            break;
+                            case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
+                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                    $tic_asistencia = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                    (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                    (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                    (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                    (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                    $tic_seguimiento_academico = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                                    (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                    || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                    $tic_autoevaluacion = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                    $tic_total_curso = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
+                                    $item_huerfano_tic += 1;
+                                }
+                                $courseid_tic = $cursos->id;
+                            break;
+                            case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
+                                if((strpos($cursos->category_name, 'Asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'asistencia') !== false) || 
+                                    (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
+                                    $dialogo_asistencia = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Actividades') !== false) ||
+                                    (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
+                                    (strpos($cursos->category_name, 'PARCIALES') !== false) || 
+                                    (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
+                                    (strpos($cursos->category_name, 'seguimiento') !== false)) {
+                                    $dialogo_seguimiento_academico = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'Auto') !== false) ||
+                                    (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
+                                    || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
+                                    $dialogo_autoevaluacion = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'TOTAL') !== false)){
+                                    $dialogo_total_curso = $cursos->grade;
+                                }
+                                if((strpos($cursos->category_name, 'HUERFANO') !== false)){
+                                    $item_huerfano_dialogo += 1;
+                                }
+                                $courseid_dialogo = $cursos->id;
+                            break;
                         default:
                             break;
                     }
@@ -3622,6 +3780,18 @@ public function __construct()
                 $estudiante->quimica_total_curso = $quimica_total_curso;
                 $estudiante->quimica_item_huerfano = $item_huerfano_quimica;
                 $estudiante->quimica_course_id = $estudiante->cursos->course_id;
+                $estudiante->tic_asistencia = $tic_asistencia;
+                $estudiante->tic_seguimiento_academico = $tic_seguimiento_academico;
+                $estudiante->tic_autoevaluacion = $tic_autoevaluacion;
+                $estudiante->tic_total_curso = $tic_total_curso;
+                $estudiante->tic_item_huerfano = $item_huerfano_tic;
+                $estudiante->tic_course_id = $courseid_tic;
+                $estudiante->dialogo_asistencia = $dialogo_asistencia;
+                $estudiante->dialogo_seguimiento_academico = $dialogo_seguimiento_academico;
+                $estudiante->dialogo_autoevaluacion = $dialogo_autoevaluacion;
+                $estudiante->dialogo_total_curso = $dialogo_total_curso;
+                $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
+                $estudiante->dialogo_course_id = $courseid_dialogo;
                 unset($estudiante->asignaturas);
                 //dd($estudiante);
             });

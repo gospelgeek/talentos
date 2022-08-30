@@ -45,9 +45,7 @@
                 			<th rowspan="2">Nº documento</th>
                 			<th rowspan="2">Grupo</th>
                 			<th rowspan="2">Estado</th>
-                			@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-                				<th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
-                			@endif
+                		    <th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                 			<th colspan="5">ACCION CIUDADANA</th>
                 			<th colspan="5">ARTES</th>
                 			<th colspan="5">BIOLOGIA</th>
@@ -170,9 +168,7 @@
                 			<th rowspan="2">Nº documento</th>
                 			<th rowspan="2">Grupo</th>
                 			<th rowspan="2">Estado</th>
-                			@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-                				<th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
-                			@endif
+                		    <th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                 			<th colspan="5">BIOLOGIA</th>
                 			<th colspan="5">ARTES</th>
                 			<th colspan="5">DEPORTE</th>
@@ -281,9 +277,7 @@
                 			<th rowspan="2">Nº documento</th>
                 			<th rowspan="2">Grupo</th>
                 			<th rowspan="2">Estado</th>
-                			@if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-                				<th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
-                			@endif
+                			<th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                 			<th colspan="5">BIOLOGIA</th>
                 			<th colspan="5">CONSTITUCION</th>
                 			<th colspan="5">FISICA</th>

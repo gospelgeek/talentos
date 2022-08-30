@@ -293,6 +293,8 @@
                 			<th colspan="5">LECTURA CRITICA</th>
                 			<th colspan="5">MATEMATICAS</th>
                 			<th colspan="5">QUIMICA</th>
+                            <th colspan="5">TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES</th>
+                			<th colspan="5">DIÁLOGO DE SABERES</th>
                 			<th rowspan="2">ACCIONES</th>	
 						</tr>
 						<tr>
@@ -339,6 +341,18 @@
 							<th>Total curso</th>
 
 							<th>Asistencia participativa</th>
+							<th>Seguimiento academico</th>
+							<th>Autoevaluación</th>
+							<th>Item huerfano</th>
+							<th>Total curso</th>
+
+							<th>Asistencia participativa</th>
+							<th>Seguimiento academico</th>
+							<th>Autoevaluación</th>
+							<th>Item huerfano</th>
+							<th>Total curso</th>
+                            
+                            <th>Asistencia participativa</th>
 							<th>Seguimiento academico</th>
 							<th>Autoevaluación</th>
 							<th>Item huerfano</th>
@@ -2038,6 +2052,86 @@
             {data: 'quimica_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
+            },
+            {data: null, render:function(data, type, row, meta){
+            		if(data.tic_asistencia != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencia+'</u></button>';
+            		}else{
+            			return data.tic_asistencia;
+            		}
+            	}
+        	},
+        	{data: null, render:function(data, type, row, meta){
+            		if(data.tic_seguimiento_academico != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></button>';
+            		}else{
+            			return data.tic_seguimiento_academico;
+            		}
+            	}
+        	},
+            {data: null, render:function(data, type, row, meta){
+            		if(data.tic_autoevaluacion != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
+            		}else{
+            			return data.tic_autoevaluacion;
+            		}
+            	}
+        	},
+            {data: null, render:function(data, type, row, meta){
+            		if(data.tic_item_huerfano != 0){
+            			return mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<tr>'+'<td>'+'<a class="ver btn btn-block fa fa-eye fa" title="Ver item huerfanos" type="button" onclick="abrir_modal_huerfanos('+data.tic_course_id+','+data.id_moodle+',\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\');"></a>'+'</td>'+'</tr>'+
+                          '</div>'+
+                          "</div>";
+            		}else{
+            			return mostrar = '--';
+            		}
+            	}
+        	},
+            {data: 'tic_total_curso', render:function(data, type, row, meta){
+          		return '<b>'+data+'</b>';
+          	  }
+            },
+            {data: null, render:function(data, type, row, meta){
+            		if(data.dialogo_asistencia != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencia+'</u></button>';
+            		}else{
+            			return data.dialogo_asistencia;
+            		}
+            	}
+        	},
+        	{data: null, render:function(data, type, row, meta){
+            		if(data.dialogo_seguimiento_academico != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></button>';
+            		}else{
+            			return data.dialogo_seguimiento_academico;
+            		}
+            	}
+        	},
+            {data: null, render:function(data, type, row, meta){
+            		if(data.dialogo_autoevaluacion != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
+            		}else{
+            			return data.dialogo_autoevaluacion;
+            		}
+            	}
+        	},
+            {data: null, render:function(data, type, row, meta){
+            		if(data.dialogo_item_huerfano != 0){
+            			return mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<tr>'+'<td>'+'<a class="ver btn btn-block fa fa-eye fa" title="Ver item huerfanos" type="button" onclick="abrir_modal_huerfanos('+data.dialogo_course_id+','+data.id_moodle+',\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\');"></a>'+'</td>'+'</tr>'+
+                          '</div>'+
+                          "</div>";
+            		}else{
+            			return mostrar = '--';
+            		}
+            	}
+        	},
+            {data: 'dialogo_total_curso', render:function(data, type, row, meta){
+          		return '<b>'+data+'</b>';
+           	  }
             },
             {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;

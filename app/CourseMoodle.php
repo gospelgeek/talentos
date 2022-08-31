@@ -107,7 +107,7 @@ class CourseMoodle extends Model
     
     public static function asignaturas($grupo, $moodle){
         $data = DB::select("
-                    select course_moodles.id,course_moodles.fullname,course_items.category_name,students_grades.grade
+                    select course_moodles.id,course_moodles.fullname,course_moodles.docente_name,course_items.category_name,students_grades.grade
                     FROM course_moodles,course_items,students_grades
                     WHERE course_moodles.group_id = '".$grupo."'
                     and course_items.course_id = course_moodles.course_id 

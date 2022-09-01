@@ -281,5 +281,5 @@ Route::get('datos_pendientes', 'perfilEstudianteController@datosPendientes')->na
 Route::get('datos.generales', 'perfilEstudianteController@datos_generales')->name('datos.generales');
 Route::get('datos.socioeconomicos', 'perfilEstudianteController@datos_socioeconomicos')->name('datos.socioeconomicos');
 Route::get('datos.academicos', 'perfilEstudianteController@datos_academicos')->name('datos.academicos');
-Route::get('datos.formalizacion', 'perfilEstudianteController@datos_formalizacion')->name('datos.formalizacion');
+Route::get('datos.formalizacion_pendientes', 'perfilEstudianteController@datos_formalizacion')->name('datos.formalizacion_pendientes');
 //

@@ -90,6 +90,8 @@
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
+                            }else if(data == 0){
+                                return null;
                             }
                         }else{
                             return null;

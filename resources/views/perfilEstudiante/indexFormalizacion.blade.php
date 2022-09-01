@@ -79,7 +79,7 @@
                         }
                     }
                 },
-                {data: 'tipodocumento', render:function(data, type, row, meta){
+                {data: 'tipo_documento', render:function(data, type, row, meta){
                         if(data !== null){
                             return data;
                         }else{

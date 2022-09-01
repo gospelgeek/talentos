@@ -457,7 +457,7 @@
             			return data.accionciudadana_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.accionciudadana_seguimientos+'</u></button>';
@@ -465,7 +465,7 @@
             			return data.accionciudadana_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.accionciudadana_autoevaluacion+'</u></button>';
@@ -473,7 +473,7 @@
             			return data.accionciudadana_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.accionciudadana_item_huerfano != 0){
@@ -486,7 +486,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'accionciudadana_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -500,7 +500,7 @@
             			return data.artes_asistencias;
             		}
             	}
-        		},
+       		},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimientos+'</u></button>';
@@ -508,7 +508,7 @@
             			return data.artes_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_artes+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></button>';
@@ -516,7 +516,7 @@
             			return data.artes_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.artes_item_huerfano != 0){
@@ -529,11 +529,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'artes_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_biologia'},
             {data: null, render:function(data, type, row, meta){
@@ -543,7 +543,7 @@
             			return data.biologia_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimientos+'</u></button>';
@@ -551,7 +551,7 @@
             			return data.biologia_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_biologia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
@@ -559,7 +559,7 @@
             			return data.biologia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.biologia_item_huerfano != 0){
@@ -572,11 +572,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'biologia_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_cultura'},
             {data: null, render:function(data, type, row, meta){
@@ -586,7 +586,7 @@
             			return data.cultura_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.cultura_seguimientos+'</u></button >';
@@ -594,7 +594,7 @@
             			return data.cultura_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.cultura_autoevaluacion+'</u></button>';
@@ -602,7 +602,7 @@
             			return data.cultura_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.cultura_item_huerfano != 0){
@@ -615,11 +615,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'cultura_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_deporte'},
             {data: null, render:function(data, type, row, meta){
@@ -629,7 +629,7 @@
             			return data.deporte_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimientos+'</u></button>';
@@ -637,7 +637,7 @@
             			return data.deporte_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_deporte+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></button>';
@@ -645,7 +645,7 @@
             			return data.deporte_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.deporte_item_huerfano != 0){
@@ -658,11 +658,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'deporte_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_dialogo'},
             {data: null, render:function(data, type, row, meta){
@@ -672,7 +672,7 @@
             			return data.dialogo_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimientos+'</u></button>';
@@ -680,7 +680,7 @@
             			return data.dialogo_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_dialogo+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
@@ -688,7 +688,7 @@
             			return data.dialogo_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.dialogo_item_huerfano != 0){
@@ -701,11 +701,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'dialogo_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_filosofia'},
             {data: null, render:function(data, type, row, meta){
@@ -715,7 +715,7 @@
             			return data.filosofia_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.filosofia_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.filosofia_seguimientos+'</u></button>';
@@ -723,7 +723,7 @@
             			return data.filosofia_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.filosofia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_filosofia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FILOSOFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.filosofia_autoevaluacion+'</u></button>';
@@ -731,7 +731,7 @@
             			return data.filosofia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.filosofia_item_huerfano != 0){
@@ -744,11 +744,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'filosofia_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_fisica'},
             {data: null, render:function(data, type, row, meta){
@@ -758,7 +758,7 @@
             			return data.fisica_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimientos+'</u></button>';
@@ -766,7 +766,7 @@
             			return data.fisica_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_fisica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
@@ -774,7 +774,7 @@
             			return data.fisica_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.fisica_item_huerfano != 0){
@@ -787,11 +787,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'fisica_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_geografia'},
             {data: null, render:function(data, type, row, meta){
@@ -801,7 +801,7 @@
             			return data.geografia_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimientos+'</u></button>';
@@ -809,7 +809,7 @@
             			return data.geografia_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_geografia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
@@ -817,7 +817,7 @@
             			return data.geografia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.geografia_item_huerfano != 0){
@@ -830,11 +830,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'geografia_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_historia'},
             {data: null, render:function(data, type, row, meta){
@@ -844,7 +844,7 @@
             			return data.historia_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimientos+'</u></button>';
@@ -852,7 +852,7 @@
             			return data.historia_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_historia+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
@@ -860,7 +860,7 @@
             			return data.historia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.historia_item_huerfano != 0){
@@ -873,11 +873,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'historia_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_ingles'},
             {data: null, render:function(data, type, row, meta){
@@ -887,7 +887,7 @@
             			return data.ingles_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimientos+'</u></button>';
@@ -895,7 +895,7 @@
             			return data.ingles_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_ingles+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
@@ -903,7 +903,7 @@
             			return data.ingles_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.ingles_item_huerfano != 0){
@@ -916,11 +916,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'ingles_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_lectura'},
             {data: null, render:function(data, type, row, meta){
@@ -930,7 +930,7 @@
             			return data.lectura_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimientos+'</u></button>';
@@ -938,7 +938,7 @@
             			return data.lectura_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_lectura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
@@ -946,7 +946,7 @@
             			return data.lectura_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.lectura_item_huerfano != 0){
@@ -959,11 +959,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'lectura_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_matematicas'},
             {data: null, render:function(data, type, row, meta){
@@ -973,7 +973,7 @@
             			return data.matematicas_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimientos+'</u></button>';
@@ -981,7 +981,7 @@
             			return data.matematicas_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_matematicas+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
@@ -989,7 +989,7 @@
             			return data.matematicas_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.matematicas_item_huerfano != 0){
@@ -1002,13 +1002,13 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'matematicas_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
-            {data: 'docente_matematicas'},
+            {data: 'docente_quimica'},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_asistencias != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencias+'</u></button>';
@@ -1016,7 +1016,7 @@
             			return data.quimica_asistencias;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimientos+'</u></button>';
@@ -1024,7 +1024,7 @@
             			return data.quimica_seguimientos;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_quimica+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
@@ -1032,7 +1032,7 @@
             			return data.quimica_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.quimica_item_huerfano != 0){
@@ -1045,11 +1045,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'quimica_totalcurso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_tic'},
             {data: null, render:function(data, type, row, meta){
@@ -1113,7 +1113,6 @@
         ],
         "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
-            "dom":'Bfrtip',
             "buttons": [
                 "copy",
                 "csv",
@@ -1145,7 +1144,7 @@
             			return data.biologia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></button>';
@@ -1153,7 +1152,7 @@
             			return data.biologia_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
@@ -1161,7 +1160,7 @@
             			return data.biologia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.biologia_item_huerfano != 0){
@@ -1174,11 +1173,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'biologia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_artes'},
             {data: null, render:function(data, type, row, meta){
@@ -1188,7 +1187,7 @@
             			return data.artes_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimiento_academico+'</u></button>';
@@ -1196,7 +1195,7 @@
             			return data.artes_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.artes_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></button>';
@@ -1204,7 +1203,7 @@
             			return data.artes_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.artes_item_huerfano != 0){
@@ -1217,11 +1216,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'artes_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
-            	}
-        		},
+                }
+        	},
 
             {data: 'docente_deporte'},
             {data: null, render:function(data, type, row, meta){
@@ -1231,7 +1230,7 @@
             			return data.deporte_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimiento_academico+'</u></button>';
@@ -1239,7 +1238,7 @@
             			return data.deporte_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.deporte_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></button>';
@@ -1247,7 +1246,7 @@
             			return data.deporte_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.deporte_item_huerfano != 0){
@@ -1260,11 +1259,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'deporte_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_dialogo'},
             {data: null, render:function(data, type, row, meta){
@@ -1274,7 +1273,7 @@
             			return data.dialogo_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></button>';
@@ -1282,7 +1281,7 @@
             			return data.dialogo_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.dialogo_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
@@ -1290,7 +1289,7 @@
             			return data.dialogo_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.dialogo_item_huerfano != 0){
@@ -1303,11 +1302,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'dialogo_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_constitucion'},
             {data: null, render:function(data, type, row, meta){
@@ -1317,7 +1316,7 @@
             			return data.constitucion_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></button>';
@@ -1325,7 +1324,7 @@
             			return data.constitucion_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></button>';
@@ -1333,7 +1332,7 @@
             			return data.constitucion_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.constitucion_item_huerfano != 0){
@@ -1346,11 +1345,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'constitucion_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_fisica'},
             {data: null, render:function(data, type, row, meta){
@@ -1360,7 +1359,7 @@
             			return data.fisica_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></button>';
@@ -1368,7 +1367,7 @@
             			return data.fisica_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
@@ -1376,7 +1375,7 @@
             			return data.fisica_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.fisica_item_huerfano != 0){
@@ -1389,11 +1388,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'fisica_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
-            	}
-        		},
+                }
+        	},
 
             {data: 'docente_geografia'},
             {data: null, render:function(data, type, row, meta){
@@ -1403,7 +1402,7 @@
             			return data.geografia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></button>';
@@ -1411,7 +1410,7 @@
             			return data.geografia_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
@@ -1419,7 +1418,7 @@
             			return data.geografia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.geografia_item_huerfano != 0){
@@ -1432,11 +1431,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'geografia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_historia'},
             {data: null, render:function(data, type, row, meta){
@@ -1446,7 +1445,7 @@
             			return data.historia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></button>';
@@ -1454,7 +1453,7 @@
             			return data.historia_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
@@ -1462,7 +1461,7 @@
             			return data.historia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.historia_item_huerfano != 0){
@@ -1475,11 +1474,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'historia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_ingles'},
             {data: null, render:function(data, type, row, meta){
@@ -1489,7 +1488,7 @@
             			return data.ingles_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></button>';
@@ -1497,7 +1496,7 @@
             			return data.ingles_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
@@ -1505,7 +1504,7 @@
             			return data.ingles_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.ingles_item_huerfano != 0){
@@ -1517,12 +1516,12 @@
             		}else{
             			return mostrar = '--';
             		}
-            	}
-        		},
+                }
+        	},
             {data: 'ingles_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_lectura'},
             {data: null, render:function(data, type, row, meta){
@@ -1532,7 +1531,7 @@
             			return data.lectura_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></button>';
@@ -1540,7 +1539,7 @@
             			return data.lectura_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
@@ -1548,7 +1547,7 @@
             			return data.lectura_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.lectura_item_huerfano != 0){
@@ -1561,11 +1560,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'lectura_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_matematicas'},
             {data: null, render:function(data, type, row, meta){
@@ -1575,7 +1574,7 @@
             			return data.matematicas_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></button>';
@@ -1583,7 +1582,7 @@
             			return data.matematicas_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
@@ -1591,7 +1590,7 @@
             			return data.matematicas_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.matematicas_item_huerfano != 0){
@@ -1604,11 +1603,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'matematicas_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_quimica'},
             {data: null, render:function(data, type, row, meta){
@@ -1618,7 +1617,7 @@
             			return data.quimica_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></button>';
@@ -1626,7 +1625,7 @@
             			return data.quimica_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
@@ -1634,7 +1633,7 @@
             			return data.quimica_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.quimica_item_huerfano != 0){
@@ -1647,11 +1646,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'quimica_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
             {data: 'docente_tic'},
             {data: null, render:function(data, type, row, meta){
@@ -1661,7 +1660,7 @@
             			return data.tic_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></button>';
@@ -1669,7 +1668,7 @@
             			return data.tic_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.tic_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
@@ -1677,7 +1676,7 @@
             			return data.tic_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.tic_item_huerfano != 0){
@@ -1690,11 +1689,11 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'tic_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     var mstr;
@@ -1715,7 +1714,6 @@
         ],
         "deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
-            "dom":'Bfrtip',
             "buttons": [
                 "copy",
                 "csv",
@@ -1747,7 +1745,7 @@
             			return data.biologia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.biologia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></button>';
@@ -1755,15 +1753,15 @@
             			return data.biologia_seguimiento_academico;
             		}
             	}
-        		},
-        		{data: null, render:function(data, type, row, meta){
-            		if(data.biologia_autoevaluacion != 0){
-            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
-            		}else{
-            			return data.biologia_autoevaluacion;
-            		}
-            	}
-        		},
+        	},
+        	{data: null, render:function(data, type, row, meta){
+            	    if(data.biologia_autoevaluacion != 0){
+            		    return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
+            	    }else{
+            		    return data.biologia_autoevaluacion;
+            	    }
+                }
+        	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
             		if(data.biologia_item_huerfano != 0){
@@ -1776,21 +1774,21 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'biologia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
-        		},
+        	},
 
-						{data: 'docente_constitucion'},
-						{data: null, render:function(data, type, row, meta){
+			{data: 'docente_constitucion'},
+			{data: null, render:function(data, type, row, meta){
             		if(data.constitucion_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></button>';
             		}else{
             			return data.constitucion_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></button>';
@@ -1798,7 +1796,7 @@
             			return data.constitucion_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.constitucion_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></button>';
@@ -1806,7 +1804,7 @@
             			return data.constitucion_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.constitucion_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -1818,7 +1816,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'constitucion_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -1832,7 +1830,7 @@
             			return data.fisica_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></button>';
@@ -1840,7 +1838,7 @@
             			return data.fisica_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.fisica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
@@ -1848,7 +1846,7 @@
             			return data.fisica_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.fisica_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -1860,7 +1858,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'fisica_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -1874,7 +1872,7 @@
             			return data.geografia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></button>';
@@ -1882,7 +1880,7 @@
             			return data.geografia_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.geografia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
@@ -1890,7 +1888,7 @@
             			return data.geografia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.geografia_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -1902,7 +1900,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'geografia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -1916,7 +1914,7 @@
             			return data.historia_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></button>';
@@ -1924,7 +1922,7 @@
             			return data.historia_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.historia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
@@ -1932,7 +1930,7 @@
             			return data.historia_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.historia_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -1944,7 +1942,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'historia_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -1958,7 +1956,7 @@
             			return data.ingles_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></button>';
@@ -1966,7 +1964,7 @@
             			return data.ingles_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.ingles_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
@@ -1974,7 +1972,7 @@
             			return data.ingles_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.ingles_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -1986,7 +1984,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'ingles_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -2000,7 +1998,7 @@
             			return data.lectura_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_seguimiento_academico != 0){
             			return '<button  class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></button>';
@@ -2008,7 +2006,7 @@
             			return data.lectura_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.lectura_autoevaluacion != 0){
             			return '<button  class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
@@ -2016,7 +2014,7 @@
             			return data.lectura_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.lectura_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -2028,7 +2026,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'lectura_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -2042,7 +2040,7 @@
             			return data.matematicas_asistencia;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></button>';
@@ -2050,7 +2048,7 @@
             			return data.matematicas_seguimiento_academico;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){
             		if(data.matematicas_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
@@ -2058,7 +2056,7 @@
             			return data.matematicas_autoevaluacion;
             		}
             	}
-        		},
+        	},
             {data: null, render:function(data, type, row, meta){		
             		if(data.matematicas_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -2070,7 +2068,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
             {data: 'matematicas_total_curso', render:function(data, type, row, meta){
             		return '<b>'+data+'</b>';
             	}
@@ -2084,7 +2082,7 @@
             			return data.quimica_asistencia;
             		}
             	}
-        		},
+        	},
         		{data: null, render:function(data, type, row, meta){
             		if(data.quimica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></button>';
@@ -2092,7 +2090,7 @@
             			return data.quimica_seguimiento_academico;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.quimica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
@@ -2100,7 +2098,7 @@
             			return data.quimica_autoevaluacion;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.quimica_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -2112,7 +2110,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
           	{data: 'quimica_total_curso', render:function(data, type, row, meta){
           			return '<b>'+data+'</b>';
            		}
@@ -2126,15 +2124,15 @@
             			return data.tic_asistencia;
             		}
             	}
-        		},
-        		{data: null, render:function(data, type, row, meta){
+        	},
+        	{data: null, render:function(data, type, row, meta){
             		if(data.tic_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></button>';
             		}else{
             			return data.tic_seguimiento_academico;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.tic_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TIC"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
@@ -2142,7 +2140,7 @@
             			return data.tic_autoevaluacion;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.tic_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -2154,7 +2152,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
           	{data: 'tic_total_curso', render:function(data, type, row, meta){
           			return '<b>'+data+'</b>';
           		}
@@ -2168,15 +2166,15 @@
             			return data.dialogo_asistencia;
             		}
             	}
-        		},
-        		{data: null, render:function(data, type, row, meta){
+        	},
+        	{data: null, render:function(data, type, row, meta){
             		if(data.dialogo_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></button>';
             		}else{
             			return data.dialogo_seguimiento_academico;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.dialogo_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
@@ -2184,7 +2182,7 @@
             			return data.dialogo_autoevaluacion;
             		}
             	}
-        		},
+        	},
           	{data: null, render:function(data, type, row, meta){
             		if(data.dialogo_item_huerfano != 0){
             			return mstr = '<div class="btn-group">'+
@@ -2196,7 +2194,7 @@
             			return mostrar = '--';
             		}
             	}
-        		},
+        	},
           	{data: 'dialogo_total_curso', render:function(data, type, row, meta){
           			return '<b>'+data+'</b>';
            		}
@@ -2221,7 +2219,6 @@
         ],
         "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
-            "dom":'Bfrtip',
             "buttons": [
                 "copy",
                 "csv", 

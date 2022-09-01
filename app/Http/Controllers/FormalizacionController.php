@@ -98,7 +98,7 @@ class FormalizacionController extends Controller
                 'serial_loan_tablet' => $datos->serial_loan_tablet,
                 'loan_document_url' => $datos->loan_document_url,
                 'cambio_linea' => $datos->cambio_linea,
-                'tipodocumento' => $datos->tipodocumento,
+                'tipo_documento' => $datos->tipo_documento,
                 'estado' => $datos->estado,
                 'motivo' => $motivo_name,
                 'fecha' => $fecha,

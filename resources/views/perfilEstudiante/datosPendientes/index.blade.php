@@ -500,7 +500,7 @@
         var table_formalizacion = $("#formalizacion").DataTable({
             "ajax":{
                 "method":"GET",
-                "url": "{{route('datos.formalizacion')}}",
+                "url": "{{route('datos.formalizacion_pendientes')}}",
             },
             "columns": [
                 {data: 'name'},

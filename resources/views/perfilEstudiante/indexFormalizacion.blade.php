@@ -79,7 +79,14 @@
                         }
                     }
                 },
-                {data: 'tipodocumento'},
+                {data: 'tipodocumento', render:function(data, type, row, meta){
+                        if(data !== null){
+                            return data;
+                        }else{
+                            return '';
+                        }
+                    }
+                },
                 {data: 'document_number'},
                 {data: 'email', width: '50px'},
                 {data: 'cellphone'},

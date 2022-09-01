@@ -100,54 +100,39 @@
                 },
                 {data: 'estado'},
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
-
                         if(data !== ""){
-
-                            if(data !== null){
-
-                                if(data != 'SI'){
-                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                    return url;    
-                                }else{
-                                    var url = '<a target="blank">'+data+'</a>';
-                                    return url;
-                                }
-                                
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
                             }else{
-                                var url = '';
+                                var url = '<a target="blank">'+data+'</a>';                     
                                 return url;
                             }
-
-
+                        }else{
+                            var url = '';
+                            return url;
                         }
-
-                    
                     }
                 },
                 {data: 'acceptance_date'},
                 {data: 'tablets_v2', render:function(data, type, row, meta){
                         if(data !== ""){
-
-                            if(data !== null){
-
-                                if(data != 'SI'){
-                                    var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
-                                    return url;    
-                                }else{
-                                    var url = '<a target="blank">'+data+'</a>';
-                                    return url;
-                                }
-                                
+                            if(data != 'SI'){
+                                var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
+                                return url;    
                             }else{
-                                var url = ' ';
-                                return url;
+                                var url = '<a target="blank">'+data+'</a>';
+                                return url;    
                             }
+                        }else{
+                            var url = '';
+                            return url;
                         }
                     }
                 },
                 {data: 'serial_tablet'},
                 {data: 'returned_tablet', render:function(data, type, row, meta){
-                        if(data != null){
+                        if(data != ' '){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
@@ -158,7 +143,7 @@
                     }
                 },
                 {data: 'loan_tablet', render:function(data, type, row, meta){
-                        if(data != null){
+                        if(data != ' '){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;

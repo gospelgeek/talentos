@@ -86,11 +86,11 @@
                 {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'cambio_linea', render:function(data, type, row, meta){
-                        if(data != ' '){
+                        if(data != null){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
-                            }else if(data == 0){
+                            }else{
                                 return null;
                             }
                         }else{
@@ -145,10 +145,12 @@
                     }
                 },
                 {data: 'loan_tablet', render:function(data, type, row, meta){
-                        if(data != ' '){
+                        if(data != null){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
+                            }else{
+                                return null;
                             }
                         }else{
                             return null;

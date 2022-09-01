@@ -93,7 +93,7 @@
                 {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'cambio_linea', render:function(data, type, row, meta){
-                        if(data != null){
+                        if(data != ''){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;

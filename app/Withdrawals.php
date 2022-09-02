@@ -194,7 +194,7 @@ class Withdrawals extends Model
         }
     }
 
-    /*public static function septiembre(){
+    public static function septiembre(){
         $data = DB::select("select student_profile.id ,student_profile.name, student_profile.lastname, student_profile.id_document_type, (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, student_profile.document_number, student_groups.id_group as groupid, groups.name as grupo, cohorts.name as cohorte, assignment_students.id_user as id_profesional, CONCAT(users.name,' ', users.apellidos_user) encargado, conditions.name as condicion, withdrawals.id_reasons as id_motivo, reasons.name as motivo, withdrawals.fecha as fecha, withdrawals.observation as observacion, withdrawals.url as url, withdrawals.created_at
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
@@ -214,7 +214,7 @@ class Withdrawals extends Model
         }else{
             return null;
         }
-    }*/
+    }
     /**
      * Relacion con los  datos que se tiene de Withdrawals  
      * con la tabla Reasons

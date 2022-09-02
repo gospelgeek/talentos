@@ -4197,158 +4197,173 @@ public function __construct()
 public function exportar_excel_notas_linea1(){
 
         if(Storage::disk('local')->exists('notas_linea_1_items.json')){
-                $estudiantes    = json_decode(Storage::get('notas_linea_1_items.json'));
-                $excel = array();
-                foreach($estudiantes as $estudiante){
-                    $excel[] = array(
-                                'id' => $estudiante->id,
-                                'name' => $estudiante->name,
-                                'lastname' => $estudiante->lastname,
-                                'tipo_documento' => $estudiante->tipo_documento,
-                                'document_number' => $estudiante->document_number,
-                                'grupo' => $estudiante->grupo_name,
-                                'estado' => $estudiante->estado,
-                                'profesional' => $estudiante->encargado,
+            $estudiantes    = json_decode(Storage::get('notas_linea_1_items.json'));
+            $excel = array();
+            foreach($estudiantes as $estudiante){
+                $excel[] = array(
+                    'id' => $estudiante->id,
+                    'name' => $estudiante->name,
+                    'lastname' => $estudiante->lastname,
+                    'tipo_documento' => $estudiante->tipo_documento,
+                    'document_number' => $estudiante->document_number,
+                    'grupo' => $estudiante->grupo_name,
+                    'estado' => $estudiante->estado,
+                    'profesional' => $estudiante->encargado,
 
-                                'accionciudadana_asistencias_items' => $estudiante->accionciudadana_items_asistencia,
-                                'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencia,
-                                'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
-                                'accionciudadana_seguimientos' => $estudiante->accionciudadana_seguimientos,
-                                'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
-                                'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
-                                'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
-                                'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
+                    'docente_accionciudadana' => $estudiante->docente_accionciudadana,    
+                    'accionciudadana_asistencias_items' => $estudiante->accionciudadana_items_asistencia,
+                    'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencia,
+                    'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
+                    'accionciudadana_seguimientos' => $estudiante->accionciudadana_seguimientos,
+                    'accionciudadana_items_autoevaluacion' => $estudiante->accionciudadana_items_autoevaluacion,
+                    'accionciudadana_autoevaluacion' => $estudiante->accionciudadana_autoevaluacion,
+                    'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
+                    'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
 
-                                'artes_items_asistencia' => $estudiante->artes_items_asistencia,
-                                'artes_asistencias' => $estudiante->artes_asistencia,
-                                'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
-                                'artes_seguimientos' => $estudiante->artes_seguimientos,
-                                'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
-                                'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
-                                'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
-                                'artes_totalcurso' => $estudiante->artes_totalcurso,
+                    'docente_artes' => $estudiante->docente_artes,    
+                    'artes_items_asistencia' => $estudiante->artes_items_asistencia,
+                    'artes_asistencias' => $estudiante->artes_asistencia,
+                    'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
+                    'artes_seguimientos' => $estudiante->artes_seguimientos,
+                    'artes_items_autoevaluacion' => $estudiante->artes_items_autoevaluacion,
+                    'artes_autoevaluacion' => $estudiante->artes_autoevaluacion,
+                    'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
+                    'artes_totalcurso' => $estudiante->artes_totalcurso,
 
-                                'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
-                                'biologia_asistencias' => $estudiante->biologia_asistencia,
-                                'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
-                                'biologia_seguimientos' => $estudiante->biologia_seguimientos,
-                                'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
-                                'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
-                                'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
-                                'biologia_totalcurso' => $estudiante->biologia_totalcurso,
+                    'docente_biologia' => $estudiante->docente_biologia,    
+                    'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
+                    'biologia_asistencias' => $estudiante->biologia_asistencia,
+                    'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
+                    'biologia_seguimientos' => $estudiante->biologia_seguimientos,
+                    'biologia_items_autoevaluacion' => $estudiante->biologia_items_autoevaluacion,
+                    'biologia_autoevaluacion' => $estudiante->biologia_autoevaluacion,
+                    'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
+                    'biologia_totalcurso' => $estudiante->biologia_totalcurso,
 
-                                'cultura_items_asistencia' => $estudiante->cultura_items_asistencia,
-                                'cultura_asistencias' => $estudiante->cultura_asistencia,
-                                'cultura_items_seguimientos' => $estudiante->cultura_items_seguimientos,
-                                'cultura_seguimientos' => $estudiante->cultura_seguimientos,
-                                'cultura_items_autoevaluacion' => $estudiante->cultura_items_autoevaluacion,
-                                'cultura_autoevaluacion' => $estudiante->cultura_autoevaluacion,
-                                'cultura_items_huerfanos' => $estudiante->cultura_items_huerfanos,
-                                'cultura_totalcurso' => $estudiante->cultura_totalcurso,
+                    'docente_cultura' => $estudiante->docente_cultura,    
+                    'cultura_items_asistencia' => $estudiante->cultura_items_asistencia,
+                    'cultura_asistencias' => $estudiante->cultura_asistencia,
+                    'cultura_items_seguimientos' => $estudiante->cultura_items_seguimientos,
+                    'cultura_seguimientos' => $estudiante->cultura_seguimientos,
+                    'cultura_items_autoevaluacion' => $estudiante->cultura_items_autoevaluacion,
+                    'cultura_autoevaluacion' => $estudiante->cultura_autoevaluacion,
+                    'cultura_items_huerfanos' => $estudiante->cultura_items_huerfanos,
+                    'cultura_totalcurso' => $estudiante->cultura_totalcurso,
                                 
-                                'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
-                                'deporte_asistencias' => $estudiante->deporte_asistencia,
-                                'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
-                                'deporte_seguimientos' => $estudiante->deporte_seguimientos,
-                                'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
-                                'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
-                                'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
-                                'deporte_totalcurso' => $estudiante->deporte_totalcurso,
+                    'docente_deporte' => $estudiante->docente_deporte,    
+                    'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
+                    'deporte_asistencias' => $estudiante->deporte_asistencia,
+                    'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
+                    'deporte_seguimientos' => $estudiante->deporte_seguimientos,
+                    'deporte_items_autoevaluacion' => $estudiante->deporte_items_autoevaluacion,
+                    'deporte_autoevaluacion' => $estudiante->deporte_autoevaluacion,
+                    'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
+                    'deporte_totalcurso' => $estudiante->deporte_totalcurso,
 
-                                'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
-                                'dialogo_asistencias' => $estudiante->dialogo_asistencia,
-                                'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
-                                'dialogo_seguimientos' => $estudiante->dialogo_seguimientos,
-                                'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
-                                'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
-                                'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
-                                'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
+                    'docente_dialogo' => $estudiante->docente_dialogo,    
+                    'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
+                    'dialogo_asistencias' => $estudiante->dialogo_asistencia,
+                    'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
+                    'dialogo_seguimientos' => $estudiante->dialogo_seguimientos,
+                    'dialogo_items_autoevaluacion' => $estudiante->dialogo_items_autoevaluacion,
+                    'dialogo_autoevaluacion' => $estudiante->dialogo_autoevaluacion,
+                    'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
+                    'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
 
-                                'filosofia_items_asistencia' => $estudiante->filosofia_items_asistencia,
-                                'filosofia_asistencias' => $estudiante->filosofia_asistencia,
-                                'filosofia_items_seguimientos' => $estudiante->filosofia_items_seguimientos,
-                                'filosofia_seguimientos' => $estudiante->filosofia_seguimientos,
-                                'filosofia_items_autoevaluacion' => $estudiante->filosofia_items_autoevaluacion,
-                                'filosofia_autoevaluacion' => $estudiante->filosofia_autoevaluacion,
-                                'filosofia_items_huerfanos' => $estudiante->filosofia_items_huerfanos,
-                                'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
+                    'docente_filosofia' => $estudiante->docente_filosofia,    
+                    'filosofia_items_asistencia' => $estudiante->filosofia_items_asistencia,
+                    'filosofia_asistencias' => $estudiante->filosofia_asistencia,
+                    'filosofia_items_seguimientos' => $estudiante->filosofia_items_seguimientos,
+                    'filosofia_seguimientos' => $estudiante->filosofia_seguimientos,
+                    'filosofia_items_autoevaluacion' => $estudiante->filosofia_items_autoevaluacion,
+                    'filosofia_autoevaluacion' => $estudiante->filosofia_autoevaluacion,
+                    'filosofia_items_huerfanos' => $estudiante->filosofia_items_huerfanos,
+                    'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
 
-                                'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
-                                'fisica_asistencias' => $estudiante->fisica_asistencia,
-                                'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
-                                'fisica_seguimientos' => $estudiante->fisica_seguimientos,
-                                'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
-                                'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
-                                'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
-                                'fisica_totalcurso' => $estudiante->fisica_totalcurso,
+                    'docente_fisica' => $estudiante->docente_fisica,    
+                    'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
+                    'fisica_asistencias' => $estudiante->fisica_asistencia,
+                    'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
+                    'fisica_seguimientos' => $estudiante->fisica_seguimientos,
+                    'fisica_items_autoevaluacion' => $estudiante->fisica_items_autoevaluacion,
+                    'fisica_autoevaluacion' => $estudiante->fisica_autoevaluacion,
+                    'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
+                    'fisica_totalcurso' => $estudiante->fisica_totalcurso,
 
-                                'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
-                                'geografia_asistencias' => $estudiante->geografia_asistencia,
-                                'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
-                                'geografia_seguimientos' => $estudiante->geografia_seguimientos,
-                                'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
-                                'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
-                                'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
-                                'geografia_totalcurso' => $estudiante->geografia_totalcurso,
+                    'docente_geografia' => $estudiante->docente_geografia,    
+                    'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
+                    'geografia_asistencias' => $estudiante->geografia_asistencia,
+                    'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
+                    'geografia_seguimientos' => $estudiante->geografia_seguimientos,
+                    'geografia_items_autoevaluacion' => $estudiante->geografia_items_autoevaluacion,
+                    'geografia_autoevaluacion' => $estudiante->geografia_autoevaluacion,
+                    'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
+                    'geografia_totalcurso' => $estudiante->geografia_totalcurso,
 
-                                'historia_items_asistencia' => $estudiante->historia_items_asistencia,
-                                'historia_asistencias' => $estudiante->historia_asistencia,
-                                'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
-                                'historia_seguimientos' => $estudiante->historia_seguimientos,
-                                'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
-                                'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
-                                'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
-                                'historia_totalcurso' => $estudiante->historia_totalcurso,
+                    'docente_historia' => $estudiante->docente_historia,    
+                    'historia_items_asistencia' => $estudiante->historia_items_asistencia,
+                    'historia_asistencias' => $estudiante->historia_asistencia,
+                    'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
+                    'historia_seguimientos' => $estudiante->historia_seguimientos,
+                    'historia_items_autoevaluacion' => $estudiante->historia_items_autoevaluacion,
+                    'historia_autoevaluacion' => $estudiante->historia_autoevaluacion,
+                    'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
+                    'historia_totalcurso' => $estudiante->historia_totalcurso,
 
-                                'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
-                                'ingles_asistencias' => $estudiante->ingles_asistencia,
-                                'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
-                                'ingles_seguimientos' => $estudiante->ingles_seguimientos,
-                                'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
-                                'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
-                                'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
-                                'ingles_totalcurso' => $estudiante->ingles_totalcurso,
+                    'docente_ingles' => $estudiante->docente_ingles,    
+                    'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
+                    'ingles_asistencias' => $estudiante->ingles_asistencia,
+                    'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
+                    'ingles_seguimientos' => $estudiante->ingles_seguimientos,
+                    'ingles_items_autoevaluacion' => $estudiante->ingles_items_autoevaluacion,
+                    'ingles_autoevaluacion' => $estudiante->ingles_autoevaluacion,
+                    'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
+                    'ingles_totalcurso' => $estudiante->ingles_totalcurso,
 
-                                'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
-                                'lectura_asistencias' => $estudiante->lectura_asistencia,
-                                'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
-                                'lectura_seguimientos' => $estudiante->lectura_seguimientos,
-                                'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
-                                'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
-                                'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
-                                'lectura_totalcurso' => $estudiante->lectura_totalcurso,
+                    'docente_lectura' => $estudiante->docente_lectura,    
+                    'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
+                    'lectura_asistencias' => $estudiante->lectura_asistencia,
+                    'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
+                    'lectura_seguimientos' => $estudiante->lectura_seguimientos,
+                    'lectura_items_autoevaluacion' => $estudiante->lectura_items_autoevaluacion,
+                    'lectura_autoevaluacion' => $estudiante->lectura_autoevaluacion,
+                    'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
+                    'lectura_totalcurso' => $estudiante->lectura_totalcurso,
 
-                                'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
-                                'matematicas_asistencias' => $estudiante->matematicas_asistencia,
-                                'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
-                                'matematicas_seguimientos' => $estudiante->matematicas_seguimientos,
-                                'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
-                                'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
-                                'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
-                                'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
+                    'docente_matematicas' => $estudiante->docente_matematicas,    
+                    'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
+                    'matematicas_asistencias' => $estudiante->matematicas_asistencia,
+                    'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
+                    'matematicas_seguimientos' => $estudiante->matematicas_seguimientos,
+                    'matematicas_items_autoevaluacion' => $estudiante->matematicas_items_autoevaluacion,
+                    'matematicas_autoevaluacion' => $estudiante->matematicas_autoevaluacion,
+                    'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
+                    'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
 
-                                'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
-                                'quimica_asistencias' => $estudiante->quimica_asistencia,
-                                'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
-                                'quimica_seguimientos' => $estudiante->quimica_seguimientos,
-                                'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
-                                'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
-                                'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
-                                'quimica_totalcurso' => $estudiante->quimica_totalcurso,
+                    'docente_quimica' => $estudiante->docente_quimica,    
+                    'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
+                    'quimica_asistencias' => $estudiante->quimica_asistencia,
+                    'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
+                    'quimica_seguimientos' => $estudiante->quimica_seguimientos,
+                    'quimica_items_autoevaluacion' => $estudiante->quimica_items_autoevaluacion,
+                    'quimica_autoevaluacion' => $estudiante->quimica_autoevaluacion,
+                    'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
+                    'quimica_totalcurso' => $estudiante->quimica_totalcurso,
 
-                                'tic_items_asistencia' => $estudiante->tic_items_asistencia,
-                                'tic_asistencias' => $estudiante->tic_asistencia,
-                                'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
-                                'tic_seguimientos' => $estudiante->tic_seguimientos,
-                                'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
-                                'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
-                                'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
-                                'tic_totalcurso' => $estudiante->tic_totalcurso,
-                            );
-                }
-                $exportar = new NotasLinea1Export([$excel]);
+                    'docente_tic' => $estudiante->docente_tic,    
+                    'tic_items_asistencia' => $estudiante->tic_items_asistencia,
+                    'tic_asistencias' => $estudiante->tic_asistencia,
+                    'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
+                    'tic_seguimientos' => $estudiante->tic_seguimientos,
+                    'tic_items_autoevaluacion' => $estudiante->tic_items_autoevaluacion,
+                    'tic_autoevaluacion' => $estudiante->tic_autoevaluacion,
+                    'tic_items_huerfanos' => $estudiante->tic_items_huerfanos,
+                    'tic_totalcurso' => $estudiante->tic_totalcurso,
+                );
+            }
+            $exportar = new NotasLinea1Export([$excel]);
 
-                return Excel::download($exportar, "reporte_notas_linea_1.xlsx");
+            return Excel::download($exportar, "reporte_notas_linea_1.xlsx");
         }else{
 
             $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
@@ -4357,6 +4372,7 @@ public function exportar_excel_notas_linea1(){
                 ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
                 //dd($estudiante->asignaturas);
+                $estudiante->docente_accionciudadana = "";
                 $estudiante->accionciudadana_asistencia = "";
                 $estudiante->accionciudadana_items_asistencia = "";
                 $estudiante->accionciudadana_seguimientos = "";
@@ -4366,6 +4382,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->accionciudadana_items_huerfanos = "";
                 $estudiante->accionciudadana_totalcurso = "";
 
+                $estudiante->docente_artes = "";
                 $estudiante->artes_asistencia = "";
                 $estudiante->artes_items_asistencia = "";
                 $estudiante->artes_seguimientos = "";
@@ -4375,6 +4392,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->artes_items_huerfanos = "";
                 $estudiante->artes_totalcurso = "";
 
+                $estudiante->docente_biologia = "";
                 $estudiante->biologia_asistencia = "";
                 $estudiante->biologia_items_asistencia ="";
                 $estudiante->biologia_seguimientos = "";
@@ -4385,6 +4403,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->biologia_totalcurso = "";
 
 
+                $estudiante->docente_cultura = "";
                 $estudiante->cultura_asistencia = "";
                 $estudiante->cultura_items_asistencia = "";
                 $estudiante->cultura_seguimientos = "";
@@ -4394,6 +4413,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->cultura_items_huerfanos = "";
                 $estudiante->cultura_totalcurso = "";
 
+                $estudiante->docente_deporte = "";
                 $estudiante->deporte_asistencia = "";
                 $estudiante->deporte_items_asistencia = "";
                 $estudiante->deporte_seguimientos = "";
@@ -4403,6 +4423,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->deporte_items_huerfanos = "";
                 $estudiante->deporte_totalcurso = "";
 
+                $estudiante->docente_dialogo = "";
                 $estudiante->dialogo_asistencia = "";
                 $estudiante->dialogo_items_asistencia = "";
                 $estudiante->dialogo_seguimientos = "";
@@ -4412,6 +4433,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->dialogo_items_huerfanos = "";
                 $estudiante->dialogo_totalcurso = "";
 
+                $estudiante->docente_filosofia = "";
                 $estudiante->filosofia_asistencia = "";
                 $estudiante->filosofia_items_asistencia = "";
                 $estudiante->filosofia_seguimientos = "";
@@ -4421,6 +4443,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->filosofia_items_huerfanos = "";
                 $estudiante->filosofia_totalcurso = "";
 
+                $estudiante->docente_fisica = "";
                 $estudiante->fisica_asistencia = "";
                 $estudiante->fisica_items_asistencia = "";
                 $estudiante->fisica_seguimientos = "";
@@ -4430,6 +4453,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->fisica_items_huerfanos = "";
                 $estudiante->fisica_totalcurso = "";
 
+                $estudiante->docente_geografia = "";
                 $estudiante->geografia_asistencia = "";
                 $estudiante->geografia_items_asistencia = "";
                 $estudiante->geografia_seguimientos = "";
@@ -4439,6 +4463,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->geografia_items_huerfanos = "";
                 $estudiante->geografia_totalcurso = "";
 
+                $estudiante->docente_historia = "";
                 $estudiante->historia_asistencia = "";
                 $estudiante->historia_items_asistencia = "";
                 $estudiante->historia_seguimientos = "";
@@ -4448,6 +4473,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->historia_items_huerfanos = "";
                 $estudiante->historia_totalcurso = "";
 
+                $estudiante->docente_ingles = "";
                 $estudiante->ingles_asistencia = "";
                 $estudiante->ingles_items_asistencia = "";
                 $estudiante->ingles_seguimientos = "";
@@ -4457,6 +4483,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->ingles_items_huerfanos = "";
                 $estudiante->ingles_totalcurso = "";
 
+                $estudiante->docente_lectura = "";
                 $estudiante->lectura_asistencia = "";
                 $estudiante->lectura_items_asistencia = "";
                 $estudiante->lectura_seguimientos = "";
@@ -4466,6 +4493,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->lectura_items_huerfanos = "";
                 $estudiante->lectura_totalcurso = "";
 
+                $estudiante->docente_matematicas = "";
                 $estudiante->matematicas_asistencia = "";
                 $estudiante->matematicas_items_asistencia = "";
                 $estudiante->matematicas_seguimientos = "";
@@ -4475,6 +4503,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->matematicas_items_huerfanos= "";
                 $estudiante->matematicas_totalcurso = "";
 
+                $estudiante->docente_quimica = "";
                 $estudiante->quimica_asistencia = "";
                 $estudiante->quimica_items_asistencia = "";
                 $estudiante->quimica_seguimientos = "";
@@ -4484,6 +4513,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->quimica_items_huerfanos = "";
                 $estudiante->quimica_totalcurso = "";
 
+                $estudiante->docente_tic = "";
                 $estudiante->tic_asistencia = "";
                 $estudiante->tic_items_asistencia = "";
                 $estudiante->tic_seguimientos = "";
@@ -4536,7 +4566,8 @@ public function exportar_excel_notas_linea1(){
 
                                     $estudiante->accionciudadana_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
-                            }                                       
+                            }
+                            $estudiante->docente_accionciudadana = $cursos->docente_name;                               
                             break;
 
                         case 'ARTES:':
@@ -4580,7 +4611,8 @@ public function exportar_excel_notas_linea1(){
 
                                     $estudiante->artes_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
-                            }              
+                            }
+                            $estudiante->docente_artes = $cursos->docente_name;              
                             break;
 
                         case 'BIOLOGIA':
@@ -4622,7 +4654,8 @@ public function exportar_excel_notas_linea1(){
 
                                     $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
-                            }                                         
+                            }
+                            $estudiante->docente_biologia = $cursos->docente_name;                                    
                             break;
 
                         case 'CULTURA':
@@ -4665,6 +4698,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->cultura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }                                         
+                            $estudiante->docente_cultura = $cursos->docente_name;                                    
                             break;
 
                         case 'DEPORTE':
@@ -4707,6 +4741,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->deporte_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }                                      
+                            $estudiante->docente_deporte = $cursos->docente_name;                                    
                             break;
 
                         case 'DIALOGO':
@@ -4749,6 +4784,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }                                          
+                            $estudiante->docente_dialogo = $cursos->docente_name;                                    
                             break;
 
                         case 'FILOSOFIA':
@@ -4791,6 +4827,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->filosofia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_filosofia = $cursos->docente_name;                                    
                             break;
 
                         case 'FISICA':
@@ -4833,6 +4870,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_fisica = $cursos->docente_name;                                    
                             break;
 
                         case 'GEOGRAFIA':
@@ -4875,6 +4913,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_geografia = $cursos->docente_name;                                    
                             break;
 
                         case 'HISTORIA':
@@ -4917,6 +4956,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_historia = $cursos->docente_name;                                    
                             break;
 
                         case 'INGLES':
@@ -4959,6 +4999,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_ingles = $cursos->docente_name;                                    
                             break;   
 
                         case 'LECTURA':
@@ -5001,6 +5042,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_lectura = $cursos->docente_name;                                    
                             break;
 
                         case 'MATEMATICAS':
@@ -5043,6 +5085,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_matematicas = $cursos->docente_name;                                    
                             break;                          
 
                         case 'QUIMICA':
@@ -5085,6 +5128,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_quimica = $cursos->docente_name;                                    
                             break;
 
                         case 'TECNOLOGIA':
@@ -5127,6 +5171,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_tic = $cursos->docente_name;                                    
                             break;
 
                         default:                                        
@@ -5147,6 +5192,7 @@ public function exportar_excel_notas_linea1(){
                     'estado' => $estudiante->estado,
                     'profesional' => $estudiante->encargado,
 
+                    'docente_accionciudadana' => $estudiante->docente_accionciudadana,    
                     'accionciudadana_asistencias_items' => $estudiante->accionciudadana_items_asistencia,
                     'accionciudadana_asistencias' => $estudiante->accionciudadana_asistencia,
                     'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
@@ -5156,6 +5202,7 @@ public function exportar_excel_notas_linea1(){
                     'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
                     'accionciudadana_totalcurso' => $estudiante->accionciudadana_totalcurso,
 
+                    'docente_artes' => $estudiante->docente_artes,    
                     'artes_items_asistencia' => $estudiante->artes_items_asistencia,
                     'artes_asistencias' => $estudiante->artes_asistencia,
                     'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
@@ -5165,6 +5212,7 @@ public function exportar_excel_notas_linea1(){
                     'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
                     'artes_totalcurso' => $estudiante->artes_totalcurso,
 
+                    'docente_biologia' => $estudiante->docente_biologia,    
                     'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
                     'biologia_asistencias' => $estudiante->biologia_asistencia,
                     'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
@@ -5174,6 +5222,7 @@ public function exportar_excel_notas_linea1(){
                     'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                     'biologia_totalcurso' => $estudiante->biologia_totalcurso,
 
+                    'docente_cultura' => $estudiante->docente_cultura,    
                     'cultura_items_asistencia' => $estudiante->cultura_items_asistencia,
                     'cultura_asistencias' => $estudiante->cultura_asistencia,
                     'cultura_items_seguimientos' => $estudiante->cultura_items_seguimientos,
@@ -5183,6 +5232,7 @@ public function exportar_excel_notas_linea1(){
                     'cultura_items_huerfanos' => $estudiante->cultura_items_huerfanos,
                     'cultura_totalcurso' => $estudiante->cultura_totalcurso,
                                 
+                    'docente_deporte' => $estudiante->docente_deporte,    
                     'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
                     'deporte_asistencias' => $estudiante->deporte_asistencia,
                     'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
@@ -5192,6 +5242,7 @@ public function exportar_excel_notas_linea1(){
                     'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
                     'deporte_totalcurso' => $estudiante->deporte_totalcurso,
 
+                    'docente_dialogo' => $estudiante->docente_dialogo,    
                     'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
                     'dialogo_asistencias' => $estudiante->dialogo_asistencia,
                     'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
@@ -5201,6 +5252,7 @@ public function exportar_excel_notas_linea1(){
                     'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                     'dialogo_totalcurso' => $estudiante->dialogo_totalcurso,
 
+                    'docente_filosofia' => $estudiante->docente_filosofia,    
                     'filosofia_items_asistencia' => $estudiante->filosofia_items_asistencia,
                     'filosofia_asistencias' => $estudiante->filosofia_asistencia,
                     'filosofia_items_seguimientos' => $estudiante->filosofia_items_seguimientos,
@@ -5210,6 +5262,7 @@ public function exportar_excel_notas_linea1(){
                     'filosofia_items_huerfanos' => $estudiante->filosofia_items_huerfanos,
                     'filosofia_totalcurso' => $estudiante->filosofia_totalcurso,
 
+                    'docente_fisica' => $estudiante->docente_fisica,    
                     'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
                     'fisica_asistencias' => $estudiante->fisica_asistencia,
                     'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
@@ -5219,6 +5272,7 @@ public function exportar_excel_notas_linea1(){
                     'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                     'fisica_totalcurso' => $estudiante->fisica_totalcurso,
 
+                    'docente_geografia' => $estudiante->docente_geografia,    
                     'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
                     'geografia_asistencias' => $estudiante->geografia_asistencia,
                     'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
@@ -5228,6 +5282,7 @@ public function exportar_excel_notas_linea1(){
                     'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                     'geografia_totalcurso' => $estudiante->geografia_totalcurso,
 
+                    'docente_historia' => $estudiante->docente_historia,    
                     'historia_items_asistencia' => $estudiante->historia_items_asistencia,
                     'historia_asistencias' => $estudiante->historia_asistencia,
                     'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
@@ -5237,6 +5292,7 @@ public function exportar_excel_notas_linea1(){
                     'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                     'historia_totalcurso' => $estudiante->historia_totalcurso,
 
+                    'docente_ingles' => $estudiante->docente_ingles,    
                     'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
                     'ingles_asistencias' => $estudiante->ingles_asistencia,
                     'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
@@ -5246,6 +5302,7 @@ public function exportar_excel_notas_linea1(){
                     'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                     'ingles_totalcurso' => $estudiante->ingles_totalcurso,
 
+                    'docente_lectura' => $estudiante->docente_lectura,    
                     'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
                     'lectura_asistencias' => $estudiante->lectura_asistencia,
                     'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
@@ -5255,6 +5312,7 @@ public function exportar_excel_notas_linea1(){
                     'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                     'lectura_totalcurso' => $estudiante->lectura_totalcurso,
 
+                    'docente_matematicas' => $estudiante->docente_matematicas,    
                     'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
                     'matematicas_asistencias' => $estudiante->matematicas_asistencia,
                     'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
@@ -5264,6 +5322,7 @@ public function exportar_excel_notas_linea1(){
                     'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                     'matematicas_totalcurso' => $estudiante->matematicas_totalcurso,
 
+                    'docente_quimica' => $estudiante->docente_quimica,    
                     'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
                     'quimica_asistencias' => $estudiante->quimica_asistencia,
                     'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
@@ -5273,6 +5332,7 @@ public function exportar_excel_notas_linea1(){
                     'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                     'quimica_totalcurso' => $estudiante->quimica_totalcurso,
 
+                    'docente_tic' => $estudiante->docente_tic,    
                     'tic_items_asistencia' => $estudiante->tic_items_asistencia,
                     'tic_asistencias' => $estudiante->tic_asistencia,
                     'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
@@ -5308,6 +5368,7 @@ public function exportar_excel_notas_linea1(){
                     'estado' => $estudiante->estado,
                     'profersional' => $estudiante->encargado,
 
+                    'docente_accionciudadana' => $estudiante->docente_accionciudadana,    
                     'accionciudadana_items_asistencia' => $estudiante->accionciudadana_items_asistencia,
                     'accionciudadana_asistencia' => $estudiante->accionciudadana_asistencia,
                     'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
@@ -5317,6 +5378,7 @@ public function exportar_excel_notas_linea1(){
                     'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
                     'accionciudadana_total_curso' => $estudiante->accionciudadana_total_curso,
 
+                    'docente_artes' => $estudiante->docente_artes,    
                     'artes_items_asistencia' => $estudiante->artes_items_asistencia,
                     'artes_asistencia' => $estudiante->artes_asistencia,
                     'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
@@ -5326,6 +5388,7 @@ public function exportar_excel_notas_linea1(){
                     'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
                     'artes_total_curso' => $estudiante->artes_total_curso,
 
+                    'docente_biologia' => $estudiante->docente_biologia,    
                     'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
                     'biologia_asistencia' => $estudiante->biologia_asistencia,
                     'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
@@ -5335,6 +5398,7 @@ public function exportar_excel_notas_linea1(){
                     'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                     'biologia_total_curso' => $estudiante->biologia_total_curso,    
 
+                    'docente_deporte' => $estudiante->docente_deporte,    
                     'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
                     'deporte_asistencia' => $estudiante->deporte_asistencia,
                     'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
@@ -5344,6 +5408,7 @@ public function exportar_excel_notas_linea1(){
                     'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
                     'deporte_total_curso' => $estudiante->deporte_total_curso,
 
+                    'docente_dialogo' => $estudiante->docente_dialogo,    
                     'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
                     'dialogo_asistencia' => $estudiante->dialogo_asistencia,
                     'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
@@ -5353,6 +5418,7 @@ public function exportar_excel_notas_linea1(){
                     'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                     'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
+                    'docente_constitucion' => $estudiante->docente_constitucion,    
                     'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
                     'constitucion_asistencia' => $estudiante->constitucion_asistencia,
                     'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
@@ -5362,6 +5428,7 @@ public function exportar_excel_notas_linea1(){
                     'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
                     'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
+                    'docente_fisica' => $estudiante->docente_fisica,    
                     'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
                     'fisica_asistencia' => $estudiante->fisica_asistencia,
                     'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
@@ -5371,6 +5438,7 @@ public function exportar_excel_notas_linea1(){
                     'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                     'fisica_total_curso' => $estudiante->fisica_total_curso,
 
+                    'docente_geografia' => $estudiante->docente_geografia,    
                     'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
                     'geografia_asistencia' => $estudiante->geografia_asistencia,
                     'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
@@ -5380,6 +5448,7 @@ public function exportar_excel_notas_linea1(){
                     'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                     'geografia_total_curso' => $estudiante->geografia_total_curso,
 
+                    'docente_historia' => $estudiante->docente_historia,    
                     'historia_items_asistencia' => $estudiante->historia_items_asistencia,
                     'historia_asistencia' => $estudiante->historia_asistencia,
                     'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
@@ -5389,6 +5458,7 @@ public function exportar_excel_notas_linea1(){
                     'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                     'historia_total_curso' => $estudiante->historia_total_curso,
 
+                    'docente_ingles' => $estudiante->docente_ingles,    
                     'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
                     'ingles_asistencia' => $estudiante->ingles_asistencia,
                     'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
@@ -5398,6 +5468,7 @@ public function exportar_excel_notas_linea1(){
                     'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                     'ingles_total_curso' => $estudiante->ingles_total_curso,
 
+                    'docente_lectura' => $estudiante->docente_lectura,    
                     'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
                     'lectura_asistencia' => $estudiante->lectura_asistencia,
                     'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
@@ -5407,6 +5478,7 @@ public function exportar_excel_notas_linea1(){
                     'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                     'lectura_total_curso' => $estudiante->lectura_total_curso,
 
+                    'docente_matematicas' => $estudiante->docente_matematicas,    
                     'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
                     'matematicas_asistencia' => $estudiante->matematicas_asistencia,
                     'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
@@ -5416,6 +5488,7 @@ public function exportar_excel_notas_linea1(){
                     'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                     'matematicas_total_curso' => $estudiante->matematicas_total_curso,
 
+                    'docente_quimica' => $estudiante->docente_quimica,    
                     'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
                     'quimica_asistencia' => $estudiante->quimica_asistencia,
                     'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
@@ -5425,6 +5498,7 @@ public function exportar_excel_notas_linea1(){
                     'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                     'quimica_total_curso' => $estudiante->quimica_total_curso,
 
+                    'docente_tic' => $estudiante->docente_tic,    
                     'tic_items_asistencia' => $estudiante->tic_items_asistencia,
                     'tic_asistencia' => $estudiante->tic_asistencia,
                     'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
@@ -5446,6 +5520,7 @@ public function exportar_excel_notas_linea1(){
                 ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
 
+                $estudiante->docente_accionciudadana = "";
                 $estudiante->accionciudadana_items_asistencia = "";
                 $estudiante->accionciudadana_asistencia = "";
                 $estudiante->accionciudadana_items_seguimientos = "";
@@ -5455,6 +5530,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->accionciudadana_items_huerfanos = "";
                 $estudiante->accionciudadana_total_curso = "";
 
+                $estudiante->docente_biologia = "";
                 $estudiante->biologia_items_asistencia = "";
                 $estudiante->biologia_asistencia = "";
                 $estudiante->biologia_items_seguimientos = "";
@@ -5464,6 +5540,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->biologia_items_huerfanos = "";
                 $estudiante->biologia_total_curso = "";
 
+                $estudiante->docente_artes = "";
                 $estudiante->artes_items_asistencia = "";
                 $estudiante->artes_asistencia = "";
                 $estudiante->artes_items_seguimientos = "";
@@ -5474,6 +5551,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->artes_total_curso = "";
 
 
+                $estudiante->docente_deporte = "";
                 $estudiante->deporte_items_asistencia = "";
                 $estudiante->deporte_asistencia = "";
                 $estudiante->deporte_items_seguimientos = "";
@@ -5484,6 +5562,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->deporte_total_curso = "";
 
 
+                $estudiante->docente_dialogo = "";
                 $estudiante->dialogo_items_asistencia = "";
                 $estudiante->dialogo_asistencia = "";
                 $estudiante->dialogo_items_seguimientos = "";
@@ -5494,6 +5573,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->dialogo_total_curso = "";
 
 
+                $estudiante->docente_constitucion = "";
                 $estudiante->constitucion_items_asistencia = "";
                 $estudiante->constitucion_asistencia = "";
                 $estudiante->constitucion_items_seguimientos = "";
@@ -5504,6 +5584,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->constitucion_total_curso = "";
 
 
+                $estudiante->docente_fisica = "";
                 $estudiante->fisica_items_asistencia = "";
                 $estudiante->fisica_asistencia = "";
                 $estudiante->fisica_items_seguimientos = "";
@@ -5514,6 +5595,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->fisica_total_curso = "";
 
 
+                $estudiante->docente_geografia = "";
                 $estudiante->geografia_items_asistencia = "";
                 $estudiante->geografia_asistencia = "";
                 $estudiante->geografia_items_seguimientos = "";
@@ -5523,6 +5605,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->geografia_items_huerfanos = "";
                 $estudiante->geografia_total_curso = "";
 
+                $estudiante->docente_historia = "";
                 $estudiante->historia_items_asistencia = "";
                 $estudiante->historia_asistencia = "";
                 $estudiante->historia_items_seguimientos = "";
@@ -5533,6 +5616,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->historia_total_curso = "";
 
 
+                $estudiante->docente_ingles = "";
                 $estudiante->ingles_items_asistencia = "";
                 $estudiante->ingles_asistencia = "";
                 $estudiante->ingles_items_seguimientos = "";
@@ -5542,6 +5626,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->ingles_items_huerfanos = "";
                 $estudiante->ingles_total_curso = "";
 
+                $estudiante->docente_lectura = "";
                 $estudiante->lectura_items_asistencia = "";
                 $estudiante->lectura_asistencia = "";
                 $estudiante->lectura_items_seguimientos = "";
@@ -5551,6 +5636,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->lectura_items_huerfanos = "";
                 $estudiante->lectura_total_curso = "";
 
+                $estudiante->docente_matematicas = "";
                 $estudiante->matematicas_items_asistencia = "";
                 $estudiante->matematicas_asistencia = "";
                 $estudiante->matematicas_items_seguimientos = "";
@@ -5560,6 +5646,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->matematicas_items_huerfanos = "";
                 $estudiante->matematicas_total_curso = "";
 
+                $estudiante->docente_quimica = "";
                 $estudiante->quimica_items_asistencia = "";
                 $estudiante->quimica_asistencia = "";
                 $estudiante->quimica_items_seguimientos = "";
@@ -5569,6 +5656,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->quimica_items_huerfanos = "";
                 $estudiante->quimica_total_curso = "";
 
+                $estudiante->docente_tic = "";
                 $estudiante->tic_items_asistencia = "";
                 $estudiante->tic_asistencia = "";
                 $estudiante->tic_items_seguimientos = "";
@@ -5621,7 +5709,8 @@ public function exportar_excel_notas_linea1(){
 
                                     $estudiante->accionciudadana_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
-                            }                                        
+                            }
+                            $estudiante->docente_accionciudadana = $cursos->docente_name;                                  
                             break;
                         case 'BIOLOGIA':
                             if((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
@@ -5662,6 +5751,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }                                        
+                            $estudiante->docente_biologia = $cursos->docente_name;                                  
                             break;
                                 
                         case 'ARTES:':
@@ -5704,6 +5794,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->artes_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_artes = $cursos->docente_name;                                  
                             break;
 
                         case 'DEPORTE':
@@ -5746,6 +5837,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->deporte_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_deporte = $cursos->docente_name;                                  
                             break;
 
                         case 'DIALOGO':
@@ -5788,6 +5880,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_dialogo = $cursos->docente_name;                                  
                             break;
 
                         case 'CONSTITUCION':
@@ -5834,6 +5927,7 @@ public function exportar_excel_notas_linea1(){
                                  $estudiante->constitucion_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 }  
                             }
+                            $estudiante->docente_constitucion = $cursos->docente_name;                                  
                             break;  
 
                         case 'FISICA':
@@ -5877,6 +5971,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_fisica = $cursos->docente_name;                                  
                             break;
 
                         case 'GEOGRAFIA':
@@ -5919,6 +6014,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_geografia = $cursos->docente_name;                                  
                             break;
 
                         case 'HISTORIA':
@@ -5961,6 +6057,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             } 
+                            $estudiante->docente_historia = $cursos->docente_name;                                  
                             break;
 
                         case 'INGLES':
@@ -6003,6 +6100,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             } 
+                            $estudiante->docente_ingles = $cursos->docente_name;                                  
                             break;
 
                         case 'LECTURA':
@@ -6045,6 +6143,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_lectura = $cursos->docente_name;                                  
                             break;
 
                         case 'MATEMATICAS':
@@ -6087,6 +6186,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_matematicas = $cursos->docente_name;                                  
                             break;
 
                         case 'QUIMICA':
@@ -6129,6 +6229,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_quimica = $cursos->docente_name;                                  
                             break;
 
                         case 'TECNOLOGIA':
@@ -6171,9 +6272,10 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_tic = $cursos->docente_name;                                  
                             break;
                         default:
-                            echo $cursos->id;
+                            echo "ERROR CONTACTE AL ADMINISTRADOR";
                             break;
                     }
                 }
@@ -6189,6 +6291,7 @@ public function exportar_excel_notas_linea1(){
                     'estado' => $estudiante->estado,
                     'profersional' => $estudiante->encargado,
 
+                    'docente_accionciudadana' => $estudiante->docente_accionciudadana,    
                     'accionciudadana_items_asistencia' => $estudiante->accionciudadana_items_asistencia,
                     'accionciudadana_asistencia' => $estudiante->accionciudadana_asistencia,
                     'accionciudadana_items_seguimientos' => $estudiante->accionciudadana_items_seguimientos,
@@ -6198,6 +6301,7 @@ public function exportar_excel_notas_linea1(){
                     'accionciudadana_items_huerfanos' => $estudiante->accionciudadana_items_huerfanos,
                     'accionciudadana_total_curso' => $estudiante->accionciudadana_total_curso,
 
+                    'docente_artes' => $estudiante->docente_artes,    
                     'artes_items_asistencia' => $estudiante->artes_items_asistencia,
                     'artes_asistencia' => $estudiante->artes_asistencia,
                     'artes_items_seguimientos' => $estudiante->artes_items_seguimientos,
@@ -6207,6 +6311,7 @@ public function exportar_excel_notas_linea1(){
                     'artes_items_huerfanos' => $estudiante->artes_items_huerfanos,
                     'artes_total_curso' => $estudiante->artes_total_curso,
 
+                    'docente_biologia' => $estudiante->docente_biologia,    
                     'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
                     'biologia_asistencia' => $estudiante->biologia_asistencia,
                     'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
@@ -6216,6 +6321,7 @@ public function exportar_excel_notas_linea1(){
                     'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                     'biologia_total_curso' => $estudiante->biologia_total_curso,    
 
+                    'docente_deporte' => $estudiante->docente_deporte,    
                     'deporte_items_asistencia' => $estudiante->deporte_items_asistencia,
                     'deporte_asistencia' => $estudiante->deporte_asistencia,
                     'deporte_items_seguimientos' => $estudiante->deporte_items_seguimientos,
@@ -6225,6 +6331,7 @@ public function exportar_excel_notas_linea1(){
                     'deporte_items_huerfanos' => $estudiante->deporte_items_huerfanos,
                     'deporte_total_curso' => $estudiante->deporte_total_curso,
 
+                    'docente_dialogo' => $estudiante->docente_dialogo,    
                     'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
                     'dialogo_asistencia' => $estudiante->dialogo_asistencia,
                     'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
@@ -6234,6 +6341,7 @@ public function exportar_excel_notas_linea1(){
                     'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                     'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
+                    'docente_constitucion' => $estudiante->docente_constitucion,    
                     'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
                     'constitucion_asistencia' => $estudiante->constitucion_asistencia,
                     'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
@@ -6243,6 +6351,7 @@ public function exportar_excel_notas_linea1(){
                     'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
                     'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
+                    'docente_fisica' => $estudiante->docente_fisica,    
                     'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
                     'fisica_asistencia' => $estudiante->fisica_asistencia,
                     'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
@@ -6252,6 +6361,7 @@ public function exportar_excel_notas_linea1(){
                     'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                     'fisica_total_curso' => $estudiante->fisica_total_curso,
 
+                    'docente_geografia' => $estudiante->docente_geografia,    
                     'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
                     'geografia_asistencia' => $estudiante->geografia_asistencia,
                     'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
@@ -6261,6 +6371,7 @@ public function exportar_excel_notas_linea1(){
                     'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                     'geografia_total_curso' => $estudiante->geografia_total_curso,
 
+                    'docente_historia' => $estudiante->docente_historia,    
                     'historia_items_asistencia' => $estudiante->historia_items_asistencia,
                     'historia_asistencia' => $estudiante->historia_asistencia,
                     'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
@@ -6270,6 +6381,7 @@ public function exportar_excel_notas_linea1(){
                     'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                     'historia_total_curso' => $estudiante->historia_total_curso,
 
+                    'docente_ingles' => $estudiante->docente_ingles,    
                     'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
                     'ingles_asistencia' => $estudiante->ingles_asistencia,
                     'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
@@ -6279,6 +6391,7 @@ public function exportar_excel_notas_linea1(){
                     'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                     'ingles_total_curso' => $estudiante->ingles_total_curso,
 
+                    'docente_lectura' => $estudiante->docente_lectura,    
                     'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
                     'lectura_asistencia' => $estudiante->lectura_asistencia,
                     'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
@@ -6288,6 +6401,7 @@ public function exportar_excel_notas_linea1(){
                     'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                     'lectura_total_curso' => $estudiante->lectura_total_curso,
 
+                    'docente_matematicas' => $estudiante->docente_matematicas,    
                     'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
                     'matematicas_asistencia' => $estudiante->matematicas_asistencia,
                     'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
@@ -6297,6 +6411,7 @@ public function exportar_excel_notas_linea1(){
                     'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                     'matematicas_total_curso' => $estudiante->matematicas_total_curso,
 
+                    'docente_quimica' => $estudiante->docente_quimica,    
                     'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
                     'quimica_asistencia' => $estudiante->quimica_asistencia,
                     'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
@@ -6306,6 +6421,7 @@ public function exportar_excel_notas_linea1(){
                     'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                     'quimica_total_curso' => $estudiante->quimica_total_curso,
 
+                    'docente_tic' => $estudiante->docente_tic,    
                     'tic_items_asistencia' => $estudiante->tic_items_asistencia,
                     'tic_asistencia' => $estudiante->tic_asistencia,
                     'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
@@ -6341,6 +6457,7 @@ public function exportar_excel_notas_linea1(){
                     'estado' => $estudiante->estado,
                     'profersional' => $estudiante->encargado,
 
+                    'docente_biologia' => $estudiante->docente_biologia,
                     'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
                     'biologia_asistencia' => $estudiante->biologia_asistencia,
                     'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
@@ -6350,6 +6467,7 @@ public function exportar_excel_notas_linea1(){
                     'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                     'biologia_total_curso' => $estudiante->biologia_total_curso,
 
+                    'docente_dialogo' => $estudiante->docente_dialogo,
                     'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
                     'dialogo_asistencia' => $estudiante->dialogo_asistencia,
                     'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
@@ -6359,6 +6477,7 @@ public function exportar_excel_notas_linea1(){
                     'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                     'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
+                    'docente_constitucion' => $estudiante->docente_constitucion,
                     'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
                     'constitucion_asistencia' => $estudiante->constitucion_asistencia,
                     'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
@@ -6368,6 +6487,7 @@ public function exportar_excel_notas_linea1(){
                     'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
                     'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
+                    'docente_fisica' => $estudiante->docente_fisica,
                     'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
                     'fisica_asistencia' => $estudiante->fisica_asistencia,
                     'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
@@ -6377,6 +6497,7 @@ public function exportar_excel_notas_linea1(){
                     'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                     'fisica_total_curso' => $estudiante->fisica_total_curso,
 
+                    'docente_geografia' => $estudiante->docente_geografia,
                     'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
                     'geografia_asistencia' => $estudiante->geografia_asistencia,
                     'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
@@ -6386,6 +6507,7 @@ public function exportar_excel_notas_linea1(){
                     'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                     'geografia_total_curso' => $estudiante->geografia_total_curso,
 
+                    'docente_historia' => $estudiante->docente_historia,
                     'historia_items_asistencia' => $estudiante->historia_items_asistencia,
                     'historia_asistencia' => $estudiante->historia_asistencia,
                     'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
@@ -6395,6 +6517,7 @@ public function exportar_excel_notas_linea1(){
                     'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                     'historia_total_curso' => $estudiante->historia_total_curso,
 
+                    'docente_ingles' => $estudiante->docente_ingles,
                     'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
                     'ingles_asistencia' => $estudiante->ingles_asistencia,
                     'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
@@ -6404,6 +6527,7 @@ public function exportar_excel_notas_linea1(){
                     'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                     'ingles_total_curso' => $estudiante->ingles_total_curso,
 
+                    'docente_lectura' => $estudiante->docente_lectura,
                     'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
                     'lectura_asistencia' => $estudiante->lectura_asistencia,
                     'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
@@ -6413,6 +6537,7 @@ public function exportar_excel_notas_linea1(){
                     'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                     'lectura_total_curso' => $estudiante->lectura_total_curso,
 
+                    'docente_matematicas' => $estudiante->docente_matematicas,
                     'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
                     'matematicas_asistencia' => $estudiante->matematicas_asistencia,
                     'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
@@ -6422,6 +6547,7 @@ public function exportar_excel_notas_linea1(){
                     'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                     'matematicas_total_curso' => $estudiante->matematicas_total_curso,
 
+                    'docente_practicas' => $estudiante->docente_practicas,
                     'practicas_items_asistencia' => $estudiante->practicas_items_asistencia,
                     'practicas_asistencia' => $estudiante->practicas_asistencia,
                     'practicas_items_seguimientos' => $estudiante->practicas_items_seguimientos,
@@ -6431,6 +6557,7 @@ public function exportar_excel_notas_linea1(){
                     'practicas_items_huerfanos' => $estudiante->practicas_items_huerfanos,
                     'practicas_total_curso' => $estudiante->practicas_total_curso,
 
+                    'docente_quimica' => $estudiante->docente_quimica,
                     'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
                     'quimica_asistencia' => $estudiante->quimica_asistencia,
                     'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
@@ -6440,6 +6567,7 @@ public function exportar_excel_notas_linea1(){
                     'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                     'quimica_total_curso' => $estudiante->quimica_total_curso,
 
+                    'docente_tic' => $estudiante->docente_tic,
                     'tic_items_asistencia' => $estudiante->tic_items_asistencia,
                     'tic_asistencia' => $estudiante->tic_asistencia,
                     'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
@@ -6460,6 +6588,8 @@ public function exportar_excel_notas_linea1(){
                 ini_set('memory_limit', '2048M');
                 $estudiante->asignaturas = CourseMoodle::asignaturas($estudiante->grupo, $estudiante->id_moodle);
                 //dd($estudiante->asignaturas);
+
+                $estudiante->docente_biologia = "";
                 $estudiante->biologia_items_asistencia = "";
                 $estudiante->biologia_asistencia = "";
                 $estudiante->biologia_items_seguimientos = "";
@@ -6469,6 +6599,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->biologia_items_huerfanos = "";
                 $estudiante->biologia_total_curso = "";
 
+                $estudiante->docente_dialogo = "";
                 $estudiante->dialogo_items_asistencia = "";
                 $estudiante->dialogo_asistencia = "";
                 $estudiante->dialogo_items_seguimientos = "";
@@ -6478,6 +6609,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->dialogo_items_huerfanos = "";
                 $estudiante->dialogo_total_curso = "";    
 
+                $estudiante->docente_constitucion = "";
                 $estudiante->constitucion_items_asistencia = "";
                 $estudiante->constitucion_asistencia = "";
                 $estudiante->constitucion_items_seguimientos = "";
@@ -6487,6 +6619,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->constitucion_items_huerfanos = "";
                 $estudiante->constitucion_total_curso = "";
 
+                $estudiante->docente_fisica = "";
                 $estudiante->fisica_items_asistencia = "";
                 $estudiante->fisica_asistencia = "";
                 $estudiante->fisica_items_seguimientos = "";
@@ -6496,6 +6629,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->fisica_items_huerfanos = "";
                 $estudiante->fisica_total_curso = "";
 
+                $estudiante->docente_geografia = "";
                 $estudiante->geografia_items_asistencia = "";
                 $estudiante->geografia_asistencia = "";
                 $estudiante->geografia_items_seguimientos = "";
@@ -6505,6 +6639,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->geografia_items_huerfanos = "";
                 $estudiante->geografia_total_curso = "";
                 
+                $estudiante->docente_historia = "";
                 $estudiante->historia_items_asistencia = "";
                 $estudiante->historia_asistencia = "";
                 $estudiante->historia_items_seguimientos = "";
@@ -6514,6 +6649,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->historia_items_huerfanos = "";
                 $estudiante->historia_total_curso = "";
 
+                $estudiante->docente_ingles = "";
                 $estudiante->ingles_items_asistencia = "";
                 $estudiante->ingles_asistencia = "";
                 $estudiante->ingles_items_seguimientos = "";
@@ -6523,6 +6659,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->ingles_items_huerfanos = "";
                 $estudiante->ingles_total_curso = "";
 
+                $estudiante->docente_lectura = "";
                 $estudiante->lectura_items_asistencia = "";
                 $estudiante->lectura_asistencia = "";
                 $estudiante->lectura_items_seguimientos = "";
@@ -6532,6 +6669,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->lectura_items_huerfanos = "";
                 $estudiante->lectura_total_curso = "";
 
+                $estudiante->docente_matematicas = "";
                 $estudiante->matematicas_items_asistencia = "";
                 $estudiante->matematicas_asistencia = "";
                 $estudiante->matematicas_items_seguimientos = "";
@@ -6541,6 +6679,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->matematicas_items_huerfanos = "";
                 $estudiante->matematicas_total_curso = "";
 
+                $estudiante->docente_practicas = "";
                 $estudiante->practicas_items_asistencia = "";
                 $estudiante->practicas_asistencia = "";
                 $estudiante->practicas_items_seguimientos = "";
@@ -6550,6 +6689,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->practicas_items_huerfanos = "";
                 $estudiante->practicas_total_curso = "";
 
+                $estudiante->docente_quimica = "";
                 $estudiante->quimica_items_asistencia = "";
                 $estudiante->quimica_asistencia = "";
                 $estudiante->quimica_items_seguimientos = "";
@@ -6559,6 +6699,7 @@ public function exportar_excel_notas_linea1(){
                 $estudiante->quimica_items_huerfanos = "";
                 $estudiante->quimica_total_curso = "";
 
+                $estudiante->docente_tic = "";
                 $estudiante->tic_items_asistencia = "";
                 $estudiante->tic_asistencia = "";
                 $estudiante->tic_items_seguimientos = "";
@@ -6611,7 +6752,8 @@ public function exportar_excel_notas_linea1(){
                                 foreach((array)$items_huerfanos as $huerfanos){
                                     $estudiante->biologia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
-                            }                                        
+                            }
+                            $estudiante->docente_biologia = $cursos->docente_name;                                        
                             break;
 
                         case 'DIALOGO':
@@ -6654,6 +6796,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->dialogo_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_dialogo = $cursos->docente_name;                                        
                             break;
 
                         case 'CONSTITUCION':
@@ -6700,6 +6843,7 @@ public function exportar_excel_notas_linea1(){
                                  $estudiante->constitucion_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 }  
                             }
+                            $estudiante->docente_constitucion = $cursos->docente_name;                                       
                             break;  
 
                         case 'FISICA':
@@ -6743,6 +6887,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->fisica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_fisica = $cursos->docente_name;                                        
                             break;
 
                         case 'GEOGRAFIA':
@@ -6785,6 +6930,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->geografia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_geografia = $cursos->docente_name;                                        
                             break;
 
                         case 'HISTORIA':
@@ -6827,6 +6973,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->historia_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             } 
+                            $estudiante->docente_historia = $cursos->docente_name;                                        
                             break;
 
                         case 'INGLES':
@@ -6869,6 +7016,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->ingles_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             } 
+                            $estudiante->docente_ingles = $cursos->docente_name;                                        
                             break;
 
                         case 'LECTURA':
@@ -6911,6 +7059,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->lectura_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_lectura = $cursos->docente_name;                                        
                             break;
 
                         case 'MATEMATICAS':
@@ -6953,6 +7102,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->matematicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_matematicas = $cursos->docente_name;                                        
                             break;
 
                         case 'PRACTICAS':
@@ -6995,6 +7145,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->practicas_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_practicas = $cursos->docente_name;                                        
                             break;    
                             
                         case 'QUIMICA':
@@ -7037,6 +7188,7 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->quimica_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_quimica = $cursos->docente_name;                                        
                             break;
 
                         case 'TECNOLOGIA':
@@ -7079,10 +7231,11 @@ public function exportar_excel_notas_linea1(){
                                     $estudiante->tic_items_huerfanos .= $huerfanos->item_name.': '. $huerfanos->grade.','."\n";
                                 } 
                             }
+                            $estudiante->docente_tic = $cursos->docente_name;                                        
                             break;
                                 
                         default:
-                            echo $cursos->fullname;
+                            echo "ERROR CONTACTE AL ADMINISTRADOR";
                             break;
                     }
                 
@@ -7099,6 +7252,7 @@ public function exportar_excel_notas_linea1(){
                     'estado' => $estudiante->estado,
                     'profersional' => $estudiante->encargado,
 
+                    'docente_biologia' => $estudiante->docente_biologia,
                     'biologia_items_asistencia' => $estudiante->biologia_items_asistencia,
                     'biologia_asistencia' => $estudiante->biologia_asistencia,
                     'biologia_items_seguimientos' => $estudiante->biologia_items_seguimientos,
@@ -7108,6 +7262,7 @@ public function exportar_excel_notas_linea1(){
                     'biologia_items_huerfanos' => $estudiante->biologia_items_huerfanos,
                     'biologia_total_curso' => $estudiante->biologia_total_curso,
 
+                    'docente_dialogo' => $estudiante->docente_dialogo,
                     'dialogo_items_asistencia' => $estudiante->dialogo_items_asistencia,
                     'dialogo_asistencia' => $estudiante->dialogo_asistencia,
                     'dialogo_items_seguimientos' => $estudiante->dialogo_items_seguimientos,
@@ -7117,6 +7272,7 @@ public function exportar_excel_notas_linea1(){
                     'dialogo_items_huerfanos' => $estudiante->dialogo_items_huerfanos,
                     'dialogo_total_curso' => $estudiante->dialogo_total_curso,
 
+                    'docente_constitucion' => $estudiante->docente_constitucion,
                     'constitucion_items_asistencia' => $estudiante->constitucion_items_asistencia,
                     'constitucion_asistencia' => $estudiante->constitucion_asistencia,
                     'constitucion_items_seguimientos' => $estudiante->constitucion_items_seguimientos,
@@ -7126,6 +7282,7 @@ public function exportar_excel_notas_linea1(){
                     'constitucion_items_huerfanos' => $estudiante->constitucion_items_huerfanos,
                     'constitucion_total_curso' => $estudiante->constitucion_total_curso,
 
+                    'docente_fisica' => $estudiante->docente_fisica,
                     'fisica_items_asistencia' => $estudiante->fisica_items_asistencia,
                     'fisica_asistencia' => $estudiante->fisica_asistencia,
                     'fisica_items_seguimientos' => $estudiante->fisica_items_seguimientos,
@@ -7135,6 +7292,7 @@ public function exportar_excel_notas_linea1(){
                     'fisica_items_huerfanos' => $estudiante->fisica_items_huerfanos,
                     'fisica_total_curso' => $estudiante->fisica_total_curso,
 
+                    'docente_geografia' => $estudiante->docente_geografia,
                     'geografia_items_asistencia' => $estudiante->geografia_items_asistencia,
                     'geografia_asistencia' => $estudiante->geografia_asistencia,
                     'geografia_items_seguimientos' => $estudiante->geografia_items_seguimientos,
@@ -7144,6 +7302,7 @@ public function exportar_excel_notas_linea1(){
                     'geografia_items_huerfanos' => $estudiante->geografia_items_huerfanos,
                     'geografia_total_curso' => $estudiante->geografia_total_curso,
 
+                    'docente_historia' => $estudiante->docente_historia,
                     'historia_items_asistencia' => $estudiante->historia_items_asistencia,
                     'historia_asistencia' => $estudiante->historia_asistencia,
                     'historia_items_seguimientos' => $estudiante->historia_items_seguimientos,
@@ -7153,6 +7312,7 @@ public function exportar_excel_notas_linea1(){
                     'historia_items_huerfanos' => $estudiante->historia_items_huerfanos,
                     'historia_total_curso' => $estudiante->historia_total_curso,
 
+                    'docente_ingles' => $estudiante->docente_ingles,
                     'ingles_items_asistencia' => $estudiante->ingles_items_asistencia,
                     'ingles_asistencia' => $estudiante->ingles_asistencia,
                     'ingles_items_seguimientos' => $estudiante->ingles_items_seguimientos,
@@ -7162,6 +7322,7 @@ public function exportar_excel_notas_linea1(){
                     'ingles_items_huerfanos' => $estudiante->ingles_items_huerfanos,
                     'ingles_total_curso' => $estudiante->ingles_total_curso,
 
+                    'docente_lectura' => $estudiante->docente_lectura,
                     'lectura_items_asistencia' => $estudiante->lectura_items_asistencia,
                     'lectura_asistencia' => $estudiante->lectura_asistencia,
                     'lectura_items_seguimientos' => $estudiante->lectura_items_seguimientos,
@@ -7171,6 +7332,7 @@ public function exportar_excel_notas_linea1(){
                     'lectura_items_huerfanos' => $estudiante->lectura_items_huerfanos,
                     'lectura_total_curso' => $estudiante->lectura_total_curso,
 
+                    'docente_matematicas' => $estudiante->docente_matematicas,
                     'matematicas_items_asistencia' => $estudiante->matematicas_items_asistencia,
                     'matematicas_asistencia' => $estudiante->matematicas_asistencia,
                     'matematicas_items_seguimientos' => $estudiante->matematicas_items_seguimientos,
@@ -7180,6 +7342,7 @@ public function exportar_excel_notas_linea1(){
                     'matematicas_items_huerfanos' => $estudiante->matematicas_items_huerfanos,
                     'matematicas_total_curso' => $estudiante->matematicas_total_curso,
 
+                    'docente_practicas' => $estudiante->docente_practicas,
                     'practicas_items_asistencia' => $estudiante->practicas_items_asistencia,
                     'practicas_asistencia' => $estudiante->practicas_asistencia,
                     'practicas_items_seguimientos' => $estudiante->practicas_items_seguimientos,
@@ -7189,6 +7352,7 @@ public function exportar_excel_notas_linea1(){
                     'practicas_items_huerfanos' => $estudiante->practicas_items_huerfanos,
                     'practicas_total_curso' => $estudiante->practicas_total_curso,
 
+                    'docente_quimica' => $estudiante->docente_quimica,
                     'quimica_items_asistencia' => $estudiante->quimica_items_asistencia,
                     'quimica_asistencia' => $estudiante->quimica_asistencia,
                     'quimica_items_seguimientos' => $estudiante->quimica_items_seguimientos,
@@ -7198,6 +7362,7 @@ public function exportar_excel_notas_linea1(){
                     'quimica_items_huerfanos' => $estudiante->quimica_items_huerfanos,
                     'quimica_total_curso' => $estudiante->quimica_total_curso,
 
+                    'docente_tic' => $estudiante->docente_tic,
                     'tic_items_asistencia' => $estudiante->tic_items_asistencia,
                     'tic_asistencia' => $estudiante->tic_asistencia,
                     'tic_items_seguimientos' => $estudiante->tic_items_seguimientos,
@@ -7216,5 +7381,5 @@ public function exportar_excel_notas_linea1(){
 
             return Excel::download($exportar, "reporte_notas_linea_3.xlsx");
         }
-    } 
+    }
 }

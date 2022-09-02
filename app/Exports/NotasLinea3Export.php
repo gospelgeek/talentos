@@ -25,25 +25,25 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
         return [
             [' '],
             ['REPORTE DE CALIFICACIONES LINEA 3'],
-            ['DATOS PERSONALES','','','','','','','','BIOLOGIA','','','','','','','',
-            'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL','','','','','','','','CONSTITUCION','','','','','','','',
-            'FISICA','','','','','','','','GEOGRAFIA','','','','','','','','HISTORIA','','','','','','','',
-            'INGLES','','','','','','','','LECTURA CRITICA','','','','','','','','MATEMATICAS','','','','','','','',
-            'PRACTICAS ARTISTICAS Y HORIZONTE SOCIO OCUPACIONAL','','','','','','','','QUIMICA','','','','','','','',
+            ['DATOS PERSONALES','','','','','','','','BIOLOGIA','','','','','','','','',
+            'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL','','','','','','','','','CONSTITUCION','','','','','','','','',
+            'FISICA','','','','','','','','','GEOGRAFIA','','','','','','','','','HISTORIA','','','','','','','','',
+            'INGLES','','','','','','','','','LECTURA CRITICA','','','','','','','','','MATEMATICAS','','','','','','','','',
+            'PRACTICAS ARTISTICAS Y HORIZONTE SOCIO OCUPACIONAL','','','','','','','','','QUIMICA','','','','','','','','',
             'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES'],
             ['Nº', 'NOMBRE', 'APELLIDOS', 'TIPO DOC.', 'Nº DOCUMENTO', 'GRUPO', 'ESTADO', 'PROFESIONAL', 
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
-            'ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',],
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',
+            'DOCENTE','ITEMS ASISTENCIA','ASISTENCIA PARTICIPATIVA','ITEMS SEGUIMIENTO','SEGUIMIENTO ACADEMICO','ITEMS AUTOEVALUACION', 'AUTOEVALUACION', 'ITEMS HUERFANOS','TOTAL CURSO',],
         ];
 
     }
@@ -64,30 +64,30 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
         return [
             AfterSheet::class    => function(AfterSheet $event) {
                 
-                $event->sheet->getDelegate()->mergeCells('A2:CZ2');
+                $event->sheet->getDelegate()->mergeCells('A2:DL2');
 
                 $event->sheet->getDelegate()->mergeCells('A3:H3');
-                $event->sheet->getDelegate()->mergeCells('I3:P3');
-                $event->sheet->getDelegate()->mergeCells('Q3:X3');
-                $event->sheet->getDelegate()->mergeCells('Y3:AF3');
-                $event->sheet->getDelegate()->mergeCells('AG3:AN3');
-                $event->sheet->getDelegate()->mergeCells('AO3:AV3');
-                $event->sheet->getDelegate()->mergeCells('AW3:BD3');
-                $event->sheet->getDelegate()->mergeCells('BE3:BL3');
-                $event->sheet->getDelegate()->mergeCells('BM3:BT3');
-                $event->sheet->getDelegate()->mergeCells('BU3:CB3');
-                $event->sheet->getDelegate()->mergeCells('CC3:CJ3');
-                $event->sheet->getDelegate()->mergeCells('CK3:CR3');
-                $event->sheet->getDelegate()->mergeCells('CS3:CZ3');
+                $event->sheet->getDelegate()->mergeCells('I3:Q3');
+                $event->sheet->getDelegate()->mergeCells('R3:Z3');
+                $event->sheet->getDelegate()->mergeCells('AA3:AI3');
+                $event->sheet->getDelegate()->mergeCells('AJ3:AR3');
+                $event->sheet->getDelegate()->mergeCells('AS3:BA3');
+                $event->sheet->getDelegate()->mergeCells('BB3:BJ3');
+                $event->sheet->getDelegate()->mergeCells('BK3:BS3');
+                $event->sheet->getDelegate()->mergeCells('BT3:CB3');
+                $event->sheet->getDelegate()->mergeCells('CC3:CK3');
+                $event->sheet->getDelegate()->mergeCells('CL3:CT3');
+                $event->sheet->getDelegate()->mergeCells('CU3:DC3');
+                $event->sheet->getDelegate()->mergeCells('DD3:DL3');
                 
-                $event->sheet->getDelegate()->getStyle('A4:CZ4')
+                $event->sheet->getDelegate()->getStyle('A4:DL4')
                         ->getFill()
                         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                         ->getStartColor()
                         ->setARGB('C0C0C0');
 
                 $event->sheet->styleCells(
-                    'A3:CZ948',[
+                    'A3:DL948',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -97,7 +97,7 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A2:CZ2',[
+                    'A2:DL2',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -107,7 +107,7 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A4:CZ4',
+                    'A4:DL4',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -119,7 +119,7 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A3:CZ3',
+                    'A3:DL3',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -144,7 +144,7 @@ class NotasLinea3Export implements FromArray, WithHeadings, ShouldAutoSize, With
                 $event->sheet->getDelegate()->getStyle('A2')
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-                $event->sheet->getDelegate()->getStyle('A3:CZ3')
+                $event->sheet->getDelegate()->getStyle('A3:DL3')
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
             },

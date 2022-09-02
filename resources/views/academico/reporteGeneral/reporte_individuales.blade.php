@@ -396,6 +396,13 @@
 							<th>Autoevaluación</th>
 							<th>Item huerfano</th>
 							<th>Total curso</th>
+                            
+                            <th>Docente</th>
+							<th>Asistencia participativa</th>
+							<th>Seguimiento academico</th>
+							<th>Autoevaluación</th>
+							<th>Item huerfano</th>
+							<th>Total curso</th>
 						</tr>
 					</thead>
 				  </table>

@@ -695,10 +695,10 @@ public function __construct()
                             $cursos->fullname = explode('-',$cursos->fullname)[0];
                             //dd($cursos);
                             switch ($cursos->fullname) {
-                                case 'JORNADAS':
+                                case 'JORNADAS DE ACCION CIUDADANA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $accionciudadana_asistencias = $cursos->grade;
+                                        $accionciudadana_asistencia = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -723,7 +723,7 @@ public function __construct()
                                     $docente_accion_ciudadana = $cursos->docente_name;
                                     break;
 
-                                case 'ARTES:':
+                                case 'ARTES: CONOCIMIENTO EN ACCION :':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $artes_asistencias = $cursos->grade;
@@ -779,7 +779,7 @@ public function __construct()
                                     $docente_biologia = $cursos->docente_name;
                                     break;
 
-                                case 'CULTURA':
+                                case 'CULTURA DEMOCRATICA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $cultura_asistencias = $cursos->grade;
@@ -807,7 +807,7 @@ public function __construct()
                                     $docente_cultura = $cursos->docente_name;
                                     break;
 
-                                case 'DEPORTE':
+                                case 'DEPORTE Y SALUD INTEGRAL ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $deporte_asistencias = $cursos->grade;
@@ -835,7 +835,7 @@ public function __construct()
                                     $docente_deporte = $cursos->docente_name;
                                     break;
 
-                                case 'DIALOGO':
+                                case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $dialogo_asistencias = $cursos->grade;
@@ -1001,7 +1001,7 @@ public function __construct()
                                     $courseid_ingles = $cursos->id;
                                     $docente_ingles = $cursos->docente_name;
                                     break;                               
-                                case 'LECTURA':
+                                case 'LECTURA CRITICA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $lectura_asistencias = $cursos->grade;
@@ -1084,7 +1084,7 @@ public function __construct()
                                     $docente_quimica = $cursos->docente_name;
                                     break;
 
-                                case 'TECNOLOGIA':
+                                case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $tic_asistencias = $cursos->grade;
@@ -1382,10 +1382,10 @@ public function __construct()
                         $docente_tic = '';
                         //dd($estudiante->asignaturas);
                         foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode(' ',$cursos->fullname)[0];
+                            $cursos->fullname = explode('-',$cursos->fullname)[0];
                             //dd($cursos);
                             switch ($cursos->fullname) {
-                                case 'JORNADAS':
+                                case 'JORNADAS DE ACCION CIUDADANA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $accionciudadana_asistencia = $cursos->grade;
@@ -1413,7 +1413,7 @@ public function __construct()
                                     $docente_accion_ciudadana = $cursos->docente_name;
                                     break;
 
-                                case 'ARTES:':
+                                case 'ARTES: CONOCIMIENTO EN ACCION :':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $artes_asistencias = $cursos->grade;
@@ -1469,7 +1469,7 @@ public function __construct()
                                     $docente_biologia = $cursos->docente_name;
                                     break;
 
-                                case 'CULTURA':
+                                case 'CULTURA DEMOCRATICA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $cultura_asistencias = $cursos->grade;
@@ -1497,7 +1497,7 @@ public function __construct()
                                     $docente_cultura = $cursos->docente_name;
                                     break;
 
-                                case 'DEPORTE':
+                                case 'DEPORTE Y SALUD INTEGRAL ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $deporte_asistencias = $cursos->grade;
@@ -1525,7 +1525,7 @@ public function __construct()
                                     $docente_deporte = $cursos->docente_name;
                                     break;
 
-                                case 'DIALOGO':
+                                case 'DIALOGO DE SABERES Y ORIENTACION VOCACIONAL ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $dialogo_asistencias = $cursos->grade;
@@ -1691,7 +1691,7 @@ public function __construct()
                                     $courseid_ingles = $cursos->id;
                                     $docente_ingles = $cursos->docente_name;
                                     break;                               
-                                case 'LECTURA':
+                                case 'LECTURA CRITICA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $lectura_asistencias = $cursos->grade;
@@ -1774,7 +1774,7 @@ public function __construct()
                                     $docente_quimica = $cursos->docente_name;
                                     break;
 
-                                case 'TECNOLOGIA':
+                                case 'TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
                                         $tic_asistencias = $cursos->grade;

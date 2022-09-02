@@ -316,6 +316,7 @@
                 			<th colspan="6">QUIMICA</th>
                 			<th colspan="6">TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES</th>
                 			<th colspan="6">DIÁLOGO DE SABERES</th>
+                            <th colspan="6">PRACTICAS ARTISTICAS</th>
                 			<th rowspan="2">ACCIONES</th>	
 						</tr>
 						<tr>
@@ -2196,6 +2197,48 @@
             	}
         	},
           	{data: 'dialogo_total_curso', render:function(data, type, row, meta){
+          			return '<b>'+data+'</b>';
+           		}
+          	},
+            
+            {data: 'docente_practica'},
+          	{data: null, render:function(data, type, row, meta){
+            		if(data.practica_asistencia != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.practica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"PRACTICA ARTISTICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.practica_asistencia+'</u></button>';
+            		}else{
+            			return data.practica_asistencia;
+            		}
+            	}
+        	},
+        	{data: null, render:function(data, type, row, meta){
+            		if(data.practica_seguimiento_academico != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.practica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"PRACTICA ARTISTICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.practica_seguimiento_academico+'</u></button>';
+            		}else{
+            			return data.practica_seguimiento_academico;
+            		}
+            	}
+        	},
+          	{data: null, render:function(data, type, row, meta){
+            		if(data.practica_autoevaluacion != 0){
+            			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.practica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"PRACTICA ARTISTICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\', \''+"Autoevaluación"+'\');"><u>'+data.practica_autoevaluacion+'</u></button>';
+            		}else{
+            			return data.practica_autoevaluacion;
+            		}
+            	}
+        	},
+          	{data: null, render:function(data, type, row, meta){
+            		if(data.practica_item_huerfano != 0){
+            			return mstr = '<div class="btn-group">'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<tr>'+'<td>'+'<a class="ver btn btn-block fa fa-eye fa" title="Ver item huerfanos" type="button" onclick="abrir_modal_huerfanos('+data.practica_course_id+','+data.id_moodle+',\''+data.name+'\', \''+data.lastname+'\', \''+"PRACTICA ARTISTICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 3"+'\');"></a>'+'</td>'+'</tr>'+
+                          '</div>'+
+                          "</div>";
+            		}else{
+            			return mostrar = '--';
+            		}
+            	}
+        	},
+          	{data: 'practica_total_curso', render:function(data, type, row, meta){
           			return '<b>'+data+'</b>';
            		}
           	},

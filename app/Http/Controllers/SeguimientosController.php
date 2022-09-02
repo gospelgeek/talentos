@@ -3175,13 +3175,13 @@ public function __construct()
                 $courseid_dialogo = 0;
                 $docente_dialogo = '';
 
-                $practicas_asistencia = 0;
-                $practicas_seguimiento_academico = 0;
-                $practicas_autoevaluacion = 0;
-                $practicas_total_curso = 0;
-                $item_huerfano_practicas = 0;
-                $courseid_practicas = 0;
-                $docente_practicas = '';
+                $practica_asistencia = 0;
+                $practica_seguimiento_academico = 0;
+                $practica_autoevaluacion = 0;
+                $practica_total_curso = 0;
+                $item_huerfano_practica = 0;
+                $courseid_practica = 0;
+                $docente_practica = '';
 
                 foreach((array)$estudiante->asignaturas as $cursos){
                     $cursos->fullname = explode('-',$cursos->fullname)[0];
@@ -3488,30 +3488,29 @@ public function __construct()
                             if((strpos($cursos->category_name, 'Asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $practicas_asistencia = $cursos->grade;
+                                $practica_asistencia = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'Actividades') !== false) ||
                                 (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
                                 (strpos($cursos->category_name, 'PARCIALES') !== false) || 
                                 (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
                                 (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $practicas_seguimiento_academico = $cursos->grade;
+                                $practica_seguimiento_academico = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'Auto') !== false) ||
                                 (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
                                 || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $practicas_autoevaluacion = $cursos->grade;
+                                $practica_autoevaluacion = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $practicas_total_curso = $cursos->grade;
+                                $practica_total_curso = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_practicas += 1;
+                                $item_huerfano_practica += 1;
                             }
-                            $courseid_practicas = $cursos->id;
-                            $docente_practicas = $cursos->docente_name;
-                            //dd($courseid_practica);
-                        break; 
+                            $courseid_practica = $cursos->id;
+                            $docente_practica = $cursos->docente_name;
+                        break;  
                         default:
                             break;
                     }
@@ -3593,14 +3592,13 @@ public function __construct()
                 $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
                 $estudiante->dialogo_course_id = $courseid_dialogo;
                 $estudiante->docente_dialogo = $docente_dialogo;
-                /*$estudiante->practicas_asistencia = $practicas_asistencia;
-                $estudiante->practicas_seguimiento_academico = $practicas_seguimiento_academico;
-                $estudiante->practicas_autoevaluacion = $practicas_autoevaluacion;
-                $estudiante->practicas_total_curso = $practicas_total_curso;
-                $estudiante->practicas_item_huerfano = $item_huerfano_practicas;
-                $estudiante->practicas_course_id = $courseid_practicas;
-                $estudiante->docente_practicas = $docente_practicas;
-                */
+                $estudiante->practica_asistencia = $practica_asistencia;
+                $estudiante->practica_seguimiento_academico = $practica_seguimiento_academico;
+                $estudiante->practica_autoevaluacion = $practica_autoevaluacion;
+                $estudiante->practica_total_curso = $practica_total_curso;
+                $estudiante->practica_item_huerfano = $item_huerfano_practica;
+                $estudiante->practica_course_id = $courseid_practica;
+                $estudiante->docente_practica = $docente_practica;
                 unset($estudiante->asignaturas);
                 //dd($estudiante);
             });
@@ -3713,13 +3711,13 @@ public function __construct()
                 $courseid_dialogo = 0;
                 $docente_dialogo = '';
 
-                $practicas_asistencia = 0;
-                $practicas_seguimiento_academico = 0;
-                $practicas_autoevaluacion = 0;
-                $practicas_total_curso = 0;
-                $item_huerfano_practicas = 0;
-                $courseid_practicas = 0;
-                $docente_practicas = '';
+                $practica_asistencia = 0;
+                $practica_seguimiento_academico = 0;
+                $practica_autoevaluacion = 0;
+                $practica_total_curso = 0;
+                $item_huerfano_practica = 0;
+                $courseid_practica = 0;
+                $docente_practica = '';
 
                 foreach((array)$estudiante->asignaturas as $cursos){
                     $cursos->fullname = explode('-',$cursos->fullname)[0];
@@ -4026,29 +4024,28 @@ public function __construct()
                             if((strpos($cursos->category_name, 'Asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'asistencia') !== false) || 
                                 (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
-                                $practicas_asistencia = $cursos->grade;
+                                $practica_asistencia = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'Actividades') !== false) ||
                                 (strpos($cursos->category_name, 'COMPONENTE') !== false) || 
                                 (strpos($cursos->category_name, 'PARCIALES') !== false) || 
                                 (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || 
                                 (strpos($cursos->category_name, 'seguimiento') !== false)) {
-                                $practicas_seguimiento_academico = $cursos->grade;
+                                $practica_seguimiento_academico = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'Auto') !== false) ||
                                 (strpos($cursos->category_name, 'AUTOEVALUACIÓN') !== false) 
                                 || (strpos($cursos->category_name, 'AUTOEVALUCACIÓN') !== false)){
-                                $practicas_autoevaluacion = $cursos->grade;
+                                $practica_autoevaluacion = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'TOTAL') !== false)){
-                                $practicas_total_curso = $cursos->grade;
+                                $practica_total_curso = $cursos->grade;
                             }
                             if((strpos($cursos->category_name, 'HUERFANO') !== false)){
-                                $item_huerfano_practicas += 1;
+                                $item_huerfano_practica += 1;
                             }
-                            $courseid_practicas = $cursos->id;
-                            $docente_practicas = $cursos->docente_name;
-                            //dd($courseid_practica);
+                            $courseid_practica = $cursos->id;
+                            $docente_practica = $cursos->docente_name;
                         break; 
                         default:
                             break;
@@ -4131,14 +4128,13 @@ public function __construct()
                 $estudiante->dialogo_item_huerfano = $item_huerfano_dialogo;
                 $estudiante->dialogo_course_id = $courseid_dialogo;
                 $estudiante->docente_dialogo = $docente_dialogo;
-                /*$estudiante->practicas_asistencia = $practicas_asistencia;
-                $estudiante->practicas_seguimiento_academico = $practicas_seguimiento_academico;
-                $estudiante->practicas_autoevaluacion = $practicas_autoevaluacion;
-                $estudiante->practicas_total_curso = $practicas_total_curso;
-                $estudiante->practicas_item_huerfano = $item_huerfano_practicas;
-                $estudiante->practicas_course_id = $courseid_practicas;
-                $estudiante->docente_practicas = $docente_practicas;
-                */
+                $estudiante->practica_asistencia = $practica_asistencia;
+                $estudiante->practica_seguimiento_academico = $practica_seguimiento_academico;
+                $estudiante->practica_autoevaluacion = $practica_autoevaluacion;
+                $estudiante->practica_total_curso = $practica_total_curso;
+                $estudiante->practica_item_huerfano = $item_huerfano_practica;
+                $estudiante->practica_course_id = $courseid_practica;
+                $estudiante->docente_practica = $docente_practica;
                 unset($estudiante->asignaturas);
                 //dd($estudiante);
             });

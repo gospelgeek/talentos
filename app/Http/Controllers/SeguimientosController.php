@@ -698,7 +698,7 @@ public function __construct()
                                 case 'JORNADAS DE ACCION CIUDADANA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $accionciudadana_asistencia = $cursos->grade;
+                                        $accionciudadana_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {
@@ -1388,7 +1388,7 @@ public function __construct()
                                 case 'JORNADAS DE ACCION CIUDADANA ':
                                     if ((strpos($cursos->category_name, 'Asistencia') !== false) || (strpos($cursos->category_name, 'asistencia') !== false) || (strpos($cursos->category_name, 'ASISTENCIA') !== false)) {
                                         
-                                        $accionciudadana_asistencia = $cursos->grade;
+                                        $accionciudadana_asistencias = $cursos->grade;
                                     }
 
                                     if ((strpos($cursos->category_name, 'Actividades') !== false) || (strpos($cursos->category_name,'ACTIVIDADES') !== false) || (strpos($cursos->category_name, 'COMPONENTE') !== false) || (strpos($cursos->category_name, 'SEGUIMIENTO') !== false) || (strpos($cursos->category_name, 'Seguimiento') !== false)) {

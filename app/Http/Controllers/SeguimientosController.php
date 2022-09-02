@@ -692,7 +692,7 @@ public function __construct()
                         $docente_tic = '';
                         //dd($estudiante->asignaturas);
                         foreach((array)$estudiante->asignaturas as $cursos){
-                            $cursos->fullname = explode(' ',$cursos->fullname)[0];
+                            $cursos->fullname = explode('-',$cursos->fullname)[0];
                             //dd($cursos);
                             switch ($cursos->fullname) {
                                 case 'JORNADAS':

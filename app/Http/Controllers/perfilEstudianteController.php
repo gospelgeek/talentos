@@ -2420,7 +2420,7 @@ class perfilEstudianteController extends Controller
     
    public function get_Estados(Request $request){
         
-        if($request['febrero'] === "false" && $request['marzo'] === "false" && $request['abril'] === "false" && $request['mayo'] === "false" && $request['junio'] === "false" && $request['julio'] === "false" && $request['agosto'] === "false"){
+        if($request['febrero'] === "false" && $request['marzo'] === "false" && $request['abril'] === "false" && $request['mayo'] === "false" && $request['junio'] === "false" && $request['julio'] === "false" && $request['agosto'] === "false" && $request['septiembre'] === "false"){
 
             $verDatosPerfil  = perfilEstudiante::withTrashed()->get(['id','name','lastname','id_document_type','document_number','id_state']);
             $verDatosPerfil->map(function($estudiante){
@@ -2532,6 +2532,17 @@ class perfilEstudianteController extends Controller
                 }else{
                     $cambios_agosto = null;
                     $validar = collect($cambios_agosto);
+                    return datatables()->of($validar)->toJson();
+                }     
+            }
+            if($request['septiembre'] === "true"){
+                $cambios_septiembre = Withdrawals::septiembre();
+                //dd($cambios_septiembre);
+                if($cambios_septiembre != null){
+                    return datatables()->of($cambios_septiembre)->toJson();    
+                }else{
+                    $cambios_septiembre = null;
+                    $validar = collect($cambios_septiembre);
                     return datatables()->of($validar)->toJson();
                 }     
             }

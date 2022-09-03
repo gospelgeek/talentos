@@ -1,5 +1,58 @@
 @extends('layouts.dashboard')
 @section('title', 'Icfes')
+@section('icfes')
+<style>
+    #tablaLinea1 td:nth-child(8) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea1 td:nth-child(10) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea1 td {
+        text-align: center;
+    }
+
+
+    #tablaLinea2 td:nth-child(8) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea2 td:nth-child(10) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea2 td:nth-child(12) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea2 td:nth-child(14) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea2 td {
+        text-align: center;
+    }
+
+    
+    #tablaLinea3 td:nth-child(8) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea3 td:nth-child(10) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea3 td:nth-child(12) {
+        border-right: black solid 2px;
+        border-left: black solid 2px;
+    }
+    #tablaLinea3 td {
+        text-align: center;
+    }
+</style>
+@endsection
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
@@ -27,7 +80,7 @@
                     &nbsp;
                     &nbsp;
                     <div class="col-ms-4">
-                        <input class="form-control mt-0" style="width: 25px; height: 25px;" type="checkbox" id="cambio">
+                        <input class="form-control mt-0" style="width: 20px; height: 19px;" type="checkbox" id="cambio">
                     </div>
                 </div>
                 &nbsp;

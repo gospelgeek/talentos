@@ -946,7 +946,7 @@
                 @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
     				<div class="row">	
     					<div class="col-xs-12 col-md-12">
-    						@if($verDatosPerfil->formalization->acceptance_v2 !== null)
+    						@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== '')
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check"	checked>&nbsp;&nbsp;<label>ACEPTACIÓN</label>
             				@else
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
@@ -955,7 +955,14 @@
             			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
             			</div>
-            			@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== 'SI')
+            			@if($verDatosPerfil->formalization->acceptance_v2 !== null
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== '' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'SI' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'si' 
+                         && $verDatosPerfil->formalization->acceptance_v2 !== 'NO' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'no' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'Si' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'No')
 							<div class="col-xs-4 col-md-2">
 								<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
@@ -993,7 +1000,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->tablets_v2 !== null)
+							@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== '')
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check" checked>&nbsp;&nbsp;<label>TABLETS</label>	
             				@else
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
@@ -1002,7 +1009,14 @@
             			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
             			</div>
-            			@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== 'SI')
+            			@if($verDatosPerfil->formalization->tablets_v2 !== null 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== '' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'No')
 							<div class="col-xs-4 col-md-2">
 								<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
@@ -1031,7 +1045,7 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->loan_tablet !== null)
+							@if($verDatosPerfil->formalization->loan_tablet !== null && $verDatosPerfil->formalization->loan_tablet !== '')
             					<input type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
             				@else
             					<input type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
@@ -1066,7 +1080,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->kit_date !== null)
+							@if($verDatosPerfil->formalization->kit_date !== null && $verDatosPerfil->formalization->kit_date !== '')
 								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check" checked>&nbsp;&nbsp;<label>FECHA KIT</label>
 							@else
 								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check">&nbsp;&nbsp;<label>FECHA KIT</label>
@@ -1169,7 +1183,7 @@
 				@else
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-    						@if($verDatosPerfil->formalization->acceptance_v2 !== null)
+    						@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== '')
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check"	checked>&nbsp;&nbsp;<label>ACEPTACIÓN</label>
             				@else
             					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
@@ -1178,7 +1192,14 @@
             			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
             			</div>
-            			@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== 'SI')
+            			@if($verDatosPerfil->formalization->acceptance_v2 !== null 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== '' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'No')
 							<div class="col-xs-4 col-md-2">
 								<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
@@ -1216,7 +1237,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->tablets_v2 !== null)
+							@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== '')
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check" checked>&nbsp;&nbsp;<label>TABLETS</label>	
             				@else
             					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
@@ -1225,7 +1246,14 @@
             			<div class="col-xs-4 col-md-2">
             				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
             			</div>
-            			@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== 'SI')
+            			@if($verDatosPerfil->formalization->tablets_v2 !== null 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== '' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'No')
 							<div class="col-xs-4 col-md-2">
 								<input readonly class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
 								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
@@ -1254,7 +1282,7 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->loan_tablet !== null)
+							@if($verDatosPerfil->formalization->loan_tablet !== null && $verDatosPerfil->formalization->loan_tablet !== '')
             					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
             				@else
             					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
@@ -1289,7 +1317,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
-							@if($verDatosPerfil->formalization->kit_date !== null)
+							@if($verDatosPerfil->formalization->kit_date !== null && $verDatosPerfil->formalization->kit_date !== '')
 								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check" checked>&nbsp;&nbsp;<label>FECHA KIT</label>
 							@else
 								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check">&nbsp;&nbsp;<label>FECHA KIT</label>

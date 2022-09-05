@@ -100,8 +100,8 @@
                 },
                 {data: 'estado'},
                 {data: 'acceptance_v2', render:function(data, type, row, meta){
-                        if(data !== ""){
-                            if(data != 'SI'){
+                        if(data !== "" && data !== null){
+                            if(data != 'SI' && data != 'si' && data != 'NO' && data != 'no' && data != 'Si' && data != 'No'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    
                             }else{
@@ -116,8 +116,8 @@
                 },
                 {data: 'acceptance_date'},
                 {data: 'tablets_v2', render:function(data, type, row, meta){
-                        if(data !== ""){
-                            if(data != 'SI'){
+                        if(data !== "" && data !== null){
+                            if(data != 'SI' && data != 'si' && data != 'NO' && data != 'no' && data != 'Si' && data != 'No'){
                                 var url = '<a href="'+data+'" target="blank">SI, CON URL</a>';
                                 return url;    
                             }else{

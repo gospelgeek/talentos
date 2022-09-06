@@ -29,7 +29,8 @@ class CourseMoodle extends Model
 
     public static function asistencias_virtuales($id_group,$id_moodle,$fecha_inicial,$fecha_final){
         if($fecha_final != null && $fecha_final != null){
-            $asistencias = DB::select("select course_moodles.id,course_moodles.fullname,COUNT(*) as Total 
+            $asistencias = DB::select("select 
+                            course_moodles.id,course_moodles.fullname,course_moodles.docente_name,COUNT(*) as Total 
                             FROM `course_moodles`,session_courses,attendance_students 
                             WHERE session_courses.attendance_id = course_moodles.attendance_id 
                             and attendance_students.session_id = session_courses.session_id
@@ -41,7 +42,8 @@ class CourseMoodle extends Model
                             GROUP BY course_moodles.fullname
                             ");
         }else{
-            $asistencias = DB::select("select course_moodles.id,course_moodles.fullname,COUNT(*) as Total 
+            $asistencias = DB::select("select 
+                            course_moodles.id,course_moodles.fullname,course_moodles.docente_name,COUNT(*) as Total 
                             FROM `course_moodles`,session_courses,attendance_students 
                             WHERE session_courses.attendance_id = course_moodles.attendance_id 
                             and attendance_students.session_id = session_courses.session_id
@@ -61,7 +63,8 @@ class CourseMoodle extends Model
 
     public static function asistencias_presenciales($id_group,$id_moodle,$fecha_inicial,$fecha_final){
         if($fecha_final != null && $fecha_final != null){
-            $asistencias = DB::select("select course_moodles.id,course_moodles.fullname,COUNT(*) as Total 
+            $asistencias = DB::select("select 
+                            course_moodles.id,course_moodles.fullname,course_moodles.docente_name,COUNT(*) as Total 
                             FROM `course_moodles`,session_courses,attendance_students  
                             where session_courses.attendance_id = course_moodles.attendance_id 
                             and attendance_students.session_id = session_courses.session_id
@@ -73,7 +76,8 @@ class CourseMoodle extends Model
                             GROUP BY course_moodles.fullname
                             ");
         }else{
-            $asistencias = DB::select("select course_moodles.id,course_moodles.fullname,COUNT(*) as Total 
+            $asistencias = DB::select("select 
+                            course_moodles.id,course_moodles.fullname,course_moodles.docente_name,COUNT(*) as Total 
                             FROM `course_moodles`,session_courses,attendance_students 
                             WHERE session_courses.attendance_id = course_moodles.attendance_id 
                             and attendance_students.session_id = session_courses.session_id

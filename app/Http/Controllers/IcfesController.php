@@ -222,7 +222,7 @@ class IcfesController extends Controller
         student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name 
         FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
         FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
-        FROM student_profile");
+        FROM student_profile WHERE id_state = 1");
 
         $tamanioDatos = sizeof($estudiantes);
 

@@ -1,6 +1,34 @@
 @extends('layouts.dashboard')
 @section('title', 'Ver Datos')
-
+@section('icfes')
+<style>
+	#icfess td:nth-child(3){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(4){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(5){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(6){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(7){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(8){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	
+</style>
+@endsection
 @section('content')
 
 @csrf
@@ -816,7 +844,7 @@
 			<div class="table-responsive">
 				<br>
 
-				<table id="icfes">
+				<table id="icfess">
 					<thead>
 
 						<th style="text-align: center;">AREA</th>
@@ -827,7 +855,7 @@
 						<th style="text-align: center;"><u>ICFES ENTRADA</u></th>
 						@else
 						<th style="text-align: center;">
-							<a href="{{$url_entrada[0]->url}}">
+							<a href="{{$url_entrada[0]->url}}" target="_blank">
 								<u>ICFES ENTRADA</u>
 							</a>
 						</th>
@@ -861,7 +889,7 @@
 						<th style="text-align: center;"><u>ICFES SALIDA</u></th>
 						@else
 						<th style="text-align: center;">
-							<a href="{{$url_salida[0]->url}}">
+							<a href="{{$url_salida[0]->url}}" target="_blank">
 								<u>ICFES SALIDA</u>
 							</a>
 						</th>
@@ -1468,9 +1496,7 @@
 	let variacion = parseInt("{{$variacion}}")
 	const cambio = document.getElementById('cambio')
 	let salida = document.getElementById('if')
-	//console.log(salida.value)
 	let entrada = document.getElementById('ie')
-	//console.log(entrada.value)
 
 
 	const data = fetch("{{route('resultado_icfes', $iden)}}")
@@ -1518,7 +1544,7 @@
 									}
 									if (resultado < 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}%
                                     </div>
 
@@ -1526,7 +1552,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}%
                                     </div>
 
@@ -1544,11 +1570,11 @@
 									row_2.appendChild(row_2_data_3);
 									row_2.appendChild(row_2_data_4);
 								} else {
-									resultado = data.simulacro1 - variacion
+									resultado =Math.round(data.simulacro1 - variacion)
 
 									if (resultado < 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1556,7 +1582,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
@@ -1576,11 +1602,11 @@
 								}
 							})
 
-							resultado = data.simulacro1 - variacion
+							resultado = Math.round(data.simulacro1 - variacion)
 
 							if (resultado < 0) {
 								row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1588,7 +1614,7 @@
 							}
 							if (resultado > 0) {
 								row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
@@ -1625,7 +1651,7 @@
 									}
 									if (resultado < 0) {
 										row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado} %
                                     </div>
 
@@ -1633,7 +1659,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado} %
                                     </div>
 
@@ -1651,10 +1677,10 @@
 									row_2.appendChild(row_2_data_5);
 									row_2.appendChild(row_2_data_6);
 								} else {
-									resultado = data.simulacro2 - variacion
+									resultado =Math.round(data.simulacro2 - variacion)
 									if (resultado < 0) {
 										row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1662,7 +1688,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
@@ -1683,10 +1709,10 @@
 
 
 							})
-							resultado = data.simulacro2 - variacion
+							resultado = Math.round(data.simulacro2 - variacion)
 							if (resultado < 0) {
 								row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1694,7 +1720,7 @@
 							}
 							if (resultado > 0) {
 								row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 

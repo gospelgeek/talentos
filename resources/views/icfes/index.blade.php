@@ -2,52 +2,105 @@
 @section('title', 'Icfes')
 @section('icfes')
 <style>
-    #tablaLinea1 td:nth-child(8) {
-        border-right: black solid 2px;
+    #tablaLinea1 td:nth-child(7) {
+
         border-left: black solid 2px;
     }
+
+    #tablaLinea1 td:nth-child(8) {
+        border-right: black solid 1px;
+
+    }
+
+    #tablaLinea1 td:nth-child(9) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea1 td:nth-child(10) {
         border-right: black solid 2px;
-        border-left: black solid 2px;
+
     }
+
     #tablaLinea1 td {
         text-align: center;
     }
 
+    #tablaLinea2 td:nth-child(7) {
+
+        border-left: black solid 2px;
+    }
 
     #tablaLinea2 td:nth-child(8) {
-        border-right: black solid 2px;
-        border-left: black solid 2px;
+        border-right: black solid 1px;
+
     }
+
+    #tablaLinea2 td:nth-child(9) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea2 td:nth-child(10) {
-        border-right: black solid 2px;
-        border-left: black solid 2px;
+        border-right: black solid 1px;
+
     }
+
+    #tablaLinea2 td:nth-child(11) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea2 td:nth-child(12) {
-        border-right: black solid 2px;
-        border-left: black solid 2px;
+        border-right: black solid 1px;
+
     }
+
+    #tablaLinea2 td:nth-child(13) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea2 td:nth-child(14) {
         border-right: black solid 2px;
-        border-left: black solid 2px;
+
     }
+
     #tablaLinea2 td {
         text-align: center;
     }
 
-    
+
+    #tablaLinea3 td:nth-child(7) {
+
+        border-left: black solid 2px;
+    }
+
     #tablaLinea3 td:nth-child(8) {
-        border-right: black solid 2px;
-        border-left: black solid 2px;
+        border-right: black solid 1px;
+
     }
+
+    #tablaLinea3 td:nth-child(9) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea3 td:nth-child(10) {
-        border-right: black solid 2px;
-        border-left: black solid 2px;
+        border-right: black solid 1px;
+
     }
+
+    #tablaLinea3 td:nth-child(11) {
+
+        border-left: black solid 1px;
+    }
+
     #tablaLinea3 td:nth-child(12) {
         border-right: black solid 2px;
-        border-left: black solid 2px;
+
     }
+
     #tablaLinea3 td {
         text-align: center;
     }
@@ -253,10 +306,10 @@
                     data: 'grupo'
                 },
                 {
-                   data: null,
-                   render: function(data, type, row, meta) {
+                    data: null,
+                    render: function(data, type, row, meta) {
                         return `<td><strong>${data.ie}</strong></td>`
-                   }
+                    }
 
                 },
                 {
@@ -273,19 +326,19 @@
                     data: null,
                     render: function(data, type, row, meta) {
 
-                        let variacion = data.s3 - data.ie;
+                        let variacion = Math.round(data.s3 - data.ie);
                         let resultado
 
                         if (variacion < 0) {
                             resultado = `
-                                <div style="background-color: red;" >
+                                <div style="background-color: #FE3F3F;" >
                                     <td>${variacion}</td>
 
                                 </div>
                                 `
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
+                            resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacion}</td>
                                 </div>`
                         }
@@ -311,15 +364,15 @@
                     data: null,
                     render: function(data, type, row, meta) {
 
-                        let variacion = data.if-data.ie;
+                        let variacion = Math.round(data.if-data.ie);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
+                            resultado = `<div style="background-color: #FE3F3F;">
                                     <td>${variacion}</td>
                                 </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
+                            resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacion}</td>
                                 </div>`
                         }
@@ -393,30 +446,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.s1 - data.ie;
+                        let variacion = Math.round(data.s1 - data.ie);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -425,30 +478,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.s2 - data.ie;
+                        let variacion = Math.round(data.s2 - data.ie);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -457,30 +510,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.s3 - data.ie;
+                        let variacion = Math.round(data.s3 - data.ie);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -489,30 +542,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.if-data.ie;
+                        let variacion = Math.round(data.if-data.ie);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -521,13 +574,13 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <div class="row">                                  
-                            <div class="col-xs-4 col-sm-4">
-                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                            </div>                                       
-                        </div>
-                         
-                         `
+                                <div class="row">                                  
+                                    <div class="col-xs-4 col-sm-4">
+                                        <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                    </div>                                       
+                                </div>
+                                 
+                                 `
                     }
                 },
 
@@ -573,39 +626,39 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.s2 - data.s1;
+                        let variacion = Math.round(data.s2 - data.s1);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -614,30 +667,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.s3 - data.s1;
+                        let variacion = Math.round(data.s3 - data.s1);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -646,30 +699,30 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-                        let variacion = data.if-data.s1;
+                        let variacion = Math.round(data.if-data.s1);
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -678,13 +731,13 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                            <div class="row">                                  
-                                <div class="col-xs-4 col-sm-4">
-                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                                </div>                                       
-                            </div>
-                             
-                             `
+                                    <div class="row">                                  
+                                        <div class="col-xs-4 col-sm-4">
+                                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                        </div>                                       
+                                    </div>
+                                     
+                                     `
                     }
                 },
 
@@ -764,13 +817,13 @@
 
                         if (variacion < 0) {
                             resultado = `
-                                <div style="background-color: red;" >
+                                <div style="background-color: #FE3F3F;" >
                                     <td >${variacionPor}%</td>
 
                                 </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
+                            resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacionPor} %</td>
                                 </div>`
                         }
@@ -806,12 +859,12 @@
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
+                            resultado = `<div style="background-color: #FE3F3F;">
                                     <td>${variacionPor} %</td>
                                 </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
+                            resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacionPor} %</td>
                                 </div>`
                         }
@@ -885,9 +938,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -903,19 +956,19 @@
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -924,9 +977,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -942,19 +995,19 @@
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -963,9 +1016,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -981,19 +1034,19 @@
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -1002,9 +1055,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -1020,19 +1073,19 @@
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                        <td>${variacionPor} %</td>
-                                    </div>`
+                                                <td>${variacionPor} %</td>
+                                            </div>`
                         }
                         return resultado
                     }
@@ -1041,13 +1094,13 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <div class="row">                                  
-                            <div class="col-xs-4 col-sm-4">
-                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                            </div>                                       
-                        </div>
-                         
-                         `
+                                <div class="row">                                  
+                                    <div class="col-xs-4 col-sm-4">
+                                        <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                    </div>                                       
+                                </div>
+                                 
+                                 `
                     }
                 },
 
@@ -1093,18 +1146,18 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
+                                   
+                                `
                     }
                 },
                 {
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -1113,26 +1166,26 @@
                         let variacion = data.s2 - data.s1;
                         let variacionPor = 0
 
-                        if (data.ie === 0) {
+                        if (data.s1 === 0) {
                             variacionPor = 0
                         } else {
                             variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -1141,9 +1194,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -1152,26 +1205,26 @@
                         let variacion = data.s3 - data.s1;
                         let variacionPor = 0
 
-                        if (data.ie === 0) {
+                        if (data.s1 === 0) {
                             variacionPor = 0
                         } else {
                             variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -1180,9 +1233,9 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                     }
                 },
                 {
@@ -1191,26 +1244,26 @@
                         let variacion = data.if-data.s1;
                         let variacionPor = 0
 
-                        if (data.ie === 0) {
+                        if (data.s1 === 0) {
                             variacionPor = 0
                         } else {
                             variacionPor = Math.round((Math.round(variacion) / data.s1) * 100)
                         }
                         let resultado;
                         if (variacion < 0) {
-                            resultado = `<div style="background-color: red;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion > 0) {
-                            resultado = `<div style="background-color: green;">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                            resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         if (variacion == 0) {
                             resultado = `<div ">
-                                            <td>${variacionPor} %</td>
-                                        </div>`
+                                                    <td>${variacionPor} %</td>
+                                                </div>`
                         }
                         return resultado
                     }
@@ -1219,13 +1272,13 @@
                     data: null,
                     render: function(data, type, row, meta) {
                         return `
-                            <div class="row">                                  
-                                <div class="col-xs-4 col-sm-4">
-                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                                </div>                                       
-                            </div>
-                             
-                             `
+                                    <div class="row">                                  
+                                        <div class="col-xs-4 col-sm-4">
+                                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                        </div>                                       
+                                    </div>
+                                     
+                                     `
                     }
                 },
 
@@ -1249,7 +1302,7 @@
     }
 
 
-    var table1 = $("#tablaLinea1").DataTable({
+    $("#tablaLinea1").DataTable({
         "ajax": {
             "method": "GET",
             "url": "{{route('datos_icfes_lineas', 1)}}"
@@ -1272,7 +1325,7 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                   return `<td><strong>${data.ie}</strong></td>`
+                    return `<td><strong>${data.ie}</strong></td>`
                 }
 
             },
@@ -1290,19 +1343,19 @@
                 data: null,
                 render: function(data, type, row, meta) {
 
-                    let variacion = data.s3 - data.ie;
-                    let variacionPor = Math.round((Math.round(variacion) / data.ie) / 100)
+                    let variacion = Math.round(data.s3 - data.ie);
                     let resultado
 
                     if (variacion < 0) {
                         resultado = `
-                                <div style="background-color: red;" >
-                                    <td >${variacion}</td>
+                                <div style="background-color: #FE3F3F;" >
+                                    <td>${variacion}</td>
 
-                                </div>`
+                                </div>
+                                `
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
+                        resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacion}</td>
                                 </div>`
                     }
@@ -1328,15 +1381,15 @@
                 data: null,
                 render: function(data, type, row, meta) {
 
-                    let variacion = data.if-data.ie;
+                    let variacion = Math.round(data.if-data.ie);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
+                        resultado = `<div style="background-color: #FE3F3F;">
                                     <td>${variacion}</td>
                                 </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
+                        resultado = `<div style="background-color: #34E82E;">
                                     <td>${variacion}</td>
                                 </div>`
                     }
@@ -1380,7 +1433,7 @@
         ]
     });
 
-    var table2 = $("#tablaLinea2").DataTable({
+    $("#tablaLinea2").DataTable({
         "ajax": {
             "method": "GET",
             "url": "{{route('datos_icfes_lineas', 2)}}"
@@ -1403,37 +1456,37 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                   return `<td><strong>${data.ie}</strong></td>`
+                    return `<td><strong>${data.ie}</strong></td>`
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.s1 - data.ie;
+                    let variacion = Math.round(data.s1 - data.ie);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     return resultado
                 }
@@ -1442,30 +1495,30 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.s2 - data.ie;
+                    let variacion = Math.round(data.s2 - data.ie);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     return resultado
                 }
@@ -1474,30 +1527,30 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.s3 - data.ie;
+                    let variacion = Math.round(data.s3 - data.ie);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     return resultado
                 }
@@ -1506,30 +1559,30 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.if-data.ie;
+                    let variacion = Math.round(data.if-data.ie);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                        <td>${variacion}</td>
-                                    </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                        <td>${variacion}</td>
-                                    </div>`
+                                                <td>${variacion}</td>
+                                            </div>`
                     }
                     return resultado
                 }
@@ -1538,13 +1591,13 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <div class="row">                                  
-                            <div class="col-xs-4 col-sm-4">
-                                <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                            </div>                                       
-                        </div>
-                         
-                         `
+                                <div class="row">                                  
+                                    <div class="col-xs-4 col-sm-4">
+                                        <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                    </div>                                       
+                                </div>
+                                 
+                                 `
                 }
             },
 
@@ -1566,7 +1619,7 @@
         ]
     });
 
-    var table3 = $("#tablaLinea3").DataTable({
+    $("#tablaLinea3").DataTable({
         "ajax": {
             "method": "GET",
             "url": "{{route('datos_icfes_lineas', 3)}}"
@@ -1590,39 +1643,39 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.s2 - data.s1;
+                    let variacion = Math.round(data.s2 - data.s1);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     return resultado
                 }
@@ -1631,30 +1684,30 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.s3 - data.s1;
+                    let variacion = Math.round(data.s3 - data.s1);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     return resultado
                 }
@@ -1663,30 +1716,30 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                        <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
-                           
-                        `
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                   
+                                `
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let variacion = data.if-data.s1;
+                    let variacion = Math.round(data.if-data.s1);
                     let resultado;
                     if (variacion < 0) {
-                        resultado = `<div style="background-color: red;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #FE3F3F;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion > 0) {
-                        resultado = `<div style="background-color: green;">
-                                            <td>${variacion}</td>
-                                        </div>`
+                        resultado = `<div style="background-color: #34E82E;">
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     if (variacion == 0) {
                         resultado = `<div ">
-                                            <td>${variacion}</td>
-                                        </div>`
+                                                    <td>${variacion}</td>
+                                                </div>`
                     }
                     return resultado
                 }
@@ -1695,13 +1748,13 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                            <div class="row">                                  
-                                <div class="col-xs-4 col-sm-4">
-                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
-                                </div>                                       
-                            </div>
-                             
-                             `
+                                    <div class="row">                                  
+                                        <div class="col-xs-4 col-sm-4">
+                                            <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                        </div>                                       
+                                    </div>
+                                     
+                                     `
                 }
             },
 

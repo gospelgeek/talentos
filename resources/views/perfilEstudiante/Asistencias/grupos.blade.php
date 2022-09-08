@@ -15,6 +15,7 @@
         			<thead>
             			<tr>
                 			<td>Nombre</td>
+                            <td>Docente</td>
                 			<td>SESIONES CALIFICADAS</td>
                             <td>SESIONES PROGRAMADAS</td>
                				<td>Acciones</td>
@@ -24,6 +25,7 @@
            	 			@foreach ($grupos as $grupo)
                 		<tr data-id="grupo-id">
                     		<td>{{ $grupo->name}}</td>
+                            <td>{{ $grupo->docente}}</td>
                     		<td>{{ $grupo->sesiones}}</td>
                             <td>{{ $grupo->programadas}}</td>                               
                     		<td>

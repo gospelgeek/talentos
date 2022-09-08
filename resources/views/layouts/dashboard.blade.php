@@ -302,6 +302,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
                               <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
                               <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
+                              <li><a href="{{route('docentes')}}" class="dropdown-item">Docentes</a></li>
                             </ul>
                           </li>
                         
@@ -343,6 +344,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
                               <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
                               <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
+                              <li><a href="{{route('docentes')}}" class="dropdown-item">Docentes</a></li>
                             </ul>
                           </li>
 

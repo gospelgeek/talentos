@@ -1136,7 +1136,6 @@ class perfilEstudianteController extends Controller
 
     public function sesiones($course, $id)
     {
-
         $grupo = Group::where('id', $id)->first();
         $name = Course::where('id', $course)->first();
         $course = CourseMoodle::select('attendance_id','instance_id')->where('group_id',$id)->where('fullname','LIKE',"$name->name%")->first();

@@ -1074,6 +1074,7 @@ class perfilEstudianteController extends Controller
     public function Grupos_Asignaturas($id)
     {
         $name = Course::where('id', $id)->first();
+        //dd($name);
         $this->course= $name->name;
         $this->course_id= $id;
         //dd($name);
@@ -1081,8 +1082,8 @@ class perfilEstudianteController extends Controller
         //dd($grupos);
         $grupos->map(function($grupo){
             //dd($grupo->id);
-            $course_moodle = CourseMoodle::select('attendance_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
-            //dd($course_moodle->attendance_id);
+            $course_moodle = CourseMoodle::select('attendance_id', 'course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
+            //dd($course_moodle);
             $docente_name = CourseMoodle::select('docente_name')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->where('course_id', $course_moodle->course_id)->exists();
             if($docente_name){
                 $docente = CourseMoodle::select('docente_name')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->where('course_id', $course_moodle->course_id)->firstOrfail();
@@ -1095,6 +1096,7 @@ class perfilEstudianteController extends Controller
             $fecha = Carbon::now();
             //dd($fecha);
             $grupo->programadas = sesiones::where('id_group',$grupo->id)->where('id_course',$this->course_id)->where('date_session','<=',$fecha)->count();
+            //dd($grupo->programadas);
         });
         
         //dd($grupos);

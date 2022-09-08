@@ -18,6 +18,7 @@
 							<th>Nombres</th>
 							<th>Apellidos</th>
 							<th>Documento</th>
+                            <th>Docente</th>
 							<th>Asistencia Participativa</th>
 							<th>Seguimiento Academico</th>
 							<th>Autoevaluación</th>
@@ -31,6 +32,7 @@
 							<td>{{$estudiante->name}}</td>
 							<td>{{$estudiante->lastname}}</td>
 							<td>{{$estudiante->document_number}}</td>
+                            <td>{{$estudiante->docente}}</td>
 							@if(is_numeric($estudiante->asistencia))
 							<td><a data-tipo="1" data-name_curso="{{$name->name}} - {{$grupo->name}} - {{$grupo->cohort->name}}" data-name="{{$estudiante->name.' '.$estudiante->lastname}}" data-course="{{$course_moodle->course_id}}" data-idmoodle="{{$estudiante->id_moodle}}" data-categoria="Asistencia Participativa" type="button" onclick="abrirmodal(this);" ><u>{{$estudiante->asistencia}}</u></a></td>
 							@else

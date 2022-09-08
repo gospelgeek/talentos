@@ -1083,6 +1083,13 @@ class perfilEstudianteController extends Controller
             //dd($grupo->id);
             $course_moodle = CourseMoodle::select('attendance_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
             //dd($course_moodle->attendance_id);
+            $docente_name = CourseMoodle::select('docente_name')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->where('course_id', $course_moodle->course_id)->exists();
+            if($docente_name){
+                $docente = CourseMoodle::select('docente_name')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->where('course_id', $course_moodle->course_id)->firstOrfail();
+                $grupo->docente = $docente->docente_name; 
+            }else{
+                $grupo->docente = '-';
+            }
             $grupo->sesiones = SessionCourse::where('lasttaken','!=',null)->where('attendance_id',$course_moodle->attendance_id)->count();
             //dd($grupo);
             $fecha = Carbon::now();

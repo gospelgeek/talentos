@@ -1138,8 +1138,8 @@ class perfilEstudianteController extends Controller
     {
         $grupo = Group::where('id', $id)->first();
         $name = Course::where('id', $course)->first();
-        $course = CourseMoodle::select('attendance_id','instance_id')->where('group_id',$id)->where('fullname','LIKE',"$name->name%")->first();
-        
+        $course = CourseMoodle::select('attendance_id','instance_id', 'docente_name')->where('group_id',$id)->where('fullname','LIKE',"$name->name%")->first();
+        $this->docente = $course->docente_name;
         $sesiones = SessionCourse::where('attendance_id',$course->attendance_id)->get();
         $this->id_grupo= $id;
         $this->grupo = perfilEstudiante::whereHas('studentGroup',function($q)
@@ -1152,6 +1152,11 @@ class perfilEstudianteController extends Controller
             $cant_estudiantes_grupo = $this->grupo;
             //dd($cant_estudiantes_grupo);
             $sesion->no_asistieron = $cant_estudiantes_grupo-$sesion->asistieron;
+            if($this->docente != null){
+                $sesion->docente = $this->docente;
+            }else{
+                $sesion->docente = '-';
+            }
             //dd($sesion);
         });
 

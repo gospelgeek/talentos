@@ -53,9 +53,14 @@ public function __construct()
             $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->exists();
             //dd($course_moodle);
             if($course_moodle){
-            
             $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->firstOrfail();
-
+            $docente = CourseMoodle::select('docente_name')->where('course_id', $course_moodle->course_id)->where('group_id', $grupo->id)->exists();
+                if($docente){
+                    $docente = CourseMoodle::select('docente_name')->where('course_id', $course_moodle->course_id)->where('group_id', $grupo->id)->firstOrfail();
+                    $grupo->docente = $docente->docente_name; 
+                }else{
+                    $grupo->docente = '-';
+                }
             $grupo->items_huerfanos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('category_name',"ITEM HUERFANO")->count();
             //dd($course_moodle);    
             $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->exists();

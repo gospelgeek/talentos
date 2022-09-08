@@ -156,9 +156,10 @@ public function __construct()
         $grupo = Group::where('id', $id_grupo)->first();
         $name = Course::where('id', $id_curso)->first();
 
-        $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$name->name%")->firstOrfail();
+        $course_moodle = CourseMoodle::select('course_id', 'docente_name')->where('group_id', $grupo->id)->where('fullname','LIKE',"$name->name%")->firstOrfail();
         //dd($course_moodle);
         $this->course = $course_moodle->course_id;
+        $this->docente = $course_moodle->docente_name;
         $this->grupo = $id_grupo;
 
         $estudiantes = perfilEstudiante::select('name','lastname','document_number','id_moodle')->whereHas('studentGroup',function($q)
@@ -202,7 +203,12 @@ public function __construct()
                 $grades = $total_curso ? StudentsGrade::select('grade','item_id')->where('item_id',$total_curso->item_id)->where('id_moodle',$estudiante->id_moodle)->first() : null;
                 
                 $estudiante->total_curso = $grades ? $grades->grade : "-";
-
+                
+                if($this->docente != null){
+                    $estudiante->docente = $this->docente;    
+                }else{
+                    $estudiante->docente = '-';
+                }
         });
 
         //dd($estudiantes);

@@ -185,4 +185,23 @@ class CourseMoodle extends Model
             return null;
         }   
     }
+    
+    public static function asignaturas_grupos($docente){
+        $data = DB::select("
+            select 
+                course_moodles.fullname, course_moodles.group_id, groups.name, groups.id_cohort
+            from 
+                course_moodles, groups
+            where
+                docente_name = '".$docente."'  
+            AND 
+                groups.id = course_moodles.group_id  
+            ");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }        
+    }
 }

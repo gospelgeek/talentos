@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
                             <td>Fecha</td>
+                            <td>Docente</td>
                             <td>Asistieron</td>
                             <td>No asistieron</td>
                             <td width="15%">Accion</td>
@@ -24,6 +25,7 @@
                         @foreach ($sesiones as $sesion)
                     	<tr>
                             <td>{{$sesion->sessdate}}</td>
+                            <td>{{$sesion->docente}}</td>
                             <td>{{$sesion->asistieron}}</td>
                             <td>{{$sesion->no_asistieron}}</td>
                             <td>

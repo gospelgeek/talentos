@@ -283,3 +283,12 @@ Route::get('datos.socioeconomicos', 'perfilEstudianteController@datos_socioecono
 Route::get('datos.academicos', 'perfilEstudianteController@datos_academicos')->name('datos.academicos');
 Route::get('datos.formalizacion_pendientes', 'perfilEstudianteController@datos_formalizacion')->name('datos.formalizacion_pendientes');
 //
+
+//Rutas docentes
+Route::get('docentes', 'DocenteController@index_docentes')->name('docentes');
+Route::get('datos_docentes', 'DocenteController@datosDocentes')->name('datos_docentes');
+Route::get('docentes_grupos_seguimientos/{name}/{materia}', 'DocenteController@grupos_seguimientos_docentes')->name('docentes_grupos_seguimientos');
+Route::get('docentes_grupos_asistencias/{name}/{materia}', 'DocenteController@grupos_asistencias_docentes')->name('docentes_grupos_asistencias');
+Route::get('detalle_seguimiento_academico_docentes/grupo/{group_id}/{materia}', 'DocenteController@detalle_grupal_seguimientos')->name('detalle_seguimiento_academico_docentes');
+Route::get('sesiones_grupal_asistencias/grupo/{group_id}/{materia}', 'DocenteController@asistencias_sesiones_docentes')->name('sesiones_grupal_asistencias');
+Route::get('lista_asistencias/{course}/grupo/{id}/session/{session}/{docente}', 'DocenteController@lista_sesiones_docentes')->name('lista_asistencias');

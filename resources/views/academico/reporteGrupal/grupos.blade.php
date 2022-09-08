@@ -13,6 +13,7 @@
 					<thead>
 						<tr>
 							<th>Nombre</th>
+                            <th>Docente</th>
 							<th>Promedio Asistencia Participativa</th>
 							<th>Promedio Seguimientos Académicos</th>
 							<th>Promedio Autoevaluación</th>
@@ -24,6 +25,7 @@
 						@foreach ($grupos as $grupo)
 						<tr data-id="grupo-id">
 							<td>{{$grupo->name}}</td>
+                            <td>{{$grupo->docente}}</td>
 							<td>{{$grupo->promedio_asistencia}}</td>
 							<td>{{$grupo->promedio_seguimientos}}</td>
 							<td>{{$grupo->promedio_autoevaluacion}}</td>

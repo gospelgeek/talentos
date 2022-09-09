@@ -204,4 +204,58 @@ class CourseMoodle extends Model
             return null;
         }        
     }
+    
+    public static function asistencias_presenciales_calificadas($id_group,$fecha_inicial,$fecha_final){
+
+        if($fecha_final != null && $fecha_final != null){
+            $asistencias = DB::select("select course_moodles.fullname, course_moodles.docente_name,
+                            (SELECT COUNT(*) 
+                            FROM session_courses
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id
+                            and session_courses.sessdate BETWEEN '".$fecha_inicial."' and '".$fecha_final."'
+                            and DAYNAME(session_courses.sessdate) = 'Saturday')as calificadas
+                            FROM course_moodles
+                            WHERE course_moodles.group_id = '".$id_group."'");
+        }else{
+            $asistencias = DB::select("select course_moodles.fullname, course_moodles.docente_name,
+                            (SELECT COUNT(*) 
+                            FROM session_courses
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id
+                            and DAYNAME(session_courses.sessdate) = 'Saturday')as calificadas
+                            FROM course_moodles
+                            WHERE course_moodles.group_id = '".$id_group."'");
+        }
+        if($asistencias != null){
+            return $asistencias;
+        }else{
+            return null;
+        }
+    }
+
+    public static function asistencias_virtuales_calificadas($id_group,$fecha_inicial,$fecha_final){
+
+        if($fecha_final != null && $fecha_final != null){
+            $asistencias = DB::select("select course_moodles.fullname, course_moodles.docente_name,
+                            (SELECT COUNT(*) 
+                            FROM session_courses
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id
+                            and session_courses.sessdate BETWEEN '".$fecha_inicial."' and '".$fecha_final."'
+                            and DAYNAME(session_courses.sessdate) != 'Saturday')as calificadas
+                            FROM course_moodles
+                            WHERE course_moodles.group_id = '".$id_group."'");
+        }else{
+            $asistencias = DB::select("select course_moodles.fullname, course_moodles.docente_name,
+                            (SELECT COUNT(*) 
+                            FROM session_courses
+                            WHERE session_courses.attendance_id = course_moodles.attendance_id
+                            and DAYNAME(session_courses.sessdate) != 'Saturday')as calificadas
+                            FROM course_moodles
+                            WHERE course_moodles.group_id = '".$id_group."'");
+        }
+        if($asistencias != null){
+            return $asistencias;
+        }else{
+            return null;
+        }
+    }
 }

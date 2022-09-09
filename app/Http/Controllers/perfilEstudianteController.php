@@ -1516,11 +1516,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,null,null);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
-                        
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,null,null);
+
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1551,12 +1554,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1587,11 +1592,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1621,11 +1629,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1655,11 +1666,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1689,11 +1703,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1723,11 +1740,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1760,11 +1780,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1797,11 +1820,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1834,11 +1860,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,null,null);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,null,null);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1868,11 +1897,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1902,11 +1934,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1936,11 +1971,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -1970,11 +2008,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2004,11 +2045,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2038,11 +2082,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2075,11 +2122,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2111,11 +2161,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2148,11 +2201,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,null,null);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,null,null);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,null,null);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,null,null);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2179,14 +2235,17 @@ class perfilEstudianteController extends Controller
                     $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
                     $estudiantes = collect($estudiantes);
                     $estudiantes->map(function($estudiante){
-                        
+                
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2216,11 +2275,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2250,11 +2312,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2284,11 +2349,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2318,11 +2386,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2352,11 +2423,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2389,11 +2463,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);
@@ -2425,11 +2502,14 @@ class perfilEstudianteController extends Controller
                 
                         $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
 
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
+
                         $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$this->month_start,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$this->month_start,$this->month_end);
 
                         unset($estudiante->grupo);
                         unset($estudiante->id_moodle);
-                        //dd($estudiante);
                     });
 
                     $estudiantes = json_encode($estudiantes);

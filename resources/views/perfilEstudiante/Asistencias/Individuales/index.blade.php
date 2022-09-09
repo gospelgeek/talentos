@@ -23,7 +23,8 @@
                 <label>JUNIO</label>&nbsp;<input type="radio" name="filtro" value="6" id="junio">&nbsp;&nbsp;
                 <label>JULIO</label>&nbsp;<input type="radio" name="filtro" value="7" id="julio">&nbsp;&nbsp;
                 <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" value="8" id="agosto">&nbsp;&nbsp;
-                <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">
+                <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">&nbsp;&nbsp;
+                <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre">
             </form>                     
             </div>  
         </div>
@@ -48,99 +49,191 @@
                 <th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                 @endif
                 <th rowspan="2">Estado</th>
-                <th colspan="4">ACCION CIUDADANA</th>
-                <th colspan="4">ARTES</th>
-                <th colspan="4">BIOLOGIA</th>
-                <th colspan="4">CULTURA DEMOCRATICA</th>
-                <th colspan="4">DEPORTE</th>
-                <th colspan="4">DIALOGO</th>
-                <th colspan="4">FILOSOFIA</th>
-                <th colspan="4">FISICA</th>
-                <th colspan="4">GEOGRAFIA</th>
-                <th colspan="4">HISTORIA</th>
-                <th colspan="4">INGLES</th>
-                <th colspan="4">LECTURA CRITICA</th>
-                <th colspan="4">MATEMATICAS</th>
-                <th colspan="4">QUIMICA</th>
-                <th colspan="4">TIC</th>
-                <th rowspan="2">TOTAL</th>
+                <th colspan="10">ACCION CIUDADANA</th>
+                <th colspan="10">ARTES</th>
+                <th colspan="10">BIOLOGIA</th>
+                <th colspan="10">CULTURA DEMOCRATICA</th>
+                <th colspan="10">DEPORTE</th>
+                <th colspan="10">DIALOGO</th>
+                <th colspan="10">FILOSOFIA</th>
+                <th colspan="10">FISICA</th>
+                <th colspan="10">GEOGRAFIA</th>
+                <th colspan="10">HISTORIA</th>
+                <th colspan="10">INGLES</th>
+                <th colspan="10">LECTURA CRITICA</th>
+                <th colspan="10">MATEMATICAS</th>
+                <th colspan="10">QUIMICA</th>
+                <th colspan="10">TIC</th>
+                <th rowspan="2">Total</th>
+                <th rowspan="2">Total Calificadas</th>
+                <th rowspan="2">%</th>
                 <th rowspan="2" id="ultima1">VER DETALLE</th>
             </tr>
             <tr>
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
+                <th>Docente</th>
+                <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
+                <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
+                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
+                <th>Docente</th>
+                <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
+                <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
+                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
-
-                <th>Docente</th>
-                <th>Virtual</th>
-                <th>Presencial</th>
-                <th>Total</th>
-
-                <th>Docente</th>
-                <th>Virtual</th>
-                <th>Presencial</th>
-                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
             </tr>
         </thead> 
       </table>
@@ -159,93 +252,179 @@
                 <th rowspan="2">Profesional Encargado</th>
                 @endif
                 <th rowspan="2">Estado</th>
-                <th colspan="4">ACCION CIUDADANA</th>
-                <th colspan="4">ARTES</th>
-                <th colspan="4">BIOLOGIA</th>
-                <th colspan="4">DEPORTE</th>
-                <th colspan="4">DIALOGO</th>
-                <th colspan="4">CONSTITUCION</th>
-                <th colspan="4">FISICA</th>
-                <th colspan="4">GEOGRAFIA</th>
-                <th colspan="4">HISTORIA</th>
-                <th colspan="4">INGLES</th>
-                <th colspan="4">LECTURA CRITICA</th>
-                <th colspan="4">MATEMATICAS</th>
-                <th colspan="4">QUIMICA</th>
-                <th colspan="4">TIC</th>
-                <th rowspan="2">TOTAL</th>
+                <th colspan="10">ACCION CIUDADANA</th>
+                <th colspan="10">ARTES</th>
+                <th colspan="10">BIOLOGIA</th>
+                <th colspan="10">DEPORTE</th>
+                <th colspan="10">DIALOGO</th>
+                <th colspan="10">CONSTITUCION</th>
+                <th colspan="10">FISICA</th>
+                <th colspan="10">GEOGRAFIA</th>
+                <th colspan="10">HISTORIA</th>
+                <th colspan="10">INGLES</th>
+                <th colspan="10">LECTURA CRITICA</th>
+                <th colspan="10">MATEMATICAS</th>
+                <th colspan="10">QUIMICA</th>
+                <th colspan="10">TIC</th>
+                <th rowspan="2">Total</th>
+                <th rowspan="2">Total Calificadas</th>
+                <th rowspan="2">%</th>
                 <th rowspan="2" id="ultima2">VER DETALLES</th>
             </tr>
             <tr>
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
+                <th>Docente</th>
+                <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
+                <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
+                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
+                <th>Docente</th>
+                <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
+                <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
+                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
-
-                <th>Docente</th>
-                <th>Virtual</th>
-                <th>Presencial</th>
-                <th>Total</th>
-
-                <th>Docente</th>
-                <th>Virtual</th>
-                <th>Presencial</th>
-                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
             </tr>
         </thead> 
       </table>
@@ -264,81 +443,155 @@
                 <th rowspan="2">Profesional Encargado</th>
                 @endif
                 <th rowspan="2">Estado</th>
-                <th colspan="4">BIOLOGIA</th>
-                <th colspan="4">DIALOGO</th>
-                <th colspan="4">CONSTITUCION</th>
-                <th colspan="4">FISICA</th>
-                <th colspan="4">GEOGRAFIA</th>
-                <th colspan="4">HISTORIA</th>
-                <th colspan="4">INGLES</th>
-                <th colspan="4">LECTURA CRITICA</th>
-                <th colspan="4">MATEMATICAS</th>
-                <th colspan="4">PRACTICAS ARTISTICAS</th>
-                <th colspan="4">QUIMICA</th>
-                <th colspan="4">TIC</th>
-                <th rowspan="2">TOTAL</th>
+                <th colspan="10">BIOLOGIA</th>
+                <th colspan="10">DIALOGO</th>
+                <th colspan="10">CONSTITUCION</th>
+                <th colspan="10">FISICA</th>
+                <th colspan="10">GEOGRAFIA</th>
+                <th colspan="10">HISTORIA</th>
+                <th colspan="10">INGLES</th>
+                <th colspan="10">LECTURA CRITICA</th>
+                <th colspan="10">MATEMATICAS</th>
+                <th colspan="10">PRACTICAS ARTISTICAS</th>
+                <th colspan="10">QUIMICA</th>
+                <th colspan="10">TIC</th>
+                <th rowspan="2">Total</th>
+                <th rowspan="2">Total Calificadas</th>
+                <th rowspan="2">%</th>
                 <th rowspan="2" id="ultima3">ACCIONES</th>
             </tr>
             <tr>
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
+                <th>Docente</th>
+                <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
+                <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
+                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
 
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
-
+                <th>Total Calificadas</th>
+                <th>%</th>
+                
                 <th>Docente</th>
                 <th>Virtual</th>
+                <th>calificadas Virtuales</th>
+                <th>%</th>
                 <th>Presencial</th>
+                <th>calificadas Presenciales</th>
+                <th>%</th>
                 <th>Total</th>
-
-                <th>Docente</th>
-                <th>Virtual</th>
-                <th>Presencial</th>
-                <th>Total</th>
+                <th>Total Calificadas</th>
+                <th>%</th>
             </tr>
         </thead> 
       </table>
@@ -349,7 +602,6 @@
 @include('perfilEstudiante.Asistencias.Individuales.modal.detalles_sesiones')
 @push('scripts')
 <script type="text/javascript">
-
     
     var encargado = $('#encargado').data('condition');
     if(encargado == 1 || encargado == 2){
@@ -377,33 +629,19 @@
                 {data: 'grupo_name'},
                 {data: 'encargado'},
                 {data: 'estado'},
+                //JORNADAS
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -422,6 +660,36 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+                        
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
                         if(data.cursos_presenciales == null){
                             return 0;
                         }else{
@@ -434,6 +702,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -473,47 +771,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //ARTES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -529,6 +894,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -568,47 +963,115 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //BIOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+                        //console.log(asistencias);
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -624,6 +1087,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -663,47 +1156,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CULTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -719,6 +1279,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -758,47 +1348,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DEPORTE
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -814,6 +1471,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -853,47 +1540,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -904,11 +1658,41 @@
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
                                 //console.log(data.cursos_presenciales[i].Total);
-                               contador += parseInt(data.cursos_presenciales[i].Total);
+                                contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -948,47 +1732,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FILOSOFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1004,6 +1855,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1043,47 +1924,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1099,6 +2047,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1138,47 +2116,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1194,6 +2239,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1233,47 +2308,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1289,6 +2431,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1328,47 +2500,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1384,6 +2623,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1423,47 +2692,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1479,6 +2815,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1518,47 +2884,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1574,6 +3007,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1613,47 +3076,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1669,6 +3199,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1708,47 +3268,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1764,6 +3391,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -1803,6 +3460,58 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
                         var virtual=0;
                         var presencial=0;
                         for(const i in data.cursos_virtuales){
@@ -1818,18 +3527,62 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                    
-                    var mstr;
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
                                                 '<div class="col-xs-4 col-sm-4">'+
                                                     '<a id="'+data.id+'" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
                                                 '</div>'+                                                
                                             '</div>'; 
-                    return mstr;
+                        return mstr;
+                    }
                 }
-                }
-
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -1902,23 +3655,25 @@
                             var r7 = Addrow(2, [{ key: 'F', value: "Profesional Encargado" }])
                             var r8 = Addrow(2, [{ key: 'G', value: "Estado" }])
                             var r9 = Addrow(2, [{ key: 'H', value: "ACCION CIUDADANA" }])
-                            var r10 = Addrow(2, [{ key: 'L', value: "ARTES" }])
-                            var r11 = Addrow(2, [{ key: 'P', value: "BIOLOGIA" }])
-                            var r12 = Addrow(2, [{ key: 'T', value: "CULTURA DEMOCRATICA" }])
-                            var r13 = Addrow(2, [{ key: 'X', value: "DEPORTE" }])
-                            var r14 = Addrow(2, [{ key: 'AB', value: "DIALOGO" }])
-                            var r15 = Addrow(2, [{ key: 'AF', value: "FILOSOFIA" }])
-                            var r16 = Addrow(2, [{ key: 'AJ', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'AN', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AR', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AV', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AZ', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'BD', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'BH', value: "QUIMICA" }])
-                            var r23 = Addrow(2, [{ key: 'BL', value: "TIC" }])
-                            var r24 = Addrow(2, [{ key: 'BP', value: "TOTAL" }])
+                            var r10 = Addrow(2, [{ key: 'R', value: "ARTES" }])
+                            var r11 = Addrow(2, [{ key: 'AB', value: "BIOLOGIA" }])
+                            var r12 = Addrow(2, [{ key: 'AL', value: "CULTURA DEMOCRATICA" }])
+                            var r13 = Addrow(2, [{ key: 'AV', value: "DEPORTE" }])
+                            var r14 = Addrow(2, [{ key: 'BF', value: "DIALOGO" }])
+                            var r15 = Addrow(2, [{ key: 'BP', value: "FILOSOFIA" }])
+                            var r16 = Addrow(2, [{ key: 'BZ', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'CJ', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'CT', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'DD', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'DN', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'DX', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'EH', value: "QUIMICA" }])
+                            var r23 = Addrow(2, [{ key: 'ER', value: "TIC" }])
+                            var r24 = Addrow(2, [{ key: 'FB', value: "Total" }])
+                            var r25 = Addrow(2, [{ key: 'FC', value: "Total Calificadas" }])
+                            var r26 = Addrow(2, [{ key: 'FD', value: "%" }])
 
-                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+ r9 +r10 +r11+ r12+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+sheet.childNodes[0].childNodes[1].innerHTML;
+                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+ r9 +r10 +r11+ r12+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+r25+r26+sheet.childNodes[0].childNodes[1].innerHTML;
 
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
@@ -1929,25 +3684,27 @@
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
                             $('row c[r="H2"]', sheet).attr( 's', '2' );
-                            $('row c[r="L2"]', sheet).attr( 's', '2' );
-                            $('row c[r="P2"]', sheet).attr( 's', '2' );
-                            $('row c[r="T2"]', sheet).attr( 's', '2' );
-                            $('row c[r="X2"]', sheet).attr( 's', '2' );
+                            $('row c[r="R2"]', sheet).attr( 's', '2' );
                             $('row c[r="AB2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AF2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AJ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AN2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AR2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AL2"]', sheet).attr( 's', '2' );
                             $('row c[r="AV2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AZ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BD2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BH2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BL2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BF2"]', sheet).attr( 's', '2' );
                             $('row c[r="BP2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BZ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CJ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CT2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DD2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DN2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DX2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EH2"]', sheet).attr( 's', '2' );
+                            $('row c[r="ER2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FB2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FC2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FD2"]', sheet).attr( 's', '2' );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BP1',
+                                    ref: 'A1:FD1',
                                 }
                             } ) );
 
@@ -1995,97 +3752,109 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'H2:k2',
+                                    ref: 'H2:Q2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'L2:O2',
+                                    ref: 'R2:AA2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'P2:S2',
+                                    ref: 'AB2:AK2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'T2:W2',
+                                    ref: 'AL2:AU2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'X2:AA2',
+                                    ref: 'AV2:BE2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AB2:AE2',
+                                    ref: 'BF2:BO2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AF2:AI2',
+                                    ref: 'BP2:BY2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AJ2:AM2',
+                                    ref: 'BZ2:CI2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AN2:AQ2',
+                                    ref: 'CJ2:CS2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AR2:AU2',
+                                    ref: 'CT2:DC2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AV2:AY2',
+                                    ref: 'DD2:DM2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AZ2:BC2',
+                                    ref: 'DN2:DW2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BD2:BG2',
+                                    ref: 'DX2:EG2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BH2:BK2',
+                                    ref: 'EH2:EQ2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BL2:BO2',
+                                    ref: 'ER2:FA2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BP2:BP3',
+                                    ref: 'FB2:FB3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'FC2:FC3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'FD2:FD3',
                                 }
                             } ) );
 
@@ -2142,48 +3911,64 @@
                 {data: 'grupo_name'},
                 {data: 'encargado'},
                 {data: 'estado'},
+                //JORNADAS
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2193,12 +3978,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2238,47 +4053,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
                     }
-                },   
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //ARTES:
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2288,12 +4170,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2333,47 +4245,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
                     }
-                },   
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //BIOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2383,12 +4362,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2428,47 +4437,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DEPORTE
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2478,12 +4554,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2523,47 +4629,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2573,12 +4746,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2618,47 +4821,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CONSTITUCION
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2668,12 +4938,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2713,47 +5013,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2763,12 +5130,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2808,47 +5205,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2858,12 +5322,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2903,47 +5397,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2953,12 +5514,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -2998,47 +5589,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3048,12 +5706,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3093,47 +5781,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3143,12 +5898,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3188,47 +5973,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3238,12 +6090,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3283,47 +6165,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3333,12 +6282,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3378,47 +6357,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3428,12 +6474,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3473,6 +6549,58 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
                         var virtual=0;
                         var presencial=0;
                         for(const i in data.cursos_virtuales){
@@ -3488,17 +6616,63 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
                     
-                    var mstr;
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
-                                                '<div class="col-xs-4 col-sm-4">'+
-                                                    '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
-                                                '</div>'+                                                
-                                            '</div>'; 
-                    return mstr;
+                                    '<div class="col-xs-4 col-sm-4">'+
+                                        '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                    '</div>'+                                                
+                                '</div>'; 
+                        return mstr;
+                    }
                 }
-            }
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -3527,10 +6701,10 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BL1',
+                                    ref: 'A1:ET1',
                                 }
                             } ) );
-                
+
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
                                     ref: 'A2:A3',
@@ -3575,91 +6749,103 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'H2:K2',
+                                    ref: 'H2:Q2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'L2:O2',
+                                    ref: 'R2:AA2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'P2:S2',
+                                    ref: 'AB2:AK2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'T2:W2',
+                                    ref: 'AL2:AU2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'X2:AA2',
+                                    ref: 'AV2:BE2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AB2:AE2',
+                                    ref: 'BF2:BO2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AF2:AI2',
+                                    ref: 'BP2:BY2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AJ2:AM2',
+                                    ref: 'BZ2:CI2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AN2:AQ2',
+                                    ref: 'CJ2:CS2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AR2:AU2',
+                                    ref: 'CT2:DC2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AV2:AY2',
+                                    ref: 'DD2:DM2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AZ2:BC2',
+                                    ref: 'DN2:DW2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BD2:BG2',
+                                    ref: 'DX2:EG2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BH2:BK2',
+                                    ref: 'EH2:EQ2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BL2:BL3',
+                                    ref: 'ER2:ER3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'ES2:ES3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'ET2:ET3',
                                 }
                             } ) );
 
@@ -3733,21 +6919,23 @@
                             var r7 = Addrow(2, [{ key: 'F', value: "Profesional Encargado" }])
                             var r8 = Addrow(2, [{ key: 'G', value: "Estado" }])
                             var r9 = Addrow(2, [{ key: 'H', value: "ACCION CIUDADANA" }])
-                            var r10 = Addrow(2, [{ key: 'L', value: "ARTES" }])
-                            var r11 = Addrow(2, [{ key: 'P', value: "BIOLOGIA" }])
-                            var r13 = Addrow(2, [{ key: 'T', value: "DEPORTE" }])
-                            var r14 = Addrow(2, [{ key: 'X', value: "DIALOGO" }])
-                            var r15 = Addrow(2, [{ key: 'AB', value: "CONSTITUCION" }])
-                            var r16 = Addrow(2, [{ key: 'AF', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'AJ', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AN', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AR', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AV', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'AZ', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'BD', value: "QUIMICA" }])
-                            var r23 = Addrow(2, [{ key: 'BH', value: "TIC" }])
-                            var r24 = Addrow(2, [{ key: 'BL', value: "TOTAL" }])
-                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+ r9 +r10 +r11+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+sheet.childNodes[0].childNodes[1].innerHTML;
+                            var r10 = Addrow(2, [{ key: 'R', value: "ARTES" }])
+                            var r11 = Addrow(2, [{ key: 'AB', value: "BIOLOGIA" }])
+                            var r13 = Addrow(2, [{ key: 'AL', value: "DEPORTE" }])
+                            var r14 = Addrow(2, [{ key: 'AV', value: "DIALOGO" }])
+                            var r15 = Addrow(2, [{ key: 'BF', value: "CONSTITUCION" }])
+                            var r16 = Addrow(2, [{ key: 'BP', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'BZ', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'CJ', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'CT', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'DD', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'DN', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'DX', value: "QUIMICA" }])
+                            var r23 = Addrow(2, [{ key: 'EH', value: "TIC" }])
+                            var r24 = Addrow(2, [{ key: 'ER', value: "Total" }])
+                            var r25 = Addrow(2, [{ key: 'ES', value: "Total Calificadas" }])
+                            var r26 = Addrow(2, [{ key: 'ET', value: "%" }])
+                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+ r9 +r10 +r11+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+r25+r26+sheet.childNodes[0].childNodes[1].innerHTML;
 
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
@@ -3758,20 +6946,22 @@
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
                             $('row c[r="H2"]', sheet).attr( 's', '2' );
-                            $('row c[r="L2"]', sheet).attr( 's', '2' );
-                            $('row c[r="P2"]', sheet).attr( 's', '2' );
-                            $('row c[r="T2"]', sheet).attr( 's', '2' );
-                            $('row c[r="X2"]', sheet).attr( 's', '2' );
+                            $('row c[r="R2"]', sheet).attr( 's', '2' );
                             $('row c[r="AB2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AF2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AJ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AN2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AR2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AL2"]', sheet).attr( 's', '2' );
                             $('row c[r="AV2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AZ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BD2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BH2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BL2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BF2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BP2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BZ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CJ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CT2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DD2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DN2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DX2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EH2"]', sheet).attr( 's', '2' );
+                            $('row c[r="ER2"]', sheet).attr( 's', '2' );
+                            $('row c[r="ES2"]', sheet).attr( 's', '2' ); 
+                            $('row c[r="ET2"]', sheet).attr( 's', '2' );
                         },
                     }
                 ]
@@ -3802,48 +6992,64 @@
                 {data: 'grupo_name'},
                 {data: 'encargado'},
                 {data: 'estado'},
+                //BIOLOGIA
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3859,6 +7065,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3898,47 +7134,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3954,6 +7257,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -3993,47 +7326,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CONSTITUCION
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4049,6 +7449,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4088,47 +7518,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4144,6 +7641,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4183,47 +7710,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4239,6 +7833,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4278,47 +7902,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4334,6 +8025,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4373,47 +8094,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4429,6 +8217,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4468,47 +8286,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4524,6 +8409,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4563,47 +8478,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4619,6 +8601,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4658,47 +8670,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //PRACTICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4714,6 +8793,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4753,47 +8862,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4809,6 +8985,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4848,47 +9054,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4899,11 +9172,41 @@
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
                                 //console.log(data.cursos_presenciales[i].Total);
-                                contador = data.cursos_presenciales[i].Total;
+                                contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -4943,30 +9246,130 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        var contador=0;
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
 
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
                         for(const i in data.cursos_virtuales){
-                            contador = contador + parseInt(data.cursos_virtuales[i].Total)
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
                         }
                         for(const i in data.cursos_presenciales){
-                            contador = contador + parseInt(data.cursos_presenciales[i].Total)
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
                         }
-                        return contador;
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
+                        var virtual=0;
+                        var presencial=0;
+                        for(const i in data.cursos_virtuales){
+                            virtual = virtual + parseInt(data.cursos_virtuales[i].Total)    
+                        }
+
+                        for(const i in data.cursos_presenciales){
+                            presencial = presencial + parseInt(data.cursos_presenciales[i].Total)
+                            
+                        }
+
+                        return virtual+presencial;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                     
-                    var mstr;
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
-                                                '<div class="col-xs-4 col-sm-4">'+
-                                                    '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
-                                                '</div>'+                                                
-                                            '</div>'; 
-                    return mstr;
+                                    '<div class="col-xs-4 col-sm-4">'+
+                                        '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                    '</div>'+                                                
+                                '</div>'; 
+                        return mstr;
+                    }
                 }
-            }
-
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -4995,7 +9398,7 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BD1',
+                                    ref: 'A1:DZ1',
                                 }
                             } ) );
 
@@ -5043,81 +9446,94 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'H2:K2',
+                                    ref: 'H2:Q2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'L2:O2',
+                                    ref: 'R2:AA2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'P2:S2',
+                                    ref: 'AB2:AK2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'T2:W2',
+                                    ref: 'AL2:AU2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'X2:AA2',
+                                    ref: 'AV2:BE2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AB2:AE2',
+                                    ref: 'BF2:BO2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AF:AI2',
+                                    ref: 'BP2:BY2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AJ2:AM2',
+                                    ref: 'BZ2:CI2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AN2:AQ2',
+                                    ref: 'CJ2:CS2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AR2:AU2',
+                                    ref: 'CT2:DC2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AV2:AY2',
+                                    ref: 'DD2:DM2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AZ2:BC2',
+                                    ref: 'DN2:DW2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BD2:BD3',
+                                    ref: 'DX2:DX3',
                                 }
                             } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'DY2:DY3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'DZ2:DZ3',
+                                }
+                            } ) );
+
                             mergeCells.attr( 'count', mergeCells.attr( 'count' )+1 );
                 
  
@@ -5188,19 +9604,22 @@
                             var r7 = Addrow(2, [{ key: 'F', value: "Profesional Encargado" }])
                             var r8 = Addrow(2, [{ key: 'G', value: "Estado" }])
                             var r11 = Addrow(2, [{ key: 'H', value: "BIOLOGIA" }])
-                            var r14 = Addrow(2, [{ key: 'L', value: "DIALOGO" }])
-                            var r15 = Addrow(2, [{ key: 'P', value: "CONSTITUCION" }])
-                            var r16 = Addrow(2, [{ key: 'T', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'X', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AB', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AF', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AJ', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'AN', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'AR', value: "PRACTICAS ARTISTICAS" }])
-                            var r23 = Addrow(2, [{ key: 'AV', value: "QUIMICA" }])
-                            var r24 = Addrow(2, [{ key: 'AZ', value: "TIC" }])
-                            var r25 = Addrow(2, [{ key: 'BD', value: "TOTAL" }])
-                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+r11+r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+r25+sheet.childNodes[0].childNodes[1].innerHTML;
+                            var r14 = Addrow(2, [{ key: 'R', value: "DIALOGO" }])
+                            var r15 = Addrow(2, [{ key: 'AB', value: "CONSTITUCION" }])
+                            var r16 = Addrow(2, [{ key: 'AL', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'AV', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'BF', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'BP', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'BZ', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'CJ', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'CT', value: "PRACTICAS ARTISTICAS" }])
+                            var r23 = Addrow(2, [{ key: 'DD', value: "QUIMICA" }])
+                            var r24 = Addrow(2, [{ key: 'DN', value: "TIC" }])
+                            var r25 = Addrow(2, [{ key: 'DX', value: "Total" }])
+                            var r26 = Addrow(2, [{ key: 'DY', value: "Total Calificadas" }])
+                            var r27 = Addrow(2, [{ key: 'DZ', value: "%" }])
+                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7 +r8+r11+r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+r25+r26+r27+sheet.childNodes[0].childNodes[1].innerHTML;
+                            
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
                             $('row c[r="B2"]', sheet).attr( 's', '2' );
@@ -5210,19 +9629,20 @@
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
                             $('row c[r="H2"]', sheet).attr( 's', '2' );
-                            $('row c[r="L2"]', sheet).attr( 's', '2' );
-                            $('row c[r="P2"]', sheet).attr( 's', '2' );
-                            $('row c[r="T2"]', sheet).attr( 's', '2' );
-                            $('row c[r="X2"]', sheet).attr( 's', '2' );
+                            $('row c[r="R2"]', sheet).attr( 's', '2' );
                             $('row c[r="AB2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AF2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AJ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AN2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AR2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AL2"]', sheet).attr( 's', '2' );
                             $('row c[r="AV2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AZ2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BD2"]', sheet).attr( 's', '2' );
-
+                            $('row c[r="BF2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BP2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BZ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CJ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CT2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DD2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DN2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DX2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DY2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DZ2"]', sheet).attr( 's', '2' );
                         },
                     }
                 ]
@@ -5240,242 +9660,295 @@
             switch(tabla){
                 case '1':
                     if(!virtual){
-                        table.columns([8,10]).visible(false);
-                        table.columns([12,14]).visible(false);
-                        table.columns([16,18]).visible(false);
-                        table.columns([20,22]).visible(false);
-                        table.columns([24,26]).visible(false);
-                        table.columns([28,30]).visible(false);
-                        table.columns([32,34]).visible(false);
-                        table.columns([36,38]).visible(false);
-                        table.columns([40,42]).visible(false);
-                        table.columns([44,46]).visible(false);
-                        table.columns([48,50]).visible(false);
-                        table.columns([52,54]).visible(false);
-                        table.columns([56,58]).visible(false);
-                        table.columns([60,62]).visible(false);
-                        table.columns([64,66]).visible(false);
+                        table.columns([8,9,10]).visible(false);
+                        table.columns([18,19,20]).visible(false);
+                        table.columns([28,29,30]).visible(false);
+                        table.columns([38,39,40]).visible(false);
+                        table.columns([48,49,50]).visible(false);
+                        table.columns([58,59,60]).visible(false);
+                        table.columns([68,69,70]).visible(false);
+                        table.columns([78,79,80]).visible(false);
+                        table.columns([88,89,90]).visible(false);
+                        table.columns([98,99,100]).visible(false);
+                        table.columns([108,109,110]).visible(false);
+                        table.columns([118,119,120]).visible(false);
+                        table.columns([128,129,130]).visible(false);
+                        table.columns([138,139,140]).visible(false);
+                        table.columns([148,149,150]).visible(false);
 
                     }else if(virtual){
-                        table.columns(8).visible(true);
-                        table.columns(12).visible(true);
-                        table.columns(16).visible(true);
-                        table.columns(20).visible(true);
-                        table.columns(24).visible(true);
-                        table.columns(28).visible(true);
-                        table.columns(32).visible(true);
-                        table.columns(36).visible(true);
-                        table.columns(40).visible(true);
-                        table.columns(44).visible(true);      
-                        table.columns(48).visible(true);
-                        table.columns(52).visible(true);
-                        table.columns(56).visible(true);
-                        table.columns(60).visible(true);      
-                        table.columns(64).visible(true);       
+                        table.columns([8,9,10]).visible(true);
+                        table.columns([18,19,20]).visible(true);
+                        table.columns([28,29,30]).visible(true);
+                        table.columns([38,39,40]).visible(true);
+                        table.columns([48,49,50]).visible(true);
+                        table.columns([58,59,60]).visible(true);
+                        table.columns([68,69,70]).visible(true);
+                        table.columns([78,79,80]).visible(true);
+                        table.columns([88,89,90]).visible(true);
+                        table.columns([98,99,100]).visible(true);
+                        table.columns([108,109,110]).visible(true);
+                        table.columns([118,119,120]).visible(true);
+                        table.columns([128,129,130]).visible(true);
+                        table.columns([138,139,140]).visible(true);
+                        table.columns([148,149,150]).visible(true);       
                     }
                     if(!presencial){ 
-                        table.columns([9,10]).visible(false);
-                        table.columns([13,14]).visible(false);
-                        table.columns([17,18]).visible(false);
-                        table.columns([21,22]).visible(false);
-                        table.columns([25,26]).visible(false);
-                        table.columns([29,30]).visible(false);
-                        table.columns([33,34]).visible(false);
-                        table.columns([37,38]).visible(false);
-                        table.columns([41,42]).visible(false);
-                        table.columns([45,46]).visible(false);
-                        table.columns([49,50]).visible(false);
-                        table.columns([53,54]).visible(false);
-                        table.columns([57,58]).visible(false);
-                        table.columns([61,62]).visible(false);
-                        table.columns([65,66]).visible(false);
+                        table.columns([11,12,13]).visible(false);
+                        table.columns([21,22,23]).visible(false);
+                        table.columns([31,32,33]).visible(false);
+                        table.columns([41,42,43]).visible(false);
+                        table.columns([51,52,53]).visible(false);
+                        table.columns([61,62,63]).visible(false);
+                        table.columns([71,72,73]).visible(false);
+                        table.columns([81,82,83]).visible(false);
+                        table.columns([91,92,93]).visible(false);
+                        table.columns([101,102,103]).visible(false);
+                        table.columns([111,112,113]).visible(false);
+                        table.columns([121,122,123]).visible(false);
+                        table.columns([131,132,133]).visible(false);
+                        table.columns([141,142,143]).visible(false);
+                        table.columns([151,152,153]).visible(false);
                     }else if(presencial){
-                        table.columns(9).visible(true);
-                        table.columns(13).visible(true);
-                        table.columns(17).visible(true);
-                        table.columns(21).visible(true);
-                        table.columns(25).visible(true);
-                        table.columns(29).visible(true);
-                        table.columns(33).visible(true);
-                        table.columns(37).visible(true);
-                        table.columns(41).visible(true);
-                        table.columns(45).visible(true);     
-                        table.columns(49).visible(true);
-                        table.columns(53).visible(true);
-                        table.columns(57).visible(true);
-                        table.columns(61).visible(true);     
-                        table.columns(65).visible(true);      
+                        table.columns([11,12,13]).visible(true);
+                        table.columns([21,22,23]).visible(true);
+                        table.columns([31,32,33]).visible(true);
+                        table.columns([41,42,43]).visible(true);
+                        table.columns([51,52,53]).visible(true);
+                        table.columns([61,62,63]).visible(true);
+                        table.columns([71,72,73]).visible(true);
+                        table.columns([81,82,83]).visible(true);
+                        table.columns([91,92,93]).visible(true);
+                        table.columns([101,102,103]).visible(true);
+                        table.columns([111,112,113]).visible(true);
+                        table.columns([121,122,123]).visible(true);
+                        table.columns([131,132,133]).visible(true);
+                        table.columns([141,142,143]).visible(true);
+                        table.columns([151,152,153]).visible(true);      
                     }
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table.columns([8,9,10]).visible(true);
-                        table.columns([12,13,14]).visible(true);
-                        table.columns([16,17,18]).visible(true);
-                        table.columns([20,21,22]).visible(true);
-                        table.columns([24,25,26]).visible(true);
+                        table.columns([18,19,20]).visible(true);
                         table.columns([28,29,30]).visible(true);
-                        table.columns([32,33,34]).visible(true);
-                        table.columns([36,37,38]).visible(true);
-                        table.columns([40,41,42]).visible(true);
-                        table.columns([44,45,46]).visible(true); 
+                        table.columns([38,39,40]).visible(true);
                         table.columns([48,49,50]).visible(true);
-                        table.columns([52,53,54]).visible(true);
-                        table.columns([56,57,58]).visible(true);
-                        table.columns([60,61,62]).visible(true); 
-                        table.columns([64,65,66]).visible(true);  
+                        table.columns([58,59,60]).visible(true);
+                        table.columns([68,69,70]).visible(true);
+                        table.columns([78,79,80]).visible(true);
+                        table.columns([88,89,90]).visible(true);
+                        table.columns([98,99,100]).visible(true);
+                        table.columns([108,109,110]).visible(true);
+                        table.columns([118,119,120]).visible(true);
+                        table.columns([128,129,130]).visible(true);
+                        table.columns([138,139,140]).visible(true);
+                        table.columns([148,149,150]).visible(true);
+
+                        //PRESENCIAL
+                        table.columns([11,12,13]).visible(true);
+                        table.columns([21,22,23]).visible(true);
+                        table.columns([31,32,33]).visible(true);
+                        table.columns([41,42,43]).visible(true);
+                        table.columns([51,52,53]).visible(true);
+                        table.columns([61,62,63]).visible(true);
+                        table.columns([71,72,73]).visible(true);
+                        table.columns([81,82,83]).visible(true);
+                        table.columns([91,92,93]).visible(true);
+                        table.columns([101,102,103]).visible(true);
+                        table.columns([111,112,113]).visible(true);
+                        table.columns([121,122,123]).visible(true);
+                        table.columns([131,132,133]).visible(true);
+                        table.columns([141,142,143]).visible(true);
+                        table.columns([151,152,153]).visible(true);
                     }
 
                     break;
                 case '2':
                     if(!virtual){
-                        table2.columns([8,10]).visible(false);
-                        table2.columns([12,14]).visible(false);
-                        table2.columns([16,18]).visible(false);
-                        table2.columns([20,22]).visible(false);
-                        table2.columns([24,26]).visible(false);
-                        table2.columns([28,30]).visible(false);
-                        table2.columns([32,34]).visible(false);
-                        table2.columns([36,38]).visible(false);
-                        table2.columns([40,42]).visible(false);
-                        table2.columns([44,46]).visible(false);
-                        table2.columns([48,50]).visible(false);
-                        table2.columns([52,54]).visible(false);
-                        table2.columns([56,58]).visible(false);
-                        table2.columns([60,62]).visible(false);
-                        
+                        table2.columns([8,9,10]).visible(false);
+                        table2.columns([18,19,20]).visible(false);
+                        table2.columns([28,29,30]).visible(false);
+                        table2.columns([38,39,40]).visible(false);
+                        table2.columns([48,49,50]).visible(false);
+                        table2.columns([58,59,60]).visible(false);
+                        table2.columns([68,69,70]).visible(false);
+                        table2.columns([78,79,80]).visible(false);
+                        table2.columns([88,89,90]).visible(false);
+                        table2.columns([98,99,100]).visible(false);
+                        table2.columns([108,109,110]).visible(false);
+                        table2.columns([118,119,120]).visible(false);
+                        table2.columns([128,129,130]).visible(false);
+                        table2.columns([138,139,140]).visible(false);
+
                     }else if(virtual){
-                        table2.columns(8).visible(true);
-                        table2.columns(12).visible(true);
-                        table2.columns(16).visible(true);
-                        table2.columns(20).visible(true);
-                        table2.columns(24).visible(true);
-                        table2.columns(28).visible(true);
-                        table2.columns(32).visible(true);
-                        table2.columns(36).visible(true);
-                        table2.columns(40).visible(true);
-                        table2.columns(44).visible(true);      
-                        table2.columns(48).visible(true);
-                        table2.columns(52).visible(true);
-                        table2.columns(56).visible(true);
-                        table2.columns(60).visible(true);
+                        table2.columns([8,9,10]).visible(true);
+                        table2.columns([18,19,20]).visible(true);
+                        table2.columns([28,29,30]).visible(true);
+                        table2.columns([38,39,40]).visible(true);
+                        table2.columns([48,49,50]).visible(true);
+                        table2.columns([58,59,60]).visible(true);
+                        table2.columns([68,69,70]).visible(true);
+                        table2.columns([78,79,80]).visible(true);
+                        table2.columns([88,89,90]).visible(true);
+                        table2.columns([98,99,100]).visible(true);
+                        table2.columns([108,109,110]).visible(true);
+                        table2.columns([118,119,120]).visible(true);
+                        table2.columns([128,129,130]).visible(true);
+                        table2.columns([138,139,140]).visible(true);      
                     }
                     if(!presencial){ 
-                        table2.columns([9,10]).visible(false);
-                        table2.columns([13,14]).visible(false);
-                        table2.columns([17,18]).visible(false);
-                        table2.columns([21,22]).visible(false);
-                        table2.columns([25,26]).visible(false);
-                        table2.columns([29,30]).visible(false);
-                        table2.columns([33,34]).visible(false);
-                        table2.columns([37,38]).visible(false);
-                        table2.columns([41,42]).visible(false);
-                        table2.columns([45,46]).visible(false);
-                        table2.columns([49,50]).visible(false);
-                        table2.columns([53,54]).visible(false);
-                        table2.columns([57,58]).visible(false);
-                        table2.columns([61,62]).visible(false);
+                        table2.columns([11,12,13]).visible(false);
+                        table2.columns([21,22,23]).visible(false);
+                        table2.columns([31,32,33]).visible(false);
+                        table2.columns([41,42,43]).visible(false);
+                        table2.columns([51,52,53]).visible(false);
+                        table2.columns([61,62,63]).visible(false);
+                        table2.columns([71,72,73]).visible(false);
+                        table2.columns([81,82,83]).visible(false);
+                        table2.columns([91,92,93]).visible(false);
+                        table2.columns([101,102,103]).visible(false);
+                        table2.columns([111,112,113]).visible(false);
+                        table2.columns([121,122,123]).visible(false);
+                        table2.columns([131,132,133]).visible(false);
+                        table2.columns([141,142,143]).visible(false);
                     }else if(presencial){
-                        table2.columns(9).visible(true);
-                        table2.columns(13).visible(true);
-                        table2.columns(17).visible(true);
-                        table2.columns(21).visible(true);
-                        table2.columns(25).visible(true);
-                        table2.columns(29).visible(true);
-                        table2.columns(33).visible(true);
-                        table2.columns(37).visible(true);
-                        table2.columns(41).visible(true);
-                        table2.columns(45).visible(true);     
-                        table2.columns(49).visible(true);
-                        table2.columns(53).visible(true);
-                        table2.columns(57).visible(true);
-                        table2.columns(61).visible(true);
+                        table2.columns([11,12,13]).visible(true);
+                        table2.columns([21,22,23]).visible(true);
+                        table2.columns([31,32,33]).visible(true);
+                        table2.columns([41,42,43]).visible(true);
+                        table2.columns([51,52,53]).visible(true);
+                        table2.columns([61,62,63]).visible(true);
+                        table2.columns([71,72,73]).visible(true);
+                        table2.columns([81,82,83]).visible(true);
+                        table2.columns([91,92,93]).visible(true);
+                        table2.columns([101,102,103]).visible(true);
+                        table2.columns([111,112,113]).visible(true);
+                        table2.columns([121,122,123]).visible(true);
+                        table2.columns([131,132,133]).visible(true);
+                        table2.columns([141,142,143]).visible(true);     
                     }
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table2.columns([8,9,10]).visible(true);
-                        table2.columns([12,13,14]).visible(true);
-                        table2.columns([16,17,18]).visible(true);
-                        table2.columns([20,21,22]).visible(true);
-                        table2.columns([24,25,26]).visible(true);
+                        table2.columns([18,19,20]).visible(true);
                         table2.columns([28,29,30]).visible(true);
-                        table2.columns([32,33,34]).visible(true);
-                        table2.columns([36,37,38]).visible(true);
-                        table2.columns([40,41,42]).visible(true);
-                        table2.columns([44,45,46]).visible(true); 
+                        table2.columns([38,39,40]).visible(true);
                         table2.columns([48,49,50]).visible(true);
-                        table2.columns([52,53,54]).visible(true);
-                        table2.columns([56,57,58]).visible(true);
-                        table2.columns([60,61,62]).visible(true);
+                        table2.columns([58,59,60]).visible(true);
+                        table2.columns([68,69,70]).visible(true);
+                        table2.columns([78,79,80]).visible(true);
+                        table2.columns([88,89,90]).visible(true);
+                        table2.columns([98,99,100]).visible(true);
+                        table2.columns([108,109,110]).visible(true);
+                        table2.columns([118,119,120]).visible(true);
+                        table2.columns([128,129,130]).visible(true);
+                        table2.columns([138,139,140]).visible(true);
+
+                        //PRESENCIAL
+                        table2.columns([11,12,13]).visible(true);
+                        table2.columns([21,22,23]).visible(true);
+                        table2.columns([31,32,33]).visible(true);
+                        table2.columns([41,42,43]).visible(true);
+                        table2.columns([51,52,53]).visible(true);
+                        table2.columns([61,62,63]).visible(true);
+                        table2.columns([71,72,73]).visible(true);
+                        table2.columns([81,82,83]).visible(true);
+                        table2.columns([91,92,93]).visible(true);
+                        table2.columns([101,102,103]).visible(true);
+                        table2.columns([111,112,113]).visible(true);
+                        table2.columns([121,122,123]).visible(true);
+                        table2.columns([131,132,133]).visible(true);
+                        table2.columns([141,142,143]).visible(true);
                     }
 
                     break;
                 case '3':
                     if(!virtual){
-                        table3.columns([8,10]).visible(false);
-                        table3.columns([12,14]).visible(false);
-                        table3.columns([16,18]).visible(false);
-                        table3.columns([20,22]).visible(false);
-                        table3.columns([24,26]).visible(false);
-                        table3.columns([28,30]).visible(false);
-                        table3.columns([32,34]).visible(false);
-                        table3.columns([36,38]).visible(false);
-                        table3.columns([40,42]).visible(false);
-                        table3.columns([44,46]).visible(false);
-                        table3.columns([48,50]).visible(false);
-                        table3.columns([52,54]).visible(false);
-                        
+                        table3.columns([8,9,10]).visible(false);
+                        table3.columns([18,19,20]).visible(false);
+                        table3.columns([28,29,30]).visible(false);
+                        table3.columns([38,39,40]).visible(false);
+                        table3.columns([48,49,50]).visible(false);
+                        table3.columns([58,59,60]).visible(false);
+                        table3.columns([68,69,70]).visible(false);
+                        table3.columns([78,79,80]).visible(false);
+                        table3.columns([88,89,90]).visible(false);
+                        table3.columns([98,99,100]).visible(false);
+                        table3.columns([108,109,110]).visible(false);
+                        table3.columns([118,119,120]).visible(false);
+
                     }else if(virtual){
-                        table3.columns(8).visible(true);
-                        table3.columns(12).visible(true);
-                        table3.columns(16).visible(true);
-                        table3.columns(20).visible(true);
-                        table3.columns(24).visible(true);
-                        table3.columns(28).visible(true);
-                        table3.columns(32).visible(true);
-                        table3.columns(36).visible(true);
-                        table3.columns(40).visible(true);
-                        table3.columns(44).visible(true);      
-                        table3.columns(48).visible(true);
-                        table3.columns(52).visible(true);
+                        table3.columns([8,9,10]).visible(true);
+                        table3.columns([18,19,20]).visible(true);
+                        table3.columns([28,29,30]).visible(true);
+                        table3.columns([38,39,40]).visible(true);
+                        table3.columns([48,49,50]).visible(true);
+                        table3.columns([58,59,60]).visible(true);
+                        table3.columns([68,69,70]).visible(true);
+                        table3.columns([78,79,80]).visible(true);
+                        table3.columns([88,89,90]).visible(true);
+                        table3.columns([98,99,100]).visible(true);
+                        table3.columns([108,109,110]).visible(true);
+                        table3.columns([118,119,120]).visible(true);     
                     }
                     if(!presencial){ 
-                        table3.columns([9,10]).visible(false);
-                        table3.columns([13,14]).visible(false);
-                        table3.columns([17,18]).visible(false);
-                        table3.columns([21,22]).visible(false);
-                        table3.columns([25,26]).visible(false);
-                        table3.columns([29,30]).visible(false);
-                        table3.columns([33,34]).visible(false);
-                        table3.columns([37,38]).visible(false);
-                        table3.columns([41,42]).visible(false);
-                        table3.columns([45,46]).visible(false);
-                        table3.columns([49,50]).visible(false);
-                        table3.columns([53,54]).visible(false);
+                        table3.columns([11,12,13]).visible(false);
+                        table3.columns([21,22,23]).visible(false);
+                        table3.columns([31,32,33]).visible(false);
+                        table3.columns([41,42,43]).visible(false);
+                        table3.columns([51,52,53]).visible(false);
+                        table3.columns([61,62,63]).visible(false);
+                        table3.columns([71,72,73]).visible(false);
+                        table3.columns([81,82,83]).visible(false);
+                        table3.columns([91,92,93]).visible(false);
+                        table3.columns([101,102,103]).visible(false);
+                        table3.columns([111,112,113]).visible(false);
+                        table3.columns([121,122,123]).visible(false);
                     }else if(presencial){
-                        table3.columns(9).visible(true);
-                        table3.columns(13).visible(true);
-                        table3.columns(17).visible(true);
-                        table3.columns(21).visible(true);
-                        table3.columns(25).visible(true);
-                        table3.columns(29).visible(true);
-                        table3.columns(33).visible(true);
-                        table3.columns(37).visible(true);
-                        table3.columns(41).visible(true);
-                        table3.columns(45).visible(true);     
-                        table3.columns(49).visible(true);
-                        table3.columns(53).visible(true);
+                        table3.columns([11,12,13]).visible(true);
+                        table3.columns([21,22,23]).visible(true);
+                        table3.columns([31,32,33]).visible(true);
+                        table3.columns([41,42,43]).visible(true);
+                        table3.columns([51,52,53]).visible(true);
+                        table3.columns([61,62,63]).visible(true);
+                        table3.columns([71,72,73]).visible(true);
+                        table3.columns([81,82,83]).visible(true);
+                        table3.columns([91,92,93]).visible(true);
+                        table3.columns([101,102,103]).visible(true);
+                        table3.columns([111,112,113]).visible(true);
+                        table3.columns([121,122,123]).visible(true);    
                     }
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table3.columns([8,9,10]).visible(true);
-                        table3.columns([12,13,14]).visible(true);
-                        table3.columns([16,17,18]).visible(true);
-                        table3.columns([20,21,22]).visible(true);
-                        table3.columns([24,25,26]).visible(true);
+                        table3.columns([18,19,20]).visible(true);
                         table3.columns([28,29,30]).visible(true);
-                        table3.columns([32,33,34]).visible(true);
-                        table3.columns([36,37,38]).visible(true);
-                        table3.columns([40,41,42]).visible(true);
-                        table3.columns([44,45,46]).visible(true); 
+                        table3.columns([38,39,40]).visible(true);
                         table3.columns([48,49,50]).visible(true);
-                        table3.columns([52,53,54]).visible(true);
+                        table3.columns([58,59,60]).visible(true);
+                        table3.columns([68,69,70]).visible(true);
+                        table3.columns([78,79,80]).visible(true);
+                        table3.columns([88,89,90]).visible(true);
+                        table3.columns([98,99,100]).visible(true);
+                        table3.columns([108,109,110]).visible(true);
+                        table3.columns([118,119,120]).visible(true);
+
+                        //PRESENCIAL
+                        table3.columns([11,12,13]).visible(true);
+                        table3.columns([21,22,23]).visible(true);
+                        table3.columns([31,32,33]).visible(true);
+                        table3.columns([41,42,43]).visible(true);
+                        table3.columns([51,52,53]).visible(true);
+                        table3.columns([61,62,63]).visible(true);
+                        table3.columns([71,72,73]).visible(true);
+                        table3.columns([81,82,83]).visible(true);
+                        table3.columns([91,92,93]).visible(true);
+                        table3.columns([101,102,103]).visible(true);
+                        table3.columns([111,112,113]).visible(true);
+                        table3.columns([121,122,123]).visible(true);
                     }
 
                     break;
@@ -5507,33 +9980,19 @@
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'estado'},
+                //JORNADAS
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5552,6 +10011,36 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+                        
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
                         if(data.cursos_presenciales == null){
                             return 0;
                         }else{
@@ -5564,6 +10053,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5603,47 +10122,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //ARTES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5659,6 +10245,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5698,47 +10314,115 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //BIOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+                        //console.log(asistencias);
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5754,6 +10438,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5793,47 +10507,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CULTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5849,6 +10630,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5888,47 +10699,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CULTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DEPORTE
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5944,6 +10822,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -5983,47 +10891,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6034,11 +11009,41 @@
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
                                 //console.log(data.cursos_presenciales[i].Total);
-                               contador += parseInt(data.cursos_presenciales[i].Total);
+                                contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6078,47 +11083,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FILOSOFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6134,6 +11206,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6173,47 +11275,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FILOSOFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6229,6 +11398,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6268,47 +11467,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6324,6 +11590,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6363,47 +11659,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6419,6 +11782,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6458,47 +11851,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6514,6 +11974,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6553,47 +12043,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6609,6 +12166,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6648,47 +12235,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6704,6 +12358,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6743,47 +12427,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6799,6 +12550,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6838,47 +12619,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6894,6 +12742,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -6933,6 +12811,58 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
                         var virtual=0;
                         var presencial=0;
                         for(const i in data.cursos_virtuales){
@@ -6948,18 +12878,62 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                    
-                    var mstr;
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
                                                 '<div class="col-xs-4 col-sm-4">'+
                                                     '<a id="'+data.id+'" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
                                                 '</div>'+                                                
                                             '</div>'; 
-                    return mstr;
+                        return mstr;
+                    }
                 }
-            }
-
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -6988,7 +12962,7 @@
                 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BO1',
+                                    ref: 'A1:FC1',
                                 }
                             } ) );
                 
@@ -7031,97 +13005,109 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'G2:J2',
+                                    ref: 'G2:P2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'K2:N2',
+                                    ref: 'Q2:Z2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'O2:R2',
+                                    ref: 'AA2:AJ2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'S2:V2',
+                                    ref: 'AK2:AT2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'W2:Z2',
+                                    ref: 'AU2:BD2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AA2:AD2',
+                                    ref: 'BE2:BN2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AE2:AH2',
+                                    ref: 'BO2:BX2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AI2:AL2',
+                                    ref: 'BY2:CH2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AM2:AP2',
+                                    ref: 'CI2:CR2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AQ2:AT2',
+                                    ref: 'CS2:DB2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AU2:AX2',
+                                    ref: 'DC2:DL2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AY2:BB2',
+                                    ref: 'DM2:DV2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BC2:BF2',
+                                    ref: 'DW2:EF2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BG2:BJ2',
+                                    ref: 'EG2:EP2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BK2:BN2',
+                                    ref: 'EQ2:EZ2',
                                 }
                             } ) );
 
-                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BO2:BO3',
+                                    ref: 'FA2:FA3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'FB2:FB3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'FC2:FC3',
                                 }
                             } ) );
                             
@@ -7194,22 +13180,25 @@
                             var r6 = Addrow(2, [{ key: 'E', value: "Grupo" }])
                             var r7 = Addrow(2, [{ key: 'F', value: "Estado" }])
                             var r9 = Addrow(2, [{ key: 'G', value: "ACCION CIUDADANA" }])
-                            var r10 = Addrow(2, [{ key: 'K', value: "ARTES" }])
-                            var r11 = Addrow(2, [{ key: 'O', value: "BIOLOGIA" }])
-                            var r12 = Addrow(2, [{ key: 'S', value: "CULTURA DEMOCRATICA" }])
-                            var r13 = Addrow(2, [{ key: 'W', value: "DEPORTE" }])
-                            var r14 = Addrow(2, [{ key: 'AA', value: "DIALOGO" }])
-                            var r15 = Addrow(2, [{ key: 'AE', value: "FILOSOFIA" }])
-                            var r16 = Addrow(2, [{ key: 'AI', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'AM', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AQ', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AU', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AY', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'BC', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'BG', value: "QUIMICA" }])
-                            var r23 = Addrow(2, [{ key: 'BK', value: "TIC" }])
-                            var r24 = Addrow(2, [{ key: 'BO', value: "TOTAL" }])
-                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7+ r9 +r10 +r11+ r12+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+sheet.childNodes[0].childNodes[1].innerHTML;
+                            var r10 = Addrow(2, [{ key: 'Q', value: "ARTES" }])
+                            var r11 = Addrow(2, [{ key: 'AA', value: "BIOLOGIA" }])
+                            var r12 = Addrow(2, [{ key: 'AK', value: "CULTURA DEMOCRATICA" }])
+                            var r13 = Addrow(2, [{ key: 'AU', value: "DEPORTE" }])
+                            var r14 = Addrow(2, [{ key: 'BE', value: "DIALOGO" }])
+                            var r15 = Addrow(2, [{ key: 'BO', value: "FILOSOFIA" }])
+                            var r16 = Addrow(2, [{ key: 'BY', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'CI', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'CS', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'DC', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'DM', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'DW', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'EH', value: "QUIMICA" }])
+                            var r23 = Addrow(2, [{ key: 'EQ', value: "TIC" }])
+                            var r24 = Addrow(2, [{ key: 'FA', value: "Total" }])
+                            var r25 = Addrow(2, [{ key: 'FB', value: "Total Calificadas" }])
+                            var r26 = Addrow(2, [{ key: 'FC', value: "%" }])
+                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7+ r9 +r10 +r11+ r12+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+r25+r26+sheet.childNodes[0].childNodes[1].innerHTML;
+
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
                             $('row c[r="B2"]', sheet).attr( 's', '2' );
@@ -7218,21 +13207,23 @@
                             $('row c[r="E2"]', sheet).attr( 's', '2' );
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
-                            $('row c[r="K2"]', sheet).attr( 's', '2' );
-                            $('row c[r="O2"]', sheet).attr( 's', '2' );
-                            $('row c[r="S2"]', sheet).attr( 's', '2' );
-                            $('row c[r="W2"]', sheet).attr( 's', '2' );
+                            $('row c[r="Q2"]', sheet).attr( 's', '2' );
                             $('row c[r="AA2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AE2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AI2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AM2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AQ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AK2"]', sheet).attr( 's', '2' );
                             $('row c[r="AU2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AY2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BC2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BG2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BK2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BE2"]', sheet).attr( 's', '2' );
                             $('row c[r="BO2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BY2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CI2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CS2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DC2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DM2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DW2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EH2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EQ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FA2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FB2"]', sheet).attr( 's', '2' );
+                            $('row c[r="FC2"]', sheet).attr( 's', '2' );
                         },
                     }
                 ]
@@ -7262,48 +13253,64 @@
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'estado'},
+                //JORNADAS
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7313,12 +13320,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7358,47 +13395,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
                     }
-                },   
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "JORNADAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //ARTES:
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7408,12 +13512,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7453,47 +13587,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
                     }
-                },   
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "ARTES:"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //BIOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7503,12 +13704,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7548,47 +13779,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DEPORTE
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7598,12 +13896,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7643,47 +13971,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DEPORTE"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7693,12 +14088,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7738,47 +14163,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CONSTITUCION
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7788,12 +14280,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7833,47 +14355,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7883,12 +14472,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7928,47 +14547,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -7978,12 +14664,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8023,47 +14739,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8073,12 +14856,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8118,47 +14931,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8168,12 +15048,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8213,47 +15123,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8263,12 +15240,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8308,47 +15315,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8358,12 +15432,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8403,47 +15507,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8453,12 +15624,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8498,47 +15699,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8548,12 +15816,42 @@
                         var contador = 0;
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos[i].Total);
+                                //console.log(data.cursos_presenciales[i].Total);
                                 contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8593,6 +15891,58 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
                         var virtual=0;
                         var presencial=0;
                         for(const i in data.cursos_virtuales){
@@ -8608,17 +15958,63 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
                     
-                    var mstr;
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
-                                                '<div class="col-xs-4 col-sm-4">'+
-                                                    '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
-                                                '</div>'+                                                
-                                            '</div>'; 
-                    return mstr;
+                                    '<div class="col-xs-4 col-sm-4">'+
+                                        '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                    '</div>'+                                                
+                                '</div>'; 
+                        return mstr;
+                    }
                 }
-            }
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -8647,7 +16043,7 @@
                 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BK1',
+                                    ref: 'A1:ES1',
                                 }
                             } ) );
                 
@@ -8690,91 +16086,103 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'G2:J2',
+                                    ref: 'G2:P2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'K2:N2',
+                                    ref: 'Q2:Z2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'O2:R2',
+                                    ref: 'AA2:AJ2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'S2:V2',
+                                    ref: 'AK2:AT2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'W2:Z2',
+                                    ref: 'AU2:BD2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AA2:AD2',
+                                    ref: 'BE2:BN2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AE2:AH2',
+                                    ref: 'BO2:BX2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AI2:AL2',
+                                    ref: 'BY2:CH2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AM2:AP2',
+                                    ref: 'CI2:CR2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AQ2:AT2',
+                                    ref: 'CS2:DB2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AU2:AX2',
+                                    ref: 'DC2:DL2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AY2:BB2',
+                                    ref: 'DM2:DV2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BC2:BF2',
+                                    ref: 'DW2:EF2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BG2:BJ2',
+                                    ref: 'EG2:EP2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BK2:BK3',
+                                    ref: 'EQ2:EQ3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'ER2:ER3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'ES2:ES3',
                                 }
                             } ) );
 
@@ -8847,21 +16255,24 @@
                             var r6 = Addrow(2, [{ key: 'E', value: "Grupo" }])
                             var r7 = Addrow(2, [{ key: 'F', value: "Estado" }])
                             var r9 = Addrow(2, [{ key: 'G', value: "ACCION CIUDADANA" }])
-                            var r10 = Addrow(2, [{ key: 'K', value: "ARTES" }])
-                            var r11 = Addrow(2, [{ key: 'O', value: "BIOLOGIA" }])
-                            var r13 = Addrow(2, [{ key: 'S', value: "DEPORTE" }])
-                            var r14 = Addrow(2, [{ key: 'W', value: "DIALOGO" }])
-                            var r15 = Addrow(2, [{ key: 'AA', value: "FILOSOFIA" }])
-                            var r16 = Addrow(2, [{ key: 'AE', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'AI', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AM', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AQ', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AU', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'AY', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'BC', value: "QUIMICA" }])
-                            var r23 = Addrow(2, [{ key: 'BG', value: "TIC" }])
-                            var r24 = Addrow(2, [{ key: 'BK', value: "TOTAL" }])
-                            sheet.childNodes[0].childNodes[1].innerHTML = r1 +r2+ r3+r4 +r5+ r6+r7+ r9 +r10 +r11+r13 +r14+ r15+r16+r17 +r18+ r19 + r20+r21+r22+r23+r24+sheet.childNodes[0].childNodes[1].innerHTML;
+                            var r10 = Addrow(2, [{ key: 'Q', value: "ARTES" }])
+                            var r11 = Addrow(2, [{ key: 'AA', value: "BIOLOGIA" }])
+                            var r13 = Addrow(2, [{ key: 'AK', value: "DEPORTE" }])
+                            var r14 = Addrow(2, [{ key: 'AU', value: "DIALOGO" }])
+                            var r15 = Addrow(2, [{ key: 'BE', value: "FILOSOFIA" }])
+                            var r16 = Addrow(2, [{ key: 'BO', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'BY', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'CI', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'CS', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'DC', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'DM', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'DW', value: "QUIMICA" }])
+                            var r23 = Addrow(2, [{ key: 'EG', value: "TIC" }])
+                            var r24 = Addrow(2, [{ key: 'EQ', value: "Total" }])
+                            var r25 = Addrow(2, [{ key: 'ER', value: "Total Calificadas" }])
+                            var r26 = Addrow(2, [{ key: 'ES', value: "%" }])
+                            sheet.childNodes[0].childNodes[1].innerHTML = r1+r2+r3+r4+r5+r6+r7+r9+r10+r11+r13+r14+r15+r16+r17+r18+r19+r20+r21+r22+r23+r24+r25+r26+sheet.childNodes[0].childNodes[1].innerHTML;
+
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
                             $('row c[r="B2"]', sheet).attr( 's', '2' );
@@ -8870,20 +16281,22 @@
                             $('row c[r="E2"]', sheet).attr( 's', '2' );
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
-                            $('row c[r="K2"]', sheet).attr( 's', '2' );
-                            $('row c[r="O2"]', sheet).attr( 's', '2' );
-                            $('row c[r="S2"]', sheet).attr( 's', '2' );
-                            $('row c[r="W2"]', sheet).attr( 's', '2' );
+                            $('row c[r="Q2"]', sheet).attr( 's', '2' );
                             $('row c[r="AA2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AE2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AI2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AM2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AQ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AK2"]', sheet).attr( 's', '2' );
                             $('row c[r="AU2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AY2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BC2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BG2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BK2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BE2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BO2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BY2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CI2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CS2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DC2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DM2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DW2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EG2"]', sheet).attr( 's', '2' );
+                            $('row c[r="EQ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="ER2"]', sheet).attr( 's', '2' );
+                            $('row c[r="ES2"]', sheet).attr( 's', '2' );
                         },
                     }
                 ]
@@ -8913,48 +16326,64 @@
                 {data: 'document_number'},
                 {data: 'grupo_name'},
                 {data: 'estado'},
+                //BIOLOGIA
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
                                 }
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
-                        }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -8970,6 +16399,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9009,47 +16468,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "BIOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //DIALOGO
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9065,6 +16591,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9104,47 +16660,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "DIALOGO"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //CONSTITUCION
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9160,6 +16783,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9199,47 +16852,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "CONSTITUCION"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //FISICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9255,6 +16975,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9294,47 +17044,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "FISICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //GEOGRAFIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9350,6 +17167,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9389,47 +17236,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "GEOGRAFIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //HISTORIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9445,6 +17359,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9484,47 +17428,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "HISTORIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //INGLES
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9540,6 +17551,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9579,47 +17620,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "INGLES"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //LECTURA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9635,6 +17743,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9674,47 +17812,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "LECTURA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //MATEMATICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9730,6 +17935,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9769,47 +18004,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "MATEMATICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //PRACTICAS
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9825,6 +18127,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9864,47 +18196,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "PRACTICAS"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //QUIMICA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9920,6 +18319,36 @@
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -9959,47 +18388,114 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        if(data.cursos_virtuales == null && data.cursos_presenciales == null){
-                            return "-";
-                        }else{
-
-                            var docente = "-";
-
-                            if(data.cursos_virtuales != null){
-                                for(const i in data.cursos_virtuales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_virtuales[i].fullname.split("-", 2)[1] == comparar){
-                                        //console.log(data.cursos_virtuales[i].Total);
-                                        docente = data.cursos_virtuales[i].docente_name;
-                                    }      
-                                }
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
                             }
-                            
-                            if(data.cursos_presenciales != null){
-                                for(const i in data.cursos_presenciales){
-                                    var comparar = " "+data.grupo_name.toUpperCase()+" ";
-                                    if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.cursos_presenciales[i].fullname.split("-", 2)[1] == comparar){
-                                     docente = data.cursos_presenciales[i].docente_name;
-                                    }      
-                                }
-                            }
-                            return docente;
                         }
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "QUIMICA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TECNOLOGIA
+                {data: null, render:function(data, type, row, meta){
+                        var docente = "-";
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                if(data.calificadas_virtuales[i].docente_name == null){
+                                    return docente;
+                                }else{
+                                    return docente = data.calificadas_virtuales[i].docente_name;
+                                }
+                            }
+                        }      
+                        return docente;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                         if(data.cursos_virtuales == null){
                             return 0;
                         }else{
-                        var contador = 0;
+                            var contador = 0;
+                            for(const i in data.cursos_virtuales){
+                                if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                    //console.log(data.cursos_virtuales[i].Total);
+                                    contador += parseInt(data.cursos_virtuales[i].Total);
+                                }      
+                            }
+                            return contador; 
+                        }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_virtuales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
                         for(const i in data.cursos_virtuales){
-                            if( data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
-                                //console.log(data.cursos_virtuales[i].Total);
-                                contador += parseInt(data.cursos_virtuales[i].Total);
-                            }      
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_virtuales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_virtuales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
                         }
-                        return contador;
-                        }
+                        
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -10010,11 +18506,41 @@
                         for(const i in data.cursos_presenciales){
                             if( data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
                                 //console.log(data.cursos_presenciales[i].Total);
-                                contador = data.cursos_presenciales[i].Total;
+                                contador += parseInt(data.cursos_presenciales[i].Total);
                             }      
                         }
                         return contador;
                         }
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                return calificadas = data.calificadas_presenciales[i].calificadas;
+                            }
+                        }                           
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = "-";
+                        var asistencias = 0;
+
+                        for(const i in data.cursos_presenciales){
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA" && data.calificadas_presenciales[i].calificadas > 0){
+                                calificadas = (asistencias*100)/parseInt(data.calificadas_presenciales[i].calificadas);
+                                return parseInt(calificadas)+"%";
+                            }
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
@@ -10054,30 +18580,130 @@
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
-                        var contador=0;
+                        var calificadas = 0;
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
 
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
+                        }
+
+                        return calificadas;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
                         for(const i in data.cursos_virtuales){
-                            contador = contador + parseInt(data.cursos_virtuales[i].Total)
+                            if(data.cursos_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                            }
                         }
                         for(const i in data.cursos_presenciales){
-                            contador = contador + parseInt(data.cursos_presenciales[i].Total)
+                            if(data.cursos_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                            }
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            if(data.calificadas_virtuales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                            }
                         }
-                        return contador;
+
+                        for(const i in data.calificadas_presenciales){
+                            if(data.calificadas_presenciales[i].fullname.split(" ", 2)[0] == "TECNOLOGIA"){
+                                calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                            }
+                        }
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
+                    }
+                },
+                //TotalES
+                {data: null, render:function(data, type, row, meta){
+                        var virtual=0;
+                        var presencial=0;
+                        for(const i in data.cursos_virtuales){
+                            virtual = virtual + parseInt(data.cursos_virtuales[i].Total)    
+                        }
+
+                        for(const i in data.cursos_presenciales){
+                            presencial = presencial + parseInt(data.cursos_presenciales[i].Total)
+                            
+                        }
+
+                        return virtual+presencial;
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas = 0;
+
+                        for(const i in data.calificadas_virtuales){
+
+                            calificadas += parseInt(data.calificadas_virtuales[i].calificadas);      
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                
+                            calificadas += parseInt(data.calificadas_presenciales[i].calificadas);    
+                        }
+                        return calificadas;         
+                    }
+                },
+                {data: null, render:function(data, type, row, meta){
+                        var calificadas_suma = 0;
+                        var asistencias = 0;
+                        var calificadas = "-";
+                        for(const i in data.cursos_virtuales){
+                                
+                                asistencias += parseInt(data.cursos_virtuales[i].Total);
+                        }
+                        for(const i in data.cursos_presenciales){
+                            
+                                asistencias += parseInt(data.cursos_presenciales[i].Total);
+                        }    
+
+                        for(const i in data.calificadas_virtuales){
+                            
+                            calificadas_suma += parseInt(data.calificadas_virtuales[i].calificadas);
+                        }
+
+                        for(const i in data.calificadas_presenciales){
+                           
+                            calificadas_suma += parseInt(data.calificadas_presenciales[i].calificadas);
+                        }
+
+                        if(calificadas_suma > 0){
+                            calificadas = (asistencias*100)/calificadas_suma;
+                            return parseInt(calificadas)+"%";
+                        }
+
+                        return calificadas;
                     }
                 },
                 {data: null, render:function(data, type, row, meta){
                     
-                    var mstr;
+                        var mstr;
                    
                         mstr = '<div class="row">'+                                  
-                                                '<div class="col-xs-4 col-sm-4">'+
-                                                    '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
-                                                '</div>'+                                                
-                                            '</div>'; 
-                    return mstr;
+                                    '<div class="col-xs-4 col-sm-4">'+
+                                        '<a id="'+data.id+'" target="_blank" title="Ver Informacion" onclick="redireccionar(this)" class="btn btn-block btn-sm  fa fa-eye"></a>'+    
+                                    '</div>'+                                                
+                                '</div>'; 
+                        return mstr;
+                    }
                 }
-            }
-
             ],
 
             "deferRender": true,"responsive": false,"processing": true,'serverSider':true,
@@ -10106,7 +18732,7 @@
                 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'A1:BC1',
+                                    ref: 'A1:DY1',
                                 }
                             } ) );
                 
@@ -10149,79 +18775,91 @@
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'G2:J2',
+                                    ref: 'G2:P2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'K2:N2',
+                                    ref: 'Q2:Z2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'O2:R2',
+                                    ref: 'AA2:AJ2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'S2:V2',
+                                    ref: 'AK2:AT2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'W2:Z2',
+                                    ref: 'AU2:BD2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AA2:AD2',
+                                    ref: 'BE2:BN2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AE2:AH2',
+                                    ref: 'BO2:BX2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AI2:AL2',
+                                    ref: 'BY2:CH2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AM2:AP2',
+                                    ref: 'CI2:CR2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AQ2:AT2',
+                                    ref: 'CS2:DB2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AU2:AX2',
+                                    ref: 'DC2:DL2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'AY2:BB2',
+                                    ref: 'DM2:DV2',
                                 }
                             } ) );
 
                             mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
                                  attr: {
-                                    ref: 'BC2:BC3',
+                                    ref: 'DW2:DW3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'DX2:DX3',
+                                }
+                            } ) );
+
+                            mergeCells[0].appendChild( _createNode( sheet, 'mergeCell', {
+                                 attr: {
+                                    ref: 'DY2:DY3',
                                 }
                             } ) );
 
@@ -10294,20 +18932,23 @@
                             var r6 = Addrow(2, [{ key: 'E', value: "Grupo" }])
                             var r7 = Addrow(2, [{ key: 'F', value: "Estado" }])
                             var r11 = Addrow(2, [{ key: 'G', value: "BIOLOGIA" }])
-                            var r13 = Addrow(2, [{ key: 'K', value: "DIALOGO" }])
-                            var r14 = Addrow(2, [{ key: 'O', value: "CONSTITUCION" }])
-                            var r16 = Addrow(2, [{ key: 'S', value: "FISICA" }])
-                            var r17 = Addrow(2, [{ key: 'W', value: "GEOGRAFIA" }])
-                            var r18 = Addrow(2, [{ key: 'AA', value: "HISTORIA" }])
-                            var r19 = Addrow(2, [{ key: 'AE', value: "INGLES" }])
-                            var r20 = Addrow(2, [{ key: 'AI', value: "LECTURA CRITICA" }])
-                            var r21 = Addrow(2, [{ key: 'AM', value: "MATEMATICAS" }])
-                            var r22 = Addrow(2, [{ key: 'AQ', value: "PRACTICAS ARTISTICAS" }])
-                            var r23 = Addrow(2, [{ key: 'AU', value: "QUIMICA" }])
-                            var r24 = Addrow(2, [{ key: 'AY', value: "TIC" }])
-                            var r25 = Addrow(2, [{ key: 'BC', value: "TOTAL" }])
+                            var r13 = Addrow(2, [{ key: 'Q', value: "DIALOGO" }])
+                            var r14 = Addrow(2, [{ key: 'AA', value: "CONSTITUCION" }])
+                            var r16 = Addrow(2, [{ key: 'AK', value: "FISICA" }])
+                            var r17 = Addrow(2, [{ key: 'AU', value: "GEOGRAFIA" }])
+                            var r18 = Addrow(2, [{ key: 'BE', value: "HISTORIA" }])
+                            var r19 = Addrow(2, [{ key: 'BO', value: "INGLES" }])
+                            var r20 = Addrow(2, [{ key: 'BY', value: "LECTURA CRITICA" }])
+                            var r21 = Addrow(2, [{ key: 'CI', value: "MATEMATICAS" }])
+                            var r22 = Addrow(2, [{ key: 'CS', value: "PRACTICAS ARTISTICAS" }])
+                            var r23 = Addrow(2, [{ key: 'DC', value: "QUIMICA" }])
+                            var r24 = Addrow(2, [{ key: 'DM', value: "TIC" }])
+                            var r25 = Addrow(2, [{ key: 'DW', value: "Total" }])
+                            var r26 = Addrow(2, [{ key: 'DX', value: "Total Calificadas" }])
+                            var r27 = Addrow(2, [{ key: 'DY', value: "%" }])
                             sheet.childNodes[0].childNodes[1].innerHTML = r1+r2+r3+r4+r5+r6+r7+r11+r13+r14+r16+r17+r18+r19
-                            +r20+r21+r22+r23+r24+r25+sheet.childNodes[0].childNodes[1].innerHTML;
+                            +r20+r21+r22+r23+r24+r25+r26+r27+sheet.childNodes[0].childNodes[1].innerHTML;
+
                             $('row c[r="A1"]', sheet).attr( 's', '51' );
                             $('row c[r="A2"]', sheet).attr( 's', '2' );
                             $('row c[r="B2"]', sheet).attr( 's', '2' );
@@ -10316,18 +18957,20 @@
                             $('row c[r="E2"]', sheet).attr( 's', '2' );
                             $('row c[r="F2"]', sheet).attr( 's', '2' );
                             $('row c[r="G2"]', sheet).attr( 's', '2' );
-                            $('row c[r="K2"]', sheet).attr( 's', '2' );
-                            $('row c[r="O2"]', sheet).attr( 's', '2' );
-                            $('row c[r="S2"]', sheet).attr( 's', '2' );
-                            $('row c[r="W2"]', sheet).attr( 's', '2' );
+                            $('row c[r="Q2"]', sheet).attr( 's', '2' );
                             $('row c[r="AA2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AE2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AI2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AM2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AQ2"]', sheet).attr( 's', '2' );
+                            $('row c[r="AK2"]', sheet).attr( 's', '2' );
                             $('row c[r="AU2"]', sheet).attr( 's', '2' );
-                            $('row c[r="AY2"]', sheet).attr( 's', '2' );
-                            $('row c[r="BC2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BE2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BO2"]', sheet).attr( 's', '2' );
+                            $('row c[r="BY2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CI2"]', sheet).attr( 's', '2' );
+                            $('row c[r="CS2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DC2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DM2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DW2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DX2"]', sheet).attr( 's', '2' );
+                            $('row c[r="DY2"]', sheet).attr( 's', '2' );
                         },
                     }
                 ]
@@ -10345,256 +18988,300 @@
             switch(tabla){
                 case '1':
                     if(!virtual){
-                        table.columns([7,9]).visible(false);
-                        table.columns([11,13]).visible(false);
-                        table.columns([15,17]).visible(false);
-                        table.columns([19,21]).visible(false);
-                        table.columns([23,25]).visible(false);
-                        table.columns([27,29]).visible(false);
-                        table.columns([31,33]).visible(false);
-                        table.columns([35,37]).visible(false);
-                        table.columns([39,41]).visible(false);
-                        table.columns([43,45]).visible(false);
-                        table.columns([47,49]).visible(false);
-                        table.columns([51,53]).visible(false);
-                        table.columns([55,57]).visible(false);
-                        table.columns([59,61]).visible(false);
-                        table.columns([63,65]).visible(false);
+                        table.columns([7,8,9]).visible(false);
+                        table.columns([17,18,19]).visible(false);
+                        table.columns([27,28,29]).visible(false);
+                        table.columns([37,38,39]).visible(false);
+                        table.columns([47,48,49]).visible(false);
+                        table.columns([57,58,59]).visible(false);
+                        table.columns([67,68,69]).visible(false);
+                        table.columns([77,78,79]).visible(false);
+                        table.columns([87,88,89]).visible(false);
+                        table.columns([97,98,99]).visible(false);
+                        table.columns([107,108,109]).visible(false);
+                        table.columns([117,118,119]).visible(false);
+                        table.columns([127,128,129]).visible(false);
+                        table.columns([137,138,139]).visible(false);
+                        table.columns([147,148,149]).visible(false);
                     }else if(virtual){
-                        table.columns(7).visible(true);
-                        table.columns(11).visible(true);
-                        table.columns(15).visible(true);
-                        table.columns(19).visible(true);
-                        table.columns(23).visible(true);
-                        table.columns(27).visible(true);
-                        table.columns(31).visible(true);
-                        table.columns(35).visible(true);
-                        table.columns(39).visible(true);
-                        table.columns(43).visible(true);
-                        table.columns(47).visible(true);
-                        table.columns(51).visible(true);
-                        table.columns(55).visible(true);
-                        table.columns(59).visible(true);
-                        table.columns(63).visible(true);
+                        table.columns([7,8,9]).visible(true);
+                        table.columns([17,18,19]).visible(true);
+                        table.columns([27,28,29]).visible(true);
+                        table.columns([37,38,39]).visible(true);
+                        table.columns([47,48,49]).visible(true);
+                        table.columns([57,58,59]).visible(true);
+                        table.columns([67,68,69]).visible(true);
+                        table.columns([77,78,79]).visible(true);
+                        table.columns([87,88,89]).visible(true);
+                        table.columns([97,98,99]).visible(true);
+                        table.columns([107,108,109]).visible(true);
+                        table.columns([117,118,119]).visible(true);
+                        table.columns([127,128,129]).visible(true);
+                        table.columns([137,138,139]).visible(true);
+                        table.columns([147,148,149]).visible(true);
                     }
             
                     if(!presencial){ 
-                        table.columns([8,9]).visible(false);
-                        table.columns([12,13]).visible(false);
-                        table.columns([16,17]).visible(false);
-                        table.columns([20,21]).visible(false);
-                        table.columns([24,25]).visible(false);
-                        table.columns([28,29]).visible(false);
-                        table.columns([32,33]).visible(false);
-                        table.columns([36,37]).visible(false);
-                        table.columns([40,41]).visible(false);
-                        table.columns([44,45]).visible(false);
-                        table.columns([48,49]).visible(false);
-                        table.columns([52,53]).visible(false);
-                        table.columns([56,57]).visible(false);
-                        table.columns([60,61]).visible(false);
-                        table.columns([64,65]).visible(false);
+                        table.columns([10,11,12]).visible(false);
+                        table.columns([20,21,22]).visible(false);
+                        table.columns([30,31,32]).visible(false);
+                        table.columns([40,41,42]).visible(false);
+                        table.columns([50,51,52]).visible(false);
+                        table.columns([60,61,62]).visible(false);
+                        table.columns([70,71,72]).visible(false);
+                        table.columns([80,81,82]).visible(false);
+                        table.columns([90,91,92]).visible(false);
+                        table.columns([100,101,102]).visible(false);
+                        table.columns([110,111,112]).visible(false);
+                        table.columns([120,121,122]).visible(false);
+                        table.columns([130,131,132]).visible(false);
+                        table.columns([140,141,142]).visible(false);
+                        table.columns([150,151,152]).visible(false);
                     }else if(presencial){
-                        table.columns(8).visible(true);
-                        table.columns(12).visible(true);
-                        table.columns(16).visible(true);
-                        table.columns(20).visible(true);
-                        table.columns(24).visible(true);
-                        table.columns(28).visible(true);
-                        table.columns(32).visible(true);
-                        table.columns(36).visible(true);
-                        table.columns(40).visible(true);
-                        table.columns(44).visible(true);
-                        table.columns(48).visible(true);
-                        table.columns(52).visible(true);
-                        table.columns(56).visible(true);
-                        table.columns(60).visible(true);
-                        table.columns(64).visible(true);
+                        table.columns([10,11,12]).visible(true);
+                        table.columns([20,21,22]).visible(true);
+                        table.columns([30,31,32]).visible(true);
+                        table.columns([40,41,42]).visible(true);
+                        table.columns([50,51,52]).visible(true);
+                        table.columns([60,61,62]).visible(true);
+                        table.columns([70,71,72]).visible(true);
+                        table.columns([80,81,82]).visible(true);
+                        table.columns([90,91,92]).visible(true);
+                        table.columns([100,101,102]).visible(true);
+                        table.columns([110,111,112]).visible(true);
+                        table.columns([120,121,122]).visible(true);
+                        table.columns([130,131,132]).visible(true);
+                        table.columns([140,141,142]).visible(true);
+                        table.columns([150,151,152]).visible(true);
                     }
 
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table.columns([7,8,9]).visible(true);
-                        table.columns([11,12,13]).visible(true);
-                        table.columns([15,16,17]).visible(true);
-                        table.columns([19,20,21]).visible(true);
-                        table.columns([23,24,25]).visible(true);
+                        table.columns([17,18,19]).visible(true);
                         table.columns([27,28,29]).visible(true);
-                        table.columns([31,32,33]).visible(true);
-                        table.columns([35,36,37]).visible(true);
-                        table.columns([39,40,41]).visible(true);
-                        table.columns([43,44,45]).visible(true); 
+                        table.columns([37,38,39]).visible(true);
                         table.columns([47,48,49]).visible(true);
-                        table.columns([51,52,53]).visible(true);
-                        table.columns([55,56,57]).visible(true);
-                        table.columns([59,60,61]).visible(true); 
-                        table.columns([63,64,65]).visible(true); 
+                        table.columns([57,58,59]).visible(true);
+                        table.columns([67,68,69]).visible(true);
+                        table.columns([77,78,79]).visible(true);
+                        table.columns([87,88,89]).visible(true);
+                        table.columns([97,98,99]).visible(true);
+                        table.columns([107,108,109]).visible(true);
+                        table.columns([117,118,119]).visible(true);
+                        table.columns([127,128,129]).visible(true);
+                        table.columns([137,138,139]).visible(true);
+                        table.columns([147,148,149]).visible(true);
+
+                        //PRESENCIAL
+                        table.columns([10,11,12]).visible(true);
+                        table.columns([20,21,22]).visible(true);
+                        table.columns([30,31,32]).visible(true);
+                        table.columns([40,41,42]).visible(true);
+                        table.columns([50,51,52]).visible(true);
+                        table.columns([60,61,62]).visible(true);
+                        table.columns([70,71,72]).visible(true);
+                        table.columns([80,81,82]).visible(true);
+                        table.columns([90,91,92]).visible(true);
+                        table.columns([100,101,102]).visible(true);
+                        table.columns([110,111,112]).visible(true);
+                        table.columns([120,121,122]).visible(true);
+                        table.columns([130,131,132]).visible(true);
+                        table.columns([140,141,142]).visible(true);
+                        table.columns([150,151,152]).visible(true); 
                     }
 
                     break;
                 case '2':
                     if(!virtual){
-                        table2.columns([7,9]).visible(false);
-                        table2.columns([11,13]).visible(false);
-                        table2.columns([15,17]).visible(false);
-                        table2.columns([19,21]).visible(false);
-                        table2.columns([23,25]).visible(false);
-                        table2.columns([27,29]).visible(false);
-                        table2.columns([31,33]).visible(false);
-                        table2.columns([35,37]).visible(false);
-                        table2.columns([39,41]).visible(false);
-                        table2.columns([43,45]).visible(false);
-                        table2.columns([47,49]).visible(false);
-                        table2.columns([51,53]).visible(false);
-                        table2.columns([55,57]).visible(false);
-                        table2.columns([59,61]).visible(false);
+                        table2.columns([7,8,9]).visible(false);
+                        table2.columns([17,18,19]).visible(false);
+                        table2.columns([27,28,29]).visible(false);
+                        table2.columns([37,38,39]).visible(false);
+                        table2.columns([47,48,49]).visible(false);
+                        table2.columns([57,58,59]).visible(false);
+                        table2.columns([67,68,69]).visible(false);
+                        table2.columns([77,78,79]).visible(false);
+                        table2.columns([87,88,89]).visible(false);
+                        table2.columns([97,98,99]).visible(false);
+                        table2.columns([107,108,109]).visible(false);
+                        table2.columns([117,118,119]).visible(false);
+                        table2.columns([127,128,129]).visible(false);
+                        table2.columns([137,138,139]).visible(false);
                     }else if(virtual){
-                        table2.columns(7).visible(true);
-                        table2.columns(11).visible(true);
-                        table2.columns(15).visible(true);
-                        table2.columns(19).visible(true);
-                        table2.columns(23).visible(true);
-                        table2.columns(27).visible(true);
-                        table2.columns(31).visible(true);
-                        table2.columns(35).visible(true);
-                        table2.columns(39).visible(true);
-                        table2.columns(43).visible(true);
-                        table2.columns(47).visible(true);
-                        table2.columns(51).visible(true);
-                        table2.columns(55).visible(true);
-                        table2.columns(59).visible(true);
+                        table2.columns([7,8,9]).visible(true);
+                        table2.columns([17,18,19]).visible(true);
+                        table2.columns([27,28,29]).visible(true);
+                        table2.columns([37,38,39]).visible(true);
+                        table2.columns([47,48,49]).visible(true);
+                        table2.columns([57,58,59]).visible(true);
+                        table2.columns([67,68,69]).visible(true);
+                        table2.columns([77,78,79]).visible(true);
+                        table2.columns([87,88,89]).visible(true);
+                        table2.columns([97,98,99]).visible(true);
+                        table2.columns([107,108,109]).visible(true);
+                        table2.columns([117,118,119]).visible(true);
+                        table2.columns([127,128,129]).visible(true);
+                        table2.columns([137,138,139]).visible(true);
                     }
             
                     if(!presencial){ 
-                        table2.columns([8,9]).visible(false);
-                        table2.columns([12,13]).visible(false);
-                        table2.columns([16,17]).visible(false);
-                        table2.columns([20,21]).visible(false);
-                        table2.columns([24,25]).visible(false);
-                        table2.columns([28,29]).visible(false);
-                        table2.columns([32,33]).visible(false);
-                        table2.columns([36,37]).visible(false);
-                        table2.columns([40,41]).visible(false);
-                        table2.columns([44,45]).visible(false);
-                        table2.columns([48,49]).visible(false);
-                        table2.columns([52,53]).visible(false);
-                        table2.columns([56,57]).visible(false);
-                        table2.columns([60,61]).visible(false);
+                        table2.columns([10,11,12]).visible(false);
+                        table2.columns([20,21,22]).visible(false);
+                        table2.columns([30,31,32]).visible(false);
+                        table2.columns([40,41,42]).visible(false);
+                        table2.columns([50,51,52]).visible(false);
+                        table2.columns([60,61,62]).visible(false);
+                        table2.columns([70,71,72]).visible(false);
+                        table2.columns([80,81,82]).visible(false);
+                        table2.columns([90,91,92]).visible(false);
+                        table2.columns([100,101,102]).visible(false);
+                        table2.columns([110,111,112]).visible(false);
+                        table2.columns([120,121,122]).visible(false);
+                        table2.columns([130,131,132]).visible(false);
+                        table2.columns([140,141,142]).visible(false);
                     }else if(presencial){
-                        table2.columns(8).visible(true);
-                        table2.columns(12).visible(true);
-                        table2.columns(16).visible(true);
-                        table2.columns(20).visible(true);
-                        table2.columns(24).visible(true);
-                        table2.columns(28).visible(true);
-                        table2.columns(32).visible(true);
-                        table2.columns(36).visible(true);
-                        table2.columns(40).visible(true);
-                        table2.columns(44).visible(true);
-                        table2.columns(48).visible(true);
-                        table2.columns(52).visible(true);
-                        table2.columns(56).visible(true);
-                        table2.columns(60).visible(true);
+                        table2.columns([10,11,12]).visible(true);
+                        table2.columns([20,21,22]).visible(true);
+                        table2.columns([30,31,32]).visible(true);
+                        table2.columns([40,41,42]).visible(true);
+                        table2.columns([50,51,52]).visible(true);
+                        table2.columns([60,61,62]).visible(true);
+                        table2.columns([70,71,72]).visible(true);
+                        table2.columns([80,81,82]).visible(true);
+                        table2.columns([90,91,92]).visible(true);
+                        table2.columns([100,101,102]).visible(true);
+                        table2.columns([110,111,112]).visible(true);
+                        table2.columns([120,121,122]).visible(true);
+                        table2.columns([130,131,132]).visible(true);
+                        table2.columns([140,141,142]).visible(true);
                     }
 
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table2.columns([7,8,9]).visible(true);
-                        table2.columns([11,12,13]).visible(true);
-                        table2.columns([15,16,17]).visible(true);
-                        table2.columns([19,20,21]).visible(true);
-                        table2.columns([23,24,25]).visible(true);
+                        table2.columns([17,18,19]).visible(true);
                         table2.columns([27,28,29]).visible(true);
-                        table2.columns([31,32,33]).visible(true);
-                        table2.columns([35,36,37]).visible(true);
-                        table2.columns([39,40,41]).visible(true);
-                        table2.columns([43,44,45]).visible(true); 
+                        table2.columns([37,38,39]).visible(true);
                         table2.columns([47,48,49]).visible(true);
-                        table2.columns([51,52,53]).visible(true);
-                        table2.columns([55,56,57]).visible(true);
-                        table2.columns([59,60,61]).visible(true); 
+                        table2.columns([57,58,59]).visible(true);
+                        table2.columns([67,68,69]).visible(true);
+                        table2.columns([77,78,79]).visible(true);
+                        table2.columns([87,88,89]).visible(true);
+                        table2.columns([97,98,99]).visible(true);
+                        table2.columns([107,108,109]).visible(true);
+                        table2.columns([117,118,119]).visible(true);
+                        table2.columns([127,128,129]).visible(true);
+                        table2.columns([137,138,139]).visible(true);
+                        
+                        //PRESENCIAL
+                        table2.columns([10,11,12]).visible(true);
+                        table2.columns([20,21,22]).visible(true);
+                        table2.columns([30,31,32]).visible(true);
+                        table2.columns([40,41,42]).visible(true);
+                        table2.columns([50,51,52]).visible(true);
+                        table2.columns([60,61,62]).visible(true);
+                        table2.columns([70,71,72]).visible(true);
+                        table2.columns([80,81,82]).visible(true);
+                        table2.columns([90,91,92]).visible(true);
+                        table2.columns([100,101,102]).visible(true);
+                        table2.columns([110,111,112]).visible(true);
+                        table2.columns([120,121,122]).visible(true);
+                        table2.columns([130,131,132]).visible(true);
+                        table2.columns([140,141,142]).visible(true);
                     }
 
                     break;
                 case '3':
                     if(!virtual){
-                        table3.columns([7,9]).visible(false);
-                        table3.columns([11,13]).visible(false);
-                        table3.columns([15,17]).visible(false);
-                        table3.columns([19,21]).visible(false);
-                        table3.columns([23,25]).visible(false);
-                        table3.columns([27,29]).visible(false);
-                        table3.columns([31,33]).visible(false);
-                        table3.columns([35,37]).visible(false);
-                        table3.columns([39,41]).visible(false);
-                        table3.columns([43,45]).visible(false);
-                        table3.columns([47,49]).visible(false);
-                        table3.columns([51,53]).visible(false);
-                        table3.columns([55,57]).visible(false);
-                        table3.columns([59,61]).visible(false);
+                        table3.columns([7,8,9]).visible(false);
+                        table3.columns([17,18,19]).visible(false);
+                        table3.columns([27,28,29]).visible(false);
+                        table3.columns([37,38,39]).visible(false);
+                        table3.columns([47,48,49]).visible(false);
+                        table3.columns([57,58,59]).visible(false);
+                        table3.columns([67,68,69]).visible(false);
+                        table3.columns([77,78,79]).visible(false);
+                        table3.columns([87,88,89]).visible(false);
+                        table3.columns([97,98,99]).visible(false);
+                        table3.columns([107,108,109]).visible(false);
+                        table3.columns([117,118,119]).visible(false);
                     }else if(virtual){
-                        table3.columns(7).visible(true);
-                        table3.columns(11).visible(true);
-                        table3.columns(15).visible(true);
-                        table3.columns(19).visible(true);
-                        table3.columns(23).visible(true);
-                        table3.columns(27).visible(true);
-                        table3.columns(31).visible(true);
-                        table3.columns(35).visible(true);
-                        table3.columns(39).visible(true);
-                        table3.columns(43).visible(true);
-                        table3.columns(47).visible(true);
-                        table3.columns(51).visible(true);
-                        table3.columns(55).visible(true);
-                        table3.columns(59).visible(true);
+                        table3.columns([7,8,9]).visible(true);
+                        table3.columns([17,18,19]).visible(true);
+                        table3.columns([27,28,29]).visible(true);
+                        table3.columns([37,38,39]).visible(true);
+                        table3.columns([47,48,49]).visible(true);
+                        table3.columns([57,58,59]).visible(true);
+                        table3.columns([67,68,69]).visible(true);
+                        table3.columns([77,78,79]).visible(true);
+                        table3.columns([87,88,89]).visible(true);
+                        table3.columns([97,98,99]).visible(true);
+                        table3.columns([107,108,109]).visible(true);
+                        table3.columns([117,118,119]).visible(true);
                     }
             
                     if(!presencial){ 
-                        table3.columns([8,9]).visible(false);
-                        table3.columns([12,13]).visible(false);
-                        table3.columns([16,17]).visible(false);
-                        table3.columns([20,21]).visible(false);
-                        table3.columns([24,25]).visible(false);
-                        table3.columns([28,29]).visible(false);
-                        table3.columns([32,33]).visible(false);
-                        table3.columns([36,37]).visible(false);
-                        table3.columns([40,41]).visible(false);
-                        table3.columns([44,45]).visible(false);
-                        table3.columns([48,49]).visible(false);
-                        table3.columns([52,53]).visible(false);
-                        table3.columns([56,57]).visible(false);
-                        table3.columns([60,61]).visible(false);
+                        table3.columns([10,11,12]).visible(false);
+                        table3.columns([20,21,22]).visible(false);
+                        table3.columns([30,31,32]).visible(false);
+                        table3.columns([40,41,42]).visible(false);
+                        table3.columns([50,51,52]).visible(false);
+                        table3.columns([60,61,62]).visible(false);
+                        table3.columns([70,71,72]).visible(false);
+                        table3.columns([80,81,82]).visible(false);
+                        table3.columns([90,91,92]).visible(false);
+                        table3.columns([100,101,102]).visible(false);
+                        table3.columns([110,111,112]).visible(false);
+                        table3.columns([120,121,122]).visible(false);
                     }else if(presencial){
-                        table3.columns(8).visible(true);
-                        table3.columns(12).visible(true);
-                        table3.columns(16).visible(true);
-                        table3.columns(20).visible(true);
-                        table3.columns(24).visible(true);
-                        table3.columns(28).visible(true);
-                        table3.columns(32).visible(true);
-                        table3.columns(36).visible(true);
-                        table3.columns(40).visible(true);
-                        table3.columns(44).visible(true);
-                        table3.columns(48).visible(true);
-                        table3.columns(52).visible(true);
-                        table3.columns(56).visible(true);
-                        table3.columns(60).visible(true);
+                        table3.columns([10,11,12]).visible(true);
+                        table3.columns([20,21,22]).visible(true);
+                        table3.columns([30,31,32]).visible(true);
+                        table3.columns([40,41,42]).visible(true);
+                        table3.columns([50,51,52]).visible(true);
+                        table3.columns([60,61,62]).visible(true);
+                        table3.columns([70,71,72]).visible(true);
+                        table3.columns([80,81,82]).visible(true);
+                        table3.columns([90,91,92]).visible(true);
+                        table3.columns([100,101,102]).visible(true);
+                        table3.columns([110,111,112]).visible(true);
+                        table3.columns([120,121,122]).visible(true);
                     }
 
                     if(presencial && virtual){
+
+                        //VIRTUAL
                         table3.columns([7,8,9]).visible(true);
-                        table3.columns([11,12,13]).visible(true);
-                        table3.columns([15,16,17]).visible(true);
-                        table3.columns([19,20,21]).visible(true);
-                        table3.columns([23,24,25]).visible(true);
+                        table3.columns([17,18,19]).visible(true);
                         table3.columns([27,28,29]).visible(true);
-                        table3.columns([31,32,33]).visible(true);
-                        table3.columns([35,36,37]).visible(true);
-                        table3.columns([39,40,41]).visible(true);
-                        table3.columns([43,44,45]).visible(true); 
+                        table3.columns([37,38,39]).visible(true);
                         table3.columns([47,48,49]).visible(true);
-                        table3.columns([51,52,53]).visible(true);
-                        table3.columns([55,56,57]).visible(true);
-                        table3.columns([59,60,61]).visible(true); 
+                        table3.columns([57,58,59]).visible(true);
+                        table3.columns([67,68,69]).visible(true);
+                        table3.columns([77,78,79]).visible(true);
+                        table3.columns([87,88,89]).visible(true);
+                        table3.columns([97,98,99]).visible(true);
+                        table3.columns([107,108,109]).visible(true);
+                        table3.columns([117,118,119]).visible(true);
+                        
+                        //PRESENCIAL
+                        table3.columns([10,11,12]).visible(true);
+                        table3.columns([20,21,22]).visible(true);
+                        table3.columns([30,31,32]).visible(true);
+                        table3.columns([40,41,42]).visible(true);
+                        table3.columns([50,51,52]).visible(true);
+                        table3.columns([60,61,62]).visible(true);
+                        table3.columns([70,71,72]).visible(true);
+                        table3.columns([80,81,82]).visible(true);
+                        table3.columns([90,91,92]).visible(true);
+                        table3.columns([100,101,102]).visible(true);
+                        table3.columns([110,111,112]).visible(true);
+                        table3.columns([120,121,122]).visible(true); 
                     }
+
                     break;
                 default:
                 console.log("ERROR CONTACTE AL ADMINISTRADOR");
@@ -10602,7 +19289,6 @@
         });
     }    
     
-
     $('#Ecohort').change(function(event){
         //alert(event.target.value);
         if(event.target.value == 1){

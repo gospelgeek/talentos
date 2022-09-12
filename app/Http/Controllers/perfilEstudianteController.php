@@ -73,9 +73,6 @@ class perfilEstudianteController extends Controller
         $this->middleware('socioeducativo');
     }
 
-
-     
-
     public function mostrar(Request $request)
     {
          
@@ -90,11 +87,14 @@ class perfilEstudianteController extends Controller
                 return datatables()->of($estudiantes)->toJson();    
             }
             if($request['admitidos'] === "true"){
-            
-                $estudiantes = perfilEstudiante::estudiantes_admitidos_asignacion();
-            
-                return datatables()->of($estudiantes)->toJson();
-
+                //dd('entro a admitidos');
+                $estudiantes = perfilEstudiante::estudiantes_admitidos();
+                if($estudiantes != null){
+                    return datatables()->of($estudiantes)->toJson();    
+                }else{                
+                    $validar = collect($estudiantes);
+                    return datatables()->of($validar)->toJson();
+                }
             }
             if($request['activos'] === "true"){
             
@@ -122,9 +122,12 @@ class perfilEstudianteController extends Controller
         if($request['admitidos'] === "true"){
             //dd('entro a admitidos');
             $estudiantes = perfilEstudiante::estudiantes_admitidos();
-            
-            return datatables()->of($estudiantes)->toJson();
-
+            if($estudiantes != null){
+                return datatables()->of($estudiantes)->toJson();    
+            }else{                
+                $validar = collect($estudiantes);
+                return datatables()->of($validar)->toJson();
+            }
         }
         if($request['activos'] === "true"){
             //dd('entro a activos');

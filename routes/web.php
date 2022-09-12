@@ -292,3 +292,6 @@ Route::get('docentes_grupos_asistencias/{name}/{materia}', 'DocenteController@gr
 Route::get('detalle_seguimiento_academico_docentes/grupo/{group_id}/{materia}', 'DocenteController@detalle_grupal_seguimientos')->name('detalle_seguimiento_academico_docentes');
 Route::get('sesiones_grupal_asistencias/grupo/{group_id}/{materia}', 'DocenteController@asistencias_sesiones_docentes')->name('sesiones_grupal_asistencias');
 Route::get('lista_asistencias/{course}/grupo/{id}/session/{session}/{docente}', 'DocenteController@lista_sesiones_docentes')->name('lista_asistencias');
+
+//resumen tabla grupos
+Route::get('resumen_tabla_grupos', 'perfilEstudianteController@resumen_grupos_tabla')->name('resumen_tabla_grupos');

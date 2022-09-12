@@ -3119,4 +3119,26 @@ class perfilEstudianteController extends Controller
         
         return datatables()->of($formalizacion)->toJson();   
     }
+    
+    public function resumen_grupos_tabla(){
+
+        $grupos = Group::select('name')->distinct()->where('name', '!=', 'TEMPORAL')->get();
+        
+        $grupos->map(function($grupo){
+            $linea_1 = Group::where('name', $grupo->name)->whereBetween('id', [1, 40])->select('id')->firstOrfail();
+            //dd($linea_1);
+            $grupo->cant_linea_1 = StudentGroup::where('id_group', $linea_1->id)->count();
+            //dd( $cant_1);
+             
+            $linea_2 = Group::where('name', $grupo->name)->whereBetween('id', [1004, 1043])->select('id')->firstOrfail();
+            //dd($linea_1);
+            $grupo->cant_linea_2 = StudentGroup::where('id_group', $linea_2->id)->count();
+
+            $linea_3 = Group::where('name', $grupo->name)->whereBetween('id', [50, 89])->select('id')->firstOrfail();
+            //dd($linea_1);
+            $grupo->cant_linea_3 = StudentGroup::where('id_group', $linea_3->id)->count();
+        });
+
+        return datatables()->of($grupos)->toJson();
+    }
 }

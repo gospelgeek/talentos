@@ -246,9 +246,35 @@ class perfilEstudianteController extends Controller
 
         $totalSimulacros = $t1 + $t2;
         
+        $url_entrada = DB::select("SELECT icfes_students.url_support as url FROM 
+        icfes_students WHERE id_icfes_test = 4 AND id_student = ?", [$id]);
+
+        $url_salida = DB::select("SELECT icfes_students.url_support as url FROM 
+        icfes_students WHERE id_icfes_test = 5 AND id_student = ?", [$id]);
+
+        $pruebaS1 = DB::select("SELECT id_icfes_test as prueba FROM icfes_students WHERE id_icfes_test = 1 AND id_student = ?", [$id]);
+        $pruebaS2 = DB::select("SELECT id_icfes_test as prueba FROM icfes_students WHERE id_icfes_test = 2 AND id_student = ?", [$id]);
+        $pruebaS3 = DB::select("SELECT id_icfes_test as prueba FROM icfes_students WHERE id_icfes_test = 3 AND id_student = ?", [$id]);
+        $pruebaS4 = DB::select("SELECT id_icfes_test as prueba FROM icfes_students WHERE id_icfes_test = 4 AND id_student = ?", [$id]);
+        $pruebaS5 = DB::select("SELECT id_icfes_test as prueba FROM icfes_students WHERE id_icfes_test = 5 AND id_student = ?", [$id]);
+
+        //dd($pruebaS5);
+
+
 
         $verDatosPerfil = perfilEstudiante::findOrFail($id);
         $cohort = $verDatosPerfil->studentGroup->group->cohort->id;
+        
+        $variacion = 0;
+
+        if($cohort == 1 || $cohort == 2){
+            $dataIcfesEn = DB::select("SELECT icfes_students.total_score as puntajeEntrada FROM 
+                icfes_students WHERE id_icfes_test = 4 AND id_student = ?", [$id]);
+            if($dataIcfesEn == []){ $variacion = 0;}else{$variacion = $dataIcfesEn[0]->puntajeEntrada;};
+            
+        }
+
+
         $grupos = Group::where('id_cohort', $cohort)->pluck('name', 'id');
         //return $grupos;
 
@@ -331,7 +357,7 @@ class perfilEstudianteController extends Controller
             $foto = $foto[5];
         }
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'iden', 't1', 't2', 'totalSimulacros'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'iden', 't1', 't2', 'totalSimulacros', 'url_entrada', 'url_salida', 'pruebaS1', 'pruebaS2', 'pruebaS3', 'pruebaS4', 'pruebaS5', 'variacion'));
     }
 
 

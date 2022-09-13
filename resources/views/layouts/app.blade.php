@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }} ">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeQQvYgAAAAAHvwSUCVLu3MlhhprTlz7ssVbFd2"></script>
+    @yield("captcha")
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}
@@ -27,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="/DataTables/DataTables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/Responsive/css/responsive.bootstrap4.min.css">
 </head>
+
 <body>
 
     <div id="app">
@@ -39,10 +44,10 @@
                 </div>
                 @endif
                 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-                <a href="{{ url('/') }}" class="navbar-brand">
-                    <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 120px;">
+                    <a href="{{ url('/') }}" class="navbar-brand">
+                        <img src="../img/logo.jpeg" alt="Logo" class="brand-image" style="width: 120px;">
                         <span class="brand-text font-weight-light">PNA</span>
-                </a>
+                    </a>
                 </nav>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,27 +64,27 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <!--<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>-->
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <!--<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>-->
-                                </li>
-                            @endif
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>-->
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>-->
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
-                            </li>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"><i class="fas fa-user-lock"></i> cerrar sesi&oacute;n </a>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -88,16 +93,16 @@
 
         <main class="py-4">
             @yield('content')
-        
-        </main>
-        
-    </div>
-      
-        <!-- SCRIPTS -->
-      <!-- JQuery -->
 
-    
-    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!} 
+        </main>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+
+
+    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!}
     {!!Html::script('/dashboard/plugins/bootstrap/js/bootstrap.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables/jquery.dataTables.min.js')!!}
     {!!Html::script('/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')!!}
@@ -106,7 +111,8 @@
     {!!Html::script('/js/dep-mun.js')!!}
     {!!Html::script('/js/filtroestudiantes.js')!!}
 
-       
-    
+
+
 </body>
+
 </html>

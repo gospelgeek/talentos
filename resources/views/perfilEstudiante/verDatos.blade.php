@@ -1,6 +1,34 @@
 @extends('layouts.dashboard')
 @section('title', 'Ver Datos')
-
+@section('icfes')
+<style>
+	#icfess td:nth-child(3){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(4){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(5){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(6){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(7){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(8){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	
+</style>
+@endsection
 @section('content')
 
 @csrf
@@ -604,31 +632,117 @@
 	<div class="accordion-container" id="ti7">
 		<a href="#" id="titulo-7" class="accordion-titulo-7">Icfes<span class="toggle-icon"></span></a>
 		<div id="contenido-7" class="accordion-content-7">
+
+			&nbsp;
+			&nbsp;
 			<div class="table-responsive">
 				<br>
-				<h4>INFORMACION DE ICFES</h4>
-				<table id="icfes">
+
+				<table id="icfess">
 					<thead>
 
-						<th>AREA</th>
-						<th>ICFES ENTRADA</th>
-						<th>SIMULACRO 1</th>
-						<th>SIMULACRO 2</th>
-						<th>ICFES SALIDA</th>
-						<th>TOTAL SIMULACROS</th>
+						<th style="text-align: center;">AREA</th>
+						@if($pruebaS4 == [])
+						<input type="text" id="ie" value="ie" hidden>
+						@else
+						@if($url_entrada == [])
+						<th style="text-align: center;"><u>ICFES ENTRADA</u></th>
+						@else
+						<th style="text-align: center;">
+							<a href="{{$url_entrada[0]->url}}" target="_blank">
+								<u>ICFES ENTRADA</u>
+							</a>
+						</th>
+
+						@endif
+
+						@endif
+
+						@if($pruebaS1 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 1</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 2</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 3</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS5 == [])
+						<input type="text" id="if" value="if" hidden>
+						@else
+						@if($url_salida == [])
+						<th style="text-align: center;"><u>ICFES SALIDA</u></th>
+						@else
+						<th style="text-align: center;">
+							<a href="{{$url_salida[0]->url}}" target="_blank">
+								<u>ICFES SALIDA</u>
+							</a>
+						</th>
+
+						@endif
+
+						@endif
+
+						
 
 					</thead>
+					<tbody id="icfes">
+
+					</tbody>
 					<tfoot>
 						<th>TOTAL</th>
+						@if($pruebaS4 == [])
+						@else
 						<th>--</th>
+						@endif
+
+						@if($pruebaS1 == [])
+						@else
 						<th>{{$t1}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
 						<th>{{$t2}}</th>
 						<th>--</th>
-						<th>{{$totalSimulacros}}</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th>S3</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS5 == [])
+						@else
+						<th>--</th>
+						@endif
+						
 					</tfoot>
-					
+
 				</table>
 
+			</div>
+			<div class="row">
+				&nbsp;
+				<div class="col-ms-2">
+					<label for="">CAMBIAR A PORCENTAJE</label>
+				</div>
+				&nbsp;
+				&nbsp;
+				<div class="col-ms-4">
+					<input class="form-control mt-0" style="width: 25px; height: 25px;" type="checkbox" id="cambio">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -758,57 +872,293 @@
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 
 <script>
-	
-	var table = $("#icfes").DataTable({
-		"ajax": {
-            "method": "GET",
-            "url": "{{route('resultado_icfes', $iden)}}"
-        },
-        "columns": [{
-                data: 'nombre'
-            },
-			{
-                data: null,
-                render:function(data, type, row, meta){
-                     return "--"
-                }
-            },
-            {
-                data: 'simulacro1'
-            },
-			{
-                data: 'simulacro2',
-                
-            },
-			{
-                data: null,
-                render:function(data, type, row, meta){
-                     return "--"
-                }
-            },
-            {
-                data: null,
-                render:function(data, type, row, meta){
-                     return ""
-                }
-            },
+	const icfesBody = document.getElementById('icfes')
+	let variacion = parseInt("{{$variacion}}")
+	const cambio = document.getElementById('cambio')
+	let salida = document.getElementById('if')
+	//console.log(salida.value)
+	let entrada = document.getElementById('ie')
+	//console.log(entrada.value)
 
-        ],
 
+	const data = fetch("{{route('resultado_icfes', $iden)}}")
+		.then(res => res.json())
+		.then(data => {
+
+			if (data.data === []) {
+				console.log("no hay datos")
+			} else {
+				data.data.forEach(data => {
+					if (data) {
+						let row_2 = document.createElement('tr');
+						let row_2_data_1 = document.createElement('td');
+						let row_2_data_2 = document.createElement('td');
+
+						row_2_data_1.innerHTML = data.nombre;
+						row_2.appendChild(row_2_data_1);
+						if (entrada !== null) {
+							if (entrada.value === 'ie') {
+								//row_2.appendChild(row_2_data_1);
+
+							}
+						} else {
+
+							row_2_data_2.innerHTML = "--"
+
+
+							row_2.appendChild(row_2_data_2);
+
+						}
+
+
+						if (data.simulacro1 !== 0) {
+							let row_2_data_3 = document.createElement('td')
+							row_2_data_3.innerHTML = data.simulacro1
+							let row_2_data_4 = document.createElement('td')
+							let resultado = 0
+
+							cambio.addEventListener('change', () => {
+								if (cambio.checked == true) {
+									if (variacion === 0) {
+										resultado = 0
+									} else {
+										resultado = Math.round(((data.simulacro1 - variacion) / variacion) * 100)
+									}
+									if (resultado < 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}%
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_3);
+									row_2.appendChild(row_2_data_4);
+								} else {
+									resultado =Math.round(data.simulacro1 - variacion)
+
+									if (resultado < 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_4.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_3);
+									row_2.appendChild(row_2_data_4);
+								}
+							})
+
+							resultado = Math.round(data.simulacro1 - variacion)
+
+							if (resultado < 0) {
+								row_2_data_4.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado > 0) {
+								row_2_data_4.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado == 0) {
+								row_2_data_4.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+
+							row_2.appendChild(row_2_data_3);
+							row_2.appendChild(row_2_data_4);
+
+						}
+
+						if (data.simulacro2 !== 0) {
+							let row_2_data_5 = document.createElement('td');
+							row_2_data_5.innerHTML = data.simulacro2
+							let row_2_data_6 = document.createElement('td');
+							let resultado = 0
+
+
+							cambio.addEventListener('change', () => {
+
+								if (cambio.checked == true) {
+									if (variacion === 0) {
+										resultado = 0
+									} else {
+										resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
+									}
+									if (resultado < 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_5);
+									row_2.appendChild(row_2_data_6);
+								} else {
+									resultado =Math.round(data.simulacro2 - variacion)
+									if (resultado < 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado > 0) {
+										row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+									if (resultado == 0) {
+										row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+									}
+
+									row_2.appendChild(row_2_data_5);
+									row_2.appendChild(row_2_data_6);
+								}
+
+
+							})
+							resultado = Math.round(data.simulacro2 - variacion)
+							if (resultado < 0) {
+								row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado > 0) {
+								row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+							if (resultado == 0) {
+								row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+							}
+
+							row_2.appendChild(row_2_data_5);
+							row_2.appendChild(row_2_data_6);
+						}
+
+
+						if (salida !== null) {
+							if (salida.value === 'if') {}
+						} else {
+							let row_2_data_10 = document.createElement('td');
+							row_2_data_10.innerHTML = "--"
+							row_2.appendChild(row_2_data_10);
+
+						}
+
+						icfesBody.appendChild(row_2)
+					}
+
+				});
+			}
+			//console.log(data.data[0].simulacro1)
+		})
+
+
+	/*$("#icfes").DataTable({
+		"processing": false,
+		"LoadingRecords": true,
+		"paging": true,
 		"deferRender": true,
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "dom": 'Bfrtip',
-        "buttons": [
-            "copy",
-            "csv",
-            "excel",
-            "pdf",
-            "print",
-            "colvis"
-        ]
-	});
+		"lengthChange": false,
+		"searching": true,
+		"ordering": true,
+		"order": [0, 'desc'],
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
+		"language": {
+			"url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+		},
+		"dom": 'Bfrtip',
+		"buttons": ["copy", "excel", "pdf", "print"]
+	});*/
+
 </script>
 
 @endpush

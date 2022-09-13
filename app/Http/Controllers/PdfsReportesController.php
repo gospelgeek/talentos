@@ -27,7 +27,7 @@ class PdfsReportesController extends Controller
         return view('pdfsreportes.index');
     }
 
-    public function descargarPDFgrupos($cohorte)
+    public function descargarPDFgrupos($cohorte, $texto)
     {
         //date_default_timezone_set("");
         $now = new DateTimeZone("America/Bogota");
@@ -43,7 +43,7 @@ class PdfsReportesController extends Controller
                 while ($contador <= 41) {
                     $datos[$contador] = DB::select("SELECT document_number, name, lastname, student_code, email FROM 
                     student_profile WHERE student_profile.id IN (SELECT student_groups.id_student FROM 
-                    student_groups WHERE student_groups.id_group = ?) AND id_state = 1 ORDER BY lastname ASC", [$contador]);
+                    student_groups WHERE student_groups.id_group = ?) AND id_state = 1 ORDER BY lastname ASC LIMIT 100", [$contador]);
                     $contador++;
                 }
                 
@@ -92,6 +92,7 @@ class PdfsReportesController extends Controller
                     'cohorte' => $cohorte,
                     'fecha' => $actual,
                     'cont' => $acum,
+                    'texto' => $texto
                 ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
                 return $pdf->stream("listado-linea1-$actual.pdf");
@@ -155,10 +156,11 @@ class PdfsReportesController extends Controller
                     'cohorte' => $cohorte,
                     'fecha' => $actual,
                     'cont' => $acum,
-                ])->setPaper('a4', 'landscape');
+                    'texto' => $texto
+                ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
-                //return $pdf->stream("listado-linea2-$actual.pdf");
-                return $pdf->download("listado-linea2-$actual.pdf");
+                return $pdf->stream("listado-linea2-$actual.pdf");
+                //return $pdf->download("listado-linea2-$actual.pdf");
                 break;
 
             case 3:
@@ -219,10 +221,11 @@ class PdfsReportesController extends Controller
                     'fecha' => $actual,
                     'fecha' => $actual,
                     'cont' => $acum,
-                ])->setPaper('a4', 'landscape');
+                    'texto' => $texto
+                ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
-                //return $pdf->stream("listado-linea3-$actual.pdf");
-                return $pdf->download("listado-linea3-$actual.pdf");
+                return $pdf->stream("listado-linea3-$actual.pdf");
+                //return $pdf->download("listado-linea3-$actual.pdf");
                 break;
 
             default:

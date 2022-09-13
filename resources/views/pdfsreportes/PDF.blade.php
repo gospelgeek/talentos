@@ -48,7 +48,8 @@
 
     <main>
         <div style="text-align: center;">
-            <h2><strong>LISTADO DE ESTUDIANTES GRUPO 1 DE LINEA {{$cohorte}}</strong> </h2>
+            <h2>{{$texto}}</h2>
+            <h4><strong>LISTADO DE ESTUDIANTES GRUPO 1 DE LINEA {{$cohorte}}</strong> </h4>
         </div>
         <table style="border: 1px solid black;">
             <thead>

@@ -202,49 +202,291 @@
                             var url = '<a href="'+data+'" target="blank">ENLACE FOTO</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'name'},
-                {data: 'lastname'},
-                {data: 'cohorte'},
-                {data: 'grupo_name'},
-                {data: 'profesional'},
-                {data: 'first_name'},
-                {data: 'tipo_documento'},
+                {data: 'name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'lastname', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'cohorte', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'grupo_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'profesional', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'first_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'tipo_documento', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_document_type', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE DOCUMENTO</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'document_number'},
-                {data: 'document_expedition_date'},
-                {data: 'email'},
-                {data: 'estado'},
-                {data: 'birth_date'},
-                {data: 'departamento_nacimiento'},
-                {data: 'ciudad_nacimiento'},
-                {data: 'sex'},
-                {data: 'genero'},
-                {data: 'landline'},
-                {data: 'cellphone'},
-                {data: 'phone'},
-                {data: 'emergency_contact_name'},
-                {data: 'relationship'},
-                {data: 'emergency_contact'},
-                {data: 'comuna'},
-                {data: 'barrio'},
-                {data: 'student_code'},
-                {data: 'college'},
-                {data: 'registration_date'},
-                {data: 'direction'},
-                {data: 'tutor'},
-                {data: 'id_moodle'},
+                {data: 'document_number', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'document_expedition_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'email', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'estado', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'birth_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'departamento_nacimiento', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'ciudad_nacimiento', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'sex', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'genero', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'landline', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'cellphone', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'phone', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'emergency_contact_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'relationship', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'emergency_contact', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'comuna', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'barrio', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'student_code', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'college', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'registration_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'direction', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'tutor', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'id_moodle', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
@@ -303,68 +545,280 @@
                 "url": "{{route('datos.socioeconomicos')}}",
             },
             "columns": [
-                {data: 'name'},
-                {data: 'lastname'},
-                {data: 'cohorte'},
-                {data: 'grupo_name'},
-                {data: 'profesional'},
-                {data: 'estado'},
-                {data: 'ocupacion'},
-                {data: 'estado_civil'},
-                {data: 'children_number'},
-                {data: 'tiempo_residencia'},
-                {data: 'tipo_vivienda'},
-                {data: 'regimen_salud'},
+                {data: 'name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'lastname', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'cohorte', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'grupo_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'profesional', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'estado', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'ocupacion', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'estado_civil', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'children_number', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'tiempo_residencia', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'tipo_vivienda', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'regimen_salud', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_health_regime', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE REGIMEN SALUD</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'sisben_category'},
+                {data: 'sisben_category', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_sisben_category', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE CATEGORIA SISBEN</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'beneficios'},
-                {data: 'household_people'},
-                {data: 'economic_possition'},
-                {data: 'dependent_people'},
-                {data: 'internet_zon'},
-                {data: 'internet_home'},
-                {data: 'sex_document_identidad'},
-                {data: 'condicion_social'},
+                {data: 'beneficios', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'household_people', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'economic_possition', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'dependent_people', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'internet_zon', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'internet_home', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'sex_document_identidad', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'condicion_social', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_social_conditions', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE CONDICIOÓN SOCIAL</a>';
                             return url;
                         }else{
-                            return ' ';
+                           var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'stratum'},
-                {data: 'rural_zone'},
-                {data: 'discapacidad'},
-                {data: 'etnia'},
+                {data: 'stratum', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'rural_zone', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'discapacidad', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'etnia', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_ethnicity', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE ETNIA</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'eps_name'},
+                {data: 'eps_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
@@ -423,28 +877,133 @@
                 "url": "{{route('datos.academicos')}}",
             },
             "columns": [
-                {data: 'name'},
-                {data: 'lastname'},
-                {data: 'cohorte'},
-                {data: 'grupo_name'},
-                {data: 'profesional'},
-                {data: 'estado'},
-                {data: 'tipo_institucion'},
-                {data: 'institution_name'},
-                {data: 'year_graduation'},
-                {data: 'bachelor_title'},
+                {data: 'name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'lastname', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'cohorte', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'grupo_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'profesional', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'estado', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'tipo_institucion', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'institution_name', render:function(data, type, meta, row){
+                        if(data != null && data != ''){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'year_graduation', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'bachelor_title', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'url_academic_support', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE SOPORTE ACADEMICO</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'icfes_date'},
-                {data: 'snp_register'},
-                {data: 'icfes_score'},
+                {data: 'icfes_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'snp_register', render:function(data, type, meta, row){
+                        if(data != null && data != ''){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'icfes_score', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     if(rol == 4 || rol == 1 || rol == 2 || rol == 6){
@@ -503,22 +1062,72 @@
                 "url": "{{route('datos.formalizacion_pendientes')}}",
             },
             "columns": [
-                {data: 'name'},
-                {data: 'lastname'},
-                {data: 'cohorte'},
-                {data: 'grupo_name'},
-                {data: 'profesional'},
-                {data: 'estado'},
+                {data: 'name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'lastname', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'cohorte', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'grupo_name', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'profesional', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'estado', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'transfer_line2_to_line1', render:function(data, type, row, meta){
                         if(data != null){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
                             }else{
-                                return null;
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                                return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
@@ -533,16 +1142,33 @@
                                     return url;
                                 }
                             }else{
-                                var url = '';
-                                return url;
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                                return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'acceptance_date'},
-                {data: 'acceptance_observation'},
+                {data: 'acceptance_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'acceptance_observation', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'tablets_v2', render:function(data, type, row, meta){
                         if(data !== ""){
                             if(data !== null){
@@ -554,25 +1180,36 @@
                                     return url;
                                 }
                             }else{
-                                var url = ' ';
-                                return url;
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                                return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'serial_tablet'},
+                {data: 'serial_tablet', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'returned_tablet', render:function(data, type, row, meta){
                         if(data != null){
                             if(data == 1){
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
                             }else{
-                                return null;    
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                                return no;    
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
@@ -582,25 +1219,52 @@
                                 var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
                                 return si;
                             }else{
-                                return null;
+                                var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                                return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'serial_loan_tablet'},
-                {data: 'observation_loan'},
+                {data: 'serial_loan_tablet', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
+                {data: 'observation_loan', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'loan_document_url', render:function(data, type, row, meta){
                         if(data != null){
                             var url = '<a href="'+data+'" target="blank">ENLACE PRESTAMO</a>';
                             return url;
                         }else{
-                            return ' ';
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }
                     }
                 },
-                {data: 'kit_date'},
+                {data: 'kit_date', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: 'pre_registration_icfes', render:function(data, type, row, meta){
                         if(data !== null){
                             if(data == 1){
@@ -611,7 +1275,8 @@
                                 return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }    
                     }
                 },       
@@ -625,7 +1290,8 @@
                                 return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }    
                     }
                 },
@@ -639,11 +1305,20 @@
                                 return no;
                             }
                         }else{
-                            return null;
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;
                         }    
                     }
                 },
-                {data: 'observations'},
+                {data: 'observations', render:function(data, type, meta, row){
+                        if(data != null){
+                            return data;
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">SIN INFORMACIÓN</button>';
+                            return no;   
+                        }
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                     var rol = document.getElementById('roles').value;
                     if(rol == 4 || rol == 1 || rol == 2 || rol == 6){

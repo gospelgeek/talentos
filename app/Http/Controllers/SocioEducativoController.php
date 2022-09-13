@@ -1529,16 +1529,31 @@ class SocioEducativoController extends Controller
 
     public function exportar_reporte_socioeducativo(){
 
-        $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, student_profile.document_number, student_profile.student_code, student_profile.email, student_profile.cellphone, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, socio_educational_follow_ups.tracking_detail as detalle, formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as aceptacion2, (SELECT health_conditions.employee FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as trabajador, (SELECT health_conditions.physical_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_fisica, (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_mental,
+        $estudiantes = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,
+            (SELECT document_type.name FROM document_type WHERE document_type.id = 
+            student_profile.id_document_type LIMIT 1) as tipodocumento, 
+            student_profile.document_number, student_profile.student_code, 
+            student_profile.email, student_profile.cellphone, student_groups.id_group as 
+            grupoid, groups.name AS grupo, cohorts.name AS cohorte, conditions.name as estado, 
+            socio_educational_follow_ups.tracking_detail as detalle, 
+            formalizations.acceptance_v1 as aceptacion1, formalizations.acceptance_v2 as 
+            aceptacion2, 
+            (SELECT health_conditions.employee FROM health_conditions WHERE 
+            health_conditions.id_student = student_profile.id LIMIT 1) as trabajador,
+            (SELECT health_conditions.physical_health FROM health_conditions WHERE 
+            health_conditions.id_student = student_profile.id LIMIT 1) as salud_fisica,
+            (SELECT health_conditions.mental_health FROM health_conditions WHERE 
+            health_conditions.id_student = student_profile.id LIMIT 1) as salud_mental,
             (SELECT health_conditions.psychosocial_risk FROM health_conditions WHERE 
-            health_conditions.id_student = student_profile.id) as riesgo_psicosocial
+            health_conditions.id_student = student_profile.id LIMIT 1) as riesgo_psicosocial
             FROM student_profile 
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN formalizations ON formalizations.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
             INNER JOIN conditions on conditions.id = student_profile.id_state
-            INNER JOIN socio_educational_follow_ups on socio_educational_follow_ups.id_student = student_profile.id
+            INNER JOIN socio_educational_follow_ups on socio_educational_follow_ups.id_student = 
+            student_profile.id
             WHERE student_groups.deleted_at IS null
             AND socio_educational_follow_ups.deleted_at IS NULL");
 

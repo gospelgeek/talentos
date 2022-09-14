@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\SabanaIcfesExport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class IcfesController extends Controller
 {
@@ -200,17 +201,21 @@ class IcfesController extends Controller
 
         return datatables()->of($result)->toJson();
     }
-
-    public function exportarSabanaIcfes()
+    
+    public function archivoSabanaIcfes()
     {
-
+        
+        $nombreArchivo = "sabana_icfes_datos.json";
         $contador = 0;
         $total_s1 = 0;
-        $AreasS1 = [0,0,0,0,0];
+        $AreasS1 = [0, 0, 0, 0, 0];
+        $variacionS1 = [0,0];
         $total_s2 = 0;
-        $AreasS2 = [0,0,0,0,0];
+        $AreasS2 = [0, 0, 0, 0, 0];
+        $variacionS2 = [0,0];
         $total_s3 = 0;
-        $AreasS3 = [0,0,0,0,0];
+        $AreasS3 = [0, 0, 0, 0, 0];
+        $variacionS3 = [];
         $total_ie = 0;
         $total_if = 0;
         $data = [];
@@ -218,22 +223,31 @@ class IcfesController extends Controller
         $estudiantes = DB::select("SELECT student_profile.id as id, student_profile.name as nombre, 
         student_profile.lastname as apellidos, student_profile.document_number as documento, 
         (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort LIMIT 1) 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
-        student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
+        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups 
+        WHERE student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT 
+        (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
         FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
-        FROM student_profile WHERE id_state = 1");
+        FROM student_profile WHERE id_state = 1 AND id IN (SELECT icfes_students.id_student FROM icfes_students)");
 
         $tamanioDatos = sizeof($estudiantes);
 
         while ($contador < $tamanioDatos) {
 
+            $ie = DB::select("SELECT icfes_students.total_score FROM icfes_students 
+            WHERE icfes_students.id_icfes_test = 4 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
+
+            if ($ie == []) {
+                $total_ie = 0;
+            } else {
+                $total_ie = $ie[0]->total_score;
+            }
+
             $s1 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-            
+
             if ($s1 == []) {
                 $total_s1 = 0;
-                $AreasS1 = [0,0,0,0,0];  
+                $AreasS1 = [0, 0, 0, 0, 0];
             } else {
                 $total_s1 = $s1[0]->total_score;
                 $idPrueba = $s1[0]->id;
@@ -247,14 +261,21 @@ class IcfesController extends Controller
                 $AreasS1[2] = $cs[0]->calificacion;
                 $AreasS1[3] = $cn[0]->calificacion;
                 $AreasS1[4] = $in[0]->calificacion;
-            } 
+            }
+
+            if($estudiantes[$contador]->linea == "LINEA 1" || $estudiantes[$contador]->linea == "LINEA 2"){
+                $variacionS1[0] = round($total_s1 - $total_ie);
+                $variacionS1[1] = round(($variacionS1[0] / $total_ie) * 100);
+            }else{
+                $variacionS1 = [0,0];
+            }
 
             $s2 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 2 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
 
             if ($s2 == []) {
                 $total_s2 = 0;
-                $AreasS2 = [0,0,0,0,0];
+                $AreasS2 = [0, 0, 0, 0, 0];
             } else {
                 $total_s2 = $s2[0]->total_score;
                 $idPrueba = $s2[0]->id;
@@ -270,12 +291,20 @@ class IcfesController extends Controller
                 $AreasS2[4] = $in[0]->calificacion;
             }
 
+            if($estudiantes[$contador]->linea == "LINEA 3"){
+                $variacionS2[0] = round($total_s2 - $total_s1);
+                $variacionS2[1] = round(($variacionS2[0] / $total_s1) * 100);
+            }else{
+                $variacionS2[0] = round($total_s2 - $total_ie);
+                $variacionS2[1] = round(($variacionS2[0] / $total_ie) * 100);
+            }
+
             $s3 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 3 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
 
             if ($s3 == []) {
                 $total_s3 = 0;
-                $AreasS3 = [0,0,0,0,0];
+                $AreasS3 = [0, 0, 0, 0, 0];
             } else {
                 $total_s3 = $s3[0]->total_score;
                 $idPrueba = $s3[0]->id;
@@ -291,13 +320,12 @@ class IcfesController extends Controller
                 $AreasS3[4] = $in[0]->calificacion;
             }
 
-            $ie = DB::select("SELECT icfes_students.total_score FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = 4 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            if ($ie == []) {
-                $total_ie = 0;
-            } else {
-                $total_ie = $ie[0]->total_score;
+            if($estudiantes[$contador]->linea == "LINEA 3"){
+                $variacionS3[0] = round($total_s3 - $total_s1);
+                $variacionS3[1] = round(($variacionS3[0] / $total_s1) * 100);
+            }else{
+                $variacionS3[0] = round($total_s3 - $total_ie);
+                $variacionS3[1] = round(($variacionS3[0] / $total_ie) * 100);
             }
 
             $if = DB::select("SELECT icfes_students.total_score FROM icfes_students 
@@ -322,37 +350,52 @@ class IcfesController extends Controller
                 "CNie" => "-",
                 "INie" => "-",
                 "Tie" => $total_ie,
-                "LCs1" => $AreasS1[0] ,
-                "MTs1" => $AreasS1[1] ,
-                "CSs1" => $AreasS1[2] ,
-                "CNs1" => $AreasS1[3] ,
-                "INs1" => $AreasS1[4] ,
+                "LCs1" => $AreasS1[0],
+                "MTs1" => $AreasS1[1],
+                "CSs1" => $AreasS1[2],
+                "CNs1" => $AreasS1[3],
+                "INs1" => $AreasS1[4],
                 "Ts1" => $total_s1,
-                "LCs2" => $AreasS2[0] ,
-                "MTs2" => $AreasS2[1] ,
-                "CSs2" => $AreasS2[2] ,
-                "CNs2" => $AreasS2[3] ,
-                "INs2" => $AreasS2[4] ,
+                "PuntosVar1" => $variacionS1[0],
+                "PorVar1" => "$variacionS1[1] %",
+                "LCs2" => $AreasS2[0],
+                "MTs2" => $AreasS2[1],
+                "CSs2" => $AreasS2[2],
+                "CNs2" => $AreasS2[3],
+                "INs2" => $AreasS2[4],
                 "Ts2" => $total_s2,
-                "LCs3" => $AreasS3[0] ,
-                "MTs3" => $AreasS3[1] ,
-                "CSs3" => $AreasS3[2] ,
-                "CNs3" => $AreasS3[3] ,
-                "INs3" => $AreasS3[4] ,
+                "PuntosVar2" => $variacionS2[0],
+                "PorVar2" => "$variacionS2[1] %",
+                "LCs3" => $AreasS3[0],
+                "MTs3" => $AreasS3[1],
+                "CSs3" => $AreasS3[2],
+                "CNs3" => $AreasS3[3],
+                "INs3" => $AreasS3[4],
                 "Ts3" => $total_s3,
+                "PuntosVar3" => $variacionS3[0],
+                "PorVar3" => "$variacionS3[1] %",
                 "LCif" => "-",
                 "MTif" => "-",
                 "CSif" => "-",
                 "CNif" => "-",
                 "INif" => "-",
                 "if" => $total_if,
+                "PuntosVarIf" => "-",
+                "PorVarIf" => "-",
             );
 
             ++$contador;
         }
         $result = $data;
+        Storage::disk('local')->put($nombreArchivo, json_encode($result));
+        return redirect('icfes');
+        
+    }
 
-        $exportar = new SabanaIcfesExport($result);
+    public function exportarSabanaIcfes()
+    {
+        $datos = json_decode(Storage::get('sabana_icfes_datos.json'));
+        $exportar = new SabanaIcfesExport($datos);
 
         return Excel::download($exportar, "Sabana_icfes_comparativo.xlsx");
     }

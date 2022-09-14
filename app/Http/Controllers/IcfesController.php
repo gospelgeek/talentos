@@ -265,7 +265,11 @@ class IcfesController extends Controller
 
             if($estudiantes[$contador]->linea == "LINEA 1" || $estudiantes[$contador]->linea == "LINEA 2"){
                 $variacionS1[0] = round($total_s1 - $total_ie);
-                $variacionS1[1] = round(($variacionS1[0] / $total_ie) * 100);
+                if($total_ie != 0){
+                    $variacionS1[1] = round(($variacionS1[0] / $total_ie) * 100);
+                }else{
+                    $variacionS1[1] = 0;
+                }
             }else{
                 $variacionS1 = [0,0];
             }
@@ -293,10 +297,20 @@ class IcfesController extends Controller
 
             if($estudiantes[$contador]->linea == "LINEA 3"){
                 $variacionS2[0] = round($total_s2 - $total_s1);
-                $variacionS2[1] = round(($variacionS2[0] / $total_s1) * 100);
+                if($total_s1 != 0){
+                    $variacionS2[1] = round(($variacionS2[0] / $total_s1) * 100);
+                }else{
+                    $variacionS2[1] = 0;
+                }
+                
             }else{
                 $variacionS2[0] = round($total_s2 - $total_ie);
-                $variacionS2[1] = round(($variacionS2[0] / $total_ie) * 100);
+                if($total_ie != 0){
+                    $variacionS2[1] = round(($variacionS2[0] / $total_ie) * 100);
+                }else{
+                    $variacionS2[1] = 0;
+                }
+                
             }
 
             $s3 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
@@ -322,10 +336,20 @@ class IcfesController extends Controller
 
             if($estudiantes[$contador]->linea == "LINEA 3"){
                 $variacionS3[0] = round($total_s3 - $total_s1);
-                $variacionS3[1] = round(($variacionS3[0] / $total_s1) * 100);
+                if($total_s1 != 0){
+                    $variacionS3[1] = round(($variacionS3[0] / $total_s1) * 100);
+                }else{
+                    $variacionS3[1] = 0;
+                }
+                
             }else{
                 $variacionS3[0] = round($total_s3 - $total_ie);
-                $variacionS3[1] = round(($variacionS3[0] / $total_ie) * 100);
+                if($total_ie != 0){
+                    $variacionS3[1] = round(($variacionS3[0] / $total_ie) * 100);
+                }else{
+                    $variacionS3[1] = 0;
+                }
+                
             }
 
             $if = DB::select("SELECT icfes_students.total_score FROM icfes_students 

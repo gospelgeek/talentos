@@ -204,7 +204,7 @@ class IcfesController extends Controller
     
     public function archivoSabanaIcfes()
     {
-        
+        ini_set('max_execution_time', '600');
         $nombreArchivo = "sabana_icfes_datos.json";
         $contador = 0;
         $total_s1 = 0;

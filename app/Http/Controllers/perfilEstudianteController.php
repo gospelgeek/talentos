@@ -2533,7 +2533,7 @@ class perfilEstudianteController extends Controller
         
     public function indexEstudiantes(){
         $cohorte = Cohort::pluck('name','id');
-        $fecha_carga = CourseMoodle::fecha_carga();
+        $fecha_carga = SessionCourse::fecha_carga();
         $carga = $fecha_carga[0]->created_at;
         
         return view('perfilEstudiante.Asistencias.Individuales.index',compact('cohorte', 'carga'));   

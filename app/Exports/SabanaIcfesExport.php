@@ -27,18 +27,18 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
             [' '],
             ['REPORTE DE COMPARATIVO ICFES'],
             ['INFORMACION DE ESTUDIANTES', '','','','','',
-            'ICFES ENTRADA','','','','','',
-            'SIMULACRO 1','','','','','',
-            'SIMULACRO 2','','','','','',
-            'SIMULACRO 3','','','','','',
-            'ICFES SALIDA','','','','','',
+            'ICFES ENTRADA','','','','','', 
+            'SIMULACRO 1','','','','','','','',
+            'SIMULACRO 2','','','','','','','',
+            'SIMULACRO 3','','','','','','','',
+            'ICFES SALIDA','','','','','','','',
             ],
             ['No.','NOMBRE','APELLIDOS','DOCUMENTO','LINEA','GRUPO',
-            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES', 'TOTAL',
-            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL',
-            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL',
-            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL',
-            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL'
+            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES', 'TOTAL', 
+            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL', 'PUNTOS DE VARIACION', 'PORCENTAJE',
+            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL', 'PUNTOS DE VARIACION', 'PORCENTAJE',
+            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL', 'PUNTOS DE VARIACION', 'PORCENTAJE',
+            'LECTURA CRITICA','MATEMATICAS','CIENCIAS SOCIALES','CIENCIAS NATURALES','INGLES','TOTAL','PUNTOS DE VARIACION', 'PORCENTAJE'
             ]
             
         ];
@@ -60,34 +60,34 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
         return [
             AfterSheet::class    => function(AfterSheet $event) {
                 
-                $event->sheet->getDelegate()->mergeCells('A2:AK2');
+                $event->sheet->getDelegate()->mergeCells('A2:AS2');
                 
                 $event->sheet->getDelegate()->mergeCells('A3:F3');
 
                 $event->sheet->getDelegate()->mergeCells('G3:L3');
 
-                $event->sheet->getDelegate()->mergeCells('M3:R3');
+                $event->sheet->getDelegate()->mergeCells('M3:T3');
 
-                $event->sheet->getDelegate()->mergeCells('S3:X3');
+                $event->sheet->getDelegate()->mergeCells('U3:AB3');
 
-                $event->sheet->getDelegate()->mergeCells('Y3:AD3');
+                $event->sheet->getDelegate()->mergeCells('AC3:AJ3');
 
-                $event->sheet->getDelegate()->mergeCells('AE3:AJ3');
+                $event->sheet->getDelegate()->mergeCells('AK3:AR3');
 
-                $event->sheet->getDelegate()->getStyle('G3:AK3')
+                $event->sheet->getDelegate()->getStyle('G3:AS3')
                         ->getFill()
                         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                         ->getStartColor()
                         ->setARGB('C0C0C0');
 
-                $event->sheet->getDelegate()->getStyle('A4:AK4')
+                $event->sheet->getDelegate()->getStyle('A4:AS4')
                         ->getFill()
                         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
                         ->getStartColor()
                         ->setARGB('C0C0C0');
 
                 $event->sheet->styleCells(
-                    'A4:AK2960',[
+                    'A4:AS2960',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -97,7 +97,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A2:AK2',[
+                    'A2:AS2',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -107,7 +107,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A3:AK3',[
+                    'A3:AS3',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
@@ -117,7 +117,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'A4:AK4',
+                    'A4:AS4',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -153,7 +153,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'M3:R3',
+                    'M3:T3',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -165,7 +165,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'S3:X3',
+                    'U3:AB3',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -177,7 +177,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                 );
 
                 $event->sheet->styleCells(
-                    'Y3:AD3',
+                    'AC3:AJ3',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -188,7 +188,7 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                         ]
                 );
                 $event->sheet->styleCells(
-                    'AE3:AJ3',
+                    'AK3:AR3',
                         [
                             'font' => [
                             'name'      =>  'Calibri',
@@ -227,15 +227,15 @@ class SabanaIcfesExport implements FromArray, WithHeadings, ShouldAutoSize, With
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         
-                $event->sheet->getDelegate()->getStyle('S3')
+                $event->sheet->getDelegate()->getStyle('U3')
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-                $event->sheet->getDelegate()->getStyle('Y3')
+                $event->sheet->getDelegate()->getStyle('AC3')
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-                $event->sheet->getDelegate()->getStyle('AE3')
+                $event->sheet->getDelegate()->getStyle('AK3')
                     ->getAlignment()
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
                 

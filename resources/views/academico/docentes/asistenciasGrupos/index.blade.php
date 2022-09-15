@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container-fluid">    
-    <h1 style="text-align:center;">{{ $name }} <br> {{ $materia }}</h1>
+    <h1 style="text-align:center;">{{ $name }}<br>SESIONES GRUPALES<br>{{ $materia }}</h1>
     <script id="json" type="text" src="/students.json"></script>
    
     <div class="card">        

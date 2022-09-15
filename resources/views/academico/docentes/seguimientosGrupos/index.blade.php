@@ -5,7 +5,7 @@
 @include('../alerts.request')
 
 <div class="container-fluid">
-	<h1 style="text-align:center;">{{ $name }} <br> {{ $materia }}</h1>
+	<h1 style="text-align:center;">{{ $name }}<br>SEGUIMIENTO ACADEMICO GRUPAL<br> {{ $materia }}</h1>
 	<div class="card">
 		<div class="card-body">
 			<br><div class="table-responsive">

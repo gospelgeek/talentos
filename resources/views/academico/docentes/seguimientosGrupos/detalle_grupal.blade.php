@@ -5,7 +5,7 @@
 @include('../alerts.request')
 
 <div class="container-fluid">
-	<h1 style="text-align: center;">{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}<br>{{$course_moodle->docente_name}}<br>
+	<h1 style="text-align: center;">{{$name->name}}<br>{{$grupo->name}} - {{$grupo->cohort->name}}<br>SEGUIMIENTO ACADEMICO<br>{{$course_moodle->docente_name}}<br>
 		<a title="Enlace Campus virtual" href="https://campusvirtual.univalle.edu.co/moodle/grade/report/grader/index.php?id={{$course_moodle->course_id}} "class="btn fa fa-external-link primary" target="_blank" style="color: #0d6efd;">Campus</a>
 	</h1>
 

@@ -158,20 +158,7 @@
                     }
                 },
                 {data:'serial_loan_tablet'},
-                {data: 'kit_date', render:function(data, type, row, meta){
-                        if(data !== ""){
-                            if(data !== null){
-                                var si = 'SI';
-                                return si;
-                            }else{
-                                return "";
-                            }
-                        }else{
-                            return "";
-                        }
-
-                    }
-                },
+                {data: 'kit_date'},
                 {data: 'pre_registration_icfes', render:function(data, type, row, meta){
                         if(data !== null){
                             if(data == 1){

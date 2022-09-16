@@ -36,26 +36,25 @@ class FormalizacionController extends Controller
     public function formalizacionDatos(){
         
         $datosFormalizacion = Formalization::formalizacion();
-        $arreglo_datos = array();
-
-        foreach($datosFormalizacion as $datos){
-
+        $collection_datos = collect($datosFormalizacion);
+        //$arreglo_datos = array();
+        $collection_datos->map(function($datos){
             $retiro = Withdrawals::where('id_student', $datos->id)->exists();
             if($retiro == true){
                 $datos_retiro = Withdrawals::where('id_student', $datos->id)->select('id_reasons', 'fecha', 'url')->first();
-                $fecha = $datos_retiro->fecha;
-                $url = $datos_retiro->url;
+                $datos->fecha = $datos_retiro->fecha;
+                $datos->url = $datos_retiro->url;
                 $motivo = Reasons::where('id', $datos_retiro->id_reasons)->select('name')->first();
                 if($motivo != null){
-                    $motivo_name = $motivo->name;    
+                    $datos->motivo = $motivo->name;    
                 }else{
-                    $motivo_name = null;
+                    $datos->motivo = null;
                 }
                 
             }else{
-                $fecha = null;
-                $url = null;
-                $motivo_name = null;
+                $datos->fecha = null;
+                $datos->url = null;
+                $datos->motivo = null;
             }
 
             $profesional = AssignmentStudent::where('id_student', $datos->id)->exists();
@@ -63,54 +62,21 @@ class FormalizacionController extends Controller
                 $id_profesional = AssignmentStudent::where('id_student', $datos->id)->select('id_user')->first();
                 $datos_profesional = User::where('id', $id_profesional->id_user)->select('name', 'apellidos_user')->first();
                 if($datos_profesional !== null){
-                    $name_profesional = $datos_profesional->name;
-                    $lastname_profesional = $datos_profesional->apellidos_user;    
+                    $datos->name_profesional = $datos_profesional->name;
+                    $datos->lastname_profesional = $datos_profesional->apellidos_user;    
                 }else{
-                    $name_profesional = null;
-                    $lastname_profesional = null;
+                    $datos->name_profesional = null;
+                    $datos->lastname_profesional = null;
                 }
                      
             }else{
-                $name_profesional = null;
-                $lastname_profesional = null;
-            }
-
-            $arreglo_datos[] = array(
-                'id' => $datos->id,
-                'name' => $datos->name,
-                'lastname' => $datos->lastname,
-                'document_number' => $datos->document_number,
-                'email' => $datos->email,
-                'cellphone' => $datos->cellphone,
-                'groupid' => $datos->groupid,
-                'grupo' => $datos->grupo,
-                'cohorte' => $datos->cohorte,
-                'acceptance_v2' => $datos->acceptance_v2,
-                'tablets_v2' => $datos->tablets_v2,
-                'serial_tablet' => $datos->serial_tablet,
-                'kit_date' => $datos->kit_date,
-                'pre_registration_icfes' => $datos->pre_registration_icfes,
-                'inscription_icfes' => $datos->inscription_icfes,
-                'presented_icfes' => $datos->presented_icfes,
-                'acceptance_date' => $datos->acceptance_date,
-                'returned_tablet' => $datos->returned_tablet,
-                'loan_tablet' => $datos->loan_tablet,
-                'serial_loan_tablet' => $datos->serial_loan_tablet,
-                'loan_document_url' => $datos->loan_document_url,
-                'cambio_linea' => $datos->cambio_linea,
-                'tipo_documento' => $datos->tipo_documento,
-                'estado' => $datos->estado,
-                'motivo' => $motivo_name,
-                'fecha' => $fecha,
-                'url' => $url,
-                'name_profesional' => $name_profesional,
-                'lastname_profesional' => $lastname_profesional
-            );
-        }
-        
-        $datos_collection = collect($arreglo_datos);
-
-        return datatables()->of($datos_collection)->toJson();
+                $datos->name_profesional = null;
+                $datos->lastname_profesional = null;
+            } 
+            //dd($datos);
+        });
+        //dd($collection_datos);
+        return datatables()->of($collection_datos)->toJson();
     }
 
     public function index(){

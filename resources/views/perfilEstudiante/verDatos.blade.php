@@ -850,6 +850,8 @@
 						<th style="text-align: center;">AREA</th>
 						@if($pruebaS4 == [])
 						<input type="text" id="ie" value="ie" hidden>
+						@endif
+						@if($l3 == 1)
 						@else
 						@if($url_entrada == [])
 						<th style="text-align: center;"><u>ICFES ENTRADA</u></th>
@@ -859,9 +861,7 @@
 								<u>ICFES ENTRADA</u>
 							</a>
 						</th>
-
 						@endif
-
 						@endif
 
 						@if($pruebaS1 == [])
@@ -905,7 +905,11 @@
 					</tbody>
 					<tfoot>
 						<th>TOTAL</th>
-						@if($pruebaS4 == [])
+						@if($l3 == 1)
+						<!--@if($pruebaS4 == [])
+						@else
+						<th>--</th>
+						@endif -->
 						@else
 						<th>--</th>
 						@endif
@@ -1494,9 +1498,13 @@
 <script>
 	const icfesBody = document.getElementById('icfes')
 	let variacion = parseInt("{{$variacion}}")
+	//let variacionL3 = parseInt("{{$variacionL3}}")
+	let l3 = parseInt("{{$l3}}")
 	const cambio = document.getElementById('cambio')
 	let salida = document.getElementById('if')
+	//console.log(salida.value)
 	let entrada = document.getElementById('ie')
+	//console.log(entrada.value)
 
 
 	const data = fetch("{{route('resultado_icfes', $iden)}}")
@@ -1514,6 +1522,15 @@
 
 						row_2_data_1.innerHTML = data.nombre;
 						row_2.appendChild(row_2_data_1);
+
+						if (l3 == 1){
+
+						}else{
+							row_2_data_2.innerHTML = "--"
+						row_2.appendChild(row_2_data_2);
+						}
+						
+						/*
 						if (entrada !== null) {
 							if (entrada.value === 'ie') {
 								//row_2.appendChild(row_2_data_1);
@@ -1526,7 +1543,7 @@
 
 							row_2.appendChild(row_2_data_2);
 
-						}
+						}*/
 
 
 						if (data.simulacro1 !== 0) {
@@ -1570,7 +1587,7 @@
 									row_2.appendChild(row_2_data_3);
 									row_2.appendChild(row_2_data_4);
 								} else {
-									resultado =Math.round(data.simulacro1 - variacion)
+									resultado = Math.round(data.simulacro1 - variacion)
 
 									if (resultado < 0) {
 										row_2_data_4.innerHTML = `
@@ -1634,110 +1651,440 @@
 
 						}
 
-						if (data.simulacro2 !== 0) {
-							let row_2_data_5 = document.createElement('td');
-							row_2_data_5.innerHTML = data.simulacro2
-							let row_2_data_6 = document.createElement('td');
-							let resultado = 0
+						if (l3 === 0) {
+							if (data.simulacro2 !== 0) {
+								let row_2_data_5 = document.createElement('td');
+								row_2_data_5.innerHTML = data.simulacro2
+								let row_2_data_6 = document.createElement('td');
+								let resultado = 0
 
 
-							cambio.addEventListener('change', () => {
+								cambio.addEventListener('change', () => {
 
-								if (cambio.checked == true) {
-									if (variacion === 0) {
-										resultado = 0
+									if (cambio.checked == true) {
+										if (variacion === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
 									} else {
-										resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
-									}
-									if (resultado < 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: #FE3F3F;">
-                                        ${resultado} %
-                                    </div>
-
-								`
-									}
-									if (resultado > 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: #34E82E;">
-                                        ${resultado} %
-                                    </div>
-
-								`
-									}
-									if (resultado == 0) {
-										row_2_data_6.innerHTML = `
-									<div>
-                                        ${resultado} %
-                                    </div>
-
-								`
-									}
-
-									row_2.appendChild(row_2_data_5);
-									row_2.appendChild(row_2_data_6);
-								} else {
-									resultado =Math.round(data.simulacro2 - variacion)
-									if (resultado < 0) {
-										row_2_data_6.innerHTML = `
+										resultado = Math.round(data.simulacro2 - variacion)
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
 									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
 								`
-									}
-									if (resultado > 0) {
-										row_2_data_6.innerHTML = `
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
 									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
 								`
-									}
-									if (resultado == 0) {
-										row_2_data_6.innerHTML = `
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
 									<div>
                                         ${resultado}
                                     </div>
 
 								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
 									}
 
-									row_2.appendChild(row_2_data_5);
-									row_2.appendChild(row_2_data_6);
+
+								})
+								resultado = Math.round(data.simulacro2 - variacion)
+								if (resultado < 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
 								}
 
+								row_2.appendChild(row_2_data_5);
+								row_2.appendChild(row_2_data_6);
+							}
+						} else if (l3 === 1) {
+							if (data.simulacro2 !== 0) {
+								let row_2_data_5 = document.createElement('td');
+								row_2_data_5.innerHTML = data.simulacro2
+								let row_2_data_6 = document.createElement('td');
+								let variacionL3 = data.simulacro1
+								let resultado = 0
 
-							})
-							resultado = Math.round(data.simulacro2 - variacion)
-							if (resultado < 0) {
-								row_2_data_6.innerHTML = `
+
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacionL3 === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro2 - variacionL3) / variacionL3) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
+									} else {
+										resultado = Math.round(data.simulacro2 - variacionL3)
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
 									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
 								`
-							}
-							if (resultado > 0) {
-								row_2_data_6.innerHTML = `
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
 									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
 								`
-							}
-							if (resultado == 0) {
-								row_2_data_6.innerHTML = `
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
 									<div>
                                         ${resultado}
                                     </div>
 
 								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro2 - variacionL3)
+								if (resultado < 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_5);
+								row_2.appendChild(row_2_data_6);
+							}
+						}
+
+
+						if (l3 === 0) {
+
+							if (data.simulacro3 !== 0) {
+								let row_2_data_7 = document.createElement('td');
+								row_2_data_7.innerHTML = data.simulacro3
+								let row_2_data_8 = document.createElement('td');
+								let resultado = 0
+
+
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacion === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro3 - variacion) / variacion) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									} else {
+										resultado = Math.round(data.simulacro3 - variacion)
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro3 - variacion)
+								if (resultado < 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_7);
+								row_2.appendChild(row_2_data_8);
 							}
 
-							row_2.appendChild(row_2_data_5);
-							row_2.appendChild(row_2_data_6);
+						} else if (l3 === 1) {
+							if (data.simulacro3 !== 0) {
+								let row_2_data_7 = document.createElement('td');
+								row_2_data_7.innerHTML = data.simulacro3
+								let row_2_data_8 = document.createElement('td');
+								let variacionL3 = data.simulacro1
+								let resultado = 0.0
+
+								
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacionL3 === 0) {
+											resultado = 0.0
+										} else {
+											console.log(variacionL3)
+											console.log((data.simulacro3 - variacionL3))
+											console.log((data.simulacro3 - variacionL3) / variacionL3)
+											console.log(( (data.simulacro3 - variacionL3) / variacionL3) * 100 )
+											resultado = Math.round(((data.simulacro3 - variacionL3) / variacionL3) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									} else {
+										resultado = Math.round(data.simulacro3 - variacionL3)
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro3 - variacionL3)
+								if (resultado < 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_7);
+								row_2.appendChild(row_2_data_8);
+							}
 						}
+
+
 
 
 						if (salida !== null) {

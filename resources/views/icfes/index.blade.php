@@ -271,7 +271,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3, '${data.nombre}', '${data.apellidos}');"><u>${data.s3}</u></button>
                        
                     `
                 }
@@ -346,7 +346,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                    <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5, '${data.nombre}', '${data.apellidos}');"><u>${data.if}</u></button>
                        
                     `
                 }
@@ -473,7 +473,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u>${data.s1}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1, '${data.nombre}', '${data.apellidos}');"><u>${data.s1}</u></button>
                                    
                                 `
                 }
@@ -535,7 +535,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2, '${data.nombre}', '${data.apellidos}');"><u>${data.s2}</u></button>
                                    
                                 `
                 }
@@ -597,7 +597,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3, '${data.nombre}', '${data.apellidos}');"><u>${data.s3}</u></button>
                                    
                                 `
                 }
@@ -659,7 +659,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5, '${data.nombre}', '${data.apellidos}');"><u>${data.if}</u></button>
                                    
                                 `
                 }
@@ -773,7 +773,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1);"><u><strong>${data.s1}</strong></u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 1, '${data.nombre}', '${data.apellidos}');"><u><strong>${data.s1}</strong></u></button>
                                    
                                 `
                 }
@@ -782,7 +782,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2);"><u>${data.s2}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 2, '${data.nombre}', '${data.apellidos}');"><u>${data.s2}</u></button>
                                    
                                 `
                 }
@@ -844,7 +844,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3);"><u>${data.s3}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 3, '${data.nombre}', '${data.apellidos}');"><u>${data.s3}</u></button>
                                    
                                 `
                 }
@@ -906,7 +906,7 @@
                 data: null,
                 render: function(data, type, row, meta) {
                     return `
-                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5);"><u>${data.if}</u></button>
+                                <button class="btn" type="button" onclick="abrirModal(${data.id_student}, 5, '${data.nombre}', '${data.apellidos}');"><u>${data.if}</u></button>
                                    
                                 `
                 }
@@ -997,8 +997,15 @@
     });
 
 
-    function abrirModal(id, idP) {
+    function abrirModal(id, idP, nom, apel) {
+        const nombreModal = document.getElementById('nombreModal')
         
+        if(nom !== undefined && apel !== undefined){
+            nombreModal.innerHTML=`${nom} ${apel}` 
+            
+        }else {
+            nombreModal.innerHTML=``
+        }
         fetch(`/pruebaAreas/${id}/${idP}`)
             .then(res => res.json())
             .then(data => {
@@ -1033,10 +1040,6 @@
                     
                     $("#pruebaAreas").DataTable({
                         "data": data.data,
-                        /*"ajax": {
-                            "method": "GET",
-                            "url": `/pruebaAreas/${id}/${idP}`
-                        },*/
                         "columns": [{
                                 data: 'nombre'
                             },

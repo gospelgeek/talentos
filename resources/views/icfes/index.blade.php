@@ -428,7 +428,7 @@
         ],
 
         "deferRender": true,
-        "responsive": true,
+        "responsive": false,
         "lengthChange": false,
         "autoWidth": false,
         "dom": 'Bfrtip',
@@ -734,7 +734,7 @@
         ],
 
         "deferRender": true,
-        "responsive": true,
+        "responsive": false,
         "lengthChange": false,
         "autoWidth": false,
         "dom": 'Bfrtip',
@@ -981,7 +981,7 @@
         ],
 
         "deferRender": true,
-        "responsive": true,
+        "responsive": false,
         "lengthChange": false,
         "autoWidth": false,
         "dom": 'Bfrtip',

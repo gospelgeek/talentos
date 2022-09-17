@@ -43,6 +43,7 @@ class IcfesController extends Controller
         $datosNombre = [];
         $datosCalificacionS1 = [];
         $datosCalificacionS2 = [];
+        $datosCalificacionS3 = [];
         $datos = [];
 
         $nombres = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
@@ -60,10 +61,16 @@ class IcfesController extends Controller
         as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
          = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
          icfes_students.id_icfes_test = 2) ", [$id_student, $id_student]);
+        
+        $resultSimulacro3 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+        = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+        icfes_students.id_icfes_test = 3) ", [$id_student, $id_student]);
 
         if ($nombres == []) {
             for ($i = 0; $i < 5; $i++) {
-                $datos[$i] = array("nombre" => "--", "simulacro1" => 0, "simulacro2" => 0);
+                $datos[$i] = array("nombre" => "--", "simulacro1" => 0, "simulacro2" => 0, "simulacro3" => 0);
             }
         } else {
             for ($i = 0; $i < 5; $i++) {
@@ -89,9 +96,19 @@ class IcfesController extends Controller
                     $datosCalificacionS2[$i] = $resultSimulacro2[$i]->calificacion;
                 }
             }
+            
+            if ($resultSimulacro3 == []) {
+                for ($i = 0; $i < 5; $i++) {
+                    $datosCalificacionS3[$i] = 0;
+                }
+            } else {
+                for ($i = 0; $i < 5; $i++) {
+                    $datosCalificacionS3[$i] = $resultSimulacro3[$i]->calificacion;
+                }
+            }
 
             for ($i = 0; $i < 5; $i++) {
-                $datos[$i] = array("nombre" => $datosNombre[$i], "simulacro1" => $datosCalificacionS1[$i], "simulacro2" => $datosCalificacionS2[$i]);
+                $datos[$i] = array("nombre" => $datosNombre[$i], "simulacro1" => $datosCalificacionS1[$i], "simulacro2" => $datosCalificacionS2[$i], "simulacro3" => $datosCalificacionS3[$i]);
             }
         }
 

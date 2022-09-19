@@ -23,8 +23,7 @@
                         <label>JUNIO</label>&nbsp;<input type="radio" name="filtro" value="6" id="junio">&nbsp;&nbsp;
                         <label>JULIO</label>&nbsp;<input type="radio" name="filtro" value="7" id="julio">&nbsp;&nbsp;
                         <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" value="8" id="agosto">&nbsp;&nbsp;
-                        <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">&nbsp;&nbsp;
-                        <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre">
+                        <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">
                     </form>                     
                 </div>  
             </div>

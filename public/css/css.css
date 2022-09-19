@@ -369,3 +369,11 @@ img.avatar {
 td{
 	font-weight: normal;
 }
+
+.border-table-asistencias-asignatura {
+  border-left: black solid 2px;
+}
+
+.border-table-asistencias-porcentaje {
+  border-left: black solid 1px;
+}

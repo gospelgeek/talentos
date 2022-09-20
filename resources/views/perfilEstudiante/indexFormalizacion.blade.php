@@ -35,6 +35,7 @@
                             <td><b>Regresó Tablet</b></td>
                             <td><b>Prestó Tablet</b></td>
                             <td><b>Serial Tablet Prestada</b></td>
+                            <td><b>Recibió Kit</b></td>
                             <td><b>Fecha Kit</b></td>
                             <td><b>Pre-registro-ICFES</b></td>
                             <td><b>Registro-ICFES</b></td>
@@ -158,6 +159,16 @@
                     }
                 },
                 {data:'serial_loan_tablet'},
+                {data: 'kit_date', render:function(data, type, row, meta){
+                        if(data != null){
+                            var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;    
+                        }else{
+                            var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">NO</button>';
+                                return no;
+                        }
+                    }
+                },
                 {data: 'kit_date'},
                 {data: 'pre_registration_icfes', render:function(data, type, row, meta){
                         if(data !== null){

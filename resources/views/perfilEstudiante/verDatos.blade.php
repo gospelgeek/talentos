@@ -27,6 +27,13 @@
 		text-align: center;
 	}
 	
+    #totales th{
+		text-align: center;
+	}
+	#icfess td:nth-child(2) {
+		text-align: center;
+	}
+    
 </style>
 @endsection
 @section('content')
@@ -903,7 +910,7 @@
 					<tbody id="icfes">
 
 					</tbody>
-					<tfoot>
+					<tfoot id="totales">
 						<th>TOTAL</th>
 						@if($l3 == 1)
 						<!--@if($pruebaS4 == [])
@@ -928,7 +935,7 @@
 
 						@if($pruebaS3 == [])
 						@else
-						<th>S3</th>
+						<th>{{$t3}}</th>
 						<th>--</th>
 						@endif
 

@@ -217,7 +217,7 @@ Route::get('grupos_to_filter/{id}', 'SesionesController@grupos_filter')->name('g
 Route::get('asignaturas_to_filter/{id}', 'SesionesController@asignaturas_filter')->name('asignaturas_to_filter');
 
 //PDFS grupos
-Route::get('listado_estudiantes_grupo/{cohorte}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
+Route::get('listado_estudiantes_grupo/{cohorte}/{texto}', 'PdfsReportesController@descargarPDFgrupos')->name('listado.estudiante.grupo');
 Route::get('pdfEstudiante/{id}', 'PdfsReportesController@PDF_estudiante')->name('pdf.estudiante');
 
 //RUTAS CONTROLADOR ASISTENCIAS

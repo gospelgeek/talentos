@@ -68,15 +68,16 @@
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <col-sm>
-                        <h5 class="mr-3 mt-2">DESCARGAR LISTADO DE GRUPOS DE:</h5>
-                    </col-sm>
-                    <div class="col-sm">
-                        <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/1">Linea 1</a>  
-                        <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/2">Linea 2</a>
-                        <a class="btn btn-primary btn-sm mr-3 mb-3 float-left" href="/listado_estudiantes_grupo/3">Linea 3</a>
+                <col-sm>
+                    <h5 class="mr-3 mt-2">DESCARGAR LISTADO DE GRUPOS DE:</h5>
+                </col-sm>
+                <div class="col-sm">
+                    <div class="col-md-4">
+                        <input class="form-control" id="texto_listado" placeholder="Seleccione el titulo que desea incluir en el listado" type="text">
                     </div>
                 </div>
+
+            </div>
             @endif    
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">
@@ -383,7 +384,30 @@
                 //
             }
         });
-   });      
+   });  
+   
+    const texto = document.getElementById('texto_listado')
+    const l1 = document.getElementById('L_1')
+    const l2 = document.getElementById('L_2')
+    const l3 = document.getElementById('L_3')
+
+    l1.addEventListener('click', (e) => {
+        descargarListado(1)
+    })
+    l2.addEventListener('click', (e) => {
+        descargarListado(2)
+    })
+    l3.addEventListener('click', (e) => {
+        descargarListado(3)
+    })
+
+    function descargarListado(linea){
+        if(texto.value){
+            return location.href=`/listado_estudiantes_grupo/${linea}/${texto.value}`
+        }
+        toastr.warning(`Debe ingresar el Texto, no debe estar vacio para la descarga del listado de estudiantes de Linea ${linea}`)
+
+    }
 </script>
 
  

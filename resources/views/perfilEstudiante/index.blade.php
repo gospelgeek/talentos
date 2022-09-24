@@ -78,6 +78,24 @@
                 </div>
 
             </div>
+            <br>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-3">
+
+                </div>
+                &nbsp;
+			&nbsp;
+                &nbsp;
+                &nbsp;
+			    &nbsp;
+                &nbsp;
+                <div class="col-sm">
+                    <button id="L_1" class="btn btn-primary btn-sm-10 mr-3 mb-3 float-left" >Linea 1</button>
+                    <button id="L_2" class="btn btn-primary btn-sm-10 mr-3 mb-3 float-left" >Linea 2</button>
+                    <button id="L_3" class="btn btn-primary btn-sm-10 mr-3 mb-3 float-left" >Linea 3</button>
+                </div>
+
+            </div>
             @endif    
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">

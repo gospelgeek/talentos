@@ -21,7 +21,7 @@ class PdfsReportesController extends Controller
     }
 
 
-    public function descargarPDFgrupos($cohorte)
+    public function descargarPDFgrupos($cohorte, $texto)
     {
         //date_default_timezone_set("");
         $now = new DateTimeZone("America/Bogota");
@@ -86,6 +86,7 @@ class PdfsReportesController extends Controller
                     'cohorte' => $cohorte,
                     'fecha' => $actual,
                     'cont' => $acum,
+                    'texto' => $texto
                 ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
                 //return $pdf->stream("listado-linea1-$actual.pdf");
@@ -149,6 +150,7 @@ class PdfsReportesController extends Controller
                     'cohorte' => $cohorte,
                     'fecha' => $actual,
                     'cont' => $acum,
+                    'texto' => $texto
                 ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
                 //return $pdf->stream("listado-linea2-$actual.pdf");
@@ -213,6 +215,7 @@ class PdfsReportesController extends Controller
                     'fecha' => $actual,
                     'fecha' => $actual,
                     'cont' => $acum,
+                    'texto' => $texto
                 ])->setPaper('a4');
                 //$pdf->loadHTML('<h1>Test</h1>');
                 //return $pdf->stream("listado-linea3-$actual.pdf");

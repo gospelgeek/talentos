@@ -23,7 +23,8 @@
                         <label>JUNIO</label>&nbsp;<input type="radio" name="filtro" value="6" id="junio">&nbsp;&nbsp;
                         <label>JULIO</label>&nbsp;<input type="radio" name="filtro" value="7" id="julio">&nbsp;&nbsp;
                         <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" value="8" id="agosto">&nbsp;&nbsp;
-                        <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">
+                        <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">&nbsp;&nbsp;
+                        <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre">
                     </form>                     
                 </div>  
             </div>
@@ -66,7 +67,7 @@
                             <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2">Total Calificadas</th>
                             <th rowspan="2">%</th>
-                            <th rowspan="2">Cambio Grupo</th>
+                            <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima1">VER DETALLE</th>
                         </tr>
                         <tr>
@@ -269,7 +270,7 @@
                             <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2">Total Calificadas</th>
                             <th rowspan="2">%</th>
-                            <th rowspan="2">Cambio Grupo</th>
+                            <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima2">VER DETALLES</th>
                         </tr>
                         <tr>
@@ -459,7 +460,7 @@
                             <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2">Total Calificadas</th>
                             <th rowspan="2">%</th>
-                            <th rowspan="2">Cambio Grupo</th>
+                            <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima3">ACCIONES</th>
                         </tr>
                         <tr>

@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
-    <h1 style="text-align:center;">CARACTERIZACIÓN SOCIOEDUCATIVA</h1>
+    <h1 style="text-align:center;">CARACTERIZACIÓN</h1>
     <div class="card">         
         <div class="card-body">
             <div class="btn-group">

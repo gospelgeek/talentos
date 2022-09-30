@@ -2071,7 +2071,22 @@
                     },
                     {data: null,className:'dimension',render:function(data, row, type, meta){
                             if(!isNaN(data.score_37)){
-                               return data.pre_37;    
+                               if(data.score_37 == 1){
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                               }else if(data.score_37 == 2){
+                                    celda = '<div style="background-color: yellow;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                               }else if(data.score_37 == 3){
+                                    celda = '<div style="background-color: red;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                               }    
                             }else{
                                return '-';
                             }

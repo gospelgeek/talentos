@@ -275,7 +275,37 @@
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            if(data.score_37 != null && data.score_37 != ' '){
+                            if(!isNaN(data.score_37)){
+                                if(data.score_37 == 1){
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(data.score_37 == 2){
+                                    celda = '<div style="background-color: yellow;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(data.score_37 == 3){
+                                    celda = '<div style="background-color: red;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(data.score_37 == 0){
+                                    //console.log(data.score_37);
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+data.pre_37+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }
+                            }else{
+                                if(data.pre_37 != null && data.pre_37 != ''){
+                                        return data.pre_37;    
+                                    }else{
+                                        return '-';
+                                    }
+                            }
+                            /*if(data.score_37 != null && data.score_37 != ''){
                                 if(data.score_37 == 1){
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_37+'</td>'+
@@ -305,8 +335,9 @@
                                     }else{
                                         return '-';
                                     }
+                                    
                                 }
-                            }
+                            }*/
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){

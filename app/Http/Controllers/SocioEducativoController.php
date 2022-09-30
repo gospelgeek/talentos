@@ -6,6 +6,7 @@ use App\AssignmentStudent;
 use App\SocioEducationalFollowUp;
 use App\HealthCondition;
 use App\AnswersSocioeducationalForm;
+use App\perfilEstudiante;
 use App\LogsCrudActions;
 use App\UpdateInformation;
 use App\Exports\SocioeducativoExport;

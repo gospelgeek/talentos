@@ -2124,21 +2124,18 @@
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_38 == 0){
                                     //console.log(data.score_38);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_38+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                            }else{
                                     if(data.pre_38 != null && data.pre_38 != ''){
                                         return data.pre_38;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },

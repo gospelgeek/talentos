@@ -2349,32 +2349,33 @@
                                                 '<td>'+data.pre_28+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_28 == 2){
+                                }
+                                if(data.score_28 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_28+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_28 == 3){
+                                }
+                                if(data.score_28 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_28+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_28 == 0){
                                     //console.log(data.score_28);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_28+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_28 != null && data.pre_28 != ''){
                                         return data.pre_28;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -2497,32 +2498,33 @@
                                                 '<td>'+data.pre_56+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_56 == 2){
+                                }
+                                if(data.score_56 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_56+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_56 == 3){
+                                }
+                                if(data.score_56 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_56+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_56 == 0){
                                     //console.log(data.score_56);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_56+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_56 != null && data.pre_56 != ''){
                                         return data.pre_56;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },

@@ -2096,8 +2096,8 @@
                                             '</div>';
                                     return celda;
                                 }else{
-                                    if(data.pre_37 != null){
-                                        return data.pre_37;    
+                                    if(data.pre_36 != null){
+                                        return data.pre_36;    
                                     }else{
                                         return '-';
                                     }

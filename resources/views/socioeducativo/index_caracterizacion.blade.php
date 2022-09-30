@@ -2147,12 +2147,14 @@
                                                 '<td>'+'ALTO'+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(total == 5 || total == 6){
+                                }
+                                if(total == 5 || total == 6){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+'MEDIO'+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(total <= 4){
+                                }
+                                if(total <= 4){
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+'BAJO'+'</td>'+
                                             '</div>';

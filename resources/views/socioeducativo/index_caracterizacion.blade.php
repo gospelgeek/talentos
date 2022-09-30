@@ -2387,32 +2387,33 @@
                                                 '<td>'+data.pre_29+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_29 == 2){
+                                }
+                                if(data.score_29 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_29+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_29 == 3){
+                                }
+                                if(data.score_29 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_29+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_29 == 0){
                                     //console.log(data.score_29);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_29+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_29 != null && data.pre_29 != ''){
                                         return data.pre_29;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },

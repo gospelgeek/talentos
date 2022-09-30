@@ -347,26 +347,30 @@
                         }
                     },
                     {data: null, className:'riesgos', render:function(data, type, row, meta){
-                            var total = data.score_36 + data.score_37 + data.score_38;
-                            if(!isNaN(total)){
-                                if(total == 7 || total == 8){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+total+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total == 5 || total == 6){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 4){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            
+                            let valores = [data.score_36,  data.score_37,  data.score_38];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+                            
+                            if(total == 7 || total == 8){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total == 5 || total == 6){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 4){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -516,26 +520,29 @@
                         }
                     },
                     {data: null, className:'riesgos', render:function(data, type, row, meta){
-                            var total = data.score_1 + data.score_6 + data.score_7 + data.score_4;
-                            if(!isNaN(total)){
-                                if(total == 10 || total == 11){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 6 && total <= 9){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 5){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            let valores = [data.score_1,  data.score_6,  data.score_7,  data.score_4];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+                            
+                            if(total == 10 || total == 11){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 6 && total <= 9){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 5){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -973,26 +980,30 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = data.score_28 + data.score_29 + data.score_54 + data.score_55 + data.score_56 + data.score_57 + data.score_58 + data.score_13 + data.score_23 + data.score_21 + data.score_22 + data.score_24;
-                            if(!isNaN(total)){
-                                if(total >= 17 && total <= 25){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 13 && total <= 16){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 12){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            
+                            let valores = [data.score_28,  data.score_29,  data.score_54,  data.score_55,  data.score_56,  data.score_57,  data.score_58,  data.score_13,  data.score_23,  data.score_21,  data.score_22,  data.score_24];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+                            
+                            if(total >= 17 && total <= 25){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 13 && total <= 16){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 12){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -1610,26 +1621,31 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = data.score_8 + data.score_9 + data.score_10 + data.score_11 + data.score_12 + data.score_40 + data.score_39 + data.score_25 + data.score_26 + data.score_27 + data.score_31 + data.score_32 + data.score_30 + data.score_5 + data.score_34 + data.score_33 + data.score_35;
-                            if(!isNaN(total)){
-                                if(total >= 25 && total <= 37){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 19 && total <= 24){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 18){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            
+                            let valores = [data.score_8, data.score_9, data.score_10, data.score_11, data.score_12, data.score_40, data.score_39, data.score_25, data.score_26, data.score_27, data.score_31, data.score_32, data.score_30, data.score_5, data.score_34, data.score_33, data.score_35];
+                            
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+                            
+                            if(total >= 25 && total <= 37){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 19 && total <= 24){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 18){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -2140,27 +2156,30 @@
                             }
                         }
                     },
-                    {data: null, className:'riesgos', render:function(data, type, row, meta){
-                            var total = parseFloat(data.score_36) + parseFloat(data.score_37) + parseFloat(data.score_38);
-                            if(!isNaN(total)){
-                                if(total == 7 || total == 8){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total == 5 || total == 6){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 4){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                    {data: null, className:'riesgos',render:function(data, type, row, meta){
+                            let valores = [data.score_36, data.score_37, data.score_38];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+                            
+                            if(total == 7 || total == 8){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total == 5 || total == 6){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 4){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -2314,27 +2333,31 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = parseFloat(data.score_1) + parseFloat(data.score_6) + parseFloat(data.score_7) + parseFloat(data.score_4);
-                            if(!isNaN(total)){
-                                if(total == 10 || total == 11){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 6 && total <= 9){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 5){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
-                                }    
-                            }else{
-                                return '-';
-                            }
+                            
+                            let valores = [data.score_1, data.score_6, data.score_7, data.score_4];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
+                                }
+                            });
+
+                            if(total == 10 || total == 11){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 6 && total <= 9){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 5){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
+                            }    
                         }
                     },
 
@@ -2856,26 +2879,31 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = parseFloat(data.score_28) + parseFloat(data.score_29) + parseFloat(data.score_54) + parseFloat(data.score_55) + parseFloat(data.score_56) + parseFloat(data.score_57) + parseFloat(data.score_58) + parseFloat(data.score_13) + parseFloat(data.score_23) + parseFloat(data.score_21) + parseFloat(data.score_22) + parseFloat(data.score_24) + parseFloat(data.score_52) + parseFloat(data.score_53);
-                            if(!isNaN(total)){
-                                if(total >= 17 && total <= 25){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 13 && total <= 16){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 12){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            let valores = [data.score_28,  data.score_29,  data.score_54,  data.score_55,  data.score_56,  data.score_57,  data.score_58,  data.score_13,  data.score_23,  data.score_21,  data.score_22,  data.score_24,  data.score_52,  data.score_53];
+
+                            total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return '-';
+                            });
+
+                            
+                            if(total >= 17 && total <= 25){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 13 && total <= 16){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 12){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },
@@ -3510,26 +3538,31 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = parseFloat(data.score_8) + parseFloat(data.score_9) + parseFloat(data.score_10) + parseFloat(data.score_11) + parseFloat(data.score_12) + parseFloat(data.score_40) + parseFloat(data.score_39) + parseFloat(data.score_25) + parseFloat(data.score_26) + parseFloat(data.score_27) + parseFloat(data.score_31) + parseFloat(data.score_32) + parseFloat(data.score_30) + parseFloat(data.score_5) + parseFloat(data.score_34) + parseFloat(data.score_33) + parseFloat(data.score_35);
-                            if(!isNaN(total)){
-                                if(total >= 25 && total <= 37){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 19 && total <= 24){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 18){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
+                            
+                            let valores = [data.score_8, data.score_9, data.score_10, data.score_11, data.score_12, data.score_40, data.score_39, data.score_25, data.score_26, data.score_27, data.score_31, data.score_32, data.score_30, data.score_5, data.score_34, data.score_33, data.score_35];
+
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
                                 }
-                            }else{
-                                return total;
+                            });
+                            
+                            if(total >= 25 && total <= 37){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 19 && total <= 24){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 18){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
                             }
                         }
                     },

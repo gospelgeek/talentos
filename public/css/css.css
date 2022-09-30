@@ -13,6 +13,15 @@
   width: 900px;
 
 }
+
+.riesgos{
+	border: 3px solid;
+}
+
+.dimension{
+	border-left: 1px solid;	
+}
+
 .table_estado{
 	width: 150%;
 	height: 10px;

@@ -234,6 +234,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
                 Reporte socioeducativo</a>
               </div>
+              <a href="{{route('caracterización_socioeducativa')}}" class="dropdown-item">
+                Caracterización Socioeducativa</a>
           </li>
           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
@@ -281,6 +283,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Asignacion Estudiantes</a>
                             <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
                             Reporte socioeducativo</a>
+                            <a href="{{route('caracterización_socioeducativa')}}" class="dropdown-item">
+                            Caracterización Socioeducativa</a>
                           </div>
                       </li> 
                       <li class="nav-item dropdown">

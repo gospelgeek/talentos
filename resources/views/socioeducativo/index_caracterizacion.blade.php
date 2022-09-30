@@ -2743,32 +2743,35 @@
                                                 '<td>'+data.pre_22+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_22 == 2){
+                                }
+                                if(data.score_22 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_22+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_22 == 3){
+                                }
+                                if(data.score_22 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_22+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_22 == 0){
                                     //console.log(data.score_22);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_22+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_22 != null && data.pre_22 != ''){
                                         return data.pre_22;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2780,32 +2783,35 @@
                                                 '<td>'+data.pre_24+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_24 == 2){
+                                }
+                                if(data.score_24 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_24+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_24 == 3){
+                                }
+                                if(data.score_24 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_24+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_24 == 0){
                                     //console.log(data.score_24);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_24+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_24 != null && data.pre_24 != ''){
                                         return data.pre_24;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2817,31 +2823,34 @@
                                                 '<td>'+data.pre_52+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_52 == 2){
+                                }
+                                if(data.score_52 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_52+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_52 == 3){
+                                }
+                                if(data.score_52 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_52+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_52 == 0){
                                     //console.log(data.score_52);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_52+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_52 != null && data.pre_52 != ''){
                                         return data.pre_52;    
                                     }else{
                                         return '-';
                                     }   
-                                }
+                                
                             }
                         }
                     },
@@ -2853,37 +2862,38 @@
                                                 '<td>'+data.pre_53+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_53 == 2){
+                                }
+                                if(data.score_53 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_53+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_53 == 3){
+                                }
+                                if(data.score_53 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_53+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_53 == 0){
                                     //console.log(data.score_53);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_53+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_53 != null && data.pre_53 != ''){
                                         return data.pre_53;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = data.score_28 + data.score_29 + data.score_54 + data.score_55 + data.score_56 + data.score_57 + data.score_58 + data.score_13 + data.score_23 + data.score_21 + data.score_22 + data.score_24 + data.score_52 + data.score_53;
+                            var total = parseFloat(data.score_28) + parseFloat(data.score_29) + parseFloat(data.score_54) + parseFloat(data.score_55) + parseFloat(data.score_56) + parseFloat(data.score_57) + parseFloat(data.score_58) + parseFloat(data.score_13) + parseFloat(data.score_23) + parseFloat(data.score_21) + parseFloat(data.score_22) + parseFloat(data.score_24) + parseFloat(data.score_52) + parseFloat(data.score_53);
                             if(!isNaN(total)){
                                 if(total >= 17 && total <= 25){
                                     celda = '<div style="background-color: red;">'+

@@ -275,7 +275,7 @@
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            if(data.score_37 != null && data.score_37 != ''){
+                            if(data.score_37 != null && data.score_37 != ' '){
                                 if(data.score_37 == 1){
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_37+'</td>'+
@@ -300,7 +300,7 @@
                                             '</div>';
                                     return celda;
                                 }else{
-                                    if(data.pre_37 != ''){
+                                    if(data.pre_37 != null && data.pre_37 != ''){
                                         return data.pre_37;    
                                     }else{
                                         return '-';

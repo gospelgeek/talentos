@@ -275,7 +275,7 @@
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            if(data.score_37 != null && data.score_37 != ''){
+                            if(data.score_37 != null){
                                 if(data.score_37 == 1){
 
                                     celda = '<div style="background-color: #7FFF00;">'+

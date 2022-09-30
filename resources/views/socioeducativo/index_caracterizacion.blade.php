@@ -2141,7 +2141,7 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             var total = data.score_36 + data.score_37 + data.score_38;
-                            if(!isNaN(total)){
+                            
                                 if(total == 7 || total == 8){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+'ALTO'+'</td>'+
@@ -2160,9 +2160,7 @@
                                             '</div>';
                                     return celda;    
                                 }
-                            }else{
-                                return '-';
-                            }
+                           
                         }
                     },
 

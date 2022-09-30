@@ -2260,21 +2260,22 @@
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_7 == 0){
                                     //console.log(data.score_7);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_7+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_7 != null && data.pre_7 != ''){
                                         return data.pre_7;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2316,7 +2317,7 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = data.score_1 + data.score_6 + data.score_7 + data.score_4;
+                            var total = parseFloat(data.score_1) + parseFloat(data.score_6) + parseFloat(data.score_7) + parseFloat(data.score_4);
                             if(!isNaN(total)){
                                 if(total == 10 || total == 11){
                                     celda = '<div style="background-color: red;">'+

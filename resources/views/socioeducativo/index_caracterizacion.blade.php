@@ -275,7 +275,7 @@
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            if(data.pre_37 != null && data.pre_37 != ''){
+                            if(data.pre_37 != null){
                                 return data.pre_37;
                             }else{
                                 return '-';

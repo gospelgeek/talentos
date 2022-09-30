@@ -2141,28 +2141,7 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             var total = data.score_36 + data.score_37 + data.score_38;
-                            if(total != null){
-                                if(total == 7 || total == 8){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }
-                                if(total == 5 || total == 6){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }
-                                if(total <= 4){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
-                                }
-                           }else{
-                                return '-';
-                           }
+                            return total;
                         }
                     },
 

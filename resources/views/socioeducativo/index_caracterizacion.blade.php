@@ -2041,31 +2041,32 @@
                                                 '<td>'+data.pre_36+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_36 == 2){
+                                }
+                                if(data.score_36 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_36+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_36 == 3){
+                                }
+                                if(data.score_36 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_36+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_36 == 0){
                                     //console.log(data.score_36);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_36+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
                                     if(data.pre_36 != null && data.pre_36 != ''){
                                         return data.pre_36;    
                                     }else{
                                         return '-';
-                                    }   
-                                }
+                                    }      
                             }
                         }
                     },
@@ -2193,14 +2194,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_1 != null && data.pre_1 != ''){
                                         return data.pre_1;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2233,14 +2231,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_6 != null && data.pre_6 != ''){
                                         return data.pre_6;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2252,12 +2247,14 @@
                                                 '<td>'+data.pre_7+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_7 == 2){
+                                }
+                                if(data.score_7 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_7+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_7 == 3){
+                                }
+                                if(data.score_7 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_7+'</td>'+
                                             '</div>';
@@ -2271,14 +2268,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_7 != null && data.pre_7 != ''){
                                         return data.pre_7;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2311,14 +2305,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_4 != null && data.pre_4 != ''){
                                         return data.pre_4;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2376,7 +2367,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_28 != null && data.pre_28 != ''){
                                         return data.pre_28;    
                                     }else{
@@ -2414,7 +2404,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_29 != null && data.pre_29 != ''){
                                         return data.pre_29;    
                                     }else{
@@ -2452,14 +2441,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_54 != null && data.pre_54 != ''){
                                         return data.pre_54;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2492,14 +2478,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_55 != null && data.pre_55 != ''){
                                         return data.pre_55;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2532,7 +2515,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_56 != null && data.pre_56 != ''){
                                         return data.pre_56;    
                                     }else{
@@ -2570,14 +2552,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_57 != null && data.pre_57 != ''){
                                         return data.pre_57;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2589,32 +2568,32 @@
                                                 '<td>'+data.pre_58+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_58 == 2){
+                                }
+                                if(data.score_58 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_58+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_58 == 3){
+                                }
+                                if(data.score_58 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_58+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_58 == 0){
                                     //console.log(data.score_58);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_58+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
                                     if(data.pre_58 != null && data.pre_58 != ''){
                                         return data.pre_58;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -2647,14 +2626,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_13 != null && data.pre_13 != ''){
                                         return data.pre_13;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2687,13 +2663,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_23 != null && data.pre_23 != ''){
                                         return data.pre_23;    
                                     }else{
                                         return '-';
-                                    }   
-                                
+                                    }
                             }
                         }
                     },
@@ -2725,13 +2699,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_21 != null && data.pre_21 != ''){
                                         return data.pre_21;    
                                     }else{
                                         return '-';
                                     }
-                                
                             }
                         }
                     },
@@ -2764,14 +2736,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_22 != null && data.pre_22 != ''){
                                         return data.pre_22;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2804,14 +2773,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_24 != null && data.pre_24 != ''){
                                         return data.pre_24;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -2844,13 +2810,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_52 != null && data.pre_52 != ''){
                                         return data.pre_52;    
                                     }else{
                                         return '-';
                                     }   
-                                
                             }
                         }
                     },
@@ -2883,7 +2847,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_53 != null && data.pre_53 != ''){
                                         return data.pre_53;    
                                     }else{
@@ -2946,7 +2909,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_8 != null && data.pre_8 != ''){
                                         return data.pre_8;    
                                     }else{
@@ -2984,14 +2946,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_9 != null && data.pre_9 != ''){
                                         return data.pre_9;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -3024,7 +2983,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_10 != null && data.pre_10 != ''){
                                         return data.pre_10;    
                                     }else{
@@ -3062,7 +3020,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_11 != null && data.pre_11 != ''){
                                         return data.pre_11;    
                                     }else{
@@ -3100,7 +3057,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_12 != null && data.pre_12 != ''){
                                         return data.pre_12;    
                                     }else{
@@ -3138,14 +3094,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_40 != null && data.pre_40 != ''){
                                         return data.pre_40;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -3178,14 +3131,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_39 != null && data.pre_39 != ''){
                                         return data.pre_39;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -3218,14 +3168,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_25 != null && data.pre_25 != ''){
                                         return data.pre_25;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -3258,7 +3205,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_26 != null && data.pre_26 != ''){
                                         return data.pre_26;    
                                     }else{
@@ -3296,7 +3242,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_27 != null && data.pre_27 != ''){
                                         return data.pre_27;    
                                     }else{
@@ -3334,7 +3279,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_31 != null && data.pre_31 != ''){
                                         return data.pre_31;    
                                     }else{
@@ -3372,7 +3316,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_32 != null && data.pre_32 != ''){
                                         return data.pre_32;    
                                     }else{
@@ -3410,7 +3353,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_30 != null && data.pre_30 != ''){
                                         return data.pre_30;    
                                     }else{
@@ -3448,14 +3390,11 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_5 != null && data.pre_5 != ''){
                                         return data.pre_5;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                
                             }
                         }
                     },
@@ -3488,7 +3427,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_34 != null && data.pre_34 != ''){
                                         return data.pre_34;    
                                     }else{
@@ -3526,7 +3464,6 @@
                                     return celda;
                                 }
                             }else{
-                                
                                     if(data.pre_33 != null && data.pre_33 != ''){
                                         return data.pre_33;    
                                     }else{

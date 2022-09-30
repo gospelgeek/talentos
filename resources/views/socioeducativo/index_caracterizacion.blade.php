@@ -2070,7 +2070,11 @@
                         }
                     },
                     {data: null,className:'dimension',render:function(data, row, type, meta){
-                            return data.pre_37;
+                            if(data.pre_37 != null && data.pre_37 != ''){
+                               return data.pre_37;    
+                            }else{
+                               return '-';
+                            }
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){

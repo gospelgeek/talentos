@@ -2878,7 +2878,7 @@
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             var total = parseFloat(data.score_28) + parseFloat(data.score_29) + parseFloat(data.score_54) + parseFloat(data.score_55) + parseFloat(data.score_56) + parseFloat(data.score_57) + parseFloat(data.score_58) + parseFloat(data.score_13) + parseFloat(data.score_23) + parseFloat(data.score_21) + parseFloat(data.score_22) + parseFloat(data.score_24) + parseFloat(data.score_52) + parseFloat(data.score_53);
 
-                            if(!isNaN(numero)){
+                            if(!isNaN(total)){
                                 if(total >= 17 && total <= 25){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+'ALTO'+'</td>'+

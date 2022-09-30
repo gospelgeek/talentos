@@ -119,7 +119,7 @@
                             <th rowspan="2">Cohorte</th>
                             <th rowspan="2">Estado</th>
                             <th rowspan="2">Profesional</th>
-                            <th colspan="4">DIMENSIÓN FAMILIAR</th>
+                            <th colspan="3">DIMENSIÓN FAMILIAR</th>
                             <th colspan="5">DIMENSIÓN ECONOMICA</th>
                             <th colspan="15">DIMENSIÓN ACADEMICA</th>
                             <th colspan="18">DIMENSIÓN INDIVIDUAL</th>
@@ -130,7 +130,7 @@
 
                         <tr>
                             <th>¿Qué puedes decir sobre las relaciones con tu familia?</th>
-                            <th>¿Qué opina tu familia sobre la educación?</th>
+                            
                             <th>¿Cómo son las relaciones en tu familia?</th>
                             <th>Nivel Riesgo</th>
 
@@ -274,12 +274,7 @@
                             }
                         }
                     },
-                    {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            
-                                return data.pre_37;
-                           
-                        }
-                    },
+                  
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
                                 if(data.score_38 == 1){

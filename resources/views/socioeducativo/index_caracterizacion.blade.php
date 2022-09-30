@@ -2158,7 +2158,7 @@
                     },
                    {data: null, className:'riesgos', render:function(data, type, row, meta){
                             
-                            var total = data.score_36 + data.score_37 + data.score_38;
+                            var total = parseFloat(data.score_36) + parseFloat(data.score_37) + parseFloat(data.score_38);
                             
                             if(!isNaN(total)){
                                     
@@ -2167,7 +2167,7 @@
                                                 '<td>'+'ALTO'+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(total == 5 || total == 6){
+                                }if(total == 5 || total == 6){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+'MEDIO'+'</td>'+
                                             '</div>';

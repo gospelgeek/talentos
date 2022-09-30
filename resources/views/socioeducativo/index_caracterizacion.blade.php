@@ -2878,7 +2878,7 @@
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             let valores = [data.score_28,  data.score_29,  data.score_54,  data.score_55,  data.score_56,  data.score_57,  data.score_58,  data.score_13,  data.score_23,  data.score_21,  data.score_22,  data.score_24,  data.score_52,  data.score_53];
 
-                            total = 0;
+                            var total = 0;
                             valores.forEach(function(numero, index){
                                 if(!isNaN(numero)){
                                     total += numero;

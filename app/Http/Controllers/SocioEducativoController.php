@@ -1646,4 +1646,555 @@ class SocioEducativoController extends Controller
 
         return Excel::download($exportar, 'socioeducativo_reporte.xlsx');
     }
+    
+    public function caracterizacion_index(){
+        return view('socioeducativo.index_caracterizacion');
+    }
+
+    public function datos_caracterizacion(){
+
+        if(Storage::disk('local')->exists('caracterizacion_marzo.json')){
+            $caracterizacion = json_decode(Storage::get('caracterizacion_marzo.json'));
+            
+            $datos = collect($caracterizacion);
+            //dd($datos);
+            
+            return datatables()->of($datos)->toJson();   
+        }else{
+
+            $datos = AnswersSocioeducationalForm::select('id_student', 'date_diligence', 'try')->distinct()->where('try', 1)->get();
+            $datos->map(function($ids){
+            
+                $datos = perfilEstudiante::withTrashed()->select('id','name', 'lastname', 'id_document_type','document_number', 'id_state')->where('id', $ids->id_student)->first();
+                $ids->nombres = $datos->name;
+                $ids->apellidos = $datos->lastname;
+                $ids->tipo_documento = $datos->documenttype ? $datos->documenttype->name : null;
+                $ids->documento = $datos->document_number;
+                $ids->grupo = $datos->studentGroup ? $datos->studentGroup->group->name : null;
+                $ids->cohorte = $datos->studentGroup ? $datos->studentGroup->group->cohort->name : null;
+                $ids->estado = $datos->condition ? $datos->condition->name : null;
+                $name_prof = $datos->assignmentstudent ? $datos->assignmentstudent->UserInfo->name : null;
+                $lastname_prof = $datos->assignmentstudent ? $datos->assignmentstudent->UserInfo->apellidos_user : null; 
+                $ids->profesional = $name_prof .' '.$lastname_prof;
+                $respuesta = AnswersSocioeducationalForm::select('id_question','answers', 'score')->where('id_student', $ids->id_student)->where('try', 1)->whereNotBetween('id_question', [50, 53])->get();
+ 
+                foreach($respuesta as $respuestas){
+                    switch($respuestas->id_question){
+                        case '1':
+                            $ids->pre_1 = $respuestas->answers;
+                            $ids->score_1 = $respuestas->score;
+                        break;
+                        case '2':
+                            $ids->pre_2 = $respuestas->answers;
+                            $ids->score_2 = $respuestas->score;
+                        break;
+                        case '3':
+                            $ids->pre_3 = $respuestas->answers;
+                            $ids->score_3 = $respuestas->score;
+                        break;
+                        case '4':
+                            $ids->pre_4 = $respuestas->answers;
+                            $ids->score_4 = $respuestas->score;
+                        break;
+                        case '5':
+                            $ids->pre_5 = $respuestas->answers;
+                            $ids->score_5 = $respuestas->score;
+                        break;
+                        case '6':
+                            $ids->pre_6 = $respuestas->answers;
+                            $ids->score_6 = $respuestas->score;
+                        break;
+                        case '7':
+                            $ids->pre_7 = $respuestas->answers;
+                            $ids->score_7 = $respuestas->score;
+                        break;
+                        case '8':
+                            $ids->pre_8 = $respuestas->answers;
+                            $ids->score_8 = $respuestas->score;
+                        break;
+                        case '9':
+                            $ids->pre_9 = $respuestas->answers;
+                            $ids->score_9 = $respuestas->score;
+                        break;
+                        case '10':
+                            $ids->pre_10 = $respuestas->answers;
+                            $ids->score_10 = $respuestas->score;
+                        break;
+                        case '11':
+                            $ids->pre_11 = $respuestas->answers;
+                            $ids->score_11 = $respuestas->score;
+                        break;
+                        case '12':
+                            $ids->pre_12 = $respuestas->answers;
+                            $ids->score_12 = $respuestas->score;
+                        break;
+                        case '13':
+                            $ids->pre_13 = $respuestas->answers;
+                            $ids->score_13 = $respuestas->score;
+                        break;
+                        case '14':
+                            $ids->pre_14 = $respuestas->answers;
+                            $ids->score_14 = $respuestas->score;
+                        break;
+                        case '15':
+                            $ids->pre_15 = $respuestas->answers;
+                            $ids->score_15 = $respuestas->score;
+                        break;
+                        case '16':
+                            $ids->pre_16 = $respuestas->answers;
+                            $ids->score_16 = $respuestas->score;
+                        break;
+                        case '17':
+                            $ids->pre_17 = $respuestas->answers;
+                            $ids->score_17 = $respuestas->score;
+                        break;
+                        case '18':
+                            $ids->pre_18 = $respuestas->answers;
+                            $ids->score_18 = $respuestas->score;
+                        break;
+                        case '19':
+                            $ids->pre_19 = $respuestas->answers;
+                            $ids->score_19 = $respuestas->score;
+                        break;
+                        case '20':
+                            $ids->pre_20 = $respuestas->answers;
+                            $ids->score_20 = $respuestas->score;
+                        break;
+                        case '21':
+                            $ids->pre_21 = $respuestas->answers;
+                            $ids->score_21 = $respuestas->score;
+                        break;
+                        case '22':
+                            $ids->pre_22 = $respuestas->answers;
+                            $ids->score_22 = $respuestas->score;
+                        break;
+                        case '22':
+                            $ids->pre_22 = $respuestas->answers;
+                            $ids->score_22 = $respuestas->score;
+                        break;
+                        case '23':
+                            $ids->pre_23 = $respuestas->answers;
+                            $ids->score_23 = $respuestas->score;
+                        break;
+                       case '24':
+                            $ids->pre_24 = $respuestas->answers;
+                            $ids->score_24 = $respuestas->score;
+                        break;
+                        case '25':
+                            $ids->pre_25 = $respuestas->answers;
+                            $ids->score_25 = $respuestas->score;
+                        break;
+                        case '26':
+                            $ids->pre_26 = $respuestas->answers;
+                            $ids->score_26 = $respuestas->score;
+                        break;
+                        case '27':
+                            $ids->pre_27 = $respuestas->answers;
+                            $ids->score_27 = $respuestas->score;
+                        break;
+                        case '28':
+                            $ids->pre_28 = $respuestas->answers;
+                            $ids->score_28 = $respuestas->score;
+                        break;
+                        case '29':
+                            $ids->pre_29 = $respuestas->answers;
+                            $ids->score_29 = $respuestas->score;
+                        break;
+                        case '30':
+                            $ids->pre_30 = $respuestas->answers;
+                            $ids->score_30 = $respuestas->score;
+                        break;
+                        case '31':
+                            $ids->pre_31 = $respuestas->answers;
+                            $ids->score_31 = $respuestas->score;
+                        break;
+                        case '32':
+                            $ids->pre_32 = $respuestas->answers;
+                            $ids->score_32 = $respuestas->score;
+                        break;
+                        case '33':
+                            $ids->pre_33 = $respuestas->answers;
+                            $ids->score_33 = $respuestas->score;
+                        break;
+                        case '34':
+                            $ids->pre_34 = $respuestas->answers;
+                            $ids->score_34 = $respuestas->score;
+                        break;
+                        case '35':
+                            $ids->pre_35 = $respuestas->answers;
+                            $ids->score_35 = $respuestas->score;
+                        break;
+                        case '36':
+                            $ids->pre_36 = $respuestas->answers;
+                            $ids->score_36 = $respuestas->score;
+                        break;
+                        case '37':
+                            $ids->pre_37 = $respuestas->answers;
+                            $ids->score_37 = $respuestas->score;
+                        break;
+                        case '38':
+                            $ids->pre_38 = $respuestas->answers;
+                            $ids->score_38 = $respuestas->score;
+                        break;
+                        case '39':
+                            $ids->pre_39 = $respuestas->answers;
+                            $ids->score_39 = $respuestas->score;
+                        break;
+                        case '40':
+                            $ids->pre_40 = $respuestas->answers;
+                            $ids->score_40 = $respuestas->score;
+                        break;
+                        case '41':
+                            $ids->pre_41 = $respuestas->answers;
+                            $ids->score_41 = $respuestas->score;
+                        break;
+                        case '42':
+                            $ids->pre_42 = $respuestas->answers;
+                            $ids->score_42 = $respuestas->score;
+                        break;
+                        case '43':
+                            $ids->pre_43 = $respuestas->answers;
+                            $ids->score_43 = $respuestas->score;
+                        break;
+                        case '44':
+                            $ids->pre_44 = $respuestas->answers;
+                            $ids->score_44 = $respuestas->score;
+                        break;
+                        case '45':
+                            $ids->pre_45 = $respuestas->answers;
+                            $ids->score_45 = $respuestas->score;
+                        break;
+                        case '46':
+                            $ids->pre_46 = $respuestas->answers;
+                            $ids->score_46 = $respuestas->score;
+                        break;
+                        case '47':
+                            $ids->pre_47 = $respuestas->answers;
+                            $ids->score_47 = $respuestas->score;
+                        break;
+                        case '48':
+                            $ids->pre_48 = $respuestas->answers;
+                            $ids->score_48 = $respuestas->score;
+                        break;
+                        case '49':
+                            $ids->pre_49 = $respuestas->answers;
+                            $ids->score_49 = $respuestas->score;
+                        break;
+                        case '54':
+                            $ids->pre_54 = $respuestas->answers;
+                            $ids->score_54 = $respuestas->score;
+                        break;
+                        case '55':
+                            $ids->pre_55 = $respuestas->answers;
+                            $ids->score_55 = $respuestas->score;
+                        break;
+                        case '56':
+                            $ids->pre_56 = $respuestas->answers;
+                            $ids->score_56 = $respuestas->score;
+                        break;
+                        case '57':
+                            $ids->pre_57 = $respuestas->answers;
+                            $ids->score_57 = $respuestas->score;
+                        break;
+                        case '58':
+                            $ids->pre_58 = $respuestas->answers;
+                            $ids->score_58 = $respuestas->score;
+                        break;
+                        default:                                        
+                            echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADO";
+                        break;
+                    }
+                }
+
+            });
+        
+            $json_datos = json_encode($datos);
+            Storage::disk('local')->put('caracterizacion_marzo.json', $json_datos);
+            $caracterizacion = json_decode(Storage::get('caracterizacion_marzo.json'));
+            $datos = collect($caracterizacion);
+            return datatables()->of($datos)->toJson();
+        }
+    }
+
+    public function datos_caracterizacion_mayo(){
+        
+        if(Storage::disk('local')->exists('caracterizacion_mayo.json')){
+            $caracterizacion = json_decode(Storage::get('caracterizacion_mayo.json'));
+            
+            $datos = collect($caracterizacion);
+            //dd($datos);
+            
+            return datatables()->of($datos)->toJson();   
+        }else{
+
+            $datos = AnswersSocioeducationalForm::select('id_student', 'date_diligence', 'try')->distinct()->where('try', 2)->get();
+            $datos->map(function($ids){
+            
+                $datos = perfilEstudiante::withTrashed()->select('id','name', 'lastname', 'id_document_type', 'document_number', 'id_state')->where('id', $ids->id_student)->first();
+                $ids->nombres = $datos->name;
+                $ids->apellidos = $datos->lastname;
+                $ids->tipo_documento = $datos->documenttype ? $datos->documenttype->name : null;
+                $ids->documento = $datos->document_number;
+                $ids->grupo = $datos->studentGroup ? $datos->studentGroup->group->name : null;
+                $ids->cohorte = $datos->studentGroup ? $datos->studentGroup->group->cohort->name : null;
+                $ids->estado = $datos->condition ? $datos->condition->name : null;
+                $name_prof = $datos->assignmentstudent ? $datos->assignmentstudent->UserInfo->name : null;
+                $lastname_prof = $datos->assignmentstudent ? $datos->assignmentstudent->UserInfo->apellidos_user : null; 
+                $ids->profesional = $name_prof .' '.$lastname_prof;
+                $respuesta = AnswersSocioeducationalForm::select('id_question','answers', 'score')->where('id_student', $ids->id_student)->where('try', 2)->get();
+                //dd($respuesta);
+                foreach($respuesta as $respuestas){
+                    switch($respuestas->id_question){
+                        case '1':
+                            $ids->pre_1 = $respuestas->answers;
+                            $ids->score_1 = $respuestas->score;
+                        break;
+                        case '2':
+                            $ids->pre_2 = $respuestas->answers;
+                            $ids->score_2 = $respuestas->score;
+                        break;
+                        case '3':
+                            $ids->pre_3 = $respuestas->answers;
+                            $ids->score_3 = $respuestas->score;
+                        break;
+                        case '4':
+                            $ids->pre_4 = $respuestas->answers;
+                            $ids->score_4 = $respuestas->score;
+                        break;
+                        case '5':
+                            $ids->pre_5 = $respuestas->answers;
+                            $ids->score_5 = $respuestas->score;
+                        break;
+                        case '6':
+                            $ids->pre_6 = $respuestas->answers;
+                            $ids->score_6 = $respuestas->score;
+                        break;
+                        case '7':
+                            $ids->pre_7 = $respuestas->answers;
+                            $ids->score_7 = $respuestas->score;
+                        break;
+                        case '8':
+                            $ids->pre_8 = $respuestas->answers;
+                            $ids->score_8 = $respuestas->score;
+                        break;
+                        case '9':
+                            $ids->pre_9 = $respuestas->answers;
+                            $ids->score_9 = $respuestas->score;
+                        break;
+                        case '10':
+                            $ids->pre_10 = $respuestas->answers;
+                            $ids->score_10 = $respuestas->score;
+                        break;
+                        case '11':
+                            $ids->pre_11 = $respuestas->answers;
+                            $ids->score_11 = $respuestas->score;
+                        break;
+                        case '12':
+                            $ids->pre_12 = $respuestas->answers;
+                            $ids->score_12 = $respuestas->score;
+                        break;
+                        case '13':
+                            $ids->pre_13 = $respuestas->answers;
+                            $ids->score_13 = $respuestas->score;
+                        break;
+                        case '14':
+                            $ids->pre_14 = $respuestas->answers;
+                            $ids->score_14 = $respuestas->score;
+                        break;
+                        case '15':
+                            $ids->pre_15 = $respuestas->answers;
+                            $ids->score_15 = $respuestas->score;
+                        break;
+                        case '16':
+                            $ids->pre_16 = $respuestas->answers;
+                            $ids->score_16 = $respuestas->score;
+                        break;
+                        case '17':
+                            $ids->pre_17 = $respuestas->answers;
+                            $ids->score_17 = $respuestas->score;
+                        break;
+                        case '18':
+                            $ids->pre_18 = $respuestas->answers;
+                            $ids->score_18 = $respuestas->score;
+                        break;
+                        case '19':
+                            $ids->pre_19 = $respuestas->answers;
+                            $ids->score_19 = $respuestas->score;
+                        break;
+                        case '20':
+                            $ids->pre_20 = $respuestas->answers;
+                            $ids->score_20 = $respuestas->score;
+                        break;
+                        case '21':
+                            $ids->pre_21 = $respuestas->answers;
+                            $ids->score_21 = $respuestas->score;
+                        break;
+                        case '22':
+                            $ids->pre_22 = $respuestas->answers;
+                            $ids->score_22 = $respuestas->score;
+                        break;
+                        case '22':
+                            $ids->pre_22 = $respuestas->answers;
+                            $ids->score_22 = $respuestas->score;
+                        break;
+                        case '23':
+                            $ids->pre_23 = $respuestas->answers;
+                            $ids->score_23 = $respuestas->score;
+                        break;
+                       case '24':
+                            $ids->pre_24 = $respuestas->answers;
+                            $ids->score_24 = $respuestas->score;
+                        break;
+                        case '25':
+                            $ids->pre_25 = $respuestas->answers;
+                            $ids->score_25 = $respuestas->score;
+                        break;
+                        case '26':
+                            $ids->pre_26 = $respuestas->answers;
+                            $ids->score_26 = $respuestas->score;
+                        break;
+                        case '27':
+                            $ids->pre_27 = $respuestas->answers;
+                            $ids->score_27 = $respuestas->score;
+                        break;
+                        case '28':
+                            $ids->pre_28 = $respuestas->answers;
+                            $ids->score_28 = $respuestas->score;
+                        break;
+                        case '29':
+                            $ids->pre_29 = $respuestas->answers;
+                            $ids->score_29 = $respuestas->score;
+                        break;
+                        case '30':
+                            $ids->pre_30 = $respuestas->answers;
+                            $ids->score_30 = $respuestas->score;
+                        break;
+                        case '31':
+                            $ids->pre_31 = $respuestas->answers;
+                            $ids->score_31 = $respuestas->score;
+                        break;
+                        case '32':
+                            $ids->pre_32 = $respuestas->answers;
+                            $ids->score_32 = $respuestas->score;
+                        break;
+                        case '33':
+                            $ids->pre_33 = $respuestas->answers;
+                            $ids->score_33 = $respuestas->score;
+                        break;
+                        case '34':
+                            $ids->pre_34 = $respuestas->answers;
+                            $ids->score_34 = $respuestas->score;
+                        break;
+                        case '35':
+                            $ids->pre_35 = $respuestas->answers;
+                            $ids->score_35 = $respuestas->score;
+                        break;
+                        case '36':
+                            $ids->pre_36 = $respuestas->answers;
+                            $ids->score_36 = $respuestas->score;
+                        break;
+                        case '37':
+                            $ids->pre_37 = $respuestas->answers;
+                            $ids->score_37 = $respuestas->score;
+                        break;
+                        case '38':
+                            $ids->pre_38 = $respuestas->answers;
+                            $ids->score_38 = $respuestas->score;
+                        break;
+                        case '39':
+                            $ids->pre_39 = $respuestas->answers;
+                            $ids->score_39 = $respuestas->score;
+                        break;
+                        case '40':
+                            $ids->pre_40 = $respuestas->answers;
+                            $ids->score_40 = $respuestas->score;
+                        break;
+                        case '41':
+                            $ids->pre_41 = $respuestas->answers;
+                            $ids->score_41 = $respuestas->score;
+                        break;
+                        case '42':
+                            $ids->pre_42 = $respuestas->answers;
+                            $ids->score_42 = $respuestas->score;
+                        break;
+                        case '43':
+                            $ids->pre_43 = $respuestas->answers;
+                            $ids->score_43 = $respuestas->score;
+                        break;
+                        case '44':
+                            $ids->pre_44 = $respuestas->answers;
+                            $ids->score_44 = $respuestas->score;
+                        break;
+                        case '45':
+                            $ids->pre_45 = $respuestas->answers;
+                            $ids->score_45 = $respuestas->score;
+                        break;
+                        case '46':
+                            $ids->pre_46 = $respuestas->answers;
+                            $ids->score_46 = $respuestas->score;
+                        break;
+                        case '47':
+                            $ids->pre_47 = $respuestas->answers;
+                            $ids->score_47 = $respuestas->score;
+                        break;
+                        case '48':
+                            $ids->pre_48 = $respuestas->answers;
+                            $ids->score_48 = $respuestas->score;
+                        break;
+                        case '49':
+                            $ids->pre_49 = $respuestas->answers;
+                            $ids->score_49 = $respuestas->score;
+                        break;
+                        case '50':
+                            $ids->pre_50 = $respuestas->answers;
+                            $ids->score_50 = $respuestas->score;
+                        break;
+                        case '51':
+                            $ids->pre_51 = $respuestas->answers;
+                            $ids->score_51 = $respuestas->score;
+                        break;
+                        case '52':
+                            $ids->pre_52 = $respuestas->answers;
+                            $ids->score_52 = $respuestas->score;
+                        break;
+                        case '53':
+                            $ids->pre_53 = $respuestas->answers;
+                            $ids->score_53 = $respuestas->score;
+                        break;
+                        case '54':
+                            $ids->pre_54 = $respuestas->answers;
+                            $ids->score_54 = $respuestas->score;
+                        break;
+                        case '55':
+                            $ids->pre_55 = $respuestas->answers;
+                            $ids->score_55 = $respuestas->score;
+                        break;
+                        case '56':
+                            $ids->pre_56 = $respuestas->answers;
+                            $ids->score_56 = $respuestas->score;
+                        break;
+                        case '57':
+                            $ids->pre_57 = $respuestas->answers;
+                            $ids->score_57 = $respuestas->score;
+                        break;
+                        case '58':
+                            $ids->pre_58 = $respuestas->answers;
+                            $ids->score_58 = $respuestas->score;
+                        break;
+                        default:                                        
+                            echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADO";
+                        break;
+                    }
+                }
+
+            });
+        
+            $json_datos = json_encode($datos);
+            Storage::disk('local')->put('caracterizacion_mayo.json', $json_datos);
+            $caracterizacion = json_decode(Storage::get('caracterizacion_mayo.json'));
+            $datos = collect($caracterizacion);
+            
+            return datatables()->of($datos)->toJson();
+        }
+    }
 }

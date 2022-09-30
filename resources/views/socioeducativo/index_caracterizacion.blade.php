@@ -2704,31 +2704,34 @@
                                                 '<td>'+data.pre_21+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_21 == 2){
+                                }
+                                if(data.score_21 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_21+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_21 == 3){
+                                }
+                                if(data.score_21 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_21+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_21 == 0){
                                     //console.log(data.score_21);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_21+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_21 != null && data.pre_21 != ''){
                                         return data.pre_21;    
                                     }else{
                                         return '-';
                                     }
-                                }
+                                
                             }
                         }
                     },

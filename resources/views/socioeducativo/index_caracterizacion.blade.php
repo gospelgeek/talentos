@@ -275,11 +275,9 @@
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
-                            if(data.pre_37 != null || data.pre_37 != ' '){
+                            
                                 return data.pre_37;
-                            }else{
-                                return '-';
-                            }
+                           
                         }
                     },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){

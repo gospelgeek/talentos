@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">    
-    <h1 style="text-align:center;">CARACTERIZACIÓN</h1>
+    <h1 style="text-align:center;">CARACTERIZACIÓN SOCIOEDUCATIVA</h1>
     <div class="card">         
         <div class="card-body">
             <div class="btn-group">
@@ -2069,7 +2069,10 @@
                             }
                         }
                     },
-                    {data: 'pre_37',className:'dimension'},
+                    {data: null,className:'dimension',render:function(data, row, type, meta){
+                            return data.pre_37;
+                        }
+                    },
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
                                 if(data.score_38 == 1){

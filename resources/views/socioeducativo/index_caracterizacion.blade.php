@@ -351,7 +351,7 @@
                             if(!isNaN(total)){
                                 if(total == 7 || total == 8){
                                     celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
+                                                '<td>'+total+'</td>'+
                                             '</div>';
                                     return celda;
                                 }else if(total == 5 || total == 6){
@@ -2139,9 +2139,28 @@
                             }
                         }
                     },
-                    {data: null, className:'riesgos',render:function(data, type, row, meta){
+                    {data: null, className:'riesgos', render:function(data, type, row, meta){
                             var total = parseFloat(data.score_36) + parseFloat(data.score_37) + parseFloat(data.score_38);
-                            return total;
+                            if(!isNaN(total)){
+                                if(total == 7 || total == 8){
+                                    celda = '<div style="background-color: red;">'+
+                                                '<td>'+'ALTO'+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(total == 5 || total == 6){
+                                    celda = '<div style="background-color: yellow;">'+
+                                                '<td>'+'MEDIO'+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(total <= 4){
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+'BAJO'+'</td>'+
+                                            '</div>';
+                                    return celda;    
+                                }
+                            }else{
+                                return '-';
+                            }
                         }
                     },
 

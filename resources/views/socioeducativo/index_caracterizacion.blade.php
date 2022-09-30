@@ -2876,31 +2876,27 @@
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            let valores = [data.score_28,  data.score_29,  data.score_54,  data.score_55,  data.score_56,  data.score_57,  data.score_58,  data.score_13,  data.score_23,  data.score_21,  data.score_22,  data.score_24,  data.score_52,  data.score_53];
+                            var total = parseFloat(data.score_28) + parseFloat(data.score_29) + parseFloat(data.score_54) + parseFloat(data.score_55) + parseFloat(data.score_56) + parseFloat(data.score_57) + parseFloat(data.score_58) + parseFloat(data.score_13) + parseFloat(data.score_23) + parseFloat(data.score_21) + parseFloat(data.score_22) + parseFloat(data.score_24) + parseFloat(data.score_52) + parseFloat(data.score_53);
 
-                            var total = 0;
-                            valores.forEach(function(numero, index){
-                                if(!isNaN(numero)){
-                                    total += numero;
+                            if(!isNaN(numero)){
+                                if(total >= 17 && total <= 25){
+                                    celda = '<div style="background-color: red;">'+
+                                                '<td>'+'ALTO'+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(total >= 13 && total <= 16){
+                                    celda = '<div style="background-color: yellow;">'+
+                                                '<td>'+'MEDIO'+'</td>'+
+                                            '</div>';
+                                    return celda;
+                                }else if(total <= 12){
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+'BAJO'+'</td>'+
+                                            '</div>';
+                                    return celda;    
                                 }
-                            });
-
-                            
-                            if(total >= 17 && total <= 25){
-                                celda = '<div style="background-color: red;">'+
-                                            '<td>'+'ALTO'+'</td>'+
-                                        '</div>';
-                                return celda;
-                            }else if(total >= 13 && total <= 16){
-                                celda = '<div style="background-color: yellow;">'+
-                                            '<td>'+'MEDIO'+'</td>'+
-                                        '</div>';
-                                return celda;
-                            }else if(total <= 12){
-                                celda = '<div style="background-color: #7FFF00;">'+
-                                            '<td>'+'BAJO'+'</td>'+
-                                        '</div>';
-                                return celda;    
+                            }else{
+                                return '-';
                             }
                         }
                     },

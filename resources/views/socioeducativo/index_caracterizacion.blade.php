@@ -2626,32 +2626,35 @@
                                                 '<td>'+data.pre_13+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_13 == 2){
+                                }
+                                if(data.score_13 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_13+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_13 == 3){
+                                }
+                                if(data.score_13 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_13+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_13 == 0){
                                     //console.log(data.score_13);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_13+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_13 != null && data.pre_13 != ''){
                                         return data.pre_13;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2663,31 +2666,34 @@
                                                 '<td>'+data.pre_23+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_23 == 2){
+                                }
+                                if(data.score_23 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_23+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_23 == 3){
+                                }
+                                if(data.score_23 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_23+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_23 == 0){
                                     //console.log(data.score_23);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_23+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_23 != null && data.pre_23 != ''){
                                         return data.pre_23;    
                                     }else{
                                         return '-';
                                     }   
-                                }
+                                
                             }
                         }
                     },

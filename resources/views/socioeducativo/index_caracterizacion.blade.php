@@ -2471,32 +2471,35 @@
                                                 '<td>'+data.pre_55+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_55 == 2){
+                                }
+                                if(data.score_55 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_55+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_55 == 3){
+                                }
+                                if(data.score_55 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_55+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_55 == 0){
                                     //console.log(data.score_55);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_55+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_55 != null && data.pre_55 != ''){
                                         return data.pre_55;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2546,32 +2549,35 @@
                                                 '<td>'+data.pre_57+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_57 == 2){
+                                }
+                                if(data.score_57 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_57+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_57 == 3){
+                                }
+                                if(data.score_57 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_57+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_57 == 0){
                                     //console.log(data.score_57);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_57+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_57 != null && data.pre_57 != ''){
                                         return data.pre_57;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },

@@ -3532,7 +3532,7 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             
-                            var total = parseFloat(data.score_8) + parseFloat(data.score_9) + parseFloat(data.score_10) + parseFloat(data.score_11) + parseFloat(data.score_12) + parseFloat(data.score_40) + parseFloat(data.score_39) + parseFloat(data.score_25) + parseFloat(data.score_26 + parseFloat(data.score_27) + parseFloat(data.score_31) + parseFloat(data.score_32) + parseFloat(data.score_30) + parseFloat(data.score_5) + parseFloat(data.score_34) + parseFloat(data.score_33) + parseFloat(data.score_35);
+                            var total = parseFloat(data.score_8) + parseFloat(data.score_9) + parseFloat(data.score_10) + parseFloat(data.score_11) + parseFloat(data.score_12) + parseFloat(data.score_40) + parseFloat(data.score_39) + parseFloat(data.score_25) + parseFloat(data.score_26) + parseFloat(data.score_27) + parseFloat(data.score_31) + parseFloat(data.score_32) + parseFloat(data.score_30) + parseFloat(data.score_5) + parseFloat(data.score_34) + parseFloat(data.score_33) + parseFloat(data.score_35);
 
                             if(!isNaN(total)){
                                 if(total >= 25 && total <= 37){

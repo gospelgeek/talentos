@@ -2212,32 +2212,35 @@
                                                 '<td>'+data.pre_6+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_6 == 2){
+                                }
+                                if(data.score_6 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_6+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_6 == 3){
+                                }
+                                if(data.score_6 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_6+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_6 == 0){
                                     //console.log(data.score_6);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_6+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_6 != null && data.pre_6 != ''){
                                         return data.pre_6;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },

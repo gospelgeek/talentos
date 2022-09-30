@@ -2069,42 +2069,7 @@
                             }
                         }
                     },
-                    {data: null,className:'dimension', render:function(data, row, type, meta){
-                            if(data.score_36 != null && data.score_36 != ''){
-                                if(data.score_36 == 1){
-
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+data.pre_36+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(data.score_36 == 2){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+data.pre_36+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(data.score_36 == 3){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+data.pre_36+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }
-                            }else{
-                                if(data.score_36 == 0){
-                                    //console.log(data.score_36);
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+data.pre_36+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else{
-                                    if(data.pre_36 != null && data.pre_36 != ''){
-                                        return data.pre_36;    
-                                    }else{
-                                        return '-';
-                                    }   
-                                }
-                            }
-                        }
-                    },
+                    {data: 'pre_37',className:'dimension'},
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
                                 if(data.score_38 == 1){

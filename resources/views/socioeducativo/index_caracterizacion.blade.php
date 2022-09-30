@@ -2107,17 +2107,18 @@
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
                                 if(data.score_38 == 1){
-
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_38+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_38 == 2){
+                                }
+                                if(data.score_38 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_38+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_38 == 3){
+                                }
+                                if(data.score_38 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_38+'</td>'+
                                             '</div>';

@@ -2925,32 +2925,33 @@
                                                 '<td>'+data.pre_8+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_8 == 2){
+                                }
+                                if(data.score_8 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_8+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_8 == 3){
+                                }
+                                if(data.score_8 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_8+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_8 == 0){
                                     //console.log(data.score_8);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_8+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_8 != null && data.pre_8 != ''){
                                         return data.pre_8;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -2962,32 +2963,35 @@
                                                 '<td>'+data.pre_9+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_9 == 2){
+                                }
+                                if(data.score_9 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_9+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_9 == 3){
+                                }
+                                if(data.score_9 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_9+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_9 == 0){
                                     //console.log(data.score_9);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_9+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_9 != null && data.pre_9 != ''){
                                         return data.pre_9;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -2999,32 +3003,33 @@
                                                 '<td>'+data.pre_10+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_10 == 2){
+                                }
+                                if(data.score_10 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_10+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_10 == 3){
+                                }
+                                if(data.score_10 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_10+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_10 == 0){
                                     //console.log(data.score_10);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_10+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_10 != null && data.pre_10 != ''){
                                         return data.pre_10;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3036,32 +3041,33 @@
                                                 '<td>'+data.pre_11+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_11 == 2){
+                                }
+                                if(data.score_11 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_11+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_11 == 3){
+                                }
+                                if(data.score_11 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_11+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_11 == 0){
                                     //console.log(data.score_11);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_11+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_11 != null && data.pre_11 != ''){
                                         return data.pre_11;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3073,32 +3079,33 @@
                                                 '<td>'+data.pre_12+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_12 == 2){
+                                }
+                                if(data.score_12 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_12+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_12 == 3){
+                                }
+                                if(data.score_12 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_12+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_12 == 0){
                                     //console.log(data.score_12);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_12+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_12 != null && data.pre_12 != ''){
                                         return data.pre_12;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3110,32 +3117,35 @@
                                                 '<td>'+data.pre_40+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_40 == 2){
+                                }
+                                if(data.score_40 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_40+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_40 == 3){
+                                }
+                                if(data.score_40 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_40+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_40 == 0){
                                     //console.log(data.score_40);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_40+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_40 != null && data.pre_40 != ''){
                                         return data.pre_40;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -3147,32 +3157,35 @@
                                                 '<td>'+data.pre_39+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_39 == 2){
+                                }
+                                if(data.score_39 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_39+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_39 == 3){
+                                }
+                                if(data.score_39 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_39+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_39 == 0){
                                     //console.log(data.score_39);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_39+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_39 != null && data.pre_39 != ''){
                                         return data.pre_39;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -3184,32 +3197,35 @@
                                                 '<td>'+data.pre_25+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_25 == 2){
+                                }
+                                if(data.score_25 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_25+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_25 == 3){
+                                }
+                                if(data.score_25 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_25+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_25 == 0){
                                     //console.log(data.score_25);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_25+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_25 != null && data.pre_25 != ''){
                                         return data.pre_25;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -3221,32 +3237,33 @@
                                                 '<td>'+data.pre_26+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_26 == 2){
+                                }
+                                if(data.score_26 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_26+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_26 == 3){
+                                }
+                                if(data.score_26 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_26+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_26 == 0){
                                     //console.log(data.score_26);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_26+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_26 != null && data.pre_26 != ''){
                                         return data.pre_26;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3258,32 +3275,33 @@
                                                 '<td>'+data.pre_27+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_27 == 2){
+                                }
+                                if(data.score_27 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_27+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_27 == 3){
+                                }
+                                if(data.score_27 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_27+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_27 == 0){
                                     //console.log(data.score_27);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_27+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_27 != null && data.pre_27 != ''){
                                         return data.pre_27;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3295,32 +3313,33 @@
                                                 '<td>'+data.pre_31+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_31 == 2){
+                                }
+                                if(data.score_31 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_31+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_31 == 3){
+                                }
+                                if(data.score_31 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_31+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_31 == 0){
                                     //console.log(data.score_31);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_31+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_31 != null && data.pre_31 != ''){
                                         return data.pre_31;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3332,32 +3351,33 @@
                                                 '<td>'+data.pre_32+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_32 == 2){
+                                }
+                                if(data.score_32 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_32+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_32 == 3){
+                                }
+                                if(data.score_32 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_32+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_32 == 0){
                                     //console.log(data.score_32);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_32+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_32 != null && data.pre_32 != ''){
                                         return data.pre_32;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3369,32 +3389,33 @@
                                                 '<td>'+data.pre_30+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_30 == 2){
+                                }
+                                if(data.score_30 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_30+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_30 == 3){
+                                }
+                                if(data.score_30 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_30+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_30 == 0){
                                     //console.log(data.score_30);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_30+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_30 != null && data.pre_30 != ''){
                                         return data.pre_30;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3406,32 +3427,35 @@
                                                 '<td>'+data.pre_5+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_5 == 2){
+                                }
+                                if(data.score_5 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_5+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_5 == 3){
+                                }
+                                if(data.score_5 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_5+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_5 == 0){
                                     //console.log(data.score_5);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_5+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_5 != null && data.pre_5 != ''){
                                         return data.pre_5;    
                                     }else{
                                         return '-';
                                     }
                                     
-                                }
+                                
                             }
                         }
                     },
@@ -3443,32 +3467,33 @@
                                                 '<td>'+data.pre_34+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_34 == 2){
+                                }
+                                if(data.score_34 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_34+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_34 == 3){
+                                }
+                                if(data.score_34 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_34+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_34 == 0){
                                     //console.log(data.score_34);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_34+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_34 != null && data.pre_34 != ''){
                                         return data.pre_34;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3480,32 +3505,33 @@
                                                 '<td>'+data.pre_33+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_33 == 2){
+                                }
+                                if(data.score_33 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_33+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_33 == 3){
+                                }
+                                if(data.score_33 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_33+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_33 == 0){
                                     //console.log(data.score_33);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_33+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
+                                
                                     if(data.pre_33 != null && data.pre_33 != ''){
                                         return data.pre_33;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
@@ -3517,37 +3543,37 @@
                                                 '<td>'+data.pre_35+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_35 == 2){
+                                }
+                                if(data.score_35 == 2){
                                     celda = '<div style="background-color: yellow;">'+
                                                 '<td>'+data.pre_35+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else if(data.score_35 == 3){
+                                }
+                                if(data.score_35 == 3){
                                     celda = '<div style="background-color: red;">'+
                                                 '<td>'+data.pre_35+'</td>'+
                                             '</div>';
                                     return celda;
                                 }
-                            }else{
                                 if(data.score_35 == 0){
                                     //console.log(data.score_35);
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_35+'</td>'+
                                             '</div>';
                                     return celda;
-                                }else{
+                                }
+                            }else{
                                     if(data.pre_35 != null && data.pre_35 != ''){
                                         return data.pre_35;    
                                     }else{
                                         return '-';
                                     }
-                                    
-                                }
                             }
                         }
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
-                            var total = data.score_8 + data.score_9 + data.score_10 + data.score_11 + data.score_12 + data.score_40 + data.score_39 + data.score_25 + data.score_26 + data.score_27 + data.score_31 + data.score_32 + data.score_30 + data.score_5 + data.score_34 + data.score_33 + data.score_35;
+                            var total = parseFloat(data.score_8) + parseFloat(data.score_9) + parseFloat(data.score_10) + parseFloat(data.score_11) + parseFloat(data.score_12) + parseFloat(data.score_40) + parseFloat(data.score_39) + parseFloat(data.score_25) + parseFloat(data.score_26) + parseFloat(data.score_27) + parseFloat(data.score_31) + parseFloat(data.score_32) + parseFloat(data.score_30) + parseFloat(data.score_5) + parseFloat(data.score_34) + parseFloat(data.score_33) + parseFloat(data.score_35);
                             if(!isNaN(total)){
                                 if(total >= 25 && total <= 37){
                                     celda = '<div style="background-color: red;">'+

@@ -3514,7 +3514,7 @@
                             if(!isNaN(total)){
                                 if(total >= 25 && total <= 37){
                                     celda = '<div style="background-color: red;">'+
-                                                '<td>'+ALTO+'</td>'+
+                                                '<td>'+'ALTO'+'</td>'+
                                             '</div>';
                                     return celda;
                                 }else if(total >= 19 && total <= 24){

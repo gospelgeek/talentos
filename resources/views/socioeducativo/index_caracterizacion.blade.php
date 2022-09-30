@@ -300,7 +300,7 @@
                                             '</div>';
                                     return celda;
                                 }else{
-                                    if(data.pre_37 != null){
+                                    if(data.pre_37 != ''){
                                         return data.pre_37;    
                                     }else{
                                         return '-';

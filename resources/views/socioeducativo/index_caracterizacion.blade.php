@@ -2104,9 +2104,15 @@
                             }
                         }
                     },
-                    {data: null,className:'table-bordered', render:function(data, row, type, meta){
+                    {data: null,className:'dimension',render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
-                                if(data.score_38 == 1){
+                               if(data.score_38 == 0){
+                                    celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+data.pre_38+'</td>'+
+                                            '</div>';
+                                    return celda;
+                               }
+                               if(data.score_38 == 1){
                                     celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+data.pre_38+'</td>'+
                                             '</div>';
@@ -2124,18 +2130,12 @@
                                             '</div>';
                                     return celda;
                                 }
-                                if(data.score_38 == 0){
-                                    //console.log(data.score_38);
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+data.pre_38+'</td>'+
-                                            '</div>';
-                                    return celda;
                             }else{
-                                    if(data.pre_38 != null && data.pre_38 != ''){
+                                if(data.pre_38 != null && data.pre_38 != ''){
                                         return data.pre_38;    
-                                    }else{
-                                        return '-';
-                                    }
+                                 }else{
+                                     return '-';
+                                }
                             }
                         }
                     },

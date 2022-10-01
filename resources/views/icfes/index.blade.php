@@ -999,12 +999,14 @@
 
     function abrirModal(id, idP, nom, apel, prueba) {
         const nombreModal = document.getElementById('nombreModal')
+        const mensaje = document.getElementById('mensaje')
         
         if(nom !== undefined && apel !== undefined){
-            nombreModal.innerHTML=`${nom} ${apel} ${prueba}` 
-            
+            nombreModal.innerHTML=`${nom} ${apel}` 
+            mensaje.innerHTML = `${prueba} - RESULTADO POR AREA -` 
         }else {
             nombreModal.innerHTML=``
+            mensaje.innerHTML = ``
         }
         fetch(`/pruebaAreas/${id}/${idP}`)
             .then(res => res.json())

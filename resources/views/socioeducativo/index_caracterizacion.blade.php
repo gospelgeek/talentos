@@ -1622,8 +1622,8 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             
-                            let valores = [data.score_8, data.score_9, data.score_10, data.score_11, data.score_12, data.score_40, data.score_39, data.score_25, data.score_26, data.score_27, data.score_31, data.score_32, data.score_30, data.score_5, data.score_34, data.score_33, data.score_35];
-                            
+                            let valores = [parseFloat(data.score_8), parseFloat(data.score_9), parseFloat(data.score_10), parseFloat(data.score_11), parseFloat(data.score_12), parseFloat(data.score_40), parseFloat(data.score_39), parseFloat(data.score_25), parseFloat(data.score_26), parseFloat(data.score_27), parseFloat(data.score_31), parseFloat(data.score_32), parseFloat(data.score_30), parseFloat(data.score_5), parseFloat(data.score_34), parseFloat(data.score_33), parseFloat(data.score_35)];
+
                             var total = 0;
                             valores.forEach(function(numero, index){
                                 if(!isNaN(numero)){
@@ -2909,7 +2909,7 @@
                             }
                         }
                     },
-
+                    //dimension individual
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_8 != null && data.score_8 != ''){
                                 if(data.score_8 == 1){

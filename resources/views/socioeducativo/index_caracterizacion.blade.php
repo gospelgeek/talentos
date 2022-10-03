@@ -2049,7 +2049,7 @@
                     {data: 'estado',className:'table-bordered'},
                     {data: 'profesional',className:'table-bordered'},
                     //dimension familiar
-                    {data: null,className:'dimension', render:function(data, row, type, meta){
+                    {data: null,className:'table-bordered' render:function(data, row, type, meta){
                             if(data.score_36 != null && data.score_36 != ''){
                                 if(data.score_36 == 1){
 
@@ -2086,7 +2086,7 @@
                             }
                         }
                     },
-                    {data: null,className:'dimension',render:function(data, row, type, meta){
+                    {data: null,className:'table-bordered',render:function(data, row, type, meta){
                             if(data.score_37 != null && data.score_37 != ''){
                                if(data.score_37 == 0){
                                     celda = '<div style="background-color: #7FFF00;">'+
@@ -2121,7 +2121,7 @@
                             }
                         }
                     },
-                    {data: null,className:'dimension',render:function(data, row, type, meta){
+                    {data: null,className:'table-bordered',render:function(data, row, type, meta){
                             if(data.score_38 != null && data.score_38 != ''){
                                if(data.score_38 == 0){
                                     celda = '<div style="background-color: #7FFF00;">'+

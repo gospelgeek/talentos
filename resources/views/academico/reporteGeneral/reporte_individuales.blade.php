@@ -1150,7 +1150,7 @@
             		if(data.biologia_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.biologia_asistencia+'</u></button>';
             		}else{
-            			return data.biologia_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1158,7 +1158,7 @@
             		if(data.biologia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.biologia_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.biologia_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1166,7 +1166,7 @@
             		if(data.biologia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.biologia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"BIOLOGIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.biologia_autoevaluacion+'</u></button>';
             		}else{
-            			return data.biologia_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1193,7 +1193,7 @@
             		if(data.artes_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.artes_asistencia+'</u></button>';
             		}else{
-            			return data.artes_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1201,7 +1201,7 @@
             		if(data.artes_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.artes_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.artes_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1209,7 +1209,7 @@
             		if(data.artes_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.artes_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"ARTES: CONOCIMIENTO EN ACCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.artes_autoevaluacion+'</u></button>';
             		}else{
-            			return data.artes_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1236,7 +1236,7 @@
             		if(data.deporte_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.deporte_asistencia+'</u></button>';
             		}else{
-            			return data.deporte_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1244,7 +1244,7 @@
             		if(data.deporte_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.deporte_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.deporte_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1252,7 +1252,7 @@
             		if(data.deporte_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.deporte_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DEPORTE Y SALUD INTEGRAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.deporte_autoevaluacion+'</u></button>';
             		}else{
-            			return data.deporte_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1279,7 +1279,7 @@
             		if(data.dialogo_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.dialogo_asistencia+'</u></button>';
             		}else{
-            			return data.dialogo_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1287,7 +1287,7 @@
             		if(data.dialogo_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.dialogo_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.dialogo_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1295,7 +1295,7 @@
             		if(data.dialogo_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.dialogo_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"DIALOGO DE SABERES Y ORIENTACION VOCACIONAL"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.dialogo_autoevaluacion+'</u></button>';
             		}else{
-            			return data.dialogo_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1322,7 +1322,7 @@
             		if(data.constitucion_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.constitucion_asistencia+'</u></button>';
             		}else{
-            			return data.constitucion_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1330,7 +1330,7 @@
             		if(data.constitucion_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.constitucion_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.constitucion_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1338,7 +1338,7 @@
             		if(data.constitucion_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.constitucion_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CONSTITUCION"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.constitucion_autoevaluacion+'</u></button>';
             		}else{
-            			return data.constitucion_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1365,7 +1365,7 @@
             		if(data.fisica_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.fisica_asistencia+'</u></button>';
             		}else{
-            			return data.fisica_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1373,7 +1373,7 @@
             		if(data.fisica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.fisica_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.fisica_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1381,7 +1381,7 @@
             		if(data.fisica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.fisica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"FISICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.fisica_autoevaluacion+'</u></button>';
             		}else{
-            			return data.fisica_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1408,7 +1408,7 @@
             		if(data.geografia_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.geografia_asistencia+'</u></button>';
             		}else{
-            			return data.geografia_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1416,7 +1416,7 @@
             		if(data.geografia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.geografia_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.geografia_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1424,7 +1424,7 @@
             		if(data.geografia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.geografia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"GEOGRAFIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.geografia_autoevaluacion+'</u></button>';
             		}else{
-            			return data.geografia_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1451,7 +1451,7 @@
             		if(data.historia_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.historia_asistencia+'</u></button>';
             		}else{
-            			return data.historia_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1459,7 +1459,7 @@
             		if(data.historia_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.historia_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.historia_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1467,9 +1467,8 @@
             		if(data.historia_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.historia_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"HISTORIA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.historia_autoevaluacion+'</u></button>';
             		}else{
-            			return data.historia_autoevaluacion;
-            		}
-            	}
+            			return '-';
+                    }
         	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);
@@ -1494,7 +1493,7 @@
             		if(data.ingles_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.ingles_asistencia+'</u></button>';
             		}else{
-            			return data.ingles_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1502,7 +1501,7 @@
             		if(data.ingles_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.ingles_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.ingles_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1510,7 +1509,7 @@
             		if(data.ingles_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.ingles_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"INGLES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.ingles_autoevaluacion+'</u></button>';
             		}else{
-            			return data.ingles_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1537,7 +1536,7 @@
             		if(data.lectura_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.lectura_asistencia+'</u></button>';
             		}else{
-            			return data.lectura_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1545,7 +1544,7 @@
             		if(data.lectura_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.lectura_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.lectura_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1553,7 +1552,7 @@
             		if(data.lectura_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.lectura_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"LECTURA CRITICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.lectura_autoevaluacion+'</u></button>';
             		}else{
-            			return data.lectura_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1580,7 +1579,7 @@
             		if(data.matematicas_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.matematicas_asistencia+'</u></button>';
             		}else{
-            			return data.matematicas_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1588,7 +1587,7 @@
             		if(data.matematicas_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.matematicas_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.matematicas_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1596,7 +1595,7 @@
             		if(data.matematicas_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.matematicas_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"MATEMATICAS"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.matematicas_autoevaluacion+'</u></button>';
             		}else{
-            			return data.matematicas_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1623,7 +1622,7 @@
             		if(data.quimica_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.quimica_asistencia+'</u></button>';
             		}else{
-            			return data.quimica_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1631,7 +1630,7 @@
             		if(data.quimica_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.quimica_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.quimica_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1639,7 +1638,7 @@
             		if(data.quimica_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.quimica_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"QUIMICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.quimica_autoevaluacion+'</u></button>';
             		}else{
-            			return data.quimica_autoevaluacion;
+            			return '-';
             		}
             	}
         	},
@@ -1666,7 +1665,7 @@
             		if(data.tic_asistencia != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.tic_asistencia+'</u></button>';
             		}else{
-            			return data.tic_asistencia;
+            			return '-';
             		}
             	}
         	},
@@ -1674,7 +1673,7 @@
             		if(data.tic_seguimiento_academico != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.tic_seguimiento_academico+'</u></button>';
             		}else{
-            			return data.tic_seguimiento_academico;
+            			return '-';
             		}
             	}
         	},
@@ -1682,7 +1681,7 @@
             		if(data.tic_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.tic_course_id+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"TECNOLOGIA DE LA INFORMACION Y LAS COMUNICACIONES"+'\',\''+data.grupo_name+'\', \''+"LINEA 2"+'\', \''+"Autoevaluación"+'\');"><u>'+data.tic_autoevaluacion+'</u></button>';
             		}else{
-            			return data.tic_autoevaluacion;
+            			return '-';
             		}
             	}
         	},

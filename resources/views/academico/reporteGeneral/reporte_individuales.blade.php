@@ -592,21 +592,24 @@
             		if(data.cultura_asistencias != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.cultura_asistencias+'</u></button class="btn" type="button">';
             		}else{
-            			return return '-';            		}
+            			return '-';            		
+                    }
             	}
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_seguimientos != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 2,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Seguimiento Academico"+'\');"><u>'+data.cultura_seguimientos+'</u></button >';
             		}else{
-            			return return '-';            		}
+            			 return '-';
+                    }
             	}
         	},
             {data: null, render:function(data, type, row, meta){
             		if(data.cultura_autoevaluacion != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_cultura+','+data.id_moodle+', 3,\''+data.name+'\', \''+data.lastname+'\', \''+"CULTURA DEMOCRATICA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Autoevaluación"+'\');"><u>'+data.cultura_autoevaluacion+'</u></button>';
             		}else{
-            			return return '-';            		}
+            			 return '-';
+                    }
             	}
         	},
             {data: null, render:function(data, type, row, meta){

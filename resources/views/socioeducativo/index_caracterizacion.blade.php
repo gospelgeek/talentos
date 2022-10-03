@@ -2048,7 +2048,7 @@
                     {data: 'cohorte',className:'table-bordered'},
                     {data: 'estado',className:'table-bordered'},
                     {data: 'profesional',className:'table-bordered'},
-
+                    //dimension familiar
                     {data: null,className:'dimension', render:function(data, row, type, meta){
                             if(data.score_36 != null && data.score_36 != ''){
                                 if(data.score_36 == 1){
@@ -2183,7 +2183,8 @@
                             }
                         }
                     },
-
+                    
+                    //dimension economica
                     {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_1 != null && data.score_1 != ''){
                                 if(data.score_1 == 1){
@@ -2334,27 +2335,30 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             
-                            var total = parseFloat(data.score_1) + parseFloat(data.score_6) + parseFloat(data.score_7) + parseFloat(data.score_4);
-                            if(!isNaN(total)){
-                                if(total == 10 || total == 11){
-                                    celda = '<div style="background-color: red;">'+
-                                                '<td>'+'ALTO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total >= 6 && total <= 9){
-                                    celda = '<div style="background-color: yellow;">'+
-                                                '<td>'+'MEDIO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                                }else if(total <= 5){
-                                    celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;    
-                                }   
-                            }else{
-                                return '-';
-                            }
+                            let valores = [data.score_1, data.score_6, data.score_7, data.score_4];
+                            var total = 0;
+                            valores.forEach(function(numero, index){
+                                if(!isNaN(numero)){
+                                    total += numero;
+                                }
+                            });
+
+                            if(total == 10 || total == 11){
+                                celda = '<div style="background-color: red;">'+
+                                            '<td>'+'ALTO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total >= 6 && total <= 9){
+                                celda = '<div style="background-color: yellow;">'+
+                                            '<td>'+'MEDIO'+'</td>'+
+                                        '</div>';
+                                return celda;
+                            }else if(total <= 5){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                            '<td>'+'BAJO'+'</td>'+
+                                        '</div>';
+                                return celda;    
+                            }    
                         }
                     },
 

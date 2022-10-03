@@ -2335,7 +2335,7 @@
                     },
                     {data: null, className:'riesgos',render:function(data, type, row, meta){
                             
-                            let valores = [data.score_1, data.score_6, data.score_7, data.score_4];
+                            let valores = [parseFloat(data.score_1), parseFloat(data.score_6), parseFloat(data.score_7), parseFloat(data.score_4)];
                             var total = 0;
                             valores.forEach(function(numero, index){
                                 if(!isNaN(numero)){

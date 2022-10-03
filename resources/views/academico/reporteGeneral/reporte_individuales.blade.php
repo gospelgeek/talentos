@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
-	<h1 style="text-align:center;">REPORTE GENERAL DE NOTAS INDIVUDALES</h1>
+	<h1 style="text-align:center;">REPORTE GENERAL DE NOTAS INDIVIDUALES</h1>
 	<div class="card">
 		<div class="card-body">
 			<div class="btn-group">
@@ -457,12 +457,13 @@
             {data: 'grupo_name'},
             {data: 'estado'},
             {data: 'encargado'},
+            
             {data: 'docente_accion_ciudadana'},
             {data: null, render:function(data, type, row, meta){
             		if(data.accionciudadana_asistencias != 0){
             			return '<button class="btn" type="button" onclick="abrir_modal_categorias('+data.courseid_accion_ciudadana+','+data.id_moodle+', 1,\''+data.name+'\', \''+data.lastname+'\', \''+"ACCION CIUDADANA"+'\',\''+data.grupo_name+'\', \''+"LINEA 1"+'\', \''+"Asistencia Participativa"+'\');"><u>'+data.accionciudadana_asistencias+'</u></button>';
             		}else{
-            			return data.accionciudadana_asistencias;
+            			return '-';
             		}
             	}
         	},

@@ -1469,6 +1469,7 @@
             		}else{
             			return '-';
                     }
+                }    
         	},
             {data: null, render:function(data, type, row, meta){
             		//console.log(data.biologia_course_id);

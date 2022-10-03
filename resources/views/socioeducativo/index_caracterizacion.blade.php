@@ -2049,7 +2049,7 @@
                     {data: 'estado',className:'table-bordered'},
                     {data: 'profesional',className:'table-bordered'},
                     //dimension familiar
-                    {data: null,className:'table-bordered' render:function(data, row, type, meta){
+                    {data: null,className:'table-bordered', render:function(data, row, type, meta){
                             if(data.score_36 != null && data.score_36 != ''){
                                 if(data.score_36 == 1){
 

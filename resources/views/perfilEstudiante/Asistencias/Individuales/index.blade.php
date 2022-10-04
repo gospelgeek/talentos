@@ -15,7 +15,7 @@
                 <div id="div_1" class="col-sm-8 asistencias_mes" style="display:none">
                     <form name="mes">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="1" id="todos" checked="">&nbsp;&nbsp;
+                        <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="1" id="todos">&nbsp;&nbsp;
                         <label>FEBRERO</label>&nbsp;<input type="radio" name="filtro" value="2" id="febrero">&nbsp;&nbsp;
                         <label>MARZO</label>&nbsp;<input type="radio" name="filtro" value="3" id="marzo">&nbsp;&nbsp;
                         <label>ABRIL</label>&nbsp;<input type="radio" name="filtro" value="4" id="abril">&nbsp;&nbsp;
@@ -24,7 +24,7 @@
                         <label>JULIO</label>&nbsp;<input type="radio" name="filtro" value="7" id="julio">&nbsp;&nbsp;
                         <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" value="8" id="agosto">&nbsp;&nbsp;
                         <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre">&nbsp;&nbsp;
-                        <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre">
+                        <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre" checked>
                     </form>                     
                 </div>  
             </div>
@@ -64,9 +64,7 @@
                             <th colspan="10" style="border-left: black solid 2px;">MATEMATICAS</th>
                             <th colspan="10" style="border-left: black solid 2px;">QUIMICA</th>
                             <th colspan="10" style="border-left: black solid 2px;">TIC</th>
-                            <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
-                            <th rowspan="2">Total Calificadas</th>
-                            <th rowspan="2">%</th>
+                            <th colspan="9"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima1">VER DETALLE</th>
                         </tr>
@@ -235,6 +233,16 @@
                             <th style="border-left: black solid 1px;">Total</th>
                             <th>Total Calificadas</th>
                             <th>%</th>
+
+                            <th style="border-left: black solid 2px;">Total Virtual</th>
+                            <th>Total Calificadas Virtuales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Presencial</th>
+                            <th>Total Calificadas Presenciales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Asistencias</th>
+                            <th>Total Asistencias Calificadas</th>
+                            <th>%</th>
                         </tr>
                     </thead> 
                 </table>
@@ -267,9 +275,7 @@
                             <th colspan="10" style="border-left: black solid 2px;">MATEMATICAS</th>
                             <th colspan="10" style="border-left: black solid 2px;">QUIMICA</th>
                             <th colspan="10" style="border-left: black solid 2px;">TIC</th>
-                            <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
-                            <th rowspan="2">Total Calificadas</th>
-                            <th rowspan="2">%</th>
+                            <th colspan="9"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima2">VER DETALLES</th>
                         </tr>
@@ -427,6 +433,16 @@
                             <th style="border-left: black solid 1px;">Total</th>
                             <th>Total Calificadas</th>
                             <th>%</th>
+
+                            <th style="border-left: black solid 2px;">Total Virtual</th>
+                            <th>Total Calificadas Virtuales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Presencial</th>
+                            <th>Total Calificadas Presenciales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Asistencias</th>
+                            <th>Total Asistencias Calificadas</th>
+                            <th>%</th>
                         </tr>
                     </thead> 
                 </table>
@@ -457,9 +473,7 @@
                             <th colspan="10" style="border-left: black solid 2px;">PRACTICAS ARTISTICAS</th>
                             <th colspan="10" style="border-left: black solid 2px;">QUIMICA</th>
                             <th colspan="10" style="border-left: black solid 2px;">TIC</th>
-                            <th rowspan="2"  style="border-left: black solid 2px;">Total</th>
-                            <th rowspan="2">Total Calificadas</th>
-                            <th rowspan="2">%</th>
+                            <th colspan="9"  style="border-left: black solid 2px;">Total</th>
                             <th rowspan="2"  style="border-left: black solid 2px;">Cambio Grupo</th>
                             <th rowspan="2" id="ultima3">ACCIONES</th>
                         </tr>
@@ -594,6 +608,16 @@
                             <th>%</th>
                             <th style="border-left: black solid 1px;">Total</th>
                             <th>Total Calificadas</th>
+                            <th>%</th>
+
+                            <th style="border-left: black solid 2px;">Total Virtual</th>
+                            <th>Total Calificadas Virtuales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Presencial</th>
+                            <th>Total Calificadas Presenciales</th>
+                            <th>%</th>
+                            <th style="border-left: black solid 1px;">Total Asistencias</th>
+                            <th>Total Asistencias Calificadas</th>
                             <th>%</th>
                         </tr>
                     </thead> 

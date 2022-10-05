@@ -2773,12 +2773,13 @@ class perfilEstudianteController extends Controller
                 $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
                 $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
                 $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
+                $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
                 if($profesionales == true){
-                    $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
-                    $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
+                    $profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+                    $profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;
+                    $estudiante->encargado = $profesional_name .' '.$profesional_lastname;      
                 }else{
-                $estudiante->profesional_name = null;
-                $estudiante->profesional_lastname = null;
+                    $estudiante->encargado = null;
                 }
 
                 $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();
@@ -2899,12 +2900,13 @@ class perfilEstudianteController extends Controller
                     $estudiante->tipodocumento = $estudiante->documenttype ? $estudiante->documenttype->name : null;
                     $estudiante->condicion = $estudiante->condition ? $estudiante->condition->name : null;
                     $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
+                    $profesionales = AssignmentStudent::where('id_student', $estudiante->id)->exists();
                     if($profesionales == true){
-                        $estudiante->profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
-                        $estudiante->profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;    
+                        $profesional_name = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->name : null;
+                        $profesional_lastname = $estudiante->assignmentstudent->UserInfo ? $estudiante->assignmentstudent->UserInfo->apellidos_user : null;
+                        $estudiante->encargado = $profesional_name .' '.$profesional_lastname;      
                     }else{
-                        $estudiante->profesional_name = null;
-                        $estudiante->profesional_lastname = null;
+                        $estudiante->encargado = null;
                     }
 
                     $withdrawals = Withdrawals::where('id_student', $estudiante->id)->exists();

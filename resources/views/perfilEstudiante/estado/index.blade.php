@@ -93,18 +93,7 @@ $(document).ready(function(){
             { data: 'document_number' },
             { data: 'cohorte' },
             { data: 'grupo' },
-            {data: null, render:function(data, type, row, meta) {
-                        if(data.profesional_name !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.profesional_name+' '+data.profesional_lastname+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
-                    }
-            },
+            { data: 'encargado'},
             { data: 'condicion' },
             { data: 'motivo'},
             { data: 'fecha'},

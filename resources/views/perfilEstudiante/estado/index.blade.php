@@ -20,6 +20,7 @@
             <label>JULIO</label>&nbsp;<input type="radio" name="filtro" id="jlio">&nbsp;&nbsp;
             <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" id="agsto">&nbsp;&nbsp;
             <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" id="sptmbre">&nbsp;&nbsp;
+            <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" id="octbre">&nbsp;&nbsp;
             <label>TODOS</label>&nbsp;<input type="radio" name="filtro" id="tdos" checked>&nbsp;&nbsp;
        </div>
     </div>
@@ -73,6 +74,7 @@ $(document).ready(function(){
                 d.julio = $('#jlio').is(":checked");
                 d.agosto = $('#agsto').is(":checked");
                 d.septiembre = $('#sptmbre').is(":checked");
+                d.octubre = $('#octbre').is(":checked");
                 d.todos = $('#tdos').is(":checked");
             },
          },

@@ -3271,18 +3271,44 @@ class perfilEstudianteController extends Controller
         $grupos->map(function($grupo){
             $linea_1 = Group::where('name', $grupo->name)->whereBetween('id', [1, 40])->select('id')->firstOrfail();
             //dd($linea_1);
-            $grupo->cant_linea_1 = StudentGroup::where('id_group', $linea_1->id)->count();
-            //dd( $cant_1);
+            $cant_linea_1 = collect(DB::select("
+                    select COUNT(student_groups.id) as cantidad 
+                    FROM student_groups, student_profile
+                    WHERE student_groups.id_group = '".$linea_1->id."'
+                    AND student_groups.id_student = student_profile.id
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null"));
+            foreach($cant_linea_1 as $cant){
+                $grupo->cant_linea_1 = $cant->cantidad; 
+            }
              
             $linea_2 = Group::where('name', $grupo->name)->whereBetween('id', [1004, 1043])->select('id')->firstOrfail();
             //dd($linea_1);
-            $grupo->cant_linea_2 = StudentGroup::where('id_group', $linea_2->id)->count();
+            $cant_linea_2 = collect(DB::select("
+                    select COUNT(student_groups.id) as cantidad
+                    FROM student_groups, student_profile
+                    WHERE student_groups.id_group = '".$linea_2->id."'
+                    AND student_groups.id_student = student_profile.id
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null"));
+            foreach($cant_linea_2 as $cant){
+                $grupo->cant_linea_2 = $cant->cantidad; 
+            }
 
             $linea_3 = Group::where('name', $grupo->name)->whereBetween('id', [50, 89])->select('id')->firstOrfail();
-            //dd($linea_1);
-            $grupo->cant_linea_3 = StudentGroup::where('id_group', $linea_3->id)->count();
+            
+            $cant_linea_3 = collect(DB::select("
+                    select COUNT(student_groups.id) as cantidad
+                    FROM student_groups, student_profile
+                    WHERE student_groups.id_group = '".$linea_3->id."'
+                    AND student_groups.id_student = student_profile.id
+                    AND student_profile.id_state = 1
+                    AND student_groups.deleted_at IS null"));
+            foreach($cant_linea_3 as $cant){
+                $grupo->cant_linea_3 = $cant->cantidad; 
+            }
+            //dd($grupo);
         });
-
         return datatables()->of($grupos)->toJson();
     }
 }

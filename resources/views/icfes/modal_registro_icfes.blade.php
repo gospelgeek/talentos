@@ -1,7 +1,7 @@
 <div class="modal" data-refresh="true" tabindex="-1" id="modal-registro">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form action="registro_icfes/" method="post">
+      <form action="/registro_icfes" method="post">
         @csrf
         <div id="recargar" class="modal-body">
           <button type="button" class="close" data-dismiss="modal">&times;</button>

@@ -7,6 +7,7 @@ use App\IcfesStudent;
 use App\IcfesTest;
 use App\perfilEstudiante;
 use App\ResultByArea;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;

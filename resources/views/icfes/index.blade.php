@@ -118,6 +118,11 @@
 
             <div class="row">
                 <div class="col-md-2">
+                    <button class="btn btn-primary" id="Ricfes">REGISTRO DE RESULTADO ICFES</button>
+                </div>
+                &nbsp;
+                &nbsp;
+                <div class="col-md-2">
                     <label for="">ELIJA LA COHORTE: </label>
                     <select class="form-control" name="opcion" id="opcion">
                         <option default value="0">-----</option>
@@ -235,10 +240,30 @@
 </div>
 
 @include('icfes.modal_areas')
+@include('icfes.modal_registro_icfes')
 
 @push('scripts')
 
 <script>
+ 
+    const registroIcfes = document.getElementById('Ricfes')
+
+    registroIcfes.addEventListener('click', () => {
+        $('#modal-registro').modal('show')
+    })
+
+    const r_areas = document.getElementById('r_areas')
+    const fm_areas = document.getElementById('form_areas')
+
+    r_areas.addEventListener('change', () => {
+        if(r_areas.checked === true){
+            fm_areas.removeAttribute('hidden')
+        }
+
+        if(r_areas.checked === false){
+            fm_areas.setAttribute('hidden','')
+        }
+    })
  
     $("#tablaLinea1").DataTable({
         "ajax": {

@@ -245,6 +245,7 @@ Route::get('datos_icfes_lineas/{id_cohorte}', 'IcfesController@datosIcfesLinea1'
 Route::get('sabana_icfes_json/', 'IcfesController@archivoSabanaIcfes')->name('sabana_icfes_json');
 Route::get('sabana_icfes/', 'IcfesController@exportarSabanaIcfes')->name('sabana_icfes');
 Route::get('pruebaAreas/{id_student}/{id_icfes_test}', 'IcfesController@icfesResultadoArea')->name('prueba_area');
+Route::post('registro_icfes/', 'IcfesController@registroIcfes')->name('registro.icfes');
 
 //RUTAS CONTROLADOR SEGUIMIENTOS ACADEMICOS
 Route::get('reporte_notas/{linea}', 'SeguimientosController@reporte_notas')->name('estudiante.reporte_notas');

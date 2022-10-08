@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exports\SabanaIcfesExport;
+use App\IcfesStudent;
+use App\IcfesTest;
+use App\perfilEstudiante;
+use App\ResultByArea;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +21,92 @@ class IcfesController extends Controller
 
     public function index()
     {
-        return view('icfes.index');
+       $pruebas = IcfesTest::all();
+       return view('icfes.index', compact('pruebas'));
+    }
+    
+    public function registroIcfes(Request $request)
+    {
+        $id_student = $request['identificacion'];
+        $url = $request['url'];
+        $r_areas = $request['r_areas'];
+        $lecturaC = $request['lecturaC'];
+        $mate = $request['mate'];
+        $cienS = $request['cienS'];
+        $cienN = $request['cienN'];
+        $ingles = $request['ingles'];
+        $form_areas = 0;    
+
+        $id_S = perfilEstudiante::where('document_number', $id_student)->first();
+
+        if($url == null){
+            $url ="";
+        }
+
+        if($r_areas == "on"){
+            $form_areas = 1;
+        }else{
+            $form_areas = 0;
+        }
+        
+
+        $datos = IcfesStudent::create([
+            'id_student' => $id_S->id,
+            'id_icfes_test' =>  $request['prueba'],
+            'total_score' => floatval($request['puntaje']),
+            'url_support' => $url
+        ]);
+
+        //dd($datos);
+
+        switch ($form_areas) {
+            case 1:
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 1,
+                    'qualification' => floatval($lecturaC)
+                ]);
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 2,
+                    'qualification' => floatval($mate)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 3,
+                    'qualification' => floatval($cienS)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 4,
+                    'qualification' => floatval($cienN)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 5,
+                    'qualification' => floatval($ingles)
+                ]);
+
+                return redirect('icfes');
+                break;
+            
+            case 0:
+                return redirect('icfes');                
+                break;
+
+            default:
+                return redirect('icfes');
+                break;
+        }
+
     }
 
     public function DatosIcfes()

@@ -18,7 +18,8 @@ class IcfesStudent extends Model
         'id',
         'id_student',
         'id_icfes_test',
-        'total_score'
+        'total_score',
+        'url_support'
     ];
 
     protected $dates = ['deleted_at'];

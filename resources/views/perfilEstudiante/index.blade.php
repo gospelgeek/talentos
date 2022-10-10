@@ -215,7 +215,24 @@
             {data: 'cant_linea_2'},
             {data: 'cant_linea_3'},
         ],
-        
+        "footerCallback": function( tfoot, data, start, end, display ) {
+              var api = this.api();
+              $( api.column( 1 ).footer() ).html(
+                api.column( 1 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+              $( api.column( 2 ).footer() ).html(
+                api.column( 2 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+              $( api.column( 3 ).footer() ).html(
+                api.column( 3 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+        },
         "Paging": true, "searching": false, "info": false,"pageLength": 5,
         "fixedHeader": {
             header: true,

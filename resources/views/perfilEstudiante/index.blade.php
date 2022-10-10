@@ -212,15 +212,15 @@
         "columns": [
             {data: 'name'},
             {data: 'cant_linea_1', render:function(data, type, row, meta){
-                    return parseFloat(data);
+                    return data;
                 }
             },
             {data: 'cant_linea_2', render:function(data, type, row, meta){
-                    return parseFloat(data);
+                    return data;
                 }
             },
             {data: 'cant_linea_3', render:function(data, type, row, meta){
-                    return parseFloat(data);
+                    return data;
                 }
             },
         ],

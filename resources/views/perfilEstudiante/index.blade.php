@@ -211,20 +211,37 @@
         },
         "columns": [
             {data: 'name'},
-            {data: null, render:function(data, type, row, meta){
-                    return parseFloat(data.cant_linea_1);
+            {data: 'cant_linea_1', render:function(data, type, row, meta){
+                    return data;
                 }
             },
-            {data: null, render:function(data, type, row, meta){
-                    return parseFloat(data.cant_linea_2);
+            {data: 'cant_linea_2', render:function(data, type, row, meta){
+                    return data;
                 }
             },
-            {data: null, render:function(data, type, row, meta){
-                    return parseFloat(data.cant_linea_3);
+            {data: 'cant_linea_3', render:function(data, type, row, meta){
+                    return data;
                 }
             },
         ],
-       
+        "footerCallback": function( tfoot, data, start, end, display ) {
+              var api = this.api();
+              $( api.column( 1 ).footer() ).html(
+                api.column( 1 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+              $( api.column( 2 ).footer() ).html(
+                api.column( 2 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+              $( api.column( 3 ).footer() ).html(
+                api.column( 3 ).data().reduce( function ( a, b ) {
+                  return a + b;
+                }, 0 )
+              );
+        },
         "Paging": true, "searching": false, "info": false,"pageLength": 5,
         "fixedHeader": {
             header: true,

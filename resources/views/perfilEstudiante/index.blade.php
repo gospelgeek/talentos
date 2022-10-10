@@ -211,7 +211,10 @@
         },
         "columns": [
             {data: 'name'},
-            {data: 'cant_linea_1'},
+            {data: 'cant_linea_1', render:function(data, type, row, meta){
+                    return parseFloat(data);
+                }
+            },
             {data: 'cant_linea_2'},
             {data: 'cant_linea_3'},
         ],

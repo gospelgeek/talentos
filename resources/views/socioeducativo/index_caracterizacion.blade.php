@@ -31,26 +31,26 @@
                             <th rowspan="2">Cohorte</th>
                             <th rowspan="2">Estado</th>
                             <th rowspan="2">Profesional</th>
+                            <th rowspan="2">Fecha</th>
+                            <th rowspan="2">Intento</th>
                             <th colspan="4">DIMENSIÓN FAMILIAR</th>
                             <th colspan="5">DIMENSIÓN ECONOMICA</th>
                             <th colspan="13">DIMENSIÓN ACADEMICA</th>
                             <th colspan="18">DIMENSIÓN INDIVIDUAL</th>
                             <th colspan="18">SIN DIMENSIÓN</th>              
-                            <th rowspan="2">Fecha</th>
-                            <th rowspan="2">Intento</th>
                         </tr>
 
                         <tr>
                             <th><div class="ancho-columna">¿Qué puedes decir sobre las relaciones con tu familia?</div></th>
                             <th><div class="ancho-columna">¿Qué opina tu familia sobre la educación?</div></th>
                             <th><div class="ancho-columna">¿Cómo son las relaciones en tu familia?</div></th>
-                            <th>NIVEL RIESGO</th>
+                            <th>NIVEL RIESGO FAMILIAR</th>
 
                             <th><div class="ancho-columna">Trabajas actualmente</th>
                             <th><div class="ancho-columna">Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?</th>
                             <th><div class="ancho-columna">¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?</th>
                             <th><div class="ancho-columna">¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?</th>
-                            <th>NIVEL RIESGO</th>
+                            <th>NIVEL RIESGO ECONOMICO</th>
 
                             <th>¿Te consideras una persona disciplinada?</th>
                             <th>¿Cómo te va con el cumplimiento de tus tareas y proyectos?</th>
@@ -64,7 +64,7 @@
                             <th>¿Cómo has construido tus proyectos y expectativas?</th>
                             <th>¿Qué has hecho para lograr alcanzar tus metas y desarrollar tus proyectos?</th>
                             <th>¿Te inclinas por algún campo profesional?</th>
-                            <th>NIVEL RIESGO</th>
+                            <th>NIVEL RIESGO ACADEMICO</th>
 
                             <th>¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]</th>
                             <th>¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]</th>
@@ -83,7 +83,7 @@
                             <th>¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?</th>
                             <th>¿Cómo está tu situación afectiva y/o de pareja?</th>
                             <th>¿Qué tal tus amistades?</th>
-                            <th>NIVEL RIESGO</th>
+                            <th>NIVEL RIESGO INDIVIDUAL</th>
 
                             <th>Tipo de trabajo</th>
                             <th>¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?</th>
@@ -119,26 +119,26 @@
                             <th rowspan="2">Cohorte</th>
                             <th rowspan="2">Estado</th>
                             <th rowspan="2">Profesional</th>
+                            <th rowspan="2">Fecha</th>
+                            <th rowspan="2">Intento</th>
                             <th colspan="4">DIMENSIÓN FAMILIAR</th>
                             <th colspan="5">DIMENSIÓN ECONOMICA</th>
                             <th colspan="15">DIMENSIÓN ACADEMICA</th>
                             <th colspan="18">DIMENSIÓN INDIVIDUAL</th>
                             <th colspan="20">SIN DIMENSIÓN</th>                            
-                            <th rowspan="2">Fecha</th>
-                            <th rowspan="2">Intento</th>
                         </tr>
 
                         <tr>
                             <th>¿Qué puedes decir sobre las relaciones con tu familia?</th>
                             <th>¿Qué opina tu familia sobre la educación?</th>
                             <th>¿Cómo son las relaciones en tu familia?</th>
-                            <th>Nivel Riesgo</th>
+                            <th>NIVEL RIESGO FAMILIAR</th>
 
                             <th>Trabajas actualmente</th>
                             <th>Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?</th>
                             <th>¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?</th>
                             <th>¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?</th>
-                            <th>Nivel Riesgo</th>
+                            <th>NIVEL RIESGO ECONOMICO</th>
 
                             <th>¿Te consideras una persona disciplinada?</th>
                             <th>¿Cómo te va con el cumplimiento de tus tareas y proyectos?</th>
@@ -154,7 +154,7 @@
                             <th>¿Te inclinas por algún campo profesional?</th>
                             <th>¿Tienes grupos de estudio o compañeros(as) con los que te reúnes para realizar tus actividades?</th>
                             <th>¿Cuantas horas al día aproximadamente dedicas a estudiar de manera independiente? (Es decir, además de las clases que tomas en el programa)</th>
-                            <th>Nivel Riesgo</th>
+                            <th>NIVEL RIESGO ACADEMICO</th>
 
                             <th>¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]</th>
                             <th>¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]</th>
@@ -173,7 +173,7 @@
                             <th>¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?</th>
                             <th>¿Cómo está tu situación afectiva y/o de pareja?</th>
                             <th>¿Qué tal tus amistades?</th>
-                            <th>Nivel Riesgo</th>
+                            <th>NIVEL RIESGO INDIVIDUAL</th>
 
                             <th>Tipo de trabajo</th>
                             <th>¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?</th>
@@ -238,7 +238,20 @@
                     {data: 'cohorte', className:'table-bordered'},
                     {data: 'estado', className:'table-bordered'},
                     {data: 'profesional', className:'table-bordered'},
-
+                    {data: 'date_diligence', className:'table-bordered'},
+                    {data: 'try', className:'table-bordered',render:function(data, row, type, meta){
+                            if(data != null){
+                                if(data == 1){
+                                    return 'Primer diligenciamiento';
+                                }else if(data == 2){
+                                    return 'Segundo diligenciamiento';
+                                }
+                            }else{
+                                return '-';
+                            }
+                        }
+                    },
+                    
                     {data: null, className:'dimension', render:function(data, row, type, meta){
                             if(data.score_36 != null && data.score_36 != ''){
                                 if(data.score_36 == 1){
@@ -1794,20 +1807,6 @@
                             }
                         }
                     },
-
-                    {data: 'date_diligence', className:'table-bordered'},
-                    {data: 'try', className:'table-bordered',render:function(data, row, type, meta){
-                            if(data != null){
-                                if(data == 1){
-                                    return 'Primer diligenciamiento';
-                                }else if(data == 2){
-                                    return 'Segundo diligenciamiento';
-                                }
-                            }else{
-                                return '-';
-                            }
-                        }
-                    },
                 ],
                 "deferRender": true,"responsive": false,"processing": false, "fixedHeader": true,'serverSider':true,
                 "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
@@ -2048,6 +2047,19 @@
                     {data: 'cohorte',className:'table-bordered'},
                     {data: 'estado',className:'table-bordered'},
                     {data: 'profesional',className:'table-bordered'},
+                    {data: 'date_diligence', className:'table-bordered'},
+                    {data: 'try', className:'table-bordered',render:function(data, row, type, meta){
+                            if(data != null){
+                                if(data == 1){
+                                    return 'Primer diligenciamiento';
+                                }else if(data == 2){
+                                    return 'Segundo diligenciamiento';
+                                }
+                            }else{
+                                return '-';
+                            }
+                        }
+                    },
                     //dimension familiar
                     {data: null,className:'dimension', render:function(data, row, type, meta){
                             if(data.score_36 != null && data.score_36 != ''){
@@ -3725,20 +3737,6 @@
                     {data: 'pre_51',className:'table-bordered', render:function(data, row, type, meta){
                             if(data != null && data != ''){
                                 return data;
-                            }else{
-                                return '-';
-                            }
-                        }
-                    },
-                    
-                    {data: 'date_diligence', className:'table-bordered'},
-                    {data: 'try', className:'table-bordered',render:function(data, row, type, meta){
-                            if(data != null){
-                                if(data == 1){
-                                    return 'Primer diligenciamiento';
-                                }else if(data == 2){
-                                    return 'Segundo diligenciamiento';
-                                }
                             }else{
                                 return '-';
                             }

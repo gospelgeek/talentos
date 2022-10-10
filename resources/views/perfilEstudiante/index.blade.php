@@ -212,7 +212,8 @@
         "columns": [
             {data: 'name'},
             {data: 'cant_linea_1', render:function(data, type, row, meta){
-                    return data;
+                    var x = parseFloat(data);
+                    return x;
                 }
             },
             {data: 'cant_linea_2', render:function(data, type, row, meta){

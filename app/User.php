@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email', 
         'rol_id', 
         'password',
+        'check_lave'
     ];
 
 

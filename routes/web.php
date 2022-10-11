@@ -223,8 +223,10 @@ Route::get('icfes', 'IcfesController@index')->name('icfes');
 Route::get('datos_icfes', 'IcfesController@DatosIcfes')->name('datos_icfes');
 Route::get('resultado_area/{id_student}', 'IcfesController@resultadoArea')->name('resultado_icfes');
 Route::get('datos_icfes_lineas/{id_cohorte}', 'IcfesController@datosIcfesLinea1')->name('datos_icfes_lineas');
+Route::get('sabana_icfes_json/', 'IcfesController@archivoSabanaIcfes')->name('sabana_icfes_json');
 Route::get('sabana_icfes/', 'IcfesController@exportarSabanaIcfes')->name('sabana_icfes');
 Route::get('pruebaAreas/{id_student}/{id_icfes_test}', 'IcfesController@icfesResultadoArea')->name('prueba_area');
+Route::post('registro_icfes/', 'IcfesController@registroIcfes')->name('registro.icfes');
 
 Route::post('descarga_certificado/', 'CertificadoController@certificado')->name('pdf.calificacion');
 Route::get('certificado/', 'CertificadoController@index')->name('descarga.certificado');

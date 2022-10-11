@@ -11,6 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="shortcut icon" href="{{asset('img/logo.jpeg')}}">
   <title>@yield('title')</title>
   {!!Html::style('/css/css.css')!!}
+  @yield('icfes')
   {!!Html::style('/dashboard/dist/css/adminlte.min.css')!!}
   <!-- Google Font: Source Sans Pro -->
   {!!Html::style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback')!!}

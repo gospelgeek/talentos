@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Exports\SabanaIcfesExport;
+use App\IcfesStudent;
+use App\IcfesTest;
+use App\perfilEstudiante;
+use App\ResultByArea;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class IcfesController extends Controller
 {
@@ -16,7 +22,92 @@ class IcfesController extends Controller
 
     public function index()
     {
-        return view('icfes.index');
+       $pruebas = IcfesTest::all();
+       return view('icfes.index', compact('pruebas'));
+    }
+    
+    public function registroIcfes(Request $request)
+    {
+        $id_student = $request['identificacion'];
+        $url = $request['url'];
+        $r_areas = $request['r_areas'];
+        $lecturaC = $request['lecturaC'];
+        $mate = $request['mate'];
+        $cienS = $request['cienS'];
+        $cienN = $request['cienN'];
+        $ingles = $request['ingles'];
+        $form_areas = 0;    
+
+        $id_S = perfilEstudiante::where('document_number', $id_student)->first();
+
+        if($url == null){
+            $url ="";
+        }
+
+        if($r_areas == "on"){
+            $form_areas = 1;
+        }else{
+            $form_areas = 0;
+        }
+        
+
+        $datos = IcfesStudent::create([
+            'id_student' => $id_S->id,
+            'id_icfes_test' =>  $request['prueba'],
+            'total_score' => floatval($request['puntaje']),
+            'url_support' => $url
+        ]);
+
+        //dd($datos);
+
+        switch ($form_areas) {
+            case 1:
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 1,
+                    'qualification' => floatval($lecturaC)
+                ]);
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 2,
+                    'qualification' => floatval($mate)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 3,
+                    'qualification' => floatval($cienS)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 4,
+                    'qualification' => floatval($cienN)
+                ]);
+
+                ResultByArea::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_student' => $datos->id,
+                    'id_icfes_area' => 5,
+                    'qualification' => floatval($ingles)
+                ]);
+
+                return redirect('icfes');
+                break;
+            
+            case 0:
+                return redirect('icfes');                
+                break;
+
+            default:
+                return redirect('icfes');
+                break;
+        }
+
     }
 
     public function DatosIcfes()
@@ -42,6 +133,7 @@ class IcfesController extends Controller
         $datosNombre = [];
         $datosCalificacionS1 = [];
         $datosCalificacionS2 = [];
+        $datosCalificacionS3 = [];
         $datos = [];
 
         $nombres = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE 
@@ -59,10 +151,16 @@ class IcfesController extends Controller
         as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
          = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
          icfes_students.id_icfes_test = 2) ", [$id_student, $id_student]);
+        
+        $resultSimulacro3 = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas 
+        WHERE icfes_areas.id = result_by_areas.id_icfes_area) as nombre, result_by_areas.qualification 
+        as calificacion FROM result_by_areas WHERE id_student = ? AND result_by_areas.id_icfes_student
+        = (SELECT icfes_students.id FROM icfes_students WHERE icfes_students.id_student = ? AND 
+        icfes_students.id_icfes_test = 3) ", [$id_student, $id_student]);
 
         if ($nombres == []) {
             for ($i = 0; $i < 5; $i++) {
-                $datos[$i] = array("nombre" => "--", "simulacro1" => 0, "simulacro2" => 0);
+                $datos[$i] = array("nombre" => "--", "simulacro1" => 0, "simulacro2" => 0, "simulacro3" => 0);
             }
         } else {
             for ($i = 0; $i < 5; $i++) {
@@ -88,9 +186,19 @@ class IcfesController extends Controller
                     $datosCalificacionS2[$i] = $resultSimulacro2[$i]->calificacion;
                 }
             }
+            
+            if ($resultSimulacro3 == []) {
+                for ($i = 0; $i < 5; $i++) {
+                    $datosCalificacionS3[$i] = 0;
+                }
+            } else {
+                for ($i = 0; $i < 5; $i++) {
+                    $datosCalificacionS3[$i] = $resultSimulacro3[$i]->calificacion;
+                }
+            }
 
             for ($i = 0; $i < 5; $i++) {
-                $datos[$i] = array("nombre" => $datosNombre[$i], "simulacro1" => $datosCalificacionS1[$i], "simulacro2" => $datosCalificacionS2[$i]);
+                $datos[$i] = array("nombre" => $datosNombre[$i], "simulacro1" => $datosCalificacionS1[$i], "simulacro2" => $datosCalificacionS2[$i], "simulacro3" => $datosCalificacionS3[$i]);
             }
         }
 
@@ -127,7 +235,6 @@ class IcfesController extends Controller
 
         /*$s1 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [1230]);
-
         dd($s1[0]->total_score);*/
 
         $tamanioDatos = sizeof($estudiantes);
@@ -200,14 +307,21 @@ class IcfesController extends Controller
 
         return datatables()->of($result)->toJson();
     }
-
-    public function exportarSabanaIcfes()
+    
+    public function archivoSabanaIcfes()
     {
-
+        ini_set('max_execution_time', '600');
+        $nombreArchivo = "sabana_icfes_datos.json";
         $contador = 0;
         $total_s1 = 0;
+        $AreasS1 = [0, 0, 0, 0, 0];
+        $variacionS1 = [0,0];
         $total_s2 = 0;
+        $AreasS2 = [0, 0, 0, 0, 0];
+        $variacionS2 = [0,0];
         $total_s3 = 0;
+        $AreasS3 = [0, 0, 0, 0, 0];
+        $variacionS3 = [];
         $total_ie = 0;
         $total_if = 0;
         $data = [];
@@ -215,42 +329,15 @@ class IcfesController extends Controller
         $estudiantes = DB::select("SELECT student_profile.id as id, student_profile.name as nombre, 
         student_profile.lastname as apellidos, student_profile.document_number as documento, 
         (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort LIMIT 1) 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
-        student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
+        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups 
+        WHERE student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT 
+        (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
         FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
-        FROM student_profile");
+        FROM student_profile WHERE id_state = 1 AND id IN (SELECT icfes_students.id_student FROM icfes_students)");
 
         $tamanioDatos = sizeof($estudiantes);
 
         while ($contador < $tamanioDatos) {
-
-            $s1 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            if ($s1 == []) {
-                $total_s1 = 0;
-            } else {
-                $total_s1 = $s1[0]->total_score;
-            }
-
-            $s2 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = 2 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            if ($s2 == []) {
-                $total_s2 = 0;
-            } else {
-                $total_s2 = $s2[0]->total_score;
-            }
-
-            $s3 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = 3 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            if ($s3 == []) {
-                $total_s3 = 0;
-            } else {
-                $total_s3 = $s3[0]->total_score;
-            }
 
             $ie = DB::select("SELECT icfes_students.total_score FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 4 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
@@ -259,6 +346,116 @@ class IcfesController extends Controller
                 $total_ie = 0;
             } else {
                 $total_ie = $ie[0]->total_score;
+            }
+
+            $s1 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
+            WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
+
+            if ($s1 == []) {
+                $total_s1 = 0;
+                $AreasS1 = [0, 0, 0, 0, 0];
+            } else {
+                $total_s1 = $s1[0]->total_score;
+                $idPrueba = $s1[0]->id;
+                $lc = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 1", [$idPrueba]);
+                $mt = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 2", [$idPrueba]);
+                $cs = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 3", [$idPrueba]);
+                $cn = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 4", [$idPrueba]);
+                $in = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 5", [$idPrueba]);
+                $AreasS1[0] = $lc[0]->calificacion;
+                $AreasS1[1] = $mt[0]->calificacion;
+                $AreasS1[2] = $cs[0]->calificacion;
+                $AreasS1[3] = $cn[0]->calificacion;
+                $AreasS1[4] = $in[0]->calificacion;
+            }
+
+            if($estudiantes[$contador]->linea == "LINEA 1" || $estudiantes[$contador]->linea == "LINEA 2"){
+                $variacionS1[0] = round($total_s1 - $total_ie);
+                if($total_ie != 0){
+                    $variacionS1[1] = round(($variacionS1[0] / $total_ie) * 100);
+                }else{
+                    $variacionS1[1] = 0;
+                }
+            }else{
+                $variacionS1 = [0,0];
+            }
+
+            $s2 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
+            WHERE icfes_students.id_icfes_test = 2 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
+
+            if ($s2 == []) {
+                $total_s2 = 0;
+                $AreasS2 = [0, 0, 0, 0, 0];
+            } else {
+                $total_s2 = $s2[0]->total_score;
+                $idPrueba = $s2[0]->id;
+                $lc = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 1", [$idPrueba]);
+                $mt = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 2", [$idPrueba]);
+                $cs = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 3", [$idPrueba]);
+                $cn = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 4", [$idPrueba]);
+                $in = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 5", [$idPrueba]);
+                $AreasS2[0] = $lc[0]->calificacion;
+                $AreasS2[1] = $mt[0]->calificacion;
+                $AreasS2[2] = $cs[0]->calificacion;
+                $AreasS2[3] = $cn[0]->calificacion;
+                $AreasS2[4] = $in[0]->calificacion;
+            }
+
+            if($estudiantes[$contador]->linea == "LINEA 3"){
+                $variacionS2[0] = round($total_s2 - $total_s1);
+                if($total_s1 != 0){
+                    $variacionS2[1] = round(($variacionS2[0] / $total_s1) * 100);
+                }else{
+                    $variacionS2[1] = 0;
+                }
+                
+            }else{
+                $variacionS2[0] = round($total_s2 - $total_ie);
+                if($total_ie != 0){
+                    $variacionS2[1] = round(($variacionS2[0] / $total_ie) * 100);
+                }else{
+                    $variacionS2[1] = 0;
+                }
+                
+            }
+
+            $s3 = DB::select("SELECT icfes_students.total_score, icfes_students.id FROM icfes_students 
+            WHERE icfes_students.id_icfes_test = 3 AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
+
+            if ($s3 == []) {
+                $total_s3 = 0;
+                $AreasS3 = [0, 0, 0, 0, 0];
+            } else {
+                $total_s3 = $s3[0]->total_score;
+                $idPrueba = $s3[0]->id;
+                $lc = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 1", [$idPrueba]);
+                $mt = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 2", [$idPrueba]);
+                $cs = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 3", [$idPrueba]);
+                $cn = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 4", [$idPrueba]);
+                $in = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 5", [$idPrueba]);
+                $AreasS3[0] = $lc[0]->calificacion;
+                $AreasS3[1] = $mt[0]->calificacion;
+                $AreasS3[2] = $cs[0]->calificacion;
+                $AreasS3[3] = $cn[0]->calificacion;
+                $AreasS3[4] = $in[0]->calificacion;
+            }
+
+            if($estudiantes[$contador]->linea == "LINEA 3"){
+                $variacionS3[0] = round($total_s3 - $total_s1);
+                if($total_s1 != 0){
+                    $variacionS3[1] = round(($variacionS3[0] / $total_s1) * 100);
+                }else{
+                    $variacionS3[1] = 0;
+                }
+                
+            }else{
+                $variacionS3[0] = round($total_s3 - $total_ie);
+                if($total_ie != 0){
+                    $variacionS3[1] = round(($variacionS3[0] / $total_ie) * 100);
+                }else{
+                    $variacionS3[1] = 0;
+                }
+                
             }
 
             $if = DB::select("SELECT icfes_students.total_score FROM icfes_students 
@@ -277,25 +474,69 @@ class IcfesController extends Controller
                 "documento" => $estudiantes[$contador]->documento,
                 "linea" => $estudiantes[$contador]->linea,
                 "grupo" => $estudiantes[$contador]->grupo,
-                "ie" => $total_ie,
-                "s1" => $total_s1,
-                "s2" => $total_s2,
-                "s3" => $total_s3,
+                "LCie" => "-",
+                "MTie" => "-",
+                "CSie" => "-",
+                "CNie" => "-",
+                "INie" => "-",
+                "Tie" => $total_ie,
+                "LCs1" => $AreasS1[0],
+                "MTs1" => $AreasS1[1],
+                "CSs1" => $AreasS1[2],
+                "CNs1" => $AreasS1[3],
+                "INs1" => $AreasS1[4],
+                "Ts1" => $total_s1,
+                "PuntosVar1" => $variacionS1[0],
+                "PorVar1" => "$variacionS1[1] %",
+                "LCs2" => $AreasS2[0],
+                "MTs2" => $AreasS2[1],
+                "CSs2" => $AreasS2[2],
+                "CNs2" => $AreasS2[3],
+                "INs2" => $AreasS2[4],
+                "Ts2" => $total_s2,
+                "PuntosVar2" => $variacionS2[0],
+                "PorVar2" => "$variacionS2[1] %",
+                "LCs3" => $AreasS3[0],
+                "MTs3" => $AreasS3[1],
+                "CSs3" => $AreasS3[2],
+                "CNs3" => $AreasS3[3],
+                "INs3" => $AreasS3[4],
+                "Ts3" => $total_s3,
+                "PuntosVar3" => $variacionS3[0],
+                "PorVar3" => "$variacionS3[1] %",
+                "LCif" => "-",
+                "MTif" => "-",
+                "CSif" => "-",
+                "CNif" => "-",
+                "INif" => "-",
                 "if" => $total_if,
+                "PuntosVarIf" => "-",
+                "PorVarIf" => "-",
             );
 
             ++$contador;
         }
         $result = $data;
+        Storage::disk('local')->put($nombreArchivo, json_encode($result));
+        return redirect('icfes');
+        
+    }
 
-        $exportar = new SabanaIcfesExport($result);
+    public function exportarSabanaIcfes()
+    {
+        $datos = json_decode(Storage::get('sabana_icfes_datos.json'));
+        $exportar = new SabanaIcfesExport($datos);
 
         return Excel::download($exportar, "Sabana_icfes_comparativo.xlsx");
     }
 
     public function icfesResultadoArea($id_student, $id_icfes_test)
     {
-        $con = DB::select("SELECT id FROM icfes_students WHERE id_icfes_test = ? AND id_student = ?", [$id_icfes_test, $id_student]);
+         $con = DB::select("SELECT id FROM icfes_students WHERE id_icfes_test = ? AND id_student = ?", [$id_icfes_test, $id_student]);
+        if($con == []){
+            
+            return datatables()->of($con)->toJson();
+        }
         $idPrueba = $con[0]->id;
 
         $data = DB::select("SELECT id, (SELECT icfes_areas.name FROM icfes_areas WHERE icfes_areas.id = result_by_areas.id_icfes_area)

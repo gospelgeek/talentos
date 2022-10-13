@@ -33,7 +33,7 @@
                     		<td>{{ $asignatura->cohortcourse ? $asignatura->cohortcourse->name : null}}</td>                                  
                     		<td>
                         		<div class="row">                                  
-                            		<div class="col-xs-6 col-sm-6">
+                            		<div class="col-xs-9 col-sm-9">
                                 		<button disabled title="Ver Informacion" href="{{ route('grupos', $asignatura->id) }}" class="btn btn-block btn-sm  fa fa-eye">grupos</button>    
                             		</div>
                         		</div>       

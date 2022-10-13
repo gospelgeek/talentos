@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('datos_api/{user}/{token}/', 'api\DatosApiController');
 Route::get('reporte_notas_linea_1/{user}/{token}/', 'api\DatosApiController@notas_linea_1')->name('reporte_notas_linea_1');
-
+Route::get('reporte_notas_linea_2/{user}/{token}/', 'api\DatosApiController@notas_linea_2')->name('reporte_notas_linea_2');
+Route::get('reporte_notas_linea_3/{user}/{token}/', 'api\DatosApiController@notas_linea_3')->name('reporte_notas_linea_3');

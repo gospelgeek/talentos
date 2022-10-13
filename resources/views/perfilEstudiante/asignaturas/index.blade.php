@@ -34,7 +34,7 @@
                     		<td>
                         		<div class="row">                                  
                             		<div class="col-xs-6 col-sm-6">
-                                		<button disabled title="Ver Informacion" href="{{ route('grupos', $asignatura->id) }}" class="btn btn-block btn-sm  fa fa-eye"> grupos</button>    
+                                		<button disabled title="Ver Informacion" href="{{ route('grupos', $asignatura->id) }}" class="btn btn-block btn-sm  fa fa-eye">grupos</button>    
                             		</div>
                         		</div>       
                     		</td>

@@ -149,7 +149,7 @@
                         "lengthChange": false,
                         "searching": true,
                         "ordering": true,
-                        "order": [ 0, 'desc'],
+                        "order": [ 0, 'asc'],
                         "info": true,
                         "autoWidth": false,
                         "responsive": true,

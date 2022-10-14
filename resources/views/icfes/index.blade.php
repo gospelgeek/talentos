@@ -219,7 +219,7 @@
 
     _guardar.addEventListener('click', (e) => {
         e.preventDefault()
-        console.log(_formRegistro['identificacion'].value)
+       
 
         $.ajax({
             url: '/registro_icfes',
@@ -238,7 +238,6 @@
                 'ingles': _formRegistro['ingles'].value
             },
             success: function(result) {
-                console.log(result.mensaje)
                 toastr.info(`${result.mensaje}`);
                 _formRegistro.reset()
             },

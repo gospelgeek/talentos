@@ -222,7 +222,7 @@
         console.log(_formRegistro['identificacion'].value)
 
         $.ajax({
-            url: 'registro_icfes/',
+            url: '/registro_icfes',
             type: 'POST',
             data: {
                 '_token': _formRegistro['_token'].value,

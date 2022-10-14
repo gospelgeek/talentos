@@ -68,6 +68,12 @@
                 {data: 'date_diligence'},
                 {data: 'score', render:function(data, type, row, meta){
                         if(data != null && data != ''){
+                            if(data == 0){
+                                celda = '<div style="background-color: #7FFF00;">'+
+                                                '<td>'+'BAJO'+'</td>'+
+                                            '</div>';
+                                    return celda;
+                            }
                             if(data == 1){
                                 celda = '<div style="background-color: #7FFF00;">'+
                                                 '<td>'+'BAJO'+'</td>'+
@@ -87,12 +93,7 @@
                                     return celda;
                             }
                         }else{
-                            if(data == 0){
-                                celda = '<div style="background-color: #7FFF00;">'+
-                                                '<td>'+'BAJO'+'</td>'+
-                                            '</div>';
-                                    return celda;
-                            }else{
+                            else{
                                 return '-';
                             }
                         }

@@ -2200,4 +2200,42 @@ class SocioEducativoController extends Controller
             return datatables()->of($datos)->toJson();
         }
     }
+    
+    public function index_individual($id){
+
+        $datos = perfilEstudiante::withTrashed()->select('name', 'lastname')->where('id', $id)->firstOrfail();
+        $group = StudentGroup::select('id_group')->where('id_student', $id)->firstOrfail();
+        $grupo = Group::select('name', 'id_cohort')->where('id', $group->id_group)->firstOrfail();
+        $linea = Cohort::select('name')->where('id', $grupo->id_cohort)->firstOrfail();
+        $asignacion = AssignmentStudent::select('id_user')->where('id_student', $id)->firstOrfail();
+        $usuario = User::select('name', 'apellidos_user')->where('id', $asignacion->id_user)->firstOrfail();
+        
+        return view('socioeducativo.individual.index', compact('datos', 'grupo', 'linea', 'usuario'));
+    }
+
+    public function datos_caracterizacion_individual(Request $request){
+        //dd($request['parametro']);
+        $informacion = AnswersSocioeducationalForm::all()->where('id_student', $request['parametro']);
+        //dd($informacion);
+        $informacion->map(function($datos){
+            $datos->name_question = $datos->socioeducationalform ? $datos->socioeducationalform->question : null;
+            //dd($datos->try);
+            $primer_diligenciamiento = '';
+            $segundo_diligenciamiento = '';
+            switch($datos->try){
+                case '1':
+                    $primer_diligenciamiento = $datos->answers;
+                break;
+                case '2':
+                    $segundo_diligenciamiento = $datos->answers;
+                break;
+                default:                                        
+                    echo "ERROR POR FAVOR CONTACTE AL ADMINISTRADOR";
+                break;
+            }
+            $datos->primer_diligenciamiento = $primer_diligenciamiento;
+            $datos->segundo_diligenciamiento = $segundo_diligenciamiento; 
+        });
+        return datatables()->of($informacion)->toJson();
+    }
 }

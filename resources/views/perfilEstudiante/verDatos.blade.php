@@ -784,6 +784,9 @@
 					{{$verDatosPerfil->assignmentstudent->UserInfo->apellidos_user}}
 				@endif
 			@endif
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-primary btn-sm mt-3 mb-3" href="{{ route('caracterizacion_individual', ['id'=> $verDatosPerfil->id]) }}">Caracterización Individual</a>
 
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">

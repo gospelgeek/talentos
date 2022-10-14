@@ -207,17 +207,59 @@
 <script>
  
     const registroIcfes = document.getElementById('Ricfes')
+
     registroIcfes.addEventListener('click', () => {
         $('#modal-registro').modal('show')
     })
+
     const r_areas = document.getElementById('r_areas')
     const fm_areas = document.getElementById('form_areas')
+    const _guardar = document.getElementById('_guardar')
+    const _formRegistro = document.getElementById('_registro')
+
+    _guardar.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log(_formRegistro['identificacion'].value)
+
+        $.ajax({
+            url: '/registro_icfes/',
+            type: 'POST',
+            data: {
+                '_token': _formRegistro['_token'].value,
+                'identificacion': _formRegistro['identificacion'].value,
+                'url': _formRegistro['url'].value,
+                'r_areas': _formRegistro['r_areas'].value,
+                'prueba': _formRegistro['prueba'].value,
+                'puntaje': _formRegistro['puntaje'].value,
+                'lecturaC': _formRegistro['lecturaC'].value,
+                'mate': _formRegistro['mate'].value,
+                'cienS': _formRegistro['cienS'].value,
+                'cienN': _formRegistro['cienN'].value,
+                'ingles': _formRegistro['ingles'].value
+            },
+            success: function(result) {
+                console.log(result.mensaje)
+                toastr.info(`${result.mensaje}`);
+                _formRegistro.reset()
+            },
+            error: function(result) {
+                toastr.info('Ocurrio un error inesperado :(')
+            },
+        })
+       
+    })
+
+    if (r_areas.checked == true) {
+        fm_areas.removeAttribute('hidden')
+    }
+
     r_areas.addEventListener('change', () => {
-        if(r_areas.checked === true){
+        if (r_areas.checked === true) {
             fm_areas.removeAttribute('hidden')
         }
-        if(r_areas.checked === false){
-            fm_areas.setAttribute('hidden','')
+
+        if (r_areas.checked === false) {
+            fm_areas.setAttribute('hidden', '')
         }
     })
  

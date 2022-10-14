@@ -37,7 +37,8 @@
                             <th colspan="5">DIMENSIÓN ECONOMICA</th>
                             <th colspan="13">DIMENSIÓN ACADEMICA</th>
                             <th colspan="18">DIMENSIÓN INDIVIDUAL</th>
-                            <th colspan="18">SIN DIMENSIÓN</th>              
+                            <th colspan="18">SIN DIMENSIÓN</th>       
+                            <th rowspan="2">ACCIONES</th>
                         </tr>
 
                         <tr>
@@ -125,7 +126,8 @@
                             <th colspan="5">DIMENSIÓN ECONOMICA</th>
                             <th colspan="15">DIMENSIÓN ACADEMICA</th>
                             <th colspan="18">DIMENSIÓN INDIVIDUAL</th>
-                            <th colspan="20">SIN DIMENSIÓN</th>                            
+                            <th colspan="20">SIN DIMENSIÓN</th>  
+                            <th rowspan="2">ACCIONES</th>
                         </tr>
 
                         <tr>
@@ -1807,6 +1809,15 @@
                             }
                         }
                     },
+                    {data: null,className:'table-bordered', render:function(data, row, meta, type){
+                             mstr = '<div class="btn-group">'+
+                                        '<div class="col-xs-6 col-sm-6 btn-group">'+
+                                            '<tr id="1">'+'<td">'+'<a href="caracterizacion_individual/'+data.id_student+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
+                                            '</div>'+
+                                        '</div>';
+                            return mstr;
+                        }
+                    }
                 ],
                 "deferRender": true,"responsive": false,"processing": false, "fixedHeader": true,'serverSider':true,
                 "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
@@ -3742,6 +3753,15 @@
                             }
                         }
                     },
+                    {data: null,className:'table-bordered', render:function(data, row, meta, type){
+                             mstr = '<div class="btn-group">'+
+                                        '<div class="col-xs-6 col-sm-6 btn-group">'+
+                                            '<tr id="1">'+'<td">'+'<a href="caracterizacion_individual/'+data.id_student+'" class="ver btn btn-block fa fa-eye fa" title="Ver estudiante"></a>'+'</td>'+'</tr>'+
+                                            '</div>'+
+                                        '</div>';
+                            return mstr;
+                        }
+                    }
                 ],
                 "deferRender": true,"responsive": false,"processing": false, "fixedHeader": true,
                 'serverSider':true,

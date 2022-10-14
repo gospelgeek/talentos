@@ -302,3 +302,5 @@ Route::get('resumen_tabla_grupos', 'perfilEstudianteController@resumen_grupos_ta
 Route::get('caracterización_socioeducativa', 'SocioEducativoController@caracterizacion_index')->name('caracterización_socioeducativa');
 Route::get('datos.caracterizacion_marzo', 'SocioEducativoController@datos_caracterizacion')->name('datos.caracterizacion_marzo');
 Route::get('datos.caracterizacion_mayo', 'SocioEducativoController@datos_caracterizacion_mayo')->name('datos.caracterizacion_mayo');
+Route::get('caracterizacion_individual/{id}', 'SocioEducativoController@index_individual')->name('caracterizacion_individual');
+Route::get('datos.caracterizacion_individual', 'SocioEducativoController@datos_caracterizacion_individual')->name('datos.caracterizacion_individual');

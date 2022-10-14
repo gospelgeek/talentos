@@ -1,7 +1,7 @@
 <div class="modal" data-refresh="true" tabindex="-1" id="modal-registro">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form action="/registro_icfes" method="post">
+      <form id="_registro">
         @csrf
         <div id="recargar" class="modal-body">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -13,21 +13,28 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="">INGRESE LA IDENTIFICACION DEL ESTUDIANTE</label>
-                  <input class="form-control" type="text" name="identificacion" id="identificacion">
+                  <input class="form-control" list="estudiantes" type="text" name="identificacion" id="identificacion">
+                  <datalist id="estudiantes">
+                    @foreach ($estudiantes as $lista)
+                    <option value="{{$lista->document_number}}">{{$lista->name}} {{$lista->lastname}}</option>
+                    @endforeach
+                  </datalist>
                 </div>
                 <div class="col-md-6">
-                  <label for="">INGRESE EL PUNTAJE</label>
-                  <input class="form-control" type="number" name="puntaje" id="puntaje">
+                  <label for="">INGRESE EL PUNTAJE TOTAL</label>
+                  <input class="form-control" type="number" min="0" max="500" name="puntaje" id="puntaje">
                 </div>
               </div>
 
               <div>
                 <label for="">SELECCIONE LA PRUEBA </label>
-                <select class="form-control" name="prueba" id="prueba">
-                  <option selected value="--">--------------</option>
-                  @foreach($pruebas as $data)
-                  <option value="{{$data->id}}">{{$data->name}}</option>
-                  @endforeach
+                <select class="form-control" disabled>
+                  <option selected value="{{$pruebas[4]->id}}">{{$pruebas[4]->name}}</option>
+                  
+                </select>
+                <select class="form-control" name="prueba" id="prueba" hidden>
+                  <option selected value="{{$pruebas[4]->id}}">{{$pruebas[4]->name}}</option>
+                  
                 </select>
               </div>
 
@@ -45,7 +52,7 @@
               &nbsp;
               &nbsp;
               <div class="col-ms-4">
-                <input class="form-control mt-0" style="width: 20px; height: 19px;" type="checkbox" name="r_areas" id="r_areas">
+                <input class="form-control mt-0" checked style="width: 20px; height: 19px;" type="checkbox" name="r_areas" id="r_areas">
               </div>
             </div>
             <br>
@@ -82,8 +89,8 @@
           </div>
         </div>
         <div class="modal-footer">
+          <button id="_guardar" class="btn btn-primary" >GUARDAR Y CONTINUAR NUEVO REGISTRO</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-          <input class="btn btn-primary" type="submit" value="REGISTRAR">
         </div>
       </form>
     </div>

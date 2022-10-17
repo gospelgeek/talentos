@@ -30,7 +30,8 @@ class IcfesController extends Controller
     public function registroIcfes(Request $request)
     {
         if ($request->ajax()) {
-            $id_student = $request['identificacion'];
+            $iden = explode("-",$request['identificacion']);
+            $id_student = $iden[1];
             $url = $request['url'];
             $r_areas = $request['r_areas'];
             $lecturaC = $request['lecturaC'];

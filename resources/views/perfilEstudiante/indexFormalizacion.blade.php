@@ -37,6 +37,8 @@
                             <td><b>Regresó Tablet</b></td>
                             <td><b>Prestó Tablet</b></td>
                             <td><b>Serial Tablet Prestada</b></td>
+                            <td><b>Fecha Entrega</b></td>
+                            <td><b>Observación Entrega</b></td>
                             <td><b>Recibió Kit</b></td>
                             <td><b>Fecha Kit</b></td>
                             <td><b>Pre-registro-ICFES</b></td>

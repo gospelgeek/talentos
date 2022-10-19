@@ -15,17 +15,18 @@
                 <div id="div_1" class="col-sm-8 asistencias_mes" style="display:none">
                     <form name="mes">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>TODOS</label>&nbsp;<input type="radio" name="filtro" value="1" id="todos">&nbsp;&nbsp;
-                        <label>FEBRERO</label>&nbsp;<input type="radio" name="filtro" value="2" id="febrero">&nbsp;&nbsp;
-                        <label>MARZO</label>&nbsp;<input type="radio" name="filtro" value="3" id="marzo">&nbsp;&nbsp;
-                        <label>ABRIL</label>&nbsp;<input type="radio" name="filtro" value="4" id="abril">&nbsp;&nbsp;
-                        <label>MAYO</label>&nbsp;<input type="radio" name="filtro" value="5" id="mayo">&nbsp;&nbsp;
-                        <label>JUNIO</label>&nbsp;<input type="radio" name="filtro" value="6" id="junio">&nbsp;&nbsp;
-                        <label>JULIO</label>&nbsp;<input type="radio" name="filtro" value="7" id="julio">&nbsp;&nbsp;
-                        <label>AGOSTO</label>&nbsp;<input type="radio" name="filtro" value="8" id="agosto">&nbsp;&nbsp;
-                        <label>SEPTIEMBRE</label>&nbsp;<input type="radio" name="filtro" value="9" id="septiembre"><br>
+                        <label class="radio-inline">TODOS <input type="radio" name="filtro" value="1" id="todos" ></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">FEBRERO <input type="radio" name="filtro" value="2" id="febrero"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">MARZO <input type="radio" name="filtro" value="3" id="marzo"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">ABRIL <input type="radio" name="filtro" value="4" id="abril"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">MAYO  <input type="radio" name="filtro" value="5" id="mayo"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">JUNIO <input type="radio" name="filtro" value="6" id="junio"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">JULIO <input type="radio" name="filtro" value="7" id="julio"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">AGOSTO <input type="radio" name="filtro" value="8" id="agosto"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">SEPTIEMBRE <input type="radio" name="filtro" value="9" id="septiembre" checked></label>&nbsp;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>OCTUBRE</label>&nbsp;<input type="radio" name="filtro" value="10" id="octubre" checked>
+                        <label class="radio-inline">OCTUBRE <input type="radio" name="filtro" value="10" id="octubre"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline" style='display:none' >ACEPTACION <input type="radio" name="filtro" value="12" id="octubre"  style='display:none'></label>&nbsp;
                     </form>                     
                 </div>  
             </div>
@@ -33,6 +34,7 @@
                 <div class="filtroCohortes col-xs-6 col-md-12 col-sm-6">
                     <label>PRESENCIAL</label>&nbsp;<input type="checkbox" name="check" value="PRESENCIAl" id="presencial" checked>&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>VIRTUAL</label>&nbsp;<input type="checkbox" name="check" value="VIRTUAl" id="virtual" checked>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>FECHA ACEPTACION</label>&nbsp;<input type="checkbox" name="check" value="ACEPTACION" id="aceptacion" >&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
             <br>
@@ -50,6 +52,7 @@
                             <th rowspan="2" data-condition="{{auth()->user()->rol_id}}" id="encargado"> Profesional Encargado</th>
                             @endif
                             <th rowspan="2">Estado</th>
+                            <th rowspan="2"> Fecha Aceptacion</th>
                             <th colspan="10" style="border-left: black solid 2px;">ACCION CIUDADANA</th>
                             <th colspan="10" style="border-left: black solid 2px;">ARTES</th>
                             <th colspan="10" style="border-left: black solid 2px;">BIOLOGIA</th>
@@ -262,6 +265,7 @@
                             <th rowspan="2">Profesional Encargado</th>
                             @endif
                             <th rowspan="2">Estado</th>
+                            <th rowspan="2"> Fecha Aceptacion</th>
                             <th colspan="10" style="border-left: black solid 2px;">ACCION CIUDADANA</th>
                             <th colspan="10" style="border-left: black solid 2px;">ARTES</th>
                             <th colspan="10" style="border-left: black solid 2px;">BIOLOGIA</th>
@@ -462,6 +466,7 @@
                             <th rowspan="2">Profesional Encargado</th>
                             @endif
                             <th rowspan="2">Estado</th>
+                            <th rowspan="2"> Fecha Aceptacion</th>
                             <th colspan="10" style="border-left: black solid 2px;">BIOLOGIA</th>
                             <th colspan="10" style="border-left: black solid 2px;">DIALOGO</th>
                             <th colspan="10" style="border-left: black solid 2px;">CONSTITUCION</th>

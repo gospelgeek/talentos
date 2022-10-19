@@ -31,6 +31,8 @@ class Formalization extends Model
         'observation_loan',
         'loan_document_url',
         'transfer_line2_to_line1',
+        'deliver_date',
+        'observation_delivery',
     ];
     
     public static function formalizacion(){

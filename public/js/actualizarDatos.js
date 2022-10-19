@@ -510,6 +510,8 @@ $.ajax({
       'observacion_prestamo': $("#observation_loan").val(),
       'url_documento_prestamo': $("#loan_document_url").val(),
       'cambio_de_linea': $('input[name="transfer_line2_to_line1"]:checked').val(),
+      'fecha_entrega': $("#entrega_fecha").val(),
+      'observacion_entrega': $("#observacion_entrega").val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');

@@ -165,7 +165,14 @@
                     }
                 },
                 {data:'serial_loan_tablet'},
-                {data:'deliver_date'},
+                {data:'deliver_date', render:function(data, type,row, meta){
+                        if(data != null && data != ''){
+                            return data;
+                        }else{
+                            return '';
+                        }
+                    }
+                },
                 {data:'observation_delivery'},
                 {data: 'kit_date', render:function(data, type, row, meta){
                         if(data != null){

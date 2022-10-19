@@ -72,7 +72,14 @@ class FormalizacionController extends Controller
             }else{
                 $datos->name_profesional = null;
                 $datos->lastname_profesional = null;
-            } 
+            }
+            
+            $validar = StudentGroup::withTrashed()->where('id_student', $datos->id)->whereNotNull('deleted_at')->count();
+            if($validar > 0){
+                $datos->cambio_grupo = 1;
+            }else{
+                $datos->cambio_grupo = 2;
+            }
             //dd($datos);
         });
         //dd($collection_datos);
@@ -143,6 +150,8 @@ class FormalizacionController extends Controller
             $data->serial_loan_tablet = $request['serial_tablet_prestada'];
             $data->observation_loan = $request['observacion_prestamo'];
             $data->loan_document_url = $request['url_documento_prestamo'];
+            $data->deliver_date = $request['fecha_entrega'];
+            $data->observation_delivery = $request['observacion_entrega'];
 
             $pre_registro;
             if($request['pre_registro_icfes'] !== null){
@@ -259,6 +268,14 @@ class FormalizacionController extends Controller
         if($dataOld->transfer_line2_to_line1 != $data->transfer_line2_to_line1){
             $old[] = array('cambio_de_linea' => $dataOld->transfer_line2_to_line1);
             $new[] = array('cambio_de_linea' => $data->transfer_line2_to_line1);
+        }
+        if($dataOld->deliver_date != $data->deliver_date){
+            $old[] = array('fecha_entrega' => $dataOld->deliver_date);
+            $new[] = array('fecha_entrega' => $data->deliver_date);   
+        }
+        if($dataOld->observation_delivery != $data->observation_delivery){
+            $old[] = array('observacion_entrega' => $dataOld->observation_delivery);
+            $new[] = array('observacion_entrega' => $data->observation_delivery);   
         }
 
         $ip = User::getRealIP();

@@ -247,21 +247,111 @@
 <script>
  
     const registroIcfes = document.getElementById('Ricfes')
-
     registroIcfes.addEventListener('click', () => {
         $('#modal-registro').modal('show')
     })
-
     const r_areas = document.getElementById('r_areas')
     const fm_areas = document.getElementById('form_areas')
-
-    r_areas.addEventListener('change', () => {
-        if(r_areas.checked === true){
-            fm_areas.removeAttribute('hidden')
+    const _guardar = document.getElementById('_guardar')
+    const _formRegistro = document.getElementById('_registro')
+    _guardar.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log(_formRegistro['lecturaC'].validity.valid)
+        let iden = _formRegistro['identificacion'].validity.valid
+        let url = _formRegistro['url'].validity.valid
+        //let areas_formRegistro['r_areas'].validity.valid
+        let prueba = _formRegistro['prueba'].validity.valid
+        let puntaje = _formRegistro['puntaje'].validity.valid
+        let lecturaC = _formRegistro['lecturaC'].validity.valid
+        let mate = _formRegistro['mate'].validity.valid
+        let cienS = _formRegistro['cienS'].validity.valid
+        let cienN = _formRegistro['cienN'].validity.valid
+        let ingles = _formRegistro['ingles'].validity.valid
+        if (iden !== true) {
+            toastr.info('la identificacion no puede ser vacia')
         }
-
-        if(r_areas.checked === false){
-            fm_areas.setAttribute('hidden','')
+        if (url !== true) {
+            toastr.info('la url no puede ser vacia')
+        }
+        if (puntaje !== true) {
+            toastr.info('la informacion del puntaje no es valido, debe ser un numero de 0 a 500 y no puede ser vacio')
+        }
+        if (lecturaC !== true) {
+            toastr.info('el campo de lectura critica no puede ser vacio')
+        }
+        if (mate !== true) {
+            toastr.info('el campo de matematicas no puede ser vacio')
+        }
+        if (cienS !== true) {
+            toastr.info('el campo de ciencias sociales no puede ser vacio')
+        }
+        if (cienN !== true) {
+            toastr.info('el campo de ciencias naturales no puede ser vacio')
+        }
+        if (ingles !== true) {
+            toastr.info('el campo de ingles no puede ser vacio')
+        }
+        if (
+            iden === true &&
+            url === true &&
+            puntaje === true &&
+            lecturaC === true &&
+            mate === true &&
+            cienS === true &&
+            cienN === true &&
+            ingles === true
+        ) {
+            $.ajax({
+                url: '/registro_icfes',
+                type: 'POST',
+                data: {
+                    '_token': _formRegistro['_token'].value,
+                    'identificacion': _formRegistro['identificacion'].value,
+                    'url': _formRegistro['url'].value,
+                    'r_areas': _formRegistro['r_areas'].value,
+                    'prueba': _formRegistro['prueba'].value,
+                    'puntaje': _formRegistro['puntaje'].value,
+                    'lecturaC': _formRegistro['lecturaC'].value,
+                    'mate': _formRegistro['mate'].value,
+                    'cienS': _formRegistro['cienS'].value,
+                    'cienN': _formRegistro['cienN'].value,
+                    'ingles': _formRegistro['ingles'].value
+                },
+                success: function(result) {
+                    console.log(result.mensaje)
+                    toastr.info(`${result.mensaje}`);
+                    _formRegistro.reset()
+                },
+                error: function(result) {
+                    toastr.info('Ocurrio un error inesperado :(')
+                },
+            })
+        }
+    })
+    if (r_areas.checked == true) {
+        fm_areas.removeAttribute('hidden')
+        _formRegistro['lecturaC'].setAttribute('required', '')
+        _formRegistro['mate'].setAttribute('required', '')
+        _formRegistro['cienS'].setAttribute('required', '')
+        _formRegistro['cienN'].setAttribute('required', '')
+        _formRegistro['ingles'].setAttribute('required', '')
+    }
+    r_areas.addEventListener('change', () => {
+        if (r_areas.checked === true) {
+            fm_areas.removeAttribute('hidden')
+            _formRegistro['lecturaC'].setAttribute('required', '')
+            _formRegistro['mate'].setAttribute('required', '')
+            _formRegistro['cienS'].setAttribute('required', '')
+            _formRegistro['cienN'].setAttribute('required', '')
+            _formRegistro['ingles'].setAttribute('required', '')
+        }
+        if (r_areas.checked === false) {
+            fm_areas.setAttribute('hidden', '')
+            _formRegistro['lecturaC'].removeAttribute('required')
+            _formRegistro['mate'].removeAttribute('required')
+            _formRegistro['cienS'].removeAttribute('required')
+            _formRegistro['cienN'].removeAttribute('required')
+            _formRegistro['ingles'].removeAttribute('required')
         }
     })
  

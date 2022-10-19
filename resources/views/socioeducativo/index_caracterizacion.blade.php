@@ -42,68 +42,68 @@
                         </tr>
 
                         <tr>
-                            <th><div class="ancho-columna">¿Qué puedes decir sobre las relaciones con tu familia?</div></th>
-                            <th><div class="ancho-columna">¿Qué opina tu familia sobre la educación?</div></th>
-                            <th><div class="ancho-columna">¿Cómo son las relaciones en tu familia?</div></th>
+                            <th title="¿Qué puedes decir sobre las relaciones con tu familia?">¿Qué puedes decir...</th>
+                            <th title="¿Qué opina tu familia sobre la educación?">¿Qué opina tu...</th>
+                            <th title="¿Cómo son las relaciones en tu familia?">¿Cómo son las...</th>
                             <th>NIVEL RIESGO FAMILIAR</th>
 
-                            <th><div class="ancho-columna">Trabajas actualmente</th>
-                            <th><div class="ancho-columna">Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?</th>
-                            <th><div class="ancho-columna">¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?</th>
-                            <th><div class="ancho-columna">¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?</th>
+                            <th>Trabajas actualmente</th>
+                            <th title="Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?">Aproximadamente...</th>
+                            <th title="¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?">¿Consideras que el...</th>
+                            <th title="¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?">¿Cuál de las siguientes...</th>
                             <th>NIVEL RIESGO ECONOMICO</th>
 
-                            <th>¿Te consideras una persona disciplinada?</th>
-                            <th>¿Cómo te va con el cumplimiento de tus tareas y proyectos?</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Computador]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet domiciliario]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet por medio de datos moviles]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Smartphone o tablet]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Biblioteca con libros académicos]</th>
-                            <th>¿Cómo te sientes antes los retos de la Universidad?</th>
-                            <th>¿Qué tipo de estudiante crees que eres?</th>
-                            <th>¿Cómo has construido tus proyectos y expectativas?</th>
-                            <th>¿Qué has hecho para lograr alcanzar tus metas y desarrollar tus proyectos?</th>
-                            <th>¿Te inclinas por algún campo profesional?</th>
+                            <th title="¿Te consideras una persona disciplinada?">¿Te consideras...</th>
+                            <th title="¿Cómo te va con el cumplimiento de tus tareas y proyectos?">¿Cómo te va...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Computador]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet domiciliario]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet por medio de datos moviles]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Smartphone o tablet]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Biblioteca con libros académicos]">De los siguientes...</th>
+                            <th title="¿Cómo te sientes antes los retos de la Universidad?">¿Cómo te sientes...</th>
+                            <th title="¿Qué tipo de estudiante crees que eres?">¿Qué tipo de...</th>
+                            <th title="¿Cómo has construido tus proyectos y expectativas?">¿Cómo has construido...</th>
+                            <th title="¿Qué has hecho para lograr alcanzar tus metas y desarrollar tus proyectos?">¿Qué has hecho...</th>
+                            <th title="¿Te inclinas por algún campo profesional?">¿Te inclinas por...</th>
                             <th>NIVEL RIESGO ACADEMICO</th>
 
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Servicio en voluntariado (grupos comunitarios, defensa civil, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Otros cursos (idiomas, sistemas, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Ayudar en labores domésticas ]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Debo cuidar a alguien (hijos, familiar, etc)]</th>
-                            <th>¿Cuántas horas a la semana dedicas a estas actividades extracurriculares?</th>
-                            <th>¿Qué puedes decir acerca de tu historia personal?</th>
-                            <th>¿Qué puedes decir acerca de ti?</th>
-                            <th>¿Qué puedes decir sobre tu carácter?</th>
-                            <th>¿Buscas ayuda?</th>
-                            <th>¿Cómo está tu salud?</th>
-                            <th>¿Qué medidas has tomado frente a tu salud? </th>
-                            <th>¿Qué tipo de asesoría profesional has recibido?</th>
-                            <th>¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?</th>
-                            <th>¿Cómo está tu situación afectiva y/o de pareja?</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Servicio en voluntariado (grupos comunitarios, defensa civil, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Otros cursos (idiomas, sistemas, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Ayudar en labores domésticas ]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Debo cuidar a alguien (hijos, familiar, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Cuántas horas a la semana dedicas a estas actividades extracurriculares?">¿Cuántas horas a...</th>
+                            <th title="¿Qué puedes decir acerca de tu historia personal?">¿Qué puedes decir...</th>
+                            <th title="¿Qué puedes decir acerca de ti?">¿Qué puedes decir...</th>
+                            <th title="¿Qué puedes decir sobre tu carácter?">¿Qué puedes decir...</th>
+                            <th title="">¿Buscas ayuda?</th>
+                            <th title="">¿Cómo está tu salud?</th>
+                            <th title="¿Qué medidas has tomado frente a tu salud?">¿Qué medidas has...</th>
+                            <th title="¿Qué tipo de asesoría profesional has recibido?">¿Qué tipo de...</th>
+                            <th title="¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?">¿Cómo te sientes...</th>
+                            <th title="¿Cómo está tu situación afectiva y/o de pareja?">¿Cómo está tu...</th>
                             <th>¿Qué tal tus amistades?</th>
                             <th>NIVEL RIESGO INDIVIDUAL</th>
 
                             <th>Tipo de trabajo</th>
-                            <th>¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?</th>
-                            <th>¿Con quién vives actualmente?</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Padre]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Madre]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Hermanos]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Otra persona a cargo tuyo (abuelos, tios, etc)]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Espacio de estudio independiente]</th>
-                            <th>¿Cómo llegaste al programa? (selecciona la descripción que se aproxime mas a tu situación)</th>
-                            <th>¿Tus padres y/o abuelos han migrado a Cali desde otras zonas del país?Padres y/o Abuelos</th>
-                            <th>En caso de responder afirmativamente la anterior pregunta, escoge el departamento desde el que han migrado: </th>
-                            <th>¿Naciste en la ciudad de Cali?</th>
-                            <th>Si respondiste no: ¿Cuánto tiempo has vivido en la ciudad de Cali?</th>
-                            <th>¿En qué zona de la ciudad vives?</th>
-                            <th>¿Qué tanto conoces la ciudad?</th>
-                            <th>¿Cuál es el sector de la ciudad que mejor conoces?</th>
-                            <th>¿Cuál es el sector que más te gusta?</th>
-                            <th>¿Te gustaría continuar viviendo en Cali?</th>
+                            <th title="¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?">¿En que nivel...</th>
+                            <th title="¿Con quién vives actualmente?">¿Con quién...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Padre]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Madre]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Hermanos]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Otra persona a cargo tuyo (abuelos, tios, etc)]">¿Cual es el...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Espacio de estudio independiente]">De los siguientes...</th>
+                            <th title="¿Cómo llegaste al programa? (selecciona la descripción que se aproxime mas a tu situación)">¿Cómo llegaste al...</th>
+                            <th title="¿Tus padres y/o abuelos han migrado a Cali desde otras zonas del país?Padres y/o Abuelos">¿Tus padres y/o...</th>
+                            <th title="En caso de responder afirmativamente la anterior pregunta, escoge el departamento desde el que han migrado:">En caso de...</th>
+                            <th title="¿Naciste en la ciudad de Cali?">¿Naciste en la...</th>
+                            <th title="Si respondiste no: ¿Cuánto tiempo has vivido en la ciudad de Cali?">Si respondiste no:...</th>
+                            <th title="¿En qué zona de la ciudad vives?">¿En qué zona...</th>
+                            <th title="¿Qué tanto conoces la ciudad?">¿Qué tanto...</th>
+                            <th title="¿Cuál es el sector de la ciudad que mejor conoces?">¿Cuál es el...</th>
+                            <th title="¿Cuál es el sector que más te gusta?">¿Cuál es el...</th>
+                            <th title="¿Te gustaría continuar viviendo en Cali?">¿Te gustaría...</th>
                         </tr>
                     </thead>
                 </table>
@@ -130,73 +130,73 @@
                             <th rowspan="2">ACCIONES</th>
                         </tr>
 
-                        <tr>
-                            <th>¿Qué puedes decir sobre las relaciones con tu familia?</th>
-                            <th>¿Qué opina tu familia sobre la educación?</th>
-                            <th>¿Cómo son las relaciones en tu familia?</th>
+                       <tr>
+                            <th title="¿Qué puedes decir sobre las relaciones con tu familia?">¿Qué puedes decir...</th>
+                            <th title="¿Qué opina tu familia sobre la educación?">¿Qué opina tu...</th>
+                            <th title="¿Cómo son las relaciones en tu familia?">¿Cómo son las...</th>
                             <th>NIVEL RIESGO FAMILIAR</th>
 
                             <th>Trabajas actualmente</th>
-                            <th>Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?</th>
-                            <th>¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?</th>
-                            <th>¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?</th>
+                            <th title="Aproximadamente ¿cuantas horas a la semana dedicas a tu trabajo?">Aproximadamente...</th>
+                            <th title="¿Consideras que el trabajo que realizas puede afectar tu participación en el programa?">¿Consideras que el...</th>
+                            <th title="¿Cuál de las siguientes descripciones refleja de mejor forma tu situación económica actual?">¿Cuál de las siguientes...</th>
                             <th>NIVEL RIESGO ECONOMICO</th>
 
-                            <th>¿Te consideras una persona disciplinada?</th>
-                            <th>¿Cómo te va con el cumplimiento de tus tareas y proyectos?</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Computador]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet domiciliario]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet por medio de datos moviles]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Smartphone o tablet]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Biblioteca con libros académicos]</th>
-                            <th>¿Cómo te sientes antes los retos de la Universidad?</th>
-                            <th>¿Qué tipo de estudiante crees que eres?</th>
-                            <th>¿Cómo has construido tus proyectos y expectativas?</th>
-                            <th>¿Qué has hecho para lograr alcanzar tus metas y desarrollar tus proyectos?</th>
-                            <th>¿Te inclinas por algún campo profesional?</th>
-                            <th>¿Tienes grupos de estudio o compañeros(as) con los que te reúnes para realizar tus actividades?</th>
-                            <th>¿Cuantas horas al día aproximadamente dedicas a estudiar de manera independiente? (Es decir, además de las clases que tomas en el programa)</th>
-                            <th>NIVEL RIESGO ACADEMICO</th>
+                            <th title="¿Te consideras una persona disciplinada?">¿Te consideras...</th>
+                            <th title="¿Cómo te va con el cumplimiento de tus tareas y proyectos?">¿Cómo te va...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Computador]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet domiciliario]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Internet por medio de datos moviles]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Smartphone o tablet]">De los siguientes...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Biblioteca con libros académicos]">De los siguientes...</th>
+                            <th title="¿Cómo te sientes antes los retos de la Universidad?">¿Cómo te sientes...</th>
+                            <th title="¿Qué tipo de estudiante crees que eres?">¿Qué tipo de...</th>
+                            <th title="¿Cómo has construido tus proyectos y expectativas?">¿Cómo has construido...</th>
+                            <th title="¿Qué has hecho para lograr alcanzar tus metas y desarrollar tus proyectos?">¿Qué has hecho...</th>
+                            <th title="¿Te inclinas por algún campo profesional?">¿Te inclinas por...</th>
+                            <th title="¿Tienes grupos de estudio o compañeros(as) con los que te reúnes para realizar tus actividades?">¿Tienes grupos de...</th>
+                            <th title="¿Cuantas horas al día aproximadamente dedicas a estudiar de manera independiente? (Es decir, además de las clases que tomas en el programa)">¿Cuantas horas al...</th>
+                            <th>NIVEL RIESGO ECONOMICO</th>
 
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Servicio en voluntariado (grupos comunitarios, defensa civil, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Otros cursos (idiomas, sistemas, etc)]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Ayudar en labores domésticas ]</th>
-                            <th>¿Actualmente realizas alguna actividad extracurricular? [Debo cuidar a alguien (hijos, familiar, etc)]</th>
-                            <th>¿Cuántas horas a la semana dedicas a estas actividades extracurriculares?</th>
-                            <th>¿Qué puedes decir acerca de tu historia personal?</th>
-                            <th>¿Qué puedes decir acerca de ti?</th>
-                            <th>¿Qué puedes decir sobre tu carácter?</th>
-                            <th>¿Buscas ayuda?</th>
-                            <th>¿Cómo está tu salud?</th>
-                            <th>¿Qué medidas has tomado frente a tu salud? </th>
-                            <th>¿Qué tipo de asesoría profesional has recibido?</th>
-                            <th>¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?</th>
-                            <th>¿Cómo está tu situación afectiva y/o de pareja?</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Práctica de un deporte a nivel competitivo]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Prácticas artísticas (música, teatro, pintura, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Servicio en voluntariado (grupos comunitarios, defensa civil, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Otros cursos (idiomas, sistemas, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Ayudar en labores domésticas ]">¿Actualmente realizas...</th>
+                            <th title="¿Actualmente realizas alguna actividad extracurricular? [Debo cuidar a alguien (hijos, familiar, etc)]">¿Actualmente realizas...</th>
+                            <th title="¿Cuántas horas a la semana dedicas a estas actividades extracurriculares?">¿Cuántas horas a...</th>
+                            <th title="¿Qué puedes decir acerca de tu historia personal?">¿Qué puedes decir...</th>
+                            <th title="¿Qué puedes decir acerca de ti?">¿Qué puedes decir...</th>
+                            <th title="¿Qué puedes decir sobre tu carácter?">¿Qué puedes decir...</th>
+                            <th title="">¿Buscas ayuda?</th>
+                            <th title="">¿Cómo está tu salud?</th>
+                            <th title="¿Qué medidas has tomado frente a tu salud?">¿Qué medidas has...</th>
+                            <th title="¿Qué tipo de asesoría profesional has recibido?">¿Qué tipo de...</th>
+                            <th title="¿Cómo te sientes respecto al tema de la identidad de género y la identidad sexual?">¿Cómo te sientes...</th>
+                            <th title="¿Cómo está tu situación afectiva y/o de pareja?">¿Cómo está tu...</th>
                             <th>¿Qué tal tus amistades?</th>
                             <th>NIVEL RIESGO INDIVIDUAL</th>
 
                             <th>Tipo de trabajo</th>
-                            <th>¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?</th>
-                            <th>¿Con quién vives actualmente?</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Padre]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Madre]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Hermanos]</th>
-                            <th>¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Otra persona a cargo tuyo (abuelos, tios, etc)]</th>
-                            <th>De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Espacio de estudio independiente]</th>
-                            <th>¿Cómo llegaste al programa? (selecciona la descripción que se aproxime mas a tu situación)</th>
-                            <th>¿Tus padres y/o abuelos han migrado a Cali desde otras zonas del país?Padres y/o Abuelos</th>
-                            <th>En caso de responder afirmativamente la anterior pregunta, escoge el departamento desde el que han migrado: </th>
-                            <th>¿Naciste en la ciudad de Cali?</th>
-                            <th>Si respondiste no: ¿Cuánto tiempo has vivido en la ciudad de Cali?</th>
-                            <th>¿En qué zona de la ciudad vives?</th>
-                            <th>¿Qué tanto conoces la ciudad?</th>
-                            <th>¿Cuál es el sector de la ciudad que mejor conoces?</th>
-                            <th>¿Cuál es el sector que más te gusta?</th>
-                            <th>¿Te gustaría continuar viviendo en Cali?</th>
-                            <th>¿Qué programas académicos tienes en mente?</th>
-                            <th>¿Qué campos de conocimiento o acción te interesan?</th>
+                            <th title="¿En que nivel dependes de tu familia para cubrir tus gastos (vivienda, transporte, estudio, alimentación, etc.)?">¿En que nivel...</th>
+                            <th title="¿Con quién vives actualmente?">¿Con quién...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Padre]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Madre]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Hermanos]">¿Cual es el...</th>
+                            <th title="¿Cual es el máximo nivel educativo alcanzado por tus padres, hermanos u otra persona a cargo de tu educación? [Otra persona a cargo tuyo (abuelos, tios, etc)]">¿Cual es el...</th>
+                            <th title="De los siguientes elementos ¿cuáles están a tu disposición en tu hogar? [Espacio de estudio independiente]">De los siguientes...</th>
+                            <th title="¿Cómo llegaste al programa? (selecciona la descripción que se aproxime mas a tu situación)">¿Cómo llegaste al...</th>
+                            <th title="¿Tus padres y/o abuelos han migrado a Cali desde otras zonas del país?Padres y/o Abuelos">¿Tus padres y/o...</th>
+                            <th title="En caso de responder afirmativamente la anterior pregunta, escoge el departamento desde el que han migrado:">En caso de...</th>
+                            <th title="¿Naciste en la ciudad de Cali?">¿Naciste en la...</th>
+                            <th title="Si respondiste no: ¿Cuánto tiempo has vivido en la ciudad de Cali?">Si respondiste no:...</th>
+                            <th title="¿En qué zona de la ciudad vives?">¿En qué zona...</th>
+                            <th title="¿Qué tanto conoces la ciudad?">¿Qué tanto...</th>
+                            <th title="¿Cuál es el sector de la ciudad que mejor conoces?">¿Cuál es el...</th>
+                            <th title="¿Cuál es el sector que más te gusta?">¿Cuál es el...</th>
+                            <th title="¿Te gustaría continuar viviendo en Cali?">¿Te gustaría...</th>
+                            <th title="¿Qué programas académicos tienes en mente?">¿Qué programas...</th>
+                            <th title="¿Qué campos de conocimiento o acción te interesan?">¿Qué campos de...</th>
                         </tr>
                     </thead>
                 </table>

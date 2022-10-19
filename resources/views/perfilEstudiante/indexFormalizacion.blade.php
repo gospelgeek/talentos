@@ -20,6 +20,7 @@
                     <thead>                    
                         <tr>
                             <td><b>Nombres</b></td>
+                            <td><b>Apellidos</b></td>
                             <td><b>Tipo Doc.</b></td>
                             <td><b>Nº Documento</b></td>
                             <td><b>Email</b></td>
@@ -68,18 +69,8 @@
             },
 
             "columns": [
-                {data: null, render:function(data, type, row, meta) {
-                        if(data.name !== null){
-                            var celda;
-                            celda = '<div>'+
-                                    '<td>'+data.name+' '+data.lastname+'</td>'+
-                                '</div>';
-                            return celda;
-                        }else{
-                            return null;
-                        }
-                    }
-                },
+                {data: 'name'},
+                {data: 'lastname'},
                 {data: 'tipo_documento'},
                 {data: 'document_number'},
                 {data: 'email', width: '50px'},
@@ -96,6 +87,18 @@
                             }
                         }else{
                             return null;
+                        }
+                    }
+                },
+                {data: 'cambio_grupo', render:function(data,type, row, meta){
+                    //console.log(data);
+                        if(data == 1){
+                            var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                            //return 'si hizo';    
+                        }
+                        if(data == 2){
+                            return '';
                         }
                     }
                 },
@@ -303,42 +306,39 @@
             });
         });
         
-        
-        document.getElementById('detalle_estado').checked = true;
+        var column2 = table.column(26);
+        var column3 = table.column(27);
+        var column4 = table.column(28);
+        var column5 = table.column(29);
+        column2.visible(false);
+        column3.visible(false);
+        column4.visible(false);
+        column5.visible(false);
+        $(".prfsnal").hide();
+        $(".mtvo").hide();
+        $(".fcha").hide();
+        $(".urlrtro").hide();
 
         $('.dtllE').on('change', function() {
-
             var chek_detalle = $('#detalle_estado').is(":checked");
             if(chek_detalle){
-                var column2 = table.column(21);
-                var column3 = table.column(22);
-                var column4 = table.column(23);
-                var column5 = table.column(24);
-                
                 column2.visible(true);
                 column3.visible(true);
                 column4.visible(true);
                 column5.visible(true);
-
                 $(".prfsnal").show();
                 $(".mtvo").show();
                 $(".fcha").show();
                 $(".urlrtro").show();
-
             }else if(!chek_detalle){
-                $(".prfsnal").hide();
-                $(".mtvo").hide();
-                $(".fcha").hide();
-                $(".urlrtro").hide();
-                var column2 = table.column(21);
-                var column3 = table.column(22);
-                var column4 = table.column(23);
-                var column5 = table.column(24);
-                
                 column2.visible(false);
                 column3.visible(false);
                 column4.visible(false);
                 column5.visible(false);
+                $(".prfsnal").hide();
+                $(".mtvo").hide();
+                $(".fcha").hide();
+                $(".urlrtro").hide();
             }
         });
     });

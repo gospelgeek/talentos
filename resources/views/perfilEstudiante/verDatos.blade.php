@@ -1118,6 +1118,18 @@
             				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
 						</div>
 						@endif
+                        <div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Fecha Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<input class="form-control" type="date" name="deliver_date" id="entrega_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->deliver_date : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Observaciòn Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="observation_delivery" id="observacion_entrega" value="{{ old('observation_delivery', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_delivery : null) }}">
+						</div>
 					</div>
 					<hr>
 					<div class="row">
@@ -1355,6 +1367,18 @@
             				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
 						</div>
 						@endif
+                        <div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Fecha Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<input readonly class="form-control" type="date" name="deliver_date" id="entrega_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->deliver_date : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Observaciòn Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<input readonly class="form-control" type="text" name="observation_delivery" id="observacion_entrega" value="{{ old('observation_delivery', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_delivery : null) }}">
+						</div>
 					</div>
 					<hr>
 					<div class="row">

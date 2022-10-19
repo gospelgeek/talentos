@@ -1914,8 +1914,8 @@ class perfilEstudianteController extends Controller
                     //$month_start = strtotime('first day of October 2022');
                     //$this->month_start = date('Y/m/d', $month_start);
                     //dd($this->month_start);
-                    $month_end = strtotime('last day of September 2022');
-                    $this->month_end = date('Y/m/d', $month_end);
+                    $month_end = Carbon::now();
+                    $this->month_end = $month_end->format('Y/m/d');
                     //dd($this->month_end,$this->month_start);
                     $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
                     $estudiantes = collect($estudiantes);
@@ -2337,8 +2337,8 @@ class perfilEstudianteController extends Controller
                     //$month_start = strtotime('first day of October 2022');
                     //$this->month_start = date('Y/m/d', $month_start);
                     //dd($this->month_start);
-                    $month_end = strtotime('last day of September 2022');
-                    $this->month_end = date('Y/m/d', $month_end);
+                    $month_end = Carbon::now();
+                    $this->month_end = $month_end->format('Y/m/d');
                     //dd($this->month_end,$this->month_start);
                     $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
                     $estudiantes = collect($estudiantes);
@@ -2760,8 +2760,8 @@ class perfilEstudianteController extends Controller
                     //$month_start = strtotime('first day of October 2022');
                     //$this->month_start = date('Y/m/d', $month_start);
                     //dd($this->month_start);
-                    $month_end = strtotime('last day of September 2022');
-                    $this->month_end = date('Y/m/d', $month_end);
+                    $month_end = Carbon::now();
+                    $this->month_end = $month_end->format('Y/m/d');
                     //dd($this->month_end,$this->month_start);
                     $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
                     $estudiantes = collect($estudiantes);

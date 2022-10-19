@@ -1904,6 +1904,49 @@ class perfilEstudianteController extends Controller
                     return datatables()->of($estudiantes)->toJson();       
                 }
                 break;    
+            case '12':
+                if(Storage::disk('local')->exists('asistencias_linea_1_aceptacion.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_1_aceptacion.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    //$month_start = strtotime('first day of October 2022');
+                    //$this->month_start = date('Y/m/d', $month_start);
+                    //dd($this->month_start);
+                    $month_end = strtotime('last day of September 2022');
+                    $this->month_end = date('Y/m/d', $month_end);
+                    //dd($this->month_end,$this->month_start);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea1();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                        
+                        $fecha_aceptacion = Formalization::where('id_student',$estudiante->id)->select('acceptance_date')->firstOrfail();
+                        //dd($fecha_aceptacion->acceptance_date,$estudiante->id,$this->month_end);
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->fecha_aceptacion = $fecha_aceptacion->acceptance_date;
+                        //dd($estudiante);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_1_aceptacion.json', $estudiantes);
+
+                    $asistencias  = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
             default:
                 echo "ERROR DE MES..";
                 break;
@@ -2284,6 +2327,49 @@ class perfilEstudianteController extends Controller
                     return datatables()->of($estudiantes)->toJson();       
                 }
                 break;    
+            case '12':
+                if(Storage::disk('local')->exists('asistencias_linea_2_aceptacion.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_2_aceptacion.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    //$month_start = strtotime('first day of October 2022');
+                    //$this->month_start = date('Y/m/d', $month_start);
+                    //dd($this->month_start);
+                    $month_end = strtotime('last day of September 2022');
+                    $this->month_end = date('Y/m/d', $month_end);
+                    //dd($this->month_end,$this->month_start);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea2();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                        
+                        $fecha_aceptacion = Formalization::where('id_student',$estudiante->id)->select('acceptance_date')->firstOrfail();
+                        //dd($fecha_aceptacion->acceptance_date,$estudiante->id,$this->month_end);
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->fecha_aceptacion = $fecha_aceptacion->acceptance_date;
+                        //dd($estudiante);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_2_aceptacion.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
             default:
                 echo "ERROR DE MES..";
                 break;
@@ -2656,6 +2742,49 @@ class perfilEstudianteController extends Controller
 
                     $estudiantes = json_encode($estudiantes);
                     Storage::disk('local')->put('asistencias_linea_3_octubre.json', $estudiantes);
+
+                    $asistencias    = json_decode($estudiantes);
+
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();       
+                }
+                break;    
+            case '12':
+                if(Storage::disk('local')->exists('asistencias_linea_3_aceptacion.json')) {
+                    $asistencias    = json_decode(Storage::get('asistencias_linea_3_aceptacion.json'));
+                    $estudiantes = collect($asistencias);
+               
+                    return datatables()->of($estudiantes)->toJson();
+                }else{
+                    //$month_start = strtotime('first day of October 2022');
+                    //$this->month_start = date('Y/m/d', $month_start);
+                    //dd($this->month_start);
+                    $month_end = strtotime('last day of September 2022');
+                    $this->month_end = date('Y/m/d', $month_end);
+                    //dd($this->month_end,$this->month_start);
+                    $estudiantes = perfilEstudiante::Estudiantes_cohort_linea3();
+                    $estudiantes = collect($estudiantes);
+                    $estudiantes->map(function($estudiante){
+                        
+                        $fecha_aceptacion = Formalization::where('id_student',$estudiante->id)->select('acceptance_date')->firstOrfail();
+                        //dd($fecha_aceptacion->acceptance_date,$estudiante->id,$this->month_end);
+                        $estudiante->cursos_virtuales = CourseMoodle::asistencias_virtuales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_virtuales = CourseMoodle::asistencias_virtuales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->cursos_presenciales = CourseMoodle::asistencias_presenciales($estudiante->grupo,$estudiante->id_moodle,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->calificadas_presenciales = CourseMoodle::asistencias_presenciales_calificadas($estudiante->grupo,$fecha_aceptacion->acceptance_date,$this->month_end);
+
+                        $estudiante->fecha_aceptacion = $fecha_aceptacion->acceptance_date;
+                        //dd($estudiante);
+                        unset($estudiante->grupo);
+                        unset($estudiante->id_moodle);
+                    });
+
+                    $estudiantes = json_encode($estudiantes);
+                    Storage::disk('local')->put('asistencias_linea_3_aceptacion.json', $estudiantes);
 
                     $asistencias    = json_decode($estudiantes);
 

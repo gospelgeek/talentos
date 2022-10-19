@@ -28,6 +28,7 @@
                             <td><b>Grupo</b></td>
                             <td><b>Cohorte</b></td>
                             <td><b>Camb. Linea</b></td>
+                            <td><b>Camb. Grupo</b></td>
                             <td><b>Estado</b></td>
                             <td><b>Aceptación</b></td>
                             <td><b>Fecha Aceptación</b></td>

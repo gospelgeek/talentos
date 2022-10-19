@@ -23,8 +23,8 @@ class IcfesController extends Controller
     public function index()
     {
        $pruebas = IcfesTest::all();
-        $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
-       return view('icfes.index', compact('pruebas'));
+       $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
+       return view('icfes.index', compact('pruebas', 'estudiantes'));
     }
     
     public function registroIcfes(Request $request)

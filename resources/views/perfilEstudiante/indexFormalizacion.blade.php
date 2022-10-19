@@ -173,7 +173,14 @@
                         }
                     }
                 },
-                {data:'observation_delivery'},
+                {data:'observation_delivery', render:function(data, type,row, meta){
+                        if(data != null && data != ''){
+                            return data;
+                        }else{
+                            return '';
+                        }
+                    }
+                },
                 {data: 'kit_date', render:function(data, type, row, meta){
                         if(data != null){
                             var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';

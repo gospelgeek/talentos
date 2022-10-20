@@ -1822,13 +1822,10 @@
                 "deferRender": true,"responsive": false,"processing": false, "fixedHeader": true,'serverSider':true,
                 "paging": true, "lengthChange": false, "autoWidth": false,"order": [[0,'asc']],
                 "dom":'Bfrtip',
-                fixedColumns:{
-                    scrollY: false,
-                    scrollX: true,
-                    scrollCollapse: true,
-                    fixedColumns:{
-                        leftColumns: 6
-                    },
+                scrollY:        false,
+                scrollX:        true,
+                scrollCollapse: true,fixedColumns:{
+                    leftColumns: 6
                 },
                 buttons:{
                     dom:{

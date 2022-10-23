@@ -573,7 +573,7 @@ class IcfesController extends Controller
         (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
         FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
         FROM student_profile WHERE id_state = 1 AND 
-        id IN (SELECT icfes_students.id_student FROM icfes_students WHERE icfes_students.id_icfes_test = ?) limit 10 ", [$test]);
+        id IN (SELECT icfes_students.id_student FROM icfes_students WHERE icfes_students.id_icfes_test = ?) ", [$test]);
 
         //dd($estudiantes);
 

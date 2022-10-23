@@ -43,70 +43,77 @@ class IcfesController extends Controller
            
             $id_S = perfilEstudiante::where('document_number', $id_student)->first();
 
-            if ($url == null) {
-                $url = "";
-            }
+            $comprobacion = IcfesStudent::where('id_student', $id_S->id)->where('id_icfes_test', 5)->first();
 
-            if ($r_areas == "on") {
-                $form_areas = 1;
+            if ($comprobacion != null) {
+                return array("mensaje" => "el estudiante ya tiene registros en icfes de salida");
             } else {
-                $form_areas = 0;
-            }
+
+                if ($url == null) {
+                    $url = "";
+                }
+
+                if ($r_areas == "on") {
+                    $form_areas = 1;
+                } else {
+                    $form_areas = 0;
+                }
 
 
-            $datos = IcfesStudent::create([
-                'id_student' => $id_S->id,
-                'id_icfes_test' =>  $request['prueba'],
-                'total_score' => floatval($request['puntaje']),
-                'url_support' => $url
-            ]);
+                $datos = IcfesStudent::create([
+                    'id_student' => $id_S->id,
+                    'id_icfes_test' =>  $request['prueba'],
+                    'total_score' => floatval($request['puntaje']),
+                    'url_support' => $url
+                ]);
 
-            switch ($form_areas) {
-                case 1:
-                    ResultByArea::create([
-                        'id_student' => $id_S->id,
-                        'id_icfes_student' => $datos->id,
-                        'id_icfes_area' => 1,
-                        'qualification' => floatval($lecturaC)
-                    ]);
-                    ResultByArea::create([
-                        'id_student' => $id_S->id,
-                        'id_icfes_student' => $datos->id,
-                        'id_icfes_area' => 2,
-                        'qualification' => floatval($mate)
-                    ]);
+                switch ($form_areas) {
+                    case 1:
+                        ResultByArea::create([
+                            'id_student' => $id_S->id,
+                            'id_icfes_student' => $datos->id,
+                            'id_icfes_area' => 1,
+                            'qualification' => floatval($lecturaC)
+                        ]);
+                        ResultByArea::create([
+                            'id_student' => $id_S->id,
+                            'id_icfes_student' => $datos->id,
+                            'id_icfes_area' => 2,
+                            'qualification' => floatval($mate)
+                        ]);
 
-                    ResultByArea::create([
-                        'id_student' => $id_S->id,
-                        'id_icfes_student' => $datos->id,
-                        'id_icfes_area' => 3,
-                        'qualification' => floatval($cienS)
-                    ]);
+                        ResultByArea::create([
+                            'id_student' => $id_S->id,
+                            'id_icfes_student' => $datos->id,
+                            'id_icfes_area' => 3,
+                            'qualification' => floatval($cienS)
+                        ]);
 
-                    ResultByArea::create([
-                        'id_student' => $id_S->id,
-                        'id_icfes_student' => $datos->id,
-                        'id_icfes_area' => 4,
-                        'qualification' => floatval($cienN)
-                    ]);
+                        ResultByArea::create([
+                            'id_student' => $id_S->id,
+                            'id_icfes_student' => $datos->id,
+                            'id_icfes_area' => 4,
+                            'qualification' => floatval($cienN)
+                        ]);
 
-                    ResultByArea::create([
-                        'id_student' => $id_S->id,
-                        'id_icfes_student' => $datos->id,
-                        'id_icfes_area' => 5,
-                        'qualification' => floatval($ingles)
-                    ]);
+                        ResultByArea::create([
+                            'id_student' => $id_S->id,
+                            'id_icfes_student' => $datos->id,
+                            'id_icfes_area' => 5,
+                            'qualification' => floatval($ingles)
+                        ]);
 
-                    return array("mensaje" => "guardado exitoso");
-                    break;
+                        return array("mensaje" => "guardado exitoso");
+                        break;
 
-                case 0:
-                    return array("mensaje" => "guardado exitoso");
-                    break;
+                    case 0:
+                        return array("mensaje" => "guardado exitoso");
+                        break;
 
-                default:
-                    return array("mensaje" => "guardado exitoso");
-                    break;
+                    default:
+                        return array("mensaje" => "guardado exitoso");
+                        break;
+                }
             }
         }
 

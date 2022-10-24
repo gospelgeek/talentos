@@ -287,7 +287,7 @@
             scrollY:        false,
             scrollX:        true,
             scrollCollapse: true,fixedColumns:{
-                leftColumns: 7
+                leftColumns: 8
             },
             "buttons": [
                 "copy",

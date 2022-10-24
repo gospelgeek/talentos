@@ -3195,26 +3195,32 @@ class perfilEstudianteController extends Controller
         $activos_linea1 = perfilEstudiante::activos_linea1();
         $desertores_linea1 = perfilEstudiante::desertados_linea1();
         $desestimientos_linea1 = perfilEstudiante::desestimientos_linea1();
+        $retiros_linea1 = perfilEstudiante::retiros_linea1();
 
         $activos_linea2 = perfilEstudiante::activos_linea2();
         $desertores_linea2 = perfilEstudiante::desertados_linea2();
         $desestimientos_linea2 = perfilEstudiante::desestimientos_linea2();
+        $retiros_linea2 = perfilEstudiante::retiros_linea2();
 
         $activos_linea3 = perfilEstudiante::activos_linea3();
         $desertores_linea3 = perfilEstudiante::desertados_linea3();
         $desestimientos_linea3 = perfilEstudiante::desestimientos_linea3();
+        $retiros_linea3 = perfilEstudiante::retiros_linea3();
         
         $linea1_activos;
         $linea1_desertores;
         $linea1_desestimientos;
+        $linea1_retiros;
 
         $linea2_activos;
         $linea2_desertores;
         $linea2_desestimientos;
+        $linea2_retiros;
 
         $linea3_activos;
         $linea3_desertores;
         $linea3_desestimientos;
+        $linea3_retiros;
 
         foreach($activos_linea1 as $activos){
             $linea1_activos = $activos->activos;
@@ -3224,6 +3230,9 @@ class perfilEstudianteController extends Controller
         }
         foreach($desestimientos_linea1 as $desestimientos){
             $linea1_desestimientos = $desestimientos->desestimientos;
+        }
+        foreach($retiros_linea1 as $retiros){
+            $linea1_retiros = $retiros->retiros;
         }
 
         foreach($activos_linea2 as $activos){
@@ -3235,6 +3244,9 @@ class perfilEstudianteController extends Controller
         foreach($desestimientos_linea2 as $desestimientos){
             $linea2_desestimientos = $desestimientos->desestimientos;
         }
+        foreach($retiros_linea2 as $retiros){
+            $linea2_retiros = $retiros->retiros;
+        }
 
         foreach($activos_linea3 as $activos){
             $linea3_activos = $activos->activos;
@@ -3245,38 +3257,46 @@ class perfilEstudianteController extends Controller
         foreach($desestimientos_linea3 as $desestimientos){
             $linea3_desestimientos = $desestimientos->desestimientos;
         }
+        foreach($retiros_linea3 as $retiros){
+            $linea3_retiros = $retiros->retiros;
+        }
 
         $linea_1 = array();
         $linea_1 = array('linea' => 'LINEA1',
                         'activos' => $linea1_activos,
                         'desertores' => $linea1_desertores,
                         'desestimientos' => $linea1_desestimientos,
-                        'total' => $linea1_activos + $linea1_desertores + $linea1_desestimientos);
+                        'retiros' => $linea1_retiros,
+                        'total' => $linea1_activos + $linea1_desertores + $linea1_desestimientos + $linea1_retiros);
 
         $linea_2 = array();
         $linea_2 = array('linea' => 'LINEA2',
                         'activos' => $linea2_activos,
                         'desertores' => $linea2_desertores,
                         'desestimientos' => $linea2_desestimientos,
-                        'total' => $linea2_activos + $linea2_desertores + $linea2_desestimientos);
+                        'retiros' => $linea2_retiros,
+                        'total' => $linea2_activos + $linea2_desertores + $linea2_desestimientos + $linea2_retiros);
 
         $linea_3 = array();
         $linea_3 = array('linea' => 'LINEA3',
                         'activos' => $linea3_activos,
                         'desertores' => $linea3_desertores,
                         'desestimientos' => $linea3_desestimientos,
-                        'total' => $linea3_activos + $linea3_desertores + $linea3_desestimientos);
+                        'retiros' => $linea3_retiros,
+                        'total' => $linea3_activos + $linea3_desertores + $linea3_desestimientos + $linea3_retiros);
 
         $total_activos = $linea1_activos + $linea2_activos + $linea3_activos;
         $total_desertados = $linea1_desertores + $linea2_desertores + $linea3_desertores;
         $total_desestimientos = $linea1_desestimientos + $linea2_desestimientos + $linea3_desestimientos;
+        $total_retiros = $linea1_retiros + $linea2_retiros + $linea3_retiros;
+        
         $totales = array();
         $totales = array('linea' => 'TOTAL',
                         'activos' => $total_activos,
                         'desertores' => $total_desertados,
                         'desestimientos' => $total_desestimientos,
-                        'total' => $total_activos + $total_desertados + $total_desestimientos);
-
+                        'retiros' => $total_retiros, 
+                        'total' => $total_activos + $total_desertados + $total_desestimientos + $total_retiros);
 
         $general = array($linea_1, $linea_2, $linea_3, $totales);
         

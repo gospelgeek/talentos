@@ -284,6 +284,11 @@
 
             "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false,
             "dom":'Bfrtip',
+            scrollY:        false,
+            scrollX:        true,
+            scrollCollapse: true,fixedColumns:{
+                leftColumns: 7
+            },
             "buttons": [
                 "copy",
                 "csv",

@@ -40,7 +40,7 @@ function abrirmodal(e) {
                   $('#CBoton').hide();
                   $('#Cfecha').hide();
                 }
-                if(valor == 3 || valor == 2 || valor == 5){
+                if(valor == 3 || valor == 2 || valor == 5 || valor == 6){
                   $('#CMotivo').show();
                   $('#Cobservacion').show();
                   $('#CUrl').show();
@@ -125,7 +125,7 @@ function abrirmodal_ver(e) {
                   $('#VBoton').hide();
                   $('#Vfecha').hide();
                 }
-                if(valor == 3 || valor == 2 || valor == 5){
+                if(valor == 3 || valor == 2 || valor == 5 || valor == 6){
                   $('#VMotivo').show();
                   $('#Vobservacion').show();
                   $('#VUrl').show();
@@ -180,7 +180,7 @@ $("#estadoN").on('change',function(event) {
             $('#CBoton').hide();
             $('#Cfecha').hide();
           }
-          if(valor == 3 || valor == 2 || valor == 5){
+          if(valor == 3 || valor == 2 || valor == 5 || valor == 6){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();

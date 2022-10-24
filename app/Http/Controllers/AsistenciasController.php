@@ -146,8 +146,8 @@ class AsistenciasController extends Controller
 
         return $sesiones;
     }
-    public function detalles(Request $request){
-        switch ($request->mes) {
+    public function detalles($id_student,$id_course,$mes){
+        switch ($mes) {
             case '1':
                 $estudiante =perfilEstudiante::findOrFail($id_student);
                 $course_moodle = CourseMoodle::select('fullname','group_id','attendance_id')->where('id',$id_course)->firstOrfail();

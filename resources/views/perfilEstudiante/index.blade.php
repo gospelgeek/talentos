@@ -31,6 +31,7 @@
                                     <td><b>Activo</b></td>
                                     <td><b>Deserta</b></td>
                                     <td><b>Desiste</b></td>
+                                    <td><b>Retiros</b></td>
                                     <td><b>Total</b></td>
                                 </tr>
                             </thead>
@@ -181,6 +182,7 @@
             {data: 'activos'},
             {data: 'desertores'},
             {data: 'desestimientos'},
+            {data: 'retiros'},
             {data: 'total'},
         ],
         "bPaginate": false, "searching": false, "info": false,
@@ -267,7 +269,7 @@
                             }else if(data.aceptacion1 !== null || data.aceptacion2 !== null){
                                 return 'ACTIVO';
                             }
-                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5){
+                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5 || data.id_state == 6){
                             return 'INACTIVO';
                         }
                     }

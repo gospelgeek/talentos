@@ -388,6 +388,11 @@
             
             "responsive": false, "lengthChange": false, "autoWidth": false, "fixedHeader": true, "orderCellsTop": true,
             "dom":'Bfrtip',
+            scrollY:        false,
+            scrollX:        true,
+            scrollCollapse: true,fixedColumns:{
+                leftColumns: 5
+            },
             "buttons": [
                 "copy",
                 "csv",

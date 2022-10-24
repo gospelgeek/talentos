@@ -9,7 +9,7 @@ $('.crear_estado').click(function(e) {
             $('#CBoton').hide();
             $('#Cfecha').hide();
           }
-          if(valor == 3 || valor == 2 || valor == 5){
+          if(valor == 3 || valor == 2 || valor == 5 || valor == 6){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();
@@ -46,7 +46,7 @@ $('.crear_estado').click(function(e) {
             $('#CBoton').hide();
             $('#Cfecha').hide();
           }
-          if(valor == 3 || valor == 2 || valor == 5){
+          if(valor == 3 || valor == 2 || valor == 5 || valor == 6){
             $('#CMotivo').show();
             $('#Cobservacion').show();
             $('#CUrl').show();

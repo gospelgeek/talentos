@@ -209,6 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a> 
                 <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
                 <a href="{{route('icfes')}}" class="dropdown-item"><i></i>Comparativo Icfes</a>
+                <a href="{{route('reporte.icfes.pruebas')}}" class="dropdown-item"><i></i>Resultados Icfes</a>
                </div>
               
           </li>
@@ -272,6 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
                             <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
                             <a href="{{route('icfes')}}" class="dropdown-item"><i></i>Comparativo Icfes</a>
+                            <a href="{{route('reporte.icfes.pruebas')}}" class="dropdown-item"><i></i>Resultados Icfes</a>
                           </div>
                       </li>
                         <li class="nav-item dropdown">

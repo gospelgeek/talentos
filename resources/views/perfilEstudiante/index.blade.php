@@ -212,16 +212,16 @@
         },
         "columns": [
             {data: 'name'},
-            {data: null, render:function(data, type, row, meta){
-                    return parseInt(data.cant_linea_1);
+            {data: 'cant_linea_1', render:function(data, type, row, meta){
+                    return data;
                 }
             },
-            {data: null, render:function(data, type, row, meta){
-                    return parseInt(data.cant_linea_2);
+            {data: 'cant_linea_2', render:function(data, type, row, meta){
+                    return data;
                 }
             },
-            {data: null, render:function(data, type, row, meta){
-                    return parseInt(data.cant_linea_3);
+            {data: 'cant_linea_3', render:function(data, type, row, meta){
+                    return data;
                 }
             },
         ],

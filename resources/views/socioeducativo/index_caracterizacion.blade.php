@@ -214,12 +214,14 @@
             var intento = document.getElementById("intentos").value;
             if(intento == 1){
                 document.getElementById("tabla_1").removeAttribute('style', 'display:none');
+                $('#marzo').DataTable().ajax.reload();
             }
             else{
                 document.getElementById("tabla_1").setAttribute('style', 'display:none');
             }
             if(intento == 2){
-                document.getElementById("tabla_2").removeAttribute('style', 'display:none');   
+                document.getElementById("tabla_2").removeAttribute('style', 'display:none'); 
+                $('#mayo').DataTable().ajax.reload();
             }else{
                 document.getElementById("tabla_2").setAttribute('style', 'display:none');
             }

@@ -148,7 +148,6 @@
 <script>
 
     $('.inactivos_activos_student').on('change', function() {
-
         $("#example1").DataTable().ajax.reload();
     });
         
@@ -230,17 +229,17 @@
               var api = this.api();
               $( api.column( 1 ).footer() ).html(
                 api.column( 1 ).data().reduce( function ( a, b ) {
-                  return a + b;
+                  return parseInt(a) + parseInt(b);
                 }, 0 )
               );
               $( api.column( 2 ).footer() ).html(
                 api.column( 2 ).data().reduce( function ( a, b ) {
-                  return a + b;
+                  return parseInt(a) + parseInt(b);
                 }, 0 )
               );
               $( api.column( 3 ).footer() ).html(
                 api.column( 3 ).data().reduce( function ( a, b ) {
-                  return a + b;
+                  return parseInt(a) + parseInt(b);
                 }, 0 )
               );
         },

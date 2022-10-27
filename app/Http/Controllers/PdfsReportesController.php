@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Devices;
 use App\Formalization;
 use App\perfilEstudiante;
+use App\PreviousAcademicData;
+use App\SocioeconomicData;
 use App\StudentDevices;
 use DateTime;
 use DateTimeZone;
@@ -30,6 +32,7 @@ class PdfsReportesController extends Controller
     public function descargarPDFgrupos($cohorte, $texto)
     {
         //date_default_timezone_set("");
+        ini_set('max_execution_time', '600');
         $now = new DateTimeZone("America/Bogota");
         $fecha = new DateTime("now", $now);
         $actual = $fecha->format('Y-m-d');
@@ -239,6 +242,25 @@ class PdfsReportesController extends Controller
     public function PDF_estudiante($id){
 
         $formalizaciones = Formalization::findOrFail($id);
+ 
+        $academicos = PreviousAcademicData::findOrFail($id);
+
+        $socioeconomico = DB::select("SELECT (SELECT occupations.name FROM occupations WHERE occupations.id = 
+        socioeconomic_data.id_ocupation) as ocupacion, (SELECT civil_statuses.name FROM 
+        civil_statuses WHERE civil_statuses.id = socioeconomic_data.id_civil_status) as estadoCivil, 
+        (SELECT ethnicities.name FROM ethnicities WHERE ethnicities.id = socioeconomic_data.id_ethnicity) as etnia,
+         children_number as hijos, (SELECT recidence_times.name FROM recidence_times WHERE 
+         recidence_times.id = socioeconomic_data.id_residence_time) as tiempoResidencia, 
+         (SELECT housing_types.name FROM housing_types WHERE housing_types.id = socioeconomic_data.id_housing_type) 
+         as tipoVivienda, (SELECT health_regimes.name FROM health_regimes WHERE 
+         health_regimes.id = socioeconomic_data.id) as regimen, sisben_category as sisben, 
+         (SELECT benefits.name FROM benefits WHERE benefits.id = socioeconomic_data.id_benefits) 
+         as beneficio, household_people as cantPersonas, economic_possition as posEconomica, 
+         dependent_people as perCargo, internet_zon as internetZon, internet_home as internetHom, 
+         sex_document_identidad as sexo, (SELECT social_conditions.name FROM social_conditions WHERE 
+         social_conditions.id = socioeconomic_data.id_social_conditions) as condicionS, (SELECT disabilities.name
+        FROM disabilities WHERE disabilities.id = socioeconomic_data.id_disability) as discapacidad FROM socioeconomic_data 
+        WHERE socioeconomic_data.id_student = ?", [$id]);
 
         $student = DB::select("SELECT *, 
         (SELECT name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipoD, 
@@ -246,9 +268,9 @@ class PdfsReportesController extends Controller
         (SELECT name FROM birth_departaments WHERE birth_departaments.id = student_profile.id_birth_department) as departamento, 
         (SELECT name FROM gender WHERE gender.id = student_profile.id_gender) as genero, 
         (SELECT name FROM neighborhood WHERE neighborhood.id = student_profile.id_neighborhood) as barrio 
-        FROM student_profile, socioeconomic_data WHERE student_profile.id = ? AND socioeconomic_data.id_student = ?", [
-            $id, $id
-        ]);
+        FROM student_profile WHERE student_profile.id = ? ", [
+            $id
+        ]); 
 
         if($student[0]->photo == ""){
             $foto = null;
@@ -256,10 +278,14 @@ class PdfsReportesController extends Controller
             $foto = explode("/", $student[0]->photo);
             $foto = $foto[5];
         }
+
+        //dd($foto);
         
         $pdf = PDF::loadView('pdfsreportes.studentPDF', [
             "student" => $student,
             "formalization" => $formalizaciones,
+            "academico" => $academicos,
+            "socioeconomico" => $socioeconomico,
             "foto" => $foto
         ])->setPaper('a4');
 

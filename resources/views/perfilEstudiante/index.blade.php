@@ -45,7 +45,7 @@
                 </col-sm>
                 <div class="col-sm">
                     <div class="col-md-4">
-                        <input class="form-control" id="texto_listado" placeholder="Ingrese el titulo del listado a descargar" type="text">
+                        <input class="form-control" id="texto_listado" placeholder="Seleccione el titulo que desea incluir en el listado" type="text">
                     </div>
                 </div>
 

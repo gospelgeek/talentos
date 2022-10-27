@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div id="recargar" class="modal-body">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 id="nombreModal" style="text-align:center;font-size : 30px;font-weight: bolder;"></h4>
+        <h6 id="nombreModal" style="text-align:center;font-size : 30px;font-weight: bolder;"></h6>
         <div  class="table-responsive">
         <table id="pruebaAreas" class="table table-bordered table-striped">
           <caption id="mensaje" style="caption-side: top;text-align:center;">RESULTADO POR AREA</caption>

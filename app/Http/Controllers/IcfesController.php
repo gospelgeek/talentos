@@ -575,7 +575,7 @@ class IcfesController extends Controller
             student_groups WHERE student_groups.id_student = icfes_students.id_student LIMIT 1) as grupo, 
             url_support as url, total_score as Total, (SELECT qualification FROM result_by_areas WHERE
              result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 1) as 
-             lC, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
+             LC, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
              icfes_students.id AND result_by_areas.id_icfes_area = 2) as MT, (SELECT qualification FROM 
              result_by_areas WHERE result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 3)
               as CS, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 

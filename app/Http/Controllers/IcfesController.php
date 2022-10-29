@@ -563,94 +563,27 @@ class IcfesController extends Controller
     public function datosPruebasIcfes($test)
     {
         ini_set('max_execution_time', '600');
-        $contador = 0;
-        $pLc = 0;
-        $pMt = 0;
-        $pCs = 0;
-        $pCn = 0;
-        $pIngles = 0;
-        $data = [];
+        
+        $data = DB::select("SELECT icfes_students.id, icfes_students.id_student, (SELECT name FROM student_profile WHERE student_profile.id = 
+        icfes_students.id_student) as nombre, (SELECT lastname FROM student_profile WHERE student_profile.id = 
+        icfes_students.id_student) as apellidos, (SELECT document_number FROM student_profile WHERE student_profile.id
+         = icfes_students.id_student) as documento, (SELECT student_code FROM student_profile WHERE student_profile.id
+          = icfes_students.id_student) as codigo, (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id
+           = groups.id_cohort  LIMIT 1) FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM 
+           student_groups WHERE student_groups.id_student = icfes_students.id_student LIMIT 1) as linea,
+            (SELECT (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1)FROM 
+            student_groups WHERE student_groups.id_student = icfes_students.id_student LIMIT 1) as grupo, 
+            url_support as url, total_score as Total, (SELECT qualification FROM result_by_areas WHERE
+             result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 1) as 
+             lC, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
+             icfes_students.id AND result_by_areas.id_icfes_area = 2) as MT, (SELECT qualification FROM 
+             result_by_areas WHERE result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 3)
+              as CS, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
+              icfes_students.id AND result_by_areas.id_icfes_area = 4) as CN, 
+              (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = icfes_students.id AND 
+              result_by_areas.id_icfes_area = 5) as ING FROM icfes_students WHERE icfes_students.id_icfes_test = ?", [$test]);
 
-        $estudiantes = DB::select("SELECT student_profile.id as id, student_profile.name as nombre, 
-        student_profile.lastname as apellidos, student_profile.document_number as documento, 
-        student_profile.student_code as codigo,
-        (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort  LIMIT 1) 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups 
-        WHERE student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT 
-        (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
-        FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
-        FROM student_profile WHERE id_state = 1 AND 
-        id IN (SELECT icfes_students.id_student FROM icfes_students WHERE icfes_students.id_icfes_test = ?) ", [$test]);
-
-        //dd($estudiantes);
-
-        $tamanioDatos = sizeof($estudiantes);
-
-        while ($contador < $tamanioDatos) {
-            $pruebaInfo = DB::select("SELECT icfes_students.total_score, icfes_students.id, icfes_students.url_support FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = $test AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            $idPrueba = $pruebaInfo[0]->id;
-
-            $lc = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 1", [$idPrueba]);
-            $mt = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 2", [$idPrueba]);
-            $cs = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 3", [$idPrueba]);
-            $cn = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 4", [$idPrueba]);
-            $in = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 5", [$idPrueba]);
-
-            if ($lc == []) {
-                $pLc = 0;
-            } else {
-                $pLc = $lc[0]->calificacion;
-            }
-
-            if ($mt == []) {
-                $pMt = 0;
-            } else {
-                $pMt = $mt[0]->calificacion;
-            }
-
-            if ($cs == []) {
-                $pCs = 0;
-            } else {
-                $pCs = $cs[0]->calificacion;
-            }
-
-            if ($cn == []) {
-                $pCn = 0;
-            } else {
-                $pCn = $cn[0]->calificacion;
-            }
-
-            if ($in == []) {
-                $pIngles = 0;
-            } else {
-                $pIngles = $in[0]->calificacion;
-            }
-
-
-            $data[$contador] = array(
-                "id_student" => $estudiantes[$contador]->id,
-                "nombre" => $estudiantes[$contador]->nombre,
-                "apellidos" => $estudiantes[$contador]->apellidos,
-                "documento" => $estudiantes[$contador]->documento,
-                "codigo" => $estudiantes[$contador]->codigo,
-                "linea" => $estudiantes[$contador]->linea,
-                "grupo" => $estudiantes[$contador]->grupo,
-                "url" => $pruebaInfo[0]->url_support,
-                "LC" => $pLc,
-                "MT" => $pMt,
-                "CS" => $pCs,
-                "CN" => $pCn,
-                "IN" => $pIngles,
-                "Total" => $pruebaInfo[0]->total_score
-            );
-            $contador++;
-        }
-
-        $result = $data;
-
-        return datatables()->of($result)->toJson();
+        return datatables()->of($data)->toJson();
     }
 
     public function actualizarIcfes($iden, $test, Request $request)

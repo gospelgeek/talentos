@@ -128,7 +128,7 @@
         </div>
         
         <div class="modal-footer">
-          <button id="_actualizar" class="btn btn-primary">ACTUALIZAR</button>
+          <button id="_actualizar" class="btn btn-primary" data-dismiss="modal">ACTUALIZAR</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
         </div>
         </form>

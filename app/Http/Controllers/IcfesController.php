@@ -43,10 +43,18 @@ class IcfesController extends Controller
            
             $id_S = perfilEstudiante::where('document_number', $id_student)->first();
 
+            $lineaGrupo = DB::select("SELECT (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE 
+            cohorts.id = groups.id_cohort LIMIT 1) FROM groups WHERE groups.id = 
+            student_groups.id_group LIMIT 1) FROM student_groups WHERE student_groups.id_student = 
+            student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name FROM groups WHERE 
+            groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
+            student_groups.id_student = student_profile.id LIMIT 1) as grupo FROM student_profile 
+            WHERE student_profile.id = ?", [$id_S->id]);
+
             $comprobacion = IcfesStudent::where('id_student', $id_S->id)->where('id_icfes_test', 5)->first();
 
             if ($comprobacion != null) {
-                return array("mensaje" => "el estudiante ya tiene registros en icfes de salida");
+                return array("mensaje" => "no");
             } else {
 
                 if ($url == null) {
@@ -69,45 +77,69 @@ class IcfesController extends Controller
 
                 switch ($form_areas) {
                     case 1:
-                        ResultByArea::create([
+                        $lec = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 1,
                             'qualification' => floatval($lecturaC)
                         ]);
-                        ResultByArea::create([
+                        $mat = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 2,
                             'qualification' => floatval($mate)
                         ]);
 
-                        ResultByArea::create([
+                        $cis = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 3,
                             'qualification' => floatval($cienS)
                         ]);
 
-                        ResultByArea::create([
+                        $cin = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 4,
                             'qualification' => floatval($cienN)
                         ]);
 
-                        ResultByArea::create([
+                        $ing = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 5,
                             'qualification' => floatval($ingles)
                         ]);
 
-                        return array("mensaje" => "guardado exitoso");
+                        return array(
+                            "mensaje" => "guardado exitoso", 
+                            "estudiante" => $id_S,
+                            "linea" => $lineaGrupo[0]->linea,
+                            "grupo" => $lineaGrupo[0]->grupo,
+                            "lecturaCritica" => $lec->qualification,
+                            "matematicas" => $mat->qualification,
+                            "cienciasSociales" => $cis->qualification,
+                            "cienciasNaturales" => $cin->qualification,
+                            "ingles" => $ing->qualification,
+                            "total" => $datos->total_score,
+                            "url" => $datos->url_support
+                        );
                         break;
 
                     case 0:
-                        return array("mensaje" => "guardado exitoso");
+                        return array(
+                            "mensaje" => "guardado exitoso", 
+                            "estudiante" => $id_S,
+                            "linea" => $lineaGrupo[0]->linea,
+                            "grupo" => $lineaGrupo[0]->grupo,
+                            "lecturaCritica" => '',
+                            "matematicas" => '',
+                            "cienciasSociales" => '',
+                            "cienciasNaturales" => '',
+                            "ingles" => '',
+                            "total" => '',
+                            "url" => ''
+                        );
                         break;
 
                     default:

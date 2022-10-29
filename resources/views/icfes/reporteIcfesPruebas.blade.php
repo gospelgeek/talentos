@@ -407,7 +407,7 @@
             ingles === true
         ) {
             $.ajax({
-                url: '/registro_icfes/',
+                url: '/registro_icfes',
                 type: 'POST',
                 data: {
                     '_token': _formRegistro['_token'].value,

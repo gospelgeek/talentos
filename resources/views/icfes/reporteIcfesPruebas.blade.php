@@ -377,7 +377,7 @@
                     data: 'CN'
                 },
                 {
-                    data: 'IN'
+                    data: 'ING'
                 },
                 {
                     data: 'Total'
@@ -391,7 +391,7 @@
                                     <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
                                 </div> 
                                 <div id="edit${data.documento}" class="col-xs-6 col-sm-6 btn-group">
-                                    <a id="editar" onClick="editarModal(${data.documento},'${data.url}',${data.Total},${data.LC},${data.MT},${data.CS},${data.CN},${data.IN}, ${prueba})" class="btn btn-block fa fa-pencil-square-o fa">
+                                    <a id="editar" onClick="editarModal(${data.documento},'${data.url}',${data.Total},${data.LC},${data.MT},${data.CS},${data.CN},${data.ING}, ${prueba})" class="btn btn-block fa fa-pencil-square-o fa">
                                     </a>
                                 </div>  
                                 

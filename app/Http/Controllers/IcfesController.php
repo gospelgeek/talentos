@@ -588,8 +588,9 @@ class IcfesController extends Controller
     
     public function reportePruebas()
     {
-       
-        return view('icfes.reporteIcfesPruebas');
+        $pruebas = IcfesTest::all();
+        $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
+        return view('icfes.reporteIcfesPruebas', compact('pruebas', 'estudiantes'));
     }
 
     public function datosPruebasIcfes($test)

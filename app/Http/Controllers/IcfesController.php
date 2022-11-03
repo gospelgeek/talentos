@@ -597,24 +597,7 @@ class IcfesController extends Controller
     {
         ini_set('max_execution_time', '600');
         
-        $data = DB::select("SELECT icfes_students.id, icfes_students.id_student, (SELECT name FROM student_profile WHERE student_profile.id = 
-        icfes_students.id_student) as nombre, (SELECT lastname FROM student_profile WHERE student_profile.id = 
-        icfes_students.id_student) as apellidos, (SELECT document_number FROM student_profile WHERE student_profile.id
-         = icfes_students.id_student) as documento, (SELECT student_code FROM student_profile WHERE student_profile.id
-          = icfes_students.id_student) as codigo, (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id
-           = groups.id_cohort  LIMIT 1) FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM 
-           student_groups WHERE student_groups.id_student = icfes_students.id_student LIMIT 1) as linea,
-            (SELECT (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1)FROM 
-            student_groups WHERE student_groups.id_student = icfes_students.id_student LIMIT 1) as grupo, 
-            url_support as url, total_score as Total, (SELECT qualification FROM result_by_areas WHERE
-             result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 1) as 
-             LC, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
-             icfes_students.id AND result_by_areas.id_icfes_area = 2) as MT, (SELECT qualification FROM 
-             result_by_areas WHERE result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 3)
-              as CS, (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = 
-              icfes_students.id AND result_by_areas.id_icfes_area = 4) as CN, 
-              (SELECT qualification FROM result_by_areas WHERE result_by_areas.id_icfes_student = icfes_students.id AND 
-              result_by_areas.id_icfes_area = 5) as ING FROM icfes_students WHERE icfes_students.id_icfes_test = ?", [$test]);
+        $data = IcfesStudent::infoPruebas($test);
 
         return datatables()->of($data)->toJson();
     }

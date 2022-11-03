@@ -38,7 +38,6 @@
                                 <td>CODIGO</td>
                                 <td>GRUPO</td>
                                 <td>LINEA</td>
-                                <td>URL SOPORTE</td>
                                 <td>LECTURA CRITICA</td>
                                 <td>MATEMATICAS</td>
                                 <td>CIENCIAS SOCIALES</td>

@@ -44,6 +44,7 @@
                                 <td>CIENCIAS NATURALES</td>
                                 <td>INGLES</td>
                                 <td>TOTAL</td>
+                                <td>URL SOPORTE</td>
                                 <td>ACCIONES</td>
                             </tr>
                         </thead>

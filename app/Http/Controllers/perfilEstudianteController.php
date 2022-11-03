@@ -1401,8 +1401,8 @@ class perfilEstudianteController extends Controller
     }
 
     public function exportar_completa(){
-
-         $estudiantes = perfilEstudiante::select('id', 'photo','college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'url_document_type', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date', 'sex')->withTrashed()->get();
+        ini_set('memory_limit', -1);
+        $estudiantes = perfilEstudiante::select('id', 'photo','college', 'registration_date', 'email', 'name', 'lastname', 'id_document_type', 'document_number', 'url_document_type', 'document_expedition_date', 'landline', 'cellphone', 'phone', 'id_birth_city', 'direction', 'id_neighborhood', 'id_gender', 'id_tutor', 'birth_date', 'sex')->withTrashed()->get();
 
         $excel = array();
 

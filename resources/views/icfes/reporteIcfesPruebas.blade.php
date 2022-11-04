@@ -38,6 +38,7 @@
                                 <td>CODIGO</td>
                                 <td>GRUPO</td>
                                 <td>LINEA</td>
+
                                 <td>LECTURA CRITICA</td>
                                 <td>MATEMATICAS</td>
                                 <td>CIENCIAS SOCIALES</td>
@@ -167,6 +168,12 @@
 @push('scripts')
 
 <script>
+    let idxEn = 0;
+    let idxS1 = 0;
+    let idxS2 = 0;
+    let idxS3 = 0;
+    let idxSal = 0;
+
     const opcion = document.getElementById('opcion')
     const s_1 = document.getElementById('s1')
     const s_2 = document.getElementById('s2')
@@ -223,6 +230,7 @@
 
     function editarModal(documento, _url, Total, LC, MT, CS, CN, IN, _prueba) {
         $('#modal-update').modal('show')
+
         let iden = _formUpdate['identificacion']
         let url = _formUpdate['url']
         let pruebaV = _formUpdate['pruebaVista']
@@ -272,16 +280,27 @@
         iden.value = documento
         url.value = _url
         puntaje.value = parseInt(Total)
-        lecturaC.value = parseInt(LC)
-        mate.value = parseInt(MT)
-        cienS.value = parseInt(CS)
-        cienN.value = parseInt(CN)
-        ingles.value = parseInt(IN)
+        lecturaC.value = parseInt(LC) || 0
+        mate.value = parseInt(MT) || 0
+        cienS.value = parseInt(CS) || 0
+        cienN.value = parseInt(CN) || 0
+        ingles.value = parseInt(IN) || 0
 
         let datos
 
         _actualizar.addEventListener('click', (e) => {
             e.preventDefault()
+
+            let banderas = [];
+            banderas[0] = false
+            banderas[1] = false
+            banderas[2] = false
+            banderas[3] = false
+            banderas[4] = false
+            banderas[5] = false
+            banderas[6] = false
+
+
 
             url.value = url.value || ""
             puntaje.value = puntaje.value
@@ -291,7 +310,14 @@
             cienN.value = cienN.value
             ingles.value = ingles.value
 
-            
+            if (_url !== url.value) banderas[0] = true
+            if (Total !== puntaje.value) banderas[1] = true
+            if (LC !== lecturaC.value) banderas[2] = true
+            if (MT !== mate.value) banderas[3] = true
+            if (CS !== cienS.value) banderas[4] = true
+            if (CN !== cienN.value) banderas[5] = true
+            if (IN !== ingles.value) banderas[6] = true
+
 
             $.ajax({
                 url: '/actualizacion_icfes/' + iden.value + "/" + prueba.value,
@@ -311,23 +337,224 @@
                     toastr.info(`Actualizacion ${result.mensaje}`);
                     switch (_prueba) {
                         case 1:
-                            renderTable("S1", _prueba).ajax.reload(null, false)
+                            if (banderas[0] === true) {
+                                s1Tabla.cell(idxS1, 12) 
+                                    .data(url.value)
+                                    .draw();
+                            }
+
+                            if (banderas[1] === true) {
+                                s1Tabla.cell(idxS1, 11) 
+                                    .data(puntaje.value)
+                                    .draw();
+                            }
+
+                            if (banderas[2] === true) {
+                                s1Tabla.cell(idxS1, 6) 
+                                    .data(lecturaC.value)
+                                    .draw();
+                            }
+
+                            if (banderas[3] === true) {
+                                s1Tabla.cell(idxS1, 7) 
+                                    .data(mate.value)
+                                    .draw();
+                            }
+
+                            if (banderas[4] === true) {
+                                s1Tabla.cell(idxS1, 8) 
+                                    .data(cienS.value)
+                                    .draw();
+                            }
+
+                            if (banderas[5] === true) {
+                                s1Tabla.cell(idxS1, 9) 
+                                    .data(cienN.value)
+                                    .draw();
+                            }
+
+                            if (banderas[6] === true) {
+                                s1Tabla.cell(idxS1, 10) 
+                                    .data(ingles.value)
+                                    .draw();
+                            }
                             break;
 
                         case 2:
-                            renderTable("S2", _prueba).ajax.reload(null, false)
+                            if (banderas[0] === true) {
+                                s2Tabla.cell(idxS2, 12) 
+                                    .data(url.value)
+                                    .draw();
+                            }
+
+                            if (banderas[1] === true) {
+                                s2Tabla.cell(idxS2, 11) 
+                                    .data(puntaje.value)
+                                    .draw();
+                            }
+
+                            if (banderas[2] === true) {
+                                s2Tabla.cell(idxS2, 6) 
+                                    .data(lecturaC.value)
+                                    .draw();
+                            }
+
+                            if (banderas[3] === true) {
+                                s2Tabla.cell(idxS2, 7) 
+                                    .data(mate.value)
+                                    .draw();
+                            }
+
+                            if (banderas[4] === true) {
+                                s2Tabla.cell(idxS2, 8) 
+                                    .data(cienS.value)
+                                    .draw();
+                            }
+
+                            if (banderas[5] === true) {
+                                s2Tabla.cell(idxS2, 9) 
+                                    .data(cienN.value)
+                                    .draw();
+                            }
+
+                            if (banderas[6] === true) {
+                                s2Tabla.cell(idxS2, 10) 
+                                    .data(ingles.value)
+                                    .draw();
+                            }
                             break;
 
                         case 3:
-                            renderTable("S3", _prueba).ajax.reload(null, false)
+                            if (banderas[0] === true) {
+                                s3Tabla.cell(idxS3, 12) 
+                                    .data(url.value)
+                                    .draw();
+                            }
+
+                            if (banderas[1] === true) {
+                                s3Tabla.cell(idxS3, 11) 
+                                    .data(puntaje.value)
+                                    .draw();
+                            }
+
+                            if (banderas[2] === true) {
+                                s3Tabla.cell(idxS3, 6) 
+                                    .data(lecturaC.value)
+                                    .draw();
+                            }
+
+                            if (banderas[3] === true) {
+                                s3Tabla.cell(idxS3, 7) 
+                                    .data(mate.value)
+                                    .draw();
+                            }
+
+                            if (banderas[4] === true) {
+                                s3Tabla.cell(idxS3, 8) 
+                                    .data(cienS.value)
+                                    .draw();
+                            }
+
+                            if (banderas[5] === true) {
+                                s3Tabla.cell(idxS3, 9) 
+                                    .data(cienN.value)
+                                    .draw();
+                            }
+
+                            if (banderas[6] === true) {
+                                s3Tabla.cell(idxS3, 10) 
+                                    .data(ingles.value)
+                                    .draw();
+                            }
                             break;
 
                         case 4:
-                            renderTable("En", _prueba).ajax.reload(null, false)
+
+                            if (banderas[0] === true) {
+                                enTabla.cell(idxEn, 12) 
+                                    .data(url.value)
+                                    .draw();
+                            }
+
+                            if (banderas[1] === true) {
+                                enTabla.cell(idxEn, 11) 
+                                    .data(puntaje.value)
+                                    .draw();
+                            }
+
+                            if (banderas[2] === true) {
+                                enTabla.cell(idxEn, 6) 
+                                    .data(lecturaC.value)
+                                    .draw();
+                            }
+
+                            if (banderas[3] === true) {
+                                enTabla.cell(idxEn, 7) 
+                                    .data(mate.value)
+                                    .draw();
+                            }
+
+                            if (banderas[4] === true) {
+                                enTabla.cell(idxEn, 8) 
+                                    .data(cienS.value)
+                                    .draw();
+                            }
+
+                            if (banderas[5] === true) {
+                                enTabla.cell(idxEn, 9) 
+                                    .data(cienN.value)
+                                    .draw();
+                            }
+
+                            if (banderas[6] === true) {
+                                enTabla.cell(idxEn, 10) 
+                                    .data(ingles.value)
+                                    .draw();
+                            }
                             break;
 
                         case 5:
-                            renderTable("Sal", _prueba).ajax.reload(null, false)
+                            if (banderas[0] === true) {
+                                salTabla.cell(idxSal, 12) 
+                                    .data(url.value)
+                                    .draw();
+                            }
+
+                            if (banderas[1] === true) {
+                                salTabla.cell(idxSal, 11) 
+                                    .data(puntaje.value)
+                                    .draw();
+                            }
+
+                            if (banderas[2] === true) {
+                                salTabla.cell(idxSal, 6) 
+                                    .data(lecturaC.value)
+                                    .draw();
+                            }
+
+                            if (banderas[3] === true) {
+                                salTabla.cell(idxSal, 7) 
+                                    .data(mate.value)
+                                    .draw();
+                            }
+
+                            if (banderas[4] === true) {
+                                salTabla.cell(idxSal, 8) 
+                                    .data(cienS.value)
+                                    .draw();
+                            }
+
+                            if (banderas[5] === true) {
+                                salTabla.cell(idxSal, 9) 
+                                    .data(cienN.value)
+                                    .draw();
+                            }
+
+                            if (banderas[6] === true) {
+                                salTabla.cell(idxSal, 10) 
+                                    .data(ingles.value)
+                                    .draw();
+                            }
                             break;
 
                         default:
@@ -407,7 +634,7 @@
             ingles === true
         ) {
             $.ajax({
-                url: '/registro_icfes',
+                url: '/registro_icfes/',
                 type: 'POST',
                 data: {
                     '_token': _formRegistro['_token'].value,
@@ -426,7 +653,7 @@
                     if (result.mensaje !== "no") {
                         _formRegistro.reset()
                         toastr.info(`${result.mensaje}`);
-                        renderTable("Sal", _formRegistro['prueba'].value).row.add({
+                        salTabla.row.add({
                             documento: result.estudiante.document_number,
                             nombre: result.estudiante.name,
                             apellidos: result.estudiante.lastname,
@@ -483,6 +710,7 @@
         }
     })
 
+
     function renderTable(tabla, prueba) {
         let table = $(`#prueba${tabla}`).DataTable({
             //"data": data.data,
@@ -511,27 +739,27 @@
 
                 {
                     data: 'LC',
-                    
+
                 },
                 {
                     data: 'MT',
-                    
+
                 },
                 {
                     data: 'CS',
-                    
+
                 },
                 {
                     data: 'CN',
-                    
+
                 },
                 {
                     data: 'ING',
-                    
+
                 },
                 {
                     data: 'Total',
-                    
+
                 },
                 {
                     data: null,
@@ -582,11 +810,41 @@
         return table
     }
 
-    renderTable("S1", 1)
-    renderTable("S2", 2)
-    renderTable("S3", 3)
-    renderTable("En", 4)
-    renderTable("Sal", 5)
+    let s1Tabla = renderTable("S1", 1)
+    let s2Tabla = renderTable("S2", 2)
+    let s3Tabla = renderTable("S3", 3)
+    let enTabla = renderTable("En", 4)
+    let salTabla = renderTable("Sal", 5)
+
+    enTabla.on('click', 'tr', function() {
+        idxEn = enTabla
+            .row(this)
+            .index();
+    });
+
+    s1Tabla.on('click', 'tr', function() {
+        idxS1 = s1Tabla
+            .row(this)
+            .index();
+    });
+
+    s2Tabla.on('click', 'tr', function() {
+        idxS2 = s2Tabla
+            .row(this)
+            .index();
+    });
+
+    s3Tabla.on('click', 'tr', function() {
+        idxS3 = s3Tabla
+            .row(this)
+            .index();
+    });
+
+    salTabla.on('click', 'tr', function() {
+        idxSal = salTabla
+            .row(this)
+            .index();
+    });
 </script>
 
 @endpush

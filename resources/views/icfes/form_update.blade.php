@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <input class="form-control" type="number" name="lecturaC" id="lecturaC">
+                      <input class="form-control" type="number" min="0" name="lecturaC" id="lecturaC">
                     </div>
 
                   </div>
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <input class="form-control" type="number" name="mate" id="mate">
+                      <input class="form-control" type="number" min="0" name="mate" id="mate">
                     </div>
 
                   </div>
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <input class="form-control" type="number" name="cienS" id="cienS">
+                      <input class="form-control" type="number" min="0" name="cienS" id="cienS">
                     </div>
 
                   </div>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <input class="form-control" type="number" name="cienN" id="cienN">
+                      <input class="form-control" type="number" min="0" name="cienN" id="cienN">
                     </div>
 
                   </div>
@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <input  class="form-control" type="number" name="ingles" id="ingles">
+                      <input  class="form-control" type="number" min="0" name="ingles" id="ingles">
                     </div>
 
 

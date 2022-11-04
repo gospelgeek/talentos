@@ -224,7 +224,8 @@ Route::get('pdfEstudiante/{id}', 'PdfsReportesController@PDF_estudiante')->name(
 
 Route::get('ver_asistencias/{id_moodle}/{id_grupo}', 'AsistenciasController@ver_asistencias')->name('estudiante.ver_asistencias');
 Route::post('cargar_asistencias', 'AsistenciasController@cargar_asistencias')->name('estudiante.cargar_asistencias');
-Route::get('detalles_sesiones/{id_student}/{id_course}/{mes}', 'AsistenciasController@detalles')->name('estudiante.detalles_sesiones');
+Route::get('detalles_sesiones', 'AsistenciasController@detalles')->name('estudiante.detalles_sesiones');
+Route::get('detalles_sesiones_adicionales', 'AsistenciasController@detalles_adicionales')->name('estudiante.detalles_sesiones_adicionales');
 Route::get('detalle_sesiones_ficha/{attendance_id}/{id_moodle}', 'AsistenciasController@detalle_sesiones_ficha')->name('estudiante.detalle_sesiones_ficha');
 Route::get('reporte_asistencias_programadas', 'AsistenciasController@reporte_asistencias_programadas')->name('estudiante.reporte_asistencias_programadas');
 Route::get('asistencias_ficha', 'AsistenciasController@asistencias_ficha')->name('estudiante.asistencias_ficha');

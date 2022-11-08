@@ -142,7 +142,7 @@
                             }else if(data.aceptacion1 !== null || data.aceptacion2 !== null){
                                 return 'ACTIVO';
                             }
-                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5){
+                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5 || data.id_state == 6){
                             return 'INACTIVO';
                         }
                     }

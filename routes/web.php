@@ -102,7 +102,7 @@ Route::get('reporte_socioeducativo','SocioEducativoController@exportar_reporte_s
 //reporte socioeducativo
 Route::get('socioeducativo_reporte', 'SocioEducativoController@index_reporte')->name('socioeducativo_reporte');
 Route::get('datos.reporte.socioeducativo', 'SocioEducativoController@datos_index')->name('datos.reporte.socioeducativo');
-
+Route::get('tabla_modal_socioeducativo', 'SocioEducativoController@tabla_modal_socioeducativo')->name('tabla_modal_socioeducativo');
 //reporte estdos
 Route::get('reporte_estados', 'perfilEstudianteController@exportar_reporte_estados')->name('reporte_estados');
 

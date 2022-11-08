@@ -2241,4 +2241,32 @@ class SocioEducativoController extends Controller
         });
         return datatables()->of($informacion)->toJson();
     }
+    
+    public function tabla_modal_socioeducativo(Request $request){
+
+        $seguimientos = SocioEducationalFollowUp::where('id_student',$request->id_student)->get();
+
+
+        $arreglo_datos = array();
+   
+        foreach($seguimientos as $dato){
+
+            $json_detalle = json_decode($dato->tracking_detail);
+            //dd($json_detalle);            
+            $arreglo_datos[] = array(
+                'fecha'            => $json_detalle->fecha,
+                'lugar'            => $json_detalle->Lugar,  
+                'riesgo_indivdual' => $json_detalle->RiesgoIndividual,
+                'riesgo_academico' => $json_detalle->RiesgoAcademico,
+                'riesgo_familiar' => $json_detalle->RiesgoFamiliar,
+                'riesgo_economico' => $json_detalle->RiesgoEconomico,
+                'riesgo_Uc' => $json_detalle->RiesgoUc
+            );
+        }
+
+        //dd($arreglo_datos);    
+        $colection_seguimiento = collect($arreglo_datos);
+        
+        return datatables()->of($colection_seguimiento)->toJson();
+    }
 }

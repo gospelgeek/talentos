@@ -49,104 +49,64 @@ public function __construct()
         $grupos = Group::all()->where('id_cohort', $name->id_cohort)->where('name','!=',"TEMPORAL");
         $this->eliminar = array();
         $grupos->map(function($grupo,$index){
-            //dd($grupo->name,$index);
+
             $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->exists();
-            //dd($course_moodle);
+
             if($course_moodle){
-            $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->firstOrfail();
-            $docente = CourseMoodle::select('docente_name')->where('course_id', $course_moodle->course_id)->where('group_id', $grupo->id)->exists();
-                if($docente){
-                    $docente = CourseMoodle::select('docente_name')->where('course_id', $course_moodle->course_id)->where('group_id', $grupo->id)->firstOrfail();
-                    $grupo->docente = $docente->docente_name; 
-                }else{
-                    $grupo->docente = '-';
-                }
-            $grupo->items_huerfanos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('category_name',"ITEM HUERFANO")->count();
-            //dd($course_moodle);    
-            $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->exists();
-           //dd($Asistencia);
             
-            if($Asistencia){
-                $Asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->first();
+                $course_moodle = CourseMoodle::select('course_id')->where('group_id', $grupo->id)->where('fullname','LIKE',"$this->course%")->first();
 
-                //dd($Asistencia);
-                $grades = StudentsGrade::select('grade')->where('item_id',$Asistencia->item_id)->get();
-                $total_asistencia = 0;
-                foreach($grades as $grade){
-                    $total_asistencia = $total_asistencia + $grade->grade;
-                }
-                if($total_asistencia > 0){
-                    $grupo->promedio_asistencia = number_format($total_asistencia/count($grades),2);  
+                $grupo->items_huerfanos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('category_name',"ITEM HUERFANO")->count();
 
+                $asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->first();
+
+                $promedio_asistencia = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
+
+                if($promedio_asistencia[0]['total_curso'] != null){
+                    $grupo->promedio_asistencia = $promedio_asistencia[0]['total_curso'];
                 }else{
-                    $grupo->promedio_asistencia = "-";
+                    $grupo->promedio_asistencia = "-"; 
                 }
-                  
-            }else{
-                $grupo->promedio_asistencia = "-";
-            }
 
-            $seguimientos =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where(function($q){
-                    $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
-                })->exists();
-            
-            if($seguimientos){
-                $seguimientos = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where(function($q){
-                    $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
-                })->first();
-                //dd($seguimientos->item_id);
-                $grades = StudentsGrade::select('grade')->where('item_id',$seguimientos->item_id)->get();
-                //dd($grades);
-                $total_seguimientos = 0;
-                foreach($grades as $grade){
-                    $total_seguimientos = $total_seguimientos + $grade->grade;
-                }
-                if($total_seguimientos > 0){
-                    $grupo->promedio_seguimientos = number_format($total_seguimientos/count($grades),2);  
+                $seguimientos =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where(function($q){
+                        $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
+                    })->first();
+                
+                $promedio_seguimientos = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
 
+                if($promedio_seguimientos[0]['total_curso'] != null){
+                    $grupo->promedio_seguimientos = $promedio_seguimientos[0]['total_curso'];
                 }else{
-                    $grupo->promedio_seguimientos = "-";
+                    $grupo->promedio_seguimientos = "-"; 
                 }
-            }else{
-                $grupo->promedio_seguimientos = "-";
-            }
 
-            $autoevaluacion =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->exists();
-            //dd($autoevaluacion);
-            if($autoevaluacion){
-                $autoevaluacion = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->first();
-                //dd($autoevaluacion);
+                $autoevaluacion =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->first();
+                
+                $promedio_autoevaluacion = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
 
-                $grades = StudentsGrade::select('grade')->where('item_id',$autoevaluacion->item_id)->get();
-                //dd($grades);
-
-                $total_autoevaluacion = 0;
-                foreach($grades as $grade){
-                    //dd($grade);
-                    $total_autoevaluacion = $total_autoevaluacion + $grade->grade;
-                }
-                //dd("bien");
-                if($total_autoevaluacion > 0){
-                    //dd("bien","1");
-                    $grupo->promedio_autoevaluacion = number_format($total_autoevaluacion/count($grades),2);
+                if($promedio_autoevaluacion[0]['total_curso'] != null){
+                    $grupo->promedio_autoevaluacion = $promedio_autoevaluacion[0]['total_curso'];
                 }else{
-
-                    $grupo->promedio_autoevaluacion = "-";
+                    $grupo->promedio_autoevaluacion = "-"; 
                 }
-                                 
-            }else{
-                $grupo->promedio_autoevaluacion = "-";
-            }
+
+                $totalcalificacion = CourseItems::select('item_id')->where('course_id', $course_moodle->course_id)->where('item_type',"total curso")->first();
+
+                $total_curso = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$totalcalificacion? $totalcalificacion->item_id : null)->get();
+                if($total_curso[0]['total_curso'] != null){
+                    $grupo->total_curso = $total_curso[0]['total_curso'];
+                }else{
+                    $grupo->total_curso = "-"; 
+                }
             }else{
                 array_push($this->eliminar, $index);
             }
-            //dd("bien"); 
         });
 
         foreach($this->eliminar as $borrar){
             $grupos->pull($borrar);
         }
-        //dd($this->eliminar);
+        //dd($grupos);
 
         return view('academico.reporteGrupal.grupos',compact('name','grupos'));
     }

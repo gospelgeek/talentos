@@ -13,11 +13,11 @@
 					<thead>
 						<tr>
 							<th>Nombre</th>
-                            <th>Docente</th>
 							<th>Promedio Asistencia Participativa</th>
 							<th>Promedio Seguimientos Académicos</th>
 							<th>Promedio Autoevaluación</th>
 							<th>Items Huerfanos</th>
+							<th>Promedio Notas Finales</th>
 							<th style="width: 15%;">Acciones</th>
 						</tr>
 					</thead>
@@ -25,11 +25,11 @@
 						@foreach ($grupos as $grupo)
 						<tr data-id="grupo-id">
 							<td>{{$grupo->name}}</td>
-                            <td>{{$grupo->docente}}</td>
 							<td>{{$grupo->promedio_asistencia}}</td>
 							<td>{{$grupo->promedio_seguimientos}}</td>
 							<td>{{$grupo->promedio_autoevaluacion}}</td>
 							<td>{{$grupo->items_huerfanos}}</td>
+							<td>{{$grupo->total_curso}}</td>
 							<td><div class="row">                                  
                             		<div class="col-xs-9 col-sm-9">
                                 		<a title="Ver Informacion Detallada" href="/seguimiento_academico/{{$name->id}}/grupo/{{$grupo->id}}" class="btn btn-block btn-sm  fa fa-eye">detalles</a>    

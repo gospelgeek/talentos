@@ -60,7 +60,7 @@ public function __construct()
 
                 $asistencia = CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','asistencia%')->first();
 
-                $promedio_asistencia = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
+                $promedio_asistencia = StudentsGrade::select(DB::raw('CAST(AVG(grade) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
 
                 if($promedio_asistencia[0]['total_curso'] != null){
                     $grupo->promedio_asistencia = $promedio_asistencia[0]['total_curso'];
@@ -72,7 +72,7 @@ public function __construct()
                         $q->where('item_name', 'like', 'seguimiento%')->Orwhere('item_name','like','componente%')->Orwhere('item_name','like','actividades%')->Orwhere('item_name','like','parciales%')->Orwhere('item_name','like','seminario%');
                     })->first();
                 
-                $promedio_seguimientos = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
+                $promedio_seguimientos = StudentsGrade::select(DB::raw('CAST(AVG(grade) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
 
                 if($promedio_seguimientos[0]['total_curso'] != null){
                     $grupo->promedio_seguimientos = $promedio_seguimientos[0]['total_curso'];
@@ -82,7 +82,7 @@ public function __construct()
 
                 $autoevaluacion =  CourseItems::select('item_id')->where('course_id',$course_moodle->course_id)->where('item_type',"category")->where('item_name','like','auto%')->first();
                 
-                $promedio_autoevaluacion = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
+                $promedio_autoevaluacion = StudentsGrade::select(DB::raw('CAST(AVG(grade) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$asistencia? $asistencia->item_id : null)->get();
 
                 if($promedio_autoevaluacion[0]['total_curso'] != null){
                     $grupo->promedio_autoevaluacion = $promedio_autoevaluacion[0]['total_curso'];
@@ -92,7 +92,7 @@ public function __construct()
 
                 $totalcalificacion = CourseItems::select('item_id')->where('course_id', $course_moodle->course_id)->where('item_type',"total curso")->first();
 
-                $total_curso = StudentsGrade::select(DB::raw('CAST(ROUND(AVG(grade), 2) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$totalcalificacion? $totalcalificacion->item_id : null)->get();
+                $total_curso = StudentsGrade::select(DB::raw('CAST(AVG(grade) AS DECIMAL(10,2)) as total_curso'))->where('item_id',$totalcalificacion? $totalcalificacion->item_id : null)->get();
                 if($total_curso[0]['total_curso'] != null){
                     $grupo->total_curso = $total_curso[0]['total_curso'];
                 }else{

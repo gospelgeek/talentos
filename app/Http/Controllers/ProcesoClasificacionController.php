@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
-use App\programs;
+use App\Programs;
 use App\ProgramOptions;
 use App\ResultByArea;
 use App\StudentGroup;

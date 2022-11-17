@@ -308,3 +308,10 @@ Route::get('datos.caracterizacion_marzo', 'SocioEducativoController@datos_caract
 Route::get('datos.caracterizacion_mayo', 'SocioEducativoController@datos_caracterizacion_mayo')->name('datos.caracterizacion_mayo');
 Route::get('caracterizacion_individual/{id}', 'SocioEducativoController@index_individual')->name('caracterizacion_individual');
 Route::get('datos.caracterizacion_individual', 'SocioEducativoController@datos_caracterizacion_individual')->name('datos.caracterizacion_individual');
+
+//Proceso clasificacion 
+Route::get('index_proceso_clasificacion', 'ProcesoClasificacionController@index_vista')->name('index_proceso_clasificacion');
+Route::get('datos.clasificados', 'ProcesoClasificacionController@datos_clasificados')->name('datos.clasificados');
+Route::get('datos.no_clasificados', 'ProcesoClasificacionController@datos_no_clasificados')->name('datos.no_clasificados');
+Route::get('datos.resumen', 'ProcesoClasificacionController@datos_resumen')->name('datos.resumen');
+Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->name('proceso_clasificacion');

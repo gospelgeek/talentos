@@ -57,9 +57,9 @@ class Rating extends Model
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort 
-            INNER JOIN program_options on program_options.id_estudiante = student_profile.id
+            LEFT JOIN program_options on program_options.id_estudiante = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND program_options.deleted_at is null
+            AND program_options.deleted_at IS null
             AND cohorts.id = 1
             AND student_profile.id_state = 1");
         if($data != null){

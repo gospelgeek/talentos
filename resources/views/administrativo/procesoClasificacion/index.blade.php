@@ -17,8 +17,8 @@
             <div class="btn-group">
             	<div class="estado_clasi">
             		<label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>SI</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;<label>({{$si}})</label>&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>NO</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;<label>({{$no}})</label>
+            		<label>SI</label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<label>NO</label>&nbsp;<label>({{$no}})</label><input type="radio" name="filtro" id="not">
             	</div>
             </div>
             <div style="float:right;">

@@ -27,7 +27,12 @@ class ProcesoClasificacionController extends Controller
     }
 
     public function index_vista(){
-        return view('administrativo.procesoClasificacion.index');
+        $datos = Rating::clasificados();
+        $datos_no = Rating::no_clasificados();
+        $si = count($datos);
+        $no = count($datos_no);
+        //dd($si, $no);
+        return view('administrativo.procesoClasificacion.index', compact('si', 'no'));
     }
 
     public function datos_clasificados(){
@@ -115,7 +120,12 @@ class ProcesoClasificacionController extends Controller
                 
             }        
         }
-
+        $programs_options = ProgramOptions::all();
+        foreach($programs_options as $data){
+            if($data->semestre_ingreso == 'I-2023'){
+                ProgramOptions::where('id', $data->id)->update(['semestre_ingreso' => 'II-2023']);
+            }
+        }
         if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
 
             foreach($Programas_EstudiantesAdmitidos_semestre as $value) {

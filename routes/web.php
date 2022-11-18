@@ -315,3 +315,8 @@ Route::get('datos.clasificados', 'ProcesoClasificacionController@datos_clasifica
 Route::get('datos.no_clasificados', 'ProcesoClasificacionController@datos_no_clasificados')->name('datos.no_clasificados');
 Route::get('datos.resumen', 'ProcesoClasificacionController@datos_resumen')->name('datos.resumen');
 Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->name('proceso_clasificacion');
+
+// Consulta de calificaciones
+Route::get('consulta_calificaciones/', 'CalificacionesController@index')->name('consulta');
+Route::get('resultado_consulta/{iden}', 'CalificacionesController@informacionResultados')->name('resultados');
+Route::post('consulta/', 'CalificacionesController@consulta')->name('form_consulta');

@@ -6,7 +6,7 @@
 
 
 <div class="container-fluid">
-    <h1 style="text-align:center;">CONSULTA DE CALIFICACIONES</h1>
+    <h1 style="text-align:center;">RESULTADOS DE ADMISIÓN (Simulación)</h1>
     <div class="card">
         <div class="card-header">
         </div>
@@ -20,46 +20,64 @@
                         <thead>
                             <tr>
                                 <th>NOMBRES</th>
-                                <th>APELLIDOS</th>
-                                <th>Nº.DOCUMENTO</th>
-                                <th>LINEA</th>
-                                <th>GRUPO</th>
-                                <th>PROGRAMA</th>
-                                <th>PUESTO</th>
-                                <th>OPCIÓN</th>
-                                <th>TOTAL PONDERADO</th>
-                                <th>PONDERADO POR AREAS</th>
-                                <th>PROMEDIO NOTAS</th>
-                                <th>OPCIONES</th>
-                                <th>SEMESTRE INGRESO</th>
+                                <td>{{$dataCalificados[0]->name}}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $dataCalificados as $data)
                             <tr>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->lastname}}</td>
-                                <td>{{$data->document_number}}</td>
-                                <td>{{$data->cohorte}}</td>
-                                <td>{{$data->grupo}}</td>
-                                <td>{{$data->name_program}}</td>
-                                <td>{{$data->position}}</td>
-                                <td>{{$data->iteration}}</td>
-                                <td>{{$data->weighted_total}}</td>
-                                <td>{{$data->weighted_areas}}</td>
-                                <td>{{$data->average_grades}}</td>
-                                <td>
-                                    1: {{$data->opc1}}
-                                    2: {{$data->opc2}}
-                                    3: {{$data->opc3}}
-                                    4: {{$data->opc4}}
-                                    5: {{$data->opc5}}
-                                </td>
-                                <td>{{$data->semestre_ingreso}}</td>
+                                <th>APELLIDOS</th>
+                                <td>{{$dataCalificados[0]->lastname}}</td>
                             </tr>
-                            @endforeach
-
-                        </tbody>
+                            <tr>
+                                <th>Nº.DOCUMENTO</th>
+                                <td>{{$dataCalificados[0]->document_number}}</td>
+                            </tr>
+                            <tr>
+                                <th>LINEA</th>
+                                <td>{{$dataCalificados[0]->cohorte}}</td>
+                            </tr>
+                            <tr>
+                                <th>GRUPO</th>
+                                <td>{{$dataCalificados[0]->grupo}}</td>
+                            </tr>
+                            <tr>
+                                <th>PROGRAMA</th>
+                                <td>{{$dataCalificados[0]->name_program}}</td>
+                            </tr>
+                            <tr>
+                                <th>PUESTO</th>
+                                <td>{{$dataCalificados[0]->position}}</td>
+                            </tr>
+                            <tr>
+                                <th>OPCION</th>
+                                <td>{{$dataCalificados[0]->iteration}}</td>
+                            </tr>
+                            <tr>
+                                <th>TOTAL PONDERADO</th>
+                                <td>{{$dataCalificados[0]->weighted_total}}</td>
+                            </tr>
+                            <tr>
+                                <th>PONDERADO POR AREAS</th>
+                                <td>{{$dataCalificados[0]->weighted_areas}}</td>
+                            </tr>
+                            <tr>
+                                <th>PROMEDIO NOTAS</th>
+                                <td>{{$dataCalificados[0]->average_grades}}</td>
+                            </tr>
+                            <tr>
+                                <th>OPCIONES</th>
+                                <td>
+                                    1: {{$dataCalificados[0]->opc1}}
+                                    2: {{$dataCalificados[0]->opc2}}
+                                    3: {{$dataCalificados[0]->opc3}}
+                                    4: {{$dataCalificados[0]->opc4}}
+                                    5: {{$dataCalificados[0]->opc5}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>SEMESTRE INGRESO</th>
+                                <td>{{$dataCalificados[0]->semestre_ingreso}}</td>
+                            </tr>
+                            
+                        </thead>
                     </table>
                 </div>
             </div>
@@ -70,35 +88,39 @@
                         <thead>
                             <tr>
                                 <th>NOMBRES</th>
+                                <td>{{$dataNoCalificados[0]->name}}</td>
+                            </tr>
+                            <tr>
                                 <th>APELLIDOS</th>
-                                <th>Nº.DOCUMENTO</th>
+                                <td>{{$dataNoCalificados[0]->lastname}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nº DOCUMENTO</th>
+                                <td>{{$dataNoCalificados[0]->document_number}}</td>
+                            </tr>
+                            <tr>
                                 <th>LINEA</th>
+                                <td>{{$dataNoCalificados[0]->cohorte}}</td>
+                            </tr>
+                            <tr>
                                 <th>GRUPO</th>
-                                
+                                <td>{{$dataNoCalificados[0]->grupo}}</td>
+                            </tr>
+                            <tr>
                                 <th>OPCIONES</th>
+                                <td>
+                                    1: {{$dataNoCalificados[0]->opc1}}
+                                    2: {{$dataNoCalificados[0]->opc2}}
+                                    3: {{$dataNoCalificados[0]->opc3}}
+                                    4: {{$dataNoCalificados[0]->opc4}}
+                                    5: {{$dataNoCalificados[0]->opc5}}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>SEMESTRE INGRESO</th>
+                                <td>{{$dataNoCalificados[0]->semestre_ingreso}}</td>
                             </tr>
                         </thead>
-                        <tbody>
-                        @foreach( $dataNoCalificados as $data)
-                            <tr>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->lastname}}</td>
-                                <td>{{$data->document_number}}</td>
-                                <td>{{$data->cohorte}}</td>
-                                <td>{{$data->grupo}}</td>
-                                
-                                <td>
-                                    1: {{$data->opc1}}
-                                    2: {{$data->opc2}}
-                                    3: {{$data->opc3}}
-                                    4: {{$data->opc4}}
-                                    5: {{$data->opc5}}
-                                </td>
-                                <td>{{$data->semestre_ingreso}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
                     </table>
                 </div>
             </div>

@@ -28,6 +28,7 @@ class ProgramOptions extends Model
         'nota_ponderada5',
         'nota_prueba',
         'semestre_ingreso',
+        'semestre_ingreso_org',
     ];
 
     protected $dates = ['delete_at'];

@@ -47,7 +47,7 @@ class Rating extends Model
     }
     //
     public static function no_clasificados(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, program_options.semestre_ingreso,
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, program_options.semestre_ingreso, program_options.semestre_ingreso_org,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa1) as opc1,  
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa2) as opc2,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa3) as opc3,
@@ -59,7 +59,9 @@ class Rating extends Model
             INNER JOIN cohorts on cohorts.id = groups.id_cohort 
             INNER JOIN program_options on program_options.id_estudiante = student_profile.id
             WHERE student_groups.deleted_at IS null
-            AND program_options.deleted_at is null");
+            AND program_options.deleted_at is null
+            AND cohorts.id = 1
+            AND student_profile.id_state = 1");
         if($data != null){
             return $data;
         }else{

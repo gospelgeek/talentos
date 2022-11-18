@@ -17,8 +17,8 @@
             <div class="btn-group">
             	<div class="estado_clasi">
             		<label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>SI</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>NO</label>&nbsp;<input type="radio" name="filtro" id="not">
+            		<label>SI</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;<label>({{$si}})</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<label>NO</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;<label>({{$no}})</label>
             	</div>
             </div>
             <div style="float:right;">
@@ -27,18 +27,24 @@
                     <thead>
                 	    <tr>
                             <th rowspan="2">PROGRAMA</th>
-                            <th colspan="2">SEMESTRE I</th>
-                            <th colspan="2">SEMESTRE II</th>
+                            <th colspan="3">SEMESTRE I</th>
+                            <th colspan="3">SEMESTRE II</th>
                         </tr>
                         <tr>
                            	<th>Cupos Otorgados</th>
+                           	<th>Cupos Asignados</th>
                            	<th>Cupos Restantes</th>
+                           	
                            	<th>Cupos Otorgados</th>
+                           	<th>Cupos Asignados</th>
                            	<th>Cupos Restantes</th>
+                           	
                         </tr>
                     </thead>
                     <tfoot>
                         <th>TOTAL</th>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -73,6 +79,7 @@
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
+								<th>SEMESTRE ORIGINAL</th>
 							</tr>
 						</thead>
 					</table>
@@ -94,6 +101,7 @@
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
+								<th>SEMESTRE ORIGINAL</th>
 							</tr>
 						</thead>
 					</table>
@@ -132,9 +140,21 @@
         "columns": [
         	{data: 'name_program'},
         	{data: 'quotas_I_2023'},
+        	{data: null, render:function(data, row, meta, type){
+        			total = parseInt(data.quotas_I_2023) - parseInt(data.remaining_quotas_I_2023)
+        			return total 
+        		}
+        	},
         	{data: 'remaining_quotas_I_2023'},
+        	
         	{data: 'quotas_II_2023'},
+        	{data: null, render:function(data, row, meta, type){
+        			total = parseInt(data.quotas_II_2023) - parseInt(data.remaining_quotas_II_2023)
+        			return total 
+        		}
+        	},
         	{data: 'remaining_quotas_II_2023'},
+        	
         ],
         	"footerCallback": function( tfoot, data, start, end, display ) {
               var api = this.api();
@@ -143,9 +163,11 @@
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
+              var res1 = 0
               $( api.column( 2 ).footer() ).html(
                 api.column( 2 ).data().reduce( function ( a, b ) {
-                  return parseInt(a) + parseInt(b);
+                  res1 = res1 + parseInt(b.quotas_I_2023 - b.remaining_quotas_I_2023);
+                  return res1
                 }, 0 )
               );
               $( api.column( 3 ).footer() ).html(
@@ -155,6 +177,19 @@
               );
               $( api.column( 4 ).footer() ).html(
                 api.column( 4 ).data().reduce( function ( a, b ) {
+                  return parseInt(a) + parseInt(b);
+                }, 0 )
+              );
+              var res = 0
+              $( api.column( 5 ).footer() ).html(
+                api.column( 5 ).data().reduce( function ( a, b ) {
+                	//console.log(a,b)
+                  res = res + parseInt(b.quotas_II_2023 - b.remaining_quotas_II_2023);
+                  return res
+                }, 0 )
+              );
+              $( api.column( 6 ).footer() ).html(
+                api.column( 6 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
@@ -190,6 +225,7 @@
             	}
         	},
             {data: 'semestre_ingreso'},
+            {data: 'semestre_ingreso_org'},
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
             "dom":'Bfrtip',
@@ -203,6 +239,21 @@
                 
          	]
 	});
+
+	$('#clasificados thead tr').clone(true).appendTo('#clasificados thead');
+
+    $('#clasificados thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+            $('input', this).on('keyup change', function () {
+            if(table_1.column(i).search() !== this.value) {
+                table_1
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
 
 	var table_2 = $("#no_clasificados").DataTable({
 
@@ -242,12 +293,42 @@
             	}
             },
             {data: null, render:function(data,row,meta, type){
-            		//console.log(data);
-            		mostrar = '1: '+data.opc1+'\n,'+'2: '+data.opc2+'\n,'+'3: '+data.opc3+'\n,'+'4: '+data.opc4+'\n,'+'5: '+data.opc5
-            		return mostrar
+
+            		if(data.opc1 != null){
+            			var opc1 = data.opc1 
+            		}else{
+            			var opc1 = 'Sin opción';
+            		}
+            		if(data.opc2 != null){
+            			var opc2 = data.opc2 
+            		}else{
+            			var opc2 = 'Sin opción';
+            		}
+            		if(data.opc3 != null){
+            			var opc3 = data.opc3 
+            		}else{
+            			var opc3 = 'Sin opción';
+            		}
+            		if(data.opc4 != null){
+            			var opc4 = data.opc4 
+            		}else{
+            			var opc4 = 'Sin opción';
+            		}
+            		if(data.opc5 != null){
+            			var opc5 = data.opc5 
+            		}else{
+            			var opc5 = 'Sin opción';
+            		}
+            		if(opc1 == 'Sin opción' && opc2 == 'Sin opción' && opc3 == 'Sin opción' && opc4 == 'Sin opción' && opc5 == 'Sin opción'){
+            			return 'Sin opciones';
+            		}else{
+            			mostrar = '1: '+opc1+'\n,'+'2: '+opc2+'\n,'+'3: '+opc3+'\n,'+'4: '+opc4+'\n,'+'5: '+opc5
+            			return mostrar
+            		}
             	}
         	},
             {data: 'semestre_ingreso'},
+            {data: 'semestre_ingreso_org'},
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
             "dom":'Bfrtip',
@@ -262,6 +343,20 @@
          	]
 	});
 
+	$('#no_clasificados thead tr').clone(true).appendTo('#no_clasificados thead');
+
+    $('#no_clasificados thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+            $('input', this).on('keyup change', function () {
+            if(table_2.column(i).search() !== this.value) {
+                table_2
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
 	
 
 	

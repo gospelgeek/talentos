@@ -56,14 +56,24 @@ class CalificacionesController extends Controller
         INNER JOIN student_groups ON student_groups.id_student = student_profile.id
         INNER JOIN groups ON groups.id = student_groups.id_group
         INNER JOIN cohorts on cohorts.id = groups.id_cohort 
-        INNER JOIN program_options on program_options.id_estudiante = student_profile.id
+        LEFT JOIN program_options on program_options.id_estudiante = student_profile.id
         WHERE student_groups.deleted_at IS null
         AND program_options.deleted_at is null
         AND cohorts.id = 1
         AND student_profile.id_state = 1
         AND student_profile.id = ?", [$iden]);
 
-        if($dataCalificados == [] && $dataNoCalificados == []) $vistas = true;
+        $estudiante = DB::select("SELECT id, name, lastname, document_number, 
+        (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort LIMIT 1) 
+        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
+        student_groups.id_student = student_profile.id LIMIT 1) as cohorte, (SELECT (SELECT groups.name 
+        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
+        student_groups.id_student = student_profile.id LIMIT 1) as grupo FROM student_profile WHERE 
+        student_profile.id = ?", [$iden]);
+
+        if($dataCalificados == [] && $dataNoCalificados == []){
+            $vistas = true;    
+        }
 
         if($dataCalificados == []){
             $bandera = true;
@@ -73,8 +83,8 @@ class CalificacionesController extends Controller
             }
         }
 
-        //dd($dataCalificados);
-        return view('calificaciones.tablaResultados', compact('dataCalificados', 'dataNoCalificados', 'bandera', 'vistas'));
+        
+        return view('calificaciones.tablaResultados', compact('dataCalificados', 'dataNoCalificados', 'bandera', 'vistas', 'estudiante'));
     }
 
 }

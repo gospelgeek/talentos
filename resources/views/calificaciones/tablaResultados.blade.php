@@ -17,7 +17,7 @@
                     <table id="estudiante" class=" table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ESTADO</th>
+                                <th>RESULTADO</th>
                                 <td><strong><p style="background-color: #F91E1B;">NO ADMITIDO</p> </strong></td>
                             </tr>
                             <tr>
@@ -70,7 +70,7 @@
                     <table id="resultados" class=" table table-responsive table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ESTADO</th>
+                                <th>RESULTADO</th>
                                 <td><strong><p style="background-color: #21D817;">ADMITIDO</p></strong></td>
                             </tr>
                             <tr>
@@ -95,7 +95,7 @@
                             </tr>
                             <tr>
                                 <th>PROGRAMA</th>
-                                <td>{{$dataCalificados[0]->name_program}}</td>
+                                <td><strong>{{$dataCalificados[0]->name_program}}</strong></td>
                             </tr>
                             <tr>
                                 <th>PUESTO</th>
@@ -144,7 +144,7 @@
                     <table id="no_clasificados" class=" table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ESTADO</th>
+                                <th>RESULTADO</th>
                                 <td><strong><p style="background-color: #F91E1B;">NO ADMITIDO</p> </strong></td>
                             </tr>
                             <tr>

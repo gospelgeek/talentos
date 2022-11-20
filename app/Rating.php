@@ -42,7 +42,7 @@ class Rating extends Model
         if($data != null){
             return $data;
         }else{
-            return null;
+            return [];
         }
     }
     //
@@ -65,7 +65,32 @@ class Rating extends Model
         if($data != null){
             return $data;
         }else{
-            return null;
+            return [];
+        }
+    }
+
+    public static function detalle_programa($id_programa, $semestre){
+        //dd($semestre);
+        $data = DB::select("
+                    select student_profile.id, student_profile.name, student_profile.lastname, 
+                    ratings.weighted_total, ratings.weighted_areas, ratings.average_grades, 
+                    ratings.position, program_options.semestre_ingreso
+                    FROM student_profile 
+                    INNER JOIN ratings on ratings.id_student = student_profile.id
+                    INNER JOIN student_groups on student_groups.id_student = student_profile.id
+                    INNER JOIN groups on groups.id  = student_groups.id_group
+                    INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                    INNER JOIN program_options on program_options.id_estudiante = student_profile.id
+                    WHERE ratings.id_definitive_program = ".$id_programa."
+                    AND student_groups.deleted_at is null
+                    AND student_profile.id_state = 1
+                    AND cohorts.id = 1
+                    AND program_options.deleted_at IS NOT null
+                    AND program_options.semestre_ingreso = '".$semestre."' ");
+        if($data != null){
+            return $data;
+        }else{
+            return [];
         }
     }
     

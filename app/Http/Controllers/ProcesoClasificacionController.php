@@ -29,6 +29,7 @@ class ProcesoClasificacionController extends Controller
     public function index_vista(){
         $datos = Rating::clasificados();
         $datos_no = Rating::no_clasificados();
+        //dd($datos, $datos_no);
         $si = count($datos);
         $no = count($datos_no);
         //dd($si, $no);
@@ -37,11 +38,12 @@ class ProcesoClasificacionController extends Controller
 
     public function datos_clasificados(){
         $datos = Rating::clasificados();
-        
+
         return datatables()->of($datos)->toJson();
     }
-    public function datos_no_clasificados(){
+    public function datos_no_clasificados(){        
         $datos = Rating::no_clasificados();
+        //$datos = Rating::activoslinea1();
         
         return datatables()->of($datos)->toJson();
     }
@@ -50,6 +52,13 @@ class ProcesoClasificacionController extends Controller
         $datos = Programs::all();
         //dd($datos);
         return datatables()->of($datos)->toJson();    
+    }
+
+    public function detalles_programas(Request $request){
+        //dd($request['semestre']);
+        $data = Rating::detalle_programa($request['id_programa'], $request['semestre']);
+        
+        return datatables()->of($data)->toJson();
     }
 
     public function index(Request $request){
@@ -120,12 +129,14 @@ class ProcesoClasificacionController extends Controller
                 
             }        
         }
+
         $programs_options = ProgramOptions::all();
         foreach($programs_options as $data){
             if($data->semestre_ingreso == 'I-2023'){
                 ProgramOptions::where('id', $data->id)->update(['semestre_ingreso' => 'II-2023']);
             }
         }
+
         if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
 
             foreach($Programas_EstudiantesAdmitidos_semestre as $value) {
@@ -163,6 +174,7 @@ class ProcesoClasificacionController extends Controller
                     }
 
                     
+
                     $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
 
                     $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
@@ -223,14 +235,16 @@ class ProcesoClasificacionController extends Controller
                             foreach($empate_ponderacion as $key => $ponde){
 
                                 $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                    
+
+                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
                                 $promedio_nota = DB::select("
                                                             select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
                                                             FROM course_moodles
                                                             INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
                                                             INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
                                                             WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'");
+                                                            AND course_items.category_name = 'TOTAL CURSO'
+                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
                                      
                                 $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
                             }
@@ -325,14 +339,16 @@ class ProcesoClasificacionController extends Controller
                             foreach($empate_ponderacion as $key => $ponde){
 
                                 $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                    
+                                
+                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
                                 $promedio_nota = DB::select("
                                                             select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
                                                             FROM course_moodles
                                                             INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
                                                             INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
                                                             WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'");
+                                                            AND course_items.category_name = 'TOTAL CURSO'
+                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
                                      
                                 $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
                             }
@@ -427,14 +443,16 @@ class ProcesoClasificacionController extends Controller
                             foreach($empate_ponderacion as $key => $ponde){
 
                                 $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                    
+
+                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
                                 $promedio_nota = DB::select("
                                                             select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
                                                             FROM course_moodles
                                                             INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
                                                             INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
                                                             WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'");
+                                                            AND course_items.category_name = 'TOTAL CURSO'
+                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
                                      
                                 $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
                             }
@@ -529,14 +547,16 @@ class ProcesoClasificacionController extends Controller
                             foreach($empate_ponderacion as $key => $ponde){
 
                                 $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                    
+
+                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
                                 $promedio_nota = DB::select("
                                                             select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
                                                             FROM course_moodles
                                                             INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
                                                             INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
                                                             WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'");
+                                                            AND course_items.category_name = 'TOTAL CURSO'
+                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
                                      
                                 $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
                             }
@@ -631,14 +651,16 @@ class ProcesoClasificacionController extends Controller
                             foreach($empate_ponderacion as $key => $ponde){
 
                                 $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                    
+
+                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
                                 $promedio_nota = DB::select("
                                                             select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
                                                             FROM course_moodles
                                                             INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
                                                             INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
                                                             WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'");
+                                                            AND course_items.category_name = 'TOTAL CURSO'
+                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
                                      
                                 $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
                             }

@@ -113,6 +113,7 @@
 
 
 @push('scripts')
+@include('administrativo.procesoClasificacion.modal.detalle_programa')
 
 <script>
 
@@ -142,7 +143,11 @@
         	{data: 'quotas_I_2023'},
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_I_2023) - parseInt(data.remaining_quotas_I_2023)
-        			return total 
+        			if(total != 0){
+        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"I-2023"+'\');"><u>'+total+'</u></button>';	
+        			}else{
+        			 	return '<button class="btn" type="button");">'+total+'</button>';
+        			}
         		}
         	},
         	{data: 'remaining_quotas_I_2023'},
@@ -150,7 +155,11 @@
         	{data: 'quotas_II_2023'},
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_II_2023) - parseInt(data.remaining_quotas_II_2023)
-        			return total 
+        			if(total != 0){
+        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"II-2023"+'\');"><u>'+total+'</u></button>';
+        			}else{
+						return '<button class="btn" type="button");">'+total+'</button>';	 
+        			}
         		}
         	},
         	{data: 'remaining_quotas_II_2023'},
@@ -359,7 +368,31 @@
     });
 	
 
-	
+	function abrir_modal_detalle(id_programa, semestre){
+		//alert(semestre);
+		var tabla_detalle = $("#detalle_programa").DataTable({
+        	"ajax":{
+          		"method": "GET",
+          		"url": "{{route('datos.detalle_programas')}}",
+          		"data": function(d){
+              		d.id_programa = id_programa;
+              		d.semestre = semestre;
+          		},
+        	},
+        	"columns":[
+        		{data: 'name'},
+        		{data: 'lastname'},
+        		{data: 'weighted_total'},
+        		{data: 'weighted_areas'},
+        		{data: 'average_grades'},
+        		{data: 'position'},
+        	],
+        	"deferRender": true,"responsive": false,"processing": false,'serverSider':true,
+            "paging": true, "lengthChange": false, "autoWidth": false,
+            "destroy":true,"searching": false,
+    	});
+		$('#modal_detalle_programa').modal('show');
+	}
 
 	
 </script>

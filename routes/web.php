@@ -320,3 +320,4 @@ Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->nam
 Route::get('consulta_calificaciones/', 'CalificacionesController@index')->name('consulta');
 Route::get('resultado_consulta/{iden}', 'CalificacionesController@informacionResultados')->name('resultados');
 Route::post('consulta/', 'CalificacionesController@consulta')->name('form_consulta');
+Route::get('datos.detalle_programas', 'ProcesoClasificacionController@detalles_programas')->name('datos.detalle_programas');

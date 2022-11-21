@@ -113,6 +113,7 @@
                             <td>Grupo</td>
                             <td>Cohorte</td>
                             <td>Clasificación</td>
+                            <td>I.E</td>
                             <td>Estado</td>
                             <td>EPS</td>
                             <td id="botons" width="15%">Acciones</td>
@@ -289,6 +290,7 @@
                         }
                     }
                 },
+                {data: 'institucion'},
                 {data: 'estado'},
                 {data: 'eps', visible:false},
                 {data: null, render:function(data, type, row, meta){

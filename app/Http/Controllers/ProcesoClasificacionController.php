@@ -68,7 +68,7 @@ class ProcesoClasificacionController extends Controller
         $elegidos = array();
 
         $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
-        $semestre = 1;
+        $semestre = 2;
         for ($i=1; $i <= 5; $i++) {
 
             foreach($programs as $program){

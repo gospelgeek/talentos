@@ -30,8 +30,9 @@ class IcfesController extends Controller
     public function registroIcfes(Request $request)
     {
         if ($request->ajax()) {
-            $iden = explode("-",$request['identificacion']);
+            $iden = explode("-", $request['identificacion']);
             $id_student = $iden[1];
+            //dd($id_student);
             $url = $request['url'];
             $r_areas = $request['r_areas'];
             $lecturaC = $request['lecturaC'];
@@ -40,13 +41,21 @@ class IcfesController extends Controller
             $cienN = $request['cienN'];
             $ingles = $request['ingles'];
             $form_areas = 0;
-           
+            //dd($r_areas);
             $id_S = perfilEstudiante::where('document_number', $id_student)->first();
+
+            $lineaGrupo = DB::select("SELECT (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE 
+            cohorts.id = groups.id_cohort LIMIT 1) FROM groups WHERE groups.id = 
+            student_groups.id_group LIMIT 1) FROM student_groups WHERE student_groups.id_student = 
+            student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name FROM groups WHERE 
+            groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
+            student_groups.id_student = student_profile.id LIMIT 1) as grupo FROM student_profile 
+            WHERE student_profile.id = ?", [$id_S->id]);
 
             $comprobacion = IcfesStudent::where('id_student', $id_S->id)->where('id_icfes_test', 5)->first();
 
             if ($comprobacion != null) {
-                return array("mensaje" => "el estudiante ya tiene registros en icfes de salida");
+                return array("mensaje" => "no");
             } else {
 
                 if ($url == null) {
@@ -69,45 +78,69 @@ class IcfesController extends Controller
 
                 switch ($form_areas) {
                     case 1:
-                        ResultByArea::create([
+                        $lec = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 1,
                             'qualification' => floatval($lecturaC)
                         ]);
-                        ResultByArea::create([
+                        $mat = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 2,
                             'qualification' => floatval($mate)
                         ]);
 
-                        ResultByArea::create([
+                        $cis = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 3,
                             'qualification' => floatval($cienS)
                         ]);
 
-                        ResultByArea::create([
+                        $cin = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 4,
                             'qualification' => floatval($cienN)
                         ]);
 
-                        ResultByArea::create([
+                        $ing = ResultByArea::create([
                             'id_student' => $id_S->id,
                             'id_icfes_student' => $datos->id,
                             'id_icfes_area' => 5,
                             'qualification' => floatval($ingles)
                         ]);
 
-                        return array("mensaje" => "guardado exitoso");
+                        return array(
+                            "mensaje" => "guardado exitoso", 
+                            "estudiante" => $id_S,
+                            "linea" => $lineaGrupo[0]->linea,
+                            "grupo" => $lineaGrupo[0]->grupo,
+                            "lecturaCritica" => $lec->qualification,
+                            "matematicas" => $mat->qualification,
+                            "cienciasSociales" => $cis->qualification,
+                            "cienciasNaturales" => $cin->qualification,
+                            "ingles" => $ing->qualification,
+                            "total" => $datos->total_score,
+                            "url" => $datos->url_support
+                        );
                         break;
 
                     case 0:
-                        return array("mensaje" => "guardado exitoso");
+                        return array(
+                            "mensaje" => "guardado exitoso", 
+                            "estudiante" => $id_S,
+                            "linea" => $lineaGrupo[0]->linea,
+                            "grupo" => $lineaGrupo[0]->grupo,
+                            "lecturaCritica" => '',
+                            "matematicas" => '',
+                            "cienciasSociales" => '',
+                            "cienciasNaturales" => '',
+                            "ingles" => '',
+                            "total" => '',
+                            "url" => ''
+                        );
                         break;
 
                     default:
@@ -564,94 +597,10 @@ class IcfesController extends Controller
     public function datosPruebasIcfes($test)
     {
         ini_set('max_execution_time', '600');
-        $contador = 0;
-        $pLc = 0;
-        $pMt = 0;
-        $pCs = 0;
-        $pCn = 0;
-        $pIngles = 0;
-        $data = [];
 
-        $estudiantes = DB::select("SELECT student_profile.id as id, student_profile.name as nombre, 
-        student_profile.lastname as apellidos, student_profile.document_number as documento, 
-        student_profile.student_code as codigo,
-        (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort  LIMIT 1) 
-        FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups 
-        WHERE student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT 
-        (SELECT groups.name FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
-        FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
-        FROM student_profile WHERE id_state = 1 AND 
-        id IN (SELECT icfes_students.id_student FROM icfes_students WHERE icfes_students.id_icfes_test = ?) ", [$test]);
-
-        //dd($estudiantes);
-
-        $tamanioDatos = sizeof($estudiantes);
-
-        while ($contador < $tamanioDatos) {
-            $pruebaInfo = DB::select("SELECT icfes_students.total_score, icfes_students.id, icfes_students.url_support FROM icfes_students 
-            WHERE icfes_students.id_icfes_test = $test AND icfes_students.id_student = ?", [$estudiantes[$contador]->id]);
-
-            $idPrueba = $pruebaInfo[0]->id;
-
-            $lc = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 1", [$idPrueba]);
-            $mt = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 2", [$idPrueba]);
-            $cs = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 3", [$idPrueba]);
-            $cn = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 4", [$idPrueba]);
-            $in = DB::select("SELECT qualification as calificacion FROM result_by_areas WHERE id_icfes_student = ? AND id_icfes_area = 5", [$idPrueba]);
-
-            if ($lc == []) {
-                $pLc = 0;
-            } else {
-                $pLc = $lc[0]->calificacion;
-            }
-
-            if ($mt == []) {
-                $pMt = 0;
-            } else {
-                $pMt = $mt[0]->calificacion;
-            }
-
-            if ($cs == []) {
-                $pCs = 0;
-            } else {
-                $pCs = $cs[0]->calificacion;
-            }
-
-            if ($cn == []) {
-                $pCn = 0;
-            } else {
-                $pCn = $cn[0]->calificacion;
-            }
-
-            if ($in == []) {
-                $pIngles = 0;
-            } else {
-                $pIngles = $in[0]->calificacion;
-            }
-
-
-            $data[$contador] = array(
-                "id_student" => $estudiantes[$contador]->id,
-                "nombre" => $estudiantes[$contador]->nombre,
-                "apellidos" => $estudiantes[$contador]->apellidos,
-                "documento" => $estudiantes[$contador]->documento,
-                "codigo" => $estudiantes[$contador]->codigo,
-                "linea" => $estudiantes[$contador]->linea,
-                "grupo" => $estudiantes[$contador]->grupo,
-                "url" => $pruebaInfo[0]->url_support,
-                "LC" => $pLc,
-                "MT" => $pMt,
-                "CS" => $pCs,
-                "CN" => $pCn,
-                "IN" => $pIngles,
-                "Total" => $pruebaInfo[0]->total_score
-            );
-            $contador++;
-        }
-
-        $result = $data;
-
-        return datatables()->of($result)->toJson();
+        $data = IcfesStudent::infoPruebas($test);
+        
+        return datatables()->of($data)->toJson();
     }
 
     public function actualizarIcfes($iden, $test, Request $request)

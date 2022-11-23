@@ -20,6 +20,12 @@
             		<label>SI</label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
             		<label>NO</label>&nbsp;<label>({{$no}})</label><input type="radio" name="filtro" id="not">
             	</div>
+                <div class="semestres">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Semestre:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>I-2023</label>&nbsp;<input type="checkbox" name="check" value="I-2023" id="smstre_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>II-2023</label>&nbsp;<input type="checkbox" name="check" value="II-2023" id="smstre_2">&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
             </div>
             <div style="float:right;">
                 <table id="resumen" class="table-bordered table-striped">
@@ -130,7 +136,7 @@
     	}        
     });
 	
-
+$(document).ready(function(){
 	var table_3 = $("#resumen").DataTable({
 
 		"ajax":{
@@ -264,6 +270,37 @@
         });
     });
 
+    document.getElementById('smstre_1').checked = true;
+    document.getElementById('smstre_2').checked = true;
+
+    $('.semestres').on('change', function() {   
+        var smstre_1 = $('#smstre_1').is(":checked");
+        var smstre_2 = $('#smstre_2').is(":checked");
+        //alert(smstre_1);
+        if(smstre_1){
+            if(!smstre_2){
+                var filtro = $('input:checkbox[id="smstre_2"]').map(function() {
+                        return this.value;
+                    }).get().join('|');
+                    table_1.column(12).search(filtro ? '^((?!' + filtro + ').*)$' : '', true, false, false).draw(false);
+            }
+            table_1.draw();     
+        }
+        if(!smstre_1){
+            if(smstre_2){
+                table_1.columns(12).search('II-2023');    
+            }
+            table_1.draw();    
+        }
+        if(smstre_1 && smstre_2){
+            var offices = $('input:checkbox[name="check"]:checked').map(function() {
+                return this.value;
+            }).get().join('|');
+            table_1.column(12).search(offices, true, false, false).draw(false);
+            table_1.draw();
+        }
+    });
+
 	var table_2 = $("#no_clasificados").DataTable({
 
 		"ajax":{
@@ -366,10 +403,12 @@
             }
         });
     });
-	
+});
 
 	function abrir_modal_detalle(id_programa, semestre){
 		//alert(semestre);
+        var campo = document.getElementById("smstre");
+        campo.innerHTML = "SEMESTRE "+semestre;
 		var tabla_detalle = $("#detalle_programa").DataTable({
         	"ajax":{
           		"method": "GET",
@@ -380,19 +419,19 @@
           		},
         	},
         	"columns":[
+                {data: 'position'},
+                {data: 'iteration'},
         		{data: 'name'},
         		{data: 'lastname'},
         		{data: 'weighted_total'},
         		{data: 'weighted_areas'},
         		{data: 'average_grades'},
-        		{data: 'position'},
         	],
         	"deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,
-            "destroy":true,"searching": false,
+            "destroy":true,"searching": false, "order":[[0, 'asc']],
     	});
 		$('#modal_detalle_programa').modal('show');
-	}
 
 	
 </script>

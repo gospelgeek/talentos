@@ -37,7 +37,9 @@ class Rating extends Model
             INNER JOIN program_options on program_options.id_estudiante = student_profile.id
             WHERE student_groups.deleted_at IS null
             AND cohorts.id = 1
-            AND student_profile.id_state = 1");
+            AND student_profile.id_state = 1
+            and student_profile.deleted_at is null
+            ");
 
         if($data != null){
             return $data;
@@ -61,7 +63,8 @@ class Rating extends Model
             WHERE student_groups.deleted_at IS null
             AND program_options.deleted_at IS null
             AND cohorts.id = 1
-            AND student_profile.id_state = 1");
+            AND student_profile.id_state = 1
+            and student_profile.deleted_at is null");
         if($data != null){
             return $data;
         }else{
@@ -74,7 +77,7 @@ class Rating extends Model
         $data = DB::select("
                     select student_profile.id, student_profile.name, student_profile.lastname, 
                     ratings.weighted_total, ratings.weighted_areas, ratings.average_grades, 
-                    ratings.position, program_options.semestre_ingreso
+                    ratings.position, ratings.iteration, program_options.semestre_ingreso
                     FROM student_profile 
                     INNER JOIN ratings on ratings.id_student = student_profile.id
                     INNER JOIN student_groups on student_groups.id_student = student_profile.id
@@ -86,6 +89,7 @@ class Rating extends Model
                     AND student_profile.id_state = 1
                     AND cohorts.id = 1
                     AND program_options.deleted_at IS NOT null
+                    and student_profile.deleted_at is null
                     AND program_options.semestre_ingreso = '".$semestre."' ");
         if($data != null){
             return $data;

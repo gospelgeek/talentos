@@ -26,7 +26,8 @@
                         <label class="radio-inline">SEPTIEMBRE <input type="radio" name="filtro" value="9" id="septiembre" checked></label>&nbsp;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="radio-inline">OCTUBRE <input type="radio" name="filtro" value="10" id="octubre"></label>&nbsp;&nbsp;&nbsp;
-                        <label class="radio-inline" style='display:none' >ACEPTACION <input type="radio" name="filtro" value="12" id="octubre"  style='display:none'></label>&nbsp;
+                        <label class="radio-inline">NOVIEMBRE <input type="radio" name="filtro" value="11" id="noviembre"></label>&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline" style='display:none' >ACEPTACION <input type="radio" name="filtro" value="12" id="aceptacion"  style='display:none'></label>&nbsp;
                     </form>                     
                 </div>  
             </div>

@@ -117,10 +117,7 @@
         <div class="card-header">
 
             <div class="row">
-                <div class="col-md-2">
-                    <button class="btn btn-primary" id="Ricfes">REGISTRO DE RESULTADO ICFES</button>
-                </div>
-                &nbsp;
+                
                 &nbsp;
                 <div class="col-md-2">
                     <label for="">ELIJA LA COHORTE: </label>

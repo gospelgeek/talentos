@@ -101,7 +101,7 @@
 								<th>GRUPO</th>
 								<th>PROGRAMA</th>
 								<th>PUESTO</th>
-								<th>OPCIÓN</th>
+								<th>RONDA</th>
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
 								<th>PROMEDIO NOTAS</th>
@@ -432,8 +432,8 @@ $(document).ready(function(){
             "destroy":true,"searching": false, "order":[[0, 'asc']],
     	});
 		$('#modal_detalle_programa').modal('show');
+	}
 
-	
 </script>
 @endpush
 @endsection

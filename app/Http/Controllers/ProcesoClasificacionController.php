@@ -64,11 +64,10 @@ class ProcesoClasificacionController extends Controller
     public function index(Request $request){
 
         $Programas_EstudiantesAdmitidos_semestre = array();
-        
-        $elegidos = array();
 
         $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
-        $semestre = 1;
+        
+        $semestre = 2;
         for ($i=1; $i <= 5; $i++) {
 
             foreach($programs as $program){
@@ -79,7 +78,7 @@ class ProcesoClasificacionController extends Controller
                             $cupos = $program->remaining_quotas_I_2023;
 
                             $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"I-2023");
-                            //dump($elegidos);
+                            //dd($elegidos);
                             if(count($elegidos) > 0){
 
                                 foreach($elegidos as $student){
@@ -136,7 +135,6 @@ class ProcesoClasificacionController extends Controller
                 ProgramOptions::where('id', $data->id)->update(['semestre_ingreso' => 'II-2023']);
             }
         }
-
         if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
 
             foreach($Programas_EstudiantesAdmitidos_semestre as $value) {
@@ -161,111 +159,212 @@ class ProcesoClasificacionController extends Controller
 
     public function iteracion_carreras($carrera,$iteracion,$cupos,$semestre){
         $estudiantes_seleccionados = array();
-        $estudiantes_empate  = array();
         switch ($iteracion) {
             case 1:
                 $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada1','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
-                    for ($i=0; $i < $cupos; $i++) { 
-                    
-                        array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < $cupos;){ 
 
-                    
+                        $this->estudiante = $programs_options[$i]->nota_ponderada1;
 
-                    $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
-
-                    $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
-
-                    $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
-                                            if($k >=  $this->ultima_pos_estudiantes_seleccionados){
-                                                return $v['nota_ponderada1'] == $this->valor_ultima_pos_estudiantes_seleccionados;
-                                            }                                            
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada1'] == $this->estudiante;
+                                            //}                                            
                                         }, ARRAY_FILTER_USE_BOTH);
 
-                    if(count($estudiantes_empate) > 1){
+                        if(count($estudiantes_empate) > 1){
 
-                        $desempate = array();
+                            $desempate = array();
 
-                        foreach ($estudiantes_empate as $key => $estudiante) {
-                                //dd($estudiante);
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
 
-                            $program         = Programs::Where('id',$carrera)->first();
+                                $program         = Programs::Where('id',$carrera)->first();
 
-                            $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
 
-                                
+                                    
 
-                            $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
-                                                  +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
-                                                  +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
-                                                  +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
-                                                  +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
-                                                  +$prueba_especifica;
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
 
-                            $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada1'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
-                        }
-
-                        $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
-
-                        array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
-                            
-                        $this->desempate = $desempate[0]['ponderado_areas'];
-
-                        $empate_ponderacion = array_filter($desempate,function($v, $k) {
-                                                return $v['ponderado_areas'] == $this->desempate;
-                                            }, ARRAY_FILTER_USE_BOTH);
-
-                        if(count($empate_ponderacion) > 1){
-
-                            $promedios_empate = array();
-
-                            foreach($empate_ponderacion as $key => $ponde){
-
-                                $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-
-                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
-                                $promedio_nota = DB::select("
-                                                            select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
-                                                            FROM course_moodles
-                                                            INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
-                                                            INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
-                                                            WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'
-                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
-                                     
-                                $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada1'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
                             }
 
-                            $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
 
-                            array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
 
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $promedios_empate[0];
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate);
+
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
                         }
-                        else{
-
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $empate_ponderacion[0];
-                        }
-                    }                                     
+                    }                   
                 }
                 else{
 
-                    foreach($programs_options as $program){
-                        array_push($estudiantes_seleccionados,array("id_student" => $program->id_estudiante, "total_ponderado" => $program->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < count($programs_options);){ 
+
+                        $this->estudiante = $programs_options[$i]->nota_ponderada1;
+
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada1'] == $this->estudiante;
+                                            //}                                            
+                                        }, ARRAY_FILTER_USE_BOTH);
+
+                        if(count($estudiantes_empate) > 1){
+
+                            $desempate = array();
+
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
+
+                                $program         = Programs::Where('id',$carrera)->first();
+
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+
+                                    
+
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
+
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada1'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
+                            }
+
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
+
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
+
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
+                        }
+                    } 
                 }
                 break;
             case 2:
@@ -273,103 +372,205 @@ class ProcesoClasificacionController extends Controller
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
-                    for ($i=0; $i < $cupos; $i++) { 
-                    
-                        array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada2, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < $cupos;){ 
 
-                    
-                    $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
+                        $this->estudiante = $programs_options[$i]->nota_ponderada2;
 
-                    $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
-
-                    $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
-                                            if($k >=  $this->ultima_pos_estudiantes_seleccionados){
-                                                return $v['nota_ponderada2'] == $this->valor_ultima_pos_estudiantes_seleccionados;
-                                            }                                            
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada2'] == $this->estudiante;
+                                            //}                                            
                                         }, ARRAY_FILTER_USE_BOTH);
 
-                    if(count($estudiantes_empate) > 1){
+                        if(count($estudiantes_empate) > 1){
 
-                        $desempate = array();
+                            $desempate = array();
 
-                        foreach ($estudiantes_empate as $key => $estudiante) {
-                                //dd($estudiante);
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
 
-                            $program         = Programs::Where('id',$carrera)->first();
+                                $program         = Programs::Where('id',$carrera)->first();
 
-                            $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
 
-                                
+                                    
 
-                            $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
-                                                  +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
-                                                  +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
-                                                  +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
-                                                  +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
-                                                  +$prueba_especifica;
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
 
-                            $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada2'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
-                        }
-
-                        $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
-
-                        array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
-                            
-                        $this->desempate = $desempate[0]['ponderado_areas'];
-
-                        $empate_ponderacion = array_filter($desempate,function($v, $k) {
-                                                return $v['ponderado_areas'] == $this->desempate;
-                                            }, ARRAY_FILTER_USE_BOTH);
-
-                        if(count($empate_ponderacion) > 1){
-
-                            $promedios_empate = array();
-
-                            foreach($empate_ponderacion as $key => $ponde){
-
-                                $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-                                
-                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
-                                $promedio_nota = DB::select("
-                                                            select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
-                                                            FROM course_moodles
-                                                            INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
-                                                            INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
-                                                            WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'
-                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
-                                     
-                                $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada2'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
                             }
 
-                            $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
 
-                            array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
 
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $promedios_empate[0];
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada2, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
                         }
-                        else{
-
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $empate_ponderacion[0];
-                        }
-                    }                                     
+                    }                   
                 }
                 else{
 
-                    foreach($programs_options as $program){
-                        array_push($estudiantes_seleccionados,array("id_student" => $program->id_estudiante, "total_ponderado" => $program->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < count($programs_options);){ 
+
+                        $this->estudiante = $programs_options[$i]->nota_ponderada2;
+
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada2'] == $this->estudiante;
+                                            //}                                            
+                                        }, ARRAY_FILTER_USE_BOTH);
+
+                        if(count($estudiantes_empate) > 1){
+
+                            $desempate = array();
+
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
+
+                                $program         = Programs::Where('id',$carrera)->first();
+
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+
+                                    
+
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
+
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada2'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
+                            }
+
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
+
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
+
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada2, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
+                        }
+                    } 
                 }
                 break;
             case 3:
@@ -377,103 +578,205 @@ class ProcesoClasificacionController extends Controller
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
-                    for ($i=0; $i < $cupos; $i++) { 
-                    
-                        array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada3, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < $cupos;){ 
 
-                    
-                    $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
+                        $this->estudiante = $programs_options[$i]->nota_ponderada3;
 
-                    $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
-
-                    $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
-                                            if($k >=  $this->ultima_pos_estudiantes_seleccionados){
-                                                return $v['nota_ponderada3'] == $this->valor_ultima_pos_estudiantes_seleccionados;
-                                            }                                            
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada3'] == $this->estudiante;
+                                            //}                                            
                                         }, ARRAY_FILTER_USE_BOTH);
 
-                    if(count($estudiantes_empate) > 1){
+                        if(count($estudiantes_empate) > 1){
 
-                        $desempate = array();
+                            $desempate = array();
 
-                        foreach ($estudiantes_empate as $key => $estudiante) {
-                                //dd($estudiante);
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
 
-                            $program         = Programs::Where('id',$carrera)->first();
+                                $program         = Programs::Where('id',$carrera)->first();
 
-                            $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
 
-                                
+                                    
 
-                            $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
-                                                  +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
-                                                  +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
-                                                  +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
-                                                  +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
-                                                  +$prueba_especifica;
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
 
-                            $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada3'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
-                        }
-
-                        $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
-
-                        array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
-                            
-                        $this->desempate = $desempate[0]['ponderado_areas'];
-
-                        $empate_ponderacion = array_filter($desempate,function($v, $k) {
-                                                return $v['ponderado_areas'] == $this->desempate;
-                                            }, ARRAY_FILTER_USE_BOTH);
-
-                        if(count($empate_ponderacion) > 1){
-
-                            $promedios_empate = array();
-
-                            foreach($empate_ponderacion as $key => $ponde){
-
-                                $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-
-                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
-                                $promedio_nota = DB::select("
-                                                            select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
-                                                            FROM course_moodles
-                                                            INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
-                                                            INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
-                                                            WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'
-                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
-                                     
-                                $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada3'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
                             }
 
-                            $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
 
-                            array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
 
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $promedios_empate[0];
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada3, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
                         }
-                        else{
-
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $empate_ponderacion[0];
-                        }
-                    }                                     
+                    }                   
                 }
                 else{
 
-                    foreach($programs_options as $program){
-                        array_push($estudiantes_seleccionados,array("id_student" => $program->id_estudiante, "total_ponderado" => $program->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < count($programs_options);){ 
+
+                        $this->estudiante = $programs_options[$i]->nota_ponderada3;
+
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada3'] == $this->estudiante;
+                                            //}                                            
+                                        }, ARRAY_FILTER_USE_BOTH);
+
+                        if(count($estudiantes_empate) > 1){
+
+                            $desempate = array();
+
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
+
+                                $program         = Programs::Where('id',$carrera)->first();
+
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+
+                                    
+
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
+
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada3'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
+                            }
+
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
+
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
+
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada3, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
+                        }
+                    } 
                 }
                 break;
             case 4:
@@ -481,103 +784,205 @@ class ProcesoClasificacionController extends Controller
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
-                    for ($i=0; $i < $cupos; $i++) { 
-                    
-                        array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada4, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < $cupos;){ 
 
-                    
-                    $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
+                        $this->estudiante = $programs_options[$i]->nota_ponderada4;
 
-                    $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
-
-                    $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
-                                            if($k >=  $this->ultima_pos_estudiantes_seleccionados){
-                                                return $v['nota_ponderada4'] == $this->valor_ultima_pos_estudiantes_seleccionados;
-                                            }                                            
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada4'] == $this->estudiante;
+                                            //}                                            
                                         }, ARRAY_FILTER_USE_BOTH);
 
-                    if(count($estudiantes_empate) > 1){
+                        if(count($estudiantes_empate) > 1){
 
-                        $desempate = array();
+                            $desempate = array();
 
-                        foreach ($estudiantes_empate as $key => $estudiante) {
-                                //dd($estudiante);
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
 
-                            $program         = Programs::Where('id',$carrera)->first();
+                                $program         = Programs::Where('id',$carrera)->first();
 
-                            $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
 
-                                
+                                    
 
-                            $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
-                                                  +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
-                                                  +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
-                                                  +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
-                                                  +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
-                                                  +$prueba_especifica;
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
 
-                            $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada4'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
-                        }
-
-                        $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
-
-                        array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
-                            
-                        $this->desempate = $desempate[0]['ponderado_areas'];
-
-                        $empate_ponderacion = array_filter($desempate,function($v, $k) {
-                                                return $v['ponderado_areas'] == $this->desempate;
-                                            }, ARRAY_FILTER_USE_BOTH);
-
-                        if(count($empate_ponderacion) > 1){
-
-                            $promedios_empate = array();
-
-                            foreach($empate_ponderacion as $key => $ponde){
-
-                                $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-
-                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
-                                $promedio_nota = DB::select("
-                                                            select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
-                                                            FROM course_moodles
-                                                            INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
-                                                            INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
-                                                            WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'
-                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
-                                     
-                                $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada4'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
                             }
 
-                            $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
 
-                            array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
 
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $promedios_empate[0];
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada4, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
                         }
-                        else{
-
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $empate_ponderacion[0];
-                        }
-                    }                                     
+                    }                   
                 }
                 else{
 
-                    foreach($programs_options as $program){
-                        array_push($estudiantes_seleccionados,array("id_student" => $program->id_estudiante, "total_ponderado" => $program->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < count($programs_options);){ 
+
+                        $this->estudiante = $programs_options[$i]->nota_ponderada4;
+
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada4'] == $this->estudiante;
+                                            //}                                            
+                                        }, ARRAY_FILTER_USE_BOTH);
+
+                        if(count($estudiantes_empate) > 1){
+
+                            $desempate = array();
+
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
+
+                                $program         = Programs::Where('id',$carrera)->first();
+
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+
+                                    
+
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
+
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada4'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
+                            }
+
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
+
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
+
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada4, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
+                        }
+                    } 
                 }
                 break;
             case 5:
@@ -585,110 +990,216 @@ class ProcesoClasificacionController extends Controller
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
-                    for ($i=0; $i < $cupos; $i++) { 
-                    
-                        array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada5, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < $cupos;){ 
 
-                    
-                    $this->valor_ultima_pos_estudiantes_seleccionados = $estudiantes_seleccionados[count($estudiantes_seleccionados)-1]['total_ponderado'];
+                        $this->estudiante = $programs_options[$i]->nota_ponderada5;
 
-                    $this->ultima_pos_estudiantes_seleccionados = count($estudiantes_seleccionados) - 1;
-
-                    $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
-                                            if($k >=  $this->ultima_pos_estudiantes_seleccionados){
-                                                return $v['nota_ponderada5'] == $this->valor_ultima_pos_estudiantes_seleccionados;
-                                            }                                            
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada5'] == $this->estudiante;
+                                            //}                                            
                                         }, ARRAY_FILTER_USE_BOTH);
 
-                    if(count($estudiantes_empate) > 1){
+                        if(count($estudiantes_empate) > 1){
 
-                        $desempate = array();
+                            $desempate = array();
 
-                        foreach ($estudiantes_empate as $key => $estudiante) {
-                                //dd($estudiante);
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
 
-                            $program         = Programs::Where('id',$carrera)->first();
+                                $program         = Programs::Where('id',$carrera)->first();
 
-                            $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                            $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
 
-                                
+                                    
 
-                            $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
-                                                  +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
-                                                  +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
-                                                  +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
-                                                  +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
-                                                  +$prueba_especifica;
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
 
-                            $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada5'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
-                        }
-
-                        $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
-
-                        array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
-                            
-                        $this->desempate = $desempate[0]['ponderado_areas'];
-
-                        $empate_ponderacion = array_filter($desempate,function($v, $k) {
-                                                return $v['ponderado_areas'] == $this->desempate;
-                                            }, ARRAY_FILTER_USE_BOTH);
-
-                        if(count($empate_ponderacion) > 1){
-
-                            $promedios_empate = array();
-
-                            foreach($empate_ponderacion as $key => $ponde){
-
-                                $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
-
-                                $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();    
-                                $promedio_nota = DB::select("
-                                                            select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
-                                                            FROM course_moodles
-                                                            INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
-                                                            INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
-                                                            WHERE course_moodles.group_id = '".$grupo_id->id_group."'
-                                                            AND course_items.category_name = 'TOTAL CURSO'
-                                                            AND students_grades.id_moodle = '".$student->id_moodle."'");
-                                     
-                                $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada5'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
                             }
 
-                            $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
 
-                            array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
 
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $promedios_empate[0];
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada5, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
                         }
-                        else{
-
-                            $estudiantes_seleccionados[count($estudiantes_seleccionados)-1] = $empate_ponderacion[0];
-                        }
-                    }                                     
+                    }                   
                 }
                 else{
 
-                    foreach($programs_options as $program){
-                        array_push($estudiantes_seleccionados,array("id_student" => $program->id_estudiante, "total_ponderado" => $program->nota_ponderada1, 'ponderado_areas' => null, "promedio_nota" => null));
-                    }
+                    for ($i=0; $i < count($programs_options);){ 
+
+                        $this->estudiante = $programs_options[$i]->nota_ponderada5;
+
+                        $estudiantes_empate = array_filter($programs_options->toArray(),function($v, $k) {
+                                            //if($k >=  $this->ultima_pos_estudiantes_seleccionados){
+                                                return $v['nota_ponderada5'] == $this->estudiante;
+                                            //}                                            
+                                        }, ARRAY_FILTER_USE_BOTH);
+
+                        if(count($estudiantes_empate) > 1){
+
+                            $desempate = array();
+
+                            foreach ($estudiantes_empate as $key => $estudiante) {
+                                    //dd($estudiante);
+
+                                $program         = Programs::Where('id',$carrera)->first();
+
+                                $lectura_critica    = ResultByArea::where('id_icfes_area', 1)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $matematicas        = ResultByArea::where('id_icfes_area', 2)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $sociales           = ResultByArea::where('id_icfes_area', 3)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $naturales          = ResultByArea::where('id_icfes_area', 4)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
+
+                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+
+                                    
+
+                                $total_ponderado_areas = (($lectura_critica ? $lectura_critica->qualification : 0) * (($program ? $program->critical_reading_weight : 0)/100))
+                                                      +(($matematicas ? $matematicas->qualification : 0) * (($program ? $program->weighting_mathematics : 0)/100))
+                                                      +(($sociales ? $sociales->qualification : 0) * (($program ? $program->weighting_social : 0)/100))
+                                                      +(($naturales ? $naturales->qualification : 0) * (($program ? $program->weighting_natural : 0)/100))
+                                                      +(($ingles ? $ingles->qualification : 0) * (($program ? $program->weighting_english : 0)/100))
+                                                      +$prueba_especifica;
+
+                                $desempate[$key] = array("id_student" => $estudiante['id_estudiante'],"total_ponderado" => $estudiante['nota_ponderada5'], "ponderado_areas" => $total_ponderado_areas, 'promedio_nota' => null);                  
+                            }
+
+                            $colum_ponderado_areas  = array_column($desempate, 'ponderado_areas');
+
+                            array_multisort($colum_ponderado_areas, SORT_DESC, $desempate);
+                                
+                            $this->desempate = $desempate[0]['ponderado_areas'];
+
+                            $empate_ponderacion = array_filter($desempate,function($v, $k) {
+                                                    return $v['ponderado_areas'] == $this->desempate;
+                                                }, ARRAY_FILTER_USE_BOTH);
+                            //dd($empate_ponderacion);
+                            if(count($empate_ponderacion) > 1){
+
+                                $promedios_empate = array();
+
+                                foreach($empate_ponderacion as $key => $ponde){
+
+                                    $grupo_id = StudentGroup::select('id_group')->where('id_student', $ponde['id_student'])->first();
+
+                                    $student = perfilEstudiante::select('id_moodle')->where('id',$ponde['id_student'])->first();
+                                        
+                                    $promedio_nota = DB::select("
+                                                                select SUM(students_grades.grade) / COUNT(students_grades.grade) as promedio 
+                                                                FROM course_moodles
+                                                                INNER JOIN course_items ON course_items.course_id = course_moodles.course_id
+                                                                INNER JOIN students_grades ON students_grades.item_id = course_items.item_id
+                                                                WHERE course_moodles.group_id = '".$grupo_id->id_group."'
+                                                                AND course_items.category_name = 'TOTAL CURSO'
+                                                                AND students_grades.id_moodle = '".$student->id_moodle."'");
+                                         
+                                    $promedios_empate[$key] = array('id_student' => $ponde['id_student'],'total_ponderado' => $ponde['total_ponderado'],'ponderado_areas' => $ponde['ponderado_areas'],'promedio_nota' => $promedio_nota[0]->promedio);
+                                }
+
+                                $colum_prom_notas = array_column($promedios_empate, 'promedio_nota');
+
+                                array_multisort($colum_prom_notas, SORT_DESC, $promedios_empate);
+
+                                foreach($promedios_empate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$promedios_empate[$key]);
+                                }
+
+                                $i += count($promedios_empate);
+                            }
+                            else{
+
+                                foreach($desempate as $key => $insertar){
+                                    array_push($estudiantes_seleccionados,$desempate[$key]);
+                                }
+                                $i += count($desempate); 
+                            }
+                        }else{
+                            
+                            array_push($estudiantes_seleccionados,array("id_student" => $programs_options[$i]->id_estudiante, "total_ponderado" => $programs_options[$i]->nota_ponderada5, 'ponderado_areas' => null, "promedio_nota" => null));
+                            $i++;
+                        }
+                    } 
                 }
                 break;
             default:
                 // code...
                 break;
         }
-        //dd($estudiantes_seleccionados);
-        return $estudiantes_seleccionados; 
+        
+        if(count($estudiantes_seleccionados) > $cupos){
+            array_splice($estudiantes_seleccionados,$cupos);
+        }
+
+        return $estudiantes_seleccionados;     
     }
 }

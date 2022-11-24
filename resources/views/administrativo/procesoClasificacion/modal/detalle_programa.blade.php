@@ -7,7 +7,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <h5 id="smstre" style="text-align:center;font-size : 20px;font-weight: bolder;"></h4>
+        <h5 id="prgrma" style="text-align:center;font-size : 20px;font-weight: bolder;"><br>
+        <h5 id="smstre" style="text-align:center;font-size : 20px;font-weight: bolder;"></h5></h5>
         <hr>  
         <div  class="table-responsive">
           <table id="detalle_programa" class="table table-bordered table-striped">

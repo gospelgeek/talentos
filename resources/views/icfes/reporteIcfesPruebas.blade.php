@@ -773,7 +773,7 @@
                         return `
                             <div class="btn-group">                                  
                                 <div class="col-xs-6 col-sm-6 btn-group">
-                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                    <a href="/ver_estudiante/${data.id}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
                                 </div> 
                                 <div id="edit${data.documento}" class="col-xs-6 col-sm-6 btn-group">
                                     <a id="editar" onClick="editarModal(${data.documento},'${data.url}',${data.Total},${data.LC},${data.MT},${data.CS},${data.CN},${data.ING}, ${prueba})" class="btn btn-block fa fa-pencil-square-o fa">

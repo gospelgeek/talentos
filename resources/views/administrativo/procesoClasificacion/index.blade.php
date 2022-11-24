@@ -150,7 +150,7 @@ $(document).ready(function(){
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_I_2023) - parseInt(data.remaining_quotas_I_2023)
         			if(total != 0){
-        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"I-2023"+'\');"><u>'+total+'</u></button>';	
+        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"I-2023"+'\',\''+data.name_program+'\');"><u>'+total+'</u></button>';	
         			}else{
         			 	return '<button class="btn" type="button");">'+total+'</button>';
         			}
@@ -162,7 +162,7 @@ $(document).ready(function(){
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_II_2023) - parseInt(data.remaining_quotas_II_2023)
         			if(total != 0){
-        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"II-2023"+'\');"><u>'+total+'</u></button>';
+        				return '<button class="btn" type="button" onclick="abrir_modal_detalle('+data.id+',\''+"II-2023"+'\',\''+data.name_program+'\');"><u>'+total+'</u></button>';
         			}else{
 						return '<button class="btn" type="button");">'+total+'</button>';	 
         			}
@@ -405,10 +405,13 @@ $(document).ready(function(){
     });
 });
 
-	function abrir_modal_detalle(id_programa, semestre){
+	function abrir_modal_detalle(id_programa, semestre, programa){
 		//alert(semestre);
         var campo = document.getElementById("smstre");
+        var campo_prgrma = document.getElementById("prgrma");
+        
         campo.innerHTML = "SEMESTRE "+semestre;
+		campo_prgrma.innerHTML = programa;
 		var tabla_detalle = $("#detalle_programa").DataTable({
         	"ajax":{
           		"method": "GET",

@@ -237,16 +237,12 @@
 </div>
 
 @include('icfes.modal_areas')
-@include('icfes.modal_registro_icfes')
+
 
 @push('scripts')
 
 <script>
  
-    const registroIcfes = document.getElementById('Ricfes')
-    registroIcfes.addEventListener('click', () => {
-        $('#modal-registro').modal('show')
-    })
     const r_areas = document.getElementById('r_areas')
     const fm_areas = document.getElementById('form_areas')
     const _guardar = document.getElementById('_guardar')

@@ -237,7 +237,7 @@
 </div>
 
 @include('icfes.modal_areas')
-
+@include('icfes.modal_registro_icfes')
 
 @push('scripts')
 

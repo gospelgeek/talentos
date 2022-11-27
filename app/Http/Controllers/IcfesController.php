@@ -273,7 +273,7 @@ class IcfesController extends Controller
         FROM student_profile WHERE (SELECT (SELECT (SELECT cohorts.id FROM cohorts 
         WHERE cohorts.id = groups.id_cohort LIMIT 1) 
         FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
-        student_groups.id_student = student_profile.id LIMIT 1) = ?", [$id_cohorte]);
+        student_groups.id_student = student_profile.id LIMIT 1) = ? AND student_profile.id_state = 1", [$id_cohorte]);
 
         /*$s1 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [1230]);

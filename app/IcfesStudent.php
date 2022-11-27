@@ -39,7 +39,7 @@ class IcfesStudent extends Model
        INNER JOIN groups ON groups.id = student_groups.id_group
        INNER JOIN cohorts on cohorts.id = groups.id_cohort
        INNER JOIN icfes_students ON icfes_students.id_student = student_profile.id
-       AND icfes_students.id_icfes_test = ? AND student_profile.id_state = 1", [$test]);
+       AND icfes_students.id_icfes_test = ? AND student_profile.id_state = 1 AND student_groups.deleted_at IS NULL", [$test]);
        
     }
 }

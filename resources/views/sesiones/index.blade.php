@@ -117,7 +117,7 @@ $(document).ready(function(){
             }
 
         ],
-        "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false, "serverSide": true,
+        "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false, "serverSide": false,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",

@@ -315,6 +315,7 @@ Route::get('datos.clasificados', 'ProcesoClasificacionController@datos_clasifica
 Route::get('datos.no_clasificados', 'ProcesoClasificacionController@datos_no_clasificados')->name('datos.no_clasificados');
 Route::get('datos.resumen', 'ProcesoClasificacionController@datos_resumen')->name('datos.resumen');
 Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->name('proceso_clasificacion');
+Route::get('datos.pendientes_2023_II', 'ProcesoClasificacionController@pendientes')->name('datos.pendientes_2023_II');
 
 // Consulta de calificaciones
 Route::get('consulta_calificaciones/', 'CalificacionesController@index')->name('consulta');

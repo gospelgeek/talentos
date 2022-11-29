@@ -224,7 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="{{route('descarga.certificado')}}">Certificado</a>
             
             <a class="dropdown-item" href="{{route('datos_pendientes')}}">Datos Pendientes</a>
-            <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+            
           </div>
         </li>
         <li class="nav-item dropdown">

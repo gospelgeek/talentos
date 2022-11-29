@@ -238,7 +238,7 @@ $(document).ready(function(){
                 }, 0 )
               );*/
         },
-        	"Paging": true, "searching": false, "info": false,"pageLength": 5,
+        	"Paging": true, "searching": true, "info": false,"pageLength": 10,
             
 	});
 	

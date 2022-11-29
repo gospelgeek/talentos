@@ -1,7 +1,8 @@
-@extends('layouts.app')
-
-
+@extends('layouts.dashboard')
+@section('title', 'Resultado')
 @section('content')
+@include('../alerts.success')
+@include('../alerts.request')
 
 
 
@@ -198,5 +199,8 @@
 
 
 
+@push('scripts')
+
+@endpush
 
 @endsection

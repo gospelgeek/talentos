@@ -1,8 +1,8 @@
-@extends('layouts.app')
-
-
+@extends('layouts.dashboard')
+@section('title', 'Resultado')
 @section('content')
-
+@include('../alerts.success')
+@include('../alerts.request')
 
 
 <div class="container-fluid">
@@ -35,91 +35,8 @@
 </div>
 
 
-@section('scripts')
+@push('scripts')
 
-<script>
-    /*
-    const iden = document.getElementById('iden')
-    const mostrarB = document.getElementById('mostrar');
-
-    function _click() {
-        console.log(iden.value)    
-    }
-
-    mostrarB.addEventListener('click', () => {
-        console.log("asdas")
-    })*/
-
-    /*$("#resultados").DataTable({
-        /*"ajax": {
-            "method": "GET",
-            
-        },
-        "columns": [{
-                data: 'name'
-            },
-            {
-                data: 'lastname'
-            },
-            {
-                data: 'document_number'
-            },
-            {
-                data: 'cohorte'
-            },
-            {
-                data: 'grupo'
-            },
-            {
-                data: 'name_program'
-            },
-            {
-                data: 'position'
-            },
-            {
-                data: 'iteration'
-            },
-            {
-                data: 'weighted_total'
-            },
-            {
-                data: 'weighted_areas'
-            },
-            {
-                data: 'average_grades'
-            },
-            {
-                data: null,
-                render: function(data, row, meta, type) {
-                    //console.log(data);
-                    mostrar = '1: ' + data.opc1 + '\n' + '2: ' + data.opc2 + '\n' + '3: ' + data.opc3 + '\n' + '4: ' + data.opc4 + '\n' + '5: ' + data.opc5
-                    return mostrar
-                }
-            },
-            {
-                data: 'semestre_ingreso'
-            },
-        ],
-        "deferRender": true,
-        "responsive": false,
-        "lengthChange": false,
-        "autoWidth": false,
-        "order": [
-            [4, 'asc']
-        ],
-        "dom": 'Bfrtip',
-        "buttons": [
-            "copy",
-            "csv",
-            "excel",
-            "pdf",
-            "print",
-            "colvis"
-
-        ]
-    });*/
-</script>
-
-@endsection
+@endpush
 
 @endsection

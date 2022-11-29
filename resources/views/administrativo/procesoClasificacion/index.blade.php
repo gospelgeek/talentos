@@ -17,15 +17,16 @@
             <div class="btn-group">
             	<div class="estado_clasi">
             		<label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>SI</label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
-            		<label>NO</label>&nbsp;<label>({{$no}})</label><input type="radio" name="filtro" id="not">
+            		<label>SI I-2023 </label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
+            		<label>NO I-2023 </label>&nbsp;<label>({{$no}})</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Pendientes II-2023 </label>&nbsp;<label>({{$pendientes}})</label>&nbsp;<input type="radio" name="filtro" id="pndntes">
             	</div>
-                <div class="semestres">
+                <!--<div class="semestres">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>Semestre:</label>&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>I-2023</label>&nbsp;<input type="checkbox" name="check" value="I-2023" id="smstre_1">&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>II-2023</label>&nbsp;<input type="checkbox" name="check" value="II-2023" id="smstre_2">&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
+                </div>-->
             </div>
             <div style="float:right;">
                 <table id="resumen" class="table-bordered table-striped">
@@ -34,16 +35,16 @@
                 	    <tr>
                             <th rowspan="2">PROGRAMA</th>
                             <th colspan="3">SEMESTRE I</th>
-                            <th colspan="3">SEMESTRE II</th>
+                            <!--<th colspan="3">SEMESTRE II</th>-->
                         </tr>
                         <tr>
                            	<th>Cupos Otorgados</th>
                            	<th>Cupos Asignados</th>
                            	<th>Cupos Restantes</th>
                            	
-                           	<th>Cupos Otorgados</th>
+                           	<!--<th>Cupos Otorgados</th>
                            	<th>Cupos Asignados</th>
-                           	<th>Cupos Restantes</th>
+                           	<th>Cupos Restantes</th>-->
                            	
                         </tr>
                     </thead>
@@ -52,9 +53,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <!--<td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>  
+                        <td></td>-->  
                     </tfoot>
                 </table>
             </div>
@@ -72,20 +73,19 @@
 					<table id="clasificados" class=" table table-bordered table-striped">
 						<thead>
 							<tr>
+                                <th>PUESTO</th>
+                                <th>RONDA</th>
 								<th>NOMBRES</th>
 								<th>APELLIDOS</th>
 								<th>Nº.DOCUMENTO</th>
 								<th>LINEA</th>
 								<th>GRUPO</th>
 								<th>PROGRAMA</th>
-								<th>PUESTO</th>
-								<th>OPCIÓN</th>
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
-								<th>SEMESTRE ORIGINAL</th>
 							</tr>
 						</thead>
 					</table>
@@ -107,11 +107,31 @@
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
-								<th>SEMESTRE ORIGINAL</th>
 							</tr>
 						</thead>
 					</table>
 				</div>
+                <div id="pendientes" style="display:none;">
+                    <table id="pendiente_2023" class=" table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>APELLIDOS</th>
+                                <th>Nº.DOCUMENTO</th>
+                                <th>LINEA</th>
+                                <th>GRUPO</th>
+                                <th>PROGRAMA</th>
+                                <th>PUESTO</th>
+                                <th>RONDA</th>
+                                <th>TOTAL PONDERADO</th>
+                                <th>PONDERADO POR AREAS</th>
+                                <th>PROMEDIO NOTAS</th>
+                                <th>OPCIONES</th>
+                                <th>SEMESTRE INGRESO</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -126,14 +146,23 @@
 	$('.estado_clasi').on('change', function() {
     	var yes = $('#yes').is(":checked");
     	var not = $('#not').is(":checked");
+        var pndntes = $('#pndntes').is(":checked");
 
     	if(yes){
     		document.getElementById("no_cla").setAttribute('style', 'display:none');
+            document.getElementById("pendientes").setAttribute('style', 'display:none');
     		document.getElementById("si_cla").removeAttribute('style', 'display:none');
-    	}else{
+    	}
+        if(not){
     		document.getElementById("si_cla").setAttribute('style', 'display:none');
+            document.getElementById("pendientes").setAttribute('style', 'display:none');
     		document.getElementById("no_cla").removeAttribute('style', 'display:none');
-    	}        
+    	}
+        if(pndntes){
+            document.getElementById("si_cla").setAttribute('style', 'display:none');
+            document.getElementById("pendientes").removeAttribute('style', 'display:none');
+            document.getElementById("no_cla").setAttribute('style', 'display:none');
+        }        
     });
 	
 $(document).ready(function(){
@@ -158,7 +187,7 @@ $(document).ready(function(){
         	},
         	{data: 'remaining_quotas_I_2023'},
         	
-        	{data: 'quotas_II_2023'},
+        	/*{data: 'quotas_II_2023'},
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_II_2023) - parseInt(data.remaining_quotas_II_2023)
         			if(total != 0){
@@ -168,7 +197,7 @@ $(document).ready(function(){
         			}
         		}
         	},
-        	{data: 'remaining_quotas_II_2023'},
+        	{data: 'remaining_quotas_II_2023'},*/
         	
         ],
         	"footerCallback": function( tfoot, data, start, end, display ) {
@@ -190,7 +219,7 @@ $(document).ready(function(){
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
-              $( api.column( 4 ).footer() ).html(
+              /*$( api.column( 4 ).footer() ).html(
                 api.column( 4 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
@@ -207,7 +236,7 @@ $(document).ready(function(){
                 api.column( 6 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
-              );
+              );*/
         },
         	"Paging": true, "searching": false, "info": false,"pageLength": 5,
             
@@ -222,14 +251,14 @@ $(document).ready(function(){
         },
 
         "columns": [
+            {data: 'position'},
+            {data: 'iteration'},
         	{data: 'name'},
         	{data: 'lastname'},
         	{data: 'document_number'},
         	{data: 'cohorte'},
             {data: 'grupo'},
             {data: 'name_program'},
-            {data: 'position'},
-            {data: 'iteration'},
             {data: 'weighted_total'},
             {data: 'weighted_areas'},
             {data: 'average_grades'},
@@ -240,9 +269,8 @@ $(document).ready(function(){
             	}
         	},
             {data: 'semestre_ingreso'},
-            {data: 'semestre_ingreso_org'},
         ],
-        "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
+        "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[7, 'asc'], [0, 'asc']],
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -270,7 +298,7 @@ $(document).ready(function(){
         });
     });
 
-    document.getElementById('smstre_1').checked = true;
+    /*document.getElementById('smstre_1').checked = true;
     document.getElementById('smstre_2').checked = true;
 
     $('.semestres').on('change', function() {   
@@ -299,7 +327,7 @@ $(document).ready(function(){
             table_1.column(12).search(offices, true, false, false).draw(false);
             table_1.draw();
         }
-    });
+    });*/
 
 	var table_2 = $("#no_clasificados").DataTable({
 
@@ -374,7 +402,6 @@ $(document).ready(function(){
             	}
         	},
             {data: 'semestre_ingreso'},
-            {data: 'semestre_ingreso_org'},
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
             "dom":'Bfrtip',
@@ -403,16 +430,103 @@ $(document).ready(function(){
             }
         });
     });
+
+    var table_4 = $("#pendiente_2023").DataTable({
+
+        "ajax":{
+            "method":"GET",
+            "url": "{{route('datos.pendientes_2023_II')}}",
+        },
+
+        "columns": [
+            {data: 'name'},
+            {data: 'lastname'},
+            {data: 'document_number'},
+            {data: 'cohorte'},
+            {data: 'grupo'},
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, render:function(data,row,meta, type){
+
+                    if(data.opc1 != null){
+                        var opc1 = data.opc1 
+                    }else{
+                        var opc1 = 'Sin opción';
+                    }
+                    if(data.opc2 != null){
+                        var opc2 = data.opc2 
+                    }else{
+                        var opc2 = 'Sin opción';
+                    }
+                    if(data.opc3 != null){
+                        var opc3 = data.opc3 
+                    }else{
+                        var opc3 = 'Sin opción';
+                    }
+                    if(data.opc4 != null){
+                        var opc4 = data.opc4 
+                    }else{
+                        var opc4 = 'Sin opción';
+                    }
+                    if(data.opc5 != null){
+                        var opc5 = data.opc5 
+                    }else{
+                        var opc5 = 'Sin opción';
+                    }
+                    if(opc1 == 'Sin opción' && opc2 == 'Sin opción' && opc3 == 'Sin opción' && opc4 == 'Sin opción' && opc5 == 'Sin opción'){
+                        return 'Sin opciones';
+                    }else{
+                        mostrar = '1: '+opc1+'\n,'+'2: '+opc2+'\n,'+'3: '+opc3+'\n,'+'4: '+opc4+'\n,'+'5: '+opc5
+                        return mostrar
+                    }
+                }
+            },
+            {data: 'semestre_ingreso'},
+        ],
+        "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
+            "dom":'Bfrtip',
+            "buttons": [
+                "copy",
+                "csv",
+                "excel", 
+                "pdf",
+                "print",
+                "colvis"
+                
+            ]
+    });
 });
 
 	function abrir_modal_detalle(id_programa, semestre, programa){
-		//alert(semestre);
+		
         var campo = document.getElementById("smstre");
         var campo_prgrma = document.getElementById("prgrma");
         
         campo.innerHTML = "SEMESTRE "+semestre;
 		campo_prgrma.innerHTML = programa;
-		var tabla_detalle = $("#detalle_programa").DataTable({
+        var tabla_detalle = $("#detalle_programa").DataTable({
         	"ajax":{
           		"method": "GET",
           		"url": "{{route('datos.detalle_programas')}}",

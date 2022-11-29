@@ -14,6 +14,21 @@
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('proceso_clasificacion')}}">CORRER SCRIPT DE SELECCIÓN</a>
                 </div>
             </div>
+            <center><div class="btn-group">
+                <div class="estado_clasi">
+                    <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>SI I-2023 </label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>NO I-2023 </label>&nbsp;<label>({{$no}})</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Pendientes II-2023 </label>&nbsp;<label>({{$pendientes}})</label>&nbsp;<input type="radio" name="filtro" id="pndntes">
+                </div>
+                <!--<div class="semestres">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Semestre:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>I-2023</label>&nbsp;<input type="checkbox" name="check" value="I-2023" id="smstre_1">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>II-2023</label>&nbsp;<input type="checkbox" name="check" value="II-2023" id="smstre_2">&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>-->
+            </div></center>
+            <hr>
             <center><div style="width:40%">
                 <table id="resumen" class="table-bordered table-striped">
                     <thead>
@@ -55,20 +70,7 @@
         		</div>
       		</div>-->
             <hr>
-            <center><div class="btn-group">
-                <div class="estado_clasi">
-                    <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>SI I-2023 </label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>NO I-2023 </label>&nbsp;<label>({{$no}})</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Pendientes II-2023 </label>&nbsp;<label>({{$pendientes}})</label>&nbsp;<input type="radio" name="filtro" id="pndntes">
-                </div>
-                <!--<div class="semestres">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Semestre:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>I-2023</label>&nbsp;<input type="checkbox" name="check" value="I-2023" id="smstre_1">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>II-2023</label>&nbsp;<input type="checkbox" name="check" value="II-2023" id="smstre_2">&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>-->
-            </div></center>
+            
 			<br><div class="table-responsive">
 				<div id="si_cla">
 					<table id="clasificados" class=" table table-bordered table-striped">

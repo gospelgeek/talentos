@@ -53,6 +53,11 @@ class ProcesoClasificacionController extends Controller
         //dd($datos);
         return datatables()->of($datos)->toJson();    
     }
+    
+    public function pendientes(){
+        $pendientes_data = Rating::pendientes_2023_2();
+        return datatables()->of($pendientes_data)->toJson();
+    }
 
     public function detalles_programas(Request $request){
         //dd($request['semestre']);
@@ -67,7 +72,7 @@ class ProcesoClasificacionController extends Controller
 
         $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
         
-        $semestre = 2;
+        $semestre = 1;
         for ($i=1; $i <= 5; $i++) {
 
             foreach($programs as $program){
@@ -129,12 +134,12 @@ class ProcesoClasificacionController extends Controller
             }        
         }
 
-        $programs_options = ProgramOptions::all();
+        /*$programs_options = ProgramOptions::all();
         foreach($programs_options as $data){
             if($data->semestre_ingreso == 'I-2023'){
                 ProgramOptions::where('id', $data->id)->update(['semestre_ingreso' => 'II-2023']);
             }
-        }
+        }*/
         if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
 
             foreach($Programas_EstudiantesAdmitidos_semestre as $value) {

@@ -39,6 +39,7 @@ class Rating extends Model
             AND cohorts.id = 1
             AND student_profile.id_state = 1
             and student_profile.deleted_at is null
+            and program_options.semestre_ingreso = 'I-2023'
             ");
 
         if($data != null){
@@ -49,7 +50,20 @@ class Rating extends Model
     }
     //
     public static function no_clasificados(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, program_options.semestre_ingreso, program_options.semestre_ingreso_org,
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, '--' as semestre_ingreso,'--' as opc1,'--' as opc2,'--' as opc3,'--' as opc4,'--' as opc5
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            WHERE student_profile.id NOT IN 
+            (SELECT program_options.id_estudiante FROM program_options)
+            AND student_profile.id_state = 1
+            AND student_profile.deleted_at is null
+            AND student_groups.deleted_at is null
+            AND cohorts.id = 1
+            UNION
+            select student_profile.id, student_profile.name, student_profile.lastname, 
+            student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, program_options.semestre_ingreso,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa1) as opc1,  
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa2) as opc2,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa3) as opc3,
@@ -59,12 +73,41 @@ class Rating extends Model
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort 
-            LEFT JOIN program_options on program_options.id_estudiante = student_profile.id
+            INNER JOIN program_options on (program_options.id_estudiante = student_profile.id AND       
+            program_options.semestre_ingreso = 'I-2023')
+            WHERE student_groups.deleted_at IS null
+            AND program_options.deleted_at IS null
+            AND cohorts.id = 1
+            AND student_profile.id_state = 1
+            and student_profile.deleted_at is null
+            ");
+        if($data != null){
+            return $data;
+        }else{
+            return [];
+        }
+    }
+
+    public static function pendientes_2023_2(){
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, 
+            student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, program_options.semestre_ingreso,
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa1) as opc1,  
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa2) as opc2,
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa3) as opc3,
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa4) as opc4,
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa5) as opc5
+            FROM student_profile
+            INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+            INNER JOIN groups ON groups.id = student_groups.id_group
+            INNER JOIN cohorts on cohorts.id = groups.id_cohort 
+            INNER JOIN program_options on (program_options.id_estudiante = student_profile.id AND       
+            program_options.semestre_ingreso = 'II-2023')
             WHERE student_groups.deleted_at IS null
             AND program_options.deleted_at IS null
             AND cohorts.id = 1
             AND student_profile.id_state = 1
             and student_profile.deleted_at is null");
+        
         if($data != null){
             return $data;
         }else{

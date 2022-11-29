@@ -29,11 +29,13 @@ class ProcesoClasificacionController extends Controller
     public function index_vista(){
         $datos = Rating::clasificados();
         $datos_no = Rating::no_clasificados();
+        $pendientes_data = Rating::pendientes_2023_2();
         //dd($datos, $datos_no);
         $si = count($datos);
         $no = count($datos_no);
+        $pendientes = count($pendientes_data);
         //dd($si, $no);
-        return view('administrativo.procesoClasificacion.index', compact('si', 'no'));
+        return view('administrativo.procesoClasificacion.index', compact('si', 'no', 'pendientes'));
     }
 
     public function datos_clasificados(){

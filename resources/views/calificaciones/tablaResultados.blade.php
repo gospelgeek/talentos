@@ -7,7 +7,7 @@
 
 
 <div class="container-fluid">
-    <h1 style="text-align:center;">RESULTADOS DE ADMISIÓN (Simulación)</h1>
+    <h1 style="text-align:center;">RESULTADOS DE ADMISIÓN</h1>
     <div class="card">
         <div class="card-header">
         </div>

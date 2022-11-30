@@ -23,11 +23,13 @@
 	<h1 style="text-align:center;">PROCESO DE CLASIFICACIÓN</h1>
 	<div class="card">
 		<div class="card-body">
+            @if(auth()->user()->rol_id == 1)
 			<div class="btn-group">
                 <div class="col-xs-6 col-md-12 col-sm-6">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('proceso_clasificacion')}}">CORRER SCRIPT DE SELECCIÓN</a>
                 </div>
             </div>
+            @endif
             <center><div class="btn-group">
                 <div class="estado_clasi">
                     <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -28,15 +28,13 @@ class ProcesoClasificacionController extends Controller
     }
 
     public function index_vista(){
-        $datos = Rating::clasificados();
-        $datos_no = Rating::no_clasificados();
-        $pendientes_data = Rating::pendientes_2023_2();
-        //dd($datos, $datos_no);
-        $si = count($datos);
-        $no = count($datos_no);
-        $pendientes = count($pendientes_data);
+        $si = count(Rating::clasificados());
+        $no_icfes_si = count(Rating::no_clasificados_icfes_si());
+        $pendientes = count(Rating::pendientes_2023_2());
+        $no_icfes_no = count(Rating::no_clasificados_icfes_no());
+        
         //dd($si, $no);
-        return view('administrativo.procesoClasificacion.index', compact('si', 'no', 'pendientes'));
+        return view('administrativo.procesoClasificacion.index', compact('si','no_icfes_si', 'no_icfes_no', 'pendientes'));
     }
 
     public function datos_clasificados(){
@@ -44,23 +42,16 @@ class ProcesoClasificacionController extends Controller
 
         return datatables()->of($datos)->toJson();
     }
-    public function datos_no_clasificados(){        
-        $datos = Rating::no_clasificados();
-        $data = collect($datos);
-
-        $data->map(function ($dato) {
-            //dd($dato->id);
-            $validate = IcfesStudent::where('id_student', $dato->id)->exists();
-            if($validate){
-                $dato->icfes_validate = 1;
-            }else if(!$validate){
-                $dato->icfes_validate = 2;
-            }
-            //dd($dato);
-        });
-        //dd($data);
+    public function datos_no_clasificados_icfes_si(){        
+        $datos = Rating::no_clasificados_icfes_si();
         
-        return datatables()->of($data)->toJson();
+        return datatables()->of($datos)->toJson();
+    }
+
+    public function datos_no_clasificados_icfes_no(){
+        $datos = Rating::no_clasificados_icfes_no();
+        
+        return datatables()->of($datos)->toJson();
     }
     
     public function datos_resumen(){

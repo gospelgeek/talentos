@@ -3,7 +3,20 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-
+@if(auth()->user()->rol_id == 1)
+<div class="col-xs-12 col-md-8">
+    <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="row">
+                <div class=" col-xs-12 col-md-8">
+                  {!!Form::label('archivo','Seleccione Archivo:')!!}                            
+                  {!!Form::file('file',[ 'accept'=>'.xls,.xlsx','class'=>'form-control-file form-group','required'])!!}
+                        
+                        <button type="submit" class="btn btn-danger bg-lg form-group btn-block">Enviar</button>
+                      </div>
+    </form>
+</div>
+@endif
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<h1 style="text-align:center;">PROCESO DE CLASIFICACIÓN</h1>

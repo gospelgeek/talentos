@@ -108,6 +108,7 @@
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
 								<th>PROMEDIO NOTAS</th>
+                                <th>PRESENTÓ ICFES</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
 							</tr>
@@ -368,6 +369,16 @@ $(document).ready(function(){
             {data: null, visible:false, render:function(data,row,meta, type){
             		return '-';
             	}
+            },
+            {data: null, render:function(data,row,meta, type){
+                    if(data.icfes_validate == 1){
+                        var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
+                                return si;
+                    }else{
+                        var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">NO</button>';
+                                return no;
+                    }
+                }
             },
             {data: null, render:function(data,row,meta, type){
 

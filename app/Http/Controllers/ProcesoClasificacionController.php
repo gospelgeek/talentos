@@ -74,11 +74,22 @@ class ProcesoClasificacionController extends Controller
 
     public function index(Request $request){
 
+        $repechaje = Rating::count();
+        //dd($repechaje);
+        if($repechaje > 0){
+           $ronda = 5;
+           $estado = 2; 
+        }else{
+            $ronda = 0;
+            $estado = 1;
+        }
+        //dd($estado);
         $Programas_EstudiantesAdmitidos_semestre = array();
 
         $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
         
         $semestre = 1;
+        
         for ($i=1; $i <= 5; $i++) {
 
             foreach($programs as $program){
@@ -88,7 +99,7 @@ class ProcesoClasificacionController extends Controller
 
                             $cupos = $program->remaining_quotas_I_2023;
 
-                            $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"I-2023");
+                            $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"I-2023",$estado);
                             //dd($elegidos);
                             if(count($elegidos) > 0){
 
@@ -142,10 +153,11 @@ class ProcesoClasificacionController extends Controller
 
         /*$programs_options = ProgramOptions::all();
         foreach($programs_options as $data){
-            if($data->semestre_ingreso == 'I-2023'){
-                ProgramOptions::where('id', $data->id)->update(['semestre_ingreso' => 'II-2023']);
+            if($data->estado == '1'){
+                ProgramOptions::where('id', $data->id)->update(['estado' => '2']);
             }
         }*/
+        
         if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
 
             foreach($Programas_EstudiantesAdmitidos_semestre as $value) {
@@ -159,7 +171,7 @@ class ProcesoClasificacionController extends Controller
                         'weighted_areas'        => $selec['ponderado_areas'],
                         'average_grades'        => $selec['promedio_nota'],
                         'position'              => $key + 1,
-                        'iteration'             => $value['iteracion'],  
+                        'iteration'             => $value['iteracion']+$ronda,  
                     ]);    
                 }              
             } 
@@ -168,11 +180,11 @@ class ProcesoClasificacionController extends Controller
         return back()->with('status', 'Script ejecutado correctamente!');  
     }
 
-    public function iteracion_carreras($carrera,$iteracion,$cupos,$semestre){
+    public function iteracion_carreras($carrera,$iteracion,$cupos,$semestre,$estado){
         $estudiantes_seleccionados = array();
         switch ($iteracion) {
             case 1:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada1','DESC')->get();
+                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada1','nota_prueba_1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada1','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
@@ -205,7 +217,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_1'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -307,7 +319,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_1'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -379,7 +391,7 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 2:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada2','DESC')->get();
+                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada2','nota_prueba_2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada2','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
@@ -412,7 +424,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_2'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -513,7 +525,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_2'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -585,7 +597,7 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 3:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada3','DESC')->get();
+                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada3','nota_prueba_3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada3','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
@@ -618,7 +630,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_3'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -719,7 +731,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_3'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -791,7 +803,7 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 4:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada4','DESC')->get();
+                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada4','nota_prueba_4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada4','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
@@ -824,7 +836,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_4'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -925,7 +937,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_4'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -997,7 +1009,7 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 5:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->orderBy('nota_ponderada5','DESC')->get();
+                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada5','nota_prueba_5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada5','DESC')->get();
                 
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
@@ -1030,7 +1042,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_5'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 
@@ -1131,7 +1143,7 @@ class ProcesoClasificacionController extends Controller
 
                                 $ingles             = ResultByArea::where('id_icfes_area', 5)->where('id_student',$estudiante['id_estudiante'])->first('qualification');
 
-                                $prueba_especifica  = 100 * (($program ? $program->weighting_test_specific : 0)/100);
+                                $prueba_especifica  = $estudiante['nota_prueba_5'] * (($program ? $program->weighting_test_specific : 0)/100);
 
                                     
 

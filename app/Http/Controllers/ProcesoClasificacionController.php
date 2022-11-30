@@ -45,9 +45,21 @@ class ProcesoClasificacionController extends Controller
     }
     public function datos_no_clasificados(){        
         $datos = Rating::no_clasificados();
-        //$datos = Rating::activoslinea1();
+        $data = collect($datos);
+
+        $data->map(function ($dato) {
+            //dd($dato->id);
+            $validate = IcfesStudent::where('id_student', $dato->id)->exists();
+            if($validate){
+                $dato->icfes_validate = 1;
+            }else if(!$validate){
+                $dato->icfes_validate = 2;
+            }
+            //dd($dato);
+        });
+        //dd($data);
         
-        return datatables()->of($datos)->toJson();
+        return datatables()->of($data)->toJson();
     }
     
     public function datos_resumen(){

@@ -310,11 +310,21 @@ Route::get('caracterizacion_individual/{id}', 'SocioEducativoController@index_in
 Route::get('datos.caracterizacion_individual', 'SocioEducativoController@datos_caracterizacion_individual')->name('datos.caracterizacion_individual');
 
 //Proceso clasificacion 
+//index
 Route::get('index_proceso_clasificacion', 'ProcesoClasificacionController@index_vista')->name('index_proceso_clasificacion');
+//clasificados
 Route::get('datos.clasificados', 'ProcesoClasificacionController@datos_clasificados')->name('datos.clasificados');
-Route::get('datos.no_clasificados', 'ProcesoClasificacionController@datos_no_clasificados')->name('datos.no_clasificados');
+//no clasificados con icfes si
+Route::get('datos.no_clasificados_icfes_si', 'ProcesoClasificacionController@datos_no_clasificados_icfes_si')->name('datos.no_clasificados_icfes_si');
+//no clasificados con icfes no
+Route::get('datos.no_clasificados_icfes_no', 'ProcesoClasificacionController@datos_no_clasificados_icfes_no')->name('datos.no_clasificados_icfes_no');
+//datos resumen programas
 Route::get('datos.resumen', 'ProcesoClasificacionController@datos_resumen')->name('datos.resumen');
+//index logico
 Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->name('proceso_clasificacion');
+//datos tabla modal resumen
+Route::get('datos.detalle_programas', 'ProcesoClasificacionController@detalles_programas')->name('datos.detalle_programas');
+//datos pendiente
 Route::get('datos.pendientes_2023_II', 'ProcesoClasificacionController@pendientes')->name('datos.pendientes_2023_II');
 
 // Consulta de calificaciones

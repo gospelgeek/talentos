@@ -17,9 +17,10 @@
             <center><div class="btn-group">
                 <div class="estado_clasi">
                     <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>SI I-2023 </label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>NO I-2023 </label>&nbsp;<label>({{$no}})</label>&nbsp;<input type="radio" name="filtro" id="not">&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Pendientes II-2023 </label>&nbsp;<label>({{$pendientes}})</label>&nbsp;<input type="radio" name="filtro" id="pndntes">
+                    <label>SI I-2023:</label>&nbsp;<label>({{$si}})</label>&nbsp;<input type="radio" name="filtro" id="yes" checked>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>NO I-2023(Icfes Si):</label>&nbsp;<label>({{$no_icfes_si}})</label>&nbsp;<input type="radio" name="filtro" id="not_yes">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>NO I-2023(Icfes No):</label>&nbsp;<label>({{$no_icfes_no}})</label>&nbsp;<input type="radio" name="filtro" id="not_not">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Pendientes II-2023:</label>&nbsp;<label>({{$pendientes}})</label>&nbsp;<input type="radio" name="filtro" id="pndntes">
                 </div>
                 <!--<div class="semestres">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -93,8 +94,8 @@
 						</thead>
 					</table>
 				</div>
-				<div id="no_cla" style="display:none;">
-					<table id="no_clasificados" class=" table table-bordered table-striped">
+				<div id="no_cla_icfes_si" style="display:none;">
+					<table id="no_clasificados_icfes_si" class=" table table-bordered table-striped">
 						<thead>
 							<tr>
 								<th>NOMBRES</th>
@@ -108,13 +109,33 @@
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
 								<th>PROMEDIO NOTAS</th>
-                                <th>PRESENTÓ ICFES</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
 							</tr>
 						</thead>
 					</table>
 				</div>
+                <div id="no_cla_icfes_no" style="display:none;">
+                    <table id="no_clasificados_icfes_no" class=" table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>APELLIDOS</th>
+                                <th>Nº.DOCUMENTO</th>
+                                <th>LINEA</th>
+                                <th>GRUPO</th>
+                                <th>PROGRAMA</th>
+                                <th>PUESTO</th>
+                                <th>RONDA</th>
+                                <th>TOTAL PONDERADO</th>
+                                <th>PONDERADO POR AREAS</th>
+                                <th>PROMEDIO NOTAS</th>
+                                <th>OPCIONES</th>
+                                <th>SEMESTRE INGRESO</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
                 <div id="pendientes" style="display:none;">
                     <table id="pendiente_2023" class=" table table-bordered table-striped">
                         <thead>
@@ -149,23 +170,33 @@
 
 	$('.estado_clasi').on('change', function() {
     	var yes = $('#yes').is(":checked");
-    	var not = $('#not').is(":checked");
+    	var not_yes = $('#not_yes').is(":checked");
+        var not_not = $('#not_not').is(":checked");
         var pndntes = $('#pndntes').is(":checked");
 
     	if(yes){
-    		document.getElementById("no_cla").setAttribute('style', 'display:none');
+    		document.getElementById("no_cla_icfes_si").setAttribute('style', 'display:none');
             document.getElementById("pendientes").setAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_no").setAttribute('style', 'display:none');
     		document.getElementById("si_cla").removeAttribute('style', 'display:none');
     	}
-        if(not){
+        if(not_yes){
     		document.getElementById("si_cla").setAttribute('style', 'display:none');
             document.getElementById("pendientes").setAttribute('style', 'display:none');
-    		document.getElementById("no_cla").removeAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_no").setAttribute('style', 'display:none');
+    		document.getElementById("no_cla_icfes_si").removeAttribute('style', 'display:none');
     	}
         if(pndntes){
             document.getElementById("si_cla").setAttribute('style', 'display:none');
             document.getElementById("pendientes").removeAttribute('style', 'display:none');
-            document.getElementById("no_cla").setAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_si").setAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_no").setAttribute('style', 'display:none');
+        }
+        if(not_not){
+            document.getElementById("si_cla").setAttribute('style', 'display:none');
+            document.getElementById("pendientes").setAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_si").setAttribute('style', 'display:none');
+            document.getElementById("no_cla_icfes_no").removeAttribute('style', 'display:none');   
         }        
     });
 	
@@ -333,11 +364,11 @@ $(document).ready(function(){
         }
     });*/
 
-	var table_2 = $("#no_clasificados").DataTable({
+	var table_2 = $("#no_clasificados_icfes_si").DataTable({
 
 		"ajax":{
             "method":"GET",
-            "url": "{{route('datos.no_clasificados')}}",
+            "url": "{{route('datos.no_clasificados_icfes_si')}}",
         },
 
         "columns": [
@@ -369,16 +400,6 @@ $(document).ready(function(){
             {data: null, visible:false, render:function(data,row,meta, type){
             		return '-';
             	}
-            },
-            {data: null, render:function(data,row,meta, type){
-                    if(data.icfes_validate == 1){
-                        var si = '<button class="btn text-success btn-block fa fa-check title="Realizado">SI</button>';
-                                return si;
-                    }else{
-                        var no = '<button class="btn text-danger btn-block fa fa-times title="No Realizado">NO</button>';
-                                return no;
-                    }
-                }
             },
             {data: null, render:function(data,row,meta, type){
 
@@ -430,9 +451,9 @@ $(document).ready(function(){
          	]
 	});
 
-	$('#no_clasificados thead tr').clone(true).appendTo('#no_clasificados thead');
+	$('#no_clasificados_icfes_si thead tr').clone(true).appendTo('#no_clasificados_icfes_si thead');
 
-    $('#no_clasificados thead tr:eq(1) th').each(function (i) {
+    $('#no_clasificados_icfes_si thead tr:eq(1) th').each(function (i) {
         var title = $(this).text();
             $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
             $('input', this).on('keyup change', function () {
@@ -530,6 +551,123 @@ $(document).ready(function(){
                 "colvis"
                 
             ]
+    });
+
+    $('#pendiente_2023 thead tr').clone(true).appendTo('#pendiente_2023 thead');
+
+    $('#pendiente_2023 thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+            $('input', this).on('keyup change', function () {
+            if(table_4.column(i).search() !== this.value) {
+                table_4
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
+
+    var table_5 = $("#no_clasificados_icfes_no").DataTable({
+
+        "ajax":{
+            "method":"GET",
+            "url": "{{route('datos.no_clasificados_icfes_no')}}",
+        },
+
+        "columns": [
+            {data: 'name'},
+            {data: 'lastname'},
+            {data: 'document_number'},
+            {data: 'cohorte'},
+            {data: 'grupo'},
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, visible:false, render:function(data,row,meta, type){
+                    return '-';
+                }
+            },
+            {data: null, render:function(data,row,meta, type){
+
+                    if(data.opc1 != null){
+                        var opc1 = data.opc1 
+                    }else{
+                        var opc1 = 'Sin opción';
+                    }
+                    if(data.opc2 != null){
+                        var opc2 = data.opc2 
+                    }else{
+                        var opc2 = 'Sin opción';
+                    }
+                    if(data.opc3 != null){
+                        var opc3 = data.opc3 
+                    }else{
+                        var opc3 = 'Sin opción';
+                    }
+                    if(data.opc4 != null){
+                        var opc4 = data.opc4 
+                    }else{
+                        var opc4 = 'Sin opción';
+                    }
+                    if(data.opc5 != null){
+                        var opc5 = data.opc5 
+                    }else{
+                        var opc5 = 'Sin opción';
+                    }
+                    if(opc1 == 'Sin opción' && opc2 == 'Sin opción' && opc3 == 'Sin opción' && opc4 == 'Sin opción' && opc5 == 'Sin opción'){
+                        return 'Sin opciones';
+                    }else{
+                        mostrar = '1: '+opc1+'\n,'+'2: '+opc2+'\n,'+'3: '+opc3+'\n,'+'4: '+opc4+'\n,'+'5: '+opc5
+                        return mostrar
+                    }
+                }
+            },
+            {data: 'semestre_ingreso'},
+        ],
+        "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
+            "dom":'Bfrtip',
+            "buttons": [
+                "copy",
+                "csv",
+                "excel", 
+                "pdf",
+                "print",
+                "colvis"
+                
+            ]
+    });
+
+    $('#no_clasificados_icfes_no thead tr').clone(true).appendTo('#no_clasificados_icfes_no thead');
+
+    $('#no_clasificados_icfes_no thead tr:eq(1) th').each(function (i) {
+        var title = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+            $('input', this).on('keyup change', function () {
+            if(table_5.column(i).search() !== this.value) {
+                table_5
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
     });
 });
 

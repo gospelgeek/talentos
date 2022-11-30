@@ -1484,7 +1484,7 @@ class perfilEstudianteController extends Controller
         $repechaje = Rating::count();
 
         if($repechaje > 0){
-            $estado = 2;
+            $estado = 1;
         }else{
             $estado = 1;
         }
@@ -1501,23 +1501,26 @@ class perfilEstudianteController extends Controller
                 $this->nombres = $value['nombre'];
                 $this->apellidos = $value['apellidos'];
                 $this->documento = $value['documento'];
+                $this->email = $value['correo_electronico'];
 
                 $estudiantes = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
-                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento);
+                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
                 })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->exists();
 
                 //dd($estudiante);
 
-                /*if(!$estudiantes){
-                    $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where('student_profile.document_number',$value['documento'])->where('groups.id_cohort',1)->where('student_profile.id_state',1)->first();
-
-                    dd($value,$estudiante);
-                }*/
-
-                $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
-                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento);
+                if(!$estudiantes){
+                    $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
+                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
                 })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
 
+                    dd($value,$estudiante);
+                }
+
+                $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
+                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
+                })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
+                
                 //dd($estudiante);
                 $semestre_ingreso = explode("-",$value['respuesta_1'])[1];
                 if($semestre_ingreso == 1){

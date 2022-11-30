@@ -62,6 +62,10 @@ use Excel;
 use App\Imports\CsvImport;
 use Illuminate\Support\Facades\Storage;
 use App\EconomicalSupport;
+use App\Programs;
+use App\ProgramOptions;
+use App\IcfesStudent;
+use App\Rating;
 
 class perfilEstudianteController extends Controller
 

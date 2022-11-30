@@ -22,7 +22,7 @@ class Rating extends Model
 
     //Consulta para los clasificados
     public static function clasificados(){
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, ratings.id_definitive_program, ratings.position, ratings.iteration, ratings.weighted_total, ratings.weighted_areas, ratings.average_grades, programs.name_program, program_options.semestre_ingreso,program_options.semestre_ingreso_org, 
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS grupo, cohorts.name AS cohorte, ratings.id_definitive_program, ratings.position, ratings.iteration, ratings.weighted_total, ratings.weighted_areas, ratings.average_grades, programs.name_program, program_options.semestre_ingreso, 
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa1) as opc1,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa2) as opc2,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa3) as opc3,

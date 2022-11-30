@@ -63,6 +63,8 @@ class Rating extends Model
             INNER JOIN cohorts on cohorts.id = groups.id_cohort 
             INNER JOIN program_options on (program_options.id_estudiante = student_profile.id AND       
             program_options.semestre_ingreso = 'I-2023')
+            INNER JOIN icfes_students on icfes_students.id_student = student_profile.id
+            INNER JOIN icfes on cohorts.id = groups.id_cohort
             WHERE student_profile.id IN(
             SELECT icfes_students.id_student FROM icfes_students)
             AND student_groups.deleted_at IS null
@@ -70,12 +72,14 @@ class Rating extends Model
             AND cohorts.id = 1
             AND student_profile.id_state = 1
             and student_profile.deleted_at is null
+            and icfes_students.id_student is not null
             UNION
             select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_groups.id_group as grupoid, groups.name AS                  grupo, cohorts.name AS cohorte, '--' as semestre_ingreso,'--' as opc1,'--' as opc2,'--' as opc3,'--' as opc4,'--' as opc5
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
             INNER JOIN cohorts on cohorts.id = groups.id_cohort
+            INNER JOIN icfes_students on icfes_students.id_student = student_profile.id
             WHERE student_profile.id NOT IN 
             (SELECT program_options.id_estudiante FROM program_options)
             AND student_profile.id IN(
@@ -83,7 +87,8 @@ class Rating extends Model
             AND student_profile.id_state = 1
             AND student_profile.deleted_at is null
             AND student_groups.deleted_at is null
-            AND cohorts.id = 1");
+            AND cohorts.id = 1
+            and icfes_students.id_student is not null");
 
         if($data != null){
             return $data;

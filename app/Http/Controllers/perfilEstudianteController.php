@@ -1477,20 +1477,176 @@ class perfilEstudianteController extends Controller
 
     public function excel(Request $request)
     {
+        $repechaje = Rating::count();
+
+        if($repechaje > 0){
+            $estado = 2;
+        }else{
+            $estado = 1;
+        }
 
         $collection2 = Excel::toArray(new CsvImport, request()->file('file'));
-        //dd($collection2[0][990]);
-        foreach ($collection2 as $var) {
+        //dd(count($collection2));
+        $course_moodle = DB::table('program_options')->truncate();
+        //foreach ($collection2 as $var) {
             //dd($var);
-            foreach ($var as $key => $value) {
-                //var_dump($value);
+            foreach ($collection2[0] as $key => $value) {
+                //$result = array_diff($value,[null]);
+                //dd($value);
+                
+                $this->nombres = $value['nombre'];
+                $this->apellidos = $value['apellidos'];
+                $this->documento = $value['documento'];
+
+                $estudiantes = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
+                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento);
+                })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->exists();
+
+                //dd($estudiante);
+
+                /*if(!$estudiantes){
+                    $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where('student_profile.document_number',$value['documento'])->where('groups.id_cohort',1)->where('student_profile.id_state',1)->first();
+
+                    dd($value,$estudiante);
+                }*/
+
+                $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
+                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento);
+                })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
+
+                //dd($estudiante);
+                $semestre_ingreso = explode("-",$value['respuesta_1'])[1];
+                if($semestre_ingreso == 1){
+                    $semestre_ingreso = "I-2023";
+                }else{
+                    $semestre_ingreso = "II-2023";
+                }
+
+
+                $primera_opcion = explode(" ",$value['opcion1'])[0];
+                $segunda_opcion = explode(" ",$value['opcion2'])[0];
+                $tercera_opcion = explode(" ",$value['opcion3'])[0];
+                $cuarta_opcion = explode(" ",$value['opcion4'])[0];
+                $quinta_opcion = explode(" ",$value['opcion5'])[0];
+
+                $primera_opcion_jornada = explode("(",$value['opcion1']);
+                $segunda_opcion_jornada = explode("(",$value['opcion2']);
+                $tercera_opcion_jornada = explode("(",$value['opcion3']);
+                $cuarta_opcion_jornada = explode("(",$value['opcion4']);
+                $quinta_opcion_jornada = explode("(",$value['opcion5']);
+
+                if(($primera_opcion == 3845 || $primera_opcion == 3841) && count($primera_opcion_jornada) > 0){
+                    $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->where('working_day',"N")->first();  
+                }else{
+                    $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->first();  
+                }
+
+                if(($segunda_opcion == 3845 || $segunda_opcion == 3841) && count($segunda_opcion_jornada) > 1){
+                    $id_segunda_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$segunda_opcion)->where('working_day',"N")->first();
+                }else{
+                    $id_segunda_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$segunda_opcion)->first();
+                }
+
+                if(($tercera_opcion == 3845 || $tercera_opcion == 3841) && count($tercera_opcion_jornada) > 1){
+                    $id_tercera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$tercera_opcion)->first();
+                }else{
+                    $id_tercera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$tercera_opcion)->first();
+                } 
+
+                if(($cuarta_opcion == 3845 || $cuarta_opcion == 3841) && count($cuarta_opcion_jornada) > 1){
+                    $id_cuarta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$cuarta_opcion)->where('working_day',"N")->first();
+                }else{
+                    $id_cuarta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$cuarta_opcion)->first();
+                }    
+
+                if(($quinta_opcion == 3845 || $quinta_opcion == 3841) && count($quinta_opcion_jornada) > 1){
+                    $id_quinta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$quinta_opcion)->where('working_day',"N")->first();
+                }else{
+                    $id_quinta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$quinta_opcion)->first();
+                }
+                                                        
+
+                //dd($nota_ponderada1);
+
+                //$exists = ProgramOptions::where('id_estudiante', $estudiante ? $estudiante->id : 0)->exists();
+
+                if($estudiantes){
+
+                    $icfes = IcfesStudent::select('total_score')->where('id_student',$estudiante->id)->where('id_icfes_test', 5)->first();
+
+                    //dd($icfes);
+                    if($value['nota_prueba1'] != null && $value['nota_prueba1'] != "#N/A"){
+                        $nota_prueba_1 = $value['nota_prueba1'];
+                    }else{
+                        $nota_prueba_1 = 0;
+                    }
+
+                    if($value['nota_prueba2'] != null && $value['nota_prueba2'] != "#N/A"){
+                        $nota_prueba_2 = $value['nota_prueba2'];
+                    }else{
+                        $nota_prueba_2 = 0;
+                    }
+
+                    if($value['nota_prueba3'] != null && $value['nota_prueba3'] != "#N/A"){
+                        $nota_prueba_3 = $value['nota_prueba3'];
+                    }else{
+                        $nota_prueba_3 = 0;
+                    }
+
+                    if($value['nota_prueba4'] != null && $value['nota_prueba4'] != "#N/A"){
+                        $nota_prueba_4 = $value['nota_prueba4'];
+                    }else{
+                        $nota_prueba_4 = 0;
+                    }
+
+                    if($value['nota_prueba5'] != null && $value['nota_prueba5'] != "#N/A"){
+                        $nota_prueba_5 = $value['nota_prueba5'];
+                    }else{
+                        $nota_prueba_5 = 0;
+                    }
+
+
+
+                    $nota_ponderada1 = (((100-($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0)* $nota_prueba_1))/100;
+
+                    $nota_ponderada2 = (((100-($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0)*$nota_prueba_2))/100;
+
+                    $nota_ponderada3 = (((100-($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0)*$nota_prueba_3))/100;
+
+                    $nota_ponderada4 = (((100-($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0)*$nota_prueba_4))/100;
+
+                    $nota_ponderada5 = (((100-($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0)*$nota_prueba_5))/100;
+
+                    $program_options = ProgramOptions::Create([
+                        'id_estudiante'     =>   $estudiante->id,
+                        'id_programa1'      =>   $id_primera_opcion ? $id_primera_opcion->id : 0,
+                        'nota_ponderada1'   =>   $nota_ponderada1,
+                        'nota_prueba_1'     =>   $nota_prueba_1,
+                        'id_programa2'      =>   $id_segunda_opcion ? $id_segunda_opcion->id : 0,
+                        'nota_ponderada2'   =>   $nota_ponderada2,
+                        'nota_prueba_2'     =>   $nota_prueba_2,
+                        'id_programa3'      =>   $id_tercera_opcion ? $id_tercera_opcion->id : 0,
+                        'nota_ponderada3'   =>   $nota_ponderada3,
+                        'nota_prueba_3'     =>   $nota_prueba_3,
+                        'id_programa4'      =>   $id_cuarta_opcion ? $id_cuarta_opcion->id : 0,
+                        'nota_ponderada4'   =>   $nota_ponderada4,
+                        'nota_prueba_4'     =>   $nota_prueba_4,
+                        'id_programa5'      =>   $id_quinta_opcion ? $id_quinta_opcion->id : 0,
+                        'nota_ponderada5'   =>   $nota_ponderada5,
+                        'nota_prueba_5'     =>   $nota_prueba_5,
+                        'semestre_ingreso'  =>   $semestre_ingreso,
+                        'estado'            =>   $estado,        
+                    ]);
+                }
+                
+                
                 //echo $value['codigo'],' : ',$value['id_moodle'],'<br>';
-                $insertar = perfilEstudiante::where('document_number',$value['documento'])->where('id','>=',3100)->update(['id_moodle' => $value['id_moodle']]);
+                /*$insertar = perfilEstudiante::where('document_number',$value['documento'])->where('id','>=',3100)->update(['id_moodle' => $value['id_moodle']]);*/
             }
-        }
+        //}
         
       
-        return redirect('estudiante')->with('success', 'File imported successfully!');
+        echo "completo";
     }
 
     public function CargarJSon(Request $request)

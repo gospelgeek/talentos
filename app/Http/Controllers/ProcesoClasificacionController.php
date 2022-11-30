@@ -17,6 +17,7 @@ use App\Rating;
 use DB;
 use App\Http\Controllers\Auth;
 use Session;
+use App\IcfesStudent;
 
 class ProcesoClasificacionController extends Controller
 {

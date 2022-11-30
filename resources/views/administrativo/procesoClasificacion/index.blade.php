@@ -16,6 +16,7 @@
                       </div>
     </form>
 </div>
+</div>
 @endif
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">

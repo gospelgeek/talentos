@@ -1484,7 +1484,7 @@ class perfilEstudianteController extends Controller
         $repechaje = Rating::count();
 
         if($repechaje > 0){
-            $estado = 1;
+            $estado = 2;
         }else{
             $estado = 1;
         }
@@ -1520,7 +1520,7 @@ class perfilEstudianteController extends Controller
                 $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
                     $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
                 })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
-                
+
                 //dd($estudiante);
                 $semestre_ingreso = explode("-",$value['respuesta_1'])[1];
                 if($semestre_ingreso == 1){
@@ -1575,9 +1575,9 @@ class perfilEstudianteController extends Controller
 
                 //dd($nota_ponderada1);
 
-                //$exists = ProgramOptions::where('id_estudiante', $estudiante ? $estudiante->id : 0)->exists();
+                $icfes_validar = IcfesStudent::select('total_score')->where('id_student',$estudiante ? $estudiante->id : 0)->where('id_icfes_test', 5)->exists();
 
-                if($estudiantes){
+                if($estudiantes && $icfes_validar){
 
                     $icfes = IcfesStudent::select('total_score')->where('id_student',$estudiante->id)->where('id_icfes_test', 5)->first();
 
@@ -1612,17 +1612,17 @@ class perfilEstudianteController extends Controller
                         $nota_prueba_5 = 0;
                     }
 
+                    //dd(0);
+                    
+                    $nota_ponderada1 = (((100-($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0) * $nota_prueba_1))/100;
 
+                    $nota_ponderada2 = (((100-($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0) * $nota_prueba_2))/100;
 
-                    $nota_ponderada1 = (((100-($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_primera_opcion ? $id_primera_opcion->weighting_test_specific : 0)* $nota_prueba_1))/100;
+                    $nota_ponderada3 = (((100-($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0) * $nota_prueba_3))/100;
 
-                    $nota_ponderada2 = (((100-($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_segunda_opcion ? $id_segunda_opcion->weighting_test_specific : 0)*$nota_prueba_2))/100;
+                    $nota_ponderada4 = (((100-($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0) * $nota_prueba_4))/100;
 
-                    $nota_ponderada3 = (((100-($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_tercera_opcion ? $id_tercera_opcion->weighting_test_specific : 0)*$nota_prueba_3))/100;
-
-                    $nota_ponderada4 = (((100-($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_cuarta_opcion ? $id_cuarta_opcion->weighting_test_specific : 0)*$nota_prueba_4))/100;
-
-                    $nota_ponderada5 = (((100-($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0))*($icfes ? $icfes->total_score : 0))+(($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0)*$nota_prueba_5))/100;
+                    $nota_ponderada5 = (((100-($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0 ) * $nota_prueba_5))/100;
 
                     $program_options = ProgramOptions::Create([
                         'id_estudiante'     =>   $estudiante->id,

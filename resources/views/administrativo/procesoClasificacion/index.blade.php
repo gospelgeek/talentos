@@ -35,8 +35,9 @@
                     <thead>
                         <label>RESUMEN PROGRAMAS</label>
                 	    <tr>
-                            <th rowspan="2">COD.</th>
+                            <th rowspan="2" title="Codigo Programa">COD.</th>
                             <th rowspan="2">PROGRAMA</th>
+                            <th rowspan="2">JORNADA</th>
                             <th colspan="3">SEMESTRE I</th>
                             <!--<th colspan="3">SEMESTRE II</th>-->
                         </tr>
@@ -53,6 +54,7 @@
                     </thead>
                     <tfoot>
                         <th>TOTAL</th>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -88,6 +90,7 @@
 								<th>GRUPO</th>
                                 <th title="Codigo Programa">COD. PRO..</th>
 								<th>PROGRAMA</th>
+                                <th>JORNADA</th>
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
 								<th>PROMEDIO NOTAS</th>
@@ -207,15 +210,25 @@
 	
 $(document).ready(function(){
 	var table_3 = $("#resumen").DataTable({
-
 		"ajax":{
             "method":"GET",
             "url": "{{route('datos.resumen')}}",
         },
-
         "columns": [
             {data: 'code_program'},
         	{data: 'name_program'},
+            {data: null, render:function(data, row, meta, type){
+                    if(data.working_day == 'D'){
+                        return 'Diurna';
+                    }
+                    if(data.working_day == 'N'){
+                        return 'Nocturna';
+                    }
+                    if(data.working_day == 'V'){
+                        return 'Verpentina';
+                    }
+                }
+            },
         	{data: 'quotas_I_2023'},
         	{data: null, render:function(data, row, meta, type){
         			total = parseInt(data.quotas_I_2023) - parseInt(data.remaining_quotas_I_2023)
@@ -243,20 +256,20 @@ $(document).ready(function(){
         ],
         	"footerCallback": function( tfoot, data, start, end, display ) {
               var api = this.api();
-              $( api.column( 2 ).footer() ).html(
-                api.column( 2 ).data().reduce( function ( a, b ) {
+              $( api.column( 3 ).footer() ).html(
+                api.column( 3 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
               var res1 = 0
-              $( api.column( 3 ).footer() ).html(
-                api.column( 3 ).data().reduce( function ( a, b ) {
+              $( api.column( 4 ).footer() ).html(
+                api.column( 4 ).data().reduce( function ( a, b ) {
                   res1 = res1 + parseInt(b.quotas_I_2023 - b.remaining_quotas_I_2023);
                   return res1
                 }, 0 )
               );
-              $( api.column( 4 ).footer() ).html(
-                api.column( 4 ).data().reduce( function ( a, b ) {
+              $( api.column( 5 ).footer() ).html(
+                api.column( 5 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
@@ -285,7 +298,7 @@ $(document).ready(function(){
                 "csv",
                 "excel", 
                 "pdf",
-            ]   
+            ]
 	});
 	
 
@@ -306,6 +319,18 @@ $(document).ready(function(){
             {data: 'grupo'},
             {data: 'code_program'},
             {data: 'name_program'},
+            {data: null, render:function(data, row, meta, type){
+                    if(data.working_day == 'D'){
+                        return 'Diurna';
+                    }
+                    if(data.working_day == 'N'){
+                        return 'Nocturna';
+                    }
+                    if(data.working_day == 'V'){
+                        return 'Verpentina';
+                    }
+                }
+            },
             {data: 'weighted_total'},
             {data: 'weighted_areas'},
             {data: 'average_grades'},

@@ -93,6 +93,7 @@
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
+                                <th>PUNTAJE ICFES</th>
 							</tr>
 						</thead>
 					</table>
@@ -310,6 +311,7 @@ $(document).ready(function(){
             	}
         	},
             {data: 'semestre_ingreso'},
+            {data: 'icfes'},
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[7, 'asc'], [0, 'asc']],
             "dom":'Bfrtip',

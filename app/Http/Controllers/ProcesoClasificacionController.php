@@ -43,8 +43,15 @@ class ProcesoClasificacionController extends Controller
         return datatables()->of($datos)->toJson();
     }
     public function datos_no_clasificados_icfes_si(){        
-        $datos = Rating::no_clasificados_icfes_si();
-        
+        $datos = collect(Rating::no_clasificados_icfes_si());
+
+        $datos->map(function ($data) {
+            //dd($data);
+            $icfes = IcfesStudent::select('total_score')->where('id_student', $data->id)->where('id_icfes_test', 5)->first();
+            $data->icfes = $icfes->total_score;
+            //dd($data);
+        });
+
         return datatables()->of($datos)->toJson();
     }
 

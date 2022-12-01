@@ -280,7 +280,12 @@ $(document).ready(function(){
               );*/
         },
         "pageLength": 10, "searching": true, "info": false,"Paging": true,
-            
+        "dom":'Bfrtip',
+            "buttons": [    
+                "csv",
+                "excel", 
+                "pdf",
+            ]   
 	});
 	
 

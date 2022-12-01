@@ -3,33 +3,17 @@
 @section('content')
 @include('../alerts.success')
 @include('../alerts.request')
-@if(auth()->user()->rol_id == 1)
-<div class="col-xs-12 col-md-8">
-    <form method="POST" action="store/save/usuarios" accept-charset="UTF-8" enctype="multipart/form-data"> 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="row">
-                <div class=" col-xs-12 col-md-8">
-                  {!!Form::label('archivo','Seleccione Archivo:')!!}                            
-                  {!!Form::file('file',[ 'accept'=>'.xls,.xlsx','class'=>'form-control-file form-group','required'])!!}
-                        
-                        <button type="submit" class="btn btn-danger bg-lg form-group btn-block">Enviar</button>
-                      </div>
-    </form>
-</div>
-</div>
-@endif
+
 <div class="container-fluid">
 	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<h1 style="text-align:center;">PROCESO DE CLASIFICACIÓN</h1>
 	<div class="card">
 		<div class="card-body">
-            @if(auth()->user()->rol_id == 1)
 			<div class="btn-group">
                 <div class="col-xs-6 col-md-12 col-sm-6">
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('proceso_clasificacion')}}">CORRER SCRIPT DE SELECCIÓN</a>
                 </div>
             </div>
-            @endif
             <center><div class="btn-group">
                 <div class="estado_clasi">
                     <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -51,6 +35,7 @@
                     <thead>
                         <label>RESUMEN PROGRAMAS</label>
                 	    <tr>
+                            <th rowspan="2">COD.</th>
                             <th rowspan="2">PROGRAMA</th>
                             <th colspan="3">SEMESTRE I</th>
                             <!--<th colspan="3">SEMESTRE II</th>-->
@@ -68,6 +53,7 @@
                     </thead>
                     <tfoot>
                         <th>TOTAL</th>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -100,6 +86,7 @@
 								<th>Nº.DOCUMENTO</th>
 								<th>LINEA</th>
 								<th>GRUPO</th>
+                                <th title="Codigo Programa">COD. PRO..</th>
 								<th>PROGRAMA</th>
 								<th>TOTAL PONDERADO</th>
 								<th>PONDERADO POR AREAS</th>
@@ -127,6 +114,7 @@
 								<th>PROMEDIO NOTAS</th>
 								<th>OPCIONES</th>
 								<th>SEMESTRE INGRESO</th>
+                                <th>PUNTAJE ICFES</th>
 							</tr>
 						</thead>
 					</table>
@@ -225,6 +213,7 @@ $(document).ready(function(){
         },
 
         "columns": [
+            {data: 'code_program'},
         	{data: 'name_program'},
         	{data: 'quotas_I_2023'},
         	{data: null, render:function(data, row, meta, type){
@@ -253,20 +242,20 @@ $(document).ready(function(){
         ],
         	"footerCallback": function( tfoot, data, start, end, display ) {
               var api = this.api();
-              $( api.column( 1 ).footer() ).html(
-                api.column( 1 ).data().reduce( function ( a, b ) {
+              $( api.column( 2 ).footer() ).html(
+                api.column( 2 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
               var res1 = 0
-              $( api.column( 2 ).footer() ).html(
-                api.column( 2 ).data().reduce( function ( a, b ) {
+              $( api.column( 3 ).footer() ).html(
+                api.column( 3 ).data().reduce( function ( a, b ) {
                   res1 = res1 + parseInt(b.quotas_I_2023 - b.remaining_quotas_I_2023);
                   return res1
                 }, 0 )
               );
-              $( api.column( 3 ).footer() ).html(
-                api.column( 3 ).data().reduce( function ( a, b ) {
+              $( api.column( 4 ).footer() ).html(
+                api.column( 4 ).data().reduce( function ( a, b ) {
                   return parseInt(a) + parseInt(b);
                 }, 0 )
               );
@@ -309,6 +298,7 @@ $(document).ready(function(){
         	{data: 'document_number'},
         	{data: 'cohorte'},
             {data: 'grupo'},
+            {data: 'code_program'},
             {data: 'name_program'},
             {data: 'weighted_total'},
             {data: 'weighted_areas'},
@@ -453,6 +443,7 @@ $(document).ready(function(){
             	}
         	},
             {data: 'semestre_ingreso'},
+            {data: 'icfes'},
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[4, 'asc']],
             "dom":'Bfrtip',
@@ -714,7 +705,7 @@ $(document).ready(function(){
         	],
         	"deferRender": true,"responsive": false,"processing": false,'serverSider':true,
             "paging": true, "lengthChange": false, "autoWidth": false,
-            "destroy":true,"searching": false, "order":[[0, 'asc']],
+            "destroy":true,"searching": true, "order":[[0, 'asc']],
     	});
 		$('#modal_detalle_programa').modal('show');
 	}

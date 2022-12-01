@@ -357,6 +357,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <li><a href="{{route('docentes')}}" class="dropdown-item">Docentes</a></li>
                             </ul>
                           </li>
+            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Administrativo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                          <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+                        </div>
+                      </li>              
 
         </ul>
         @endif

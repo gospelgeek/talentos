@@ -38,8 +38,20 @@ class ProcesoClasificacionController extends Controller
     }
 
     public function datos_clasificados(){
-        $datos = Rating::clasificados();
-
+        $datos = collect(Rating::clasificados());
+        //dd($datos);
+        $datos->map(function ($data) {
+            //dd($data);
+            $validate = IcfesStudent::select('id_student')->where('id_student', $data->id)->exists();
+            if($validate){
+                $icfes = IcfesStudent::select('total_score')->where('id_student', $data->id)->where('id_icfes_test', 5)->first();
+                //dd($icfes);
+                $data->icfes = $icfes->total_score;
+            }else{
+                $data->icfes = '--';
+            }
+        });
+        //dd($datos);
         return datatables()->of($datos)->toJson();
     }
     public function datos_no_clasificados_icfes_si(){        

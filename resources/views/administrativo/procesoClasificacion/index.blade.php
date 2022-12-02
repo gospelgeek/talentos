@@ -14,6 +14,9 @@
                     <a class="btn btn-primary btn-sm mt-3 mb-3 float-left" href="{{route('proceso_clasificacion')}}">CORRER SCRIPT DE SELECCIÓN</a>
                 </div>
             </div>
+            <div class="btn-group">
+                
+            </div>
             <center><div class="btn-group">
                 <div class="estado_clasi">
                     <label>CLASIFICADOS:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -30,12 +33,14 @@
                 </div>-->
             </div></center>
             <hr>
-            <center><div style="width:40%">
+
+            <center><div style="width:40%">        
+                <a class="btn btn-primary btn-sm mt-3 mb-3 float-left abrir_modal">DETALLE  ESTADISTICO</a>
                 <table id="resumen" class="table-bordered table-striped">
                     <thead>
                         <label>RESUMEN PROGRAMAS</label>
                 	    <tr>
-                            <th rowspan="2" title="Codigo Programa">COD.</th>
+                            <th rowspan="2">COD.</th>
                             <th rowspan="2">PROGRAMA</th>
                             <th rowspan="2">JORNADA</th>
                             <th colspan="3">SEMESTRE I</th>
@@ -173,6 +178,7 @@
 
 @push('scripts')
 @include('administrativo.procesoClasificacion.modal.detalle_programa')
+@include('administrativo.procesoClasificacion.modal.grafica_programas')
 
 <script>
 
@@ -207,7 +213,10 @@
             document.getElementById("no_cla_icfes_no").removeAttribute('style', 'display:none');   
         }        
     });
-	
+
+var programas=[];
+var cupos_otorgados=[];
+var cupos_asignados=[];	
 $(document).ready(function(){
 	var table_3 = $("#resumen").DataTable({
 		"ajax":{
@@ -300,7 +309,29 @@ $(document).ready(function(){
                 "pdf",
             ]
 	});
-	
+
+    $.ajax({
+        url: '/datos.resumen',
+        method: 'GET'
+
+    }).done(function(res){
+        //console.log(res);
+        //const arr = objetoJson.map(res => Object.entries(res));
+
+        for(var i = 0; i < res.data.length; i++) {
+            programas.push(res.data[i].name_program);
+            cupos_otorgados.push(res.data[i].quotas_I_2023);
+            cupos_asignados.push(parseInt(res.data[i].quotas_I_2023) - parseInt(res.data[i].remaining_quotas_I_2023));
+        }
+        
+        generar_grafica();
+
+        $('.abrir_modal').click(function(e) { 
+            e.preventDefault();
+            $('#modal_detalle_grafica').modal('show');
+            //alert(cod)
+        });
+    });	
 
 	var table_1 = $("#clasificados").DataTable({
 
@@ -741,6 +772,41 @@ $(document).ready(function(){
     	});
 		$('#modal_detalle_programa').modal('show');
 	}
+
+    function generar_grafica(){
+        const ctx = document.getElementById('grafica_programas');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: programas,
+              datasets: [{
+                label: '# Cupos Otorgados',
+                data: cupos_otorgados,
+                borderWidth: 1,
+                backgroundColor:[
+                    'rgba(46, 134, 193, 0.8)',
+                ],
+              },
+              {
+                label: '# Cupos asignados',
+                data: cupos_asignados,
+                borderWidth: 1,
+                backgroundColor:[
+                    'rgba(0, 255, 51, 0.8)',
+                ],
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+        });
+        //$('#modal_detalle_grafica').modal('show');
+    }
 
 </script>
 @endpush

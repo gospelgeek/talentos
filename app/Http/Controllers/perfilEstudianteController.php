@@ -1498,14 +1498,14 @@ class perfilEstudianteController extends Controller
                 //$result = array_diff($value,[null]);
                 //dd($value);
                 
-                $this->nombres = $value['nombre'];
-                $this->apellidos = $value['apellidos'];
+                //$this->nombres = $value['Nombre_completo'];
+               //$this->apellidos = $value['Nombre_completo'];
                 $this->documento = $value['documento'];
-                $this->email = $value['correo_electronico'];
+                //$this->email = $value['correo_electronico'];
 
-                $estudiantes = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
-                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
-                })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->exists();
+                $estudiantes = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')
+                ->where('student_profile.document_number', $value['documento'])->where('groups.id_cohort',1)
+                ->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->exists();
 
                 //dd($estudiante);
 
@@ -1513,13 +1513,12 @@ class perfilEstudianteController extends Controller
                     $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
                     $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
                 })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
-
                     dd($value,$estudiante);
                 }*/
 
-                $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')->where(function($q){
-                    $q->where(['student_profile.name' => $this->nombres, 'student_profile.lastname' => $this->apellidos])->Orwhere('student_profile.document_number',$this->documento)->Orwhere('student_profile.email', $this->email);
-                })->where('groups.id_cohort',1)->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
+                $estudiante = perfilEstudiante::select('student_profile.id')->join('student_groups','student_groups.id_student','=','student_profile.id')->join('groups','groups.id','=','student_groups.id_group')
+                ->where('student_profile.document_number', $value['documento'])->where('groups.id_cohort',1)
+                ->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
 
                 //dd($estudiante);
                 $semestre_ingreso = explode("-",$value['respuesta_1'])[1];
@@ -1542,7 +1541,7 @@ class perfilEstudianteController extends Controller
                 $cuarta_opcion_jornada = explode("(",$value['opcion4']);
                 $quinta_opcion_jornada = explode("(",$value['opcion5']);
 
-                if(($primera_opcion == 3845 || $primera_opcion == 3841) && count($primera_opcion_jornada) > 0){
+                if(($primera_opcion == 3845 || $primera_opcion == 3841) && count($primera_opcion_jornada) > 1){
                     $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->where('working_day',"N")->first();  
                 }else{
                     $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->first();  
@@ -1573,7 +1572,11 @@ class perfilEstudianteController extends Controller
                 }
                                                         
 
-                //dd($nota_ponderada1);
+                //$validar = ProgramOptions::where('id_estudiante',$estudiante ? $estudiante->id : 0)->exists();
+
+                /*if($validar && $semestre_ingreso != "II-2023"){
+                    dd($value);
+                }*/
 
                 $icfes_validar = IcfesStudent::select('total_score')->where('id_student',$estudiante ? $estudiante->id : 0)->where('id_icfes_test', 5)->exists();
 
@@ -1653,7 +1656,7 @@ class perfilEstudianteController extends Controller
         //}
         
       
-        echo "completo";
+        return Redirect::back()->with('status', "el archivo" . " " . $request->file('file')->getClientOriginalName() . " " . "fue importado correctamente");
     }
 
     public function CargarJSon(Request $request)

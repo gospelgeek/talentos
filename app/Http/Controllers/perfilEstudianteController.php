@@ -1572,8 +1572,8 @@ class perfilEstudianteController extends Controller
                 }
                                                         
 
-                $validar = ProgramOptions::withTrashed()->where('id_estudiante',$estudiante ? $estudiante->id : 0)
-                            ->where('deleted_at', null)->exists();
+                /*$validar = ProgramOptions::withTrashed()->where('id_estudiante',$estudiante ? $estudiante->id : 0)
+                            ->where('deleted_at', null)->exists();*/
 
                 /*if($validar && $semestre_ingreso != "II-2023"){
                     dd($value,$validar);
@@ -1581,7 +1581,7 @@ class perfilEstudianteController extends Controller
 
                 $icfes_validar = IcfesStudent::select('total_score')->where('id_student',$estudiante ? $estudiante->id : 0)->where('id_icfes_test', 5)->exists();
 
-                if($estudiantes && $icfes_validar && $validar){
+                if($estudiantes && $icfes_validar){
 
                     $icfes = IcfesStudent::select('total_score')->where('id_student',$estudiante->id)->where('id_icfes_test', 5)->first();
 

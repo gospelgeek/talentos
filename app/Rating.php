@@ -35,8 +35,9 @@ class Rating extends Model
             INNER JOIN cohorts on cohorts.id = groups.id_cohort 
             INNER JOIN ratings on ratings.id_student = student_profile.id
             INNER JOIN programs ON programs.id = ratings.id_definitive_program
-            INNER JOIN program_options on program_options.id_estudiante = student_profile.id
-            WHERE student_groups.deleted_at IS null
+            INNER JOIN program_options on (program_options.id_estudiante = student_profile.id and program_options.deleted_at is not null)
+            WHERE program_options.id IN (SELECT MAX(id) FROM program_options group by id_estudiante) 
+            AND student_groups.deleted_at IS null
             AND cohorts.id = 1
             AND student_profile.id_state = 1
             and student_profile.deleted_at is null
@@ -44,6 +45,7 @@ class Rating extends Model
             ");
 
         if($data != null){
+            //dd($data);
             return $data;
         }else{
             return [];
@@ -66,6 +68,7 @@ class Rating extends Model
             program_options.semestre_ingreso = 'I-2023')
             WHERE student_profile.id IN(
             SELECT icfes_students.id_student FROM icfes_students)
+            and program_options.id IN (SELECT MAX(id) FROM program_options group by id_estudiante)
             AND student_groups.deleted_at IS null
             AND program_options.deleted_at IS null
             AND cohorts.id = 1
@@ -140,29 +143,18 @@ class Rating extends Model
     }
 
     public static function detalle_programa($id_programa, $semestre){
-        //dd($semestre);
+        //dd($semestre,$id_programa);
         $data = DB::select("
                     select student_profile.id, student_profile.name, student_profile.lastname, 
                     ratings.weighted_total, ratings.weighted_areas, ratings.average_grades, 
-                    ratings.position, ratings.iteration, program_options.semestre_ingreso
-                    FROM student_profile 
+                    ratings.position, ratings.iteration
+                    FROM student_profile
                     INNER JOIN ratings on ratings.id_student = student_profile.id
-                    INNER JOIN student_groups on student_groups.id_student = student_profile.id
-                    INNER JOIN groups on groups.id  = student_groups.id_group
-                    INNER JOIN cohorts on cohorts.id = groups.id_cohort
-                    INNER JOIN program_options on program_options.id_estudiante = student_profile.id
-                    WHERE ratings.id_definitive_program = ".$id_programa."
-                    AND student_groups.deleted_at is null
-                    AND student_profile.id_state = 1
-                    AND cohorts.id = 1
-                    AND program_options.deleted_at IS NOT null
-                    and student_profile.deleted_at is null
-                    AND program_options.semestre_ingreso = '".$semestre."' ");
+                    WHERE ratings.id_definitive_program = ".$id_programa."");
         if($data != null){
             return $data;
         }else{
             return [];
         }
     }
-    
 }

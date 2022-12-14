@@ -48,6 +48,7 @@ use App\SocioEducationalFollowUp;
 use App\CourseMoodle;
 use App\SessionCourse;
 use App\AttendanceStudent;
+use App\Rating;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;
@@ -445,8 +446,22 @@ class perfilEstudianteController extends Controller
             //dd($curso);
         });
         
+        $validateR = Rating::where('id_student', $iden)->exists();
+        //dd($validateR);
+        if($validateR){
+            $resultado = Rating::consultaResultados($iden);
+            $result = collect($resultado);
+            /*$result->map(function($data){
+                $data->admitido = 'ADMITIDO';
+                $data->opciones = $data->opc1.", ".$data->opc2.", ".$data->opc3.", ".$data->opc4.", ".$data->opc5; 
+            });*/
+            //dd($result);
+        }else{
+           $result = "";
+        }
+        
 
-        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 't1', 't2','t3' ,'totalSimulacros', 'url_entrada', 'url_salida', 'pruebaS1', 'pruebaS2', 'pruebaS3', 'pruebaS4', 'pruebaS5', 'variacion', 'variacionL3', 'l3'));
+        return view('perfilEstudiante.verDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 't1', 't2','t3' ,'totalSimulacros', 'url_entrada', 'url_salida', 'pruebaS1', 'pruebaS2', 'pruebaS3', 'pruebaS4', 'pruebaS5', 'variacion', 'variacionL3', 'l3', 'result'));
     }
 
 
@@ -797,8 +812,22 @@ class perfilEstudianteController extends Controller
             $curso->sesiones = SessionCourse::where('attendance_id',$curso->attendance_id)->count();
             //dd($curso);
         });
+        
+        $validateR = Rating::where('id_student', $iden)->exists();
+        //dd($validateR);
+        if($validateR){
+            $resultado = Rating::consultaResultados($iden);
+            $result = collect($resultado);
+            /*$result->map(function($data){
+                $data->admitido = 'ADMITIDO';
+                $data->opciones = $data->opc1.", ".$data->opc2.", ".$data->opc3.", ".$data->opc4.", ".$data->opc5; 
+            });*/
+            //dd($result);
+        }else{
+           $result = "";
+        }
 
-        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos'));
+        return view('perfilEstudiante.verEditarDatos', compact('motivos', 'foto', 'estado', 'verDatosPerfil', 'genero', 'sexo', 'tipo_documento', 'documento', 'edad', 'ciudad_nacimiento', 'barrio', 'ocupacion', 'estado_civil', 'residencia', 'vivienda', 'regimen', 'condicion', 'discapacidad', 'etnia', 'estado', 'beneficios', 'depNacimiento', 'muni_nacimiento', 'ciudad', 'seguimientos', 'cohorte', 'grupos', 'asignacion', 'iden', 'apoyo_economico','cursos', 'result'));
     }
 
 

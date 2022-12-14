@@ -10,9 +10,32 @@
   	align-items: center;
 }
 #tabla{
-  width: 900px;
+  width: 130px;
 
 }
+//
+.fullscreen-modal .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .fullscreen-modal .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fullscreen-modal .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fullscreen-modal .modal-dialog {
+     width: 1170px;
+  }
+}
+//
 
 .riesgos{
 	border: 3px solid;
@@ -22,7 +45,11 @@
 	border-left: 1px solid;	
 }
 
-.table_estado{
+.bordes{
+	border: 1px solid;
+}
+
+#table_estado{
 	width: 150%;
 	height: 10px;
 }
@@ -31,9 +58,21 @@
 	width: 150%;
 	height: 10px;
 }
-body{
-	background: #ecf0f1;
+
+.grupos_resumen{
+	width: 150%;
+	height: 10px;	
 }
+body{
+	background: #006400;
+}
+
+/*.bajo{
+	 border-color: #008000;
+   border-width: 2px;
+   border-style: solid;
+}*/
+
 img.avatar {
     /* cambia estos dos valores para definir el tamaño de tu círculo */
     height: 150px;
@@ -192,12 +231,6 @@ img.avatar {
 
 .accordion-titulo-9.open span.toggle-icon:before {
 	content:"-";
-}
-
-.accordion-content-9 {
-	display: none;
-	padding: 20px;
-	overflow: auto;
 }
 
 .accordion-titulo-9 span.toggle-icon {
@@ -394,6 +427,12 @@ img.avatar {
 	overflow: auto;
 }
 
+.accordion-content-9 {
+	display: none;
+	padding: 20px;
+	overflow: auto;
+}
+
 .accordion-content-1 p{
 	margin:0;
 }
@@ -419,12 +458,4 @@ img.avatar {
 
 td{
 	font-weight: normal;
-}
-
-.border-table-asistencias-asignatura {
-  border-left: black solid 2px;
-}
-
-.border-table-asistencias-porcentaje {
-  border-left: black solid 1px;
 }

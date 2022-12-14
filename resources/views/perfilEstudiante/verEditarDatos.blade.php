@@ -1428,7 +1428,8 @@
             {!!Form::close()!!}
 			@endif
 		</div>
-        @if($result != '')
+	</div>
+    @if($result != '')
 	<div class="accordion-container" id="ttlo-9">
 		<a href="#" id="titulo-9" class="accordion-titulo-9">Resultados Clasificación<span class="toggle-icon"></span></a>
 		<div id="contenido-9" class="accordion-content-9">
@@ -1574,7 +1575,6 @@
 		</div>
 	</div>
 	@endif
-	</div>
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
     <a class="btn btn-primary" type="button" href="/pdfEstudiante/{{$iden}}" >Descargar PDF</a>
 	

@@ -594,14 +594,48 @@ class IcfesController extends Controller
         $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
         return view('icfes.reporteIcfesPruebas', compact('pruebas', 'estudiantes'));
     }
+    
+    public function cargarDatosIcfes($test)
+    {
+        ini_set('max_execution_time', '600');
+        $nombreArchivo = "resultados_" . strval($test) . ".json";
+        $result = IcfesStudent::infoPruebas($test);
+        Storage::disk('local')->put($nombreArchivo, json_encode($result));
+        $pdd = json_decode(Storage::get($nombreArchivo));
+        return datatables()->of($pdd)->toJson();
+    }
 
     public function datosPruebasIcfes($test)
     {
         ini_set('max_execution_time', '600');
 
-        $data = IcfesStudent::infoPruebas($test);
-        
-        return datatables()->of($data)->toJson();
+        switch ($test) {
+            case '1':
+                $data = json_decode(Storage::get("resultados_1.json"));
+                return datatables()->of($data)->toJson();
+                break;
+
+            case '2':
+                $data = json_decode(Storage::get("resultados_2.json"));
+                return datatables()->of($data)->toJson();
+                break;
+
+            case '3':
+                $data = json_decode(Storage::get("resultados_3.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            case '4':
+                $data = json_decode(Storage::get("resultados_4.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            case '5':
+                $data = json_decode(Storage::get("resultados_5.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            default:
+                return "error inesperado";
+                break;
+        }
     }
 
     public function actualizarIcfes($iden, $test, Request $request)

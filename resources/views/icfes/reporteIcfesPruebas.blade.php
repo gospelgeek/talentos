@@ -809,12 +809,13 @@
         });
         return table
     }
-
-    let s1Tabla = renderTable("S1", 1)
-    let s2Tabla = renderTable("S2", 2)
+    
+    let salTabla = renderTable("Sal", 5)
     let s3Tabla = renderTable("S3", 3)
     let enTabla = renderTable("En", 4)
-    let salTabla = renderTable("Sal", 5)
+    let s1Tabla = renderTable("S1", 1)
+    let s2Tabla = renderTable("S2", 2)
+    
 
     enTabla.on('click', 'tr', function() {
         idxEn = enTabla

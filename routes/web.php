@@ -249,6 +249,7 @@ Route::get('pruebaAreas/{id_student}/{id_icfes_test}', 'IcfesController@icfesRes
 Route::post('registro_icfes/', 'IcfesController@registroIcfes')->name('registro.icfes');
 Route::get('reporte_pruebas_icfes', 'IcfesController@reportePruebas')->name('reporte.icfes.pruebas');
 Route::get('datos_prueba/{test}', 'IcfesController@datosPruebasIcfes')->name('datos.prueba');
+Route::get('cargarDatosIcfes/{test}', 'IcfesController@cargarDatosIcfes')->name('cargarDatosIcfes');
 Route::post('actualizacion_icfes/{iden}/{test}', 'IcfesController@actualizarIcfes')->name('actualizacion');
 
 //RUTAS CONTROLADOR SEGUIMIENTOS ACADEMICOS

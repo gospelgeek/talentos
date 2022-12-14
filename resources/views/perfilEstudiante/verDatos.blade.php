@@ -1494,6 +1494,152 @@
 			@endif
 		</div>
 	</div>
+    @if($result != '')
+	<div class="accordion-container" id="ttlo-9">
+		<a href="#" id="titulo-9" class="accordion-titulo-9">Resultados Clasificación<span class="toggle-icon"></span></a>
+		<div id="contenido-9" class="accordion-content-9">
+			<div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="program">Programa definitivo</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="program" id="program" value="{{ $result[0]->name_program }}" title="{{ $result[0]->name_program }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="puesto">Puesto</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="puesto" id="position" value="{{ $result[0]->position }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion">Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion" id="iteration" value="{{ $result[0]->iteration }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Total ponderado</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->weighted_total }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Promedio Areas</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->weighted_areas }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Promedio Notas</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->average_grades }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion1">Primera Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion1" id="opc1" value="{{ $result[0]->opc1 }}" title="{{ $result[0]->opc1 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion2">Segunda Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion2" id="opc2" value="{{ $result[0]->opc2 }}" title="{{ $result[0]->opc2 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion3">Tercera Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion3" id="opc3" value="{{ $result[0]->opc3 }}" title="{{ $result[0]->opc3 }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion4">Cuarta Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion4" id="opc4" value="{{ $result[0]->opc4 }}" title="{{ $result[0]->opc4 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion5">Quinta Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion5" id="opc5" value="{{ $result[0]->opc5 }}" title="{{ $result[0]->opc5 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Semestre Ingreso</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->semestre_ingreso }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>     	
+		</div>
+	</div>
+	@endif
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
     <a class="btn btn-primary" type="button" href="/pdfEstudiante/{{$iden}}" >Descargar PDF</a>
 </div>

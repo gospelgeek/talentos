@@ -157,4 +157,26 @@ class Rating extends Model
             return [];
         }
     }
+    
+    public static function consultaResultados($id_student){
+        $data = DB::select("select student_profile.id, programs.name_program, ratings.position, 
+                ratings.iteration, ratings.weighted_total, ratings.weighted_areas, 
+                ratings.average_grades,
+                (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa1) as opc1,
+                (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa2) as opc2,
+                (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa3) as opc3,
+                (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa4) as opc4,
+                (SELECT programs.name_program FROM programs WHERE programs.id = program_options.id_programa5) as opc5,
+                program_options.semestre_ingreso
+                from student_profile
+                INNER JOIN ratings on ratings.id_student = student_profile.id
+                INNER JOIN programs ON programs.id = ratings.id_definitive_program
+                INNER JOIN program_options on program_options.id_estudiante = ratings.id_student
+                WHERE ratings.id_student = ".$id_student."");
+        if($data != null){
+            return $data;
+        }else{
+            return [];
+        }
+    }
 }

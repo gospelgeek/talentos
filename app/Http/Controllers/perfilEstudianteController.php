@@ -48,7 +48,6 @@ use App\SocioEducationalFollowUp;
 use App\CourseMoodle;
 use App\SessionCourse;
 use App\AttendanceStudent;
-use App\Rating;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
 use App\Http\Requests\DatosAcademicosRequest;

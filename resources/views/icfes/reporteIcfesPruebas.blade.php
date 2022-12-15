@@ -5,7 +5,7 @@
 @include('../alerts.request')
 
 <div class="content-fluid">
-    <h1 style="text-align:center;">RESULTADOS ICFES</h1>
+    <h1 style="text-align:center;">RESULTADOS ICFES </h1>
     <div class="card">
         <div class="card-header">
             <div class="row">

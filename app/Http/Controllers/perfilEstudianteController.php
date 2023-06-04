@@ -2,19 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\View;
-use App\Exports\SabanaExport;
-use App\Exports\SabanaExportCompleta;
-use App\Exports\RetirosExport;
-use App\Exports\ReporteExport;
-use App\Exports\SocioeducativoExport;
-use App\perfilEstudiante;
-use App\AdmissionScores;
-use App\SocioeconomicData;
-use App\PreviousAcademicData;
-use App\LogsCrudActions;
+use DB;
+use Excel;
+use Session;
 use App\User;
 use Redirect;
 use Response;
@@ -50,12 +40,9 @@ use App\SessionCourse;
 use App\ProgramOptions;
 use App\AdmissionScores;
 use App\InstitutionType;
-use App\Course;
-use App\Comune;
-use App\Group;
-use App\Cohort;
-use App\AsignementStudents;
-use App\StudentGroup;
+use App\LogsCrudActions;
+use App\ProgramOptions2;
+use App\perfilEstudiante;
 use App\AssignmentStudent;
 use App\AttendanceStudent;
 use App\EconomicalSupport;
@@ -71,27 +58,14 @@ use App\Exports\ReporteExport;
 use App\Exports\RetirosExport;
 use App\Http\Controllers\Auth;
 use App\SocioEducationalFollowUp;
-use App\CourseMoodle;
-use App\SessionCourse;
-use App\AttendanceStudent;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use App\Exports\SabanaExportCompleta;
+use App\Exports\SocioeducativoExport;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\DatosAcademicosRequest;
 use App\Http\Requests\perfilEstudianteRequest;
 use App\Http\Requests\DatosSocioeconomicosRequest;
-use App\Http\Requests\DatosAcademicosRequest;
-use App\Http\Controllers\Auth;
-use Carbon\Carbon;
-use App\Session as sesiones;
-use Session;
-use Redirect;
-use DB;
-use Response;
-use Excel;
-use App\Imports\CsvImport;
-use Illuminate\Support\Facades\Storage;
-use App\EconomicalSupport;
-use App\Programs;
-use App\ProgramOptions;
-use App\IcfesStudent;
-use App\Rating;
 
 class perfilEstudianteController extends Controller
 
@@ -1535,17 +1509,17 @@ class perfilEstudianteController extends Controller
 
     public function excel(Request $request)
     {
-        $repechaje = Rating::count();
+        $repechaje = Rating2::count();
 
         if($repechaje > 0){
             $estado = 2;
         }else{
             $estado = 1;
         }
-
+    
         $collection2 = Excel::toArray(new CsvImport, request()->file('file'));
         //dd(count($collection2));
-        //$course_moodle = DB::table('program_options')->truncate();
+        $course_moodle = DB::table('program_options2')->truncate();
         //foreach ($collection2 as $var) {
             //dd($var);
             foreach ($collection2[0] as $key => $value) {
@@ -1575,13 +1549,14 @@ class perfilEstudianteController extends Controller
                 ->where('student_groups.deleted_at',null)->where('student_profile.id_state',1)->first();
 
                 //dd($estudiante);
-                $semestre_ingreso = explode("-",$value['respuesta_1'])[1];
+                /*$semestre_ingreso = explode("-",$value['respuesta_1'])[1];
                 if($semestre_ingreso == 1){
                     $semestre_ingreso = "I-2023";
                 }else{
                     $semestre_ingreso = "II-2023";
-                }
+                }*/
 
+                $semestre_ingreso = "II-2023";
 
                 $primera_opcion = explode(" ",$value['opcion1'])[0];
                 $segunda_opcion = explode(" ",$value['opcion2'])[0];
@@ -1589,41 +1564,25 @@ class perfilEstudianteController extends Controller
                 $cuarta_opcion = explode(" ",$value['opcion4'])[0];
                 $quinta_opcion = explode(" ",$value['opcion5'])[0];
 
-                $primera_opcion_jornada = explode("(",$value['opcion1']);
-                $segunda_opcion_jornada = explode("(",$value['opcion2']);
-                $tercera_opcion_jornada = explode("(",$value['opcion3']);
-                $cuarta_opcion_jornada = explode("(",$value['opcion4']);
-                $quinta_opcion_jornada = explode("(",$value['opcion5']);
+                $primera_opcion_jornada = substr(explode("- ",$value['opcion1'])[1],0,1);
 
-                if(($primera_opcion == 3845 || $primera_opcion == 3841) && count($primera_opcion_jornada) > 1){
-                    $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->where('working_day',"N")->first();  
-                }else{
-                    $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->first();  
-                }
+                $segunda_opcion_jornada = substr(explode("- ",$value['opcion2'])[1],0,1);
 
-                if(($segunda_opcion == 3845 || $segunda_opcion == 3841) && count($segunda_opcion_jornada) > 1){
-                    $id_segunda_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$segunda_opcion)->where('working_day',"N")->first();
-                }else{
-                    $id_segunda_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$segunda_opcion)->first();
-                }
+                $tercera_opcion_jornada = substr(explode("- ",$value['opcion3'])[1],0,1);
 
-                if(($tercera_opcion == 3845 || $tercera_opcion == 3841) && count($tercera_opcion_jornada) > 1){
-                    $id_tercera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$tercera_opcion)->first();
-                }else{
-                    $id_tercera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$tercera_opcion)->first();
-                } 
+                $cuarta_opcion_jornada = substr(explode("- ",$value['opcion4'])[1],0,1);
 
-                if(($cuarta_opcion == 3845 || $cuarta_opcion == 3841) && count($cuarta_opcion_jornada) > 1){
-                    $id_cuarta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$cuarta_opcion)->where('working_day',"N")->first();
-                }else{
-                    $id_cuarta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$cuarta_opcion)->first();
-                }    
+                $quinta_opcion_jornada = substr(explode("- ",$value['opcion5'])[1],0,1);
 
-                if(($quinta_opcion == 3845 || $quinta_opcion == 3841) && count($quinta_opcion_jornada) > 1){
-                    $id_quinta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$quinta_opcion)->where('working_day',"N")->first();
-                }else{
-                    $id_quinta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$quinta_opcion)->first();
-                }
+                $id_primera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$primera_opcion)->where('working_day',$primera_opcion_jornada)->first();  
+
+                $id_segunda_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$segunda_opcion)->where('working_day',$segunda_opcion_jornada)->first();
+
+                $id_tercera_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$tercera_opcion)->where('working_day',$tercera_opcion_jornada)->first();
+
+                $id_cuarta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$cuarta_opcion)->where('working_day',$cuarta_opcion_jornada)->first(); 
+
+                $id_quinta_opcion = Programs::select('id','weighting_test_specific')->where('code_program',$quinta_opcion)->where('working_day',$quinta_opcion_jornada)->first();
                                                         
 
                 /*$validar = ProgramOptions::withTrashed()->where('id_estudiante',$estudiante ? $estudiante->id : 0)
@@ -1682,7 +1641,7 @@ class perfilEstudianteController extends Controller
 
                     $nota_ponderada5 = (((100-($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0))*$icfes->total_score) + (($id_quinta_opcion ? $id_quinta_opcion->weighting_test_specific : 0 ) * $nota_prueba_5))/100;
 
-                    $program_options = ProgramOptions::Create([
+                    $program_options = ProgramOptions2::Create([
                         'id_estudiante'     =>   $estudiante->id,
                         'id_programa1'      =>   $id_primera_opcion ? $id_primera_opcion->id : 0,
                         'nota_ponderada1'   =>   $nota_ponderada1,
@@ -1700,7 +1659,8 @@ class perfilEstudianteController extends Controller
                         'nota_ponderada5'   =>   $nota_ponderada5,
                         'nota_prueba_5'     =>   $nota_prueba_5,
                         'semestre_ingreso'  =>   $semestre_ingreso,
-                        'estado'            =>   $estado,        
+                        'estado'            =>   $estado,
+                        'prioridad'         =>   $value["prioridad"]        
                     ]);
                 }
                 

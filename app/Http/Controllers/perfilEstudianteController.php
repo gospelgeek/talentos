@@ -39,7 +39,6 @@ use App\Neighborhood;
 use App\Formalization;
 use App\InstitutionType;
 use App\Course;
-use App\Comune;
 use App\Group;
 use App\Cohort;
 use App\AsignementStudents;

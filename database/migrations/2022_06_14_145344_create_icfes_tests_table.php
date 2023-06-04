@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseItemsTable extends Migration
+class CreateIcfesTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateCourseItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_items', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_course');
-            $table->string('name_items');
-            $table->integer('weight_items');
-            $table->string('description');
+        Schema::create('icfes_tests', function (Blueprint $table) {
+            $table->increments("id");
+            $table->string("name");
+            $table->string("description");
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateCourseItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_items');
+        Schema::dropIfExists('icfes_tests');
     }
 }

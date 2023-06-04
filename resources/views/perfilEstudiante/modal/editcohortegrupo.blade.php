@@ -25,7 +25,10 @@
             {!!Form::label('grupo','Grupo: ')!!}
             {!!Form::select('grupo', $grupos, $verDatosPerfil->studentGroup ? $verDatosPerfil->studentGroup->group->id : null,['id'=>'grupOm','class'=>'form-control','required'])!!} 
           </div>
-          
+          <div class="col-xs-12 col-sm-6 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+            {!!Form::label('group_change_date','Fecha: *')!!}
+            {!!Form::date('group_change_date',null,['id'=>'fecha_cambio','class'=>'form-control','required'])!!} 
+          </div>
         </div>
       </div>           
       </div>

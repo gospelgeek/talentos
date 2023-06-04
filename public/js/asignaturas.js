@@ -1,4 +1,4 @@
-
+/*
 
 	var url = document.getElementById('json').src;
         var asistencias = document.getElementById('asisten').src;
@@ -90,13 +90,14 @@
                                                 a.innerHTML = ' lista';
                                                 a.setAttribute('title', 'ver asistencias');
                                                 var route = form.attr('action').replace(':SESSIONID', value.sessions[i].id);
+                                                //console.log(value);
                                                 a.setAttribute("href", route);
                                                 let vinculo = document.createElement('a');
                                                 vinculo.className +="btn btn-sm fa fa-external-link";
                                                 vinculo.setAttribute('title', 'Enlace Campus virtual');
-                                                vinculo.setAttribute('style', 'display:none');
+                                                //vinculo.setAttribute('style', 'display:none');
                                                 vinculo.innerHTML = "Campus";
-                                                vinculo.setAttribute("href", "https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id=1465667&sessionid="+value.sessions[i].id+"&grouptype=0");
+                                                vinculo.setAttribute("href", "https://campusvirtual.univalle.edu.co/moodle/mod/attendance/take.php?id=+"+value.instanceid+"&sessionid="+value.sessions[i].id+"&grouptype=0");
                                                 vinculo.setAttribute("target", "_blank");
                                                 let row_2 = document.createElement('tr');
                                                 let row_2_data_1 = document.createElement('td');
@@ -126,23 +127,7 @@
                         }       
                 });
                 document.getElementById("carga").remove();
-                $("#example1").DataTable({
-                        "processing": true,
-                        "LoadingRecords":true,
-                        "paging": true,
-                        "deferRender": true,
-                        "lengthChange": false,
-                        "searching": true,
-                        "ordering": false,
-                        "info": true,
-                        "autoWidth": false,
-                        "responsive": true,
-                        "language": {
-                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-                        },
-                        "dom": 'Bfrtip',
-                        "buttons": ["copy", "csv", "excel", "pdf", "print"]
-                });
+               
 
          });
         
@@ -153,6 +138,24 @@
         //console.log(tr);	
 
 
-  
+*/  
 
                  
+ $("#example1").DataTable({
+                        "processing": true,
+                        "LoadingRecords":true,
+                        "paging": true,
+                        "deferRender": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "order": [ 0, 'asc'],
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        "language": {
+                                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        "dom": 'Bfrtip',
+                        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+});

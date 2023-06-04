@@ -17,7 +17,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    {!!Html::script('/dashboard/plugins/jquery/jquery.min.js')!!}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeQQvYgAAAAAHvwSUCVLu3MlhhprTlz7ssVbFd2"></script>
+    @yield("captcha")
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {!!Html::style('/DataTables/bootstrap/css/bootstrap.css')!!}

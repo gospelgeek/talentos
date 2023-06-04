@@ -8,25 +8,15 @@ class CourseItems extends Model
 {
     protected $table = 'course_items';
 
-        protected $primarykey = 'id';
+    protected $primarykey = 'course_id';
 
-        protected $fillable = [
-            'id',
-            'id_course',
-            'name_items',
-            'weight_items',
-            'description',
-        ];
-    }
+    protected $fillable = [
+            'category_name',
+            'course_id',
+            'item_type',
+            'item_id',
+            'item_instance',
+            'item_name',
+    ];
 
-     /**
-     * Relacion con los  datos que se tiene de CourseItems  
-     * con la tabla Course
-     * 
-     * @author Steven Tangarife <herson.tangarife@correounivalle.edu.co>
-     * @return Collection<Course>
-     */
-    public function coursecourseitems(){
-        return $this->hasOne(Course::class, 'id', 'id_course');
-    }
 }

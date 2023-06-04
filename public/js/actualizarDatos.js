@@ -23,7 +23,7 @@ $('.boton_update_datos_academicos_previos').click(function(e) {
       'icfes_date': $("#fechaIcfes").val(),
       'snp_register': $("#snpRegistro").val(),
       'icfes_score': $("#icfesPuntaje").val(),
-  
+      'url_academic_support': $("#soporteAcademico").val(),
     },
     success:function(result) {
       $('#modal_actualizar_datos_academicos_previos').modal('hide');
@@ -61,7 +61,7 @@ $('.boton_update_academicos_previos').click(function(e) {
       'icfes_date': $("#icfesdate").val(),
       'snp_register': $("#bachelortitle").val(),
       'icfes_score': $("#icfesscore").val(),
-  
+      'url_academic_support': $("#soporte_academico").val(),
     },
     success:function(result) {
       $('#contenido-2').modal('hide');
@@ -118,6 +118,11 @@ $('.boton_update_datos_generales').click(function(e) {
       'id_neighborhood': $("#barrioV").val(),
       'direction': $("#direccion12").val(),
       'student_code': $('#codEstu').val(),
+      'first_name': $('#nombre_pilA').val(),
+      'emergency_contact_name': $('#emergencia_nombre').val(),
+      'relationship': $('#parentezco').val(),
+      'emergency_contact': $('#emergencia').val(),
+      'url_document_type': $('#enlaceDocumento').val(),
     },
     success:function(result) {
       $('#modal_actualizar_datos_generales').modal('hide');
@@ -164,6 +169,11 @@ $('.boton_update_generales').click(function(e) {
       'id_neighborhood': $("#barrioresidencia").val(),
       'direction': $("#direccionnnnn").val(),
       'student_code': $('#codEstudiante').val(),
+      'first_name': $('#npila').val(),
+      'emergency_contact_name': $('#nmbre_emrgncia').val(),
+      'relationship': $('#prntzco').val(),
+      'emergency_contact': $('#emergency').val(),
+      'url_document_type': $('#enlace_documento').val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
@@ -224,6 +234,11 @@ $('.boton_update_datos_socioeconomicos').click(function(e) {
       'id_social_conditions': $("#socialC").val(),
       'id_disability': $("#discapacidadS").val(),
       'id_ethnicity': $("#etnia").val(),
+      'eps_name': $("#eps").val(), 
+      'url_health_regime': $("#soporteRegimen").val(),
+      'url_sisben_category': $("#soporteSisben").val(),
+      'url_social_conditions': $("#soporteCondicion").val(),
+      'url_ethnicity': $("#soporteEtnia").val(),
     },
     success:function(result) {
       $('#modal_actualizar').modal('hide');
@@ -273,6 +288,11 @@ $('.boton_update_socioeconomicos').click(function(e) {
       'id_social_conditions': $("#idsocialconditions").val(),
       'id_disability': $("#iddisability").val(),
       'id_ethnicity': $("#idethnicity").val(),
+      'eps_name': $("#epS").val(),
+      'url_sisben_category': $("#soporte_categoria").val(),
+      'url_health_regime': $("#soporte_regimen").val(),
+      'url_social_conditions': $("#soporte_condicion").val(),
+      'url_ethnicity': $("#soporte_etnia").val(),
     },
     success:function(result) {
       $('#contenido-3').modal('hide');
@@ -355,28 +375,32 @@ $('.boton_mensaje_alerta').click(function(e) {
 //Actualizando campos
 $('.boton_actualizar').click(function(e) { 
   e.preventDefault();
-
+  
   var idgroup = $('#idGr').val();
 
   $.ajax({
   //ruta manual
     url:'/updatecohortegrupo/'+ idgroup,
-    type:'PUT',
+    type:'POST',
     data:{
       '_token': $('input[name=_token]').val(),
       'grupo': $("#grupOm").val(),
       'cohorte': $("#cohorT").val(),
+      'group_change_date': $("#fecha_cambio").val(),
     },
     success:function(result) {
-      
-      //$('#contenido-3').modal('hide');
-      //window.location.reload(); 
+       
       if(result == 'El grupo seleccionado debe pertenecer a la cohorte correspondiente'){
         toastr.warning(result); 
-    
-      }else if(result == 'Datos actualizados correctamente!!'){
+      }
+
+      if(result == 'Datos actualizados correctamente!!'){
         toastr.success(result);
         setTimeout("location.reload()", 2000);
+      }
+
+      if(result == 2){
+       toastr.warning('Debe diligenciar todos los campos'); 
       }
       
     },
@@ -408,14 +432,52 @@ $('.boton_cancelar').click(function(e) {
         $('#modal_cambiar_cohorte_grupo').modal('hide');               
 });
 
+//ACCIONES APOYO ECONOMICO
+//poner inputs 
+function apoyo_economico(){
+    
+    $('#inputs').append('<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="date">Fecha:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="date" name="date" id="date_supporT">'+
+                            '</div>'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="url_banco">URL banco:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="text" name="url_banco" id="url_banco">'+
+                            '</div>'+
+                          '</div>'+  
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<p style="text-align: right"><label for="monto">Monto:</label></p>'+
+                        '</div>'+
+                        '<div class="col-xs-4 col-md-2">'+
+                          '<div class="row">'+
+                            '<div class="col-xs-4 col-md-12">'+
+                              '<input class="form-control" type="number" name="monto" id="monto">'+
+                            '</div>'+
+                          '</div>'+                  
+                        '</div>');
+
+    $('#nuevo_registro').addClass('disabled');
+}
+
 //Guardar formalizacion
 $('.boton_update_formalizacion').click(function(e) { 
   e.preventDefault();   
+  
   var idDatos = $('#idfLz').val();
   
-  
-  var checkAcptacon = $('#aceptandoAceptacion').is(":checked");
-  var checkTablet = $('#aceptandoTablet').is(":checked");
+  var checkAcptacon = $('#aceptacion_check').is(":checked");
+  var checkTablet = $('#tablet_check').is(":checked");
 
 
 $.ajax({
@@ -429,14 +491,32 @@ $.ajax({
       'tablets_v1': $("#tabletsv1").val(),
       'tablets_v2': $("#tabletsv2").val(),
       'serial_tablet': $("#serialtablet").val(),
+      'date_kit' : $("#kit_fecha").val(),
+      'pre_registro_icfes': $('input[name="pre_registration_icfes"]:checked').val(),
+      'inscripcion_icfes': $('input[name="inscription_icfes"]:checked').val(),
+      'presento_icfes': $('input[name="presented_icfes"]:checked').val(),
+      'observaciones': $('textarea[id="observacionestext"]').val(),
       'checkAceptacion': checkAcptacon,
-      'checkTablet': checkTablet, 
-      
+      'checkTablet': checkTablet,
+      'fecha_apoyo': $("#date_supporT").val(),
+      'banco_url': $("#url_banco").val(),  
+      'monto': $("#monto").val(),
+      'id': $("#estudiantE").val(),
+      'fecha_aceptacion': $("#acceptance_date").val(),
+      'observacion_aceptacion': $("#acceptance_observation").val(),
+      'prestamo_tablet': $('input[name="loan_tablet"]:checked').val(),
+      'devolvio_tablet': $('input[name="returned_tablet"]:checked').val(),
+      'serial_tablet_prestada': $("#serial_loan_tablet").val(),
+      'observacion_prestamo': $("#observation_loan").val(),
+      'url_documento_prestamo': $("#loan_document_url").val(),
+      'cambio_de_linea': $('input[name="transfer_line2_to_line1"]:checked').val(),
+      'fecha_entrega': $("#entrega_fecha").val(),
+      'observacion_entrega': $("#observacion_entrega").val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
       if(result == 1){
-        toastr.info('FORMALIZACIÓN NO DILIGENCIADA');  
+        toastr.info('FORMALIZACION NO DILIGENCIADA');  
       }else if(result == 2){
         toastr.success('FORMALIZACIÓN GENERADA CORRECTAMENTE');
         setTimeout("location.reload()", 2000);  
@@ -456,4 +536,193 @@ $.ajax({
     },       
   });
 });
+
+//actualizar registro apoyo economico
+$('.actualizar_apoyo_economico').click(function(e) { 
+  e.preventDefault();
+
+  var idDatos = $('#idapyoEcnmco').val();
+
+  $.ajax({
+  //ruta manual
+    url:'/update_apoyo_economico/'+ idDatos,
+    type:'PUT',
+    data:{
+      '_token': $('input[name=_token]').val(),
+      'date': $("#fchaApyo").val(),
+      'url_banco': $("#urlbnco").val(),
+      'monto': $("#mnto").val(),
+    },
+    success:function(result) {
+      $('#contenido-1').modal('hide');
+      if(result == 1){
+        toastr.success('Apoyo economico actualizado correctamente');  
+        setTimeout("location.reload()", 2000);
+      }
+      
+    },
+
+    error:function(result) {          
+      var mensajeError = "";
+      $.each(result.responseJSON.errors,function(i,field){
+        mensajeError += "<li>"+field+"</li>"
+        //$("#msj").append("<ul><li>"+field.errors.calendario_nombre+"</li><li>"+field.errors.calendario_semestre+"</li></ul>");   
+        console.log(mensajeError)
+      });
+      $("#msj-error-agendamiento").html("<ul>"+mensajeError+"</ul>").fadeIn();         
+    },       
+  });
+});
+
+//ACCIONES DE VER Y EDITAR DATOS EN FORMALIZACION
+$(function() {
+    $('#mostrar_registros').empty();
+    $('#inputs').empty();
+    $('#nuevo_registro').removeClass('disabled');  
+});
+
+$(function() {    
+    $('#aceptacion_check').change(function(event) {        
+      var checkAcptacon = $('#aceptacion_check').is(":checked");
+        if(checkAcptacon) {
+          document.getElementById('acceptancev2').disabled = false;
+        }else{
+          document.getElementById('acceptancev2').disabled = true;
+        }                
+    });
+});
+
+$(function() {
+    $('#tablet_check').change(function(event) {
+      var checkTablets = $('#tablet_check').is(":checked");
+      if(checkTablets) {
+        document.getElementById('tabletsv2').disabled = false;
+        document.getElementById('serialtablet').disabled = false;
+      }else{
+        document.getElementById('tabletsv2').disabled = true;
+        document.getElementById('serialtablet').disabled = true;
+      }
+    });
+});
+    
+$(function() {
+    //marcar checks y radios segun lo que venga de la BD(ambas vistas)
+      var registro = $("#rgstraton").val();
+      var inscripcion = $("#inscrpton").val();
+      var presento = $("#icfes_presented").val();
+
+      if(registro == '' || registro == 0){
+        document.getElementById('pre_registration').checked = false;
+      }else if(registro == 1){
+        document.getElementById('pre_registration').checked = true;
+      }
+
+      if(inscripcion == '' || inscripcion == 0){
+        document.getElementById('inscription').checked = false;
+      }else if(inscripcion == 1){
+        document.getElementById('inscription').checked = true;
+      }
+
+      if(presento == '' || presento == 0){
+        document.getElementById('presented').checked = false;
+      }else if(presento == 1){
+        document.getElementById('presented').checked = true;
+      }
+    //
+      
+    //poner info en text area(vista verDatos)
+      var observaciones = $("#obser").val();
+      $('textarea[id="observacionestext"]').val(observaciones);
+    //
+
+    //mostrar registros de apoyos economicos en la tabla
+      //let array = document.getElementById('apoyos').value;
+     /* const datos_json = JSON.parse(array);
+      var rol = document.getElementById('rol_login').value;
+      
+      $.each(datos_json, function(index, value) {
+
+          //sacar mes de la fecha para mostar en campo(ambas vistas)
+          let fecha = value.date;
+          let fecha_convertida = new Date(fecha);
+          //garantizo que la zona horaria no me reste un dia en la fercha
+          fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
+          const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
+          //
+          if(rol == 1 || rol == 4){
+
+            $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
+                    "<td>"+value.url_banco+"</td>"+
+                    "<td>"+value.monto+"</td>"+
+                    "<td>"+'<center>'+'<div class="btn-group">'+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn btn-block fa fa-pencil-square-o fa editar_registro_apoyo_economico" title="Editar registro"></button>'+
+                          '</div>'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa delete_registro_apoyo_economico" title="Eliminar registro"></button>'+
+                          "</div>"+
+                      "</div>"+'</center>'+"</td>"+
+                    "</tr>");
+          }else{
+
+            $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
+                    "<td>"+value.url_banco+"</td>"+
+                    "<td>"+value.monto+"</td>"+
+                    "<td>"+'<center>'+'<div class="btn-group">'+                                 
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button disabled class="btn btn-block fa fa-pencil-square-o fa editar_registro_apoyo_economico" title="Editar registro"></button>'+
+                          '</div>'+
+                          '<div class="col-xs-6 col-sm-6 btn-group">'+
+                            '<button disabled class="btn text-danger btn-block fa fa-trash fa delete_registro_apoyo_economico" title="Eliminar registro"></button>'+
+                          "</div>"+
+                      "</div>"+'</center>'+"</td>"+
+                    "</tr>");
+          }
+            
+      });*/
+      //
+
+      //editar registro de apoyo economico
+      $('.editar_registro_apoyo_economico').click(function(e) {
+            e.preventDefault();
+            
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            var form = $('#form-edit-apoyo_economico');
+            var url = form.attr('action').replace(':APOYO_ID', id);
+            var data = form.serialize();
+
+            $.get(url, function(result){
+              
+              $("#idapyoEcnmco").val(result.id);
+              $('#fchaApyo').val(result.date);  
+              $('#urlbnco').val(result.url_banco);       
+              $('#mnto').val(result.monto);
+
+              $('#modal_editar_apoyo_economico').modal('show');
+            
+            });
+      });
+      //
+
+      //eliminar registro apoyo economico
+      $('.delete_registro_apoyo_economico').click(function(e) {       
+          e.preventDefault();
+
+          var row = $(this).parents('tr');
+          var id = row.data('id');
+          var form = $('#form-delete_apoyo_economico');
+          var url = form.attr('action').replace(':APOYO_ID', id);
+          var data = form.serialize();
+       
+          $.post(url, data, function(result){
+            row.fadeOut();
+            toastr.success(result); 
+            //setTimeout("location.reload()", 2000);
+          });
+      }); 
+});
+
+
+
 

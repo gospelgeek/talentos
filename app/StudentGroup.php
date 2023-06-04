@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use SoftDeletes;
 
 class StudentGroup extends Model
 {
+    use SoftDeletes;
+    
     public $timestamps = false;
     protected $table = 'student_groups';
 
@@ -15,7 +18,10 @@ class StudentGroup extends Model
         'id',
         'id_student',
         'id_group',
+        'group_change_date',
     ];
+    
+    protected $dates = ['delete_at'];
 
      /**
      * Relacion con los  datos que se tiene de estudiante_grupo  

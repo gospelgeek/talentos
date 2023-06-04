@@ -9,15 +9,13 @@
     <h1 style="text-align:center;">MAYORIA DE EDAD</h1>
     <div class="card">         
     <div class="card-body">
-        @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1) 
-        <div class="row">
-            
-        </div>
+        @if(auth()->user()->rol_id == 1) 
+         
         @endif
 
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        
+        <caption>Ultimos registros de mayoria de edad: {{ $cumpleaños_ultimos }}</caption>
         <thead>
             <tr>
                 <td>Nombres</td>
@@ -67,8 +65,8 @@
     }
 
    
-
- $("#example1").DataTable({
+    $(document).ready(function(){
+        var table = $("#example1").DataTable({
             "ajax": "{{route('datos.estudiantes.menores')}}",
             
 
@@ -77,7 +75,7 @@
                 {data: 'lastname'},
                 {data: 'document_number'},
                 {data: 'student_code'},
-                {data: 'namegrupo'},
+                {data: 'grupo'},
                 {data: 'cohorte'},
                 {data: 'birth_date'},
                 {data: 'edad'},
@@ -124,10 +122,24 @@
  
  
 
-    /*$('#accion button.ver_seguimiento').on('click', function() {
-        //var id = $('this').parent('tr').attr('id');
-        console.log();
-    });*/
+         $('#example1 thead tr').clone(true).appendTo('#example1 thead');
+
+            $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+                $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+                $('input', this).on('keyup change', function () {
+                    if(table.column(i).search() !== this.value) {
+                        table
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+    });
               
     </script>
 

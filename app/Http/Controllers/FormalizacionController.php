@@ -5,10 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\Auth;
 use App\Formalization;
+use App\AssignmentStudent;
+use App\perfilEstudiante;
+use App\Withdrawals;
+use App\Reasons;
+use App\EconomicalSupport;
+use App\Group;
+use App\Cohort;
+use App\StudentGroup;
+use App\UpdateInformation;
+use App\LogsCrudActions;
+use App\User;
 use Session;
 use Redirect;
+use Response;
 use DB;
+
 
 class FormalizacionController extends Controller
 {
@@ -21,98 +35,360 @@ class FormalizacionController extends Controller
 
     public function formalizacionDatos(){
         
-        
-        $datosFormalizacion = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,
-        (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-        (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) as cohorte,
-        formalizations.id_student,formalizations.acceptance_v1, formalizations.acceptance_v2, formalizations.tablets_v1, formalizations.tablets_v2, formalizations.serial_tablet 
-        FROM student_profile, formalizations, groups, student_groups
-        WHERE student_profile.id = student_groups.id_student
-        AND student_groups.id_group = groups.id
-        AND student_profile.id = formalizations.id_student");
-        
-        
+        $datosFormalizacion = Formalization::formalizacion();
+        $collection_datos = collect($datosFormalizacion);
+        //$arreglo_datos = array();
+        $collection_datos->map(function($datos){
+            $retiro = Withdrawals::where('id_student', $datos->id)->exists();
+            if($retiro == true){
+                $datos_retiro = Withdrawals::where('id_student', $datos->id)->select('id_reasons', 'fecha', 'url')->first();
+                $datos->fecha = $datos_retiro->fecha;
+                $datos->url = $datos_retiro->url;
+                $motivo = Reasons::where('id', $datos_retiro->id_reasons)->select('name')->first();
+                if($motivo != null){
+                    $datos->motivo = $motivo->name;    
+                }else{
+                    $datos->motivo = null;
+                }
+                
+            }else{
+                $datos->fecha = null;
+                $datos->url = null;
+                $datos->motivo = null;
+            }
 
-        return datatables()->of($datosFormalizacion)->toJson();
+            $profesional = AssignmentStudent::where('id_student', $datos->id)->exists();
+            if($profesional == true){
+                $id_profesional = AssignmentStudent::where('id_student', $datos->id)->select('id_user')->first();
+                $datos_profesional = User::where('id', $id_profesional->id_user)->select('name', 'apellidos_user')->first();
+                if($datos_profesional !== null){
+                    $datos->name_profesional = $datos_profesional->name;
+                    $datos->lastname_profesional = $datos_profesional->apellidos_user;    
+                }else{
+                    $datos->name_profesional = null;
+                    $datos->lastname_profesional = null;
+                }
+                     
+            }else{
+                $datos->name_profesional = null;
+                $datos->lastname_profesional = null;
+            }
+            
+            $validar = StudentGroup::withTrashed()->where('id_student', $datos->id)->whereNotNull('deleted_at')->count();
+            if($validar > 0){
+                $datos->cambio_grupo = 1;
+            }else{
+                $datos->cambio_grupo = 2;
+            }
+            //dd($datos);
+        });
+        //dd($collection_datos);
+        return datatables()->of($collection_datos)->toJson();
     }
 
     public function index(){
-        /*$datosFormalizacion = DB::select("select student_profile.id, student_profile.name, student_profile.lastname,student_profile.document_number,
-        (SELECT groups.name FROM groups WHERE student_groups.id_group = groups.id) as namegrupo,
-        (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort) as cohorte,
-        formalizations.id_student,formalizations.acceptance_v1, formalizations.acceptance_v2, formalizations.tablets_v1, formalizations.tablets_v2
-        FROM student_profile, formalizations, groups, student_groups
-        WHERE student_profile.id = student_groups.id_student
-        AND student_groups.id_group = groups.id
-        AND student_profile.id = formalizations.id_student");       
-        return datatables()->of($datosFormalizacion)->toJson();*/
+        $update_frmlzcon = Formalization::ultimo_update_formalizacion();
+        if($update_frmlzcon != null){
+            $update_formalizacion = $update_frmlzcon[0]->created_at;
+        }else{
+            $update_formalizacion = null;
+        }
 
-        return view('perfilEstudiante.indexFormalizacion');
+        return view('perfilEstudiante.indexFormalizacion', compact('update_formalizacion'));
     }
     
     public function formalizacionupdate($id, Request $request){
-
+    
     $data = Formalization::findOrFail($id);
-        
-        if ($request->ajax()) {
+    $dataOld = Formalization::findOrFail($id);
+    
+        if($request->ajax()) {
 
-            if($request->checkAceptacion == 'false' && $request->checkTablet == 'false'){
-
-                return 1;
-
-            }else{
-                if($request->checkAceptacion == 'true') {
-                    if($request->acceptance_v1 != null){
-                        $data->acceptance_v1 = $request['acceptance_v1'];
-                        if($request->acceptance_v2 != null){
-                            $data->acceptance_v2 = $request['acceptance_v2'];
-                        }else{
-                            $data->acceptance_v2 = 'SI';
-                        }      
-                    }else{
-                        $data->acceptance_v1 = 'SI';
-                        if($request->acceptance_v2 != null){
-                            $data->acceptance_v2 = $request['acceptance_v2'];
-                        }else{
-                            $data->acceptance_v2 = 'SI';
-                        }
-                    }
-                }
-
-                if($request->checkTablet == 'true') {
-                    if($request->tablets_v1 != null){
-                        $data->tablets_v1 = $request['tablets_v1'];
-                        if($request->tablets_v2 != null){
-                            $data->tablets_v2 = $request['tablets_v2'];
-                        }else{
-                            $data->tablets_v2 = 'SI';
-                        }      
-                    }else{
-                        $data->tablets_v1 = 'SI';
-                        if($request->tablets_v2 != null){
-                            $data->tablets_v2 = $request['tablets_v2'];
-                            
-                        }else{
-                            $data->tablets_v2 = 'SI';
-                        }
-                    }
-
-                    $data->serial_tablet = $request['serial_tablet'];
-                }
-
-
-                
+            if($request->checkAceptacion == 'true') {
+                    
+                if($request->acceptance_v2 != null){
+                    $data->acceptance_v2 = $request['acceptance_v2'];
+                }else{
+                    $data->acceptance_v2 = 'SI';
+                }      
             }
+
+            if($request->checkTablet == 'true') {
+                    
+                if($request->tablets_v2 != null){
+                    $data->tablets_v2 = $request['tablets_v2'];
+                }else{
+                    $data->tablets_v2 = 'SI';
+                }      
+            }
+            $data->acceptance_v2 = $request['acceptance_v2'];
+            $data->tablets_v2 = $request['tablets_v2'];
+            $data->serial_tablet = $request['serial_tablet'];
+            $data->kit_date = $request['date_kit'];
+            $data->observations = $request['observaciones'];
+            $data->acceptance_date = $request['fecha_aceptacion'];
+            $data->acceptance_observation = $request['observacion_aceptacion'];
+            
+            if($request['prestamo_tablet'] != null){
+                $data->loan_tablet = true;    
+            }else{
+                $data->loan_tablet = null;
+            }
+            
+            if($request['devolvio_tablet'] != null){
+                $data->returned_tablet = true;    
+            }else{
+                $data->returned_tablet = null;    
+            }
+
+            if($request['cambio_de_linea'] != null){
+                $data->transfer_line2_to_line1 = true;    
+            }else{
+                $data->transfer_line2_to_line1 = null;    
+            }
+            
+            $data->serial_loan_tablet = $request['serial_tablet_prestada'];
+            $data->observation_loan = $request['observacion_prestamo'];
+            $data->loan_document_url = $request['url_documento_prestamo'];
+            $data->deliver_date = $request['fecha_entrega'];
+            $data->observation_delivery = $request['observacion_entrega'];
+
+            $pre_registro;
+            if($request['pre_registro_icfes'] !== null){
+                $pre_registro = true;
+                $data->pre_registration_icfes = $pre_registro; 
+            }else if($request['pre_registro_icfes'] == null) {
+                $pre_registro = false;
+                $data->pre_registration_icfes = $pre_registro;
+            }
+
+            $inscripcion_icfes;
+            if($request['inscripcion_icfes'] !== null){
+                $inscripcion_icfes = true;
+                $data->inscription_icfes = $inscripcion_icfes;
+            }else if($request['inscripcion_icfes'] == null){
+                $inscripcion_icfes = false;
+                $data->inscription_icfes = $inscripcion_icfes;
+            }
+
+            $presento_icfes;
+            if($request['presento_icfes'] !== null){
+                $presento_icfes = true;
+                $data->presented_icfes = $presento_icfes;
+            }else if($request['presento_icfes'] == null){
+                $presento_icfes = false;
+                $data->presented_icfes = $presento_icfes;
+            }
+            
+
+           /*$apoyo_economico = EconomicalSupport::create([
+                'id_student'    => $request['id'],
+                'date'          => $request['fecha_apoyo'],
+                'url_banco'     => $request['banco_url'],
+                'monto'         => $request['monto'],
+            ]);
+
+            
+            
+            $datos = LogsCrudActions::create([
+                'id_user'                  => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $apoyo_economico['id'],
+                'actividad_realizada'      => 'NUEVO REGISTRO DE APOYO ECONOMICO',
+            ]);*/
+            
+        };
+
+        $data->save();
+
+        $old = array();
+        $new = array();
+
+        if($dataOld->acceptance_v2 != $data->acceptance_v2){
+            $old[] = array('aceptacion' => $dataOld->acceptance_v2);
+            $new[] = array('aceptacion' => $data->acceptance_v2);
+        }
+        if($dataOld->acceptance_date != $data->acceptance_date){
+            $old[] = array('fecha_aceptacion' => $dataOld->acceptance_date);
+            $new[] = array('fecha_aceptacion' => $data->acceptance_date);
+        }
+        if($dataOld->acceptance_observation != $data->acceptance_observation){
+            $old[] = array('observacion_aceptacion' => $dataOld->acceptance_observation);
+            $new[] = array('observacion_aceptacion' => $data->acceptance_observation);
+        }
+        if($dataOld->tablets_v2 != $data->tablets_v2){
+            $old[] = array('tablets' => $dataOld->tablets_v2);
+            $new[] = array('tablets' => $data->tablets_v2);
+        }
+        if($dataOld->serial_tablet != $data->serial_tablet){
+            $old[] = array('serial tablet' => $dataOld->serial_tablet);
+            $new[] = array('serial tablet' => $data->serial_tablet);
+        }
+        if($dataOld->kit_date != $data->kit_date){
+            $old[] = array('fecha kit' => $dataOld->kit_date);
+            $new[] = array('fecha kit' => $data->kit_date);
+        }
+        if($dataOld->pre_registration_icfes != $data->pre_registration_icfes){
+            $old[] = array('pre_registro' => $dataOld->pre_registration_icfes);
+            $new[] = array('pre_registro' => $data->pre_registration_icfes);
+        }
+        if($dataOld->inscription_icfes != $data->inscription_icfes){
+            $old[] = array('inscription' => $dataOld->inscription_icfes);
+            $new[] = array('inscription' => $data->inscription_icfes);
+        }
+        if($dataOld->presented_icfes != $data->presented_icfes){
+            $old[] = array('presentó icfes' => $dataOld->presented_icfes);
+            $new[] = array('presentó icfes' => $data->presented_icfes);
+        }
+        if($dataOld->observations != $data->observations){
+            $old[] = array('observaciones' => $dataOld->observations);
+            $new[] = array('observaciones' => $data->observations);
+        }
+        if($dataOld->returned_tablet != $data->returned_tablet){
+            $old[] = array('devolvio_tablet' => $dataOld->returned_tablet);
+            $new[] = array('devolvio_tablet' => $data->returned_tablet);
+        }
+        if($dataOld->loan_tablet != $data->loan_tablet){
+            $old[] = array('prestamo_tablet' => $dataOld->loan_tablet);
+            $new[] = array('prestamo_tablet' => $data->loan_tablet);
+        }
+        if($dataOld->serial_loan_tablet != $data->serial_loan_tablet){
+            $old[] = array('serial_prestamo_tablet' => $dataOld->serial_loan_tablet);
+            $new[] = array('serial_prestamo_tablet' => $data->serial_loan_tablet);
+        }
+        if($dataOld->observation_loan != $data->observation_loan){
+            $old[] = array('observacion_prestamo' => $dataOld->observation_loan);
+            $new[] = array('observacion_prestamo' => $data->observation_loan);
+        }
+        if($dataOld->loan_document_url != $data->loan_document_url){
+            $old[] = array('url_documento_prestamo' => $dataOld->loan_document_url);
+            $new[] = array('url_documento_prestamo' => $data->loan_document_url);
+        }
+        if($dataOld->transfer_line2_to_line1 != $data->transfer_line2_to_line1){
+            $old[] = array('cambio_de_linea' => $dataOld->transfer_line2_to_line1);
+            $new[] = array('cambio_de_linea' => $data->transfer_line2_to_line1);
+        }
+        if($dataOld->deliver_date != $data->deliver_date){
+            $old[] = array('fecha_entrega' => $dataOld->deliver_date);
+            $new[] = array('fecha_entrega' => $data->deliver_date);   
+        }
+        if($dataOld->observation_delivery != $data->observation_delivery){
+            $old[] = array('observacion_entrega' => $dataOld->observation_delivery);
+            $new[] = array('observacion_entrega' => $data->observation_delivery);   
+        }
+
+        $ip = User::getRealIP();
+        $id = auth()->user();
+
+        if($old != null && $new != null){
+
+            $datos = LogsCrudActions::create([
+                'id_user'                  => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $data['id'],
+                'actividad_realizada'      => 'FORMALIZACION ACTUALIZADA',
+            ]);
+            
+            $guardarOld = json_encode($old);
+            $guardarNew = json_encode($new);
+
+            $update = UpdateInformation::create([
+                'id_log'              => $datos['id'],
+                'changed_information' => $guardarOld,
+                'new_information'     => $guardarNew,
+            ]);
+        }        
+
+        return 2;     
+    }
+    
+    public function apoyo_economico_editar($id, Request $request){
+
+        $apoyos = EconomicalSupport::findOrFail($id);
+
+        if ($request->ajax()) {
+            return Response::json($apoyos);
+        };
+    }
+
+    public function apoyo_economico_update($id, Request $request){
+
+        $data = EconomicalSupport::findOrFail($id);
+        $dataOld = EconomicalSupport::findOrFail($id);
+
+        if($request->ajax()){
+            $data->date      = $request['date'];
+            $data->url_banco = $request['url_banco'];
+            $data->monto     = $request['monto'];
 
             $data->save();
 
-            return 2;
-            
+            $old = array();
+            $new = array();
 
-              
+            if($dataOld->date != $data->date){
+                $old[] = array('fecha apoyo' => $dataOld->date);
+                $new[] = array('fecha apoyo' => $data->date);
+            }
+            if($dataOld->url_banco != $data->url_banco){
+                $old[] = array('banco' => $dataOld->url_banco);
+                $new[] = array('banco' => $data->url_banco);
+            }
+            if($dataOld->monto != $data->monto){
+                $old[] = array('monto' => $dataOld->monto);
+                $new[] = array('monto' => $data->monto);
+            }
+
+            if($old != null && $new != null){
+
+                $ip = User::getRealIP();
+                $id = auth()->user();
             
-        };
+                $datos = LogsCrudActions::create([
+                    'id_user'                  => $id['id'],
+                    'rol'                      => $id['rol_id'],
+                    'ip'                       => $ip,
+                    'id_usuario_accion'        => $data['id'],
+                    'actividad_realizada'      => 'SE ACTUALIZO REGISTRO DE APOYO ECONOMICO',
+                ]);
+
+                $guardarOld = json_encode($old);
+                $guardarNew = json_encode($new);
+
+                $update = UpdateInformation::create([
+                    'id_log'              => $datos['id'],
+                    'changed_information' => $guardarOld,
+                    'new_information'     => $guardarNew,
+                ]);
+            }
+
+        }
+
+        return 1;
+    }
+
+    public function apoyo_economico_delete($id, Request $request){
         
-         
+        $data = EconomicalSupport::findOrFail($id);
+        $mensaje = 'Apoyo economico eliminado correctamente';
+        if ($request->ajax()) {
+            
+            $ip = User::getRealIP();
+            $id = auth()->user();
+
+            $datos = LogsCrudActions::create([
+                'id_user'                  => $id['id'],
+                'rol'                      => $id['rol_id'],
+                'ip'                       => $ip,
+                'id_usuario_accion'        => $data['id'],
+                'actividad_realizada'      => 'APOYO ECONOMICO ELIMINADO',
+            ]);
+
+            $data->delete();    
+        }
+        
+        return $mensaje;   
     }
 }

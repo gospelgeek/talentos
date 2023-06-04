@@ -41,19 +41,20 @@
                       {!!Form::label('id_housing_type','Tipo vivienda: ')!!}
                       {!!Form::select('id_housing_type',$vivienda, $verDatosPerfil->socioeconomicdata->housingtype ? $verDatosPerfil->socioeconomicdata->housingtype->id : null,['id'=>'vivienda','class'=>'form-control','required','placeholder'=>'Tipo vivienda'])!!}  
                       </div>
-                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('id_health_regime','Regimen salud: ')!!}
-                      {!!Form::select('regimen',$regimen, $verDatosPerfil->socioeconomicdata->healthregime ? $verDatosPerfil->socioeconomicdata->healthregime->id : null,['id'=>'regimen', 'class'=>'form-control','placeholder'=>'Regimen de salud'])!!}   
-                      </div> 
-                  </div>
-                  <div class="row">
-                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
-                      {!!Form::label('sisben_category','Categoria Sisben: ')!!}
-                      {!!Form::text('sisben_category', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sisben_category : null,['id'=>'categoriaSisben','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
-                      </div>
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('household_people','Personas en la familia: ')!!}
                       {!!Form::text('household_people', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->household_people : null,['id'=>'personasFamilia','class'=>'form-control','required','placeholder'=>'Personas en la familia'])!!}  
+                      </div>
+                       
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('sisben_category','Categoria Sisben: ')!!}
+                      {!!Form::text('sisben_category', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sisben_category : null,['id'=>'categoriaSisben','class'=>'form-control','required','placeholder'=>'Categoria sisben'])!!}  
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('url_sisben_category','Soporte categoria Sisben: ')!!}
+                      {!!Form::text('url_sisben_category', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->url_sisben_category : null,['id'=>'soporteSisben','class'=>'form-control','required','placeholder'=>'Soporte categoria sisben'])!!}  
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('economic_possition','posicion economica: ')!!}
@@ -61,10 +62,20 @@
                       </div> 
                   </div>
                   <div class="row">
-                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('dependent_people','Personas a cargo: ')!!}
                       {!!Form::text('dependent_people', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->dependent_people : null,['id'=>'personasCargo','class'=>'form-control','required','placeholder'=>'Personas dependientes'])!!}  
                       </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('id_health_regime','Regimen salud: ')!!}
+                      {!!Form::select('regimen',$regimen, $verDatosPerfil->socioeconomicdata->healthregime ? $verDatosPerfil->socioeconomicdata->healthregime->id : null,['id'=>'regimen', 'class'=>'form-control','placeholder'=>'Regimen de salud'])!!}   
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('url_health_regime','Soporte regimen de salud: ')!!}
+                      {!!Form::text('url_health_regime', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->url_health_regime : null,['id'=>'soporteRegimen','class'=>'form-control','required','placeholder'=>'Soporte regimen de salud'])!!}  
+                      </div>
+                  </div>
+                  <div class="row">
                        <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('internet_zon','Internet en la zona: ')!!}
                       {!!Form::text('internet_zon', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->internet_zon : null,['id'=>'internetZona','class'=>'form-control','required','placeholder'=>'Internet zona'])!!}  
@@ -73,15 +84,19 @@
                       {!!Form::label('internet_home','Internet en el hogar: ')!!}
                       {!!Form::text('internet_home', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->internet_home : null,['id'=>'internetHogar', 'class'=>'form-control','placeholder'=>'Internet en casa'])!!}   
                       </div> 
-                  </div>
-                  <div class="row">
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('sex_document_identidad','Sexo documento: ')!!}
                       {!!Form::text('sex_document_identidad', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->sex_document_identidad : null,['id'=>'sexoD','class'=>'form-control','required','placeholder'=>'Sexo documento'])!!}  
                       </div>
-                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_social_conditions','Condicion Social: ')!!}
                       {!!Form::select('condicion', $condicion, $verDatosPerfil->socioeconomicdata->socialconditions ? $verDatosPerfil->socioeconomicdata->socialconditions->id : null,['id'=>'socialC','class'=>'form-control','required','placeholder'=>'Condicion social'])!!}  
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('url_social_conditions','Soporte condicion social: ')!!}
+                      {!!Form::text('url_social_conditions', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->url_social_conditions : null,['id'=>'soporteCondicion','class'=>'form-control','required','placeholder'=>'Soporte condicion social'])!!}
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_disability','Discapacidad: ')!!}
@@ -94,8 +109,16 @@
                       {!!Form::select('etnia',$etnia, $verDatosPerfil->socioeconomicdata->ethnicity ? $verDatosPerfil->socioeconomicdata->ethnicity->id : null,['id'=>'etnia', 'class'=>'form-control','placeholder'=>'Etnia'])!!}   
                       </div>
                       <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('url_ethnicity','Soporte etnia: ')!!}
+                      {!!Form::text('url_ethnicity', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->url_ethnicity : null,['id'=>'soporteEtnia','class'=>'form-control','required','placeholder'=>'Soporte etnia'])!!}
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
                       {!!Form::label('id_benefits','Beneficios: ')!!}
                       {!!Form::select('beneficiosD',$beneficios, $verDatosPerfil->socioeconomicdata->benefits ? $verDatosPerfil->socioeconomicdata->benefits->id : null,['id'=>'beneficiosD', 'class'=>'form-control','placeholder'=>'Beneficios'])!!}   
+                      </div>
+                      <div class="col-xs-12 col-sm-4 form-group {{$errors->has('body') ? 'has-errors' : ''}}">
+                      {!!Form::label('eps_name','Nombre EPS: ')!!}
+                      {!!Form::text('eps_name', $verDatosPerfil->socioeconomicdata ? $verDatosPerfil->socioeconomicdata->eps_name : null,['id'=>'eps', 'class'=>'form-control','placeholder'=>'Nombre EPS'])!!}   
                       </div>
                   </div>
               </div>

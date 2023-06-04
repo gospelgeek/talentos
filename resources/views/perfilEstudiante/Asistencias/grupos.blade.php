@@ -4,10 +4,10 @@
 @section('content')
 
 <div class="container-fluid">    
-    <h1 style="text-align:center;">{{ $name->name}} <br> {{$grupos[0]->cohort->name}}</h1>
+    <h1 style="text-align:center;">{{ $name->name}} <br> {{$name->cohortcourse->name}}</h1>
     <script id="json" type="text" src="/students.json"></script>
     
-    <input type="hidden" id="code_curse"  data-name="{{ $name->name}}" data-cohort="{{ $grupos[0]->cohort->id}}" data-courseid="{{$name->id}}">
+    <input type="hidden" id="code_curse"  data-name="{{ $name->name}}" data-cohort="{{ $name->cohortcourse->id}}" data-courseid="{{$name->id}}">
     <div class="card">        
     	<div class="card-body">
     		<div class="table-responsive">
@@ -15,7 +15,9 @@
         			<thead>
             			<tr>
                 			<td>Nombre</td>
-                			<td>Total Sesiones</td>
+                            <td>Docente</td>
+                			<td>SESIONES CALIFICADAS</td>
+                            <td>SESIONES PROGRAMADAS</td>
                				<td>Acciones</td>
             			</tr>
         			</thead> 
@@ -23,7 +25,9 @@
            	 			@foreach ($grupos as $grupo)
                 		<tr data-id="grupo-id">
                     		<td>{{ $grupo->name}}</td>
-                    		<td></td>                                  
+                            <td>{{ $grupo->docente}}</td>
+                    		<td>{{ $grupo->sesiones}}</td>
+                            <td>{{ $grupo->programadas}}</td>                               
                     		<td>
                         		<div class="row">                                  
                             		<div class="col-xs-6 col-sm-6">

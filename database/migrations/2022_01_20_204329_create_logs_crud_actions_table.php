@@ -15,7 +15,7 @@ class CreateLogsCrudActionsTable extends Migration
     {
         Schema::create('logs_crud_actions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('identificacion');
+            $table->integer('id_user');
             //$table->string('nombres');
             //$table->string('apellidos');
             //$table->string('email');

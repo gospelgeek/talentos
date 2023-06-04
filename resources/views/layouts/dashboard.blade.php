@@ -206,8 +206,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
-                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                 
+                <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a> 
+                <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
+                <a href="{{route('icfes')}}" class="dropdown-item"><i></i>Comparativo Icfes</a>
+                <a href="{{route('reporte.icfes.pruebas')}}" class="dropdown-item"><i></i>Resultados Icfes</a>
                </div>
               
           </li>
@@ -219,18 +221,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
             <a href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
             <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
+            <a class="dropdown-item" href="{{route('descarga.certificado')}}">Certificado</a>
+            
+            <a class="dropdown-item" href="{{route('datos_pendientes')}}">Datos Pendientes</a>
+            <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
           </div>
         </li>
-          <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Socioeducativo</a>
-             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                 <a href="{{route('socioeducativo')}}" class="dropdown-item">
-                   Asignacion Estudiantes</a>
-                 <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
-                    Reporte socioeducativo</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Socioeducativo 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a href="{{route('socioeducativo')}}" class="dropdown-item">
+                Asignacion Estudiantes</a>
+              <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
+                Reporte socioeducativo</a>
               </div>
-          </li> 
+              <a href="{{route('caracterización_socioeducativa')}}" class="dropdown-item">
+                Caracterización Socioeducativa</a>
+          </li>
+          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li class="dropdown-submenu"><a data-toggle="dropdown" role="button"  class="dropdown-toggle dropdown-item">Seguimientos Excel</a>
+                                <ul class="dropdown-menu">
+                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/u/2/folders/1Wdj0RP5Lv1iy3r1xrAFCWypFqZ85M-FC">Linea 1</a></li>
+                                  <li><a target="_blank"  class="dropdown-item" href="https://drive.google.com/drive/folders/1QxbXsi4vH3PREIcPU6oIOmaqH-tjBQbI?usp=sharing">Linea 2</a></li>
+                                  <li><a target="_blank" class="dropdown-item" href="https://drive.google.com/drive/folders/1CBLBluRVohRCEhMabvKADJBvfdJcirlX?usp=sharing">Linea 3</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
@@ -239,9 +263,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           @endif
-          @if(auth()->user()->rol_id == 1)
+          @if(auth()->user()->rol_id == 1 || auth()->user()->rol_id == 5)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('usuario')}}" class="dropdown-item dropdown-footer"><i></i>Usuarios</a>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Estudiantes 
+                        </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
+                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
+                            <a href="{{route('graficas')}}" class="dropdown-item"><i></i>Estadisticas Graficas</a>
+                            <a href="{{route('icfes')}}" class="dropdown-item"><i></i>Comparativo Icfes</a>
+                            <a href="{{route('reporte.icfes.pruebas')}}" class="dropdown-item"><i></i>Resultados Icfes</a>
+                          </div>
+                      </li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Socioeducativo 
@@ -251,38 +287,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Asignacion Estudiantes</a>
                             <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
                             Reporte socioeducativo</a>
+                            <a href="{{route('caracterización_socioeducativa')}}" class="dropdown-item">
+                            Caracterización Socioeducativa</a>
                           </div>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Estudiantes 
-                        </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="{{route('estudiante')}}">Reporte General</a>
-                            <a class="dropdown-item" href="{{route('estudiantes.estado')}}">Estado Estudiantes</a>
-                            
-                          </div>
-                      </li>
+                      </li> 
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Asdministrativo
+                          Administrativo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                           <a href="{{route('almuerzos_estudiantes')}}" class="dropdown-item">Almuerzos</a>
                           <a class="dropdown-item" href="{{route('estudiantes_mayoria_edad')}}">Mayoria de edad</a>
-                          <a href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                          <a  href="{{route('formalizacion')}}" class="dropdown-item">Formalizacion</a>
+                          <a class="dropdown-item" href="{{route('descarga.certificado')}}">Certificado</a>
+                          <a class="dropdown-item" href="{{route('consulta')}}">Consulta de Clasificación</a>
+                          <a class="dropdown-item" href="{{route('datos_pendientes')}}">Datos Pendientes</a>
+                          <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+                          <a class="dropdown-item" href="{{route('cargarDatosIcfes', 5)}}">Actualizar Icfes</a>
                         </div>
                       </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Academico
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                          <a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a>
-                          <a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a>
-                        </div>
-                      </li>
-             <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
+                              <li><a href="{{route('docentes')}}" class="dropdown-item">Docentes</a></li>
+                            </ul>
+                          </li>
+                        
+                        <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{{route('asistencias')}}" class="dropdown-item">Asistencias Grupos</a></li>
@@ -290,9 +325,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             </li>
         @endif
-        @if(auth()->user()->rol_id == 3 || auth()->user()->rol_id == 5 || auth()->user()->rol_id == 6)
+        @if(auth()->user()->rol_id == 3 || auth()->user()->rol_id == 6)
         <ul class="navbar-nav mr-auto">
                         <a  href="{{route('estudiante')}}" class="dropdown-item dropdown-footer"><i></i>Estudiantes</a>
+                        <a href="{{route('graficas')}}" class="dropdown-item dropdown-footer"><i></i>Estadisticas Graficas</a>
                         <a class="disabled" style="display: none" href="{{route('asignaturas')}}" class="dropdown-item dropdown-footer"><i></i>Asignaturas</a>
                         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="{{route('asistencias')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Asistencias</a>
@@ -302,14 +338,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             </li>
             <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Socioeducativo 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a href="{{route('socioeducativo')}}" class="dropdown-item">
+                Asignacion Estudiantes</a>
+              <a href="{{route('socioeducativo_reporte')}}" class="dropdown-item">
+                Reporte socioeducativo</a>
+              </div>
+          </li> 
+            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academico</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a></li>
+                              <li><a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a></li>
+                              <li><a href="{{route('seguimiento_academico.index')}}" class="dropdown-item">Seguimientos Grupos</a></li>
+                              <li><a href="{{route('reporte_notas_individuales')}}" class="dropdown-item">Seguimientos Individuales</a></li>
+                              <li><a href="{{route('docentes')}}" class="dropdown-item">Docentes</a></li>
+                            </ul>
+                          </li>
+            <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Academico
+                          Administrativo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                          <a href="{{route('asignaturas')}}" class="dropdown-item">Asignaturas</a>
-                          <a href="{{route('sesiones')}}" class="dropdown-item">Sesiones</a>
+                          <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
                         </div>
-                      </li>
+                      </li>              
+
         </ul>
         @endif
         <li class="nav-item">

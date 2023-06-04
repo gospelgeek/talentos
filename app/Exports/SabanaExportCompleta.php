@@ -58,7 +58,7 @@ class SabanaExportCompleta implements FromArray, WithHeadings, ShouldAutoSize, W
                         ->setARGB('C0C0C0');
 
                 $event->sheet->styleCells(
-                    'A4:CF3560',[
+                    'A4:CF2960',[
                         'borders' => [
                             'allBorders' => [
                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,

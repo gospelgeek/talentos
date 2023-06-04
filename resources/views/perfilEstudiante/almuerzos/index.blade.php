@@ -5,6 +5,7 @@
 @include('../alerts.request')
 
 <div class="container-fluid">
+	<input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<h1 style="text-align:center;">ALMUERZOS</h1>
 	<div class="card">
 		<div class="card-body">
@@ -15,25 +16,44 @@
 			</div><br>
 			<br><div class="table-responsive">
 				<table id="example1" class=" table table-bordered table-striped">
+					<caption>Ultimo registro creado de almuerzos: {{ $ultimo_lunche }}</caption>
+					</thead>
 					<thead>
 						<tr>
-							<td>FECHA</td>
-							<td>ALMUERZOS LINEA 1</td>
-							<td>ALMUERZOS LINEA 2</td>
-							<td>ALMUERZOS LINEA 3</td>
-                            <td>TOTAL</td>
-							<td>ACCIONES</td>
+							<td><b>FECHA</b></td>
+							<td><b>ALMUERZOS LINEA 1</b></td>
+							<td><b>ALMUERZOS LINEA 2</b></td>
+							<td><b>ALMUERZOS LINEA 3</b></td>
+							<td><b>TOTAL</b></td>
+							<td><b>ACCIONES</b></td>
 						</tr>
 					</thead>
+                    <thead>
+						 <td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="0">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="1">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="2">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="3">
+            			</td>
+            			<td>
+                			<input type="text" class="form-control filter" placeholder="Search" data-column="4">
+            			</td>
+            			<td></td>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
 
-@include('perfilEstudiante.almuerzos.modal.create');
-@include('perfilEstudiante.almuerzos.modal.edit');
-@include('perfilEstudiante.almuerzos.modal.alerta');
+@include('perfilEstudiante.almuerzos.modal.create')
+@include('perfilEstudiante.almuerzos.modal.edit')
+@include('perfilEstudiante.almuerzos.modal.alerta')
 
 {!!Form::open(['id'=>'form-edit','route'=>['editar_registro_almuerzo',':ALMUERZO_ID'], 'method'=>'GET'])!!}
 {!!Form::close()!!}
@@ -47,7 +67,7 @@
 <script>
 
 	
-	
+$(document).ready(function(){	
 	var table = $("#example1").DataTable({
 
 		"ajax":{
@@ -63,17 +83,20 @@
             {data: 'total'},
             {data: null, render:function(data, type, row, meta){
 
+            	var rol = document.getElementById('roles').value;
             	
-            	
-            	mstr = '<div class="col-xs-6 col-sm-6 btn-group">'+
+            	if(rol == 1 || rol == 2 || rol == 4){
+            		mstr = '<div class="col-xs-6 col-sm-6 btn-group">'+
             			
-                            '<a class="btn btn-block fa fa-pencil-square-o" title="Editar registro" onclick="editar_registro_almuerzo('+data.id+')"></a>'+
+                            '<a class="btn btn-block fa fa-pencil-square-o" title="Editar seguimiento" onclick="editar_registro_almuerzo('+data.id+')"></a>'+
                         '</div>'+
                         '<div class="col-xs-6 col-sm-6 btn-group">'+
-                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar registro" onclick="eliminar_registro_almuerzo('+data.id+', \''+data.date+'\')" id="boton"></button>'+
+                            '<button class="btn text-danger btn-block fa fa-trash fa" title="Eliminar seguimiento" onclick="eliminar_registro_almuerzo('+data.id+', \''+data.date+'\')" id="boton"></button>'+
                           "</div>"+
-                "</div>";
-
+                	"</div>";
+                }else{
+                	mstr = '';	
+                }
             	return mstr;
 
             	}
@@ -93,6 +116,13 @@
          	]
 
 	});
+
+	$('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+    });
+});
 
 	function editar_registro_almuerzo(dato){
 

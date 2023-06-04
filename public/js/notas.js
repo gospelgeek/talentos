@@ -1,4 +1,4 @@
-    const id_student = [];
+   /* const id_student = [];
     $('.prueba').each(function(){
           id_student.push($(this).attr("data-id"));
     }); 
@@ -53,7 +53,12 @@
             }
           }
       }); 
-      document.getElementById("carga").remove();
+      
+    });*/
+
+    
+
+document.getElementById("carga").remove();
       $("#example1").DataTable({
             "processing": true,
             "paging": false,
@@ -98,7 +103,3 @@
                       },
                     ]
       });
-    });
-
-    
-

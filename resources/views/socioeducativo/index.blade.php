@@ -6,26 +6,42 @@
 <div class="container-fluid">
     <h1 style="text-align:center;">ASIGNACION DE ESTUDIANTES</h1>
     <div class="card">
-
-
         <div class="card-body">
-
-           
             <div class="table-responsive">
                 <table id="example1" class=" table table-bordered table-striped">
+                    <caption>Ultima modificación en asignaciones: {{ $ultima_asignacion }}</caption>
                     <thead>
                         <tr>
-                            <td>Nombres</td>
-                            <td>Apellidos</td>
-                            <td>Documento</td>
-                            <td>Codigo</td>
-                            <td>Cohorte</td>
-                            <td>Acompañante</td>
-                            <td>Acciones</td>
+                            <td><b>Nombres</b></td>
+                            <td><b>Apellidos</b></td>
+                            <td><b>Documento</b></td>
+                            <td><b>Codigo</b></td>
+                            <td><b>Cohorte</b></td>
+                            <td><b>Acompañante</b></td>
+                            <td><b>Acciones</b></td>
                         </tr>
                     </thead>
-                    
-
+                    <thead>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="0">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="1">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="2">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="3">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="4">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control filter" placeholder="Search" data-column="5">
+                        </td>
+                        <td></td>
+                    </thead>
                 </table>
             </div>
         </div>
@@ -36,6 +52,8 @@
 
 <!-- Page specific script -->
 <script>
+
+$(document).ready(function(){
     var table = $("#example1").DataTable({
         "ajax": {
             "method": "GET",
@@ -192,6 +210,14 @@
             "colvis"
         ]
     });
+    
+    $('.filter').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+    });
+    
+});
 </script>
 
 {!!Html::script('/js/socioeducativo.js')!!}">

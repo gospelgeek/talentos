@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\SesionesRequest;
 use App\LogsCrudActions;
+use App\Exports\ReporteSesionesLineasExport;
 use App\Cohort;
 use App\Session;
 use App\Group;
@@ -16,6 +17,7 @@ use App\UpdateInformation;
 use App\User;
 use Redirect;
 use DB;
+use Excel;
 use Response;
 
 class SesionesController extends Controller
@@ -70,8 +72,7 @@ class SesionesController extends Controller
                 }
         }
     }
-    
-
+                       
     public function index(){
         
         $cohorte = Cohort::pluck('name', 'id');

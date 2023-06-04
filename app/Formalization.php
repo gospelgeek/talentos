@@ -31,6 +31,8 @@ class Formalization extends Model
         'observation_loan',
         'loan_document_url',
         'transfer_line2_to_line1',
+        'deliver_date',
+        'observation_delivery',
     ];
     
     public static function formalizacion(){
@@ -43,9 +45,9 @@ class Formalization extends Model
             as inscription_icfes, formalizations.presented_icfes as presented_icfes, 
             formalizations.acceptance_date as acceptance_date, formalizations.returned_tablet as returned_tablet, 
             formalizations.loan_tablet as loan_tablet, formalizations.serial_loan_tablet as 
-            serial_loan_tablet, formalizations.loan_document_url as loan_document_url, formalizations.transfer_line2_to_line1 as cambio_linea,  
-            (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipodocumento, conditions.name as estado,
-            (SELECT withdrawals.id_reasons FROM withdrawals WHERE withdrawals.id_student = student_profile.id) as motivoid
+            serial_loan_tablet, formalizations.loan_document_url as loan_document_url, formalizations.transfer_line2_to_line1 as cambio_linea, formalizations.deliver_date,
+            formalizations.observation_delivery, 
+            (SELECT document_type.name FROM document_type WHERE document_type.id = student_profile.id_document_type) as tipo_documento, conditions.name as estado
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
@@ -77,4 +79,38 @@ class Formalization extends Model
         }
     }
     //
+     //para datos pendientes
+    public static function formalizacion_pendientes(){
+        $data = DB::select("select student_profile.id, student_profile.name, 
+                    student_profile.lastname,cohorts.id as 
+                    idcohort, cohorts.name as cohorte, groups.id as grupo, groups.name as 
+                    grupo_name,
+                    (select CONCAT(users.name,' ', users.apellidos_user)profesional 
+                    FROM users,assignment_students
+                    WHERE users.id = assignment_students.id_user
+                    and assignment_students.deleted_at is null
+                    and student_profile.id = assignment_students.id_student
+                    limit 1) as profesional,
+                    (SELECT conditions.name FROM conditions WHERE conditions.id = 
+                    student_profile.id_state) as estado, formalizations.acceptance_v2, formalizations.acceptance_date, 
+                    formalizations.acceptance_observation, formalizations.tablets_v2, formalizations.serial_tablet, 
+                    formalizations.returned_tablet, formalizations.loan_tablet, formalizations.serial_loan_tablet, 
+                    formalizations.observation_loan, formalizations.loan_document_url, formalizations.kit_date, 
+                    formalizations.pre_registration_icfes, formalizations.inscription_icfes, formalizations.presented_icfes, 
+                    formalizations.transfer_line2_to_line1, formalizations.observations
+                    FROM student_profile
+                    INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                    INNER JOIN groups ON groups.id = student_groups.id_group
+                    INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                    INNER JOIN formalizations ON formalizations.id_student =
+                    student_profile.id
+                    WHERE student_groups.deleted_at is null");
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
+//
 }

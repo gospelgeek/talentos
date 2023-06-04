@@ -1,10 +1,46 @@
 @extends('layouts.dashboard')
 @section('title', 'Ver Datos')
-
+@section('icfes')
+<style>
+	#icfess td:nth-child(3){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(4){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(5){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(6){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(7){
+		border-left: black solid 2px;
+		text-align: center;
+	}
+	#icfess td:nth-child(8){
+		border-right: black solid 2px;
+		text-align: center;
+	}
+	
+    #totales th{
+		text-align: center;
+	}
+	#icfess td:nth-child(2) {
+		text-align: center;
+	}
+    
+</style>
+@endsection
 @section('content')
 
 @csrf
 <div id="container-main">
+    <input type="hidden" id="roles" value="{{ auth()->user()->rol_id }}">
 	<div class="row">
 		@if($verDatosPerfil->photo != null)		
 		<img  src="https://drive.google.com/uc?id={{$foto}}" class="avatar" alt="FOTO ESTUDIANTE">
@@ -20,7 +56,7 @@
            		@if($verDatosPerfil->first_name !== null)
            			{!!Form::text('nombre_pila',$verDatosPerfil->first_name,['class'=>'form-control','readonly','style' => 'font-size : 25px; text-align: center;','disabled'])!!}
 				@endif
-            </div>
+			</div>
 		</div>
 	</div>				
 	<br>
@@ -64,7 +100,7 @@
 			{!!Form::select('id_state', $estado, $verDatosPerfil->id_state,['class'=>'form-control','readonly','disabled'])!!}
 		</div>
 
-		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+		@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			{!!link_to('#',$title = '', $attributes = ['class'=>'btn bg-primary fa fa-pencil-square-o crear_estado',$secure = null])!!}
 
 		@endif
@@ -72,9 +108,9 @@
 
 	<br>
 
-	<div class="accordion-container">
-		<a href="#" id="titulo-1" class="accordion-titulo">Datos Generales<span class="toggle-icon"></span></a>
-		<div id="contenido-1" class="accordion-content">
+	<div class="accordion-container" id="ttlo-1">
+		<a href="#" id="titulo-1" class="accordion-titulo-1">Datos Generales<span class="toggle-icon"></span></a>
+		<div id="contenido-1" class="accordion-content-1">
 			<div class="form-group">
     			<div class="row">
             		<div class="col-xs-3 col-md-2">
@@ -174,7 +210,7 @@
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
 							<div class="col-xs-12 col-md-12">
-								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->id_birth_department ?  $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
+								<input readonly class="form-control" type="text" name="departamento_nacimiento" id="departamento_nacimiento" value="{{ old('departamento_nacimiento', $verDatosPerfil->birthdepartament ?  $verDatosPerfil->birthcity->birthdepartament->name : null) }}">
 							</div>
 						</div>                	
             		</div>
@@ -271,7 +307,7 @@
 						</div>     	
             		</div>
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="telefono2">Codigo estudiante</label></p>
+            			<p style="text-align: right"><label for="telefono2">Código Estudiante</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
@@ -291,7 +327,7 @@
 						</div>     	
             		</div>
             		<div class="col-xs-2 col-md-2">
-            			<p style="text-align: right"><label for="relationship">Parentezco</label></p>
+            			<p style="text-align: right"><label for="relationship">Parentesco</label></p>
             		</div>
 					<div class="col-xs-2 col-md-2">
 						<div class="row">
@@ -312,14 +348,14 @@
             		</div>
             	</div>
 			</div>		
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar'],$secure = null)!!}
 			@endif
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
 		</div>			
 	</div>
 
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-2">
 		<a href="#" id="titulo-2" class="accordion-titulo-2">Datos Academicos Previos<span class="toggle-icon"></span></a>
 		<div id="contenido-2" class="accordion-content-2">
 			<div class="form-group">
@@ -404,13 +440,13 @@
             		
            		</div>
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_actualizar_previos'],$secure = null)!!}
 			@endif
 		</div>
 	</div>
 
-	<div class="accordion-container">
+	<div class="accordion-container" id="ttlo-3">
 		<a href="#" id="titulo-3" class="accordion-titulo-3">Datos SocioEconomicos<span class="toggle-icon"></span></a>
 		<div id="contenido-3" class="accordion-content-3">
 			<div class="form-group">
@@ -642,7 +678,7 @@
             		</div>	
             	</div>
 			</div>
-			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2 || auth()->user()->rol_id == 6)
 			{!!link_to('#',$title = 'ACTUALIZAR', $attributes = ['class'=>'btn btn-primary abrir_modal_socioeconomico'],$secure = null)!!}	
 			@endif
 		</div>
@@ -748,12 +784,20 @@
 					{{$verDatosPerfil->assignmentstudent->UserInfo->apellidos_user}}
 				@endif
 			@endif
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-primary btn-sm mt-3 mb-3" href="{{ route('caracterizacion_individual', ['id'=> $verDatosPerfil->id]) }}">Caracterización Individual</a>
 
 			<div id="mostrarsegui" class="table-responsive">
      			<br><table class=" table table-bordered table-striped">
         			<thead >
             			<tr>
                 			<td>SEGUIMIENTO (YYYY-mm-dd)</td>
+                            <td>R.I</td>
+                			<td>R.A</td>
+                			<td>R.F</td>
+                			<td>R.E</td>
+                			<td>R.V</td>
                 			<td width="35%">ACCIONES</td>
             			</tr>
         			</thead>
@@ -777,32 +821,24 @@
     <div class="accordion-container" id="ti5">
 		<a  href="#" id="titulo-5" class="accordion-titulo-5">Asistencias<span class="toggle-icon"></span></a>
 		<div id="contenido-5" class="accordion-content-5">
-			<script id="json" type="text" src="/json/students.json"></script>
-			<script id="asisten" type="text" src="/json/asistencias.json"></script>
-			<input type="hidden" name="id_moodle" id="moodle" data-id="{{$verDatosPerfil->id_moodle}}">
 			<div class="table-responsive">
-				<div id="carga" class="d-flex justify-content-center">
+				{{--<div id="carga" class="d-flex justify-content-center">
                         <strong>Procesando&nbsp;</strong>
                         <div class="spinner-border spinner-border-sm" role="status">                    
                         </div>
-            	</div> 
-				<table id="example1" class="table table-bordered table-striped">
+            	</div> --}}
+				<table id="asistencias" class="table table-bordered table-striped">
 					<caption style="caption-side: top;text-align:center;">Asistencias {{$verDatosPerfil->name}}</caption>
 					<thead>
 						<td>Asignatura</td>
 						<td>Sesiones</td>
 						<td>Asistencias</td>
-						<td>Faltas</td>
 						<td>Acciones</td>
 					</thead>
-					<tbody id="insertar">
-						
-					</tbody>
 					<tfoot id="insertar2">
 						<td>TOTAL</td>
 						<td id="totalsesiones"></td>
 						<td id="totalasistencias"></td>
-						<td id="totalfaltas"></td>
 						<td></td>
 					</tfoot>
 				</table>
@@ -811,17 +847,120 @@
 	</div>
     
     <div class="accordion-container" id="ti7">
-		<a href="#" id="titulo-7" class="accordion-titulo-7">Icfes<span class="toggle-icon"></span></a>
+		<a  href="#" id="titulo-7" class="accordion-titulo-7">Icfes<span class="toggle-icon"></span></a>
 		<div id="contenido-7" class="accordion-content-7">
+			&nbsp;
+			&nbsp;
+			<div class="table-responsive">
+				<br>
+
+				<table id="icfess">
+					<thead>
+
+						<th style="text-align: center;">AREA</th>
+						@if($pruebaS4 == [])
+						<input type="text" id="ie" value="ie" hidden>
+						@endif
+						@if($l3 == 1)
+						@else
+						@if($url_entrada == [])
+						<th style="text-align: center;"><u>ICFES ENTRADA</u></th>
+						@else
+						<th style="text-align: center;">
+							<a href="{{$url_entrada[0]->url}}" target="_blank">
+								<u>ICFES ENTRADA</u>
+							</a>
+						</th>
+						@endif
+						@endif
+
+						@if($pruebaS1 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 1</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 2</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th style="text-align: center;">SIMULACRO 3</th>
+						<th style="text-align: center;">VARIACION</th>
+						@endif
+
+						@if($pruebaS5 == [])
+						<input type="text" id="if" value="if" hidden>
+						@else
+						@if($url_salida == [])
+						<th style="text-align: center;"><u>ICFES SALIDA</u></th>
+						@else
+						<th style="text-align: center;">
+							<a href="{{$url_salida[0]->url}}" target="_blank">
+								<u>ICFES SALIDA</u>
+							</a>
+						</th>
+
+						@endif
+
+						@endif
+						
+
+					</thead>
+					<tbody id="icfes">
+
+					</tbody>
+					<tfoot id="totales">
+						<th>TOTAL</th>
+						@if($l3 == 1)
+						<!--@if($pruebaS4 == [])
+						@else
+						<th>--</th>
+						@endif -->
+						@else
+						<th>--</th>
+						@endif
+
+						@if($pruebaS1 == [])
+						@else
+						<th>{{$t1}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS2 == [])
+						@else
+						<th>{{$t2}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS3 == [])
+						@else
+						<th>{{$t3}}</th>
+						<th>--</th>
+						@endif
+
+						@if($pruebaS5 == [])
+						@else
+						<th>--</th>
+						@endif
+						
+					</tfoot>
+
+				</table>
+
+			</div>
 			<div class="row">
-				&nbsp;
-				<h4>INFORMACION DE ICFES</h4>
-				&nbsp;
-				&nbsp;
 				&nbsp;
 				<div class="col-ms-2">
 					<label for="">CAMBIAR A PORCENTAJE</label>
-					<input class="form-control" type="checkbox" id="cambio">
+				</div>
+				&nbsp;
+				&nbsp;
+				<div class="col-ms-4">
+					<input class="form-control mt-0" style="width: 25px; height: 25px;" type="checkbox" id="cambio">
 				</div>
 			</div>
 			&nbsp;
@@ -1384,7 +1523,683 @@
 			@endif
 		</div>
 	</div>
+    
+	<div class="accordion-container" id="ttlo-6">
+		<a href="#" id="titulo-6" class="accordion-titulo-6">Formalización<span class="toggle-icon"></span></a>
+		<div id="contenido-6" class="accordion-content-6">
+			<input type="hidden" id="rgstraton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->pre_registration_icfes : null}}">
+			<input type="hidden" id="inscrpton" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->inscription_icfes : null}}">
+			<input type="hidden" id="icfes_presented" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->presented_icfes : null}}">
+			<input type="hidden" id="fecha_kit" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null}}">
+			<input type="hidden" id="obser" value="{{ $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observations : null}}">
+			<input type="hidden" id="estudiantE" value="{{ $verDatosPerfil->id}}">
+			<input type="hidden" name="aceptandoAcptacn" value="si" id="fecha_check">
+			<input type="hidden"  value="si" id="aceptacion_check">
+			<input type="hidden"  value="si" id="tablet_check">
+			{!!Form::model($verDatosPerfil,['route'=>['updateformalizacion',$verDatosPerfil->formalization->id], 'method'=>'PUT'])!!}
+            {{csrf_field()}}
+			<div class="form-group">
+				<div style="display: none;">
+                      {!!Form::label('id','id ')!!}
+                      {!!Form::text('id',$verDatosPerfil->formalization->id,['id'=>'idfLz','class'=>'form-control','placeholder'=>'id para enviar al update'])!!}
+                </div>
+                @if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+    				<div class="row">	
+    					<div class="col-xs-12 col-md-12">
+    						@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== '')
+            					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check"	checked>&nbsp;&nbsp;<label>ACEPTACIÓN</label>
+            				@else
+            					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
+            				@endif
+            			</div>			
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->acceptance_v2 !== null
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== '' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'SI' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'si' 
+                         && $verDatosPerfil->formalization->acceptance_v2 !== 'NO' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'no' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'Si' 
+            			 && $verDatosPerfil->formalization->acceptance_v2 !== 'No')
+							<div class="col-xs-4 col-md-2">
+								<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
+								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
+						@else
+							<div class="col-xs-2 col-md-2">
+								<input  class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
+						@endif
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== '')
+            					<input type="checkbox" name="aceptando" value="si" id="tablet_check" checked>&nbsp;&nbsp;<label>TABLETS</label>	
+            				@else
+            					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
+            				@endif
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->tablets_v2 !== null 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== '' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'No')
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+							</div>
+						@else
+							<div class="col-xs-4 col-md-2">
+								<input class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+							</div>
+						@endif
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							<input class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="returned_tablet">Devolvió tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->returned_tablet != null)
+								<input type="checkbox" name="returned_tablet" id="returned_tablet" value="SI" checked>
+							@else
+								<input type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
+							@endif
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null && $verDatosPerfil->formalization->loan_tablet !== '')
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
+            			</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input class="form-control" type="text" name="serial_loan_tablet" id="serial_loan_tablet" value="{{ old('serial_loan_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_loan_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="observation_loan">Observación prestamo</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="observation_loan" id="observation_loan" value="{{ old('observation_loan', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_loan : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->loan_document_url != null)
+            			<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+            				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+						</div>
+						@else
+						<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+						</div>
+						@endif
+                        <div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Fecha Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<input class="form-control" type="date" name="deliver_date" id="entrega_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->deliver_date : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Observaciòn Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<input class="form-control" type="text" name="observation_delivery" id="observacion_entrega" value="{{ old('observation_delivery', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_delivery : null) }}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->kit_date !== null && $verDatosPerfil->formalization->kit_date !== '')
+								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check" checked>&nbsp;&nbsp;<label>FECHA KIT</label>
+							@else
+								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check">&nbsp;&nbsp;<label>FECHA KIT</label>
+							@endif
+            			</div>
+            			<div class="col-xs-3 col-md-3">
+            				<p style="text-align: right"><label for="kit_date">Fecha kit</label></p>
+            			</div>
+            			<div class="col-xs-3 col-md-3">
+							<input class="form-control" type="date" name="kit_date" id="kit_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null) }}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>PRUEBA ICFES</label>	
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="pre_registration_icfes">PRE-INSCRIPCIÓN</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input type="checkbox" name="pre_registration_icfes" id="pre_registration"value="SI">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="inscription_icfes">INSCRIPCIÓN</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input type="checkbox" name="inscription_icfes" id="inscription" value="SI">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="presented_icfes">PRESENTÓ</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input type="checkbox" name="presented_icfes" id="presented" value="SI">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
+						<div class="btn-group">
+            				<div class="col-xs-6 col-md-12 col-sm-6">
+            					<label>APOYO ECONÓMICO:</label>
+            				</div>
+            			</div>
+            			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+            				<div class="btn-group">
+            					<div class="col-xs-6 col-md-12 col-sm-6">
+            						<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           						</div>
+           					</div>
+           				@endif
+           			</div>
+           			<div class="row" id="inputs">
+           			
+           			</div>
+           			<div id="mostrarsegui" class="table-responsive">
+     				<br>
+     					<table class=" table table-bordered table-striped">
+        					<thead >
+            					<tr>
+                					<td>MES</td>
+                					<td>BANCO</td>
+                					<td>MONTO</td>
+                					<td>ACCIONES</td>
+            					</tr>
+        					</thead>
+        					<input type="hidden" id="apoyos" value="{{$apoyo_economico}}">
+        					<input type="hidden" id="rol_login" value="{{auth()->user()->rol_id}}">
+
+							<tbody id="mostrar_registros">
+						
+							</tbody>
+                		</table>
+        			</div>
+        			<hr>-->
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>OBSERVACIONES:</label>	
+            			</div>
+            			<div class="col-xs-6 col-md-3">
+            				<textarea name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
+                			</textarea>
+                		</div>
+					</div>	
+				@else
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+    						@if($verDatosPerfil->formalization->acceptance_v2 !== null && $verDatosPerfil->formalization->acceptance_v2 !== '')
+            					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check"	checked>&nbsp;&nbsp;<label>ACEPTACIÓN</label>
+            				@else
+            					<input type="checkbox" name="aceptandoAcptacn" value="si" id="aceptacion_check">&nbsp;&nbsp;<label>ACEPTACIÓN</label>
+            				@endif
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="acceptance_v2">Aceptación</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->acceptance_v2 !== null 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== '' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->acceptance_v2 !== 'No')
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
+								<a href="{{$verDatosPerfil->formalization->acceptance_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input readonly class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
+						@else
+							<div class="col-xs-3 col-md-3">
+								<input readonly class="form-control" type="text" name="acceptance_v2" id="acceptancev2" value="{{ old('acceptance_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_v2 : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_date">Fecha Aceptación</label></p>
+            				</div>
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="date" name="acceptance_date" id="acceptance_date" value="{{ old('acceptance_date', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_date : null) }}">
+							</div>
+							<div class="col-xs-4 col-md-2">
+            					<p style="text-align: right"><label for="acceptance_observation">Observacion</label></p>
+            				</div>
+            				<div class="col-xs-4 col-md-2">
+            					<input readonly class="form-control" type="text" name="acceptance_observation" id="acceptance_observation" value="{{ old('acceptance_observation', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->acceptance_observation : null) }}">
+            				</div>
+						@endif
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->tablets_v2 !== null && $verDatosPerfil->formalization->tablets_v2 !== '')
+            					<input type="checkbox" name="aceptando" value="si" id="tablet_check" checked>&nbsp;&nbsp;<label>TABLETS</label>	
+            				@else
+            					<input type="checkbox" name="aceptando" value="si" id="tablet_check">&nbsp;&nbsp;<label>TABLETS</label>
+            				@endif
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="tablets_v2">Tablet</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->tablets_v2 !== null 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== '' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'SI' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'NO' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'no' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'Si' 
+            			&& $verDatosPerfil->formalization->tablets_v2 !== 'No')
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+								<a href="{{$verDatosPerfil->formalization->tablets_v2}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+							</div>
+						@else
+							<div class="col-xs-4 col-md-2">
+								<input readonly class="form-control" type="text" name="tabletsv2" id="tabletsv2" value="{{ old('tablets_v2', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->tablets_v2 : null) }}">
+							</div>
+						@endif
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_tablet">Serial tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							<input readonly class="form-control" type="text" name="serialtablet" id="serialtablet" value="{{ old('serial_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="returned_tablet">Devolvió tablet</label></p>
+            			</div>
+						<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->returned_tablet != null)
+								<input disabled type="checkbox" name="returned_tablet" id="returned_tablet" value="SI" checked>
+							@else
+								<input disabled type="checkbox" name="returned_tablet" id="returned_tablet" value="SI">
+							@endif
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->loan_tablet !== null && $verDatosPerfil->formalization->loan_tablet !== '')
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet" checked>&nbsp;&nbsp;<label>Prestamo Tablet</label>	
+            				@else
+            					<input disabled type="checkbox" name="loan_tablet" id="loan_tablet">&nbsp;&nbsp;<label>Prestamo Tablet</label>
+            				@endif
+            			</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="serial_loan_tablet">Serial tablet prestada</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input readonly class="form-control" type="text" name="serial_loan_tablet" id="serial_loan_tablet" value="{{ old('serial_loan_tablet', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->serial_loan_tablet : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="observation_loan">Observación prestamo</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<input readonly class="form-control" type="text" name="observation_loan" id="observation_loan" value="{{ old('observation_loan', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_loan : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="loan_document_url">URL documento prestamo</label></p>
+            			</div>
+            			@if($verDatosPerfil->formalization->loan_document_url != null)
+            			<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+            				<a href="{{$verDatosPerfil->formalization->loan_document_url}}" target="blank" class="fa fa-external-link">Enlace Documento</a>
+						</div>
+						@else
+						<div class="col-xs-4 col-md-2">
+            				<input disabled class="form-control" type="text" name="loan_document_url" id="loan_document_url" value="{{ old('loan_document_url', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->loan_document_url : null) }}">
+						</div>
+						@endif
+                        <div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Fecha Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<input readonly class="form-control" type="date" name="deliver_date" id="entrega_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->deliver_date : null) }}">
+						</div>
+						<div class="col-xs-4 col-md-2">
+							<p style="text-align: right"><label for="deliver_date">Observaciòn Entrega</label></p>
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<input readonly class="form-control" type="text" name="observation_delivery" id="observacion_entrega" value="{{ old('observation_delivery', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->observation_delivery : null) }}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							@if($verDatosPerfil->formalization->kit_date !== null && $verDatosPerfil->formalization->kit_date !== '')
+								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check" checked>&nbsp;&nbsp;<label>FECHA KIT</label>
+							@else
+								<input type="checkbox" name="aceptandoFecha" value="si" id="fecha_check">&nbsp;&nbsp;<label>FECHA KIT</label>
+							@endif
+            			</div>
+            			<div class="col-xs-3 col-md-3">
+            				<p style="text-align: right"><label for="kit_date">Fecha kit</label></p>
+            			</div>
+            			<div class="col-xs-3 col-md-3">
+							<input readonly class="form-control" type="date" name="kit_date" id="kit_fecha" value="{{ old('especial_case', $verDatosPerfil->formalization ? $verDatosPerfil->formalization->kit_date : null) }}">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>PRUEBA ICFES</label>	
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="pre_registration_icfes">PRE-INSCRIPCIÓN</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input disabled type="checkbox" name="pre_registration_icfes" id="pre_registration"value="SI">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="inscription_icfes">INSCRIPCIÓN</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input disabled type="checkbox" name="inscription_icfes" id="inscription" value="SI">
+						</div>
+						<div class="col-xs-4 col-md-2">
+            				<p style="text-align: right"><label for="presented_icfes">PRESENTÓ</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							<input disabled type="checkbox" name="presented_icfes" id="presented" value="SI">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>CAMBIO DE LINEA</label>	
+            			</div>	
+            			<div class="col-xs-4 col-md-3">
+            				<p style="text-align: right"><label for="transfer_line2_to_line1">Traslado de Linea 2 a Linea 1</label></p>
+            			</div>
+            			<div class="col-xs-4 col-md-2">
+							@if($verDatosPerfil->formalization->transfer_line2_to_line1 != null)
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI" checked>
+							@else
+								<input disabled type="checkbox" name="transfer_line2_to_line1" id="transfer_line2_to_line1"value="SI">
+							@endif
+						</div>
+					</div>
+					<!--<hr>
+					<div class="row">
+						<div class="btn-group">
+            				<div class="col-xs-6 col-md-12 col-sm-6">
+            					<label>APOYO ECONÓMICO:</label>
+            				</div>
+            			</div>
+            			<div class="btn-group">
+            				@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1)
+            					<div class="btn-group">
+            						<div class="col-xs-6 col-md-12 col-sm-6">
+            							<a class="btn btn-primary elevation-5 btn-sm mt-3 mb-3 fa fa-plus float-left" title="Nuevo registro" id="nuevo_registro" onclick="apoyo_economico();"></a>
+           							</div>
+           						</div>
+           					@endif
+           				</div>
+           			</div>
+           			<div class="row" id="inputs">
+           			
+           			</div>
+           			<div id="mostrarsegui" class="table-responsive">
+     				<br>
+     					<table class=" table table-bordered table-striped">
+        					<thead >
+            					<tr>
+                					<td>MES</td>
+                					<td>BANCO</td>
+                					<td>MONTO</td>
+                					<td>ACCIONES</td>
+            					</tr>
+        					</thead>
+        					<input type="hidden" id="apoyos" value="{{$apoyo_economico}}">
+        					<input type="hidden" id="rol_login" value="{{auth()->user()->rol_id}}">
+							<tbody id="mostrar_registros">
+						
+							</tbody>
+                		</table>
+        			</div>-->
+        			<hr>
+        			<div class="row">
+						<div class="col-xs-12 col-md-12">
+            				<label>OBSERVACIONES:</label>	
+            			</div>
+            			<div class="col-xs-6 col-md-3">
+            				<textarea disabled name="texareobservaciones" id="observacionestext" cols="120" rows="5" style="resize: both;">
+                			</textarea>
+                		</div>
+					</div>
+        		@endif
+			</div>
+			@if(auth()->user()->rol_id == 4 || auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+
+			{!!Form::submit('Guardar Datos',['class'=>'btn btn-primary boton_update_formalizacion', 'id'=>'boton' ])!!}                       
+
+            {!!Form::close()!!}
+			@endif
+		</div>
+	</div>
+    @if($result != '')
+	<div class="accordion-container" id="ttlo-9">
+		<a href="#" id="titulo-9" class="accordion-titulo-9">Resultados Clasificación<span class="toggle-icon"></span></a>
+		<div id="contenido-9" class="accordion-content-9">
+			<div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="program">Programa definitivo</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="program" id="program" value="{{ $result[0]->name_program }}" title="{{ $result[0]->name_program }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="puesto">Puesto</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="puesto" id="position" value="{{ $result[0]->position }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion">Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion" id="iteration" value="{{ $result[0]->iteration }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Total ponderado</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->weighted_total }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Promedio Areas</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->weighted_areas }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Promedio Notas</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->average_grades }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion1">Primera Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion1" id="opc1" value="{{ $result[0]->opc1 }}" title="{{ $result[0]->opc1 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion2">Segunda Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion2" id="opc2" value="{{ $result[0]->opc2 }}" title="{{ $result[0]->opc2 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion3">Tercera Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion3" id="opc3" value="{{ $result[0]->opc3 }}" title="{{ $result[0]->opc3 }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>
+
+            <div class="form-group">
+    			<div class="row">
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion4">Cuarta Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion4" id="opc4" value="{{ $result[0]->opc4 }}" title="{{ $result[0]->opc4 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="opcion5">Quinta Opción</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="opcion5" id="opc5" value="{{ $result[0]->opc5 }}" title="{{ $result[0]->opc5 }}">
+							</div>
+						</div>	
+            		</div>
+            		<div class="col-xs-3 col-md-2">
+            			<p style="text-align: right;"><label for="nombres">Semestre Ingreso</label></p>
+            		</div>
+            		<div class="col-xs-4 col-md-2">
+						<div class="row">
+							<div class="col-xs-4 col-md-12">
+								<input readonly class="form-control" type="text" name="apellidos" id="apellidos" value="{{ $result[0]->semestre_ingreso }}">
+							</div>
+						</div>	
+            		</div>
+            	</div>
+            </div>     	
+		</div>
+	</div>
+	@endif
 	<br><a class="btn btn-primary" type="button" href="{{ route('estudiante')}}" >Regresar</a>
+    <a class="btn btn-primary" type="button" href="/pdfEstudiante/{{$iden}}" >Descargar PDF</a>
 </div>
 
 @include('perfilEstudiante.modal.editestado')
@@ -1417,10 +2232,18 @@
 {!!Html::script('/js/actualizarDatos.js')!!}
 {!!Html::script('/js/seguimientoSocioeducativo.js')!!}
 
+
 <script>
 	const icfesBody = document.getElementById('icfes')
 	let variacion = parseInt("{{$variacion}}")
+	//let variacionL3 = parseInt("{{$variacionL3}}")
+	let l3 = parseInt("{{$l3}}")
 	const cambio = document.getElementById('cambio')
+	let salida = document.getElementById('if')
+	//console.log(salida.value)
+	let entrada = document.getElementById('ie')
+	//console.log(entrada.value)
+
 
 	const data = fetch("{{route('resultado_icfes', $iden)}}")
 		.then(res => res.json())
@@ -1436,10 +2259,30 @@
 						let row_2_data_2 = document.createElement('td');
 
 						row_2_data_1.innerHTML = data.nombre;
-						row_2_data_2.innerHTML = "--"
-
 						row_2.appendChild(row_2_data_1);
+
+						if (l3 == 1){
+
+						}else{
+							row_2_data_2.innerHTML = "--"
 						row_2.appendChild(row_2_data_2);
+						}
+						
+						/*
+						if (entrada !== null) {
+							if (entrada.value === 'ie') {
+								//row_2.appendChild(row_2_data_1);
+
+							}
+						} else {
+
+							row_2_data_2.innerHTML = "--"
+
+
+							row_2.appendChild(row_2_data_2);
+
+						}*/
+
 
 						if (data.simulacro1 !== 0) {
 							let row_2_data_3 = document.createElement('td')
@@ -1449,11 +2292,14 @@
 
 							cambio.addEventListener('change', () => {
 								if (cambio.checked == true) {
-									resultado = Math.round(((data.simulacro1 - variacion) / variacion) * 100)
-
+									if (variacion === 0) {
+										resultado = 0
+									} else {
+										resultado = Math.round(((data.simulacro1 - variacion) / variacion) * 100)
+									}
 									if (resultado < 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}%
                                     </div>
 
@@ -1461,7 +2307,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}%
                                     </div>
 
@@ -1479,11 +2325,11 @@
 									row_2.appendChild(row_2_data_3);
 									row_2.appendChild(row_2_data_4);
 								} else {
-									resultado = data.simulacro1 - variacion
+									resultado = Math.round(data.simulacro1 - variacion)
 
 									if (resultado < 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1491,7 +2337,7 @@
 									}
 									if (resultado > 0) {
 										row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
@@ -1511,11 +2357,11 @@
 								}
 							})
 
-							resultado = data.simulacro1 - variacion
+							resultado = Math.round(data.simulacro1 - variacion)
 
 							if (resultado < 0) {
 								row_2_data_4.innerHTML = `
-									<div style="background-color: red;">
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
@@ -1523,7 +2369,7 @@
 							}
 							if (resultado > 0) {
 								row_2_data_4.innerHTML = `
-									<div style="background-color: green;">
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
@@ -1543,105 +2389,449 @@
 
 						}
 
-						if (data.simulacro2 !== 0) {
-							let row_2_data_5 = document.createElement('td');
-							row_2_data_5.innerHTML = data.simulacro2
-							let row_2_data_6 = document.createElement('td');
-							let resultado = 0
+						if (l3 === 0) {
+							if (data.simulacro2 !== 0) {
+								let row_2_data_5 = document.createElement('td');
+								row_2_data_5.innerHTML = data.simulacro2
+								let row_2_data_6 = document.createElement('td');
+								let resultado = 0
 
 
-							cambio.addEventListener('change', () => {
+								cambio.addEventListener('change', () => {
 
-								if (cambio.checked == true) {
-									resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
-									if (resultado < 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+									if (cambio.checked == true) {
+										if (variacion === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro2 - variacion) / variacion) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
                                         ${resultado} %
                                     </div>
 
 								`
-									}
-									if (resultado > 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
                                         ${resultado} %
                                     </div>
 
 								`
-									}
-									if (resultado == 0) {
-										row_2_data_6.innerHTML = `
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
 									<div>
                                         ${resultado} %
                                     </div>
 
 								`
-									}
+										}
 
-									row_2.appendChild(row_2_data_5);
-									row_2.appendChild(row_2_data_6);
-								} else {
-									resultado = data.simulacro2 - variacion
-									if (resultado < 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
+									} else {
+										resultado = Math.round(data.simulacro2 - variacion)
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
 								`
-									}
-									if (resultado > 0) {
-										row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
 								`
-									}
-									if (resultado == 0) {
-										row_2_data_6.innerHTML = `
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
 									<div>
                                         ${resultado}
                                     </div>
 
 								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
 									}
 
-									row_2.appendChild(row_2_data_5);
-									row_2.appendChild(row_2_data_6);
+
+								})
+								resultado = Math.round(data.simulacro2 - variacion)
+								if (resultado < 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
 								}
 
+								row_2.appendChild(row_2_data_5);
+								row_2.appendChild(row_2_data_6);
+							}
+						} else if (l3 === 1) {
+							if (data.simulacro2 !== 0) {
+								let row_2_data_5 = document.createElement('td');
+								row_2_data_5.innerHTML = data.simulacro2
+								let row_2_data_6 = document.createElement('td');
+								let variacionL3 = data.simulacro1
+								let resultado = 0
 
-							})
-							resultado = data.simulacro2 - variacion
-							if (resultado < 0) {
-								row_2_data_6.innerHTML = `
-									<div style="background-color: red;">
+
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacionL3 === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro2 - variacionL3) / variacionL3) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
+									} else {
+										resultado = Math.round(data.simulacro2 - variacionL3)
+										if (resultado < 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
                                         ${resultado}
                                     </div>
 
 								`
-							}
-							if (resultado > 0) {
-								row_2_data_6.innerHTML = `
-									<div style="background-color: green;">
+										}
+										if (resultado > 0) {
+											row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
                                         ${resultado}
                                     </div>
 
 								`
-							}
-							if (resultado == 0) {
-								row_2_data_6.innerHTML = `
+										}
+										if (resultado == 0) {
+											row_2_data_6.innerHTML = `
 									<div>
                                         ${resultado}
                                     </div>
 
 								`
+										}
+
+										row_2.appendChild(row_2_data_5);
+										row_2.appendChild(row_2_data_6);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro2 - variacionL3)
+								if (resultado < 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_6.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_6.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_5);
+								row_2.appendChild(row_2_data_6);
+							}
+						}
+
+
+						if (l3 === 0) {
+
+							if (data.simulacro3 !== 0) {
+								let row_2_data_7 = document.createElement('td');
+								row_2_data_7.innerHTML = data.simulacro3
+								let row_2_data_8 = document.createElement('td');
+								let resultado = 0
+
+
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacion === 0) {
+											resultado = 0
+										} else {
+											resultado = Math.round(((data.simulacro3 - variacion) / variacion) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									} else {
+										resultado = Math.round(data.simulacro3 - variacion)
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro3 - variacion)
+								if (resultado < 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_7);
+								row_2.appendChild(row_2_data_8);
 							}
 
-							row_2.appendChild(row_2_data_5);
-							row_2.appendChild(row_2_data_6);
+						} else if (l3 === 1) {
+							if (data.simulacro3 !== 0) {
+								let row_2_data_7 = document.createElement('td');
+								row_2_data_7.innerHTML = data.simulacro3
+								let row_2_data_8 = document.createElement('td');
+								let variacionL3 = data.simulacro1
+								let resultado = 0.0
+
+								
+								cambio.addEventListener('change', () => {
+
+									if (cambio.checked == true) {
+										if (variacionL3 === 0) {
+											resultado = 0.0
+										} else {
+											console.log(variacionL3)
+											console.log((data.simulacro3 - variacionL3))
+											console.log((data.simulacro3 - variacionL3) / variacionL3)
+											console.log(( (data.simulacro3 - variacionL3) / variacionL3) * 100 )
+											resultado = Math.round(((data.simulacro3 - variacionL3) / variacionL3) * 100)
+										}
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado} %
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									} else {
+										resultado = Math.round(data.simulacro3 - variacionL3)
+										if (resultado < 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado > 0) {
+											row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+										if (resultado == 0) {
+											row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+										}
+
+										row_2.appendChild(row_2_data_7);
+										row_2.appendChild(row_2_data_8);
+									}
+
+
+								})
+								resultado = Math.round(data.simulacro3 - variacionL3)
+								if (resultado < 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #FE3F3F;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado > 0) {
+									row_2_data_8.innerHTML = `
+									<div style="background-color: #34E82E;">
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+								if (resultado == 0) {
+									row_2_data_8.innerHTML = `
+									<div>
+                                        ${resultado}
+                                    </div>
+
+								`
+								}
+
+								row_2.appendChild(row_2_data_7);
+								row_2.appendChild(row_2_data_8);
+							}
+						}
+
+
+
+
+						if (salida !== null) {
+							if (salida.value === 'if') {}
+						} else {
+							let row_2_data_10 = document.createElement('td');
+							row_2_data_10.innerHTML = "--"
+							row_2.appendChild(row_2_data_10);
+
 						}
 
 						icfesBody.appendChild(row_2)
@@ -1653,7 +2843,7 @@
 		})
 
 
-	$("#icfes").DataTable({
+	/*$("#icfes").DataTable({
 		"processing": false,
 		"LoadingRecords": true,
 		"paging": true,
@@ -1670,10 +2860,10 @@
 		},
 		"dom": 'Bfrtip',
 		"buttons": ["copy", "excel", "pdf", "print"]
-	});
+	});*/
+    
 </script>
 
 @endpush
-
 
 @endsection

@@ -31,13 +31,24 @@
                     <button class="btn btn-primary" id="linea2">
                         Linea 2
                     </button>
-                    <button class="btn btn-primary" id="linea3">
+                    <button class="btn btn-primary mr-10" id="linea3">
                         Linea 3
+                    </button>
+                    <button class="btn btn-primary" id="generales">
+                        ESTADISTICAS GENERALES
                     </button>
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row" id="gen1">
+                <div class="col-4">
+                    <canvas id="sexoGeneral"></canvas>
+                </div>
+                <div class="col-8">
+                    <canvas id="edadGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="cohorte1">
                 <div class="col-sm-4">
                     <canvas id="sexolineas"></canvas>
                 </div>
@@ -48,7 +59,15 @@
                     <canvas id="anioGraduacion"></canvas>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="gen2">
+                <div class="col-sm-8">
+                    <canvas id="anioGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="estadoCivilGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="cohorte2">
                 <div class="col-sm-4">
                     <canvas id="estadoCivilLinea"></canvas>
                 </div>
@@ -59,7 +78,15 @@
                     <canvas id="etniaLinea"></canvas>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="gen3">
+                <div class="col-sm-4">
+                    <canvas id="icfesGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="etniaGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="cohorte3">
                 <div class="col-sm-4">
                     <canvas id="ocupacionLinea"></canvas>
                 </div>
@@ -68,6 +95,63 @@
                 </div>
                 <div class="col-sm-4">
                     <canvas id="regimenLinea"></canvas>
+                </div>
+            </div>
+            <div class="row" id="gen4">
+                <div class="col-sm-4">
+                    <canvas id="ocupacionGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="hijosGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="cohorte4">
+                <div class="col-sm-4">
+                    <canvas id="sisbenLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="beneficiosLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="internetZonaLinea"></canvas>
+                </div>
+            </div>
+            <div class="row" id="gen5">
+                <div class="col-sm-4">
+                    <canvas id="regimenGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="sisbenGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="cohorte5">
+                <div class="col-sm-4">
+                    <canvas id="internetHogarLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="condicionSocialLinea"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="discapacidadLinea"></canvas>
+                </div>
+            </div>
+            <div class="row" id="gen6">
+                <div class="col-sm-4">
+                    <canvas id="benefiosGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="internetZonaGeneral"></canvas>
+                </div>
+            </div>
+            <div class="row" id="gen7">
+                <div class="col-sm-4">
+                    <canvas id="internetHogarGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="condicionSocialGeneral"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <canvas id="discapacidadGeneral"></canvas>
                 </div>
             </div>
         </div>

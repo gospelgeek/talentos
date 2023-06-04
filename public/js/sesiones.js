@@ -284,6 +284,5 @@ $(document).on('change', '#cohorTe', function(event) {
   });
 //
 
-//actualizar registro sesion
 
 

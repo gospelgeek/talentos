@@ -18,6 +18,19 @@
 	height: 10px;
 }
 
+.riesgos{
+	border: 3px solid;
+}
+
+.dimension{
+	border-left: 1px solid;	
+}
+
+.table_estado{
+	width: 150%;
+	height: 10px;
+}
+
 .table_clasisicacion{
 	width: 150%;
 	height: 10px;
@@ -57,7 +70,7 @@ img.avatar {
 	clear:both;
 }
 
-.accordion-titulo {
+.accordion-titulo-1 {
 	position: relative;
 	display: block;
 	padding: 20px;
@@ -162,29 +175,82 @@ img.avatar {
 	overflow: auto;
 }
 
-.accordion-titulo.open {
+.accordion-titulo-7 {
+	position: relative;
+	display: block;
+	padding: 20px;
+	font-size: 24px;
+	font-weight: 300;
+	background: #2c3e50;
+	color: #fff;
+	text-decoration: none;
+}
+
+.accordion-titulo-9 {
+	position: relative;
+	display: block;
+	padding: 20px;
+	font-size: 24px;
+	font-weight: 300;
+	background: #2c3e50;
+	color: #fff;
+	text-decoration: none;
+}
+
+.accordion-titulo-1.open {
 	background: #16a085;
 	color: #fff;
 }
 
-.accordion-titulo:hover {
+.accordion-titulo-1:hover {
 	background: #1abc9c;
 }
 
-.accordion-titulo span.toggle-icon:before {
+.accordion-titulo-1 span.toggle-icon:before {
 	content:"+";
 }
 
-.accordion-titulo.open span.toggle-icon:before {
+.accordion-titulo-1.open span.toggle-icon:before {
 	content:"-";
 }
 
-.accordion-titulo span.toggle-icon {
+.accordion-titulo-1 span.toggle-icon {
 	position: absolute;
 	top: 10px;
 	right: 20px;
 	font-size: 38px;
 	font-weight:bold;
+}
+
+.accordion-titulo-9.open {
+	background: #16a085;
+	color: #fff;
+}
+
+.accordion-titulo-9:hover {
+	background: #1abc9c;
+}
+
+.accordion-titulo-9 span.toggle-icon:before {
+	content:"+";
+}
+
+.accordion-titulo-9.open span.toggle-icon:before {
+	content:"-";
+}
+
+.accordion-titulo-9 span.toggle-icon {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 38px;
+	font-weight:bold;
+}
+
+.accordion-content-9 {
+	display: none;
+	padding: 20px;
+	overflow: auto;
 }
 
 .accordion-titulo-2.open {
@@ -205,6 +271,31 @@ img.avatar {
 }
 
 .accordion-titulo-2 span.toggle-icon {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 38px;
+	font-weight:bold;
+}
+
+.accordion-titulo-7.open {
+	background: #16a085;
+	color: #fff;
+}
+
+.accordion-titulo-7:hover {
+	background: #1abc9c;
+}
+
+.accordion-titulo-7 span.toggle-icon:before {
+	content:"+";
+}
+
+.accordion-titulo-7.open span.toggle-icon:before {
+	content:"-";
+}
+
+.accordion-titulo-7 span.toggle-icon {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -309,7 +400,7 @@ img.avatar {
 	font-weight:bold;
 }
 
-.accordion-content {
+.accordion-content-1 {
 	display: none;	
 	padding: 20px;
 	overflow: auto;
@@ -342,11 +433,17 @@ img.avatar {
 	overflow: auto;
 }
 
-.accordion-content p{
+.accordion-content-7 {
+	display: none;
+	padding: 20px;
+	overflow: auto;
+}
+
+.accordion-content-1 p{
 	margin:0;
 }
 
-.accordion-content img {
+.accordion-content-1 img {
 	display: block;
 	float: left;
 	margin: 0 15px 10px 0;
@@ -356,11 +453,23 @@ img.avatar {
 
 
 @media (max-width: 767px) {
-	.accordion-content {
+	.accordion-content-1 {
 		padding: 10px 0;
 	}
 }
 
 .dropdown-menu {
   margin-top: 0;
+}
+
+td{
+	font-weight: normal;
+}
+
+.border-table-asistencias-asignatura {
+  border-left: black solid 2px;
+}
+
+.border-table-asistencias-porcentaje {
+  border-left: black solid 1px;
 }

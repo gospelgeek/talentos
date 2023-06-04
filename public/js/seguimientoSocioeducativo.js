@@ -271,7 +271,6 @@ $(function () {
 
 });
 
-
 $(function() {
 
     $('#mostrarFcA').empty();
@@ -282,14 +281,89 @@ $(function() {
         //console.log(ver);
         
         $.each(ver, function(index, value) {
-
-            //const datos = JSON.parse(ver[key]);
+            
             console.log(value.tracking_detail);
             const mostar = JSON.parse(value.tracking_detail);
             console.log(mostar);   
-            //texto +=datos.fecha;
+            
+            if(mostar.RiesgoIndividual !== null){
+                if(mostar.RiesgoIndividual === 'alto'){
+                    var valor_individual = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoIndividual === 'medio'){
+                    var valor_individual = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoIndividual === 'bajo'){
+                    var valor_individual = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
+            }else{
+                var valor_individual = '--';
+            }
 
-            $('#mostrarFcA').append('<tr data-id='+value.id+'>'+"<td>"+mostar.fecha+"</td>"+
+            if(mostar.RiesgoAcademico !== null){
+                if(mostar.RiesgoAcademico === 'alto'){
+                    var valor_academico = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoAcademico === 'medio'){
+                    var valor_academico = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoAcademico === 'bajo'){
+                    var valor_academico = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
+            }else{
+                var valor_academico = '--';
+            }
+
+            if(mostar.RiesgoFamiliar !== null){
+                if(mostar.RiesgoFamiliar === 'alto'){
+                    var valor_familiar = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoFamiliar === 'medio'){
+                    var valor_familiar = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoFamiliar === 'bajo'){
+                    var valor_familiar = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
+            }else{
+                var valor_familiar = '--';
+            }
+
+            if(mostar.RiesgoEconomico !== null){
+                if(mostar.RiesgoEconomico === 'alto'){
+                    var valor_economico = "<div style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoEconomico === 'medio'){
+                    var valor_economico = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoEconomico === 'bajo'){
+                    var valor_economico = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
+            }else{
+                var valor_economico = '--';
+            }
+
+            if(mostar.RiesgoUc !== null){
+                if(mostar.RiesgoUc === 'alto'){
+                    var valor_Uyc = "<div class='text-align-center' style='background-color: red;'>"+'ALTO'+"</div>";
+                }
+                if(mostar.RiesgoUc === 'medio'){
+                    var valor_Uyc = "<div style='background-color: yellow;'>"+'MEDIO'+"</div>";
+                }
+                if(mostar.RiesgoUc === 'bajo'){
+                    var valor_Uyc = "<div style='background-color: green;'>"+'BAJO'+"</div>";
+                }
+            }else{
+                var valor_Uyc = '--';
+            }
+
+            $('#mostrarFcA').append(
+                '<tr data-id='+value.id+'>'+
+                    "<td>"+mostar.fecha+"</td>"+    
+                    "<td>"+valor_individual+"</td>"+
+                    "<td>"+valor_academico+"</td>"+
+                    "<td>"+valor_familiar+"</td>"+
+                    "<td>"+valor_economico+"</td>"+
+                    "<td>"+valor_Uyc+"</td>"+
                     "<td>"+
                       '<div class="btn-group">'+
                           '<div class="col-xs-6 col-sm-6 btn-group">'+
@@ -302,13 +376,16 @@ $(function() {
                             '<button class="btn text-danger btn-block fa fa-trash fa boton_delete_seguimiento" title="Eliminar seguimiento"></button>'+
                           "</div>"+
                       "</div>"+
-                    "</td>"+"</tr>");
+                    "</td>"+
+                "</tr>");
  
     });
 
     $('.editar_seguimiento').click(function(e) {
-            e.preventDefault();
-            
+        e.preventDefault();
+
+        var rol = document.getElementById('roles').value;      
+        if(rol == 1 || rol == 2 || rol == 6){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -406,13 +483,16 @@ $(function() {
 
             $('#modal_editar').modal('show');
 
-            });
-
-        });
+            });                
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }
+    });
 
       $('.ver_seguimiento').click(function(e) {
-            e.preventDefault();
-            
+        e.preventDefault();
+        var rol = document.getElementById('roles').value;
+        if(rol == 1 || rol == 2 || rol == 6){
             var row = $(this).parents('tr');
             var id = row.data('id');
             //alert(id);
@@ -455,28 +535,33 @@ $(function() {
             
             $('#modal_ver').modal('show');
 
-            });
+            });         
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }    
+            
 
-        });
+    });
 
       $('.boton_delete_seguimiento').click(function(e) {       
-       e.preventDefault();
-
-       var row = $(this).parents('tr');
-       var id = row.data('id');
-       var form = $('#form-delete');
-       var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
-       var data = form.serialize();
+        e.preventDefault();
+        var rol = document.getElementById('roles').value;
+        if(rol == 1 || rol == 2 || rol == 6){
+            var row = $(this).parents('tr');
+            var id = row.data('id');
+            var form = $('#form-delete');
+            var url = form.attr('action').replace(':SEGUIMIENTO_ID', id);
+            var data = form.serialize();
        
-       //alert(id);
-       
-      $.post(url, data, function(result){
-        row.fadeOut();
-        toastr.success('Seguimiento eliminado correctamente!!'); 
-        //setTimeout("location.reload()", 2000);
-       });
-
-      });
+            $.post(url, data, function(result){
+                row.fadeOut();
+                toastr.success('Seguimiento eliminado correctamente!!'); 
+                //setTimeout("location.reload()", 2000);
+            });
+        }else{
+            toastr.warning('SIN PERMISOS');
+        }
+    });
 
 });
 

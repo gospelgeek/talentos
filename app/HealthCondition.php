@@ -15,6 +15,7 @@ class HealthCondition extends Model
 
     protected $fillable = [
         'id_student',
+        'special_requirements',
         'employee',
         'physical_health',
         'mental_health',

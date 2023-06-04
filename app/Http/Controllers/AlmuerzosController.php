@@ -34,7 +34,6 @@ class AlmuerzosController extends Controller
 
         return datatables()->of($almuerzos)->toJson();
     }
-    
     public function total_almuerzos($number_lunches_line1, $number_lunches_line2, $number_lunches_line3){
          $total = $number_lunches_line1 + $number_lunches_line2 + $number_lunches_line3;
 
@@ -43,7 +42,16 @@ class AlmuerzosController extends Controller
 
     public function index(){
 
-        return view('perfilEstudiante.almuerzos.index');
+        $lunches = Lunches::ultimo_lunche();
+        $almuerzo = Lunches::lunches_update_ultimo();
+        
+        if($lunches !== null){
+            $ultimo_lunche = $lunches[0]->created_at;    
+        }else{
+            $ultimo_lunche = null;
+        }     
+
+        return view('perfilEstudiante.almuerzos.index', compact('ultimo_lunche'));
     }
 
     public function store(AlmuerzosRequest $request){

@@ -22,7 +22,7 @@ class ReporteExport implements FromArray, WithHeadings
     public function headings(): array
     {
         return [
-            ['Course_id','Shortname','Total Sesiones','Total Asistencias','Promedio Asistencias'
+            ['Asignatura','Grupo','Linea','Url','Sesiones Virtuales','Promedio Asistencias Virtuales','Sesiones Presenciales','Promedio Asistencias Presenciales','Total Sesiones','Promedio Asistencia General'
             ]
             
         ];

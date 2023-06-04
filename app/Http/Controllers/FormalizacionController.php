@@ -23,6 +23,7 @@ use Redirect;
 use Response;
 use DB;
 
+
 class FormalizacionController extends Controller
 {
 
@@ -35,26 +36,25 @@ class FormalizacionController extends Controller
     public function formalizacionDatos(){
         
         $datosFormalizacion = Formalization::formalizacion();
-        $arreglo_datos = array();
-
-        foreach($datosFormalizacion as $datos){
-
+        $collection_datos = collect($datosFormalizacion);
+        //$arreglo_datos = array();
+        $collection_datos->map(function($datos){
             $retiro = Withdrawals::where('id_student', $datos->id)->exists();
             if($retiro == true){
                 $datos_retiro = Withdrawals::where('id_student', $datos->id)->select('id_reasons', 'fecha', 'url')->first();
-                $fecha = $datos_retiro->fecha;
-                $url = $datos_retiro->url;
+                $datos->fecha = $datos_retiro->fecha;
+                $datos->url = $datos_retiro->url;
                 $motivo = Reasons::where('id', $datos_retiro->id_reasons)->select('name')->first();
                 if($motivo != null){
-                    $motivo_name = $motivo->name;    
+                    $datos->motivo = $motivo->name;    
                 }else{
-                    $motivo_name = null;
+                    $datos->motivo = null;
                 }
                 
             }else{
-                $fecha = null;
-                $url = null;
-                $motivo_name = null;
+                $datos->fecha = null;
+                $datos->url = null;
+                $datos->motivo = null;
             }
 
             $profesional = AssignmentStudent::where('id_student', $datos->id)->exists();
@@ -62,58 +62,31 @@ class FormalizacionController extends Controller
                 $id_profesional = AssignmentStudent::where('id_student', $datos->id)->select('id_user')->first();
                 $datos_profesional = User::where('id', $id_profesional->id_user)->select('name', 'apellidos_user')->first();
                 if($datos_profesional !== null){
-                    $name_profesional = $datos_profesional->name;
-                    $lastname_profesional = $datos_profesional->apellidos_user;    
+                    $datos->name_profesional = $datos_profesional->name;
+                    $datos->lastname_profesional = $datos_profesional->apellidos_user;    
                 }else{
-                    $name_profesional = null;
-                    $lastname_profesional = null;
+                    $datos->name_profesional = null;
+                    $datos->lastname_profesional = null;
                 }
                      
             }else{
-                $name_profesional = null;
-                $lastname_profesional = null;
+                $datos->name_profesional = null;
+                $datos->lastname_profesional = null;
             }
-
-            $arreglo_datos[] = array(
-                'id' => $datos->id,
-                'name' => $datos->name,
-                'lastname' => $datos->lastname,
-                'document_number' => $datos->document_number,
-                'email' => $datos->email,
-                'cellphone' => $datos->cellphone,
-                'groupid' => $datos->groupid,
-                'grupo' => $datos->grupo,
-                'cohorte' => $datos->cohorte,
-                'acceptance_v2' => $datos->acceptance_v2,
-                'tablets_v2' => $datos->tablets_v2,
-                'serial_tablet' => $datos->serial_tablet,
-                'kit_date' => $datos->kit_date,
-                'pre_registration_icfes' => $datos->pre_registration_icfes,
-                'inscription_icfes' => $datos->inscription_icfes,
-                'presented_icfes' => $datos->presented_icfes,
-                'acceptance_date' => $datos->acceptance_date,
-                'returned_tablet' => $datos->returned_tablet,
-                'loan_tablet' => $datos->loan_tablet,
-                'serial_loan_tablet' => $datos->serial_loan_tablet,
-                'loan_document_url' => $datos->loan_document_url,
-                'cambio_linea' => $datos->cambio_linea,
-                'tipodocumento' => $datos->tipodocumento,
-                'estado' => $datos->estado,
-                'motivo' => $motivo_name,
-                'fecha' => $fecha,
-                'url' => $url,
-                'name_profesional' => $name_profesional,
-                'lastname_profesional' => $lastname_profesional
-            );
-        }
-        
-        $datos_collection = collect($arreglo_datos);
-
-        return datatables()->of($datos_collection)->toJson();
+            
+            $validar = StudentGroup::withTrashed()->where('id_student', $datos->id)->whereNotNull('deleted_at')->count();
+            if($validar > 0){
+                $datos->cambio_grupo = 1;
+            }else{
+                $datos->cambio_grupo = 2;
+            }
+            //dd($datos);
+        });
+        //dd($collection_datos);
+        return datatables()->of($collection_datos)->toJson();
     }
 
     public function index(){
-        
         $update_frmlzcon = Formalization::ultimo_update_formalizacion();
         if($update_frmlzcon != null){
             $update_formalizacion = $update_frmlzcon[0]->created_at;
@@ -124,7 +97,7 @@ class FormalizacionController extends Controller
         return view('perfilEstudiante.indexFormalizacion', compact('update_formalizacion'));
     }
     
-   public function formalizacionupdate($id, Request $request){
+    public function formalizacionupdate($id, Request $request){
     
     $data = Formalization::findOrFail($id);
     $dataOld = Formalization::findOrFail($id);
@@ -177,6 +150,8 @@ class FormalizacionController extends Controller
             $data->serial_loan_tablet = $request['serial_tablet_prestada'];
             $data->observation_loan = $request['observacion_prestamo'];
             $data->loan_document_url = $request['url_documento_prestamo'];
+            $data->deliver_date = $request['fecha_entrega'];
+            $data->observation_delivery = $request['observacion_entrega'];
 
             $pre_registro;
             if($request['pre_registro_icfes'] !== null){
@@ -293,6 +268,14 @@ class FormalizacionController extends Controller
         if($dataOld->transfer_line2_to_line1 != $data->transfer_line2_to_line1){
             $old[] = array('cambio_de_linea' => $dataOld->transfer_line2_to_line1);
             $new[] = array('cambio_de_linea' => $data->transfer_line2_to_line1);
+        }
+        if($dataOld->deliver_date != $data->deliver_date){
+            $old[] = array('fecha_entrega' => $dataOld->deliver_date);
+            $new[] = array('fecha_entrega' => $data->deliver_date);   
+        }
+        if($dataOld->observation_delivery != $data->observation_delivery){
+            $old[] = array('observacion_entrega' => $dataOld->observation_delivery);
+            $new[] = array('observacion_entrega' => $data->observation_delivery);   
         }
 
         $ip = User::getRealIP();

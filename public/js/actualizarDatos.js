@@ -375,7 +375,7 @@ $('.boton_mensaje_alerta').click(function(e) {
 //Actualizando campos
 $('.boton_actualizar').click(function(e) { 
   e.preventDefault();
-
+  
   var idgroup = $('#idGr').val();
 
   $.ajax({
@@ -389,7 +389,7 @@ $('.boton_actualizar').click(function(e) {
       'group_change_date': $("#fecha_cambio").val(),
     },
     success:function(result) {
-        
+       
       if(result == 'El grupo seleccionado debe pertenecer a la cohorte correspondiente'){
         toastr.warning(result); 
       }
@@ -469,7 +469,6 @@ function apoyo_economico(){
 
     $('#nuevo_registro').addClass('disabled');
 }
-//
 
 //Guardar formalizacion
 $('.boton_update_formalizacion').click(function(e) { 
@@ -511,6 +510,8 @@ $.ajax({
       'observacion_prestamo': $("#observation_loan").val(),
       'url_documento_prestamo': $("#loan_document_url").val(),
       'cambio_de_linea': $('input[name="transfer_line2_to_line1"]:checked').val(),
+      'fecha_entrega': $("#entrega_fecha").val(),
+      'observacion_entrega': $("#observacion_entrega").val(),
     },
     success:function(result) {
       $('#contenido-1').modal('hide');
@@ -635,8 +636,8 @@ $(function() {
     //
 
     //mostrar registros de apoyos economicos en la tabla
-      let array = document.getElementById('apoyos').value;
-      const datos_json = JSON.parse(array);
+      //let array = document.getElementById('apoyos').value;
+     /* const datos_json = JSON.parse(array);
       var rol = document.getElementById('rol_login').value;
       
       $.each(datos_json, function(index, value) {
@@ -647,7 +648,7 @@ $(function() {
           //garantizo que la zona horaria no me reste un dia en la fercha
           fecha_convertida.setMinutes(fecha_convertida.getMinutes() + fecha_convertida.getTimezoneOffset());
           const mes_fecha = fecha_convertida.toLocaleString("es-ES", { month: "long" });
-          //*/
+          //
           if(rol == 1 || rol == 4){
 
             $('#mostrar_registros').append('<tr data-id='+value.id+'>'+"<td>"+mes_fecha+"</td>"+
@@ -678,7 +679,7 @@ $(function() {
                     "</tr>");
           }
             
-      });
+      });*/
       //
 
       //editar registro de apoyo economico

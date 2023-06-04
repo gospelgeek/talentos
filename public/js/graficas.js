@@ -8,12 +8,75 @@ const letnia =  document.getElementById('etniaLinea').getContext('2d');
 const locupacion =  document.getElementById('ocupacionLinea').getContext('2d');
 const lhijos = document.getElementById('hijosLinea').getContext('2d');
 const lregimen = document.getElementById('regimenLinea').getContext('2d');
+const lsisben =  document.getElementById('sisbenLinea').getContext('2d');
+const lbeneficios = document.getElementById('beneficiosLinea').getContext('2d');
+const linternetzona =  document.getElementById('internetZonaLinea').getContext('2d');
+const linternethome = document.getElementById('internetHogarLinea').getContext('2d');
+const lsocialcondicion = document.getElementById('condicionSocialLinea').getContext('2d');
+const ldiscapacidad = document.getElementById('discapacidadLinea').getContext('2d');
 
+// generales canvas
+const gsexo = document.getElementById('sexoGeneral').getContext('2d');
+const gedad = document.getElementById('edadGeneral').getContext('2d');
 // botones
 
 const line1 = document.getElementById('linea1')
 const line2 = document.getElementById('linea2')
 const line3 = document.getElementById('linea3')
+const generales = document.getElementById('generales')
+
+// vistas
+const cohorte1 = document.getElementById('cohorte1')
+const cohorte2 = document.getElementById('cohorte2')
+const cohorte3 = document.getElementById('cohorte3')
+const cohorte4 = document.getElementById('cohorte4')
+const cohorte5 = document.getElementById('cohorte5')
+
+function hiddenGraficas() {
+    cohorte1.setAttribute('hidden', '')
+    cohorte2.setAttribute('hidden', '')
+    cohorte3.setAttribute('hidden', '')
+    cohorte4.setAttribute('hidden', '')
+    cohorte5.setAttribute('hidden', '')
+}
+
+function removeHiddenGraficas() {
+    cohorte1.removeAttribute('hidden')
+    cohorte2.removeAttribute('hidden')
+    cohorte3.removeAttribute('hidden')
+    cohorte4.removeAttribute('hidden')
+    cohorte5.removeAttribute('hidden')
+}
+
+// general
+const gen1 = document.getElementById('gen1')
+const gen2 = document.getElementById('gen2')
+const gen3 = document.getElementById('gen3')
+const gen4 = document.getElementById('gen4')
+const gen5 = document.getElementById('gen5')
+const gen6 = document.getElementById('gen6')
+const gen7 = document.getElementById('gen7')
+
+function visualizarGenerales() {
+    gen1.setAttribute('hidden',"")
+    gen2.setAttribute('hidden',"")
+    gen3.setAttribute('hidden',"")
+    gen4.setAttribute('hidden',"")
+    gen5.setAttribute('hidden',"")
+    gen6.setAttribute('hidden',"")
+    gen7.setAttribute('hidden',"")
+}
+
+function removeGeneral() {
+    gen1.removeAttribute('hidden')
+    gen2.removeAttribute('hidden')
+    gen3.removeAttribute('hidden')
+    gen4.removeAttribute('hidden')
+    gen5.removeAttribute('hidden')
+    gen6.removeAttribute('hidden')
+    gen7.removeAttribute('hidden')
+    
+}
 
 // sexo lineas
 let sexolinea1 = []
@@ -60,6 +123,36 @@ let regimenLinea1 = []
 let regimenLinea2 = []
 let regimenLinea3 = []
 
+//categoria de sisben
+let categoriaSisbenLinea1 = []
+let categoriaSisbenLinea2 = []
+let categoriaSisbenLinea3 = []
+
+// beneficios
+let beneficiosLinea1 = []
+let beneficiosLinea2 = []
+let beneficiosLinea3 = []
+
+// internet en la zona
+let internetZLinea1 = []
+let internetZLinea2 = []
+let internetZLinea3 = []
+
+//internet home
+let internetHomeLinea1 = []
+let internetHomeLinea2 = []
+let internetHomeLinea3 = []
+
+// condicion social
+let socialCondicionLinea1 = []
+let socialCondicionLinea2 = []
+let socialCondicionLinea3 = []
+
+// discapacidad
+let discapacidadLinea1 = []
+let discapacidadLinea2 = []
+let discapacidadLinea3 = []
+
 // variables 
 let renderSex
 let renderEdad
@@ -70,15 +163,25 @@ let renderEtniasLinea
 let renderOcupacionL
 let renderHijosN
 let renderRegimenS
+let renderCategoriaS
+let renderBeneficiosL
+let renderInternetZ
+let renderInternetH
+let renderCondicionS
+let renderDiscapacidadL
+
+// generales 
+let generalRenderSexo
+let generalRenderEdad
 
 async function datosSexoPorLineas() {
     //linea 1
-    const resHlinea1 = await fetch('/sex/H/linea/1')
+    const resHlinea1 = await fetch('/sex/M/linea/1')
     const jsonHLinea1 = await resHlinea1.json()
 
     sexolinea1.push(jsonHLinea1[0].sexo)
 
-    const resMLinea1 = await fetch('/sex/M/linea/1')
+    const resMLinea1 = await fetch('/sex/F/linea/1')
     const jsonMLinea1 = await resMLinea1.json()
 
     sexolinea1.push(jsonMLinea1[0].sexo)
@@ -86,12 +189,12 @@ async function datosSexoPorLineas() {
     // fin de linea 1
 
     // linea 2
-    const resHLinea2 = await fetch('/sex/H/linea/2')
+    const resHLinea2 = await fetch('/sex/M/linea/2')
     const jsonHLinea2 = await resHLinea2.json()
 
     sexolinea2.push(jsonHLinea2[0].sexo)
 
-    const resMLinea2 = await fetch('/sex/M/linea/2')
+    const resMLinea2 = await fetch('/sex/F/linea/2')
     const jsonMLinea2 = await resMLinea2.json()
 
     sexolinea2.push(jsonMLinea2[0].sexo)
@@ -99,12 +202,12 @@ async function datosSexoPorLineas() {
 
     // linea 3
 
-    const resHLinea3 = await fetch('/sex/H/linea/3')
+    const resHLinea3 = await fetch('/sex/M/linea/3')
     const jsonHLinea3 = await resHLinea3.json()
 
     sexolinea3.push(jsonHLinea3[0].sexo)
 
-    const resMLinea3 = await fetch('/sex/M/linea/3')
+    const resMLinea3 = await fetch('/sex/F/linea/3')
     const jsonMLinea3 = await resMLinea3.json()
 
     sexolinea3.push(jsonMLinea3[0].sexo)
@@ -383,34 +486,177 @@ async function datosRegimen(arreglo, linea) {
     arreglo.push(json4[0].cantidad)
 }
 
+async function datosSisben(arreglo, linea) {
+    
+    const resA = await fetch(`/sisben/A/linea/${linea}`)
+    const jsonA = await resA.json()
+    arreglo.push(jsonA[0].cantidad)
+
+    const resB = await fetch(`/sisben/B/linea/${linea}`)
+    const jsonB = await resB.json()
+    arreglo.push(jsonB[0].cantidad)
+
+    const resC = await fetch(`/sisben/C/linea/${linea}`)
+    const jsonC = await resC.json()
+    arreglo.push(jsonC[0].cantidad)
+
+    const resD = await fetch(`/sisben/D/linea/${linea}`)
+    const jsonD = await resD.json()
+    arreglo.push(jsonD[0].cantidad)
+
+    const resNo = await fetch(`/sisben/No encontrado/linea/${linea}`)
+    const jsonNo = await resNo.json()
+    arreglo.push(jsonNo[0].cantidad)
+
+}
+
+async function datosBeneficios(arreglo, linea) {
+    
+    const res1 = await fetch(`/beneficios/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/beneficios/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/beneficios/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/beneficios/4/linea/${linea}`)
+    const json4 = await res4.json()
+    arreglo.push(json4[0].cantidad)
+
+    const res5 = await fetch(`/beneficios/5/linea/${linea}`)
+    const json5 = await res5.json()
+    arreglo.push(json5[0].cantidad)
+
+    const res6 = await fetch(`/beneficios/6/linea/${linea}`)
+    const json6 = await res6.json()
+    arreglo.push(json6[0].cantidad)
+
+}
+
+async function datosIntenerZona(arreglo, linea){
+
+    const resS = await fetch(`/internetZona/s/linea/${linea}`)
+    const jsonS = await resS.json()
+    arreglo.push(jsonS[0].cantidad)
+
+    const resN = await fetch(`/internetZona/n/linea/${linea}`)
+    const jsonN = await resN.json()
+    arreglo.push(jsonN[0].cantidad)
+
+}
+
+async function datosInternetHogar(arreglo, linea) {
+    
+    const resS = await fetch(`/internetHome/s/linea/${linea}`)
+    const jsonS = await resS.json()
+    arreglo.push(jsonS[0].cantidad)
+
+    const resN = await fetch(`/internetHome/n/linea/${linea}`)
+    const jsonN = await resN.json()
+    arreglo.push(jsonN[0].cantidad)
+
+}
+
+async function datosSocialCondicion(arreglo, linea) {
+    
+    const res1 = await fetch(`/condicion/1/linea/${linea}`)
+    const json1 = await res1.json()
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/condicion/2/linea/${linea}`)
+    const json2 = await res2.json()
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/condicion/3/linea/${linea}`)
+    const json3 = await res3.json()
+    arreglo.push(json3[0].cantidad)
+
+}
+
+async function datosDiscapacidad(arreglo, linea) {
+
+    const res0 = await fetch(`/discapacidad/0/linea/${linea}`)
+    const json0 = await res0.json() 
+    arreglo.push(json0[0].cantidad)
+
+    const res1 = await fetch(`/discapacidad/1/linea/${linea}`)
+    const json1 = await res1.json() 
+    arreglo.push(json1[0].cantidad)
+
+    const res2 = await fetch(`/discapacidad/2/linea/${linea}`)
+    const json2 = await res2.json() 
+    arreglo.push(json2[0].cantidad)
+
+    const res3 = await fetch(`/discapacidad/3/linea/${linea}`)
+    const json3 = await res3.json() 
+    arreglo.push(json3[0].cantidad)
+
+    const res4 = await fetch(`/discapacidad/4/linea/${linea}`)
+    const json4 = await res4.json() 
+    arreglo.push(json4[0].cantidad)
+
+}
+
 toastr.info('cargando informacion....')
-datosSexoPorLineas().then(() => toastr.info('se cargo toda la informacion de Sexos '))
-datosEdadLineas(edadlinea1, 1).then(() => toastr.info('se cargo toda la informacion de edad en la linea 1 '))
-datosEdadLineas(edadlinea2, 2).then(() => toastr.info('se cargo toda la informacion de edad en la linea 2 '))
-datosEdadLineas(edadlinea3, 3).then(() => toastr.info('se cargo toda la informacion de edad en la linea 3 '))
-datosAnioGraduacion(anioGlinea1, 1).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 1 '))
-datosAnioGraduacion(anioGlinea2, 2).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 2 '))
-datosAnioGraduacion(anioGlinea3, 3).then(() => toastr.info('se cargo toda la informacion de Año de graduacion en la linea 3 '))
-datosIcfesPuntaje(icfesPuntajeLinea1, 1).then(() => toastr.info('se cargo toda la informacion de puntaje de icfes en la linea 1 '))
-datosIcfesPuntaje(icfesPuntajeLinea2, 2).then(() => toastr.info('se cargo toda la informacion de puntaje de icfes en la linea 2 '))
-datosIcfesPuntaje(icfesPuntajeLinea3, 3).then(() => toastr.info('se cargo toda la informacion de puntaje de icfes en la linea 3 '))
-datosEstadoCivil(estadoCivilLinea1, 1).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 1 '))
-datosEstadoCivil(estadoCivilLinea2, 2).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 2 '))
-datosEstadoCivil(estadoCivilLinea3, 3).then(() => toastr.info('se cargo toda la informacion de estado civil en la linea 3 '))
-datosEtnia(etniaLinea1, 1).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 1 '))
-datosEtnia(etniaLinea2, 2).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 2 '))
-datosEtnia(etniaLinea3, 3).then(() => toastr.info('se cargo toda la informacion de etnias en la linea 3 '))
-datosOcupacion(ocupacionLinea1, 1).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 1 '))
-datosOcupacion(ocupacionLinea2, 2).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 2 '))
-datosOcupacion(ocupacionLinea3, 3).then(() => toastr.info('se cargo toda la informacion de ocupaciones en la linea 3 '))
-datosHijos(hijosLinea1, 1).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 1'))
-datosHijos(hijosLinea2, 2).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 2 '))
-datosHijos(hijosLinea3, 3).then(() => toastr.info('se cargo toda la informacion de numero de hijos en la linea 3 '))
-datosRegimen(regimenLinea1, 1).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 1'))
-datosRegimen(regimenLinea2, 2).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 2'))
-datosRegimen(regimenLinea3, 3).then(() => toastr.info('se cargo toda la informacion de regimen en salud en la linea 3'))
+datosSexoPorLineas()
+datosEdadLineas(edadlinea1, 1)
+datosEdadLineas(edadlinea2, 2)
+datosEdadLineas(edadlinea3, 3)
+datosAnioGraduacion(anioGlinea1, 1)
+datosAnioGraduacion(anioGlinea2, 2)
+datosAnioGraduacion(anioGlinea3, 3)
+datosIcfesPuntaje(icfesPuntajeLinea1, 1)
+datosIcfesPuntaje(icfesPuntajeLinea2, 2)
+datosIcfesPuntaje(icfesPuntajeLinea3, 3)
+datosEstadoCivil(estadoCivilLinea1, 1)
+datosEstadoCivil(estadoCivilLinea2, 2)
+datosEstadoCivil(estadoCivilLinea3, 3)
+datosEtnia(etniaLinea1, 1)
+datosEtnia(etniaLinea2, 2)
+datosEtnia(etniaLinea3, 3)
+datosOcupacion(ocupacionLinea1, 1)
+datosOcupacion(ocupacionLinea2, 2)
+datosOcupacion(ocupacionLinea3, 3)
+datosHijos(hijosLinea1, 1)
+datosHijos(hijosLinea2, 2)
+datosHijos(hijosLinea3, 3)
+datosRegimen(regimenLinea1, 1)
+datosRegimen(regimenLinea2, 2)
+datosRegimen(regimenLinea3, 3)
+datosSisben(categoriaSisbenLinea1, 1)
+datosSisben(categoriaSisbenLinea2, 2)
+datosSisben(categoriaSisbenLinea3, 3)
+datosBeneficios(beneficiosLinea1, 1)
+datosBeneficios(beneficiosLinea2, 2)
+datosBeneficios(beneficiosLinea3, 3)
+datosIntenerZona(internetZLinea1, 1)
+datosIntenerZona(internetZLinea2, 2)
+datosIntenerZona(internetZLinea3, 3)
+datosInternetHogar(internetHomeLinea1, 1)
+datosInternetHogar(internetHomeLinea2, 2)
+datosInternetHogar(internetHomeLinea3, 3)
+datosSocialCondicion(socialCondicionLinea1, 1)
+datosSocialCondicion(socialCondicionLinea2, 2)
+datosSocialCondicion(socialCondicionLinea3, 3)
+datosDiscapacidad(discapacidadLinea1, 1)
+datosDiscapacidad(discapacidadLinea2, 2)
+datosDiscapacidad(discapacidadLinea3, 3)
+
+generales.addEventListener('click', () => {
+    hiddenGraficas()
+    removeGeneral()
+    renderGeneralSexos(gsexo)
+    renderGeneralEdad(gedad)
+})
 
 line1.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(1, lsex, sexolinea1)
     renderEdadPorLineas(1, ledad, edadlinea1)
     renderAnioGraduacion(1, lanioGraduacion, anioGlinea1)
@@ -420,9 +666,17 @@ line1.addEventListener('click', () => {
     renderOcupacion(1, locupacion, ocupacionLinea1)
     renderNumeroDeHijos(1, lhijos, hijosLinea1)
     renderRegimenSalud(1, lregimen, regimenLinea1)
+    renderCategoriaSisben(1, lsisben, categoriaSisbenLinea1)
+    renderBeneficios(1, lbeneficios, beneficiosLinea1)
+    renderInternetZona(1, linternetzona, internetZLinea1)
+    renderInternetHome(1, linternethome, internetHomeLinea1)
+    renderSocialCondicion(1, lsocialcondicion, socialCondicionLinea1)
+    renderDiscapacidad(1, ldiscapacidad, discapacidadLinea1)
 })
 
 line2.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(2, lsex, sexolinea2)
     renderEdadPorLineas(2, ledad, edadlinea2)
     renderAnioGraduacion(2, lanioGraduacion, anioGlinea2)
@@ -432,9 +686,17 @@ line2.addEventListener('click', () => {
     renderOcupacion(2, locupacion, ocupacionLinea2)
     renderNumeroDeHijos(2, lhijos, hijosLinea2)
     renderRegimenSalud(2, lregimen, regimenLinea2)
+     renderCategoriaSisben(2, lsisben, categoriaSisbenLinea2)
+    renderBeneficios(2, lbeneficios, beneficiosLinea2)
+    renderInternetZona(2, linternetzona, internetZLinea2)
+    renderInternetHome(2, linternethome, internetHomeLinea2)
+    renderSocialCondicion(2, lsocialcondicion, socialCondicionLinea2)
+    renderDiscapacidad(2, ldiscapacidad, discapacidadLinea2)
 })
 
 line3.addEventListener('click', () => {
+    visualizarGenerales()
+    removeHiddenGraficas()
     renderSexLineas(3, lsex, sexolinea3)
     renderEdadPorLineas(3, ledad, edadlinea3)
     renderAnioGraduacion(3, lanioGraduacion, anioGlinea3)
@@ -444,6 +706,12 @@ line3.addEventListener('click', () => {
     renderOcupacion(3, locupacion, ocupacionLinea3)
     renderNumeroDeHijos(3, lhijos, hijosLinea3)
     renderRegimenSalud(3, lregimen, regimenLinea3)
+    renderCategoriaSisben(3, lsisben, categoriaSisbenLinea3)
+    renderBeneficios(3, lbeneficios, beneficiosLinea3)
+    renderInternetZona(3, linternetzona, internetZLinea3)
+    renderInternetHome(3, linternethome, internetHomeLinea3)
+    renderSocialCondicion(3, lsocialcondicion, socialCondicionLinea3)
+    renderDiscapacidad(3, ldiscapacidad, discapacidadLinea3)
 })
 
 function renderSexLineas(titulo,line, dataSex) {
@@ -869,6 +1137,411 @@ function renderRegimenSalud(titulo, line, dataRegimen) {
                     display: false
                 },
             }
+        }
+    });
+}
+
+function renderCategoriaSisben(titulo, line, dataSisben) {
+    if(renderCategoriaS) renderCategoriaS.destroy()
+    renderCategoriaS =  new Chart(line, {
+        type: 'pie',
+        data: {
+            labels: ['A', 'B', 'C', 'D', 'No encontrado'],
+            datasets: [{
+                label: `LINEA ${titulo} ETNIAS` || '',
+                data: dataSisben,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    'rgba(100, 149, 237, 1)',
+                    'rgba(255, 222, 173, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA CATEGORIA SISBEN'
+                }
+            }
+        }
+    });
+}
+
+function renderBeneficios(titulo, line, dataBeneficio) {
+    if(renderBeneficiosL) renderBeneficiosL.destroy()
+    line.height = 500
+    renderBeneficiosL =  new Chart(line, {
+        type: 'line',
+        data: {
+            labels: ['Familias en accion', 'Ingreso solidario', 'Jovenes en accion', 'No Recibo', 'Otro', 'Subsidio de vivienda'],
+            datasets: [{
+                //label: `LINEA ${titulo} PUNTAJE ICFES` || '',
+                data: dataBeneficio,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE BENEFICIOS'
+                },
+                legend: {
+                    display: false
+                },
+            }
+        }
+    });   
+}
+
+function renderInternetZona(titulo, line, dataInternetZona) {
+    if(renderInternetZ) renderInternetZ.destroy()
+    renderInternetZ = new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['SI', 'NO'],
+            datasets: [{
+                label: `LINEA ${titulo} INTERNET EN ZONA` || '',
+                data: dataInternetZona,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE INTERNET EN ZONA'
+                }
+            }
+        }
+    });
+
+}
+
+function renderInternetHome(titulo, line, dataInternetH) {
+    if(renderInternetH) renderInternetH.destroy()
+    renderInternetH = new Chart(line, {
+        type: 'doughnut',
+        data: {
+            labels: ['SI', 'NO'],
+            datasets: [{
+                label: `LINEA ${titulo} INTERNET EN EL HOGAR` || '',
+                data: dataInternetH,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE INTERNET EN EL HOGAR'
+                }
+            }
+        }
+    });
+}
+
+function renderSocialCondicion(titulo, line, dataCondicio) {
+    if(renderCondicionS)renderCondicionS.destroy()
+    renderCondicionS = new Chart(line, {
+        type: 'pie',
+        data: {
+            labels: ['Persona victima del conflicto armado', 'Persona con habilidades diferenciales Discapacidad', 'Ninguna'],
+            datasets: [{
+                label: `LINEA ${titulo} CONDICION SOCIAL` || '',
+                data: dataCondicio,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            //maintainAspectRatio: false,
+            responsive: true,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE CONDICION SOCIAL'
+                }
+            }
+        }
+    });    
+}
+
+function renderDiscapacidad(titulo, line, dataDiscapacidad) {
+    if(renderDiscapacidadL) renderDiscapacidadL.destroy()
+    line.height = 500
+    renderDiscapacidadL =  new Chart(line, {
+        type: 'line',
+        data: {
+            labels: ['Ninguna', 'Auditiva', 'Cognitiva', 'Fisica', 'Visual'],
+            datasets: [{
+                //label: `LINEA ${titulo} REGIMEN DE SALUD` || '',
+                data: dataDiscapacidad,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            //indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA DE DISCAPACIDAD'
+                },
+                legend: {
+                    display: false
+                },
+            }
+        }
+    });
+}
+
+function renderGeneralSexos(line) {
+    if(generalRenderSexo) generalRenderSexo.destroy()
+    line.height = 800
+    generalRenderSexo = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['Hombres', 'Mujesres'],
+            datasets: [{
+                label: 'LINEA 1',
+                data: sexolinea1,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 2',
+                data: sexolinea2,
+                backgroundColor: [
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 3',
+                data: sexolinea3,
+                backgroundColor: [
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderColor: [
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            //showTooltips: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA GENERAL DE SEXOS'
+                },
+            },
+            
+        }
+    });
+}
+
+function renderGeneralEdad(line) {
+    if(generalRenderEdad) generalRenderEdad.destroy() 
+    line.height = 800
+    generalRenderEdad = new Chart(line, {
+        type: 'bar',
+        data: {
+            labels: ['14', '15', '16', '17', '18', '19', '20', '21', '22','23', '24', '25', '26', '27', '28', '29', '30'],
+            datasets: [{
+                label: 'LINEA 1',
+                data: edadlinea1,
+                backgroundColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderColor: [
+                    'rgba(226, 13, 13, 1)',
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 2',
+                data: edadlinea2,
+                backgroundColor: [
+                    'rgba(5, 5, 147, 1)',
+                ],
+                borderColor: [
+                    'rgba(5, 5, 147, 1)',
+                    
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'LINEA 3',
+                data: edadlinea3,
+                backgroundColor: [
+                    'rgba(255, 140, 0, 1)',
+                ],
+                borderColor: [
+                    'rgba(255, 140, 0, 1)',
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            //showTooltips: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'GRAFICA GENERAL DE SEXOS'
+                },
+            },
+            
         }
     });
 }

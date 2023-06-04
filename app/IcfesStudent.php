@@ -27,14 +27,6 @@ class IcfesStudent extends Model
     
     public static function infoPruebas($test)
     {
-        
-        if($test == 1) DB::select("SELECT * FROM vistaSimulacro1Icfes");
-        if($test == 2) DB::select("SELECT * FROM vistaSimulacro2Icfes");
-        if($test == 3) DB::select("SELECT * FROM vistaSimulacro3Icfes");
-        if($test == 4) DB::select("SELECT * FROM vistaEntradaIcfes");
-        if($test == 5) DB::select("SELECT * FROM vistaSalidaIcfes");
-        
-        /*
        return DB::select("SELECT student_profile.id, student_profile.name as nombre, student_profile.lastname as apellidos, student_profile.document_number as documento, student_profile.student_code as codigo, student_groups.id_group as grupo_id, groups.name as grupo, cohorts.name as linea, icfes_students.url_support as url, icfes_students.total_score as Total,
        (SELECT qualification FROM result_by_areas WHERE
        result_by_areas.id_icfes_student = icfes_students.id AND result_by_areas.id_icfes_area = 1) as LC,
@@ -47,7 +39,7 @@ class IcfesStudent extends Model
        INNER JOIN groups ON groups.id = student_groups.id_group
        INNER JOIN cohorts on cohorts.id = groups.id_cohort
        INNER JOIN icfes_students ON icfes_students.id_student = student_profile.id
-       AND icfes_students.id_icfes_test = ?", [$test]);*/
+       AND icfes_students.id_icfes_test = ? AND student_profile.id_state = 1 AND student_groups.deleted_at IS NULL", [$test]);
        
     }
 }

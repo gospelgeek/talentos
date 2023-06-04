@@ -23,15 +23,16 @@ class IcfesController extends Controller
     public function index()
     {
        $pruebas = IcfesTest::all();
-        $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
-        return view('icfes.index', compact('pruebas', 'estudiantes'));
+       $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
+       return view('icfes.index', compact('pruebas', 'estudiantes'));
     }
     
     public function registroIcfes(Request $request)
     {
         if ($request->ajax()) {
-            $iden = explode("-",$request['identificacion']);
+            $iden = explode("-", $request['identificacion']);
             $id_student = $iden[1];
+            //dd($id_student);
             $url = $request['url'];
             $r_areas = $request['r_areas'];
             $lecturaC = $request['lecturaC'];
@@ -40,7 +41,7 @@ class IcfesController extends Controller
             $cienN = $request['cienN'];
             $ingles = $request['ingles'];
             $form_areas = 0;
-           
+            //dd($r_areas);
             $id_S = perfilEstudiante::where('document_number', $id_student)->first();
 
             $lineaGrupo = DB::select("SELECT (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE 
@@ -266,16 +267,17 @@ class IcfesController extends Controller
         student_profile.lastname as apellidos, student_profile.document_number as documento, 
         (SELECT (SELECT (SELECT cohorts.name FROM cohorts WHERE cohorts.id = groups.id_cohort LIMIT 1) 
         FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
-        student_groups.id_student = student_profile.id LIMIT 1) as linea, (SELECT (SELECT groups.name 
+        student_groups.id_student = student_profile.id AND student_groups.deleted_at IS NULL LIMIT 1) as linea, (SELECT (SELECT groups.name 
         FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) 
         FROM student_groups WHERE student_groups.id_student = student_profile.id LIMIT 1) as grupo 
         FROM student_profile WHERE (SELECT (SELECT (SELECT cohorts.id FROM cohorts 
         WHERE cohorts.id = groups.id_cohort LIMIT 1) 
         FROM groups WHERE groups.id = student_groups.id_group LIMIT 1) FROM student_groups WHERE 
-        student_groups.id_student = student_profile.id LIMIT 1) = ?", [$id_cohorte]);
+        student_groups.id_student = student_profile.id AND student_groups.deleted_at IS NULL LIMIT 1) = ? AND student_profile.id_state = 1", [$id_cohorte]);
 
         /*$s1 = DB::select("SELECT icfes_students.total_score FROM icfes_students 
             WHERE icfes_students.id_icfes_test = 1 AND icfes_students.id_student = ?", [1230]);
+
         dd($s1[0]->total_score);*/
 
         $tamanioDatos = sizeof($estudiantes);
@@ -592,14 +594,48 @@ class IcfesController extends Controller
         $estudiantes = perfilEstudiante::where('id_state', 1)->select('document_number', 'name', 'lastname')->get();
         return view('icfes.reporteIcfesPruebas', compact('pruebas', 'estudiantes'));
     }
+    
+    public function cargarDatosIcfes($test)
+    {
+        ini_set('max_execution_time', '600');
+        $nombreArchivo = "resultados_" . strval($test) . ".json";
+        $result = IcfesStudent::infoPruebas($test);
+        Storage::disk('local')->put($nombreArchivo, json_encode($result));
+        $pdd = json_decode(Storage::get($nombreArchivo));
+        return datatables()->of($pdd)->toJson();
+    }
 
     public function datosPruebasIcfes($test)
     {
         ini_set('max_execution_time', '600');
-        
-        $data = IcfesStudent::infoPruebas($test);
 
-        return datatables()->of($data)->toJson();
+        switch ($test) {
+            case '1':
+                $data = json_decode(Storage::get("resultados_1.json"));
+                return datatables()->of($data)->toJson();
+                break;
+
+            case '2':
+                $data = json_decode(Storage::get("resultados_2.json"));
+                return datatables()->of($data)->toJson();
+                break;
+
+            case '3':
+                $data = json_decode(Storage::get("resultados_3.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            case '4':
+                $data = json_decode(Storage::get("resultados_4.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            case '5':
+                $data = json_decode(Storage::get("resultados_5.json"));
+                return datatables()->of($data)->toJson();
+                break;
+            default:
+                return "error inesperado";
+                break;
+        }
     }
 
     public function actualizarIcfes($iden, $test, Request $request)
@@ -684,7 +720,5 @@ class IcfesController extends Controller
             return array("mensaje" => "exitoso");
         }
     }
-
-    
     
 }

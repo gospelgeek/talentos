@@ -71,12 +71,12 @@
 
 <script>
 
-	
-	function consultar_sesion(){
+function consultar_sesion(){
 		$("#example1").DataTable().ajax.reload();
 
-	}
+}
 
+$(document).ready(function(){	
 	var table = $("#example1").DataTable({
 
 		"ajax":{
@@ -117,7 +117,7 @@
             }
 
         ],
-        "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false, "serverSide": true,
+        "deferRender": true,"responsive": true, "lengthChange": false, "autoWidth": false, "serverSide": false,
             "dom":'Bfrtip',
             "buttons": [
                 "copy",
@@ -132,9 +132,24 @@
 	});
 
 	
-	/*
-	*/
+	$('#example1 thead tr').clone(true).appendTo('#example1 thead');
 
+        $('#example1 thead tr:eq(1) td').each(function (i) {
+            var title = $(this).text();
+
+            $(this).html('<input type="text" class="form-control" placeholder="Buscar"/>');
+
+            $('input', this).on('keyup change', function () {
+                if(table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+      	});
+
+});	
 	
 </script>
 @endpush

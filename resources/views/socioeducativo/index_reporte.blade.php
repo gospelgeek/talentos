@@ -18,8 +18,15 @@
     @endif
     <div class="table-responsive">
      <table id="example1" class=" table table-bordered table-striped">
-        <caption>Ultimo Seguimiento registrado:<br>
-        S.F: Salud Fisica<br> S.M: Salud Mental<br> R.Ps: Riesgo Psicosocial<br> R.I: Riesgo Individual<br> R.A: Riesgo Academico<br> R.F: Riesgo Familiar<br> R.E: Riesgo Economico<br> R.V: Riesgo Vida Universitaria y ciudad</caption>
+        <caption>Ultimo Seguimiento registrado: {{ $ultimo_seguimiento }}<br>
+        S.F: Salud Fisica<br>
+        S.M: Salud Mental<br>
+        R.Ps: Riesgo Psicosocial<br>
+        R.I: Riesgo Individual<br> 
+        R.A: Riesgo Academico<br>
+        R.F: Riesgo Familiar<br>
+        R.E: Riesgo Economico<br>
+        R.V: Riesgo Vida Universitaria y ciudad</caption>
         <thead>
             <tr>
                 <td><b>Nombres</b></td>
@@ -101,7 +108,7 @@
     </div>
     </div>
 </div>
-
+@include('socioeducativo.modal.detalles_socioeducativos')
 @push('scripts') 
 
     <script>
@@ -135,7 +142,7 @@
                             }else if(data.aceptacion1 !== null || data.aceptacion2 !== null){
                                 return 'ACTIVO';
                             }
-                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5){
+                        }else if(data.id_state == 2 || data.id_state == 3 || data.id_state == 5 || data.id_state == 6){
                             return 'INACTIVO';
                         }
                     }
@@ -209,7 +216,14 @@
                         }
                     }
                 },
-                {data: 'cantidad_seguimientos'},
+                {data: null, render:function(data, type, row, meta){
+                        var datos = [];
+                                datos.push(data.id);
+                                datos.push(data.name);
+                                datos.push(data.lastname);
+                        return "<button class='btn' type='button' onclick='abrir_modal("+JSON.stringify(datos)+");'><u>"+data.cantidad_seguimientos+"</u></button>";
+                    }
+                },
                 {data: null, render:function(data, type, row, meta){
                         var celda;
                         if(data.riesgo_indivdual !== null){
@@ -420,7 +434,97 @@
         console.log($(id).attr("id"));
         location.href=`../ver_estudiante/${$(id).attr("id")}?css=titulo-4#ttlo-4`;
     }
+    
+    function abrir_modal(datos){
 
+        $('#nombre').text(datos[1]+" "+datos[2]);
+
+        $("#table_seguimientos_modal").DataTable({
+            "ajax":{
+
+                "method":"GET",
+                "url": "/tabla_modal_socioeducativo",
+                "data": function(d){
+                    d.id_student = datos[0];
+                },             
+            },
+            "columns":[
+                {data: 'fecha'},
+                {data: 'lugar'},
+                {data: 'riesgo_indivdual',render:function(data, type, row, meta){
+                        if(data == null){
+                            return "--";
+                        }else{
+                            return data;
+                        }
+                    }
+                },
+                {data: 'riesgo_academico',render:function(data, type, row, meta){
+                        if(data == null){
+                            return "--";
+                        }else{
+                            return data;
+                        }
+                    }
+                },
+                {data: 'riesgo_familiar',render:function(data, type, row, meta){
+                        if(data == null){
+                            return "--";
+                        }else{
+                            return data;
+                        }
+                    }
+                },
+                {data: 'riesgo_economico',render:function(data, type, row, meta){
+                        if(data == null){
+                            return "--";
+                        }else{
+                            return data;
+                        }
+                    }
+                },
+                {data: 'riesgo_Uc',render:function(data, type, row, meta){
+                        if(data == null){
+                            return "--";
+                        }else{
+                            return data;
+                        }
+                    }
+                },
+            ],
+            "footerCallback": function( tfoot, data, start, end, display ) {
+                var api = this.api();
+                var total_asistencias = 0;
+                $( api.column( 1 ).footer() ).html(
+                    api.column( 1 ).data().reduce( function ( a, b ) {
+                    
+                        if(b.asistio == "SI"){
+                            total_asistencias = total_asistencias + 1;
+                        }
+                        return total_asistencias;
+                    }, 0 )
+                );
+            },
+            "processing": true,
+            "destroy": true,
+            "LoadingRecords":true,
+            "paging": true,
+            "deferRender": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "order": [ 0, 'desc'],
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            },
+            "dom": 'Bfrtip',
+            "buttons": ["copy","excel", "pdf", "print"]
+        });
+        $('#modal_socioeducativo').modal('show'); 
+    }
     </script>
  
 @endpush

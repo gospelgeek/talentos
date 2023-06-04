@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class SessionCourse extends Model
 {
@@ -19,4 +20,18 @@ class SessionCourse extends Model
         'description',
         'type',
     ];
+    
+    public static function fecha_carga(){
+        $data = DB::select('
+            select session_courses.created_at
+            from session_courses
+            WHERE session_courses.id = 1
+            ');
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }
 }

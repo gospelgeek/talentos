@@ -26,10 +26,12 @@ class SocioEducationalFollowUp extends Model
     //consulta para reporte
     public static function socioeducativo_reporte(){
 
-        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.id_state, student_groups.id_group as grupoid,  groups.name AS grupo, cohorts.name AS cohorte, assignment_students.id_user as id_profesional, users.name as nombre_profesional, users.apellidos_user as apellido_profersional, COUNT(student_profile.id) as cantidad_seguimientos, formalizations.acceptance_v1 as aceptacion2, formalizations.acceptance_v1 as aceptacion1, max(socio_educational_follow_ups.tracking_detail) as detalle, (SELECT health_conditions.employee FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as trabajador, (SELECT health_conditions.physical_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_fisica, (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id) as salud_mental,
-            (SELECT health_conditions.psychosocial_risk FROM health_conditions WHERE 
-            health_conditions.id_student = student_profile.id) as riesgo_psicosocial, conditions.name AS 
-            estado
+        $data = DB::select("select student_profile.id, student_profile.name, student_profile.lastname, student_profile.document_number, student_profile.id_state, student_groups.id_group as grupoid,  groups.name AS grupo, cohorts.name AS cohorte, assignment_students.id_user as id_profesional, users.name as nombre_profesional, users.apellidos_user as apellido_profersional, COUNT(student_profile.id) as cantidad_seguimientos, formalizations.acceptance_v1 as aceptacion2, formalizations.acceptance_v1 as aceptacion1, max(socio_educational_follow_ups.tracking_detail) as detalle,
+            (SELECT health_conditions.employee FROM health_conditions WHERE health_conditions.id_student = student_profile.id limit 1) as trabajador,
+            (SELECT health_conditions.physical_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id limit 1) as salud_fisica,
+            (SELECT health_conditions.mental_health FROM health_conditions WHERE health_conditions.id_student = student_profile.id limit 1) as salud_mental,
+            (SELECT health_conditions.psychosocial_risk FROM health_conditions WHERE health_conditions.id_student = student_profile.id limit 1) as riesgo_psicosocial,
+			conditions.name AS estado
             FROM student_profile 
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group
@@ -52,6 +54,24 @@ class SocioEducationalFollowUp extends Model
             return null;
         }
     }
+    //
+    
+    //Consulta ultimo seguimiento creado
+    public static function ultimo_seguimiento(){
+
+        $data = DB::select(
+                'select *
+                from socio_educational_follow_ups
+                order by id desc
+                limit 1'
+            );
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }   
     //
     
     /**

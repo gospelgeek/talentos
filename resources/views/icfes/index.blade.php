@@ -3,65 +3,105 @@
 @section('icfes')
 <style>
     #tablaLinea1 td:nth-child(7) {
+
         border-left: black solid 2px;
     }
+
     #tablaLinea1 td:nth-child(9) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea1 td:nth-child(10) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea1 td:nth-child(12) {
         border-right: black solid 2px;
+
     }
+
     #tablaLinea1 td {
         text-align: center;
     }
+
+
     #tablaLinea2 td:nth-child(7) {
+
         border-left: black solid 2px;
     }
+
     #tablaLinea2 td:nth-child(9) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea2 td:nth-child(10) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea2 td:nth-child(12) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea2 td:nth-child(13) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea2 td:nth-child(15) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea2 td:nth-child(16) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea2 td:nth-child(18) {
         border-right: black solid 2px;
+
     }
+
     #tablaLinea2 td {
         text-align: center;
     }
+
+
     #tablaLinea3 td:nth-child(7) {
+
         border-left: black solid 2px;
     }
+
     #tablaLinea3 td:nth-child(9) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea3 td:nth-child(10) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea3 td:nth-child(12) {
         border-right: black solid 1px;
+
     }
+
     #tablaLinea3 td:nth-child(13) {
+
         border-left: black solid 1px;
     }
+
     #tablaLinea3 td:nth-child(15) {
         border-right: black solid 2px;
+
     }
+
     #tablaLinea3 td {
         text-align: center;
     }
@@ -77,10 +117,7 @@
         <div class="card-header">
 
             <div class="row">
-                <div class="col-md-2">
-                    <button class="btn btn-primary" id="Ricfes">REGISTRO DE RESULTADO ICFES</button>
-                </div>
-                &nbsp;
+                
                 &nbsp;
                 <div class="col-md-2">
                     <label for="">ELIJA LA COHORTE: </label>
@@ -206,17 +243,10 @@
 
 <script>
  
-    const registroIcfes = document.getElementById('Ricfes')
-
-    registroIcfes.addEventListener('click', () => {
-        $('#modal-registro').modal('show')
-    })
-
     const r_areas = document.getElementById('r_areas')
     const fm_areas = document.getElementById('form_areas')
     const _guardar = document.getElementById('_guardar')
     const _formRegistro = document.getElementById('_registro')
-
     _guardar.addEventListener('click', (e) => {
         e.preventDefault()
         console.log(_formRegistro['lecturaC'].validity.valid)
@@ -230,23 +260,18 @@
         let cienS = _formRegistro['cienS'].validity.valid
         let cienN = _formRegistro['cienN'].validity.valid
         let ingles = _formRegistro['ingles'].validity.valid
-
         if (iden !== true) {
             toastr.info('la identificacion no puede ser vacia')
         }
-
         if (url !== true) {
             toastr.info('la url no puede ser vacia')
         }
-
         if (puntaje !== true) {
             toastr.info('la informacion del puntaje no es valido, debe ser un numero de 0 a 500 y no puede ser vacio')
         }
-
         if (lecturaC !== true) {
             toastr.info('el campo de lectura critica no puede ser vacio')
         }
-
         if (mate !== true) {
             toastr.info('el campo de matematicas no puede ser vacio')
         }
@@ -259,7 +284,6 @@
         if (ingles !== true) {
             toastr.info('el campo de ingles no puede ser vacio')
         }
-
         if (
             iden === true &&
             url === true &&
@@ -296,9 +320,7 @@
                 },
             })
         }
-
     })
-
     if (r_areas.checked == true) {
         fm_areas.removeAttribute('hidden')
         _formRegistro['lecturaC'].setAttribute('required', '')
@@ -307,7 +329,6 @@
         _formRegistro['cienN'].setAttribute('required', '')
         _formRegistro['ingles'].setAttribute('required', '')
     }
-
     r_areas.addEventListener('change', () => {
         if (r_areas.checked === true) {
             fm_areas.removeAttribute('hidden')
@@ -317,7 +338,6 @@
             _formRegistro['cienN'].setAttribute('required', '')
             _formRegistro['ingles'].setAttribute('required', '')
         }
-
         if (r_areas.checked === false) {
             fm_areas.setAttribute('hidden', '')
             _formRegistro['lecturaC'].removeAttribute('required')
@@ -366,8 +386,10 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
+
                     let variacion = Math.round(data.s3 - data.ie);
                     let resultado
+
                     if (variacion < 0) {
                         resultado = `
                                 <div style="background-color: #FE3F3F;" >
@@ -391,14 +413,18 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
+
                     let variacion = data.s3 - data.ie;
                     let variacionPor = 0
+
                     if (data.ie === 0) {
                         variacionPor = 0
                     } else {
                         variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
                     }
+
                     let resultado
+
                     if (variacion < 0) {
                         resultado = `
                                 <div style="background-color: #FE3F3F;" >
@@ -453,14 +479,18 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
+
                     let variacion = data.if-data.ie;
                     let variacionPor = 0
+
                     if (data.ie === 0) {
                         variacionPor = 0
                     } else {
                         variacionPor = Math.round((Math.round(variacion) / data.ie) * 100)
                     }
+
                     let resultado
+
                     if (variacion < 0) {
                         resultado = `
                                 <div style="background-color: #FE3F3F;" >
@@ -493,7 +523,9 @@
                      `
                 }
             },
+
         ],
+
         "deferRender": true,
         "responsive": false,
         "lengthChange": false,
@@ -792,7 +824,9 @@
                                  `
                 }
             },
+
         ],
+
         "deferRender": true,
         "responsive": false,
         "lengthChange": false,
@@ -1033,7 +1067,9 @@
                                      `
                 }
             },
+
         ],
+
         "deferRender": true,
         "responsive": false,
         "lengthChange": false,
@@ -1049,6 +1085,8 @@
             "colvis"
         ]
     });
+
+
     function abrirModal(id, idP, nom, apel, prueba) {
         const nombreModal = document.getElementById('nombreModal')
         const mensaje = document.getElementById('mensaje')
@@ -1100,7 +1138,9 @@
                             {
                                 data: 'calificacion'
                             }
+
                         ],
+
                         "processing": true,
                         "LoadingRecords": true,
                         "paging": true,
@@ -1126,7 +1166,11 @@
                         ]
                     });
                 }
+
+
             })
+
+
         $('#modal-areas').modal('show')
     }
 </script>

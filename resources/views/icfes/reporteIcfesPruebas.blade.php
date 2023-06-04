@@ -5,7 +5,7 @@
 @include('../alerts.request')
 
 <div class="content-fluid">
-    <h1 style="text-align:center;">RESULTADOS ICFES</h1>
+    <h1 style="text-align:center;">RESULTADOS ICFES </h1>
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -634,7 +634,7 @@
             ingles === true
         ) {
             $.ajax({
-                url: '/registro_icfes',
+                url: '/registro_icfes/',
                 type: 'POST',
                 data: {
                     '_token': _formRegistro['_token'].value,
@@ -773,7 +773,7 @@
                         return `
                             <div class="btn-group">                                  
                                 <div class="col-xs-6 col-sm-6 btn-group">
-                                    <a href="/ver_estudiante/${data.id_student}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
+                                    <a href="/ver_estudiante/${data.id}?css=titulo-7#ti7" class="btn btn-block btn-sm  fa fa-eye" ></a>  
                                 </div> 
                                 <div id="edit${data.documento}" class="col-xs-6 col-sm-6 btn-group">
                                     <a id="editar" onClick="editarModal(${data.documento},'${data.url}',${data.Total},${data.LC},${data.MT},${data.CS},${data.CN},${data.ING}, ${prueba})" class="btn btn-block fa fa-pencil-square-o fa">
@@ -809,12 +809,13 @@
         });
         return table
     }
-
-    let s1Tabla = renderTable("S1", 1)
-    let s2Tabla = renderTable("S2", 2)
+    
+    let salTabla = renderTable("Sal", 5)
     let s3Tabla = renderTable("S3", 3)
     let enTabla = renderTable("En", 4)
-    let salTabla = renderTable("Sal", 5)
+    let s1Tabla = renderTable("S1", 1)
+    let s2Tabla = renderTable("S2", 2)
+    
 
     enTabla.on('click', 'tr', function() {
         idxEn = enTabla

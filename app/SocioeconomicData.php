@@ -39,6 +39,63 @@ class SocioeconomicData extends Model
         'url_ethnicity',
         'eps_name',
     ];
+    
+    //para datos pendientes
+    public static function socioeconomicos(){
+        $data = DB::select("
+                    select student_profile.id, student_profile.name, 
+                    student_profile.lastname,cohorts.id as 
+                    idcohort, cohorts.name as cohorte, groups.id as grupo, groups.name as 
+                    grupo_name,
+                    (select CONCAT(users.name,' ', users.apellidos_user)profesional 
+                    FROM users,assignment_students
+                    WHERE users.id = assignment_students.id_user
+                    and assignment_students.deleted_at is null
+                    and student_profile.id = assignment_students.id_student
+                    limit 1) as profesional,
+                    (SELECT conditions.name FROM conditions WHERE conditions.id = 
+                    student_profile.id_state) as estado,
+                    (SELECT occupations.name FROM occupations WHERE occupations.id = 
+                    socioeconomic_data.id_ocupation) as ocupacion,
+                    (SELECT civil_statuses.name FROM civil_statuses WHERE civil_statuses.id = 
+                    socioeconomic_data.id_civil_status) as estado_civil,
+                    socioeconomic_data.children_number,
+                    (SELECT recidence_times.name FROM recidence_times WHERE recidence_times.id = 
+                    socioeconomic_data.id_residence_time) as tiempo_residencia,
+                    (SELECT housing_types.name FROM housing_types WHERE housing_types.id = 
+                    socioeconomic_data.id_housing_type) as tipo_vivienda,
+                    (SELECT health_regimes.name FROM health_regimes WHERE health_regimes.id = 
+                    socioeconomic_data.id_health_regime) as regimen_salud,
+                    socioeconomic_data.url_health_regime, socioeconomic_data.sisben_category, 
+                    socioeconomic_data.url_sisben_category,
+                    (SELECT benefits.name FROM benefits WHERE benefits.id = 
+                    socioeconomic_data.id_benefits) as beneficios, 
+                    socioeconomic_data.household_people, socioeconomic_data.economic_possition, 
+                    socioeconomic_data.dependent_people, socioeconomic_data.internet_zon, 
+                    socioeconomic_data.internet_home, socioeconomic_data.sex_document_identidad,
+                    (SELECT social_conditions.name FROM social_conditions WHERE 
+                    social_conditions.id = socioeconomic_data.id_social_conditions) as 
+                    condicion_social, socioeconomic_data.url_social_conditions, 
+                    socioeconomic_data.stratum, socioeconomic_data.rural_zone,
+                    (SELECT disabilities.name FROM disabilities WHERE disabilities.id = 
+                    socioeconomic_data.id_disability) as discapacidad,
+                    (SELECT ethnicities.name FROM ethnicities WHERE ethnicities.id = 
+                    socioeconomic_data.id_ethnicity) as etnia, socioeconomic_data.url_ethnicity, 
+                    socioeconomic_data.eps_name 
+                    FROM student_profile
+                    INNER JOIN student_groups ON student_groups.id_student = student_profile.id
+                    INNER JOIN groups ON groups.id = student_groups.id_group
+                    INNER JOIN cohorts on cohorts.id = groups.id_cohort
+                    INNER JOIN socioeconomic_data ON socioeconomic_data.id_student =
+                    student_profile.id
+                    WHERE student_groups.deleted_at is null");
+
+        if($data != null) {
+            return $data;
+        }else{
+            return null;
+        }
+    }
 
     /**
      * Relacion con los  datos que se tiene de SocioeconomicData  

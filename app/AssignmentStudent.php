@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use DB;
 
 class AssignmentStudent extends Model
 {
@@ -22,6 +23,25 @@ class AssignmentStudent extends Model
     ];
 
     protected $dates = ['delete_at'];
+    
+    //Consulta ultima asignacion modificada
+    public static function ultimo_asignacion(){
+
+        $data = DB::select(
+                'select *
+                from assignment_students
+                order by id desc
+                limit 1'
+            );
+
+        if($data != null){
+            return $data;
+        }else{
+            return null;
+        }
+    }   
+    //
+
 
     /**
      * Relacion con los  datos que se tiene de AssignmentStudent  

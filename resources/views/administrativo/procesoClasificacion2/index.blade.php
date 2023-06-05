@@ -433,6 +433,7 @@ $(document).ready(function(){
         	"columns":[
                 {data: 'position'},
                 {data: 'iteration'},
+                {data: 'prioridad'},
         		{data: 'name'},
         		{data: 'lastname'},
         		{data: 'weighted_total'},

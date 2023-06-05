@@ -15,6 +15,7 @@
             <thead>
               <th>Puesto</th>
               <th>Ronda</th>
+              <th>Prioridad</th>
               <th>Nombres</th>
               <th>Apellidos</th>
               <th>Ponderacion Total</th>

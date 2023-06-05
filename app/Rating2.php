@@ -180,9 +180,10 @@ class Rating2 extends Model
         $data = DB::select("
                     select student_profile.id, student_profile.name, student_profile.lastname, 
                     ratings2.weighted_total, ratings2.weighted_areas, ratings2.average_grades, 
-                    ratings2.position, ratings2.iteration
+                    ratings2.position, ratings2.iteration,program_options2.prioridad
                     FROM student_profile
                     INNER JOIN ratings2 on ratings2.id_student = student_profile.id
+                    INNER JOIN program_options2 on program_options2.id_estudiante = ratings2.id_student
                     WHERE ratings2.id_definitive_program = ".$id_programa."");
         if($data != null){
             return $data;

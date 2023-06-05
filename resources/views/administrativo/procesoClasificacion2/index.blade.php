@@ -278,6 +278,7 @@ $(document).ready(function(){
         	},
             {data: 'semestre_ingreso'},
             {data: 'icfes'},
+            {data: 'prioridad'}
         ],
         "deferRender": true,"responsive": false, "lengthChange": false, "autoWidth": false, "order":[[7, 'asc'], [0, 'asc']],
             "dom":'Bfrtip',

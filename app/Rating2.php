@@ -28,7 +28,8 @@ class Rating2 extends Model
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options2.id_programa2) as opc2,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options2.id_programa3) as opc3,
             (SELECT programs.name_program FROM programs WHERE programs.id = program_options2.id_programa4) as opc4,
-            (SELECT programs.name_program FROM programs WHERE programs.id = program_options2.id_programa5) as opc5
+            (SELECT programs.name_program FROM programs WHERE programs.id = program_options2.id_programa5) as opc5,
+            program_options2.prioridad
             FROM student_profile
             INNER JOIN student_groups ON student_groups.id_student = student_profile.id
             INNER JOIN groups ON groups.id = student_groups.id_group

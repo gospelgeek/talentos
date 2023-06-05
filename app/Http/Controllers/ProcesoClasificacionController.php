@@ -1379,7 +1379,7 @@ class ProcesoClasificacionController extends Controller
             
             if($i == 5 && $prioridad == 1){
                 $prioridad = 2;
-                $i = 1;
+                $i = 0;
             }
         }
 

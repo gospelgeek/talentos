@@ -41,6 +41,7 @@ use App\ProgramOptions;
 use App\AdmissionScores;
 use App\InstitutionType;
 use App\LogsCrudActions;
+use App\ProgramOptions2;
 use App\BirthDepartament;
 use App\perfilEstudiante;
 use App\SocialConditions;

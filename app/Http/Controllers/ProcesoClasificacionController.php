@@ -1315,7 +1315,6 @@ class ProcesoClasificacionController extends Controller
         $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
         
         $semestre = 2;
-        $prioridad = 1;
 
         for ($i=1; $i <= 5; $i++) {
 
@@ -1349,25 +1348,28 @@ class ProcesoClasificacionController extends Controller
                     case 2:
                         if($program->quotas_II_2023 > 0 && $program->remaining_quotas_II_2023 > 0){
 
-                            $cupos = $program->remaining_quotas_II_2023;
+                            for($prioridad=1; $prioridad <= 2; $prioridad++){
+                                
+                                $cupos = $program->remaining_quotas_II_2023;
 
-                            $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"II-2023",$estado,$prioridad);
-                            //dump($elegidos);
-                            if(count($elegidos) > 0){
+                                $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"II-2023",$estado,$prioridad);
+                                //dump($elegidos);
+                                if(count($elegidos) > 0){
 
-                                foreach($elegidos as $student){
+                                    foreach($elegidos as $student){
 
-                                    ProgramOptions2::where('id_estudiante',$student['id_student'])->delete();   
+                                        ProgramOptions2::where('id_estudiante',$student['id_student'])->delete();   
+                                    }
+
+                                    $cupos_restantes = $program->remaining_quotas_II_2023 - count($elegidos);
+                                    //dd($cupos_restantes);
+                                    $program->remaining_quotas_II_2023 = $cupos_restantes;
+
+                                    Programs::Where('id',$program->id)->update(['remaining_quotas_II_2023' => $cupos_restantes]);
+
+                                    array_push($Programas_EstudiantesAdmitidos_semestre, array("iteracion" => $i,"id_program" => $program->id,"seleccionados"=>$elegidos));
                                 }
-
-                                $cupos_restantes = $program->remaining_quotas_II_2023 - count($elegidos);
-                                //dd($cupos_restantes);
-                                $program->remaining_quotas_II_2023 = $cupos_restantes;
-
-                                Programs::Where('id',$program->id)->update(['remaining_quotas_II_2023' => $cupos_restantes]);
-
-                                array_push($Programas_EstudiantesAdmitidos_semestre, array("iteracion" => $i,"id_program" => $program->id,"seleccionados"=>$elegidos));
-                            }
+                            }   
                         }
                         break;
                     default:
@@ -1375,11 +1377,6 @@ class ProcesoClasificacionController extends Controller
                         break;
                 }
                 
-            }
-            
-            if($i == 5 && $prioridad == 1){
-                $prioridad = 2;
-                $i = 0;
             }
         }
 

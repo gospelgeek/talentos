@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use DB;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\View;
+use Session;
+use App\Rating;
+use App\Rating2;
 use App\Programs;
-use App\ProgramOptions;
+use App\CourseItems;
+use App\CourseMoodle;
+use App\IcfesStudent;
 use App\ResultByArea;
 use App\StudentGroup;
-use App\CourseMoodle;
-use App\CourseItems;
+use App\ProgramOptions;
+use App\ProgramOptions2;
 use App\perfilEstudiante;
-use App\Rating;
-use DB;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Auth;
-use Session;
-use App\IcfesStudent;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class ProcesoClasificacionController extends Controller
 {
@@ -37,6 +39,16 @@ class ProcesoClasificacionController extends Controller
         return view('administrativo.procesoClasificacion.index', compact('si','no_icfes_si', 'no_icfes_no', 'pendientes'));
     }
 
+    public function index_vista2(){
+        $si = count(Rating2::clasificados());
+        $no = count(Rating2::no_clasificados());
+        /*$pendientes = count(Rating2::pendientes_2023_2());
+        $no_icfes_no = count(Rating2::no_clasificados_icfes_no());*/
+        
+        //dd($si, $no);
+        return view('administrativo.procesoClasificacion2.index', compact('si','no'));
+    }
+
     public function datos_clasificados(){
         $datos = collect(Rating::clasificados());
         //dd($datos);
@@ -54,6 +66,38 @@ class ProcesoClasificacionController extends Controller
         //dd($datos);
         return datatables()->of($datos)->toJson();
     }
+
+    public function datos_clasificados2(){
+        $datos = collect(Rating2::clasificados());
+        //dd($datos);
+        $datos->map(function ($data) {
+            //dd($data);
+            $validate = IcfesStudent::select('id_student')->where('id_student', $data->id)->exists();
+            if($validate){
+                $icfes = IcfesStudent::select('total_score')->where('id_student', $data->id)->where('id_icfes_test', 5)->first();
+                //dd($icfes);
+                $data->icfes = $icfes->total_score;
+            }else{
+                $data->icfes = '--';
+            }
+        });
+        //dd($datos);
+        return datatables()->of($datos)->toJson();
+    }
+
+    public function datos_no_clasificados2(){        
+        $datos = collect(Rating2::no_clasificados());
+
+        $datos->map(function ($data) {
+            //dd($data);
+            $icfes = IcfesStudent::select('total_score')->where('id_student', $data->id)->where('id_icfes_test', 5)->first();
+            $data->icfes = $icfes->total_score;
+            //dd($data);
+        });
+
+        return datatables()->of($datos)->toJson();
+    }
+
     public function datos_no_clasificados_icfes_si(){        
         $datos = collect(Rating::no_clasificados_icfes_si());
 
@@ -90,6 +134,14 @@ class ProcesoClasificacionController extends Controller
         
         return datatables()->of($data)->toJson();
     }
+
+    public function detalles_programas2(Request $request){
+        //dd($request['semestre']);
+        $data = Rating2::detalle_programa($request['id_programa'], $request['semestre']);
+        
+        return datatables()->of($data)->toJson();
+    }
+
 
     public function index(Request $request){
 
@@ -199,12 +251,25 @@ class ProcesoClasificacionController extends Controller
         return back()->with('status', 'Script ejecutado correctamente!');  
     }
 
-    public function iteracion_carreras($carrera,$iteracion,$cupos,$semestre,$estado){
+    public function iteracion_carreras($carrera,$iteracion,$cupos,$semestre,$estado,$prioridad){
+
         $estudiantes_seleccionados = array();
         switch ($iteracion) {
             case 1:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada1','nota_prueba_1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada1','DESC')->get();
-                
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada1','nota_prueba_1','id_programa1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada1','DESC')->get();
+
+                //validar que el si un programa tiene el 100% en prueba especifica y el estudiante no presento prueba lo saque del arreglo
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa1)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_1 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -410,8 +475,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 2:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada2','nota_prueba_2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada2','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada2','nota_prueba_2','id_programa2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada2','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa2)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_2 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -616,8 +692,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 3:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada3','nota_prueba_3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada3','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada3','nota_prueba_3','id_programa3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada3','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa3)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_3 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -822,8 +909,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 4:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada4','nota_prueba_4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada4','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada4','nota_prueba_4','id_programa4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada4','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa4)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_4 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -1028,8 +1126,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 5:
-                $programs_options = ProgramOptions::select('id_estudiante','nota_ponderada5','nota_prueba_5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->orderBy('nota_ponderada5','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada5','nota_prueba_5','id_programa5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada5','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa5)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_5 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -1243,5 +1352,116 @@ class ProcesoClasificacionController extends Controller
         }
 
         return $estudiantes_seleccionados;     
+    }
+
+    public function index2(Request $request){
+
+        $repechaje = Rating2::count();
+        //dd($repechaje);
+        if($repechaje > 0){
+           $ronda = 5;
+           $estado = 2; 
+        }else{
+            $ronda = 0;
+            $estado = 1;
+        }
+        //dd($estado);
+        $Programas_EstudiantesAdmitidos_semestre = array();
+
+        $programs = Programs::select('id','quotas_I_2023','remaining_quotas_I_2023','quotas_II_2023','remaining_quotas_II_2023','iteration_group')->get();
+        
+        $semestre = 2;
+
+        for ($i=1; $i <= 5; $i++) {
+
+            foreach($programs as $program){
+                switch ($semestre) {
+                    case 1:
+                        if($program->quotas_I_2023 > 0 && $program->remaining_quotas_I_2023 > 0){
+
+                            $cupos = $program->remaining_quotas_I_2023;
+
+                            $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"I-2023",$estado);
+                            //dd($elegidos);
+                            if(count($elegidos) > 0){
+
+                                foreach($elegidos as $student){
+
+                                    ProgramOptions2::where('id_estudiante',$student['id_student'])->delete();   
+                                }
+
+                                $cupos_restantes = $program->remaining_quotas_I_2023 - count($elegidos);
+                                //dd($cupos_restantes);
+                                $program->remaining_quotas_I_2023 = $cupos_restantes;
+
+                                Programs::Where('id',$program->id)->update(['remaining_quotas_I_2023' => $cupos_restantes]);
+
+                                array_push($Programas_EstudiantesAdmitidos_semestre, array("iteracion" => $i,"id_program" => $program->id,"seleccionados"=>$elegidos));
+                            }
+                        }
+
+                        break;
+                    case 2:
+                        if($program->quotas_II_2023 > 0 && $program->remaining_quotas_II_2023 > 0){
+
+                            for($prioridad=1; $prioridad <= 2; $prioridad++){
+                                
+                                $cupos = $program->remaining_quotas_II_2023;
+
+                                $elegidos = $this->iteracion_carreras($program->id,$i,$cupos,"II-2023",$estado,$prioridad);
+                                //dump($elegidos);
+                                if(count($elegidos) > 0){
+
+                                    foreach($elegidos as $student){
+
+                                        ProgramOptions2::where('id_estudiante',$student['id_student'])->delete();   
+                                    }
+
+                                    $cupos_restantes = $program->remaining_quotas_II_2023 - count($elegidos);
+                                    //dd($cupos_restantes);
+                                    $program->remaining_quotas_II_2023 = $cupos_restantes;
+
+                                    Programs::Where('id',$program->id)->update(['remaining_quotas_II_2023' => $cupos_restantes]);
+
+                                    array_push($Programas_EstudiantesAdmitidos_semestre, array("iteracion" => $i,"id_program" => $program->id,"seleccionados"=>$elegidos));
+                                }
+                            }   
+                        }
+                        break;
+                    default:
+                        // code...
+                        break;
+                }
+                
+            }
+        }
+
+        /*$programs_options = ProgramOptions::all();
+        foreach($programs_options as $data){
+            if($data->estado == '1'){
+                ProgramOptions::where('id', $data->id)->update(['estado' => '2']);
+            }
+        }*/
+        
+        if(count($Programas_EstudiantesAdmitidos_semestre) > 0){
+
+            foreach($Programas_EstudiantesAdmitidos_semestre as $value) {
+
+                foreach($value['seleccionados'] as $key => $selec){
+
+                    $data = Rating2::create([
+                        'id_student'            => $selec['id_student'],
+                        'id_definitive_program' => $value['id_program'],
+                        'weighted_total'        => $selec['total_ponderado'],
+                        'weighted_areas'        => $selec['ponderado_areas'],
+                        'average_grades'        => $selec['promedio_nota'],
+                        'position'              => $key + 1,
+                        'iteration'             => $value['iteracion']+$ronda,  
+                    ]);    
+                }              
+            } 
+        }
+
+        return back()->with('status', 'Script ejecutado correctamente!');  
     }
 }

@@ -115,8 +115,6 @@ Route::post('updatecohortegrupo/{id}', 'perfilEstudianteController@updateCohorte
 Route::get('datos', 'perfilEstudianteController@mostrar')->name('datos.estudiantes');
 Route::get('info', 'perfilEstudianteController@enviar')->name('info');
 
-
-
 //Rutas CRUD usuarios
 Route::get('usuario', 'UsuarioController@index')->name('usuario');
 Route::get('crear_usuario', 'UsuarioController@crear')->name('crear_usuario');
@@ -313,8 +311,11 @@ Route::get('datos.caracterizacion_individual', 'SocioEducativoController@datos_c
 //Proceso clasificacion 
 //index
 Route::get('index_proceso_clasificacion', 'ProcesoClasificacionController@index_vista')->name('index_proceso_clasificacion');
+Route::get('index_proceso_clasificacion2', 'ProcesoClasificacionController@index_vista2')->name('index_proceso_clasificacion2');
 //clasificados
 Route::get('datos.clasificados', 'ProcesoClasificacionController@datos_clasificados')->name('datos.clasificados');
+Route::get('datos.clasificados2', 'ProcesoClasificacionController@datos_clasificados2')->name('datos.clasificados2');
+Route::get('datos.no_clasificados2', 'ProcesoClasificacionController@datos_no_clasificados2')->name('datos.no_clasificados2');
 //no clasificados con icfes si
 Route::get('datos.no_clasificados_icfes_si', 'ProcesoClasificacionController@datos_no_clasificados_icfes_si')->name('datos.no_clasificados_icfes_si');
 //no clasificados con icfes no
@@ -323,8 +324,10 @@ Route::get('datos.no_clasificados_icfes_no', 'ProcesoClasificacionController@dat
 Route::get('datos.resumen', 'ProcesoClasificacionController@datos_resumen')->name('datos.resumen');
 //index logico
 Route::get('proceso_clasificacion', 'ProcesoClasificacionController@index')->name('proceso_clasificacion');
+Route::get('proceso_clasificacion2', 'ProcesoClasificacionController@index2')->name('proceso_clasificacion2');
 //datos tabla modal resumen
 Route::get('datos.detalle_programas', 'ProcesoClasificacionController@detalles_programas')->name('datos.detalle_programas');
+Route::get('datos.detalle_programas2', 'ProcesoClasificacionController@detalles_programas2')->name('datos.detalle_programas2');
 //datos pendiente
 Route::get('datos.pendientes_2023_II', 'ProcesoClasificacionController@pendientes')->name('datos.pendientes_2023_II');
 

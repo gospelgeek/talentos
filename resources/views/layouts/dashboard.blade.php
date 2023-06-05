@@ -225,6 +225,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
             <a class="dropdown-item" href="{{route('datos_pendientes')}}">Datos Pendientes</a>
             <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+            <a class="dropdown-item" href="{{route('index_proceso_clasificacion2')}}">Proceso de Clasificación 2023-2</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -303,6 +304,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <a class="dropdown-item" href="{{route('consulta')}}">Consulta de Clasificación</a>
                           <a class="dropdown-item" href="{{route('datos_pendientes')}}">Datos Pendientes</a>
                           <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+                          <a class="dropdown-item" href="{{route('index_proceso_clasificacion2')}}">Proceso de Clasificación 2023-2</a>
                           <a class="dropdown-item" href="{{route('cargarDatosIcfes', 5)}}">Actualizar Icfes</a>
                         </div>
                       </li>
@@ -364,6 +366,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                           <a class="dropdown-item" href="{{route('index_proceso_clasificacion')}}">Proceso de Clasificación</a>
+                          <a class="dropdown-item" href="{{route('index_proceso_clasificacion2')}}">Proceso de Clasificación 2023-2</a>
                         </div>
                       </li>              
 

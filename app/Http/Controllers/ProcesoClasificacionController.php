@@ -256,8 +256,20 @@ class ProcesoClasificacionController extends Controller
         $estudiantes_seleccionados = array();
         switch ($iteracion) {
             case 1:
-                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada1','nota_prueba_1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada1','DESC')->get();
-                
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada1','nota_prueba_1','id_programa1')->where('id_programa1', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada1','DESC')->get();
+
+                //validar que el si un programa tiene el 100% en prueba especifica y el estudiante no presento prueba lo saque del arreglo
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa1)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_1 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -463,8 +475,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 2:
-                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada2','nota_prueba_2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada2','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada2','nota_prueba_2','id_programa2')->where('id_programa2', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada2','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa2)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_2 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -669,8 +692,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 3:
-                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada3','nota_prueba_3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada3','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada3','nota_prueba_3','id_programa3')->where('id_programa3', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada3','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa3)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_3 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -875,8 +909,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 4:
-                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada4','nota_prueba_4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada4','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada4','nota_prueba_4','id_programa4')->where('id_programa4', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada4','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa4)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_4 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 
@@ -1081,8 +1126,19 @@ class ProcesoClasificacionController extends Controller
                 }
                 break;
             case 5:
-                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada5','nota_prueba_5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada5','DESC')->get();
+                $programs_options = ProgramOptions2::select('id_estudiante','nota_ponderada5','nota_prueba_5','id_programa5')->where('id_programa5', $carrera)->where('semestre_ingreso',$semestre)->where('estado',$estado)->where('prioridad', $prioridad)->orderBy('nota_ponderada5','DESC')->get();
                 
+                foreach($programs_options as $key => $student){
+
+                    $prueba_programa = Programs::where('id', $student->id_programa5)->where('weighting_test_specific', 100)->exists();
+                    
+                    if(($prueba_programa && $student->nota_prueba_5 > 0) || !$prueba_programa){
+                        continue;
+                    }else{
+                        $programs_options->pull($key);
+                    }
+                }
+
                 if(count($programs_options) > 0 && $cupos < count($programs_options)){
                     //dd("entr");
                     for ($i=0; $i < $cupos;){ 

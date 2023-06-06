@@ -1521,7 +1521,7 @@ class perfilEstudianteController extends Controller
     
         $collection2 = Excel::toArray(new CsvImport, request()->file('file'));
         //dd(count($collection2));
-        $course_moodle = DB::table('program_options2')->truncate();
+        //$course_moodle = DB::table('program_options2')->truncate();
         //foreach ($collection2 as $var) {
             //dd($var);
             foreach ($collection2[0] as $key => $value) {
